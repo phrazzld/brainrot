@@ -1,5 +1,5 @@
 {
-  "name": "brainrot-translations",
+  "name": "@brainrot/translations",
   "version": "0.1.0",
   "private": true,
   "type": "module",
