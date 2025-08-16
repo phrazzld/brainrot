@@ -1,0 +1,40 @@
+{
+  "name": "brainrot",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Monorepo for Brainrot Publishing House - Gen Z translations of classic literature",
+  "packageManager": "pnpm@8.15.1",
+  "engines": {
+    "node": ">=22.0.0",
+    "pnpm": ">=8.15.0"
+  },
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "test": "turbo test",
+    "lint": "turbo lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
+    "clean": "turbo clean && rm -rf node_modules",
+    "prepare": "echo 'Monorepo initialized. Run pnpm install to set up workspaces.'"
+  },
+  "devDependencies": {
+    "prettier": "^3.3.0",
+    "turbo": "^2.0.0",
+    "typescript": "^5.5.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phrazzld/brainrot.git"
+  },
+  "keywords": [
+    "monorepo",
+    "turborepo",
+    "publishing",
+    "books",
+    "translations",
+    "gen-z",
+    "brainrot"
+  ],
+  "author": "Brainrot Publishing House",
+  "license": "MIT"
+}

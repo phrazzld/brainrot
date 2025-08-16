@@ -1,0 +1,59 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": ["**/.env.*local"],
+  "globalEnv": ["NODE_ENV"],
+  "ui": "tui",
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "inputs": ["$TURBO_DEFAULT$", ".env*"],
+      "outputs": [".next/**", "!.next/cache/**", "dist/**", "generated/**"],
+      "env": [
+        "NODE_ENV",
+        "NEXT_PUBLIC_*",
+        "BLOB_READ_WRITE_TOKEN",
+        "VERCEL_URL"
+      ]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true,
+      "inputs": ["$TURBO_DEFAULT$", ".env*"]
+    },
+    "test": {
+      "dependsOn": ["^build"],
+      "inputs": ["$TURBO_DEFAULT$", ".env*"],
+      "outputs": ["coverage/**"],
+      "env": ["NODE_ENV"]
+    },
+    "lint": {
+      "dependsOn": [],
+      "inputs": ["$TURBO_DEFAULT$"]
+    },
+    "typecheck": {
+      "dependsOn": ["^build"],
+      "inputs": ["$TURBO_DEFAULT$"]
+    },
+    "generate": {
+      "cache": false,
+      "inputs": ["$TURBO_DEFAULT$", "content/**/*.md", "content/**/*.yaml"]
+    },
+    "generate:formats": {
+      "dependsOn": ["^build"],
+      "inputs": ["content/**/*.md", "content/**/*.yaml"],
+      "outputs": ["generated/**"]
+    },
+    "sync:blob": {
+      "cache": false,
+      "env": ["BLOB_READ_WRITE_TOKEN", "NEXT_PUBLIC_BLOB_BASE_URL"]
+    },
+    "publish": {
+      "dependsOn": ["build", "generate:formats"],
+      "cache": false,
+      "env": ["LULU_API_KEY", "LULU_API_SECRET", "KDP_USERNAME", "KDP_PASSWORD"]
+    },
+    "clean": {
+      "cache": false
+    }
+  }
+}
