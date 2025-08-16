@@ -85,12 +85,38 @@
 - Ready for consolidation with Great Gatsby from web app
 
 ### 1.5 Consolidate Duplicate Content
-- [ ] Create organized books directory: `mkdir -p content/translations/books`
-- [ ] Move Great Gatsby from web app: `mv apps/web/great-gatsby content/translations/books/great-gatsby`
-- [ ] Remove duplicate Gatsby source: `rm -f apps/web/great-gatsby-source.txt`
-- [ ] Reorganize existing translations to books/ structure from `content/translations/translations/*`
-- [ ] Standardize book folder naming (kebab-case): `the-iliad`, `the-odyssey`, `the-aeneid`, etc.
-- [ ] Commit consolidation: `git commit -m "Consolidate all translations to unified books directory"`
+- [~] Create organized books directory: `mkdir -p content/translations/books`
+### Complexity: MEDIUM
+### Started: 2025-08-16 12:08
+### Context Discovery
+- Great Gatsby in: apps/web/great-gatsby/
+- Other books in: content/translations/translations/
+- Need to standardize naming to kebab-case
+- Total books to reorganize: 10 (including Great Gatsby)
+
+### Execution Log
+[12:08] Starting content consolidation
+[12:08] Created books directory structure
+[12:09] Moved Great Gatsby to consolidated location
+[12:09] Removed duplicate source file
+[12:10] Reorganized all translations with kebab-case naming
+[12:10] Removed empty translations directory
+- [x] Create organized books directory
+- [x] Move Great Gatsby from web app: `mv apps/web/great-gatsby content/translations/books/great-gatsby`
+- [x] Remove duplicate Gatsby source: `rm -f apps/web/great-gatsby-source.txt`
+- [x] Reorganize existing translations to books/ structure from `content/translations/translations/*`
+- [x] Standardize book folder naming (kebab-case): `the-iliad`, `the-odyssey`, `the-aeneid`, etc.
+- [~] Commit consolidation: `git commit -m "Consolidate all translations to unified books directory"`
+
+### Approach Decisions
+- Standardized all book names to kebab-case for consistency
+- Simplified long names (e.g., alice-in-wonderland, declaration-of-independence)
+- Consolidated 10 total books in single location
+
+### Learnings
+- All books now in content/translations/books/ with consistent naming
+- Ready for metadata creation and format generation
+- Web app will need path updates to reference new locations
 
 ## Phase 2: Shared Packages Creation [Days 3-4]
 
