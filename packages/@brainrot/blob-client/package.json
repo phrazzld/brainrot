@@ -1,0 +1,38 @@
+{
+  "name": "@brainrot/blob-client",
+  "version": "1.0.0",
+  "description": "Vercel Blob storage client for Brainrot Publishing House",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist",
+    "test": "jest",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@vercel/blob": "^0.23.0",
+    "ajv": "^8.12.0",
+    "crypto": "^1.0.1",
+    "js-yaml": "^4.1.0",
+    "p-limit": "^4.0.0",
+    "p-retry": "^5.1.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.0.0",
+    "@types/js-yaml": "^4.0.5",
+    "@types/node": "^20.0.0",
+    "jest": "^29.0.0",
+    "ts-jest": "^29.0.0",
+    "typescript": "^5.5.0"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ]
+}
