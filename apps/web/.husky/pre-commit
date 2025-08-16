@@ -1,0 +1,4 @@
+echo "Running pre-commit hooks..."
+
+# Run lint-staged for code quality checks
+npx lint-staged

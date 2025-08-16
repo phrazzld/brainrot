@@ -1,0 +1,109 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files
+.env
+.env.*
+# allow example env files
+!.env.*.example
+
+# vercel
+.vercel
+
+# Don't ignore Husky hooks
+!.husky/
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+.env*.local
+
+# reports and generated files
+/reports
+audio-files-report.json
+audio-inventory-verified.json
+audio-inventory.json
+audio-migration-cdn.json
+audio-migration-with-content.json
+audio-migration-with-placeholders.json
+audio-url-verification.json
+placeholder-deletion-results.json
+missing-assets-*.json
+text-standardization-*.json
+text-verification-*.json
+*.log
+
+# migration logs and reports
+migration-logs/*.log
+migration-logs/*.json
+
+# temporary directories
+/temp
+/tmp
+
+# credentials and config
+aws-do-config.ini
+
+# local assets (migrated to blob storage)
+/public/assets/
+
+# local environment configuration
+.tool-versions
+
+# backups
+/backups/
+
+# thinktank directories
+thinktank_*/
+
+# planning files
+*-plan.md
+
+# task tracking files
+T0*.md
+
+# glance documentation files
+glance.md
+**/glance.md
+
+**/.claude/settings.local.json
+
+# archive directory (for historical data)
+/archive/temp-files/
+
+# coverage directory (if not already ignored)
+coverage/
+
+/docs/leyline
+
+# security audit results
+*-audit-results.json
