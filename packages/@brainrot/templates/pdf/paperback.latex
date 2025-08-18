@@ -1,0 +1,210 @@
+% Brainrot Publishing House - Paperback Template
+% 6x9 inch format for print-on-demand
+
+\documentclass[11pt,twoside,openright]{book}
+
+% Page geometry for 6x9 paperback
+\usepackage[paperwidth=6in,
+            paperheight=9in,
+            inner=0.75in,     % Inner margin (binding side)
+            outer=0.5in,      % Outer margin
+            top=0.75in,
+            bottom=0.75in,
+            footskip=0.3in]{geometry}
+
+% Essential packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+\usepackage{setspace}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{tocloft}
+\usepackage{hyperref}
+\usepackage{bookmark}
+\usepackage{lipsum}
+\usepackage{lettrine}
+\usepackage{enumitem}
+
+% Font selection - Inter for modern look
+\usepackage{fontspec}
+\setmainfont{Inter}[
+  Path = ../fonts/,
+  Extension = .ttf,
+  UprightFont = *-Regular,
+  BoldFont = *-Bold,
+  ItalicFont = *-Italic,
+  BoldItalicFont = *-BoldItalic
+]
+
+% Define Brainrot Pink color
+\definecolor{brainrotpink}{RGB}{255,105,180}
+\definecolor{darkgray}{RGB}{26,26,26}
+
+% Spacing
+\setstretch{1.15}
+\setlength{\parindent}{1.5em}
+\setlength{\parskip}{0pt}
+
+% Chapter styling
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries\lowercase}
+  {\textcolor{brainrotpink}{\MakeUppercase{\chaptertitlename} \thechapter}}
+  {20pt}
+  {\Huge}
+  
+\titlespacing*{\chapter}{0pt}{30pt}{40pt}
+
+% Section styling
+\titleformat{\section}
+  {\normalfont\Large\bfseries\color{darkgray}}
+  {\thesection}{1em}{}
+  
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\color{darkgray}}
+  {\thesubsection}{1em}{}
+
+% Headers and footers
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\small\textit{$title$}}
+\fancyhead[RO]{\small\textit{\leftmark}}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% First page of chapter style
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyfoot[C]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+
+% Drop caps for first letter
+\renewcommand{\LettrineFontHook}{\color{brainrotpink}\bfseries}
+\setlength{\DefaultNindent}{0.2em}
+
+% Hyperref setup
+\hypersetup{
+    colorlinks=true,
+    linkcolor=darkgray,
+    filecolor=brainrotpink,
+    urlcolor=brainrotpink,
+    pdftitle={$title$},
+    pdfauthor={$author$ (translated by $translator$)},
+    pdfsubject={$subject$},
+    pdfkeywords={$keywords$},
+    pdfproducer={Brainrot Publishing House},
+    pdfcreator={LaTeX with pandoc}
+}
+
+% Custom commands for Gen Z styling
+\newcommand{\nocap}[1]{\textsc{\MakeUppercase{#1}}}
+\newcommand{\frfr}[1]{\textit{\textcolor{brainrotpink}{#1}}}
+\newcommand{\bussin}[1]{\textbf{\textcolor{brainrotpink}{#1}}}
+
+% Metadata variables
+\title{$title$}
+\author{$author$\\[0.5em]
+        \small\textit{Translated by $translator$}\\[0.3em]
+        \small Originally by $original-author$}
+\date{$date$}
+
+% Document start
+\begin{document}
+
+% Front matter
+\frontmatter
+
+% Title page
+\begin{titlepage}
+\centering
+\vspace*{1in}
+
+{\Huge\bfseries\lowercase{$title$}\par}
+\vspace{0.5in}
+
+$if(subtitle)$
+{\Large\textit{$subtitle$}\par}
+\vspace{0.3in}
+$endif$
+
+\vspace{1in}
+
+{\large\textbf{$author$}\par}
+\vspace{0.2in}
+{\normalsize\textit{Translated by $translator$}\par}
+\vspace{0.1in}
+{\small Originally by $original-author$\par}
+
+\vfill
+
+{\large\textcolor{brainrotpink}{\textbf{BRAINROT PUBLISHING HOUSE}}\par}
+{\small\textit{Stay literate, stay chaotic}\par}
+
+\vspace{0.5in}
+\end{titlepage}
+
+% Copyright page
+\newpage
+\thispagestyle{empty}
+\vspace*{\fill}
+
+\noindent
+\small
+Copyright \copyright\ $year$ Brainrot Publishing House\\
+All rights reserved.\\[0.5em]
+
+This translation is based on public domain texts from Project Gutenberg.
+The original work is in the public domain, but this translation is protected by copyright.\\[0.5em]
+
+ISBN: $isbn$\\
+First Brainrot Edition: $date$\\[0.5em]
+
+Published by Brainrot Publishing House\\
+brainrotpublishing.com\\[0.5em]
+
+No part of this publication may be reproduced, stored in a retrieval system,
+or transmitted in any form or by any means without the prior written permission
+of the publisher, except for brief quotations in critical reviews or articles.\\[0.5em]
+
+Printed in the United States of America
+
+\vspace*{\fill}
+
+% Table of Contents
+\tableofcontents
+
+% Main matter
+\mainmatter
+
+% Content insertion point
+$body$
+
+% Back matter
+\backmatter
+
+% About section
+\chapter*{About Brainrot Publishing House}
+\addcontentsline{toc}{chapter}{About Brainrot Publishing House}
+
+We're on a mission to make classic literature accessible to the TikTok generation. 
+Every translation is crafted with maximum chaos energy while preserving the 
+original story's essence.
+
+Our translators are experts in both classical literature and internet culture, 
+ensuring that every "no cap" and "fr fr" is placed with artistic precision. 
+We're not just translating words—we're translating vibes.
+
+\vspace{1em}
+
+Find more unhinged translations at \href{https://brainrotpublishing.com}{brainrotpublishing.com}
+
+\vspace{2em}
+
+\textit{Stay literate, stay chaotic.}
+
+\end{document}

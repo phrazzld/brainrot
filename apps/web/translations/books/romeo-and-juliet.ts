@@ -2,17 +2,15 @@
  * Translation data for Romeo and Juliet
  */
 import { Translation } from '../types.js';
-import { USE_BLOB_STORAGE, getAssetUrl } from '../utils.js';
+
 
 const romeoAndJuliet: Translation = {
   slug: 'romeo-and-juliet',
+  bookSlug: 'romeo-and-juliet', // Added for simple blob client
   title: 'romeo and juliet',
   shortDescription:
     'teen love speedrun any%, family beef ruins everything. shakespeare understood toxic relationships fr.',
-  coverImage: getAssetUrl(
-    '/assets/romeo-and-juliet/images/romeo-and-juliet-02.png',
-    USE_BLOB_STORAGE,
-  ),
+  coverImage: '/assets/romeo-and-juliet/images/romeo-and-juliet-02.png', // Keep cover as is for now
   status: 'coming soon',
   chapters: [],
 };

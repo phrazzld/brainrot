@@ -22,9 +22,6 @@ import theIliad from './books/the-iliad.js';
 import theOdyssey from './books/the-odyssey.js';
 // Coming soon books
 import theRepublic from './books/the-republic.js';
-// Import utilities but don't re-export everything to avoid duplicates
-import { USE_BLOB_STORAGE, getDirectAudioUrl } from './utils.js';
-
 /**
  * Translations index
  *
@@ -33,8 +30,6 @@ import { USE_BLOB_STORAGE, getDirectAudioUrl } from './utils.js';
 
 // Export types
 export * from './types.js';
-
-export { USE_BLOB_STORAGE, getDirectAudioUrl };
 
 // Create and export the translations array
 const translations = [

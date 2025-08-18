@@ -2,17 +2,15 @@
  * Translation data for Bible: New Testament
  */
 import { Translation } from '../types.js';
-import { USE_BLOB_STORAGE, getAssetUrl } from '../utils.js';
+
 
 const bibleNewTestament: Translation = {
   slug: 'bible-new-testament',
+  bookSlug: 'bible-new-testament', // Added for simple blob client
   title: 'bible: new testament',
   shortDescription:
     'jesus speedruns salvation meta, apostles document the whole vibe. christianity origin story hits different.',
-  coverImage: getAssetUrl(
-    '/assets/the-bible-new-testament/images/new-testament-01.png',
-    USE_BLOB_STORAGE,
-  ),
+  coverImage: '/assets/the-bible-new-testament/images/new-testament-01.png', // Keep cover as is for now
   status: 'coming soon',
   chapters: [],
 };

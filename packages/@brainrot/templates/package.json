@@ -1,0 +1,29 @@
+{
+  "name": "@brainrot/templates",
+  "version": "1.0.0",
+  "description": "Publishing templates for EPUB, PDF, and Kindle formats",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Templates package - no tests required\""
+  },
+  "keywords": [
+    "templates",
+    "epub",
+    "pdf",
+    "kindle",
+    "publishing",
+    "latex"
+  ],
+  "author": "Brainrot Publishing House",
+  "license": "MIT",
+  "files": [
+    "epub/",
+    "pdf/",
+    "kindle/",
+    "fonts/",
+    "covers/",
+    "index.js",
+    "README.md"
+  ]
+}

@@ -1,0 +1,63 @@
+---
+title: {{TITLE}}
+author: {{AUTHOR}}
+translator: {{TRANSLATOR}}
+publisher: Brainrot Publishing House
+language: en-US
+rights: © 2025 Brainrot Publishing House. All rights reserved.
+cover-image: {{COVER_IMAGE}}
+css: brainrot-style.css
+uuid: {{UUID}}
+date: {{PUBLISH_DATE}}
+subject:
+  - Fiction / Classics
+  - Humor / Parody  
+  - Young Adult / General
+description: |
+  {{DESCRIPTION}}
+  
+  This certified hood classic is a Gen Z translation that hits different. 
+  Part of the Brainrot Publishing House collection of unhinged literary translations.
+---
+
+# {{TITLE}} {.title-page}
+
+*{{SUBTITLE}}*
+
+**Translated by {{TRANSLATOR}}**
+
+Originally by {{ORIGINAL_AUTHOR}}
+
+---
+
+## About This Translation {.about}
+
+This translation is part of the Brainrot Publishing House collection, where classic literature meets Gen Z chaos. We've taken the most goated works of all time and translated them into the language of the chronically online.
+
+No cap, these translations slap harder than the original. Whether you're reading for school or just vibing with literature, this version will have you understanding the assignment fr fr.
+
+---
+
+## Legal Stuff (Because We Have To) {.legal}
+
+This work is based on public domain texts from Project Gutenberg. The original work is in the public domain, but this translation is © 2025 Brainrot Publishing House.
+
+You may share this with the group chat, but commercial reproduction requires permission. We're not trying to gate-keep literature, but we gotta eat too, bestie.
+
+ISBN: {{ISBN}}
+
+First Brainrot Edition: {{PUBLISH_DATE}}
+
+---
+
+{{CONTENT}}
+
+---
+
+## About Brainrot Publishing House {.about-publisher}
+
+We're on a mission to make classic literature accessible to the TikTok generation. Every translation is crafted with maximum chaos energy while preserving the original story's essence.
+
+Find more unhinged translations at brainrotpublishing.com
+
+*Stay literate, stay chaotic.*

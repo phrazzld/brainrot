@@ -1,0 +1,139 @@
+{
+  "schemes": {
+    "default": {
+      "name": "Brainrot Pink",
+      "primary": "#FF69B4",
+      "secondary": "#FF1493",
+      "accent": "#9333EA"
+    },
+    "great-gatsby": {
+      "name": "Art Deco Gold",
+      "primary": "#FFD700",
+      "secondary": "#FFA500",
+      "accent": "#1F1F1F"
+    },
+    "iliad": {
+      "name": "Bronze Age",
+      "primary": "#CD7F32",
+      "secondary": "#8B4513",
+      "accent": "#DC143C"
+    },
+    "odyssey": {
+      "name": "Mediterranean Blue",
+      "primary": "#006994",
+      "secondary": "#0099CC",
+      "accent": "#FF6B35"
+    },
+    "hamlet": {
+      "name": "Danish Darkness",
+      "primary": "#2C003E",
+      "secondary": "#512B58",
+      "accent": "#DC143C"
+    },
+    "pride-prejudice": {
+      "name": "Regency Rose",
+      "primary": "#FF69B4",
+      "secondary": "#FFB6C1",
+      "accent": "#4B0082"
+    },
+    "huckleberry-finn": {
+      "name": "Mississippi Mud",
+      "primary": "#8B4513",
+      "secondary": "#D2691E",
+      "accent": "#4682B4"
+    },
+    "romeo-juliet": {
+      "name": "Verona Violet",
+      "primary": "#8B008B",
+      "secondary": "#DA70D6",
+      "accent": "#DC143C"
+    },
+    "aeneid": {
+      "name": "Imperial Purple",
+      "primary": "#6B238E",
+      "secondary": "#9932CC",
+      "accent": "#FFD700"
+    },
+    "divine-comedy": {
+      "name": "Infernal Red",
+      "primary": "#8B0000",
+      "secondary": "#DC143C",
+      "accent": "#FF4500"
+    },
+    "paradise-lost": {
+      "name": "Celestial Blue",
+      "primary": "#191970",
+      "secondary": "#4169E1",
+      "accent": "#FFD700"
+    },
+    "declaration": {
+      "name": "Revolutionary Red",
+      "primary": "#B22222",
+      "secondary": "#DC143C",
+      "accent": "#000080"
+    },
+    "bible": {
+      "name": "Sacred Gold",
+      "primary": "#FFD700",
+      "secondary": "#F0E68C",
+      "accent": "#8B0000"
+    },
+    "quran": {
+      "name": "Emerald Green",
+      "primary": "#006400",
+      "secondary": "#228B22",
+      "accent": "#FFD700"
+    },
+    "bhagavad-gita": {
+      "name": "Saffron Sunset",
+      "primary": "#FF9933",
+      "secondary": "#FF6347",
+      "accent": "#4B0082"
+    },
+    "meditations": {
+      "name": "Stoic Stone",
+      "primary": "#708090",
+      "secondary": "#778899",
+      "accent": "#2F4F4F"
+    },
+    "gilgamesh": {
+      "name": "Mesopotamian Gold",
+      "primary": "#DAA520",
+      "secondary": "#B8860B",
+      "accent": "#8B4513"
+    },
+    "midsummer": {
+      "name": "Fairy Forest",
+      "primary": "#228B22",
+      "secondary": "#32CD32",
+      "accent": "#FF69B4"
+    },
+    "republic": {
+      "name": "Athenian Azure",
+      "primary": "#0047AB",
+      "secondary": "#4682B4",
+      "accent": "#FFD700"
+    }
+  },
+  "emojis": {
+    "default": "💀",
+    "great-gatsby": "🥂",
+    "iliad": "⚔️",
+    "odyssey": "🌊",
+    "hamlet": "💀",
+    "pride-prejudice": "💕",
+    "huckleberry-finn": "🛶",
+    "romeo-juliet": "💔",
+    "aeneid": "🏛️",
+    "divine-comedy": "🔥",
+    "paradise-lost": "😈",
+    "declaration": "🦅",
+    "bible": "✝️",
+    "quran": "☪️",
+    "bhagavad-gita": "🕉️",
+    "meditations": "🧘",
+    "gilgamesh": "👑",
+    "midsummer": "🧚",
+    "republic": "🏛️"
+  }
+}

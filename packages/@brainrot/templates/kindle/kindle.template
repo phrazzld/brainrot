@@ -1,0 +1,263 @@
+---
+# Kindle-optimized metadata
+title: {{TITLE}}
+author: {{AUTHOR}}
+translator: {{TRANSLATOR}}
+publisher: Brainrot Publishing House
+language: en-US
+rights: © 2025 Brainrot Publishing House. All rights reserved.
+cover-image: {{COVER_IMAGE}}
+uuid: {{UUID}}
+date: {{PUBLISH_DATE}}
+
+# Kindle-specific metadata
+kindle-text-pop-up: true
+kindle-x-ray: true
+kindle-page-flip: true
+kindle-typesetting: enhanced
+
+# Book categorization for Amazon
+bisac-codes:
+  - FIC004000  # Fiction / Classics
+  - HUM000000  # Humor / General
+  - YAF000000  # Young Adult Fiction / General
+
+keywords: |
+  {{KEYWORDS}}
+  gen z translation
+  brainrot
+  classic literature
+  humor
+  parody
+  young adult
+
+description: |
+  {{DESCRIPTION}}
+  
+  ⭐ THE MOST UNHINGED TRANSLATION OF ALL TIME ⭐
+  
+  This certified hood classic is a Gen Z translation that hits different. 
+  Part of the Brainrot Publishing House collection where classic literature 
+  meets chronically online culture.
+  
+  Perfect for:
+  • Students who need to understand the assignment
+  • Anyone who thinks classics are mid
+  • People who want literature that actually slaps
+  • Book clubs ready for maximum chaos energy
+
+# Amazon-specific settings
+amazon-categories:
+  - Fiction > Classics > General
+  - Fiction > Humorous > General
+  - Teen & Young Adult > Literature & Fiction > Classics
+
+price-settings:
+  us: 4.99
+  uk: 3.99
+  ca: 6.99
+  au: 7.99
+
+# KDP Select enrollment (for Kindle Unlimited)
+kdp-select: false
+---
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <title>{{TITLE}}</title>
+    <style type="text/css">
+        /* Kindle-optimized CSS */
+        body {
+            font-family: Georgia, serif;
+            line-height: 1.5;
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* Kindle respects these font sizes */
+        h1 {
+            font-size: 1.5em;
+            text-align: center;
+            margin: 1em 0;
+            page-break-before: always;
+        }
+        
+        h2 {
+            font-size: 1.3em;
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+        }
+        
+        h3 {
+            font-size: 1.1em;
+            margin-top: 1em;
+            margin-bottom: 0.5em;
+        }
+        
+        p {
+            text-indent: 1.5em;
+            margin: 0;
+        }
+        
+        /* First paragraph after heading */
+        h1 + p,
+        h2 + p,
+        h3 + p,
+        hr + p {
+            text-indent: 0;
+        }
+        
+        /* Kindle-specific: no drop caps (they break on some devices) */
+        p.first-para {
+            text-indent: 0;
+        }
+        
+        /* Blockquotes for brainrot commentary */
+        blockquote {
+            margin: 1em 2em;
+            font-style: italic;
+        }
+        
+        /* Page breaks for chapters */
+        .chapter {
+            page-break-before: always;
+        }
+        
+        /* Center for title page elements */
+        .center {
+            text-align: center;
+        }
+        
+        /* Small text for copyright */
+        .small {
+            font-size: 0.9em;
+        }
+        
+        /* Emphasis styles */
+        em {
+            font-style: italic;
+        }
+        
+        strong {
+            font-weight: bold;
+        }
+        
+        /* Kindle-friendly horizontal rule */
+        hr {
+            margin: 2em 0;
+            border: none;
+            text-align: center;
+        }
+        
+        hr:after {
+            content: "* * *";
+        }
+        
+        /* Links (Kindle makes these blue automatically) */
+        a {
+            text-decoration: none;
+        }
+        
+        /* Lists */
+        ul, ol {
+            margin: 1em 0;
+        }
+        
+        /* Kindle Start Reading Location */
+        .start {
+            page-break-before: always;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Cover Page (Kindle handles this separately but included for completeness) -->
+<div class="cover">
+    <img src="{{COVER_IMAGE}}" alt="{{TITLE}} Cover" style="max-width: 100%; height: auto;"/>
+</div>
+
+<!-- Title Page -->
+<div class="chapter">
+    <h1 class="center">{{TITLE}}</h1>
+    <p class="center"><em>{{SUBTITLE}}</em></p>
+    <p class="center">&#160;</p>
+    <p class="center"><strong>{{AUTHOR}}</strong></p>
+    <p class="center">Translated by {{TRANSLATOR}}</p>
+    <p class="center">Originally by {{ORIGINAL_AUTHOR}}</p>
+    <p class="center">&#160;</p>
+    <p class="center">&#160;</p>
+    <p class="center"><strong>BRAINROT PUBLISHING HOUSE</strong></p>
+    <p class="center"><em>Stay literate, stay chaotic</em></p>
+</div>
+
+<!-- Copyright Page -->
+<div class="chapter">
+    <p class="small">Copyright © 2025 Brainrot Publishing House</p>
+    <p class="small">All rights reserved.</p>
+    <p class="small">&#160;</p>
+    <p class="small">This translation is based on public domain texts from Project Gutenberg. The original work is in the public domain, but this translation is protected by copyright.</p>
+    <p class="small">&#160;</p>
+    <p class="small">ISBN: {{ISBN}}</p>
+    <p class="small">First Brainrot Kindle Edition: {{PUBLISH_DATE}}</p>
+    <p class="small">&#160;</p>
+    <p class="small">Published by Brainrot Publishing House</p>
+    <p class="small">brainrotpublishing.com</p>
+</div>
+
+<!-- About This Translation -->
+<div class="chapter">
+    <h2>About This Translation</h2>
+    <p class="first-para">This translation is part of the Brainrot Publishing House collection, where classic literature meets Gen Z chaos. We've taken the most goated works of all time and translated them into the language of the chronically online.</p>
+    <p>No cap, these translations slap harder than the original. Whether you're reading for school or just vibing with literature, this version will have you understanding the assignment fr fr.</p>
+    <p>Every "bestie," "no cap," and "fr fr" has been carefully placed to preserve the original's meaning while making it accessible to modern readers. We're not dumbing down the classics—we're speaking your language.</p>
+</div>
+
+<!-- Table of Contents -->
+<div class="chapter" id="toc">
+    <h2>Contents</h2>
+    <p class="first-para">
+        {{#each chapters}}
+        <a href="#chapter-{{number}}">{{title}}</a><br/>
+        {{/each}}
+    </p>
+</div>
+
+<!-- Kindle Start Reading Location -->
+<div class="start" id="start"></div>
+
+<!-- Main Content -->
+{{CONTENT}}
+
+<!-- About Brainrot Publishing House -->
+<div class="chapter">
+    <h2>About Brainrot Publishing House</h2>
+    <p class="first-para">We're on a mission to make classic literature accessible to the TikTok generation. Every translation is crafted with maximum chaos energy while preserving the original story's essence.</p>
+    <p>Our translators are experts in both classical literature and internet culture, ensuring that every slang term and meme reference is placed with artistic precision.</p>
+    <p>&#160;</p>
+    <p><strong>Find more unhinged translations:</strong></p>
+    <ul>
+        <li>The Iliad: Bronze Age Beefing</li>
+        <li>The Odyssey: Main Character Energy</li>
+        <li>Hamlet: Unalive the Uncle Speedrun</li>
+        <li>Pride and Prejudice: Toxic Masculinity Gets Ratioed</li>
+        <li>The Great Gatsby: Simping in the Jazz Age</li>
+    </ul>
+    <p>&#160;</p>
+    <p class="center">Visit us at <a href="https://brainrotpublishing.com">brainrotpublishing.com</a></p>
+    <p class="center"><em>Stay literate, stay chaotic.</em></p>
+</div>
+
+<!-- End of Book Marker for Kindle -->
+<div class="chapter" id="endofbook">
+    <h2 class="center">The End</h2>
+    <p class="center">&#160;</p>
+    <p class="center">Did this translation hit different?</p>
+    <p class="center">Leave a review and let us know!</p>
+    <p class="center">&#160;</p>
+    <p class="center">⭐⭐⭐⭐⭐</p>
+</div>
+
+</body>
+</html>

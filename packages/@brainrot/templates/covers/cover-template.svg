@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1800" height="2700" viewBox="0 0 1800 2700" xmlns="http://www.w3.org/2000/svg">
+  <!-- 6x9 inch cover at 300 DPI -->
+  
+  <defs>
+    <!-- Gradient background -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:{{COLOR_PRIMARY}};stop-opacity:1" />
+      <stop offset="100%" style="stop-color:{{COLOR_SECONDARY}};stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Noise texture for vintage effect -->
+    <filter id="noise">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" seed="5"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feBlend mode="multiply" opacity="0.1"/>
+    </filter>
+    
+    <!-- Drop shadow for text -->
+    <filter id="dropshadow">
+      <feDropShadow dx="4" dy="4" stdDeviation="3" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1800" height="2700" fill="url(#bgGradient)"/>
+  <rect width="1800" height="2700" fill="white" opacity="0.05" filter="url(#noise)"/>
+  
+  <!-- Decorative border -->
+  <rect x="60" y="60" width="1680" height="2580" 
+        fill="none" stroke="white" stroke-width="6" opacity="0.8"/>
+  <rect x="90" y="90" width="1620" height="2520" 
+        fill="none" stroke="white" stroke-width="2" opacity="0.5"/>
+  
+  <!-- Publisher branding area -->
+  <text x="900" y="200" 
+        font-family="Inter, Arial, sans-serif" 
+        font-size="48" 
+        font-weight="900"
+        text-anchor="middle" 
+        fill="white" 
+        opacity="0.9">
+    BRAINROT PUBLISHING HOUSE
+  </text>
+  
+  <!-- Main title -->
+  <text x="900" y="800" 
+        font-family="Inter, Arial Black, sans-serif" 
+        font-size="{{TITLE_SIZE}}" 
+        font-weight="900"
+        text-anchor="middle" 
+        fill="white"
+        filter="url(#dropshadow)">
+    {{TITLE_LINE_1}}
+  </text>
+  
+  <!-- Title line 2 (if needed) -->
+  <text x="900" y="980" 
+        font-family="Inter, Arial Black, sans-serif" 
+        font-size="{{TITLE_SIZE}}" 
+        font-weight="900"
+        text-anchor="middle" 
+        fill="white"
+        filter="url(#dropshadow)">
+    {{TITLE_LINE_2}}
+  </text>
+  
+  <!-- Subtitle/Tagline -->
+  <text x="900" y="1200" 
+        font-family="Inter, Arial, sans-serif" 
+        font-size="56" 
+        font-weight="400"
+        font-style="italic"
+        text-anchor="middle" 
+        fill="white"
+        opacity="0.95">
+    {{SUBTITLE}}
+  </text>
+  
+  <!-- Decorative element -->
+  <line x1="600" y1="1350" x2="1200" y2="1350" 
+        stroke="white" stroke-width="3" opacity="0.7"/>
+  
+  <!-- Genre/Category badge -->
+  <rect x="650" y="1450" width="500" height="100" 
+        fill="white" opacity="0.15" rx="50"/>
+  <text x="900" y="1515" 
+        font-family="Inter, Arial, sans-serif" 
+        font-size="42" 
+        font-weight="700"
+        text-anchor="middle" 
+        fill="white">
+    {{GENRE}}
+  </text>
+  
+  <!-- Visual element placeholder -->
+  <g id="visual-element" transform="translate(900, 1800)">
+    <!-- This could be replaced with custom artwork -->
+    <circle r="200" fill="white" opacity="0.1"/>
+    <circle r="150" fill="none" stroke="white" stroke-width="4" opacity="0.3"/>
+    <circle r="100" fill="none" stroke="white" stroke-width="2" opacity="0.5"/>
+    
+    <!-- Emoji or icon placeholder -->
+    <text y="20" 
+          font-size="120" 
+          text-anchor="middle" 
+          fill="white">
+      {{EMOJI}}
+    </text>
+  </g>
+  
+  <!-- Author -->
+  <text x="900" y="2300" 
+        font-family="Inter, Arial, sans-serif" 
+        font-size="72" 
+        font-weight="700"
+        text-anchor="middle" 
+        fill="white">
+    {{AUTHOR}}
+  </text>
+  
+  <!-- Translator credit -->
+  <text x="900" y="2400" 
+        font-family="Inter, Arial, sans-serif" 
+        font-size="48" 
+        font-weight="400"
+        text-anchor="middle" 
+        fill="white"
+        opacity="0.9">
+    Translated by {{TRANSLATOR}}
+  </text>
+  
+  <!-- Bottom tagline -->
+  <text x="900" y="2550" 
+        font-family="Inter, Arial, sans-serif" 
+        font-size="36" 
+        font-weight="400"
+        font-style="italic"
+        text-anchor="middle" 
+        fill="white"
+        opacity="0.8">
+    Stay literate, stay chaotic
+  </text>
+</svg>

@@ -2,26 +2,20 @@
  * Translation data for The Declaration of Independence
  */
 import { Translation } from '../types.js';
-import { USE_BLOB_STORAGE, getAssetUrl, getDirectAudioUrl } from '../utils.js';
 
 const declarationOfIndependence: Translation = {
   slug: 'declaration-of-independence',
+  bookSlug: 'declaration-of-independence', // Added for simple blob client
   title: 'the declaration of independence',
   shortDescription:
     'colonies went no cap on king george, dropped the hardest breakup letter in history. life, liberty, and vibes only.',
-  coverImage: getAssetUrl(
-    '/assets/declaration-of-independence/images/the-declaration-01.png',
-    USE_BLOB_STORAGE,
-  ),
+  coverImage: '/assets/declaration-of-independence/images/the-declaration-01.png', // Keep cover as is for now
   status: 'available',
   chapters: [
     {
       title: 'the declaration',
-      text: getAssetUrl(
-        '/assets/text/declaration-of-independence/brainrot-declaration.txt',
-        USE_BLOB_STORAGE,
-      ),
-      audioSrc: getDirectAudioUrl('declaration-of-independence', 'full-audiobook'),
+      text: 'declaration.txt',
+      audioSrc: null,
     },
   ],
 };

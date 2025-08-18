@@ -2,136 +2,136 @@
  * Translation data for The Iliad
  */
 import { Translation } from '../types.js';
-import { USE_BLOB_STORAGE, getAssetUrl, getDirectAudioUrl } from '../utils.js';
 
 const theIliad: Translation = {
   slug: 'the-iliad',
+  bookSlug: 'the-iliad', // Added for simple blob client
   title: 'the iliad',
   shortDescription:
     'achilles big salty, trojan bros caught in 4k, city going bruh-level meltdown. w drama, 100% based.',
-  coverImage: getAssetUrl('/assets/the-iliad/images/the-iliad-01.png', USE_BLOB_STORAGE),
+  coverImage: '/assets/the-iliad/images/the-iliad-01.png', // Keep cover as is for now
   status: 'available',
   purchaseUrl: 'https://a.co/d/3Jgk26x',
   chapters: [
     {
       title: 'book 1',
-      text: getAssetUrl('/assets/the-iliad/text/book-01.txt', USE_BLOB_STORAGE),
-      audioSrc: getDirectAudioUrl('the-iliad', 'book-01'),
+      text: 'book-01.txt',
+      audioSrc: null, // Simplified for now
     },
     {
       title: 'book 2',
-      text: getAssetUrl('/assets/the-iliad/text/book-02.txt', USE_BLOB_STORAGE),
-      audioSrc: getDirectAudioUrl('the-iliad', 'book-02'),
+      text: 'book-02.txt',
+      audioSrc: null,
     },
     {
       title: 'book 3',
-      text: getAssetUrl('/assets/the-iliad/text/book-03.txt', USE_BLOB_STORAGE),
-      audioSrc: getDirectAudioUrl('the-iliad', 'book-03'),
+      text: 'book-03.txt',
+      audioSrc: null,
     },
     {
       title: 'book 4',
-      text: getAssetUrl('/assets/the-iliad/text/book-04.txt', USE_BLOB_STORAGE),
-      audioSrc: getDirectAudioUrl('the-iliad', 'book-04'),
+      text: 'book-04.txt',
+      audioSrc: null,
     },
     {
       title: 'book 5',
-      text: getAssetUrl('/assets/the-iliad/text/book-05.txt', USE_BLOB_STORAGE),
-      audioSrc: getDirectAudioUrl('the-iliad', 'book-05'),
+      text: 'book-05.txt',
+      audioSrc: null,
     },
     {
       title: 'book 6',
-      text: getAssetUrl('/assets/the-iliad/text/book-06.txt', USE_BLOB_STORAGE),
-      audioSrc: getDirectAudioUrl('the-iliad', 'book-06'),
+      text: 'book-06.txt',
+      audioSrc: null,
     },
     {
       title: 'book 7',
-      text: getAssetUrl('/assets/the-iliad/text/book-07.txt', USE_BLOB_STORAGE),
-      audioSrc: getDirectAudioUrl('the-iliad', 'book-07'),
+      text: 'book-07.txt',
+      audioSrc: null,
     },
     {
       title: 'book 8',
-      text: getAssetUrl('/assets/the-iliad/text/book-08.txt', USE_BLOB_STORAGE),
-      audioSrc: getDirectAudioUrl('the-iliad', 'book-08'),
+      text: 'book-08.txt',
+      audioSrc: null,
     },
     {
       title: 'book 9',
-      text: getAssetUrl('/assets/the-iliad/text/book-09.txt', USE_BLOB_STORAGE),
-      audioSrc: getDirectAudioUrl('the-iliad', 'book-09'),
+      text: 'book-09.txt',
+      audioSrc: null,
     },
     {
       title: 'book 10',
-      text: getAssetUrl('/assets/the-iliad/text/book-10.txt', USE_BLOB_STORAGE),
-      audioSrc: getDirectAudioUrl('the-iliad', 'book-10'),
+      text: 'book-10.txt',
+      audioSrc: null,
     },
     {
       title: 'book 11',
-      text: getAssetUrl('/assets/the-iliad/text/book-11.txt', USE_BLOB_STORAGE),
-      audioSrc: getDirectAudioUrl('the-iliad', 'book-11'),
+      text: 'book-11.txt',
+      audioSrc: null,
     },
     {
       title: 'book 12',
-      text: getAssetUrl('/assets/the-iliad/text/book-12.txt', USE_BLOB_STORAGE),
-      audioSrc: getDirectAudioUrl('the-iliad', 'book-12'),
+      text: 'book-12.txt',
+      audioSrc: null,
     },
     {
       title: 'book 13',
-      text: getAssetUrl('/assets/the-iliad/text/book-13.txt', USE_BLOB_STORAGE),
-      audioSrc: getDirectAudioUrl('the-iliad', 'book-13'),
+      text: 'book-13.txt',
+      audioSrc: null,
     },
     {
       title: 'book 14',
-      text: getAssetUrl('/assets/the-iliad/text/book-14.txt', USE_BLOB_STORAGE),
-      audioSrc: getDirectAudioUrl('the-iliad', 'book-14'),
+      text: 'book-14.txt',
+      audioSrc: null,
     },
     {
       title: 'book 15',
-      text: getAssetUrl('/assets/the-iliad/text/book-15.txt', USE_BLOB_STORAGE),
-      audioSrc: getDirectAudioUrl('the-iliad', 'book-15'),
+      text: 'book-15.txt',
+      audioSrc: null,
     },
     {
       title: 'book 16',
-      text: getAssetUrl('/assets/the-iliad/text/book-16.txt', USE_BLOB_STORAGE),
-      audioSrc: getDirectAudioUrl('the-iliad', 'book-16'),
+      text: 'book-16.txt',
+      audioSrc: null,
     },
     {
       title: 'book 17',
-      text: getAssetUrl('/assets/the-iliad/text/book-17.txt', USE_BLOB_STORAGE),
-      audioSrc: getDirectAudioUrl('the-iliad', 'book-17'),
+      text: 'book-17.txt',
+      audioSrc: null,
     },
     {
       title: 'book 18',
-      text: getAssetUrl('/assets/the-iliad/text/book-18.txt', USE_BLOB_STORAGE),
-      audioSrc: getDirectAudioUrl('the-iliad', 'book-18'),
+      text: 'book-18.txt',
+      audioSrc: null,
     },
     {
       title: 'book 19',
-      text: getAssetUrl('/assets/the-iliad/text/book-19.txt', USE_BLOB_STORAGE),
-      audioSrc: getDirectAudioUrl('the-iliad', 'book-19'),
+      text: 'book-19.txt',
+      audioSrc: null,
     },
     {
       title: 'book 20',
-      text: getAssetUrl('/assets/the-iliad/text/book-20.txt', USE_BLOB_STORAGE),
-      audioSrc: getDirectAudioUrl('the-iliad', 'book-20'),
+      text: 'book-20.txt',
+      audioSrc: null,
     },
     {
       title: 'book 21',
-      text: getAssetUrl('/assets/the-iliad/text/book-21.txt', USE_BLOB_STORAGE),
-      audioSrc: getDirectAudioUrl('the-iliad', 'book-21'),
+      text: 'book-21.txt',
+      audioSrc: null,
     },
     {
       title: 'book 22',
-      text: getAssetUrl('/assets/the-iliad/text/book-22.txt', USE_BLOB_STORAGE),
-      audioSrc: getDirectAudioUrl('the-iliad', 'book-22'),
+      text: 'book-22.txt',
+      audioSrc: null,
     },
     {
       title: 'book 23',
-      text: getAssetUrl('/assets/the-iliad/text/book-23.txt', USE_BLOB_STORAGE),
-      audioSrc: getDirectAudioUrl('the-iliad', 'book-23'),
+      text: 'book-23.txt',
+      audioSrc: null,
     },
     {
       title: 'book 24',
-      text: getAssetUrl('/assets/the-iliad/text/book-24.txt', USE_BLOB_STORAGE),
-      audioSrc: getDirectAudioUrl('the-iliad', 'book-24'),
+      text: 'book-24.txt',
+      audioSrc: null,
     },
   ],
 };

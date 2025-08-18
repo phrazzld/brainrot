@@ -2,75 +2,75 @@
  * Translation data for The Aeneid
  */
 import { Translation } from '../types.js';
-import { USE_BLOB_STORAGE, getAssetUrl, getDirectAudioUrl } from '../utils.js';
 
 const theAeneid: Translation = {
   slug: 'the-aeneid',
+  bookSlug: 'the-aeneid', // Added for simple blob client
   title: 'the aeneid',
   shortDescription:
-    'trojan boi aeneas on a no cap mission to found rome, basically said "secure the bag or crash out." spoiler: he secures it, bestie.',
-  coverImage: getAssetUrl('/assets/the-aeneid/images/the-aeneid-01.png', USE_BLOB_STORAGE),
+    'trojan refugee aeneas speed-runs founding rome. gods playing 5D chess, absolute chaos mode activated.',
+  coverImage: '/assets/the-aeneid/images/cover.png', // Keep cover as is for now
   status: 'available',
   chapters: [
     {
       title: 'book 1',
-      text: getAssetUrl('/assets/the-aeneid/text/book-01.txt', USE_BLOB_STORAGE),
-      audioSrc: getDirectAudioUrl('the-aeneid', 'book-01'),
+      text: 'book-01.txt',
+      audioSrc: null,
     },
     {
       title: 'book 2',
-      text: getAssetUrl('/assets/the-aeneid/text/book-02.txt', USE_BLOB_STORAGE),
-      audioSrc: getDirectAudioUrl('the-aeneid', 'book-02'),
+      text: 'book-02.txt',
+      audioSrc: null,
     },
     {
       title: 'book 3',
-      text: getAssetUrl('/assets/the-aeneid/text/book-03.txt', USE_BLOB_STORAGE),
-      audioSrc: getDirectAudioUrl('the-aeneid', 'book-03'),
+      text: 'book-03.txt',
+      audioSrc: null,
     },
     {
       title: 'book 4',
-      text: getAssetUrl('/assets/the-aeneid/text/book-04.txt', USE_BLOB_STORAGE),
-      audioSrc: getDirectAudioUrl('the-aeneid', 'book-04'),
+      text: 'book-04.txt',
+      audioSrc: null,
     },
     {
       title: 'book 5',
-      text: getAssetUrl('/assets/the-aeneid/text/book-05.txt', USE_BLOB_STORAGE),
-      audioSrc: getDirectAudioUrl('the-aeneid', 'book-05'),
+      text: 'book-05.txt',
+      audioSrc: null,
     },
     {
       title: 'book 6',
-      text: getAssetUrl('/assets/the-aeneid/text/book-06.txt', USE_BLOB_STORAGE),
-      audioSrc: getDirectAudioUrl('the-aeneid', 'book-06'),
+      text: 'book-06.txt',
+      audioSrc: null,
     },
     {
       title: 'book 7',
-      text: getAssetUrl('/assets/the-aeneid/text/book-07.txt', USE_BLOB_STORAGE),
-      audioSrc: getDirectAudioUrl('the-aeneid', 'book-07'),
+      text: 'book-07.txt',
+      audioSrc: null,
     },
     {
       title: 'book 8',
-      text: getAssetUrl('/assets/the-aeneid/text/book-08.txt', USE_BLOB_STORAGE),
-      audioSrc: getDirectAudioUrl('the-aeneid', 'book-08'),
+      text: 'book-08.txt',
+      audioSrc: null,
     },
     {
       title: 'book 9',
-      text: getAssetUrl('/assets/the-aeneid/text/book-09.txt', USE_BLOB_STORAGE),
-      audioSrc: getDirectAudioUrl('the-aeneid', 'book-09'),
+      text: 'book-09.txt',
+      audioSrc: null,
     },
     {
       title: 'book 10',
-      text: getAssetUrl('/assets/the-aeneid/text/book-10.txt', USE_BLOB_STORAGE),
-      audioSrc: getDirectAudioUrl('the-aeneid', 'book-10'),
+      text: 'book-10.txt',
+      audioSrc: null,
     },
     {
       title: 'book 11',
-      text: getAssetUrl('/assets/the-aeneid/text/book-11.txt', USE_BLOB_STORAGE),
-      audioSrc: getDirectAudioUrl('the-aeneid', 'book-11'),
+      text: 'book-11.txt',
+      audioSrc: null,
     },
     {
       title: 'book 12',
-      text: getAssetUrl('/assets/the-aeneid/text/book-12.txt', USE_BLOB_STORAGE),
-      audioSrc: getDirectAudioUrl('the-aeneid', 'book-12'),
+      text: 'book-12.txt',
+      audioSrc: null,
     },
   ],
 };

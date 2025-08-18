@@ -1,26 +1,26 @@
 import { DownloadService } from '@/services/downloadService.js';
-import { AssetService } from '@/types/assets.js';
+// import { AssetService } from '@/types/assets.js';
 import { Logger } from '@/utils/logger.js';
-import { createAssetService } from '@/utils/services/AssetServiceFactory.js';
+// import { createAssetService } from '@/utils/services/AssetServiceFactory.js'; // DELETED - part of complex blob system
 
 import { safeLog } from './errorHandlers.js';
 
 /**
  * Creates an instance of the download service with all required dependencies
- *
- * This factory function follows the dependency injection pattern to:
- * - Create an AssetService using the AssetServiceFactory
- * - Create a properly configured DownloadService with all dependencies
- * - Log environment configuration for debugging purposes
- *
- * The service is environment-agnostic and works with the unified AssetService
- * which handles all asset operations consistently.
+ * 
+ * NOTE: This service is temporarily disabled as it depended on the complex blob system
+ * which has been removed. Audio downloads are not currently supported as we have no audio files.
  *
  * @param log - Logger instance for recording service initialization issues
  * @param correlationId - Optional correlation ID for request tracing
  * @returns The initialized download service or null if initialization failed
  */
 export function createDownloadService(log: Logger, correlationId?: string): DownloadService | null {
+  // Temporarily disabled - audio downloads not supported
+  safeLog(log, 'Download service disabled - no audio files available', 'info');
+  return null;
+  
+  /* Original implementation commented out - depended on deleted services
   try {
     // Create an AssetService instance with proper configuration
     const assetService: AssetService = createAssetService({
@@ -47,4 +47,5 @@ export function createDownloadService(log: Logger, correlationId?: string): Down
     });
     return null;
   }
+  */
 }

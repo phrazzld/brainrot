@@ -2,17 +2,15 @@
  * Translation data for Divine Comedy: Paradiso
  */
 import { Translation } from '../types.js';
-import { USE_BLOB_STORAGE, getAssetUrl } from '../utils.js';
+
 
 const divineComedyParadiso: Translation = {
   slug: 'divine-comedy-paradiso',
+  bookSlug: 'divine-comedy-paradiso', // Added for simple blob client
   title: 'divine comedy: paradiso',
   shortDescription:
     'dante achieves peak enlightenment, heaven tour maximum vibes. beatrice best girl confirmed.',
-  coverImage: getAssetUrl(
-    '/assets/the-divine-comedy-paradiso/images/paradiso-02.png',
-    USE_BLOB_STORAGE,
-  ),
+  coverImage: '/assets/the-divine-comedy-paradiso/images/paradiso-02.png', // Keep cover as is for now
   status: 'coming soon',
   chapters: [],
 };
