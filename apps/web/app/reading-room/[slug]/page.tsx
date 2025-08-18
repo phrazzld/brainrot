@@ -30,7 +30,7 @@ export default function ReadingRoom() {
   ] = useChapterNavigation(translations);
 
   // Load chapter text
-  const { rawText, isTextLoading } = useTextLoader(chapterData?.text);
+  const { rawText, isTextLoading } = useTextLoader(slug, chapterData?.text);
 
   // Set up audio player
   const [{ isPlaying, isAudioLoading, currentTime, totalTime }, { togglePlayPause, formatTime }] =

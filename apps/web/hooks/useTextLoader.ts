@@ -1,20 +1,19 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-
-import { fetchTextWithFallback } from '@/utils.js';
+import { fetchBookText } from '@/utils/simple-blob.js';
 
 interface TextLoaderState {
   rawText: string;
   isTextLoading: boolean;
 }
 
-export function useTextLoader(textPath: string | undefined): TextLoaderState {
+export function useTextLoader(bookSlug: string, filename: string | undefined): TextLoaderState {
   const [rawText, setRawText] = useState('');
   const [isTextLoading, setIsTextLoading] = useState(false);
 
   useEffect(() => {
-    if (!textPath) {
+    if (!filename || !bookSlug) {
       setRawText('');
       return;
     }
@@ -23,9 +22,9 @@ export function useTextLoader(textPath: string | undefined): TextLoaderState {
     const abortController = new AbortController();
     const signal = abortController.signal;
 
-    // Load text with automatic fallback
+    // Load text with simple fetch
     setIsTextLoading(true);
-    fetchTextWithFallback(textPath)
+    fetchBookText(bookSlug, filename)
       .then((txt) => {
         if (signal.aborted) return; // Don't update state if aborted
         setRawText(txt);
@@ -43,7 +42,7 @@ export function useTextLoader(textPath: string | undefined): TextLoaderState {
     return () => {
       abortController.abort();
     };
-  }, [textPath]);
+  }, [bookSlug, filename]);
 
   return { rawText, isTextLoading };
 }

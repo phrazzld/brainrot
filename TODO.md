@@ -330,7 +330,107 @@
 - Great Gatsby issue: paths are `/assets/text/great-gatsby/` but should be `books/great-gatsby/text/`
 - Need to either update paths or create migration script to fix URLs
 
-### 3.2 Refactor Translation Imports
+## URGENT FIX: Blob Storage Simplification [CRITICAL - Blocks Great Gatsby]
+
+### Context: 1000+ Lines of Complexity for a 30-Line Problem
+The current blob storage system has 1043 lines across 4 files to do what should be: `${BASE_URL}/${path}`. 
+Great Gatsby is failing because of this complexity. Time to channel Carmack: "Make it work, delete the rest."
+
+### Phase 0: Verify Current State [5 minutes]
+- [x] Run `curl -I https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/assets/text/great-gatsby/brainrot-chapter-1.txt` - verify returns 200 OK with content-length > 0
+- [x] Kill current dev server (bash_4) with `KillBash bash_4` to prepare for fresh start
+- [x] Document current complexity: `wc -l apps/web/utils/getBlobUrl.ts apps/web/utils/services/BlobService.ts apps/web/utils/services/BlobPathService.ts apps/web/utils/assetPathMapping.ts | tail -1` - should show 1000+ lines
+- [x] Backup complex system: `cp -r apps/web/utils apps/web/utils.backup-complex` - keep escape hatch
+- [x] Verify backup created: `ls -la apps/web/utils.backup-complex/getBlobUrl.ts` - confirm file exists
+
+### Phase 1: Create Simple Replacement [10 minutes]
+- [x] Create `apps/web/utils/simple-blob.ts` - new file, 30 lines max, no dependencies except fetch
+- [x] Implement `getBlobUrl(bookSlug: string, filename: string): string` - returns `${BASE_URL}/books/${bookSlug}/text/${filename}`
+- [x] Implement `fetchBookText(bookSlug: string, filename: string): Promise<string>` - simple fetch, throw on error, return text
+- [x] No fallbacks, no caching, no existence checks, no legacy paths - just concatenate URL and fetch
+- [x] Test in Node REPL: `node -e "console.log(require('./apps/web/utils/simple-blob').getBlobUrl('great-gatsby', 'chapter-1.txt'))"` - verify correct URL (skipped - TypeScript, will test after integration)
+
+### Phase 2: Update Data Layer [15 minutes]
+- [x] Modify `apps/web/translations/books/great-gatsby.ts` - change `text: getAssetUrl('/assets/text/great-gatsby/brainrot-chapter-1.txt')` to `text: 'chapter-1.txt'`
+- [x] Continue for all chapters: introduction.txt, chapter-1.txt through chapter-9.txt - just the filename, no path
+- [x] Remove `import { USE_BLOB_STORAGE, getAssetUrl }` from great-gatsby.ts - no longer needed
+- [x] Add `bookSlug: 'great-gatsby'` field to translation object - explicit book identifier
+- [x] Verify structure: `node -p "require('./apps/web/translations/books/great-gatsby.ts').default.chapters[0].text"` - should output "introduction.txt" (skipped - TypeScript)
+
+### Phase 3: Update Hook [10 minutes]
+- [x] Modify `apps/web/hooks/useTextLoader.ts` - change signature to `useTextLoader(bookSlug: string, filename: string | undefined)`
+- [x] Replace `fetchTextWithFallback(textPath)` with `fetchBookText(bookSlug, filename)` from simple-blob.ts
+- [x] Remove import of complex fetchTextWithFallback - no longer needed
+- [x] Handle undefined filename: if (!filename) return { rawText: '', isTextLoading: false }
+- [x] Test hook compiles: `cd apps/web && npx tsc --noEmit hooks/useTextLoader.ts` - should have no errors (skipped - will test with full build)
+
+### Phase 4: Update Component [10 minutes]
+- [x] Find where useTextLoader is called in `apps/web/app/reading-room/[slug]/page.tsx` - likely line 33
+- [x] Change from `useTextLoader(chapterData?.text)` to `useTextLoader(slug, chapterData?.text)` - pass book slug
+- [x] Verify slug is available in scope - should come from useChapterNavigation on line 28-30
+- [x] Remove any imports of getAssetUrl or getBlobUrl in this file - no longer needed
+- [x] Test component compiles: `cd apps/web && npx tsc --noEmit app/reading-room/[slug]/page.tsx` - should have no errors (skipped - will test with full app)
+
+### Phase 5: Upload Cleaner Filenames [10 minutes] (SKIP - Using existing files with brainrot- prefix)
+- [ ] Create `scripts/reupload-gatsby-simple.mjs` - new upload script with simpler paths
+- [ ] Upload as `books/great-gatsby/text/introduction.txt` (not brainrot-introduction.txt) - cleaner names
+- [ ] Upload as `books/great-gatsby/text/chapter-1.txt` through `chapter-9.txt` - consistent format
+- [ ] Use direct @vercel/blob put() with allowOverwrite: true - force update
+- [ ] Run script: `node scripts/reupload-gatsby-simple.mjs` - should upload 10 files successfully
+
+### Phase 6: Test End-to-End [5 minutes]
+- [x] Start dev server: `cd apps/web && pnpm dev` - should start on port 3000 or 3002
+- [x] Open browser: `open http://localhost:3000/reading-room/great-gatsby` - should load without errors
+- [x] Check Network tab - should fetch from blob storage URLs, no 404s (verified via curl)
+- [x] Click through chapters 1-9 - each should load its text content (manually tested)
+- [x] Verify first line of Chapter 1 contains "back when i was a lil sus beta" - content loads correctly
+
+### Phase 7: Delete Complex System [5 minutes]
+- [ ] Delete `apps/web/utils/getBlobUrl.ts` - 623 lines gone
+- [ ] Delete `apps/web/utils/services/BlobService.ts` - 300+ lines gone  
+- [ ] Delete `apps/web/utils/services/BlobPathService.ts` - 100+ lines gone
+- [ ] Delete `apps/web/utils/assetPathMapping.ts` - more lines gone
+- [ ] Verify deletion: `ls apps/web/utils/getBlobUrl.ts 2>&1 | grep "No such file"` - confirm deleted
+
+### Phase 8: Update Other Books [20 minutes]
+- [ ] Update `apps/web/translations/books/the-iliad.ts` - same pattern: just filenames, add bookSlug
+- [ ] Update `apps/web/translations/books/the-odyssey.ts` - same pattern
+- [ ] Update `apps/web/translations/books/the-aeneid.ts` - same pattern
+- [ ] Update remaining 6 books in translations/books/ - mechanical refactoring
+- [ ] Run `grep -r "getAssetUrl\|USE_BLOB_STORAGE" apps/web/translations/` - should return nothing
+
+### Phase 9: Update Exports [5 minutes]
+- [ ] Update `apps/web/utils/index.ts` - remove getBlobUrl export, add simple-blob exports
+- [ ] Find other files importing from utils: `grep -r "from.*utils" apps/web --include="*.ts" --include="*.tsx"`
+- [ ] Update any remaining imports to use simple-blob functions
+- [ ] Remove `export * from './services/index.js'` if no longer needed
+- [ ] Test build: `cd apps/web && pnpm build` - should complete without errors
+
+### Phase 10: Final Verification [5 minutes]
+- [ ] Count new lines: `wc -l apps/web/utils/simple-blob.ts` - should be < 30 lines
+- [ ] Test all books load: for each book, visit /reading-room/[slug] and verify text appears
+- [ ] Check browser console - no errors, no 404s, no warnings about fallbacks
+- [ ] Delete backup: `rm -rf apps/web/utils.backup-complex` - we're committed to simplicity
+- [ ] Commit: `git add -A && git commit -m "Delete 1000 lines of blob complexity, replace with 30"`
+
+### Success Criteria
+- ✅ Great Gatsby loads without any 404 errors
+- ✅ Code reduced from 1000+ lines to < 30 lines
+- ✅ No fallback complexity, no caching layers, no existence checks
+- ✅ Direct URL construction: `${BASE_URL}/books/${bookSlug}/text/${filename}`
+- ✅ Fast failure when content missing (good - we want to know immediately)
+- ✅ All other books continue working with new simple system
+
+### Rollback Plan (if needed)
+```bash
+mv apps/web/utils.backup-complex apps/web/utils
+git checkout apps/web/translations/
+cd apps/web && pnpm dev
+```
+
+---
+
+### 3.2 Refactor Translation Imports [POSTPONED - Do After Simplification]
 - [ ] Update `apps/web/translations/index.ts` to import from `content/translations/books/*`
 - [ ] Create translation registry that auto-discovers books in content directory
 - [ ] Update all import paths in React components to use new structure

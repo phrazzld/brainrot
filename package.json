@@ -18,6 +18,8 @@
     "prepare": "echo 'Monorepo initialized. Run pnpm install to set up workspaces.'"
   },
   "devDependencies": {
+    "@vercel/blob": "^1.1.1",
+    "dotenv": "^16.5.0",
     "prettier": "^3.3.0",
     "turbo": "^2.0.0",
     "typescript": "^5.5.0"
