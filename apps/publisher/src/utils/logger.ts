@@ -32,6 +32,11 @@ export class Logger {
     console.log(chalk.yellow('⚠'), message);
   }
 
+  static warn(message: string): void {
+    // Alias for warning
+    this.warning(message);
+  }
+
   static error(message: string, error?: any): void {
     // Errors are always shown
     console.error(chalk.red('✗'), message);

@@ -6,6 +6,8 @@ import * as dotenv from 'dotenv';
 import { readFile } from 'fs/promises';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import { createLuluCommand } from './commands/lulu.js';
+import { createKdpCommand } from './commands/kdp.js';
 
 // Load environment variables
 dotenv.config({ path: '.env.local' });
@@ -144,6 +146,12 @@ program
       process.exit(1);
     }
   });
+
+// Add Lulu command
+program.addCommand(createLuluCommand());
+
+// Add KDP command
+program.addCommand(createKdpCommand());
 
 // Configure command
 program

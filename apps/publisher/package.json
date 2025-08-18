@@ -22,16 +22,22 @@
     "test": "jest"
   },
   "dependencies": {
-    "@brainrot/types": "workspace:*",
     "@brainrot/metadata": "workspace:*",
+    "@brainrot/types": "workspace:*",
+    "@playwright/test": "^1.54.2",
+    "axios": "^1.11.0",
     "chalk": "^5.4.1",
     "commander": "^11.0.0",
     "dotenv": "^16.5.0",
+    "form-data": "^4.0.4",
     "inquirer": "^9.3.7",
     "js-yaml": "^4.1.0",
-    "ora": "^8.2.0"
+    "ora": "^8.2.0",
+    "p-retry": "^5.1.0",
+    "playwright": "^1.54.2"
   },
   "devDependencies": {
+    "@types/form-data": "^2.5.2",
     "@types/inquirer": "^9.0.7",
     "@types/jest": "^29.5.12",
     "@types/js-yaml": "^4.0.5",
