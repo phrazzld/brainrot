@@ -8,6 +8,7 @@ import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { createLuluCommand } from './commands/lulu.js';
 import { createKdpCommand } from './commands/kdp.js';
+import { createPublishAllCommand } from './commands/publish-all.js';
 
 // Load environment variables
 dotenv.config({ path: '.env.local' });
@@ -152,6 +153,9 @@ program.addCommand(createLuluCommand());
 
 // Add KDP command
 program.addCommand(createKdpCommand());
+
+// Add unified publish-all command
+program.addCommand(createPublishAllCommand());
 
 // Configure command
 program
