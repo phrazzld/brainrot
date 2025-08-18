@@ -15,12 +15,23 @@
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
     "clean": "turbo clean && rm -rf node_modules",
-    "prepare": "echo 'Monorepo initialized. Run pnpm install to set up workspaces.'"
+    "prepare": "echo 'Monorepo initialized. Run pnpm install to set up workspaces.'",
+    "generate:formats": "tsx scripts/generate-formats.ts",
+    "sync:blob": "tsx scripts/sync-translations.ts"
   },
   "devDependencies": {
+    "@types/cli-progress": "^3.11.6",
+    "@types/js-yaml": "^4.0.5",
     "@vercel/blob": "^1.1.1",
+    "chalk": "^5.4.1",
+    "cli-progress": "^3.12.0",
+    "commander": "^11.0.0",
     "dotenv": "^16.5.0",
+    "js-yaml": "^4.1.0",
+    "ora": "^8.2.0",
+    "p-limit": "^4.0.0",
     "prettier": "^3.3.0",
+    "tsx": "^4.20.4",
     "turbo": "^2.0.0",
     "typescript": "^5.5.0"
   },

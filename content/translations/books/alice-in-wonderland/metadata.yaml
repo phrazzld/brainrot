@@ -1,0 +1,77 @@
+# Alice in Wonderland - Brainrot Edition Metadata
+title: "Alice in Wonderland (Brainrot Edition)"
+author: "Lewis Carroll"
+translator: "Brainrot Publishing House"
+original_year: 1865
+translation_year: 2024
+description: |
+  Alice falls down the most unhinged rabbit hole and enters a world 
+  that's giving major fever dream energy. The Cheshire Cat's on demon 
+  time, the Queen of Hearts is pressed 24/7, and the Mad Hatter's tea 
+  party is an eternal vibe check. Wonderland hits different fr.
+
+# Publishing formats and ISBNs
+formats:
+  ebook:
+    isbn: "979-8-88888-005-9"
+    price: 4.99
+    currency: "USD"
+  paperback:
+    isbn: "979-8-88888-005-6"
+    price: 14.99
+    currency: "USD"
+    pages: 150
+    dimensions: "6x9 inches"
+  hardcover:
+    isbn: "979-8-88888-005-3"
+    price: 24.99
+    currency: "USD"
+    pages: 150
+    dimensions: "6x9 inches"
+
+# Publishing platforms
+publishing:
+  kdp: true
+  lulu: true
+  ingram: false
+  draft2digital: false
+
+# Categorization for retailers
+categories:
+  - "Fiction / Classics"
+  - "Humor / Parody"
+  - "Young Adult / General"
+
+# SEO and discovery keywords
+keywords:
+  - "alice in wonderland"
+  - "lewis carroll"
+  - "gen z translation"
+  - "brainrot"
+  - "wonderland"
+  - "cheshire cat"
+  - "mad hatter"
+  - "queen of hearts"
+  - "modernized classics"
+  - "fantasy"
+
+# Book series information
+series: "Brainrot Classics Collection"
+series_number: 5
+
+# Language and market
+language: "en-US"
+markets:
+  - "United States"
+  - "United Kingdom"
+  - "Canada"
+  - "Australia"
+
+# Additional metadata
+bisac_codes:
+  - "FIC004000"  # Fiction / Classics
+  - "HUM008000"  # Humor / Form / Parodies
+  - "YAF000000"  # Young Adult Fiction / General
+
+copyright: "Translation © 2024 Brainrot Publishing House"
+rights: "All rights reserved. Original work in public domain."

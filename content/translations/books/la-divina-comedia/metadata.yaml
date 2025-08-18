@@ -1,0 +1,78 @@
+# La Divina Comedia - Brainrot Edition Metadata
+title: "The Divine Comedy (Brainrot Edition)"
+author: "Dante Alighieri"
+translator: "Brainrot Publishing House"
+original_year: 1321
+translation_year: 2024
+description: |
+  Dante gets lost in the woods and ends up on the most unhinged field 
+  trip through Hell, Purgatory, and Heaven. Virgil's the GOAT tour guide 
+  showing him all nine circles where people are catching eternal L's. 
+  Then Beatrice pulls up for the Heaven speedrun. Medieval self-insert 
+  fanfic at its finest.
+
+# Publishing formats and ISBNs
+formats:
+  ebook:
+    isbn: "979-8-88888-007-3"
+    price: 4.99
+    currency: "USD"
+  paperback:
+    isbn: "979-8-88888-007-0"
+    price: 14.99
+    currency: "USD"
+    pages: 480
+    dimensions: "6x9 inches"
+  hardcover:
+    isbn: "979-8-88888-007-7"
+    price: 24.99
+    currency: "USD"
+    pages: 480
+    dimensions: "6x9 inches"
+
+# Publishing platforms
+publishing:
+  kdp: true
+  lulu: true
+  ingram: false
+  draft2digital: false
+
+# Categorization for retailers
+categories:
+  - "Fiction / Classics"
+  - "Humor / Parody"
+  - "Young Adult / General"
+
+# SEO and discovery keywords
+keywords:
+  - "divine comedy"
+  - "dante"
+  - "inferno"
+  - "purgatorio"
+  - "paradiso"
+  - "gen z translation"
+  - "brainrot"
+  - "italian literature"
+  - "hell"
+  - "modernized classics"
+
+# Book series information
+series: "Brainrot Classics Collection"
+series_number: 7
+
+# Language and market
+language: "en-US"
+markets:
+  - "United States"
+  - "United Kingdom"
+  - "Canada"
+  - "Australia"
+
+# Additional metadata
+bisac_codes:
+  - "FIC004000"  # Fiction / Classics
+  - "HUM008000"  # Humor / Form / Parodies
+  - "YAF000000"  # Young Adult Fiction / General
+
+copyright: "Translation © 2024 Brainrot Publishing House"
+rights: "All rights reserved. Original work in public domain."

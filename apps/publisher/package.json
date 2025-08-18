@@ -1,0 +1,48 @@
+{
+  "name": "@brainrot/publisher",
+  "version": "1.0.0",
+  "description": "CLI tool for publishing Brainrot books to multiple platforms",
+  "private": true,
+  "license": "MIT",
+  "author": "Brainrot Publishing House",
+  "type": "module",
+  "bin": {
+    "brainrot-publish": "./dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist",
+    "dev": "tsx watch src/index.ts",
+    "start": "node dist/index.js",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src --ext .ts",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@brainrot/types": "workspace:*",
+    "@brainrot/metadata": "workspace:*",
+    "chalk": "^5.4.1",
+    "commander": "^11.0.0",
+    "dotenv": "^16.5.0",
+    "inquirer": "^9.3.7",
+    "js-yaml": "^4.1.0",
+    "ora": "^8.2.0"
+  },
+  "devDependencies": {
+    "@types/inquirer": "^9.0.7",
+    "@types/jest": "^29.5.12",
+    "@types/js-yaml": "^4.0.5",
+    "@types/node": "^20.0.0",
+    "eslint": "^8.56.0",
+    "jest": "^29.0.0",
+    "ts-jest": "^29.3.2",
+    "tsx": "^4.20.4",
+    "typescript": "^5.5.0"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  }
+}

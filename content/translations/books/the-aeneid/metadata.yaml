@@ -1,0 +1,77 @@
+# The Aeneid - Brainrot Edition Metadata
+title: "The Aeneid (Brainrot Edition)"
+author: "Virgil"
+translator: "Brainrot Publishing House"
+original_year: -19
+translation_year: 2024
+description: |
+  Aeneas catches major L's fleeing Troy but destiny said "you're him." 
+  Watch this Trojan prince navigate toxic relationships with Dido, 
+  fight Italian locals, and build what becomes the Roman Empire. 
+  It's giving founding father energy with mythological DLC.
+
+# Publishing formats and ISBNs
+formats:
+  ebook:
+    isbn: "979-8-88888-004-2"
+    price: 4.99
+    currency: "USD"
+  paperback:
+    isbn: "979-8-88888-004-9"
+    price: 14.99
+    currency: "USD"
+    pages: 360
+    dimensions: "6x9 inches"
+  hardcover:
+    isbn: "979-8-88888-004-6"
+    price: 24.99
+    currency: "USD"
+    pages: 360
+    dimensions: "6x9 inches"
+
+# Publishing platforms
+publishing:
+  kdp: true
+  lulu: true
+  ingram: false
+  draft2digital: false
+
+# Categorization for retailers
+categories:
+  - "Fiction / Classics"
+  - "Humor / Parody"
+  - "Young Adult / General"
+
+# SEO and discovery keywords
+keywords:
+  - "aeneid"
+  - "virgil"
+  - "gen z translation"
+  - "brainrot"
+  - "roman mythology"
+  - "aeneas"
+  - "ancient rome"
+  - "trojan war"
+  - "dido"
+  - "modernized classics"
+
+# Book series information
+series: "Brainrot Classics Collection"
+series_number: 4
+
+# Language and market
+language: "en-US"
+markets:
+  - "United States"
+  - "United Kingdom"
+  - "Canada"
+  - "Australia"
+
+# Additional metadata
+bisac_codes:
+  - "FIC004000"  # Fiction / Classics
+  - "HUM008000"  # Humor / Form / Parodies
+  - "YAF000000"  # Young Adult Fiction / General
+
+copyright: "Translation © 2024 Brainrot Publishing House"
+rights: "All rights reserved. Original work in public domain."

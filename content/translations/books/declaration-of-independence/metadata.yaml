@@ -1,0 +1,77 @@
+# Declaration of Independence - Brainrot Edition Metadata
+title: "Declaration of Independence (Brainrot Edition)"
+author: "Thomas Jefferson et al."
+translator: "Brainrot Publishing House"
+original_year: 1776
+translation_year: 2024
+description: |
+  The Founding Fathers said "we're done" and wrote the ultimate breakup 
+  letter to King George III. This document goes absolutely feral listing 
+  all the reasons why Britain caught the biggest L in history. They really 
+  said "it's not me, it's you" and created a whole country about it.
+
+# Publishing formats and ISBNs
+formats:
+  ebook:
+    isbn: "979-8-88888-008-0"
+    price: 4.99
+    currency: "USD"
+  paperback:
+    isbn: "979-8-88888-008-7"
+    price: 14.99
+    currency: "USD"
+    pages: 50
+    dimensions: "6x9 inches"
+  hardcover:
+    isbn: "979-8-88888-008-4"
+    price: 24.99
+    currency: "USD"
+    pages: 50
+    dimensions: "6x9 inches"
+
+# Publishing platforms
+publishing:
+  kdp: true
+  lulu: true
+  ingram: false
+  draft2digital: false
+
+# Categorization for retailers
+categories:
+  - "History / United States"
+  - "Humor / Parody"
+  - "Young Adult / General"
+
+# SEO and discovery keywords
+keywords:
+  - "declaration of independence"
+  - "founding fathers"
+  - "american history"
+  - "gen z translation"
+  - "brainrot"
+  - "thomas jefferson"
+  - "1776"
+  - "revolutionary war"
+  - "modernized classics"
+  - "historical documents"
+
+# Book series information
+series: "Brainrot Classics Collection"
+series_number: 8
+
+# Language and market
+language: "en-US"
+markets:
+  - "United States"
+  - "United Kingdom"
+  - "Canada"
+  - "Australia"
+
+# Additional metadata
+bisac_codes:
+  - "HIS036000"  # History / United States / Revolutionary Period
+  - "HUM008000"  # Humor / Form / Parodies
+  - "YAF000000"  # Young Adult Fiction / General
+
+copyright: "Translation © 2024 Brainrot Publishing House"
+rights: "All rights reserved. Original work in public domain."

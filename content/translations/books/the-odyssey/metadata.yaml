@@ -1,0 +1,77 @@
+# The Odyssey - Brainrot Edition Metadata
+title: "The Odyssey (Brainrot Edition)"
+author: "Homer"
+translator: "Brainrot Publishing House"
+original_year: -725
+translation_year: 2024
+description: |
+  Odysseus just wants to get home but the universe said "nah fam." 
+  Follow our king as he gets absolutely cooked by Poseidon, finessed 
+  by sirens, and ghosted by his crew. Meanwhile, his wife Penelope 
+  is holding it down against an army of simps. Peak ancient chaos.
+
+# Publishing formats and ISBNs
+formats:
+  ebook:
+    isbn: "979-8-88888-003-5"
+    price: 4.99
+    currency: "USD"
+  paperback:
+    isbn: "979-8-88888-003-2"
+    price: 14.99
+    currency: "USD"
+    pages: 380
+    dimensions: "6x9 inches"
+  hardcover:
+    isbn: "979-8-88888-003-9"
+    price: 24.99
+    currency: "USD"
+    pages: 380
+    dimensions: "6x9 inches"
+
+# Publishing platforms
+publishing:
+  kdp: true
+  lulu: true
+  ingram: false
+  draft2digital: false
+
+# Categorization for retailers
+categories:
+  - "Fiction / Classics"
+  - "Humor / Parody"
+  - "Young Adult / General"
+
+# SEO and discovery keywords
+keywords:
+  - "odyssey"
+  - "homer"
+  - "gen z translation"
+  - "brainrot"
+  - "greek mythology"
+  - "odysseus"
+  - "ancient greece"
+  - "epic journey"
+  - "modernized classics"
+  - "penelope"
+
+# Book series information
+series: "Brainrot Classics Collection"
+series_number: 3
+
+# Language and market
+language: "en-US"
+markets:
+  - "United States"
+  - "United Kingdom"
+  - "Canada"
+  - "Australia"
+
+# Additional metadata
+bisac_codes:
+  - "FIC004000"  # Fiction / Classics
+  - "HUM008000"  # Humor / Form / Parodies
+  - "YAF000000"  # Young Adult Fiction / General
+
+copyright: "Translation © 2024 Brainrot Publishing House"
+rights: "All rights reserved. Original work in public domain."

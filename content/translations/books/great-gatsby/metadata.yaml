@@ -1,0 +1,77 @@
+# The Great Gatsby - Brainrot Edition Metadata
+title: "The Great Gatsby (Brainrot Edition)"
+author: "F. Scott Fitzgerald" 
+translator: "Brainrot Publishing House"
+original_year: 1925
+translation_year: 2024
+description: |
+  Experience F. Scott Fitzgerald's masterpiece like never before. 
+  This Gen Z translation transforms the classic tale of Jay Gatsby 
+  into a modern saga of simps, rizz, and the ultimate quest for 
+  that unattainable e-girl energy. No cap, this hits different.
+
+# Publishing formats and ISBNs
+formats:
+  ebook:
+    isbn: "979-8-88888-001-1"
+    price: 4.99
+    currency: "USD"
+  paperback:
+    isbn: "979-8-88888-001-8"
+    price: 14.99
+    currency: "USD"
+    pages: 180
+    dimensions: "6x9 inches"
+  hardcover:
+    isbn: "979-8-88888-001-5"
+    price: 24.99
+    currency: "USD"
+    pages: 180
+    dimensions: "6x9 inches"
+
+# Publishing platforms
+publishing:
+  kdp: true
+  lulu: true
+  ingram: false
+  draft2digital: false
+
+# Categorization for retailers
+categories:
+  - "Fiction / Classics"
+  - "Humor / Parody"
+  - "Young Adult / General"
+
+# SEO and discovery keywords
+keywords:
+  - "great gatsby"
+  - "gen z translation"
+  - "brainrot"
+  - "classic literature"
+  - "fitzgerald"
+  - "roaring twenties"
+  - "american dream"
+  - "modernized classics"
+  - "millennial humor"
+  - "tiktok generation"
+
+# Book series information
+series: "Brainrot Classics Collection"
+series_number: 1
+
+# Language and market
+language: "en-US"
+markets:
+  - "United States"
+  - "United Kingdom"
+  - "Canada"
+  - "Australia"
+
+# Additional metadata
+bisac_codes:
+  - "FIC004000"  # Fiction / Classics
+  - "HUM008000"  # Humor / Form / Parodies
+  - "YAF000000"  # Young Adult Fiction / General
+
+copyright: "Translation © 2024 Brainrot Publishing House"
+rights: "All rights reserved. Original work in public domain."
