@@ -20,7 +20,17 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@brainrot/types": ["../../packages/@brainrot/types/src"],
+      "@brainrot/types/*": ["../../packages/@brainrot/types/src/*"],
+      "@brainrot/converter": ["../../packages/@brainrot/converter/src"],
+      "@brainrot/converter/*": ["../../packages/@brainrot/converter/src/*"],
+      "@brainrot/blob-client": ["../../packages/@brainrot/blob-client/src"],
+      "@brainrot/blob-client/*": ["../../packages/@brainrot/blob-client/src/*"],
+      "@brainrot/metadata": ["../../packages/@brainrot/metadata/src"],
+      "@brainrot/metadata/*": ["../../packages/@brainrot/metadata/src/*"],
+      "@brainrot/templates": ["../../packages/@brainrot/templates"],
+      "@brainrot/templates/*": ["../../packages/@brainrot/templates/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
