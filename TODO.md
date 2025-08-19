@@ -968,7 +968,37 @@ The task as written would be architecturally incorrect - you cannot import TypeS
 - [ ] Create Vercel token and add `VERCEL_TOKEN` to GitHub secrets
 - [ ] Add `VERCEL_ORG_ID` and `VERCEL_PROJECT_ID` from Vercel settings
 - [ ] Generate Lulu API credentials and add as GitHub secrets
-- [ ] Create `.env.example` with all required variables documented
+- [x] Create `.env.example` with all required variables documented
+### Complexity: SIMPLE
+### Started: 2025-08-19 12:00
+### Completed: 2025-08-19 12:05
+
+### Context Discovery
+- Need to document all environment variables used across the monorepo
+- Variables found in: web app config, blob storage, publishing CLI
+- Should include descriptions and example values
+- Important to not expose real secrets
+
+### Execution Log
+[12:00] Searched for all environment variable references across codebase
+[12:01] Found existing .env.example file at root with basic documentation
+[12:02] Discovered additional variables: OPENROUTER_API_KEY, SPACES_*, environment URLs
+[12:03] Enhanced .env.example with comprehensive documentation
+[12:04] Organized variables into logical sections with clear headers
+[12:05] Added security warnings and setup instructions
+
+### Approach Decisions
+- Organized variables into logical sections for clarity
+- Added detailed comments with links to get API keys
+- Included both required and optional variables
+- Added legacy storage variables for migration compatibility
+- Included future features section for planned functionality
+
+### Learnings
+- Found legacy Digital Ocean Spaces configuration still referenced
+- Multiple AI service options available (OpenAI, Anthropic, OpenRouter)
+- Environment-specific URLs used for benchmarking
+- Clear security warnings essential for KDP credentials
 - [ ] Create `.env.vault` for secure local secret sharing (using dotenv-vault)
 - [ ] Document secret rotation procedure in `docs/SECRETS.md`
 - [ ] Enable GitHub secret scanning to prevent leaks
