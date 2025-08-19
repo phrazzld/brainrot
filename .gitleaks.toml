@@ -1,0 +1,84 @@
+# Gitleaks Configuration for Brainrot Publishing House
+# Run: gitleaks detect --source . -v
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Allowlisted files"
+paths = [
+  '''.env.example''',
+  '''docs/SECRETS\.md''',
+  '''\.gitleaks\.toml''',
+  '''.github/secret_scanning\.yml''',
+  '''.*\.test\.(ts|js)$''',
+  '''__tests__/.*'''
+]
+
+[[rules]]
+id = "vercel-blob-token"
+description = "Vercel Blob Storage Token"
+regex = '''vercel_blob_[a-zA-Z0-9]{32,}'''
+tags = ["key", "vercel", "blob"]
+
+[[rules]]
+id = "lulu-api-key"
+description = "Lulu Publishing API Key"
+regex = '''lulu_[a-zA-Z0-9]{20,}'''
+tags = ["key", "lulu", "api"]
+
+[[rules]]
+id = "lulu-api-secret"
+description = "Lulu Publishing API Secret"
+regex = '''lulu_secret_[a-zA-Z0-9]{32,}'''
+tags = ["secret", "lulu", "api"]
+
+[[rules]]
+id = "openrouter-api-key"
+description = "OpenRouter API Key"
+regex = '''sk-or-[a-zA-Z0-9]{48}'''
+tags = ["key", "openrouter", "api"]
+
+[[rules]]
+id = "anthropic-api-key"
+description = "Anthropic API Key"
+regex = '''sk-ant-[a-zA-Z0-9]{40,}'''
+tags = ["key", "anthropic", "api"]
+
+[[rules]]
+id = "resend-api-key"
+description = "Resend Email API Key"
+regex = '''re_[a-zA-Z0-9]{20,}'''
+tags = ["key", "resend", "email"]
+
+[[rules]]
+id = "digital-ocean-spaces"
+description = "Digital Ocean Spaces Access Key"
+regex = '''DO[A-Z0-9]{18,}'''
+tags = ["key", "digitalocean", "spaces"]
+
+[[rules]]
+id = "stripe-secret-key"
+description = "Stripe Secret Key"
+regex = '''sk_(test|live)_[a-zA-Z0-9]{24,}'''
+tags = ["key", "stripe", "payment"]
+
+[[rules]]
+id = "discord-webhook"
+description = "Discord Webhook URL"
+regex = '''https://discord(app)?\.com/api/webhooks/[0-9]+/[a-zA-Z0-9_-]+'''
+tags = ["webhook", "discord"]
+
+[[rules]]
+id = "slack-webhook"
+description = "Slack Webhook URL"
+regex = '''https://hooks\.slack\.com/services/T[A-Z0-9]+/B[A-Z0-9]+/[a-zA-Z0-9]+'''
+tags = ["webhook", "slack"]
+
+# KDP credentials - extra sensitive
+[[rules]]
+id = "kdp-password"
+description = "Amazon KDP Password (should never be in code)"
+regex = '''KDP_PASSWORD\s*=\s*["']?[^"'\s]+["']?'''
+tags = ["password", "kdp", "critical"]
+severity = "HIGH"

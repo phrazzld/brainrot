@@ -95,6 +95,29 @@ Copy `.env.example` to `.env.local` and fill in:
 - `LULU_API_KEY` - For print publishing
 - `KDP_EMAIL/PASSWORD` - For Amazon publishing
 
+### 🔒 Security Setup
+
+Protect your secrets with our multi-layer security:
+
+```bash
+# Install Git hooks for local secret scanning
+./scripts/setup-git-hooks.sh
+
+# (Optional) Install gitleaks for enhanced scanning
+brew install gitleaks
+
+# Run manual security scan
+gitleaks detect --source . -v
+```
+
+**Security Features:**
+- **Pre-commit hooks** - Prevents accidental secret commits
+- **GitHub secret scanning** - Monitors pushed code
+- **Custom patterns** - Detects service-specific tokens
+- **Gitleaks integration** - Advanced local scanning
+
+See `docs/SECRETS.md` for rotation procedures.
+
 ## 📚 Content Pipeline
 
 ```mermaid
