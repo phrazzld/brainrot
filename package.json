@@ -17,12 +17,15 @@
     "clean": "turbo clean && rm -rf node_modules",
     "prepare": "echo 'Monorepo initialized. Run pnpm install to set up workspaces.'",
     "generate:formats": "tsx scripts/generate-formats.ts",
-    "sync:blob": "tsx scripts/sync-translations.ts"
+    "sync:blob": "tsx scripts/sync-translations.ts",
+    "monitor": "tsx scripts/monitor-api-usage.ts",
+    "monitor:dashboard": "open monitoring/dashboard.html"
   },
   "devDependencies": {
     "@types/cli-progress": "^3.11.6",
     "@types/js-yaml": "^4.0.5",
     "@vercel/blob": "^1.1.1",
+    "axios": "^1.7.0",
     "chalk": "^5.4.1",
     "cli-progress": "^3.12.0",
     "commander": "^11.0.0",

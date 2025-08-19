@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brainrot API Usage Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .card h2 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .metric {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .metric:last-child {
+            border-bottom: none;
+        }
+        
+        .metric-label {
+            color: #666;
+            font-weight: 500;
+        }
+        
+        .metric-value {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .metric-value.high {
+            color: #e74c3c;
+        }
+        
+        .metric-value.medium {
+            color: #f39c12;
+        }
+        
+        .metric-value.low {
+            color: #27ae60;
+        }
+        
+        .status {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+        
+        .status.ok {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .status.warning {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin-top: 20px;
+        }
+        
+        .alerts {
+            background: #fff3cd;
+            border-left: 4px solid #f39c12;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+        
+        .alerts h3 {
+            color: #856404;
+            margin-bottom: 10px;
+        }
+        
+        .alert-item {
+            color: #856404;
+            margin: 5px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .alert-item::before {
+            content: "⚠️";
+            position: absolute;
+            left: 0;
+        }
+        
+        .refresh-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s;
+        }
+        
+        .refresh-btn:hover {
+            background: #5a67d8;
+            transform: scale(1.05);
+        }
+        
+        .timestamp {
+            text-align: center;
+            color: white;
+            margin-top: 20px;
+            opacity: 0.8;
+        }
+        
+        .loading {
+            text-align: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Brainrot API Usage Dashboard</h1>
+        
+        <div id="loading" class="loading">Loading usage data...</div>
+        
+        <div id="dashboard" class="dashboard" style="display: none;">
+            <!-- Vercel Card -->
+            <div class="card">
+                <h2>Vercel</h2>
+                <div class="metric">
+                    <span class="metric-label">Requests Today</span>
+                    <span id="vercel-requests" class="metric-value">-</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Bandwidth</span>
+                    <span id="vercel-bandwidth" class="metric-value">-</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Cost</span>
+                    <span id="vercel-cost" class="metric-value">-</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Status</span>
+                    <span id="vercel-status" class="status">-</span>
+                </div>
+                <div class="chart-container">
+                    <canvas id="vercel-chart"></canvas>
+                </div>
+            </div>
+            
+            <!-- Blob Storage Card -->
+            <div class="card">
+                <h2>Blob Storage</h2>
+                <div class="metric">
+                    <span class="metric-label">Files Stored</span>
+                    <span id="blob-files" class="metric-value">-</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Storage Used</span>
+                    <span id="blob-storage" class="metric-value">-</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Requests Today</span>
+                    <span id="blob-requests" class="metric-value">-</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Status</span>
+                    <span id="blob-status" class="status">-</span>
+                </div>
+                <div class="chart-container">
+                    <canvas id="blob-chart"></canvas>
+                </div>
+            </div>
+            
+            <!-- OpenAI Card -->
+            <div class="card">
+                <h2>OpenAI</h2>
+                <div class="metric">
+                    <span class="metric-label">Requests Today</span>
+                    <span id="openai-requests" class="metric-value">-</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Tokens Used</span>
+                    <span id="openai-tokens" class="metric-value">-</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Cost</span>
+                    <span id="openai-cost" class="metric-value">-</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Status</span>
+                    <span id="openai-status" class="status">-</span>
+                </div>
+                <div class="chart-container">
+                    <canvas id="openai-chart"></canvas>
+                </div>
+            </div>
+            
+            <!-- Lulu API Card -->
+            <div class="card">
+                <h2>Lulu Publishing</h2>
+                <div class="metric">
+                    <span class="metric-label">Books Published</span>
+                    <span id="lulu-books" class="metric-value">-</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">API Calls Today</span>
+                    <span id="lulu-calls" class="metric-value">-</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Cost</span>
+                    <span id="lulu-cost" class="metric-value">$0.00</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Status</span>
+                    <span id="lulu-status" class="status ok">Free API</span>
+                </div>
+            </div>
+            
+            <!-- Total Cost Card -->
+            <div class="card">
+                <h2>Total Costs</h2>
+                <div class="metric">
+                    <span class="metric-label">Today</span>
+                    <span id="cost-today" class="metric-value">-</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">This Week</span>
+                    <span id="cost-week" class="metric-value">-</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">This Month</span>
+                    <span id="cost-month" class="metric-value">-</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Budget Status</span>
+                    <span id="budget-status" class="status">-</span>
+                </div>
+                <div class="chart-container">
+                    <canvas id="cost-chart"></canvas>
+                </div>
+            </div>
+            
+            <!-- Alerts Card -->
+            <div class="card">
+                <h2>Recent Alerts</h2>
+                <div id="alerts-container">
+                    <p style="color: #666; text-align: center; margin: 20px 0;">No alerts</p>
+                </div>
+            </div>
+        </div>
+        
+        <div id="timestamp" class="timestamp"></div>
+    </div>
+    
+    <button class="refresh-btn" onclick="loadData()">🔄 Refresh</button>
+    
+    <script>
+        // Mock data generator (replace with actual API calls)
+        function generateMockData() {
+            return {
+                vercel: {
+                    requests: Math.floor(Math.random() * 10000),
+                    bandwidth: `${(Math.random() * 100).toFixed(2)} GB`,
+                    cost: (Math.random() * 50).toFixed(2),
+                    status: Math.random() > 0.8 ? 'warning' : 'ok',
+                    history: Array(7).fill(0).map(() => Math.floor(Math.random() * 10000))
+                },
+                blob: {
+                    files: Math.floor(Math.random() * 1000),
+                    storage: `${(Math.random() * 10).toFixed(2)} GB`,
+                    requests: Math.floor(Math.random() * 5000),
+                    status: 'ok',
+                    history: Array(7).fill(0).map(() => Math.floor(Math.random() * 5000))
+                },
+                openai: {
+                    requests: Math.floor(Math.random() * 1000),
+                    tokens: Math.floor(Math.random() * 1000000),
+                    cost: (Math.random() * 30).toFixed(2),
+                    status: Math.random() > 0.9 ? 'warning' : 'ok',
+                    history: Array(7).fill(0).map(() => Math.floor(Math.random() * 1000))
+                },
+                lulu: {
+                    books: Math.floor(Math.random() * 10),
+                    calls: Math.floor(Math.random() * 100)
+                },
+                costs: {
+                    today: (Math.random() * 100).toFixed(2),
+                    week: (Math.random() * 500).toFixed(2),
+                    month: (Math.random() * 2000).toFixed(2),
+                    budgetStatus: Math.random() > 0.7 ? 'warning' : 'ok'
+                },
+                alerts: Math.random() > 0.7 ? [
+                    'High API usage detected on Vercel',
+                    'OpenAI cost approaching daily limit'
+                ] : []
+            };
+        }
+        
+        function updateDashboard(data) {
+            // Update Vercel
+            document.getElementById('vercel-requests').textContent = data.vercel.requests.toLocaleString();
+            document.getElementById('vercel-bandwidth').textContent = data.vercel.bandwidth;
+            document.getElementById('vercel-cost').textContent = `$${data.vercel.cost}`;
+            document.getElementById('vercel-status').textContent = data.vercel.status === 'ok' ? 'Healthy' : 'Warning';
+            document.getElementById('vercel-status').className = `status ${data.vercel.status}`;
+            
+            // Update Blob Storage
+            document.getElementById('blob-files').textContent = data.blob.files.toLocaleString();
+            document.getElementById('blob-storage').textContent = data.blob.storage;
+            document.getElementById('blob-requests').textContent = data.blob.requests.toLocaleString();
+            document.getElementById('blob-status').textContent = 'Healthy';
+            document.getElementById('blob-status').className = 'status ok';
+            
+            // Update OpenAI
+            document.getElementById('openai-requests').textContent = data.openai.requests.toLocaleString();
+            document.getElementById('openai-tokens').textContent = data.openai.tokens.toLocaleString();
+            document.getElementById('openai-cost').textContent = `$${data.openai.cost}`;
+            document.getElementById('openai-status').textContent = data.openai.status === 'ok' ? 'Healthy' : 'Warning';
+            document.getElementById('openai-status').className = `status ${data.openai.status}`;
+            
+            // Update Lulu
+            document.getElementById('lulu-books').textContent = data.lulu.books;
+            document.getElementById('lulu-calls').textContent = data.lulu.calls;
+            
+            // Update Costs
+            document.getElementById('cost-today').textContent = `$${data.costs.today}`;
+            document.getElementById('cost-week').textContent = `$${data.costs.week}`;
+            document.getElementById('cost-month').textContent = `$${data.costs.month}`;
+            document.getElementById('budget-status').textContent = data.costs.budgetStatus === 'ok' ? 'Within Budget' : 'Approaching Limit';
+            document.getElementById('budget-status').className = `status ${data.costs.budgetStatus}`;
+            
+            // Update Alerts
+            const alertsContainer = document.getElementById('alerts-container');
+            if (data.alerts.length > 0) {
+                alertsContainer.innerHTML = '<div class="alerts"><h3>⚠️ Active Alerts</h3>' +
+                    data.alerts.map(alert => `<div class="alert-item">${alert}</div>`).join('') +
+                    '</div>';
+            } else {
+                alertsContainer.innerHTML = '<p style="color: #27ae60; text-align: center; margin: 20px 0;">✅ No active alerts</p>';
+            }
+            
+            // Update timestamp
+            document.getElementById('timestamp').textContent = `Last updated: ${new Date().toLocaleString()}`;
+            
+            // Update charts
+            updateCharts(data);
+        }
+        
+        function updateCharts(data) {
+            const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+            
+            // Vercel Chart
+            new Chart(document.getElementById('vercel-chart'), {
+                type: 'line',
+                data: {
+                    labels: days,
+                    datasets: [{
+                        label: 'Requests',
+                        data: data.vercel.history,
+                        borderColor: '#667eea',
+                        backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    }
+                }
+            });
+            
+            // Blob Chart
+            new Chart(document.getElementById('blob-chart'), {
+                type: 'bar',
+                data: {
+                    labels: days,
+                    datasets: [{
+                        label: 'Requests',
+                        data: data.blob.history,
+                        backgroundColor: '#764ba2'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    }
+                }
+            });
+            
+            // OpenAI Chart
+            new Chart(document.getElementById('openai-chart'), {
+                type: 'line',
+                data: {
+                    labels: days,
+                    datasets: [{
+                        label: 'Requests',
+                        data: data.openai.history,
+                        borderColor: '#27ae60',
+                        backgroundColor: 'rgba(39, 174, 96, 0.1)',
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    }
+                }
+            });
+            
+            // Cost Chart
+            new Chart(document.getElementById('cost-chart'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Vercel', 'OpenAI', 'Other'],
+                    datasets: [{
+                        data: [
+                            parseFloat(data.vercel.cost),
+                            parseFloat(data.openai.cost),
+                            10
+                        ],
+                        backgroundColor: ['#667eea', '#27ae60', '#e74c3c']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+        }
+        
+        async function loadData() {
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('dashboard').style.display = 'none';
+            
+            // Simulate API call delay
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            
+            try {
+                // In production, fetch from actual API
+                // const response = await fetch('/api/usage');
+                // const data = await response.json();
+                
+                // For now, use mock data
+                const data = generateMockData();
+                
+                updateDashboard(data);
+                
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('dashboard').style.display = 'grid';
+            } catch (error) {
+                console.error('Failed to load usage data:', error);
+                document.getElementById('loading').textContent = 'Failed to load data. Please try again.';
+            }
+        }
+        
+        // Load data on page load
+        loadData();
+        
+        // Auto-refresh every 5 minutes
+        setInterval(loadData, 5 * 60 * 1000);
+    </script>
+</body>
+</html>
