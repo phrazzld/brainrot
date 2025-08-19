@@ -15,7 +15,8 @@ generated/
 .env.local
 .env.production
 .env*.local
-.env.vault
+.env.me
+# Note: .env.vault is encrypted and safe to commit
 
 # IDE
 .vscode/

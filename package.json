@@ -19,7 +19,12 @@
     "generate:formats": "tsx scripts/generate-formats.ts",
     "sync:blob": "tsx scripts/sync-translations.ts",
     "monitor": "tsx scripts/monitor-api-usage.ts",
-    "monitor:dashboard": "open monitoring/dashboard.html"
+    "monitor:dashboard": "open monitoring/dashboard.html",
+    "vault:login": "dotenv-vault login",
+    "vault:push": "dotenv-vault push",
+    "vault:pull": "dotenv-vault pull",
+    "vault:open": "dotenv-vault open",
+    "vault:status": "dotenv-vault status"
   },
   "devDependencies": {
     "@types/cli-progress": "^3.11.6",
@@ -30,6 +35,7 @@
     "cli-progress": "^3.12.0",
     "commander": "^11.0.0",
     "dotenv": "^16.5.0",
+    "dotenv-vault": "^1.27.0",
     "js-yaml": "^4.1.0",
     "ora": "^8.2.0",
     "p-limit": "^4.0.0",

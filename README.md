@@ -90,10 +90,25 @@ pnpm new:translation "book-name"
 
 ### Environment Variables
 
-Copy `.env.example` to `.env.local` and fill in:
-- `BLOB_READ_WRITE_TOKEN` - Vercel blob storage
-- `LULU_API_KEY` - For print publishing
-- `KDP_EMAIL/PASSWORD` - For Amazon publishing
+This project uses **dotenv-vault** for secure secret sharing:
+
+```bash
+# First time setup
+pnpm vault:login       # Login to dotenv-vault
+pnpm vault:pull        # Pull encrypted secrets
+
+# Daily workflow
+pnpm vault:pull        # Get latest secrets
+pnpm vault:push        # Share your changes
+```
+
+Manual setup (if not using vault):
+- Copy `.env.example` to `.env.local`
+- Add `BLOB_READ_WRITE_TOKEN` - Vercel blob storage
+- Add `LULU_API_KEY` - For print publishing  
+- Add `KDP_EMAIL/PASSWORD` - For Amazon publishing
+
+See `docs/DOTENV_VAULT_SETUP.md` for complete setup guide.
 
 ### 🔒 Security Setup
 
