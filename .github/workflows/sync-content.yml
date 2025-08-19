@@ -1,0 +1,195 @@
+name: Sync Content to Blob Storage
+
+on:
+  schedule:
+    # Run daily at 2 AM UTC
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+    inputs:
+      book:
+        description: 'Specific book to sync (leave empty for all)'
+        required: false
+        type: string
+      force:
+        description: 'Force sync even if unchanged'
+        required: false
+        default: false
+        type: boolean
+
+jobs:
+  sync:
+    name: Sync Content
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8.15.1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Generate all book formats
+        run: |
+          if [ -n "${{ github.event.inputs.book }}" ]; then
+            echo "Generating formats for ${{ github.event.inputs.book }}"
+            pnpm generate:formats ${{ github.event.inputs.book }}
+          else
+            echo "Generating formats for all books"
+            pnpm generate:formats --all
+          fi
+
+      - name: Sync to Vercel Blob Storage
+        run: |
+          FORCE_FLAG=""
+          if [ "${{ github.event.inputs.force }}" == "true" ]; then
+            FORCE_FLAG="--force"
+          fi
+          
+          if [ -n "${{ github.event.inputs.book }}" ]; then
+            echo "Syncing ${{ github.event.inputs.book }} to blob storage"
+            pnpm sync:blob ${{ github.event.inputs.book }} $FORCE_FLAG
+          else
+            echo "Syncing all books to blob storage"
+            pnpm sync:blob --all $FORCE_FLAG
+          fi
+        env:
+          BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN }}
+          NEXT_PUBLIC_BLOB_BASE_URL: ${{ secrets.NEXT_PUBLIC_BLOB_BASE_URL }}
+
+      - name: Create sync report
+        run: |
+          echo "# Content Sync Report" > sync-report.md
+          echo "" >> sync-report.md
+          echo "**Date:** $(date -u +"%Y-%m-%d %H:%M:%S UTC")" >> sync-report.md
+          echo "**Workflow Run:** #${{ github.run_number }}" >> sync-report.md
+          echo "" >> sync-report.md
+          
+          if [ -n "${{ github.event.inputs.book }}" ]; then
+            echo "**Book:** ${{ github.event.inputs.book }}" >> sync-report.md
+          else
+            echo "**Books:** All" >> sync-report.md
+          fi
+          
+          echo "**Force Sync:** ${{ github.event.inputs.force || 'false' }}" >> sync-report.md
+          echo "" >> sync-report.md
+          
+          if [ -f "sync-log.json" ]; then
+            echo "## Sync Summary" >> sync-report.md
+            echo '```json' >> sync-report.md
+            cat sync-log.json | jq '.' >> sync-report.md
+            echo '```' >> sync-report.md
+          fi
+
+      - name: Upload sync report
+        uses: actions/upload-artifact@v4
+        with:
+          name: sync-report-${{ github.run_number }}
+          path: |
+            sync-report.md
+            sync-log.json
+          retention-days: 30
+
+      - name: Check for sync failures
+        run: |
+          if [ -f "sync-log.json" ]; then
+            FAILED=$(cat sync-log.json | jq '[.[] | select(.status == "failed")] | length')
+            if [ "$FAILED" -gt 0 ]; then
+              echo "❌ $FAILED files failed to sync"
+              exit 1
+            else
+              echo "✅ All files synced successfully"
+            fi
+          fi
+
+  cleanup:
+    name: Cleanup Old Blob Content
+    runs-on: ubuntu-latest
+    needs: sync
+    if: github.event_name == 'schedule'
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8.15.1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Clean up orphaned blob files
+        run: |
+          # This would run a cleanup script to remove orphaned files
+          # from blob storage that are no longer referenced
+          echo "Cleanup functionality to be implemented"
+        env:
+          BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN }}
+          NEXT_PUBLIC_BLOB_BASE_URL: ${{ secrets.NEXT_PUBLIC_BLOB_BASE_URL }}
+        continue-on-error: true
+
+  notify:
+    name: Send Notification
+    needs: [sync, cleanup]
+    if: always()
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Determine status
+        id: status
+        run: |
+          if [ "${{ needs.sync.result }}" == "success" ]; then
+            echo "message=✅ Daily content sync completed successfully" >> $GITHUB_OUTPUT
+            echo "color=good" >> $GITHUB_OUTPUT
+          else
+            echo "message=❌ Daily content sync failed" >> $GITHUB_OUTPUT
+            echo "color=danger" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Send Slack notification
+        if: env.SLACK_WEBHOOK_URL != ''
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: |
+          curl -X POST $SLACK_WEBHOOK_URL \
+            -H 'Content-Type: application/json' \
+            -d "{
+              \"attachments\": [{
+                \"color\": \"${{ steps.status.outputs.color }}\",
+                \"title\": \"Content Sync Status\",
+                \"text\": \"${{ steps.status.outputs.message }}\",
+                \"fields\": [
+                  {
+                    \"title\": \"Trigger\",
+                    \"value\": \"${{ github.event_name }}\",
+                    \"short\": true
+                  },
+                  {
+                    \"title\": \"Run\",
+                    \"value\": \"#${{ github.run_number }}\",
+                    \"short\": true
+                  }
+                ],
+                \"footer\": \"GitHub Actions\",
+                \"ts\": $(date +%s)
+              }]
+            }"

@@ -1,0 +1,269 @@
+name: Publish Books
+
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - 'content/translations/books/**'
+      - 'apps/publisher/**'
+      - '.github/workflows/publish-books.yml'
+  workflow_dispatch:
+    inputs:
+      book:
+        description: 'Book slug to publish (leave empty for all changed books)'
+        required: false
+        type: string
+      platforms:
+        description: 'Platforms to publish to'
+        required: false
+        default: 'kdp,lulu'
+        type: string
+      dry-run:
+        description: 'Run in dry-run mode'
+        required: false
+        default: false
+        type: boolean
+
+jobs:
+  detect-changes:
+    name: Detect Changed Books
+    runs-on: ubuntu-latest
+    outputs:
+      books: ${{ steps.changes.outputs.books }}
+      has-changes: ${{ steps.changes.outputs.has-changes }}
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Detect changed books
+        id: changes
+        run: |
+          if [ -n "${{ github.event.inputs.book }}" ]; then
+            # Manual trigger with specific book
+            echo "books=[\"${{ github.event.inputs.book }}\"]" >> $GITHUB_OUTPUT
+            echo "has-changes=true" >> $GITHUB_OUTPUT
+          else
+            # Detect changed books from git diff
+            CHANGED_BOOKS=$(git diff --name-only HEAD~1 HEAD | \
+              grep '^content/translations/books/' | \
+              cut -d'/' -f4 | \
+              sort -u | \
+              jq -R -s -c 'split("\n") | map(select(length > 0))')
+            
+            if [ "$CHANGED_BOOKS" == "[]" ]; then
+              echo "books=[]" >> $GITHUB_OUTPUT
+              echo "has-changes=false" >> $GITHUB_OUTPUT
+            else
+              echo "books=$CHANGED_BOOKS" >> $GITHUB_OUTPUT
+              echo "has-changes=true" >> $GITHUB_OUTPUT
+            fi
+          fi
+
+      - name: Display detected books
+        run: |
+          echo "Changed books: ${{ steps.changes.outputs.books }}"
+          echo "Has changes: ${{ steps.changes.outputs.has-changes }}"
+
+  generate-formats:
+    name: Generate Formats - ${{ matrix.book }}
+    needs: detect-changes
+    if: needs.detect-changes.outputs.has-changes == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    
+    strategy:
+      matrix:
+        book: ${{ fromJson(needs.detect-changes.outputs.books) }}
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8.15.1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Install Pandoc
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc texlive-xetex texlive-fonts-recommended
+
+      - name: Generate formats for ${{ matrix.book }}
+        run: pnpm generate:formats ${{ matrix.book }}
+
+      - name: Upload generated files
+        uses: actions/upload-artifact@v4
+        with:
+          name: generated-${{ matrix.book }}
+          path: content/translations/books/${{ matrix.book }}/generated/
+          retention-days: 7
+
+  sync-to-blob:
+    name: Sync to Blob Storage - ${{ matrix.book }}
+    needs: [detect-changes, generate-formats]
+    if: needs.detect-changes.outputs.has-changes == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    
+    strategy:
+      matrix:
+        book: ${{ fromJson(needs.detect-changes.outputs.books) }}
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8.15.1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Download generated files
+        uses: actions/download-artifact@v4
+        with:
+          name: generated-${{ matrix.book }}
+          path: content/translations/books/${{ matrix.book }}/generated/
+
+      - name: Sync to Vercel Blob
+        run: pnpm sync:blob ${{ matrix.book }}
+        env:
+          BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN }}
+          NEXT_PUBLIC_BLOB_BASE_URL: ${{ secrets.NEXT_PUBLIC_BLOB_BASE_URL }}
+
+  publish:
+    name: Publish Books - ${{ matrix.book }}
+    needs: [detect-changes, sync-to-blob]
+    if: |
+      needs.detect-changes.outputs.has-changes == 'true' &&
+      github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    
+    strategy:
+      matrix:
+        book: ${{ fromJson(needs.detect-changes.outputs.books) }}
+      fail-fast: false
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8.15.1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Download generated files
+        uses: actions/download-artifact@v4
+        with:
+          name: generated-${{ matrix.book }}
+          path: content/translations/books/${{ matrix.book }}/generated/
+
+      - name: Install Playwright browsers
+        if: contains(github.event.inputs.platforms, 'kdp')
+        run: npx playwright install chromium
+
+      - name: Publish to platforms
+        run: |
+          cd apps/publisher
+          
+          if [ "${{ github.event.inputs.dry-run }}" == "true" ]; then
+            DRY_RUN_FLAG="--dry-run"
+          else
+            DRY_RUN_FLAG=""
+          fi
+          
+          node dist/index.js publish-all ${{ matrix.book }} \
+            --platforms ${{ github.event.inputs.platforms }} \
+            $DRY_RUN_FLAG
+        env:
+          LULU_API_KEY: ${{ secrets.LULU_API_KEY }}
+          LULU_API_SECRET: ${{ secrets.LULU_API_SECRET }}
+          KDP_EMAIL: ${{ secrets.KDP_EMAIL }}
+          KDP_PASSWORD: ${{ secrets.KDP_PASSWORD }}
+
+      - name: Upload publishing reports
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: publishing-reports-${{ matrix.book }}
+          path: publishing-reports/
+          retention-days: 30
+
+  notify:
+    name: Send Notifications
+    needs: [detect-changes, publish]
+    if: always() && needs.detect-changes.outputs.has-changes == 'true'
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Send Slack notification
+        if: env.SLACK_WEBHOOK_URL != ''
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: |
+          STATUS="${{ needs.publish.result }}"
+          COLOR="good"
+          if [ "$STATUS" != "success" ]; then
+            COLOR="danger"
+          fi
+          
+          curl -X POST $SLACK_WEBHOOK_URL \
+            -H 'Content-Type: application/json' \
+            -d "{
+              \"attachments\": [{
+                \"color\": \"$COLOR\",
+                \"title\": \"Book Publishing Workflow\",
+                \"text\": \"Status: $STATUS\",
+                \"fields\": [
+                  {
+                    \"title\": \"Books\",
+                    \"value\": \"${{ needs.detect-changes.outputs.books }}\",
+                    \"short\": false
+                  },
+                  {
+                    \"title\": \"Workflow\",
+                    \"value\": \"${{ github.workflow }}\",
+                    \"short\": true
+                  },
+                  {
+                    \"title\": \"Run\",
+                    \"value\": \"${{ github.run_number }}\",
+                    \"short\": true
+                  }
+                ],
+                \"footer\": \"GitHub Actions\",
+                \"ts\": $(date +%s)
+              }]
+            }"

@@ -1,0 +1,39 @@
+# CODEOWNERS for Brainrot Publishing House Monorepo
+# These owners will be the default owners for everything in the repo
+
+# Global owners
+* @phrazzld
+
+# Web application
+/apps/web/ @phrazzld
+
+# Publisher CLI
+/apps/publisher/ @phrazzld
+
+# Content and translations
+/content/ @phrazzld
+/content/translations/books/ @phrazzld
+
+# Shared packages
+/packages/ @phrazzld
+/packages/@brainrot/types/ @phrazzld
+/packages/@brainrot/converter/ @phrazzld
+/packages/@brainrot/blob-client/ @phrazzld
+/packages/@brainrot/metadata/ @phrazzld
+/packages/@brainrot/templates/ @phrazzld
+
+# CI/CD and GitHub configuration
+/.github/ @phrazzld
+/.github/workflows/ @phrazzld
+
+# Build and configuration files
+/turbo.json @phrazzld
+/pnpm-workspace.yaml @phrazzld
+/package.json @phrazzld
+/pnpm-lock.yaml @phrazzld
+
+# Documentation
+/*.md @phrazzld
+/docs/ @phrazzld
+/CLAUDE.md @phrazzld
+/TODO.md @phrazzld
