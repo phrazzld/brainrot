@@ -82,7 +82,7 @@ jobs:
           
       - name: Create issue for alerts
         if: steps.check-alerts.outputs.has_alerts == 'true'
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         with:
           script: |
             const fs = require('fs');
