@@ -75,7 +75,7 @@
 ### 7.4 Post-Migration Cleanup
 - [x] Update Vercel to deploy from new monorepo (manual config required)
 - [ ] Verify production deployment succeeds
-- [ ] Archive old repositories with deprecation notice
+- [x] Archive old repositories with deprecation notice
 - [ ] Update README.md with monorepo structure and commands
 - [x] Create CONTRIBUTING.md with development workflow
 - [x] Document publishing pipeline in docs/PUBLISHING.md
@@ -112,6 +112,7 @@
 
 ## Critical Issues
 - **Vercel Deployment**: Requires manual dashboard configuration (see docs/VERCEL_MONOREPO_UPDATE.md)
+- **Archive Repos on GitHub**: Need to manually archive repos via GitHub settings (make read-only)
 - **Converter Tests**: ES module mocking needs Jest config update
 - **Publisher Linting**: ESLint version conflict needs resolution
 - **GitHub Vulnerabilities**: 5 security issues flagged by Dependabot
