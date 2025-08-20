@@ -1,20 +1,41 @@
 # CODEOWNERS for Brainrot Publishing House Monorepo
-# These owners will be the default owners for everything in the repo
+# This file defines code ownership for automatic review assignment
+# Format: pattern @github-username
+# Later matches take precedence over earlier ones
+# Docs: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
 
-# Global owners
+# Default owner for everything in the repo
+# Unless a later match takes precedence, @phrazzld will be requested for review
 * @phrazzld
 
-# Web application
+# === APPLICATIONS ===
+
+# Web application - Next.js reading experience
 /apps/web/ @phrazzld
+/apps/web/app/ @phrazzld
+/apps/web/next.config.* @phrazzld
+/apps/web/vercel.json @phrazzld
+/apps/web/translations/ @phrazzld
 
-# Publisher CLI
+# Publisher CLI - Automated publishing
 /apps/publisher/ @phrazzld
+/apps/publisher/src/services/kdp.ts @phrazzld
+/apps/publisher/src/services/lulu.ts @phrazzld
 
-# Content and translations
+# === CONTENT (Our Core Product) ===
+
+# All translations
 /content/ @phrazzld
 /content/translations/books/ @phrazzld
 
-# Shared packages
+# High-value book translations
+/content/translations/books/great-gatsby/ @phrazzld
+/content/translations/books/the-iliad/ @phrazzld
+/content/translations/books/the-odyssey/ @phrazzld
+/content/translations/books/the-aeneid/ @phrazzld
+
+# === SHARED PACKAGES ===
+
 /packages/ @phrazzld
 /packages/@brainrot/types/ @phrazzld
 /packages/@brainrot/converter/ @phrazzld
@@ -22,18 +43,86 @@
 /packages/@brainrot/metadata/ @phrazzld
 /packages/@brainrot/templates/ @phrazzld
 
+# === INFRASTRUCTURE & CONFIGURATION ===
+
 # CI/CD and GitHub configuration
 /.github/ @phrazzld
 /.github/workflows/ @phrazzld
+/.github/CODEOWNERS @phrazzld
 
 # Build and configuration files
 /turbo.json @phrazzld
 /pnpm-workspace.yaml @phrazzld
 /package.json @phrazzld
 /pnpm-lock.yaml @phrazzld
+/.env.example @phrazzld
+/vercel.json @phrazzld
+/tsconfig*.json @phrazzld
 
-# Documentation
+# === SCRIPTS & AUTOMATION ===
+
+/scripts/ @phrazzld
+/scripts/generate-formats.ts @phrazzld
+/scripts/sync-translations.ts @phrazzld
+/scripts/monitor-api-usage.ts @phrazzld
+
+# === DOCUMENTATION ===
+
 /*.md @phrazzld
 /docs/ @phrazzld
 /CLAUDE.md @phrazzld
 /TODO.md @phrazzld
+/README.md @phrazzld
+/CONTRIBUTING.md @phrazzld
+
+# === SECURITY-SENSITIVE FILES ===
+# These require extra careful review
+
+/.github/secret_scanning.yml @phrazzld
+/.gitleaks.toml @phrazzld
+/.githooks/ @phrazzld
+/**/.env* @phrazzld
+/**/secrets.* @phrazzld
+/**/*credentials* @phrazzld
+
+# === TESTING ===
+# Test files - maintain coverage
+
+/**/*.test.ts @phrazzld
+/**/*.test.tsx @phrazzld
+/**/*.spec.ts @phrazzld
+/**/*.spec.tsx @phrazzld
+/__tests__/ @phrazzld
+/**/__mocks__/ @phrazzld
+
+# === DEPENDENCIES ===
+# Package updates need security review
+
+/**/package.json @phrazzld
+/**/yarn.lock @phrazzld
+/**/package-lock.json @phrazzld
+
+# === BUILD OUTPUTS ===
+# Should not be committed, but just in case
+
+**/dist/ @phrazzld
+**/build/ @phrazzld
+**/.next/ @phrazzld
+**/.turbo/ @phrazzld
+**/generated/ @phrazzld
+**/coverage/ @phrazzld
+
+# === FUTURE TEAM EXPANSION ===
+# Uncomment and update when adding team members:
+# 
+# /apps/studio/ @phrazzld @frontend-dev
+# /packages/@brainrot/ai-translator/ @phrazzld @ai-engineer
+# /content/translations/books/ @phrazzld @content-team
+# /docs/ @phrazzld @technical-writer
+
+# Note: To add additional code owners:
+# 1. Add their GitHub username to patterns above
+# 2. Multiple owners: @owner1 @owner2
+# 3. Teams: @org/team-name
+# 4. Ensure they have write access to the repository
+# 5. Test with: gh api repos/:owner/:repo/codeowners/errors
