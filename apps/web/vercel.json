@@ -1,7 +1,7 @@
 {
-  "buildCommand": "cd ../.. && pnpm install --frozen-lockfile && pnpm build --filter=@brainrot/web",
+  "buildCommand": "cd ../.. && pnpm build --filter=@brainrot/web",
   "outputDirectory": ".next",
-  "installCommand": "pnpm install --frozen-lockfile",
+  "installCommand": "cd ../.. && pnpm install --frozen-lockfile",
   "framework": "nextjs",
   "devCommand": "next dev",
   "ignoreCommand": "git diff HEAD^ HEAD --quiet -- apps/web packages",

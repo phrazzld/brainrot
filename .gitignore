@@ -70,3 +70,4 @@ migration-log.json
 
 # Keep .gitkeep files
 !.gitkeep
+.vercel
