@@ -1657,7 +1657,7 @@ The task as written would be architecturally incorrect - you cannot import TypeS
 - Different update frequencies optimize maintenance burden
 
 ### 7.4 Post-Migration Cleanup
-- [ ] Update Vercel to deploy from new monorepo
+- [~] Update Vercel to deploy from new monorepo
 - [ ] Verify production deployment succeeds
 - [ ] Archive old repositories with deprecation notice
 - [ ] Update README.md with monorepo structure and commands
