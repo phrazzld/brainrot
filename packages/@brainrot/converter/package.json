@@ -13,7 +13,7 @@
   "dependencies": {
     "@vercel/blob": "^0.23.0",
     "child_process": "^1.0.2",
-    "marked": "^12.0.0",
+    "marked": "^16.2.0",
     "p-limit": "^4.0.0",
     "p-retry": "^5.1.0",
     "remove-markdown": "^0.5.0"
