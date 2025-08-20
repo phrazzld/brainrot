@@ -76,7 +76,7 @@
 - [x] Update Vercel to deploy from new monorepo (manual config required)
 - [ ] Verify production deployment succeeds
 - [x] Archive old repositories with deprecation notice
-- [ ] Update README.md with monorepo structure and commands
+- [x] Update README.md with monorepo structure and commands
 - [x] Create CONTRIBUTING.md with development workflow
 - [x] Document publishing pipeline in docs/PUBLISHING.md
 - [ ] Create architecture diagram using mermaid
