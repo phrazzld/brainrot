@@ -1,10 +1,11 @@
 {
-  "buildCommand": "pnpm build --filter=@brainrot/web",
-  "outputDirectory": "apps/web/.next",
-  "installCommand": "pnpm install --frozen-lockfile",
-  "framework": null,
-  "devCommand": "pnpm dev --filter=@brainrot/web",
-  "ignoreCommand": "git diff HEAD^ HEAD --quiet -- apps/web packages *.json *.yaml",
+  "root": "apps/web",
+  "framework": "nextjs",
+  "outputDirectory": ".next",
+  "buildCommand": "cd ../.. && pnpm build --filter=@brainrot/web",
+  "installCommand": "cd ../.. && pnpm install --frozen-lockfile",
+  "devCommand": "next dev --turbopack",
+  "ignoreCommand": "git diff HEAD^ HEAD --quiet -- .",
   "github": {
     "silent": true
   }

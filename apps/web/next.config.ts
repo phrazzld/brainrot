@@ -2,6 +2,7 @@ import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   /* config options here */
+  output: 'standalone',
   images: {
     domains: [
       // Allow Vercel Blob Storage domain and its tenant-specific subdomains
