@@ -1,0 +1,996 @@
+{
+  "great-gatsby": {
+    "lastSync": "2025-08-18T21:36:17.834Z",
+    "filesUploaded": 10,
+    "errors": 0,
+    "files": [
+      {
+        "file": "books/great-gatsby/text/chapter-1.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/great-gatsby/text/chapter-1.txt",
+        "size": 133339,
+        "checksum": "2618e6025a2752b85a9f7974f7e505e4",
+        "timestamp": "2025-08-18T21:36:17.609Z"
+      },
+      {
+        "file": "books/great-gatsby/text/chapter-4.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/great-gatsby/text/chapter-4.txt",
+        "size": 111645,
+        "checksum": "b20aa3aae6fb5589605fc29fb71e5884",
+        "timestamp": "2025-08-18T21:36:17.616Z"
+      },
+      {
+        "file": "books/great-gatsby/text/chapter-3.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/great-gatsby/text/chapter-3.txt",
+        "size": 81815,
+        "checksum": "5fa34668d5765dcc622c954c05643baa",
+        "timestamp": "2025-08-18T21:36:17.658Z"
+      },
+      {
+        "file": "books/great-gatsby/text/chapter-2.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/great-gatsby/text/chapter-2.txt",
+        "size": 92738,
+        "checksum": "af1f3d845f9381372bed30f19bf01d52",
+        "timestamp": "2025-08-18T21:36:17.675Z"
+      },
+      {
+        "file": "books/great-gatsby/text/chapter-5.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/great-gatsby/text/chapter-5.txt",
+        "size": 83471,
+        "checksum": "eb963e8437ad0a86a94d00017081a0a7",
+        "timestamp": "2025-08-18T21:36:17.725Z"
+      },
+      {
+        "file": "books/great-gatsby/text/chapter-6.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/great-gatsby/text/chapter-6.txt",
+        "size": 56430,
+        "checksum": "6147a6ca18286642e987596feb5502a7",
+        "timestamp": "2025-08-18T21:36:17.736Z"
+      },
+      {
+        "file": "books/great-gatsby/text/chapter-7.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/great-gatsby/text/chapter-7.txt",
+        "size": 171848,
+        "checksum": "6601f98d37f26e47f741d654a003131d",
+        "timestamp": "2025-08-18T21:36:17.795Z"
+      },
+      {
+        "file": "books/great-gatsby/text/chapter-9.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/great-gatsby/text/chapter-9.txt",
+        "size": 30586,
+        "checksum": "daf0c51a3e9a702cf3be8a75c201febf",
+        "timestamp": "2025-08-18T21:36:17.801Z"
+      },
+      {
+        "file": "books/great-gatsby/text/chapter-8.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/great-gatsby/text/chapter-8.txt",
+        "size": 27850,
+        "checksum": "a6efaebeb3d3bd6147989916e70ba2e9",
+        "timestamp": "2025-08-18T21:36:17.810Z"
+      },
+      {
+        "file": "books/great-gatsby/text/introduction.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/great-gatsby/text/introduction.txt",
+        "size": 4562,
+        "checksum": "cbeb017e2b5cabea7b539f68e82b906c",
+        "timestamp": "2025-08-18T21:36:17.834Z"
+      }
+    ]
+  },
+  "alice-in-wonderland": {
+    "lastSync": "2025-08-18T21:36:25.803Z",
+    "filesUploaded": 1,
+    "errors": 0,
+    "files": [
+      {
+        "file": "books/alice-in-wonderland/text/alice-in-wonderland-complete.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/alice-in-wonderland/text/alice-in-wonderland-complete.txt",
+        "size": 155326,
+        "checksum": "fd8b2146341362c9acc28369d7e02900",
+        "timestamp": "2025-08-18T21:36:25.802Z"
+      }
+    ]
+  },
+  "declaration-of-independence": {
+    "lastSync": "2025-08-18T21:36:26.012Z",
+    "filesUploaded": 1,
+    "errors": 0,
+    "files": [
+      {
+        "file": "books/declaration-of-independence/text/declaration-of-independence-complete.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/declaration-of-independence/text/declaration-of-independence-complete.txt",
+        "size": 37320,
+        "checksum": "1aa9b38fb4c61e186d524139ebc83727",
+        "timestamp": "2025-08-18T21:36:26.011Z"
+      }
+    ]
+  },
+  "frankenstein": {
+    "lastSync": "2025-08-18T21:36:26.267Z",
+    "filesUploaded": 1,
+    "errors": 0,
+    "files": [
+      {
+        "file": "books/frankenstein/text/frankenstein-complete.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/frankenstein/text/frankenstein-complete.txt",
+        "size": 402025,
+        "checksum": "6f8e5e3caaa0dd8244f048b896ceb39b",
+        "timestamp": "2025-08-18T21:36:26.267Z"
+      }
+    ]
+  },
+  "simple-sabotage-field-manual": {
+    "lastSync": "2025-08-18T21:36:27.703Z",
+    "filesUploaded": 1,
+    "errors": 0,
+    "files": [
+      {
+        "file": "books/simple-sabotage-field-manual/text/simple-sabotage-field-manual-complete.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/simple-sabotage-field-manual/text/simple-sabotage-field-manual-complete.txt",
+        "size": 66859,
+        "checksum": "f48454457173cd0d9b64bdb5452e6de6",
+        "timestamp": "2025-08-18T21:36:27.703Z"
+      }
+    ]
+  },
+  "the-aeneid": {
+    "lastSync": "2025-08-18T21:36:28.371Z",
+    "filesUploaded": 24,
+    "errors": 0,
+    "files": [
+      {
+        "file": "books/the-aeneid/text/book-02.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-aeneid/text/book-02.txt",
+        "size": 11490,
+        "checksum": "f32e82fb98640a01647bbfcfdc40bde6",
+        "timestamp": "2025-08-18T21:36:27.893Z"
+      },
+      {
+        "file": "books/the-aeneid/text/book-01.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-aeneid/text/book-01.txt",
+        "size": 11317,
+        "checksum": "dc81ab3257111f946866c84f7fed685f",
+        "timestamp": "2025-08-18T21:36:27.896Z"
+      },
+      {
+        "file": "books/the-aeneid/text/book-01-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-aeneid/text/book-01-processed.txt",
+        "size": 11324,
+        "checksum": "5e7ca91c49982f62d254082d0322a6be",
+        "timestamp": "2025-08-18T21:36:27.905Z"
+      },
+      {
+        "file": "books/the-aeneid/text/book-03-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-aeneid/text/book-03-processed.txt",
+        "size": 3173,
+        "checksum": "7fa08200d8060df37f14ad11c56ee725",
+        "timestamp": "2025-08-18T21:36:27.905Z"
+      },
+      {
+        "file": "books/the-aeneid/text/book-03.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-aeneid/text/book-03.txt",
+        "size": 3169,
+        "checksum": "56feae9c7c61f49a81ce51e8eaffed12",
+        "timestamp": "2025-08-18T21:36:27.967Z"
+      },
+      {
+        "file": "books/the-aeneid/text/book-04-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-aeneid/text/book-04-processed.txt",
+        "size": 4449,
+        "checksum": "6d2a45cc1fb59e5182a1cf629d739bd1",
+        "timestamp": "2025-08-18T21:36:27.989Z"
+      },
+      {
+        "file": "books/the-aeneid/text/book-02-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-aeneid/text/book-02-processed.txt",
+        "size": 11495,
+        "checksum": "9260c96826e067a3eeeaea246bd3e246",
+        "timestamp": "2025-08-18T21:36:28.016Z"
+      },
+      {
+        "file": "books/the-aeneid/text/book-05.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-aeneid/text/book-05.txt",
+        "size": 7831,
+        "checksum": "62028a9946de79641ec541c3d73dc63a",
+        "timestamp": "2025-08-18T21:36:28.055Z"
+      },
+      {
+        "file": "books/the-aeneid/text/book-04.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-aeneid/text/book-04.txt",
+        "size": 4438,
+        "checksum": "c1675f6d23c2793127927defdfcaa854",
+        "timestamp": "2025-08-18T21:36:28.068Z"
+      },
+      {
+        "file": "books/the-aeneid/text/book-05-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-aeneid/text/book-05-processed.txt",
+        "size": 7841,
+        "checksum": "494ca772f2ac55b6c046fc8ea9d6f0d2",
+        "timestamp": "2025-08-18T21:36:28.092Z"
+      },
+      {
+        "file": "books/the-aeneid/text/book-06-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-aeneid/text/book-06-processed.txt",
+        "size": 15872,
+        "checksum": "94af44abc37c3b3f6d198390dcae7941",
+        "timestamp": "2025-08-18T21:36:28.115Z"
+      },
+      {
+        "file": "books/the-aeneid/text/book-07-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-aeneid/text/book-07-processed.txt",
+        "size": 13231,
+        "checksum": "e8f4e2a9a8e214aa0112db3f6d0e3e71",
+        "timestamp": "2025-08-18T21:36:28.134Z"
+      },
+      {
+        "file": "books/the-aeneid/text/book-06.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-aeneid/text/book-06.txt",
+        "size": 15833,
+        "checksum": "d247109e56d09dc243e3e422e39b4440",
+        "timestamp": "2025-08-18T21:36:28.142Z"
+      },
+      {
+        "file": "books/the-aeneid/text/book-07.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-aeneid/text/book-07.txt",
+        "size": 13224,
+        "checksum": "e9879c291afc2ef06d429ff5b329d916",
+        "timestamp": "2025-08-18T21:36:28.171Z"
+      },
+      {
+        "file": "books/the-aeneid/text/book-08-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-aeneid/text/book-08-processed.txt",
+        "size": 2770,
+        "checksum": "6ec799c396e5c7ebf13a7e54d283c0d6",
+        "timestamp": "2025-08-18T21:36:28.216Z"
+      },
+      {
+        "file": "books/the-aeneid/text/book-09-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-aeneid/text/book-09-processed.txt",
+        "size": 4624,
+        "checksum": "4e4ab539e42cc6765ac001a55e80f2c4",
+        "timestamp": "2025-08-18T21:36:28.217Z"
+      },
+      {
+        "file": "books/the-aeneid/text/book-09.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-aeneid/text/book-09.txt",
+        "size": 4624,
+        "checksum": "4e4ab539e42cc6765ac001a55e80f2c4",
+        "timestamp": "2025-08-18T21:36:28.225Z"
+      },
+      {
+        "file": "books/the-aeneid/text/book-08.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-aeneid/text/book-08.txt",
+        "size": 2770,
+        "checksum": "6ec799c396e5c7ebf13a7e54d283c0d6",
+        "timestamp": "2025-08-18T21:36:28.228Z"
+      },
+      {
+        "file": "books/the-aeneid/text/book-10-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-aeneid/text/book-10-processed.txt",
+        "size": 2264,
+        "checksum": "41cf5a0e7dd7993a129f4156ac3ed02e",
+        "timestamp": "2025-08-18T21:36:28.288Z"
+      },
+      {
+        "file": "books/the-aeneid/text/book-10.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-aeneid/text/book-10.txt",
+        "size": 2243,
+        "checksum": "05a3ae0f6c2498fba9df57e073eefa64",
+        "timestamp": "2025-08-18T21:36:28.323Z"
+      },
+      {
+        "file": "books/the-aeneid/text/book-11-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-aeneid/text/book-11-processed.txt",
+        "size": 9333,
+        "checksum": "9307471ead7dc6199e11269980050521",
+        "timestamp": "2025-08-18T21:36:28.333Z"
+      },
+      {
+        "file": "books/the-aeneid/text/book-12-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-aeneid/text/book-12-processed.txt",
+        "size": 13997,
+        "checksum": "c3ce22d18d4ed4dd62bd8c66f19c3b0f",
+        "timestamp": "2025-08-18T21:36:28.341Z"
+      },
+      {
+        "file": "books/the-aeneid/text/book-11.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-aeneid/text/book-11.txt",
+        "size": 9328,
+        "checksum": "232ad7eb9c89680d53a5f855ff0a7fd3",
+        "timestamp": "2025-08-18T21:36:28.348Z"
+      },
+      {
+        "file": "books/the-aeneid/text/book-12.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-aeneid/text/book-12.txt",
+        "size": 13997,
+        "checksum": "c3ce22d18d4ed4dd62bd8c66f19c3b0f",
+        "timestamp": "2025-08-18T21:36:28.371Z"
+      }
+    ]
+  },
+  "the-odyssey": {
+    "lastSync": "2025-08-18T21:36:29.543Z",
+    "filesUploaded": 48,
+    "errors": 0,
+    "files": [
+      {
+        "file": "books/the-odyssey/text/book-02-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-odyssey/text/book-02-processed.txt",
+        "size": 7564,
+        "checksum": "87aad362aecddb9e2eb83d54d6eea734",
+        "timestamp": "2025-08-18T21:36:28.557Z"
+      },
+      {
+        "file": "books/the-odyssey/text/book-03-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-odyssey/text/book-03-processed.txt",
+        "size": 8473,
+        "checksum": "42f5acd38558e9716d3fb0154761d0db",
+        "timestamp": "2025-08-18T21:36:28.579Z"
+      },
+      {
+        "file": "books/the-odyssey/text/book-01-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-odyssey/text/book-01-processed.txt",
+        "size": 7181,
+        "checksum": "4f85350319a33004762a53683ef1cc4e",
+        "timestamp": "2025-08-18T21:36:28.611Z"
+      },
+      {
+        "file": "books/the-odyssey/text/book-03.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-odyssey/text/book-03.txt",
+        "size": 8473,
+        "checksum": "42f5acd38558e9716d3fb0154761d0db",
+        "timestamp": "2025-08-18T21:36:28.664Z"
+      },
+      {
+        "file": "books/the-odyssey/text/book-01.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-odyssey/text/book-01.txt",
+        "size": 7081,
+        "checksum": "af23e55b854ce8aa33d82f3ba379c861",
+        "timestamp": "2025-08-18T21:36:28.675Z"
+      },
+      {
+        "file": "books/the-odyssey/text/book-04.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-odyssey/text/book-04.txt",
+        "size": 8005,
+        "checksum": "5545d62c156385de75f6eea1ad9a49a5",
+        "timestamp": "2025-08-18T21:36:28.697Z"
+      },
+      {
+        "file": "books/the-odyssey/text/book-04-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-odyssey/text/book-04-processed.txt",
+        "size": 8026,
+        "checksum": "7b009aa89c60f623351d30990e5fe467",
+        "timestamp": "2025-08-18T21:36:28.704Z"
+      },
+      {
+        "file": "books/the-odyssey/text/book-02.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-odyssey/text/book-02.txt",
+        "size": 7546,
+        "checksum": "7842fda44c516c24460d79bd33165e3f",
+        "timestamp": "2025-08-18T21:36:28.711Z"
+      },
+      {
+        "file": "books/the-odyssey/text/book-05-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-odyssey/text/book-05-processed.txt",
+        "size": 3491,
+        "checksum": "6b306a59d1515501dcfbeff57ec2dd0c",
+        "timestamp": "2025-08-18T21:36:28.749Z"
+      },
+      {
+        "file": "books/the-odyssey/text/book-06-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-odyssey/text/book-06-processed.txt",
+        "size": 4960,
+        "checksum": "a7f10da813f90872e8f94d8c90f2d239",
+        "timestamp": "2025-08-18T21:36:28.785Z"
+      },
+      {
+        "file": "books/the-odyssey/text/book-05.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-odyssey/text/book-05.txt",
+        "size": 3455,
+        "checksum": "6e62f7c6bdd34e44d39fd178cdd61e6f",
+        "timestamp": "2025-08-18T21:36:28.788Z"
+      },
+      {
+        "file": "books/the-odyssey/text/book-06.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-odyssey/text/book-06.txt",
+        "size": 4932,
+        "checksum": "002c5d7995cbfd9adec0ad238736ff96",
+        "timestamp": "2025-08-18T21:36:28.794Z"
+      },
+      {
+        "file": "books/the-odyssey/text/book-07-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-odyssey/text/book-07-processed.txt",
+        "size": 11486,
+        "checksum": "e1a89df09aecb50061c6dad447ee6ab1",
+        "timestamp": "2025-08-18T21:36:28.820Z"
+      },
+      {
+        "file": "books/the-odyssey/text/book-09-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-odyssey/text/book-09-processed.txt",
+        "size": 7501,
+        "checksum": "54ef030b2920671423f2497af3513d9b",
+        "timestamp": "2025-08-18T21:36:28.871Z"
+      },
+      {
+        "file": "books/the-odyssey/text/book-07.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-odyssey/text/book-07.txt",
+        "size": 11467,
+        "checksum": "004f3904d8cadba59ce969449442c048",
+        "timestamp": "2025-08-18T21:36:28.875Z"
+      },
+      {
+        "file": "books/the-odyssey/text/book-09.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-odyssey/text/book-09.txt",
+        "size": 7448,
+        "checksum": "28c10e64fac0425778fb50d3e016b1cb",
+        "timestamp": "2025-08-18T21:36:28.907Z"
+      },
+      {
+        "file": "books/the-odyssey/text/book-08-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-odyssey/text/book-08-processed.txt",
+        "size": 9447,
+        "checksum": "dadb399662a8296349daaa9c9ef73d1b",
+        "timestamp": "2025-08-18T21:36:28.916Z"
+      },
+      {
+        "file": "books/the-odyssey/text/book-08.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-odyssey/text/book-08.txt",
+        "size": 9403,
+        "checksum": "a022282d785eebbf33c9e3f71bc3fe50",
+        "timestamp": "2025-08-18T21:36:28.923Z"
+      },
+      {
+        "file": "books/the-odyssey/text/book-10-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-odyssey/text/book-10-processed.txt",
+        "size": 9727,
+        "checksum": "9b973ae644aba75e41dd987e927326d8",
+        "timestamp": "2025-08-18T21:36:28.952Z"
+      },
+      {
+        "file": "books/the-odyssey/text/book-10.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-odyssey/text/book-10.txt",
+        "size": 9720,
+        "checksum": "9aa471a2be0c634e6e514913edbe477c",
+        "timestamp": "2025-08-18T21:36:28.966Z"
+      },
+      {
+        "file": "books/the-odyssey/text/book-11-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-odyssey/text/book-11-processed.txt",
+        "size": 5540,
+        "checksum": "aee82004cbb37ca2559fc328aa359a21",
+        "timestamp": "2025-08-18T21:36:28.992Z"
+      },
+      {
+        "file": "books/the-odyssey/text/book-11.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-odyssey/text/book-11.txt",
+        "size": 5534,
+        "checksum": "38faf1680cf0915d4deb046915d6da1b",
+        "timestamp": "2025-08-18T21:36:29.016Z"
+      },
+      {
+        "file": "books/the-odyssey/text/book-12.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-odyssey/text/book-12.txt",
+        "size": 10303,
+        "checksum": "ac16d12028485af3de62ff39b16c4ad3",
+        "timestamp": "2025-08-18T21:36:29.065Z"
+      },
+      {
+        "file": "books/the-odyssey/text/book-12-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-odyssey/text/book-12-processed.txt",
+        "size": 10398,
+        "checksum": "cba4698fb0214b2afde11c71c127f331",
+        "timestamp": "2025-08-18T21:36:29.066Z"
+      },
+      {
+        "file": "books/the-odyssey/text/book-13-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-odyssey/text/book-13-processed.txt",
+        "size": 6548,
+        "checksum": "772e823949fc2ac046b2cfc9bd88e5bb",
+        "timestamp": "2025-08-18T21:36:29.080Z"
+      },
+      {
+        "file": "books/the-odyssey/text/book-13.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-odyssey/text/book-13.txt",
+        "size": 6525,
+        "checksum": "55bd227db9403d89126cb65107b55a34",
+        "timestamp": "2025-08-18T21:36:29.086Z"
+      },
+      {
+        "file": "books/the-odyssey/text/book-14-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-odyssey/text/book-14-processed.txt",
+        "size": 7576,
+        "checksum": "7650761d4e20531e8a7cc63919222054",
+        "timestamp": "2025-08-18T21:36:29.097Z"
+      },
+      {
+        "file": "books/the-odyssey/text/book-14.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-odyssey/text/book-14.txt",
+        "size": 7572,
+        "checksum": "b42be469978fdd2ee173ce0fd476d319",
+        "timestamp": "2025-08-18T21:36:29.140Z"
+      },
+      {
+        "file": "books/the-odyssey/text/book-15-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-odyssey/text/book-15-processed.txt",
+        "size": 11921,
+        "checksum": "11013bbd35449dbbb2373d975e1eba70",
+        "timestamp": "2025-08-18T21:36:29.165Z"
+      },
+      {
+        "file": "books/the-odyssey/text/book-16-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-odyssey/text/book-16-processed.txt",
+        "size": 7684,
+        "checksum": "aa1ef7ca1fa78b134f36a65aaa6b0acc",
+        "timestamp": "2025-08-18T21:36:29.186Z"
+      },
+      {
+        "file": "books/the-odyssey/text/book-15.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-odyssey/text/book-15.txt",
+        "size": 11864,
+        "checksum": "e666d44960f1ceeb6f9ce39ad868ab89",
+        "timestamp": "2025-08-18T21:36:29.204Z"
+      },
+      {
+        "file": "books/the-odyssey/text/book-16.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-odyssey/text/book-16.txt",
+        "size": 7676,
+        "checksum": "0e9598fc401c246c3eec601f387576e2",
+        "timestamp": "2025-08-18T21:36:29.212Z"
+      },
+      {
+        "file": "books/the-odyssey/text/book-17-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-odyssey/text/book-17-processed.txt",
+        "size": 8754,
+        "checksum": "72d840bcc162b8cec881bc6e6c9a3d43",
+        "timestamp": "2025-08-18T21:36:29.221Z"
+      },
+      {
+        "file": "books/the-odyssey/text/book-17.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-odyssey/text/book-17.txt",
+        "size": 8746,
+        "checksum": "7b35ef9c7b76269abf733a2f09230555",
+        "timestamp": "2025-08-18T21:36:29.273Z"
+      },
+      {
+        "file": "books/the-odyssey/text/book-18-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-odyssey/text/book-18-processed.txt",
+        "size": 5313,
+        "checksum": "ee5446064f2e4fe4d10aba93698584db",
+        "timestamp": "2025-08-18T21:36:29.273Z"
+      },
+      {
+        "file": "books/the-odyssey/text/book-19.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-odyssey/text/book-19.txt",
+        "size": 7338,
+        "checksum": "69162d4c7792ad16360b9826c583e895",
+        "timestamp": "2025-08-18T21:36:29.306Z"
+      },
+      {
+        "file": "books/the-odyssey/text/book-18.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-odyssey/text/book-18.txt",
+        "size": 5311,
+        "checksum": "ef355a2a54ff154392f1c1a8561946bf",
+        "timestamp": "2025-08-18T21:36:29.314Z"
+      },
+      {
+        "file": "books/the-odyssey/text/book-19-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-odyssey/text/book-19-processed.txt",
+        "size": 7363,
+        "checksum": "a2d4f974a78bc04f8af62505702274aa",
+        "timestamp": "2025-08-18T21:36:29.326Z"
+      },
+      {
+        "file": "books/the-odyssey/text/book-20-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-odyssey/text/book-20-processed.txt",
+        "size": 9852,
+        "checksum": "3260bb6ce4ff5bd06b57b99dfdf5d89c",
+        "timestamp": "2025-08-18T21:36:29.348Z"
+      },
+      {
+        "file": "books/the-odyssey/text/book-20.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-odyssey/text/book-20.txt",
+        "size": 9831,
+        "checksum": "d17a7df5643b75d8bf5d0ab0af361669",
+        "timestamp": "2025-08-18T21:36:29.363Z"
+      },
+      {
+        "file": "books/the-odyssey/text/book-21-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-odyssey/text/book-21-processed.txt",
+        "size": 5502,
+        "checksum": "994942c32d6f43b25b9d0a7cc797dfdf",
+        "timestamp": "2025-08-18T21:36:29.385Z"
+      },
+      {
+        "file": "books/the-odyssey/text/book-22-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-odyssey/text/book-22-processed.txt",
+        "size": 4984,
+        "checksum": "53411aeb17135d83f163ccdee81639de",
+        "timestamp": "2025-08-18T21:36:29.420Z"
+      },
+      {
+        "file": "books/the-odyssey/text/book-22.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-odyssey/text/book-22.txt",
+        "size": 4984,
+        "checksum": "53411aeb17135d83f163ccdee81639de",
+        "timestamp": "2025-08-18T21:36:29.426Z"
+      },
+      {
+        "file": "books/the-odyssey/text/book-23-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-odyssey/text/book-23-processed.txt",
+        "size": 6068,
+        "checksum": "d3a53426d71e25a0fddcaab0d43d56f2",
+        "timestamp": "2025-08-18T21:36:29.457Z"
+      },
+      {
+        "file": "books/the-odyssey/text/book-21.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-odyssey/text/book-21.txt",
+        "size": 5501,
+        "checksum": "8301636bcacce486a99ffddd0382fb69",
+        "timestamp": "2025-08-18T21:36:29.468Z"
+      },
+      {
+        "file": "books/the-odyssey/text/book-23.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-odyssey/text/book-23.txt",
+        "size": 6063,
+        "checksum": "9071dc275f61319031346e5910f34283",
+        "timestamp": "2025-08-18T21:36:29.472Z"
+      },
+      {
+        "file": "books/the-odyssey/text/book-24.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-odyssey/text/book-24.txt",
+        "size": 6499,
+        "checksum": "b9171e50e51ee4fbed341f17e77dc22d",
+        "timestamp": "2025-08-18T21:36:29.539Z"
+      },
+      {
+        "file": "books/the-odyssey/text/book-24-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-odyssey/text/book-24-processed.txt",
+        "size": 6545,
+        "checksum": "e88e5bac2235cd92c6286098f0283a18",
+        "timestamp": "2025-08-18T21:36:29.543Z"
+      }
+    ]
+  },
+  "the-iliad": {
+    "lastSync": "2025-08-18T21:47:22.965Z",
+    "filesUploaded": 48,
+    "errors": 0,
+    "files": [
+      {
+        "file": "books/the-iliad/text/book-01-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-iliad/text/book-01-processed.txt",
+        "size": 10016,
+        "checksum": "a901e69fac121af751055f9890e2ec60",
+        "timestamp": "2025-08-18T21:47:21.819Z"
+      },
+      {
+        "file": "books/the-iliad/text/book-02.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-iliad/text/book-02.txt",
+        "size": 8040,
+        "checksum": "d3780cf9ac98f2a8a355bc4d09ec21e9",
+        "timestamp": "2025-08-18T21:47:21.872Z"
+      },
+      {
+        "file": "books/the-iliad/text/book-01.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-iliad/text/book-01.txt",
+        "size": 10010,
+        "checksum": "09f66d6975ac4aa069c4d504f70903ae",
+        "timestamp": "2025-08-18T21:47:21.901Z"
+      },
+      {
+        "file": "books/the-iliad/text/book-03-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-iliad/text/book-03-processed.txt",
+        "size": 11641,
+        "checksum": "62ac56b900cdaa7cf3a885bd37ecbcec",
+        "timestamp": "2025-08-18T21:47:21.922Z"
+      },
+      {
+        "file": "books/the-iliad/text/book-03.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-iliad/text/book-03.txt",
+        "size": 11641,
+        "checksum": "62ac56b900cdaa7cf3a885bd37ecbcec",
+        "timestamp": "2025-08-18T21:47:21.925Z"
+      },
+      {
+        "file": "books/the-iliad/text/book-02-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-iliad/text/book-02-processed.txt",
+        "size": 8046,
+        "checksum": "1229458f9ac20c52b73aa2c1a48b2d77",
+        "timestamp": "2025-08-18T21:47:21.956Z"
+      },
+      {
+        "file": "books/the-iliad/text/book-04.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-iliad/text/book-04.txt",
+        "size": 7342,
+        "checksum": "b3e2bbd0d50464e03957f8c8fc34ac4c",
+        "timestamp": "2025-08-18T21:47:22.012Z"
+      },
+      {
+        "file": "books/the-iliad/text/book-04-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-iliad/text/book-04-processed.txt",
+        "size": 17904,
+        "checksum": "1ff4c9ab6564fc09fa61e06a252a23bf",
+        "timestamp": "2025-08-18T21:47:22.021Z"
+      },
+      {
+        "file": "books/the-iliad/text/book-05-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-iliad/text/book-05-processed.txt",
+        "size": 13972,
+        "checksum": "02432071c9f6002a5b16e4ea7ce85588",
+        "timestamp": "2025-08-18T21:47:22.024Z"
+      },
+      {
+        "file": "books/the-iliad/text/book-06-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-iliad/text/book-06-processed.txt",
+        "size": 7151,
+        "checksum": "9e167597799db32c1d031ee160ff0a7c",
+        "timestamp": "2025-08-18T21:47:22.064Z"
+      },
+      {
+        "file": "books/the-iliad/text/book-05.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-iliad/text/book-05.txt",
+        "size": 13964,
+        "checksum": "66a18e566b6ea638ea38939f541043c3",
+        "timestamp": "2025-08-18T21:47:22.069Z"
+      },
+      {
+        "file": "books/the-iliad/text/book-06.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-iliad/text/book-06.txt",
+        "size": 7151,
+        "checksum": "9e167597799db32c1d031ee160ff0a7c",
+        "timestamp": "2025-08-18T21:47:22.103Z"
+      },
+      {
+        "file": "books/the-iliad/text/book-07-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-iliad/text/book-07-processed.txt",
+        "size": 10931,
+        "checksum": "99e830e73cfcfc34ca5e6ee400c52265",
+        "timestamp": "2025-08-18T21:47:22.109Z"
+      },
+      {
+        "file": "books/the-iliad/text/book-07.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-iliad/text/book-07.txt",
+        "size": 10926,
+        "checksum": "dcecbc8e2e1d30de1830bb0ef8de30c6",
+        "timestamp": "2025-08-18T21:47:22.154Z"
+      },
+      {
+        "file": "books/the-iliad/text/book-08-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-iliad/text/book-08-processed.txt",
+        "size": 7203,
+        "checksum": "3e53d478528b1bc72fb36d2c1942a96b",
+        "timestamp": "2025-08-18T21:47:22.177Z"
+      },
+      {
+        "file": "books/the-iliad/text/book-08.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-iliad/text/book-08.txt",
+        "size": 7203,
+        "checksum": "3e53d478528b1bc72fb36d2c1942a96b",
+        "timestamp": "2025-08-18T21:47:22.185Z"
+      },
+      {
+        "file": "books/the-iliad/text/book-09-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-iliad/text/book-09-processed.txt",
+        "size": 9023,
+        "checksum": "1d078c96cec9e7a8103af373bbaef163",
+        "timestamp": "2025-08-18T21:47:22.207Z"
+      },
+      {
+        "file": "books/the-iliad/text/book-09.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-iliad/text/book-09.txt",
+        "size": 9013,
+        "checksum": "399ca5b6ac313913cd78918ace3ad004",
+        "timestamp": "2025-08-18T21:47:22.219Z"
+      },
+      {
+        "file": "books/the-iliad/text/book-10-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-iliad/text/book-10-processed.txt",
+        "size": 17044,
+        "checksum": "858b78ec865db2a1666ba026d727ef10",
+        "timestamp": "2025-08-18T21:47:22.263Z"
+      },
+      {
+        "file": "books/the-iliad/text/book-10.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-iliad/text/book-10.txt",
+        "size": 17043,
+        "checksum": "d146bd1ae7fdf81f80917ebf4073796c",
+        "timestamp": "2025-08-18T21:47:22.312Z"
+      },
+      {
+        "file": "books/the-iliad/text/book-11-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-iliad/text/book-11-processed.txt",
+        "size": 14022,
+        "checksum": "96a68f922d97209664fd12d9619d574d",
+        "timestamp": "2025-08-18T21:47:22.321Z"
+      },
+      {
+        "file": "books/the-iliad/text/book-11.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-iliad/text/book-11.txt",
+        "size": 14011,
+        "checksum": "9865a936f14ebe0fba57c247f51299cf",
+        "timestamp": "2025-08-18T21:47:22.349Z"
+      },
+      {
+        "file": "books/the-iliad/text/book-12.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-iliad/text/book-12.txt",
+        "size": 7249,
+        "checksum": "b42a096edb641a82d1ed4be831314f41",
+        "timestamp": "2025-08-18T21:47:22.368Z"
+      },
+      {
+        "file": "books/the-iliad/text/book-12-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-iliad/text/book-12-processed.txt",
+        "size": 7259,
+        "checksum": "2db8cbdee3407ff5201338876ea0fa55",
+        "timestamp": "2025-08-18T21:47:22.388Z"
+      },
+      {
+        "file": "books/the-iliad/text/book-13-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-iliad/text/book-13-processed.txt",
+        "size": 12599,
+        "checksum": "00e199965c480c33dd94eb912983c5f6",
+        "timestamp": "2025-08-18T21:47:22.409Z"
+      },
+      {
+        "file": "books/the-iliad/text/book-13.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-iliad/text/book-13.txt",
+        "size": 12599,
+        "checksum": "00e199965c480c33dd94eb912983c5f6",
+        "timestamp": "2025-08-18T21:47:22.413Z"
+      },
+      {
+        "file": "books/the-iliad/text/book-14-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-iliad/text/book-14-processed.txt",
+        "size": 9828,
+        "checksum": "ca8ba97604818faaf59f77a8ee6d47b2",
+        "timestamp": "2025-08-18T21:47:22.442Z"
+      },
+      {
+        "file": "books/the-iliad/text/book-15.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-iliad/text/book-15.txt",
+        "size": 6067,
+        "checksum": "89c13f7d3112984995eaa8b5a95b7c70",
+        "timestamp": "2025-08-18T21:47:22.499Z"
+      },
+      {
+        "file": "books/the-iliad/text/book-14.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-iliad/text/book-14.txt",
+        "size": 9823,
+        "checksum": "99cc7281d5ab52a284a3537d02ee1d8b",
+        "timestamp": "2025-08-18T21:47:22.513Z"
+      },
+      {
+        "file": "books/the-iliad/text/book-16.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-iliad/text/book-16.txt",
+        "size": 8580,
+        "checksum": "126d17af4516e49b5cfa479f53d6cf4d",
+        "timestamp": "2025-08-18T21:47:22.518Z"
+      },
+      {
+        "file": "books/the-iliad/text/book-15-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-iliad/text/book-15-processed.txt",
+        "size": 6067,
+        "checksum": "89c13f7d3112984995eaa8b5a95b7c70",
+        "timestamp": "2025-08-18T21:47:22.518Z"
+      },
+      {
+        "file": "books/the-iliad/text/book-16-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-iliad/text/book-16-processed.txt",
+        "size": 8580,
+        "checksum": "126d17af4516e49b5cfa479f53d6cf4d",
+        "timestamp": "2025-08-18T21:47:22.603Z"
+      },
+      {
+        "file": "books/the-iliad/text/book-18.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-iliad/text/book-18.txt",
+        "size": 16102,
+        "checksum": "919824fe9cd162a88a78cfb6df93380c",
+        "timestamp": "2025-08-18T21:47:22.614Z"
+      },
+      {
+        "file": "books/the-iliad/text/book-17-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-iliad/text/book-17-processed.txt",
+        "size": 4650,
+        "checksum": "558187127eb7c15fad65f6ed3250bf76",
+        "timestamp": "2025-08-18T21:47:22.620Z"
+      },
+      {
+        "file": "books/the-iliad/text/book-18-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-iliad/text/book-18-processed.txt",
+        "size": 16102,
+        "checksum": "919824fe9cd162a88a78cfb6df93380c",
+        "timestamp": "2025-08-18T21:47:22.633Z"
+      },
+      {
+        "file": "books/the-iliad/text/book-17.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-iliad/text/book-17.txt",
+        "size": 4650,
+        "checksum": "558187127eb7c15fad65f6ed3250bf76",
+        "timestamp": "2025-08-18T21:47:22.671Z"
+      },
+      {
+        "file": "books/the-iliad/text/book-20-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-iliad/text/book-20-processed.txt",
+        "size": 11651,
+        "checksum": "66ca3de27737232319cff0b7b00993fa",
+        "timestamp": "2025-08-18T21:47:22.706Z"
+      },
+      {
+        "file": "books/the-iliad/text/book-19-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-iliad/text/book-19-processed.txt",
+        "size": 5474,
+        "checksum": "ab06b4c34a4294d3608ebec827a78399",
+        "timestamp": "2025-08-18T21:47:22.718Z"
+      },
+      {
+        "file": "books/the-iliad/text/book-19.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-iliad/text/book-19.txt",
+        "size": 5474,
+        "checksum": "ab06b4c34a4294d3608ebec827a78399",
+        "timestamp": "2025-08-18T21:47:22.721Z"
+      },
+      {
+        "file": "books/the-iliad/text/book-20.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-iliad/text/book-20.txt",
+        "size": 11646,
+        "checksum": "df66a5ce55fdadeb835f8eb68b568ebe",
+        "timestamp": "2025-08-18T21:47:22.743Z"
+      },
+      {
+        "file": "books/the-iliad/text/book-21-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-iliad/text/book-21-processed.txt",
+        "size": 7685,
+        "checksum": "5afff3f12b45ce9d2e418927d0f3b2ce",
+        "timestamp": "2025-08-18T21:47:22.807Z"
+      },
+      {
+        "file": "books/the-iliad/text/book-21.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-iliad/text/book-21.txt",
+        "size": 7680,
+        "checksum": "0211a8722b9f4516f73360011071e200",
+        "timestamp": "2025-08-18T21:47:22.835Z"
+      },
+      {
+        "file": "books/the-iliad/text/book-22-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-iliad/text/book-22-processed.txt",
+        "size": 5483,
+        "checksum": "a04ed19abd672d09a555f705c346b355",
+        "timestamp": "2025-08-18T21:47:22.841Z"
+      },
+      {
+        "file": "books/the-iliad/text/book-23-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-iliad/text/book-23-processed.txt",
+        "size": 10913,
+        "checksum": "9288901aa6ee6fdd0a1fd667a42ca2d4",
+        "timestamp": "2025-08-18T21:47:22.850Z"
+      },
+      {
+        "file": "books/the-iliad/text/book-22.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-iliad/text/book-22.txt",
+        "size": 5483,
+        "checksum": "a04ed19abd672d09a555f705c346b355",
+        "timestamp": "2025-08-18T21:47:22.873Z"
+      },
+      {
+        "file": "books/the-iliad/text/book-24.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-iliad/text/book-24.txt",
+        "size": 8451,
+        "checksum": "6da6e53fe515c07134b16c70f123c5a6",
+        "timestamp": "2025-08-18T21:47:22.919Z"
+      },
+      {
+        "file": "books/the-iliad/text/book-24-processed.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-iliad/text/book-24-processed.txt",
+        "size": 8451,
+        "checksum": "6da6e53fe515c07134b16c70f123c5a6",
+        "timestamp": "2025-08-18T21:47:22.932Z"
+      },
+      {
+        "file": "books/the-iliad/text/book-23.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-iliad/text/book-23.txt",
+        "size": 10913,
+        "checksum": "9288901aa6ee6fdd0a1fd667a42ca2d4",
+        "timestamp": "2025-08-18T21:47:22.964Z"
+      }
+    ]
+  }
+}

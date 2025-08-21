@@ -16,7 +16,7 @@ generated/
 .env.production
 .env*.local
 .env.me
-# Note: .env.vault is encrypted and safe to commit
+.env.vault
 
 # IDE
 .vscode/
@@ -64,9 +64,9 @@ Thumbs.db
 *.bak
 backup-*/
 
-# Migration artifacts
-sync-log.json
+# Migration artifacts  
 migration-log.json
+archive-migration/
 
 # Keep .gitkeep files
 !.gitkeep
