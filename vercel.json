@@ -4,7 +4,7 @@
   "installCommand": "pnpm install --frozen-lockfile",
   "framework": null,
   "devCommand": "pnpm dev --filter=@brainrot/web",
-  "ignoreCommand": "git diff HEAD^ HEAD --quiet -- apps/web packages pnpm-lock.yaml package.json turbo.json",
+  "ignoreCommand": "git diff HEAD^ HEAD --quiet -- apps/web packages *.json *.yaml",
   "github": {
     "silent": true
   }
