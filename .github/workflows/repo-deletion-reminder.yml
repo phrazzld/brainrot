@@ -1,0 +1,127 @@
+name: Repository Deletion Reminder
+
+on:
+  schedule:
+    # Run on the 13th of each month at 9 AM UTC
+    - cron: '0 9 13 * *'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  create-reminder:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check deletion date
+        id: check-date
+        run: |
+          DELETION_DATE="2025-09-20"
+          CURRENT_DATE=$(date +%Y-%m-%d)
+          
+          # Calculate days until deletion
+          if [[ "$OSTYPE" == "darwin"* ]]; then
+            # macOS
+            DELETION_TS=$(date -j -f "%Y-%m-%d" "$DELETION_DATE" +%s)
+            CURRENT_TS=$(date +%s)
+          else
+            # Linux
+            DELETION_TS=$(date -d "$DELETION_DATE" +%s)
+            CURRENT_TS=$(date +%s)
+          fi
+          
+          DAYS_DIFF=$(( ($DELETION_TS - $CURRENT_TS) / 86400 ))
+          
+          echo "days_until_deletion=$DAYS_DIFF" >> $GITHUB_OUTPUT
+          echo "deletion_date=$DELETION_DATE" >> $GITHUB_OUTPUT
+          
+          # Only create issue if within 30 days of deletion
+          if [ $DAYS_DIFF -le 30 ] && [ $DAYS_DIFF -gt 0 ]; then
+            echo "should_create_issue=true" >> $GITHUB_OUTPUT
+          else
+            echo "should_create_issue=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create reminder issue
+        if: steps.check-date.outputs.should_create_issue == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const daysUntil = ${{ steps.check-date.outputs.days_until_deletion }};
+            const deletionDate = '${{ steps.check-date.outputs.deletion_date }}';
+            
+            // Check if reminder issue already exists
+            const issues = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: 'repo-deletion-reminder',
+              state: 'open'
+            });
+            
+            if (issues.data.length > 0) {
+              console.log('Reminder issue already exists');
+              return;
+            }
+            
+            // Create urgency label based on days remaining
+            let urgency = '🟡 medium';
+            if (daysUntil <= 7) {
+              urgency = '🔴 critical';
+            } else if (daysUntil <= 14) {
+              urgency = '🟠 high';
+            }
+            
+            // Create the issue
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `⏰ Repository Deletion Reminder: ${daysUntil} days remaining`,
+              body: `## 📅 Scheduled Repository Deletion
+              
+**Deletion Date**: ${deletionDate}
+**Days Remaining**: ${daysUntil}
+**Urgency**: ${urgency}
+
+### Repositories to Delete:
+1. [brainrot-publishing-house](https://github.com/phrazzld/brainrot-publishing-house)
+2. [brainrot-translations](https://github.com/phrazzld/brainrot-translations)
+
+### ✅ Pre-Deletion Checklist:
+- [ ] Verify all GitHub issues are closed or migrated
+- [ ] Check for any remaining open PRs
+- [ ] Confirm no external services depend on old repos
+- [ ] Update any external documentation/links
+- [ ] Create final backup of repositories
+- [ ] Notify any collaborators
+
+### 📋 Migration Status:
+- ✅ Content migrated to monorepo
+- ✅ Git history preserved
+- ✅ Deprecation notices added
+- ✅ New monorepo fully operational
+
+### 📖 Documentation:
+See [REPOSITORY_DELETION_SCHEDULE.md](docs/REPOSITORY_DELETION_SCHEDULE.md) for full details.
+
+### 🔄 Next Steps:
+1. Review the checklist above
+2. Complete any remaining tasks
+3. Archive repositories on ${deletionDate}
+4. Delete repositories on September 21, 2025 (24 hours after archival)
+
+---
+*This issue was automatically created by the repo-deletion-reminder workflow*`,
+              labels: ['repo-deletion-reminder', 'maintenance', urgency.split(' ')[0]],
+              assignees: ['phrazzld']
+            });
+            
+            console.log(`Created reminder issue: ${daysUntil} days until deletion`);
+
+      - name: Log status
+        run: |
+          echo "Days until deletion: ${{ steps.check-date.outputs.days_until_deletion }}"
+          echo "Should create issue: ${{ steps.check-date.outputs.should_create_issue }}"
+          if [[ "${{ steps.check-date.outputs.should_create_issue }}" == "false" ]]; then
+            if [ ${{ steps.check-date.outputs.days_until_deletion }} -le 0 ]; then
+              echo "⚠️ Deletion date has passed! Repositories should be deleted."
+            else
+              echo "✅ More than 30 days until deletion. No reminder needed yet."
+            fi
+          fi

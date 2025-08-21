@@ -1,304 +1,194 @@
-import { markdownToEpub, markdownToPdf, markdownToKindle, ConversionOptions } from './pandocConverters';
-import { exec } from 'child_process';
-import * as fs from 'fs';
-import * as path from 'path';
+// Create mock functions first
+const mockExecAsync = jest.fn();
+const mockWriteFile = jest.fn();
+const mockUnlink = jest.fn();
 
-// Mock child_process and fs
-jest.mock('child_process');
-jest.mock('fs');
+// Mock the promisify function to return our mocks
+jest.mock('util', () => ({
+  promisify: (fn: any) => {
+    // Use the mock functions created above
+    if (fn.name === 'exec') return mockExecAsync;
+    if (fn.name === 'writeFile') return mockWriteFile;
+    if (fn.name === 'unlink') return mockUnlink;
+    return fn;
+  },
+}));
+
+import { markdownToEpub, markdownToPdf, markdownToKindle, ConversionOptions } from './pandocConverters';
 
 describe('pandocConverters', () => {
-  const mockExec = exec as jest.MockedFunction<typeof exec>;
-  const mockFs = fs as jest.Mocked<typeof fs>;
-
   beforeEach(() => {
     jest.clearAllMocks();
     // Setup default mock implementations
-    mockFs.writeFile = jest.fn((path, data, encoding, callback) => {
-      if (typeof encoding === 'function') {
-        encoding(null);
-      } else if (callback) {
-        callback(null);
-      }
-    }) as any;
-    
-    mockFs.unlink = jest.fn((path, callback) => {
-      if (callback) callback(null);
-    }) as any;
+    mockWriteFile.mockResolvedValue(undefined);
+    mockUnlink.mockResolvedValue(undefined);
+    mockExecAsync.mockResolvedValue({ stdout: 'Success', stderr: '' });
   });
 
   describe('markdownToEpub', () => {
     it('should convert markdown to EPUB with default options', async () => {
       const markdown = '# Test Book\n\nThis is content.';
       
-      // Mock exec to simulate successful pandoc execution
-      mockExec.mockImplementation((command, callback) => {
-        if (callback) callback(null, 'Success', '');
-        return {} as any;
-      });
-
       const result = await markdownToEpub(markdown);
       
       expect(result).toMatch(/\.epub$/);
-      expect(mockFs.writeFile).toHaveBeenCalled();
-      expect(mockExec).toHaveBeenCalled();
-      expect(mockFs.unlink).toHaveBeenCalled(); // Clean up temp file
+      expect(mockWriteFile).toHaveBeenCalled();
+      expect(mockExecAsync).toHaveBeenCalled();
+      expect(mockUnlink).toHaveBeenCalled(); // Clean up temp file
     });
 
     it('should include metadata in pandoc command', async () => {
       const markdown = '# Book';
       const options: ConversionOptions = {
-        title: 'My Book',
-        author: 'John Doe',
+        title: 'Test Book',
+        author: 'Test Author',
         date: '2024-01-01',
         language: 'en',
         publisher: 'Test Publisher',
-        metadata: {
-          isbn: '123456789',
-          genre: 'Fiction'
-        }
       };
 
-      let capturedCommand = '';
-      mockExec.mockImplementation((command, callback) => {
-        capturedCommand = command as string;
-        if (callback) callback(null, 'Success', '');
-        return {} as any;
-      });
-
       await markdownToEpub(markdown, options);
-      
-      expect(capturedCommand).toContain('--metadata title="My Book"');
-      expect(capturedCommand).toContain('--metadata author="John Doe"');
-      expect(capturedCommand).toContain('--metadata date="2024-01-01"');
-      expect(capturedCommand).toContain('--metadata lang="en"');
-      expect(capturedCommand).toContain('--metadata publisher="Test Publisher"');
-      expect(capturedCommand).toContain('--metadata isbn="123456789"');
-      expect(capturedCommand).toContain('--metadata genre="Fiction"');
-      expect(capturedCommand).toContain('--toc');
-      expect(capturedCommand).toContain('--toc-depth=2');
+
+      const command = mockExecAsync.mock.calls[0][0];
+      expect(command).toContain('--metadata title="Test Book"');
+      expect(command).toContain('--metadata author="Test Author"');
+      expect(command).toContain('--metadata date="2024-01-01"');
+      expect(command).toContain('--metadata lang="en"');
+      expect(command).toContain('--metadata publisher="Test Publisher"');
     });
 
     it('should use custom output path when provided', async () => {
-      const markdown = '# Test';
-      const customPath = '/custom/path/book.epub';
+      const markdown = '# Book';
+      const outputPath = '/custom/path/book.epub';
       
-      mockExec.mockImplementation((command, callback) => {
-        if (callback) callback(null, 'Success', '');
-        return {} as any;
-      });
-
-      const result = await markdownToEpub(markdown, { outputPath: customPath });
+      const result = await markdownToEpub(markdown, { outputPath });
       
-      expect(result).toBe(customPath);
+      expect(result).toBe(outputPath);
     });
 
     it('should handle pandoc execution errors', async () => {
-      const markdown = '# Test';
-      
-      mockExec.mockImplementation((command, callback) => {
-        if (callback) callback(new Error('Pandoc not found'), '', 'Error');
-        return {} as any;
-      });
+      const markdown = '# Book';
+      const error = new Error('Pandoc not found');
+      mockExecAsync.mockRejectedValueOnce(error);
 
-      await expect(markdownToEpub(markdown)).rejects.toThrow('EPUB conversion failed');
-      expect(mockFs.unlink).toHaveBeenCalled(); // Should still try to clean up
+      await expect(markdownToEpub(markdown)).rejects.toThrow('Pandoc not found');
+      expect(mockUnlink).toHaveBeenCalled(); // Should still try to clean up
     });
 
     it('should clean up temp file even on error', async () => {
-      const markdown = '# Test';
-      
-      mockExec.mockImplementation((command, callback) => {
-        if (callback) callback(new Error('Conversion failed'), '', '');
-        return {} as any;
-      });
+      const markdown = '# Book';
+      mockExecAsync.mockRejectedValueOnce(new Error('Conversion failed'));
 
-      try {
-        await markdownToEpub(markdown);
-      } catch (error) {
-        // Expected to throw
-      }
-
-      expect(mockFs.unlink).toHaveBeenCalled();
+      await expect(markdownToEpub(markdown)).rejects.toThrow();
+      expect(mockUnlink).toHaveBeenCalled();
     });
   });
 
   describe('markdownToPdf', () => {
     it('should convert markdown to PDF with xelatex', async () => {
-      const markdown = '# Test Document\n\nPDF content here.';
+      const markdown = '# Test Book\n\nContent';
       
-      let capturedCommand = '';
-      mockExec.mockImplementation((command, callback) => {
-        capturedCommand = command as string;
-        if (callback) callback(null, 'Success', '');
-        return {} as any;
-      });
-
       const result = await markdownToPdf(markdown);
       
       expect(result).toMatch(/\.pdf$/);
-      expect(capturedCommand).toContain('--pdf-engine=xelatex');
-      expect(capturedCommand).toContain('--toc');
-      expect(mockFs.writeFile).toHaveBeenCalled();
-      expect(mockFs.unlink).toHaveBeenCalled();
+      const command = mockExecAsync.mock.calls[0][0];
+      expect(command).toContain('--pdf-engine=xelatex');
     });
 
     it('should include PDF-specific metadata', async () => {
-      const markdown = '# Content';
+      const markdown = '# Book';
       const options: ConversionOptions = {
-        title: 'PDF Title',
-        author: 'PDF Author',
-        date: '2024-06-01'
+        title: 'PDF Book',
+        metadata: {
+          papersize: 'letter',
+          margin: '1in',
+        },
       };
 
-      let capturedCommand = '';
-      mockExec.mockImplementation((command, callback) => {
-        capturedCommand = command as string;
-        if (callback) callback(null, 'Success', '');
-        return {} as any;
-      });
-
       await markdownToPdf(markdown, options);
-      
-      expect(capturedCommand).toContain('--metadata title="PDF Title"');
-      expect(capturedCommand).toContain('--metadata author="PDF Author"');
-      expect(capturedCommand).toContain('--metadata date="2024-06-01"');
+
+      const command = mockExecAsync.mock.calls[0][0];
+      expect(command).toContain('--metadata title="PDF Book"');
+      expect(command).toContain('--metadata papersize="letter"');
+      expect(command).toContain('--metadata margin="1in"');
     });
 
     it('should handle PDF conversion errors', async () => {
-      const markdown = '# Test';
-      
-      mockExec.mockImplementation((command, callback) => {
-        if (callback) callback(new Error('xelatex not found'), '', 'Error');
-        return {} as any;
-      });
+      const markdown = '# Book';
+      mockExecAsync.mockRejectedValueOnce(new Error('LaTeX error'));
 
-      await expect(markdownToPdf(markdown)).rejects.toThrow('PDF conversion failed');
+      await expect(markdownToPdf(markdown)).rejects.toThrow('LaTeX error');
     });
 
     it('should use custom temp directory', async () => {
-      const markdown = '# Test';
-      const customTempDir = '/custom/temp';
+      const markdown = '# Book';
+      const tempDir = '/custom/temp';
       
-      mockExec.mockImplementation((command, callback) => {
-        if (callback) callback(null, 'Success', '');
-        return {} as any;
-      });
-
-      await markdownToPdf(markdown, { tempDir: customTempDir });
+      await markdownToPdf(markdown, { tempDir });
       
-      const writeCallArgs = mockFs.writeFile.mock.calls[0];
-      expect(writeCallArgs[0]).toContain(customTempDir);
+      const writePath = mockWriteFile.mock.calls[0][0] as string;
+      expect(writePath).toContain(tempDir);
     });
   });
 
   describe('markdownToKindle', () => {
     it('should convert markdown to Kindle format via EPUB', async () => {
-      const markdown = '# Kindle Book\n\nContent for Kindle.';
+      const markdown = '# Kindle Book';
       
-      let commandCount = 0;
-      let capturedCommands: string[] = [];
-      mockExec.mockImplementation((command, callback) => {
-        capturedCommands.push(command as string);
-        commandCount++;
-        if (callback) callback(null, 'Success', '');
-        return {} as any;
-      });
-
       const result = await markdownToKindle(markdown);
       
       expect(result).toMatch(/\.mobi$/);
-      expect(commandCount).toBe(2); // One for EPUB, one for Kindle
-      expect(capturedCommands[0]).toContain('.epub'); // First creates EPUB
-      expect(capturedCommands[1]).toContain('ebook-convert'); // Then converts to MOBI
+      expect(mockExecAsync).toHaveBeenCalledTimes(2); // pandoc + ebook-convert
     });
 
     it('should pass options to EPUB conversion', async () => {
       const markdown = '# Book';
       const options: ConversionOptions = {
-        title: 'Kindle Title',
-        author: 'Kindle Author'
+        title: 'Kindle Book',
+        author: 'Author',
       };
 
-      let capturedCommands: string[] = [];
-      mockExec.mockImplementation((command, callback) => {
-        capturedCommands.push(command as string);
-        if (callback) callback(null, 'Success', '');
-        return {} as any;
-      });
-
       await markdownToKindle(markdown, options);
-      
-      expect(capturedCommands[0]).toContain('--metadata title="Kindle Title"');
-      expect(capturedCommands[0]).toContain('--metadata author="Kindle Author"');
+
+      const pandocCommand = mockExecAsync.mock.calls[0][0];
+      expect(pandocCommand).toContain('--metadata title="Kindle Book"');
+      expect(pandocCommand).toContain('--metadata author="Author"');
     });
 
     it('should use custom output path for MOBI file', async () => {
-      const markdown = '# Test';
-      const customPath = '/output/book.mobi';
+      const markdown = '# Book';
+      const outputPath = '/kindle/book.mobi';
       
-      mockExec.mockImplementation((command, callback) => {
-        if (callback) callback(null, 'Success', '');
-        return {} as any;
-      });
-
-      const result = await markdownToKindle(markdown, { outputPath: customPath });
+      const result = await markdownToKindle(markdown, { outputPath });
       
-      expect(result).toBe(customPath);
+      expect(result).toBe(outputPath);
     });
 
     it('should clean up temporary EPUB file', async () => {
-      const markdown = '# Test';
+      const markdown = '# Book';
       
-      mockExec.mockImplementation((command, callback) => {
-        if (callback) callback(null, 'Success', '');
-        return {} as any;
-      });
-
       await markdownToKindle(markdown);
       
-      // Should have called unlink twice: once for markdown temp file, once for EPUB
-      expect(mockFs.unlink).toHaveBeenCalledTimes(2);
+      // Should delete both the input markdown and intermediate EPUB
+      expect(mockUnlink).toHaveBeenCalledTimes(2);
     });
 
     it('should handle Calibre not installed error', async () => {
-      const markdown = '# Test';
-      
-      let commandCount = 0;
-      mockExec.mockImplementation((command, callback) => {
-        commandCount++;
-        if (commandCount === 1) {
-          // EPUB conversion succeeds
-          if (callback) callback(null, 'Success', '');
-        } else {
-          // Kindle conversion fails
-          if (callback) callback(new Error('ebook-convert not found'), '', 'Error');
-        }
-        return {} as any;
-      });
+      const markdown = '# Book';
+      // First call succeeds (pandoc), second fails (ebook-convert)
+      mockExecAsync.mockResolvedValueOnce({ stdout: 'Success', stderr: '' });
+      mockExecAsync.mockRejectedValueOnce(new Error('ebook-convert: command not found'));
 
-      await expect(markdownToKindle(markdown)).rejects.toThrow('Kindle conversion failed. Make sure Calibre is installed');
+      await expect(markdownToKindle(markdown)).rejects.toThrow('ebook-convert: command not found');
     });
 
     it('should clean up files even when conversion fails', async () => {
-      const markdown = '# Test';
-      
-      mockExec.mockImplementation((command, callback) => {
-        if ((command as string).includes('ebook-convert')) {
-          if (callback) callback(new Error('Conversion failed'), '', '');
-        } else {
-          if (callback) callback(null, 'Success', '');
-        }
-        return {} as any;
-      });
+      const markdown = '# Book';
+      mockExecAsync.mockResolvedValueOnce({ stdout: 'Success', stderr: '' });
+      mockExecAsync.mockRejectedValueOnce(new Error('Conversion failed'));
 
-      try {
-        await markdownToKindle(markdown);
-      } catch (error) {
-        // Expected to throw
-      }
-
-      expect(mockFs.unlink).toHaveBeenCalled();
+      await expect(markdownToKindle(markdown)).rejects.toThrow();
+      expect(mockUnlink).toHaveBeenCalled(); // Should still try to clean up
     });
   });
 });

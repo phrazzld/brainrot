@@ -24,8 +24,8 @@ export function markdownToText(markdown: string, title?: string): string {
     text = `${title.toUpperCase()}\n\n${text}`;
   }
 
-  // Format chapter breaks
-  text = text.replace(/^(CHAPTER|Chapter)\s+(\d+|[IVXLCDM]+)/gm, '\n\n$1 $2\n');
+  // Format chapter breaks and uppercase
+  text = text.replace(/^(CHAPTER|Chapter)\s+(\d+|[IVXLCDM]+)/gmi, '\n\nCHAPTER $2\n');
 
   // Ensure proper paragraph spacing
   text = text.replace(/\n\n+/g, '\n\n');

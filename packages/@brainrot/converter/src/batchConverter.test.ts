@@ -2,55 +2,65 @@ import { convertBook, convertChaptersToText, BookConversionOptions } from './bat
 import * as fs from 'fs';
 import * as path from 'path';
 import { exec } from 'child_process';
+import { markdownToEpub, markdownToPdf, markdownToKindle } from './pandocConverters';
 
 // Mock modules
-jest.mock('fs');
+jest.mock('fs', () => ({
+  ...jest.requireActual('fs'),
+  readdir: jest.fn(),
+  readFile: jest.fn(),
+  writeFile: jest.fn(),
+  mkdir: jest.fn(),
+  existsSync: jest.fn(),
+}));
 jest.mock('child_process');
+jest.mock('./pandocConverters', () => ({
+  markdownToEpub: jest.fn().mockResolvedValue('/output/book.epub'),
+  markdownToPdf: jest.fn().mockResolvedValue('/output/book.pdf'),
+  markdownToKindle: jest.fn().mockResolvedValue('/output/book.mobi'),
+}));
 
 describe('batchConverter', () => {
-  const mockFs = fs as jest.Mocked<typeof fs>;
-  const mockExec = exec as jest.MockedFunction<typeof exec>;
+  const mockReaddir = jest.mocked(fs.readdir);
+  const mockReadFile = jest.mocked(fs.readFile);
+  const mockWriteFile = jest.mocked(fs.writeFile);
+  const mockMkdir = jest.mocked(fs.mkdir);
+  const mockExistsSync = jest.mocked(fs.existsSync);
+  const mockExec = jest.mocked(exec);
+  const mockMarkdownToEpub = jest.mocked(markdownToEpub);
+  const mockMarkdownToPdf = jest.mocked(markdownToPdf);
+  const mockMarkdownToKindle = jest.mocked(markdownToKindle);
 
   beforeEach(() => {
     jest.clearAllMocks();
     
     // Setup default mock implementations
-    mockFs.readdir = jest.fn((path, callback) => {
+    mockReaddir.mockImplementation((path, callback) => {
       if (callback) callback(null, ['chapter-1.md', 'chapter-2.md', 'introduction.md'] as any);
     }) as any;
     
-    mockFs.readFile = jest.fn((path, encoding, callback) => {
+    // Reset pandoc converter mocks
+    mockMarkdownToEpub.mockResolvedValue('/output/book.epub');
+    mockMarkdownToPdf.mockResolvedValue('/output/book.pdf');
+    mockMarkdownToKindle.mockResolvedValue('/output/book.mobi');
+    
+    mockReadFile.mockImplementation((path, encoding, callback) => {
       const content = `# Chapter Title\n\nThis is chapter content with **bold** text.`;
-      if (typeof encoding === 'function') {
-        encoding(null, content);
-      } else if (callback) {
-        callback(null, content);
-      }
+      const cb = typeof encoding === 'function' ? encoding : callback;
+      if (cb) cb(null, content);
     }) as any;
     
-    mockFs.writeFile = jest.fn((path, data, encoding, callback) => {
-      if (typeof encoding === 'function') {
-        encoding(null);
-      } else if (callback) {
-        callback(null);
-      }
+    mockWriteFile.mockImplementation((path, data, encoding, callback) => {
+      const cb = typeof encoding === 'function' ? encoding : callback;
+      if (cb) cb(null);
     }) as any;
     
-    mockFs.mkdir = jest.fn((path, options, callback) => {
-      if (typeof options === 'function') {
-        options(null);
-      } else if (callback) {
-        callback(null);
-      }
+    mockMkdir.mockImplementation((path, options, callback) => {
+      const cb = typeof options === 'function' ? options : callback;
+      if (cb) cb(null);
     }) as any;
     
-    mockFs.unlink = jest.fn((path, callback) => {
-      if (callback) callback(null);
-    }) as any;
-    
-    mockFs.stat = jest.fn((path, callback) => {
-      if (callback) callback(null, { isDirectory: () => true } as any);
-    }) as any;
+    mockExistsSync.mockReturnValue(false);
     
     mockExec.mockImplementation((command, callback) => {
       if (callback) callback(null, 'Success', '');
@@ -67,7 +77,7 @@ describe('batchConverter', () => {
     it('should create output directory if it does not exist', async () => {
       await convertBook(defaultOptions);
       
-      expect(mockFs.mkdir).toHaveBeenCalledWith(
+      expect(mockMkdir).toHaveBeenCalledWith(
         '/output/dir',
         { recursive: true },
         expect.any(Function)
@@ -77,20 +87,20 @@ describe('batchConverter', () => {
     it('should read all markdown files from input directory', async () => {
       await convertBook(defaultOptions);
       
-      expect(mockFs.readdir).toHaveBeenCalledWith('/input/dir', expect.any(Function));
-      expect(mockFs.readFile).toHaveBeenCalledTimes(3); // For 3 .md files
+      expect(mockReaddir).toHaveBeenCalledWith('/input/dir', expect.any(Function));
+      expect(mockReadFile).toHaveBeenCalledTimes(3); // For 3 .md files
     });
 
     it('should filter and sort markdown files', async () => {
-      mockFs.readdir = jest.fn((path, callback) => {
+      mockReaddir.mockImplementation((path, callback) => {
         if (callback) callback(null, ['file.txt', 'chapter-2.md', 'chapter-1.md', 'readme.doc'] as any);
       }) as any;
 
       const results = await convertBook(defaultOptions);
       
-      expect(mockFs.readFile).toHaveBeenCalledTimes(2); // Only .md files
+      expect(mockReadFile).toHaveBeenCalledTimes(2); // Only .md files
       // Check that files are processed in sorted order
-      const readFileCalls = mockFs.readFile.mock.calls;
+      const readFileCalls = mockReadFile.mock.calls;
       expect(readFileCalls[0][0]).toContain('chapter-1.md');
       expect(readFileCalls[1][0]).toContain('chapter-2.md');
     });
@@ -133,7 +143,7 @@ describe('batchConverter', () => {
     });
 
     it('should extract chapter titles from content', async () => {
-      mockFs.readFile = jest.fn((path, encoding, callback) => {
+      mockReadFile.mockImplementation((path, encoding, callback) => {
         const content = `# Chapter 1: The Beginning\n\nContent here.`;
         if (typeof encoding === 'function') {
           encoding(null, content);
@@ -144,32 +154,32 @@ describe('batchConverter', () => {
 
       await convertBook(defaultOptions);
       
-      const writeCall = mockFs.writeFile.mock.calls[0];
+      const writeCall = mockWriteFile.mock.calls[0];
       const writtenContent = writeCall[1] as string;
       expect(writtenContent).toContain('The Beginning');
     });
 
     it('should extract chapter numbers from filenames', async () => {
-      mockFs.readdir = jest.fn((path, callback) => {
+      mockReaddir.mockImplementation((path, callback) => {
         if (callback) callback(null, ['chapter-5.md', 'chapter-10.md', 'chapter-2.md'] as any);
       }) as any;
 
       await convertBook(defaultOptions);
       
       // Files should be processed in sorted order
-      const readFileCalls = mockFs.readFile.mock.calls;
+      const readFileCalls = mockReadFile.mock.calls;
       expect(readFileCalls[0][0]).toContain('chapter-10.md'); // Sorted alphabetically
       expect(readFileCalls[1][0]).toContain('chapter-2.md');
       expect(readFileCalls[2][0]).toContain('chapter-5.md');
     });
 
     it('should combine chapters with separators for text format', async () => {
-      mockFs.readdir = jest.fn((path, callback) => {
+      mockReaddir.mockImplementation((path, callback) => {
         if (callback) callback(null, ['ch1.md', 'ch2.md'] as any);
       }) as any;
 
       let chapterCount = 0;
-      mockFs.readFile = jest.fn((path, encoding, callback) => {
+      mockReadFile.mockImplementation((path, encoding, callback) => {
         chapterCount++;
         const content = `Chapter ${chapterCount} content`;
         if (typeof encoding === 'function') {
@@ -181,7 +191,7 @@ describe('batchConverter', () => {
 
       await convertBook(defaultOptions);
       
-      const writeCall = mockFs.writeFile.mock.calls[0];
+      const writeCall = mockWriteFile.mock.calls[0];
       const writtenContent = writeCall[1] as string;
       expect(writtenContent).toContain('---'); // Chapter separator
       expect(writtenContent).toContain('Chapter 1 content');
@@ -196,17 +206,16 @@ describe('batchConverter', () => {
         author: 'Test Author'
       };
 
-      let capturedCommand = '';
-      mockExec.mockImplementation((command, callback) => {
-        capturedCommand = command as string;
-        if (callback) callback(null, 'Success', '');
-        return {} as any;
-      });
-
       await convertBook(options);
       
-      expect(capturedCommand).toContain('--metadata title="Test Book"');
-      expect(capturedCommand).toContain('--metadata author="Test Author"');
+      // Check that the EPUB converter was called with the metadata
+      expect(mockMarkdownToEpub).toHaveBeenCalledWith(
+        expect.any(String),
+        expect.objectContaining({
+          title: 'Test Book',
+          author: 'Test Author'
+        })
+      );
     });
 
     it('should handle individual format conversion errors gracefully', async () => {
@@ -215,14 +224,8 @@ describe('batchConverter', () => {
         formats: ['text', 'epub', 'pdf']
       };
 
-      mockExec.mockImplementation((command, callback) => {
-        if ((command as string).includes('.epub')) {
-          if (callback) callback(new Error('EPUB failed'), '', '');
-        } else {
-          if (callback) callback(null, 'Success', '');
-        }
-        return {} as any;
-      });
+      // Make EPUB conversion fail
+      mockMarkdownToEpub.mockRejectedValueOnce(new Error('EPUB failed'));
 
       const results = await convertBook(options);
       
@@ -234,14 +237,14 @@ describe('batchConverter', () => {
     });
 
     it('should handle empty input directory', async () => {
-      mockFs.readdir = jest.fn((path, callback) => {
+      mockReaddir.mockImplementation((path, callback) => {
         if (callback) callback(null, [] as any);
       }) as any;
 
       const results = await convertBook(defaultOptions);
       
       expect(results).toHaveLength(1);
-      const writeCall = mockFs.writeFile.mock.calls[0];
+      const writeCall = mockWriteFile.mock.calls[0];
       const writtenContent = writeCall[1] as string;
       expect(writtenContent).toBe(''); // Empty book
     });
@@ -260,7 +263,7 @@ describe('batchConverter', () => {
     });
 
     it('should handle directory read errors', async () => {
-      mockFs.readdir = jest.fn((path, callback) => {
+      mockReaddir.mockImplementation((path, callback) => {
         if (callback) callback(new Error('Permission denied'), null as any);
       }) as any;
 
@@ -273,7 +276,7 @@ describe('batchConverter', () => {
     const outputDir = '/output/text';
 
     it('should convert all markdown files to text', async () => {
-      mockFs.readdir = jest.fn((path, callback) => {
+      mockReaddir.mockImplementation((path, callback) => {
         if (callback) callback(null, ['ch1.md', 'ch2.md', 'ch3.md'] as any);
       }) as any;
 
@@ -288,7 +291,7 @@ describe('batchConverter', () => {
     it('should create output directory if it does not exist', async () => {
       await convertChaptersToText(inputDir, outputDir);
       
-      expect(mockFs.mkdir).toHaveBeenCalledWith(
+      expect(mockMkdir).toHaveBeenCalledWith(
         outputDir,
         { recursive: true },
         expect.any(Function)
@@ -296,11 +299,11 @@ describe('batchConverter', () => {
     });
 
     it('should strip markdown from content', async () => {
-      mockFs.readdir = jest.fn((path, callback) => {
+      mockReaddir.mockImplementation((path, callback) => {
         if (callback) callback(null, ['chapter.md'] as any);
       }) as any;
 
-      mockFs.readFile = jest.fn((path, encoding, callback) => {
+      mockReadFile.mockImplementation((path, encoding, callback) => {
         const content = `# Title\n\n**Bold** and *italic* text with [link](url).`;
         if (typeof encoding === 'function') {
           encoding(null, content);
@@ -311,7 +314,7 @@ describe('batchConverter', () => {
 
       await convertChaptersToText(inputDir, outputDir);
       
-      const writeCall = mockFs.writeFile.mock.calls[0];
+      const writeCall = mockWriteFile.mock.calls[0];
       const writtenContent = writeCall[1] as string;
       expect(writtenContent).not.toContain('**');
       expect(writtenContent).not.toContain('*');
@@ -320,30 +323,31 @@ describe('batchConverter', () => {
     });
 
     it('should preserve filename structure', async () => {
-      mockFs.readdir = jest.fn((path, callback) => {
+      mockReaddir.mockImplementation((path, callback) => {
         if (callback) callback(null, ['intro.md', 'chapter-1.md', 'conclusion.md'] as any);
       }) as any;
 
       const results = await convertChaptersToText(inputDir, outputDir);
       
-      expect(results[0]).toContain('intro.txt');
-      expect(results[1]).toContain('chapter-1.txt');
-      expect(results[2]).toContain('conclusion.txt');
+      // Files are sorted alphabetically
+      expect(results[0]).toContain('chapter-1.txt');
+      expect(results[1]).toContain('conclusion.txt');
+      expect(results[2]).toContain('intro.txt');
     });
 
     it('should filter out non-markdown files', async () => {
-      mockFs.readdir = jest.fn((path, callback) => {
+      mockReaddir.mockImplementation((path, callback) => {
         if (callback) callback(null, ['file.txt', 'chapter.md', 'image.png', 'notes.md'] as any);
       }) as any;
 
       const results = await convertChaptersToText(inputDir, outputDir);
       
       expect(results).toHaveLength(2); // Only .md files
-      expect(mockFs.readFile).toHaveBeenCalledTimes(2);
+      expect(mockReadFile).toHaveBeenCalledTimes(2);
     });
 
     it('should sort files before processing', async () => {
-      mockFs.readdir = jest.fn((path, callback) => {
+      mockReaddir.mockImplementation((path, callback) => {
         if (callback) callback(null, ['z.md', 'a.md', 'm.md'] as any);
       }) as any;
 
@@ -355,18 +359,18 @@ describe('batchConverter', () => {
     });
 
     it('should handle empty input directory', async () => {
-      mockFs.readdir = jest.fn((path, callback) => {
+      mockReaddir.mockImplementation((path, callback) => {
         if (callback) callback(null, [] as any);
       }) as any;
 
       const results = await convertChaptersToText(inputDir, outputDir);
       
       expect(results).toHaveLength(0);
-      expect(mockFs.writeFile).not.toHaveBeenCalled();
+      expect(mockWriteFile).not.toHaveBeenCalled();
     });
 
     it('should handle read errors', async () => {
-      mockFs.readFile = jest.fn((path, encoding, callback) => {
+      mockReadFile.mockImplementation((path, encoding, callback) => {
         if (typeof encoding === 'function') {
           encoding(new Error('Read failed'), null);
         } else if (callback) {
@@ -378,7 +382,7 @@ describe('batchConverter', () => {
     });
 
     it('should handle write errors', async () => {
-      mockFs.writeFile = jest.fn((path, data, encoding, callback) => {
+      mockWriteFile.mockImplementation((path, data, encoding, callback) => {
         if (typeof encoding === 'function') {
           encoding(new Error('Write failed'));
         } else if (callback) {

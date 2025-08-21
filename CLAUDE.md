@@ -1,135 +1,173 @@
 # CLAUDE.md - Brainrot Publishing House Monorepo
 
-## 🚨 CRITICAL CONTEXT FOR NEW SESSION
+## 🎯 PROJECT STATUS: 95% COMPLETE
 
-You are working on a **monorepo migration** for Brainrot Publishing House. This is a publishing company that creates Gen Z "brainrot" translations of classic literature and publishes them across multiple channels (web, ebook, print).
+You are working on the **Brainrot Publishing House monorepo** - a fully integrated publishing platform that creates Gen Z "brainrot" translations of classic literature and publishes them across multiple channels (web, ebook, print).
 
-## Current Situation
+## Current State (Phase 7.4 - Post-Migration Cleanup)
 
-### What Exists Now
-1. **Web App Repository**: `~/Development/brainrot-publishing-house/`
-   - Next.js 15 app with Turbopack
-   - Has Great Gatsby translations in `./great-gatsby/brainrot/*.md`
-   - Uses Vercel Blob storage for content delivery
-   - **PROBLEM**: Great Gatsby text files are missing from blob storage (404 errors)
+### ✅ What's Been Accomplished
+- **Monorepo Migration**: Complete with full git history preserved
+- **Build System**: Turborepo + pnpm workspace fully operational (107ms builds!)
+- **9 Workspace Packages**: All built and functional
+- **10 Books Migrated**: 124 text files generated and processed
+- **Package Ecosystem**: 5 shared packages (@brainrot/*) working perfectly
+- **CI/CD**: GitHub Actions workflows configured
+- **Security**: All vulnerabilities fixed (3 resolved via pnpm overrides)
+- **Documentation**: Architecture diagrams, publishing docs, contribution guide
+- **Test Infrastructure**: Fixed - all 73 converter tests passing
 
-2. **Translations Repository**: `~/Development/brainrot-translations/`
-   - Contains translations for multiple books
-   - Already a separate GitHub repo
-   - Has various books in `translations/` directory
+### 🔧 Remaining Tasks
+1. **Vercel Dashboard**: Manual configuration needed (see docs/VERCEL_MONOREPO_UPDATE.md)
+2. **Archive Old Repos**: GitHub settings change to make read-only
+3. **Publisher Linting**: ESLint version conflict needs resolution
+4. **Production Verification**: Test deployment URL functionality
 
-### Why Monorepo?
-- **Content + Code = Unified Product**: Translations are the core product
-- **Shared Publishing Pipeline**: One conversion system for web, EPUB, PDF, Kindle
-- **Automation**: Deploy to web and publish to print platforms from one place
-- **Version Control**: Keep precious translations safe with full history
-
-## Architecture Decisions Made
+## Architecture Overview
 
 ### Monorepo Structure
 ```
-brainrot/                          # THIS DIRECTORY (where you are now)
+brainrot/                          # Monorepo root (THIS DIRECTORY)
 ├── apps/
-│   ├── web/                      # Next.js web app (from brainrot-publishing-house)
-│   ├── publisher/                # CLI for KDP/Lulu publishing
-│   └── studio/                   # Future: translation editor
+│   ├── web/                      # Next.js 15 web app ✅
+│   └── publisher/                # CLI publishing tool ✅
 ├── content/
-│   └── translations/             # All book translations
-│       └── books/
-│           ├── great-gatsby/
-│           ├── the-iliad/
-│           └── [more books]/
-├── packages/
-│   ├── @brainrot/converter/     # MD→TXT/EPUB/PDF conversion
-│   ├── @brainrot/templates/     # Pandoc/LaTeX templates
-│   ├── @brainrot/types/         # Shared TypeScript types
-│   └── @brainrot/blob-client/   # Vercel Blob storage
-└── turbo.json                    # Turborepo config
+│   └── translations/             # All book translations ✅
+│       └── books/                # 10 books migrated
+├── packages/@brainrot/
+│   ├── converter/                # MD→TXT/EPUB/PDF ✅
+│   ├── templates/                # Publishing templates ✅
+│   ├── types/                    # TypeScript definitions ✅
+│   ├── blob-client/              # Vercel Blob storage ✅
+│   └── metadata/                 # Book metadata & ISBN ✅
+├── generated/                    # Processed output (124 files)
+├── docs/                         # Comprehensive documentation
+│   ├── ARCHITECTURE.md           # 10 mermaid diagrams ✅
+│   ├── PUBLISHING.md             # Publishing pipeline docs ✅
+│   └── VERCEL_MONOREPO_UPDATE.md # Deployment instructions
+└── turbo.json                    # Turborepo config ✅
 ```
 
 ### Technology Stack
-- **Monorepo Tool**: Turborepo (by Vercel, perfect for Next.js)
-- **Package Manager**: pnpm (efficient, workspace support)
+- **Monorepo**: Turborepo 2.5.6 (exceptional caching)
+- **Package Manager**: pnpm 8.15.1 (workspace linking)
+- **Framework**: Next.js 15.4.6 with Turbopack
+- **Node.js**: 22.15 (matches requirements)
 - **Content Pipeline**: Markdown → Pandoc → Multiple formats
-- **Publishing**: Lulu API (automated), KDP (semi-automated)
+- **Publishing**: Lulu API (automated), KDP (Playwright automation)
 - **Storage**: Vercel Blob for web content
+- **Testing**: Jest with full ES module support
 
-## Immediate Priorities
+## Key Commands
 
-### 1. Fix Great Gatsby (Urgent)
-The Great Gatsby translations exist as markdown but need to be:
-1. Converted to plain text (strip markdown)
-2. Uploaded to blob storage at `books/great-gatsby/text/`
-3. Named: `brainrot-introduction.txt`, `brainrot-chapter-1.txt` etc.
-
-### 2. Continue Migration
-You're in Phase 1.1 of the migration. The monorepo directory exists but needs:
-- Git initialization
-- Package.json setup
-- Turborepo configuration
-- Migration of existing repos with history preservation
-
-## Key Files to Reference
-
-### In Old Web App (`~/Development/brainrot-publishing-house/`)
-- `TODO.md` - Full migration plan with checkboxes
-- `great-gatsby/brainrot/*.md` - The translations that need processing
-- `utils/services/BlobService.ts` - Blob upload utilities to reuse
-- `translations/books/great-gatsby.ts` - Shows expected file structure
-
-### In Translations Repo (`~/Development/brainrot-translations/`)
-- Various book translations to be migrated
-- Existing translation structure to preserve
-
-## Environment Variables Needed
 ```bash
-BLOB_READ_WRITE_TOKEN=vercel_blob_xxx  # Get from Vercel dashboard
+# Development
+pnpm dev                      # Start all apps
+pnpm build                    # Build everything
+pnpm test                     # Run all tests
+
+# Content Management
+pnpm generate:formats         # Convert MD to TXT/EPUB/PDF
+pnpm sync:blob               # Upload to blob storage
+
+# Publishing
+pnpm publish:book <slug>     # Publish to all platforms
+pnpm publish:lulu <slug>     # Lulu only
+pnpm publish:kdp <slug>      # Amazon KDP only
+
+# Specific Apps
+pnpm --filter=@brainrot/web dev     # Web app only
+pnpm --filter=@brainrot/publisher build  # Publisher CLI only
+```
+
+## Environment Variables
+```bash
+# Blob Storage (Required for web app)
+BLOB_READ_WRITE_TOKEN=vercel_blob_xxx
 NEXT_PUBLIC_BLOB_BASE_URL=https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com
+
+# Publishing Platforms (Required for publisher)
+LULU_CLIENT_ID=xxx
+LULU_CLIENT_SECRET=xxx
+KDP_EMAIL=xxx
+KDP_PASSWORD=xxx
 ```
 
-## Git Remotes for Migration
-- Web app: `../brainrot-publishing-house` (local) or `git@github.com:phrazzld/brainrot-publishing-house.git`
-- Translations: `../brainrot-translations` (local) or `git@github.com:phrazzld/brainrot-translations.git`
+## Performance Metrics
+- **Build Time**: 107ms with full cache (target was <60s)
+- **Cold Build**: ~7.5s
+- **Cache Hit Rate**: 99.9%
+- **Content**: 10 books, 124 text files
+- **Test Suite**: 73 tests passing
 
-## Commands You'll Use
-```bash
-# Package management
-pnpm install
-pnpm add -D turbo
+## Current Books Available
+1. The Great Gatsby ✅
+2. The Iliad ✅
+3. Romeo and Juliet ✅
+4. Pride and Prejudice ✅
+5. Frankenstein ✅
+6. Moby Dick ✅
+7. The Picture of Dorian Gray ✅
+8. Jane Eyre ✅
+9. Dracula ✅
+10. La Divina Comedia (partial)
 
-# Git subtree migration (preserves history)
-git subtree add --prefix=apps/web ../brainrot-publishing-house master
-git subtree add --prefix=content/translations ../brainrot-translations main
+## Critical Information
 
-# Turborepo
-pnpm dev                    # Start everything
-pnpm build --filter=web     # Build just web app
-pnpm generate:formats       # Convert MD to various formats
-pnpm sync:blob             # Upload to blob storage
-```
+### GitHub Repository
+- **URL**: https://github.com/phrazzld/brainrot
+- **Branch Protection**: Enabled (1 review required)
+- **CODEOWNERS**: Configured
+- **Dependabot**: Active for all packages
+- **Old Repos**: Need archival (brainrot-publishing-house, brainrot-translations)
 
-## Publishing Strategy
-1. **Web App**: Automatic via blob storage
-2. **Amazon KDP**: Semi-automated with Playwright
-3. **Lulu**: Fully automated via API (they have a free API!)
-4. **IngramSpark**: Manual for select titles
+### Deployment Status
+- **Vercel Project**: Created but needs manual dashboard config
+- **Production URL**: https://brainrot-pzvw1wih4-moomooskycow.vercel.app
+- **Issue**: Deployment protection enabled (requires Vercel SSO)
+- **Action Required**: Disable in Vercel dashboard → Settings → Security & Privacy
+
+### Known Issues
+1. **Vercel Deployment**: Requires manual dashboard configuration
+2. **Publisher Linting**: ESLint v8 deprecation warning
+3. **React Peer Deps**: Version mismatch warnings (React 19 vs 18)
+4. **Deprecated Packages**: Some subdependencies need updates
 
 ## What Makes This Special
-- These aren't just "translations" - they're complete cultural reinterpretations
-- Example: "In my younger and more vulnerable years" becomes "back when i was a lil sus beta and way more vulnerable to getting absolutely ratio'd by life"
-- The translations are THE product - they must be preserved and versioned
-- Goal: Scale to hundreds of public domain books
+- **Cultural Reinterpretations**: Not just translations, complete Gen Z adaptations
+- **Example**: "In my younger and more vulnerable years" → "back when i was a lil sus beta and way more vulnerable to getting absolutely ratio'd by life"
+- **Scale Goal**: Hundreds of public domain books
+- **Multi-Channel**: Web, Kindle, Print-on-Demand, Bookstores
 
-## Gotchas & Warnings
-1. **Don't lose the translations** - They're in `great-gatsby/brainrot/*.md`
-2. **Blob paths matter** - Web app expects specific paths
-3. **Preserve git history** - Use subtree merge, not copy
-4. **Test Great Gatsby first** - It's the canary for the whole system
+## Next Steps for Any Session
 
-## Your Immediate Next Steps
-1. Check TODO.md for current progress
-2. Continue with Phase 1.1 tasks (git init, package.json, etc.)
-3. Once basic setup done, prioritize Great Gatsby text conversion
-4. Test that Great Gatsby loads in the web app
+1. **Check TODO.md**: Current task list with priority items
+2. **Review Critical Issues**: Section in TODO.md for blockers
+3. **Run Tests**: `pnpm test` to verify everything works
+4. **Check Build**: `pnpm build` to ensure no errors
 
-Remember: The user has been working on this migration and knows the context. You can refer to "our plan" and "what we discussed" - you're continuing work, not starting fresh.
+## Quick Troubleshooting
+
+### If builds fail:
+```bash
+pnpm install          # Reinstall dependencies
+pnpm clean           # Clear Turborepo cache
+pnpm build --force   # Force rebuild
+```
+
+### If tests fail:
+```bash
+pnpm test --filter=@brainrot/converter  # Test specific package
+pnpm test -- --clearCache               # Clear Jest cache
+```
+
+### If blob storage fails:
+1. Check environment variables are set
+2. Verify token hasn't expired
+3. Check network connectivity
+4. Review blob storage dashboard for quota
+
+---
+
+*Last Updated: 2025-08-21*
+*Migration Status: Phase 7.4 - Post-Migration Cleanup (95% Complete)*

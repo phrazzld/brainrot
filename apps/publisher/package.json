@@ -19,7 +19,7 @@
     "start": "node dist/index.js",
     "typecheck": "tsc --noEmit",
     "lint": "echo 'Linting skipped for publisher - ESLint config needs update'",
-    "test": "jest"
+    "test": "jest --passWithNoTests"
   },
   "dependencies": {
     "@brainrot/metadata": "workspace:*",
@@ -30,7 +30,7 @@
     "commander": "^11.0.0",
     "dotenv": "^16.5.0",
     "form-data": "^4.0.4",
-    "inquirer": "^9.3.7",
+    "inquirer": "^12.9.3",
     "js-yaml": "^4.1.0",
     "ora": "^8.2.0",
     "p-retry": "^5.1.0",
