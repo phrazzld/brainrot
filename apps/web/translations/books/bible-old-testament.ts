@@ -10,7 +10,7 @@ const bibleOldTestament: Translation = {
   title: 'bible: old testament',
   shortDescription:
     'OG biblical lore drops. god tier world building, moses main character arc goes crazy.',
-  coverImage: '/assets/the-bible-old-testament/images/old-testament-03.png', // Keep cover as is for now
+  coverImage: 'https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/assets/the-bible-old-testament/images/old-testament-03.png',
   status: 'coming soon',
   chapters: [],
 };

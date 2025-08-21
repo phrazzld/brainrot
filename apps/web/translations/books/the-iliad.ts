@@ -9,7 +9,7 @@ const theIliad: Translation = {
   title: 'the iliad',
   shortDescription:
     'achilles big salty, trojan bros caught in 4k, city going bruh-level meltdown. w drama, 100% based.',
-  coverImage: '/assets/the-iliad/images/the-iliad-01.png', // Keep cover as is for now
+  coverImage: 'https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-iliad/images/the-iliad-01.png',
   status: 'available',
   purchaseUrl: 'https://a.co/d/3Jgk26x',
   chapters: [

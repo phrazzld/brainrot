@@ -10,7 +10,7 @@ const bhagavadGita: Translation = {
   title: 'the bhagavad gita',
   shortDescription:
     'krishna drops philosophy mid-battle, arjuna contemplates existence. hindu wisdom literature stays undefeated.',
-  coverImage: '/assets/bhagavad-gita/images/gita-01.png', // Keep cover as is for now
+  coverImage: 'https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/assets/bhagavad-gita/images/gita-01.png',
   status: 'coming soon',
   chapters: [],
 };

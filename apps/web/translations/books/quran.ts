@@ -10,7 +10,7 @@ const quran: Translation = {
   title: 'the quran',
   shortDescription:
     'final islamic scripture drops, prophet muhammad delivers divine bars. monotheism endgame achieved.',
-  coverImage: '/assets/the-quran/images/quran-01.png', // Keep cover as is for now
+  coverImage: 'https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/assets/the-quran/images/quran-01.png',
   status: 'coming soon',
   chapters: [],
 };

@@ -9,7 +9,7 @@ const theOdyssey: Translation = {
   title: 'the odyssey',
   shortDescription:
     'greek man refuses to ask for directions, takes 10 years to get home. wife dealing with simps.',
-  coverImage: '/assets/the-odyssey/images/the-odyssey-01.png', // Keep cover as is for now
+  coverImage: 'https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-odyssey/images/the-odyssey-01.png',
   status: 'available',
   purchaseUrl: 'https://a.co/d/gGH9IrT',
   chapters: [

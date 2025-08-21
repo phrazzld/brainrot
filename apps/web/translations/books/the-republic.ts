@@ -10,7 +10,7 @@ const theRepublic: Translation = {
   title: 'the republic',
   shortDescription:
     'plato spittin facts about justice and the ideal state. socrates stays undefeated in debate club.',
-  coverImage: '/assets/the-republic/images/republic-07.png', // Keep cover as is for now
+  coverImage: 'https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-republic/images/republic-07.png',
   status: 'coming soon',
   chapters: [],
 };

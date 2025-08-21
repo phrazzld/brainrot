@@ -10,7 +10,7 @@ const romeoAndJuliet: Translation = {
   title: 'romeo and juliet',
   shortDescription:
     'teen love speedrun any%, family beef ruins everything. shakespeare understood toxic relationships fr.',
-  coverImage: '/assets/romeo-and-juliet/images/romeo-and-juliet-02.png', // Keep cover as is for now
+  coverImage: 'https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/assets/romeo-and-juliet/images/romeo-and-juliet-02.png',
   status: 'coming soon',
   chapters: [],
 };

@@ -9,7 +9,7 @@ const theAeneid: Translation = {
   title: 'the aeneid',
   shortDescription:
     'trojan refugee aeneas speed-runs founding rome. gods playing 5D chess, absolute chaos mode activated.',
-  coverImage: '/assets/the-aeneid/images/cover.png', // Keep cover as is for now
+  coverImage: 'https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-aeneid/images/the-aeneid-01.png',
   status: 'available',
   chapters: [
     {

@@ -10,7 +10,7 @@ const divineComedyParadiso: Translation = {
   title: 'divine comedy: paradiso',
   shortDescription:
     'dante achieves peak enlightenment, heaven tour maximum vibes. beatrice best girl confirmed.',
-  coverImage: '/assets/the-divine-comedy-paradiso/images/paradiso-02.png', // Keep cover as is for now
+  coverImage: 'https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/assets/the-divine-comedy-paradiso/images/paradiso-02.png',
   status: 'coming soon',
   chapters: [],
 };

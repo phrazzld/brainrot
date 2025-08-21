@@ -11,16 +11,9 @@ const BASE_URL = process.env.NEXT_PUBLIC_BLOB_BASE_URL ||
  * Generate blob URL for a book's text file
  */
 export function getBlobUrl(bookSlug: string, filename: string): string {
-  // Handle different path patterns for different books
-  // TODO: Standardize all to /books/${bookSlug}/text/${filename}
-  
-  // Books with content in /assets/${bookSlug}/text/
-  if (bookSlug === 'the-iliad' || bookSlug === 'the-odyssey' || bookSlug === 'the-aeneid') {
-    return `${BASE_URL}/assets/${bookSlug}/text/${filename}`;
-  }
-  
-  // Books with content in /assets/text/${bookSlug}/brainrot-
-  return `${BASE_URL}/assets/text/${bookSlug}/brainrot-${filename}`;
+  // All text content is stored at /books/${bookSlug}/text/${filename}
+  // This matches where sync-translations.ts uploads the files
+  return `${BASE_URL}/books/${bookSlug}/text/${filename}`;
 }
 
 /**

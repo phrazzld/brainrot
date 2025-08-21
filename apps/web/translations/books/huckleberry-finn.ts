@@ -9,7 +9,7 @@ const huckleberryFinn: Translation = {
   title: 'the adventures of huckleberry finn',
   shortDescription:
     'huck and jim float down mississippi, societal norms absolutely cooked, twain understood the assignment fr.',
-  coverImage: '/assets/huckleberry-finn/images/cover.png', // Keep cover as is for now
+  coverImage: 'https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-adventures-of-huckleberry-finn/images/huck-finn-09.png',
   status: 'available',
   chapters: [
     {
