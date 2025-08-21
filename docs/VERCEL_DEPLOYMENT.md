@@ -1,211 +1,141 @@
-# Vercel Deployment Configuration Guide
+# Vercel Deployment Configuration
 
-## Prerequisites
-- Vercel account with access to create new projects
-- GitHub repository created for the monorepo (brainrot)
-- Environment variables from `.env.local` ready
+## Current Setup ✅
 
-## Step-by-Step Configuration
+The monorepo is deployed to Vercel using the **brainrot-publishing-house** project, which maintains the custom domain `www.brainrotpublishing.com`.
 
-### 1. Create New Vercel Project
+## Project Details
 
-1. Go to [Vercel Dashboard](https://vercel.com/dashboard)
-2. Click "Add New..." → "Project"
-3. Import Git Repository:
-   - Select GitHub provider
-   - Search for "brainrot" repository
-   - Click "Import"
+- **Project Name**: brainrot-publishing-house
+- **Project ID**: `prj_0HtbgBZ9uUsHRl2v1DQWIHOpGJhs`
+- **Organization ID**: `team_nRcB5fO13AUrjGlnpoZ2q3Wz`
+- **Custom Domain**: https://www.brainrotpublishing.com
+- **Git Repository**: phrazzld/brainrot (monorepo)
 
-### 2. Configure Build & Development Settings
+## Build Configuration
 
-In the "Configure Project" screen:
+### Vercel Dashboard Settings
 
-#### Framework Preset
-- **Framework Preset**: Next.js (should auto-detect)
+Navigate to: https://vercel.com/moomooskycow/brainrot-publishing-house/settings/general
 
-#### Root Directory
-- **Root Directory**: `apps/web`
-- Click "Edit" next to Root Directory
-- Enter: `apps/web`
+**Build & Development Settings:**
+- **Root Directory**: Leave empty (monorepo root)
+- **Framework Preset**: Next.js
+- **Build Command**: `pnpm build --filter=@brainrot/web`
+- **Output Directory**: `apps/web/.next`
+- **Install Command**: `pnpm install --frozen-lockfile`
+- **Development Command**: `pnpm dev --filter=@brainrot/web`
 
-#### Build and Output Settings
-- **Build Command**: 
-  ```bash
-  cd ../.. && pnpm install --frozen-lockfile && pnpm build --filter=@brainrot/web
-  ```
-- **Output Directory**: `.next` (default)
-- **Install Command**: Override with:
-  ```bash
-  pnpm install --frozen-lockfile
-  ```
+**Node.js Version**: 22.x
 
-#### Development Command
-- Leave as default: `next dev`
+## Environment Variables
 
-### 3. Configure Environment Variables
-
-Add the following environment variables in the "Environment Variables" section:
+Required environment variables in Vercel dashboard:
 
 ```bash
-# Required - Blob Storage
-BLOB_READ_WRITE_TOKEN=vercel_blob_rw_xxx...
+# Blob Storage (Required)
+BLOB_READ_WRITE_TOKEN=vercel_blob_xxx
 NEXT_PUBLIC_BLOB_BASE_URL=https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com
 
-# Optional - AI Services (if using)
-OPENAI_API_KEY=sk-xxx...
-ANTHROPIC_API_KEY=sk-ant-xxx...
-OPENROUTER_API_KEY=sk-or-xxx...
-
-# Optional - Analytics
-NEXT_PUBLIC_VERCEL_ANALYTICS_ID=xxx...
+# Environment
+NODE_ENV=production
+NEXT_PUBLIC_ENVIRONMENT_URL=https://www.brainrotpublishing.com
 ```
 
-**Important**: 
-- For `BLOB_READ_WRITE_TOKEN`, you need to:
-  1. Go to Storage tab in Vercel dashboard
-  2. Create or select your blob store
-  3. Go to Settings → Tokens
-  4. Create a new Read/Write token
-  5. Copy and paste it here
+## GitHub Secrets
 
-### 4. Configure Ignored Build Step
-
-1. After project creation, go to Settings → Git
-2. Find "Ignored Build Step" section
-3. Add custom command:
-   ```bash
-   git diff HEAD^ HEAD --quiet -- apps/web packages
-   ```
-   This prevents builds when only content changes (not web app changes)
-
-### 5. Configure Monorepo Settings
-
-1. Go to Settings → General
-2. Ensure these are set:
-   - **Node.js Version**: 20.x (or 22.x)
-   - **Package Manager**: pnpm
-   - **pnpm Version**: 8.x or 9.x
-
-### 6. Enable Preview Deployments
-
-1. Go to Settings → Git
-2. Under "Preview Deployments":
-   - Enable for all branches
-   - Or configure specific branch patterns
-
-### 7. Configure Custom Domains (Optional)
-
-1. Go to Settings → Domains
-2. Add your custom domain(s):
-   - Example: `brainrot.app`
-   - Example: `www.brainrot.app`
-3. Follow DNS configuration instructions
-
-### 8. Set Up Build Cache
-
-1. Go to Settings → Environment Variables
-2. Add Turborepo remote cache token (if using):
-   ```
-   TURBO_TOKEN=xxx...
-   TURBO_TEAM=your-team-name
-   ```
-
-### 9. Configure Deployment Protection (Optional)
-
-1. Go to Settings → Deployment Protection
-2. Enable password protection for preview deployments
-3. Set up allowed email domains if needed
-
-### 10. Test Deployment
-
-1. Trigger a manual deployment:
-   - Go to Deployments tab
-   - Click "Redeploy" on latest commit
-   - Or push a small change to trigger automatic deployment
-
-2. Monitor build logs for any errors
-3. Check deployment URL when complete
-
-## Verification Checklist
-
-- [ ] Project imported from GitHub successfully
-- [ ] Root directory set to `apps/web`
-- [ ] Build command includes pnpm workspace filter
-- [ ] Environment variables added (especially BLOB_READ_WRITE_TOKEN)
-- [ ] Node.js version set to 20.x or higher
-- [ ] Package manager set to pnpm
-- [ ] Build completes successfully
-- [ ] Web app loads at deployment URL
-- [ ] Great Gatsby content loads in reading room
-
-## Common Issues & Solutions
-
-### Build Fails with "Module not found"
-- Ensure build command includes `cd ../..` to go to monorepo root
-- Check that `pnpm install --frozen-lockfile` runs before build
-
-### Environment Variables Not Working
-- Verify variables are added to correct environment (Production/Preview/Development)
-- Check for typos in variable names
-- Ensure NEXT_PUBLIC_ prefix for client-side variables
-
-### Deployment Takes Too Long
-- Enable Turborepo remote caching with TURBO_TOKEN
-- Check if ignored build step is configured correctly
-
-### Content Not Loading
-- Verify BLOB_READ_WRITE_TOKEN is correct
-- Check NEXT_PUBLIC_BLOB_BASE_URL matches your blob storage URL
-- Ensure blob storage has the content uploaded
-
-## Deployment Notifications Setup
-
-### Slack Integration
-1. Go to Settings → Integrations
-2. Add Slack integration
-3. Configure channels for deployment notifications
-
-### Discord Webhook
-1. Create webhook in Discord server
-2. Add to Settings → Environment Variables:
-   ```
-   DISCORD_WEBHOOK_URL=https://discord.com/api/webhooks/xxx...
-   ```
-3. Configure in deployment scripts if needed
-
-## CLI Deployment (Alternative)
-
-If you prefer CLI deployment:
+Add these secrets to the GitHub repository (phrazzld/brainrot):
 
 ```bash
-# Install Vercel CLI
-pnpm add -g vercel
-
-# Login to Vercel
-vercel login
-
-# Deploy from monorepo root
-cd ~/Development/brainrot
-vercel --cwd apps/web
-
-# Follow prompts to:
-# - Link to existing project or create new
-# - Configure settings
-# - Deploy
+VERCEL_TOKEN=xxx                                    # From Vercel account settings
+VERCEL_ORG_ID=team_nRcB5fO13AUrjGlnpoZ2q3Wz       # Organization ID
+VERCEL_PROJECT_ID=prj_0HtbgBZ9uUsHRl2v1DQWIHOpGJhs # Project ID
+BLOB_READ_WRITE_TOKEN=vercel_blob_xxx              # Same as in Vercel env
+NEXT_PUBLIC_BLOB_BASE_URL=https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com
 ```
 
-## Next Steps
+## Deployment Methods
 
-After successful deployment:
-1. Note the production URL
-2. Update GitHub repository with deployment badge
-3. Configure GitHub Actions to use Vercel tokens
-4. Set up monitoring and analytics
-5. Enable automatic deployments from main branch
+### Automatic Deployment
+- Push to `main` or `master` branch triggers production deployment
+- Pull requests create preview deployments
 
-## Support Resources
+### Manual Deployment via CLI
 
-- [Vercel Monorepo Guide](https://vercel.com/docs/monorepos)
-- [Next.js on Vercel](https://vercel.com/docs/frameworks/nextjs)
-- [Turborepo with Vercel](https://turbo.build/repo/docs/ci/vercel)
-- [Environment Variables](https://vercel.com/docs/environment-variables)
+```bash
+# Production deployment
+vercel --prod
+
+# Preview deployment
+vercel
+
+# With specific environment variables
+vercel --prod --build-env KEY=value
+```
+
+### Manual Deployment via GitHub Actions
+
+```bash
+# Trigger workflow manually
+gh workflow run deploy-web.yml
+```
+
+## Local Development
+
+### Link to Vercel Project
+
+```bash
+# If not already linked
+vercel link --project brainrot-publishing-house --yes
+```
+
+### Pull Environment Variables
+
+```bash
+# Pull production env vars
+vercel env pull .env.local
+
+# Pull preview env vars
+vercel env pull .env.local --environment=preview
+```
+
+## Troubleshooting
+
+### Build Failures
+
+1. **Check pnpm version**: Should be 8.15.1
+   ```bash
+   pnpm --version
+   ```
+
+2. **Verify Node version**: Should be 22.x
+   ```bash
+   node --version
+   ```
+
+3. **Clear build cache** in Vercel dashboard:
+   Settings → Functions → Clear Cache
+
+### 404 on Custom Domain
+
+1. Ensure build settings are correct (see above)
+2. Check that Git integration points to `phrazzld/brainrot`
+3. Verify environment variables are set
+
+### Assets Not Loading
+
+1. Check `NEXT_PUBLIC_BLOB_BASE_URL` is set correctly
+2. Verify blob storage token has read/write access
+3. Ensure assets are synced: `pnpm sync:blob`
+
+## Monitoring
+
+- **Build Logs**: https://vercel.com/moomooskycow/brainrot-publishing-house
+- **Analytics**: Available in Vercel dashboard
+- **Functions**: Monitor serverless function usage
+
+## Related Documentation
+
+- [Monorepo Structure](../README.md)
+- [Web App README](../apps/web/README.md)
+- [Content Pipeline](./ARCHITECTURE.md)

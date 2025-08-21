@@ -228,7 +228,7 @@ The translations are original creative works. Classic source texts are public do
 
 ## 🔗 Links
 
-- **Web App**: Production deployment pending (see Vercel configuration)
+- **Web App**: [www.brainrotpublishing.com](https://www.brainrotpublishing.com)
 - **GitHub**: [github.com/phrazzld/brainrot](https://github.com/phrazzld/brainrot)
 - **Discord**: Coming soon
 - **TikTok**: @brainrotpublishing (coming soon)
@@ -253,7 +253,7 @@ Make sure to configure the monorepo settings in Vercel dashboard:
 - Root Directory: (leave empty)
 - Build Command: `pnpm build --filter=@brainrot/web`
 - Output Directory: `apps/web/.next`
-See `docs/VERCEL_MONOREPO_UPDATE.md` for details.
+See `docs/VERCEL_DEPLOYMENT.md` for complete deployment guide.
 
 ### Build failing?
 Make sure you have:
@@ -283,7 +283,7 @@ git log --follow content/translations/[file]
 - [x] Mock mode for testing
 
 ### Phase 3: Production Launch (Current)
-- [ ] Deploy to production on Vercel
+- [x] Deploy to production on Vercel ✅
 - [ ] Test publishing pipeline with real credentials
 - [ ] Launch first 10 books on all platforms
 - [ ] Set up analytics and monitoring
