@@ -101,7 +101,7 @@
     "@vercel/blob": "^1.0.0",
     "@wavesurfer/react": "^1.0.11",
     "cheerio": "^1.0.0",
-    "dotenv": "^16.5.0",
+    "dotenv": "^17.2.1",
     "gsap": "^3.12.5",
     "next": "^15.3.3",
     "openai": "^4.80.1",
