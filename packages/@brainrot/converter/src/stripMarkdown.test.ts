@@ -1,3 +1,6 @@
+
+
+import { vi, describe, it, test, expect, beforeAll, beforeEach, afterAll, afterEach } from 'vitest';
 import { stripMarkdown, stripMarkdownBatch } from './stripMarkdown';
 
 describe('stripMarkdown', () => {

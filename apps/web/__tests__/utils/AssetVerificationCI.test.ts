@@ -1,9 +1,12 @@
+
+
 /**
  * Asset Verification CI Tests
  *
  * These tests are designed to run in CI environments where real Blob storage may not be available.
  * They use mocked responses and focus on path generation and URL construction without actual HTTP requests.
  */
+import { vi, describe, it, test, expect, beforeAll, beforeEach, afterAll, afterEach } from 'vitest';
 import {
   AUDIO_ASSETS,
   IMAGE_ASSETS,
@@ -16,12 +19,12 @@ import { assetPathService } from '../../utils/services/AssetPathService';
 import { BlobService } from '../../utils/services/BlobService';
 
 // Mock the Vercel Blob module
-jest.mock('@vercel/blob', () => ({
-  put: jest.fn().mockResolvedValue({
+vi.mock('@vercel/blob', () => ({
+  put: vi.fn().mockResolvedValue({
     url: 'https://test-blob-storage.com/test-asset',
     pathname: 'test-asset',
   }),
-  list: jest.fn().mockResolvedValue({
+  list: vi.fn().mockResolvedValue({
     blobs: [
       {
         url: 'https://test-blob-storage.com/assets/text/hamlet/chapter-01.txt',
@@ -34,19 +37,19 @@ jest.mock('@vercel/blob', () => ({
     ],
     cursor: undefined,
   }),
-  head: jest.fn().mockResolvedValue({
+  head: vi.fn().mockResolvedValue({
     url: 'https://test-blob-storage.com/test-asset',
     pathname: 'test-asset',
     contentType: 'text/plain',
     contentLength: 100,
   }),
-  del: jest.fn().mockResolvedValue(undefined),
+  del: vi.fn().mockResolvedValue(undefined),
 }));
 
 // Skip actual fetch operations in CI
-global.fetch = jest.fn().mockResolvedValue({
+global.fetch = vi.fn().mockResolvedValue({
   ok: true,
-  text: jest.fn().mockResolvedValue('Mock content'),
+  text: vi.fn().mockResolvedValue('Mock content'),
 });
 
 describe('Asset Verification CI Tests', () => {
@@ -54,7 +57,7 @@ describe('Asset Verification CI Tests', () => {
 
   beforeEach(() => {
     // Reset mocks
-    jest.clearAllMocks();
+    vi.clearAllMocks();
 
     // Create a new BlobService instance
     blobService = new BlobService();

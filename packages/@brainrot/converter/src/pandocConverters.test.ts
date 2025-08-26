@@ -1,9 +1,11 @@
+
+
 // Mock fs functions first before any imports
-const mockWriteFile = jest.fn();
-const mockUnlink = jest.fn();
+const mockWriteFile = vi.fn();
+const mockUnlink = vi.fn();
 
 // Mock util before importing the module that uses it
-jest.mock('util', () => ({
+vi.mock('util', () => ({
   promisify: (fn: any) => {
     if (fn.name === 'writeFile') return mockWriteFile;
     if (fn.name === 'unlink') return mockUnlink;
@@ -12,20 +14,21 @@ jest.mock('util', () => ({
 }));
 
 // Mock child_process
-jest.mock('child_process');
+vi.mock('child_process');
 
 // Now import after mocks are set up
+import { vi, describe, it, test, expect, beforeAll, beforeEach, afterAll, afterEach } from 'vitest';
 import { spawn } from 'child_process';
 import { markdownToEpub, markdownToPdf, markdownToKindle, ConversionOptions } from './pandocConverters';
 
-const mockSpawn = jest.mocked(spawn);
+const mockSpawn = vi.mocked(spawn);
 
 describe('pandocConverters', () => {
   let mockPandocProcess: any;
   let mockEbookConvertProcess: any;
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
     
     // Setup default mock implementations
     mockWriteFile.mockResolvedValue(undefined);
@@ -33,8 +36,8 @@ describe('pandocConverters', () => {
 
     // Mock successful pandoc process
     mockPandocProcess = {
-      stderr: { on: jest.fn() },
-      on: jest.fn((event, callback) => {
+      stderr: { on: vi.fn() },
+      on: vi.fn((event, callback) => {
         if (event === 'close') {
           setTimeout(() => callback(0), 0); // Success
         }
@@ -43,8 +46,8 @@ describe('pandocConverters', () => {
 
     // Mock successful ebook-convert process
     mockEbookConvertProcess = {
-      stderr: { on: jest.fn() },
-      on: jest.fn((event, callback) => {
+      stderr: { on: vi.fn() },
+      on: vi.fn((event, callback) => {
         if (event === 'close') {
           setTimeout(() => callback(0), 0); // Success
         }
@@ -164,8 +167,8 @@ describe('pandocConverters', () => {
     });
 
     it('should include PDF-specific metadata', async () => {
-      const consoleSpy = jest.spyOn(console, 'error').mockImplementation();
-      const consoleWarnSpy = jest.spyOn(console, 'warn').mockImplementation();
+      const consoleSpy = vi.spyOn(console, 'error').mockImplementation();
+      const consoleWarnSpy = vi.spyOn(console, 'warn').mockImplementation();
       
       const markdown = '# Book';
       const options: ConversionOptions = {

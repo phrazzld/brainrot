@@ -1,9 +1,12 @@
+
+
+import { vi, describe, it, test, expect, beforeAll, beforeEach, afterAll, afterEach, MockedObject } from 'vitest';
 import { DownloadRequestParams, DownloadService } from '../../services/downloadService';
 import { AssetNotFoundError, AssetUrlResolver } from '../../types/dependencies';
 
 // Mock implementations of dependencies
-const createMockAssetUrlResolver = (): jest.Mocked<AssetUrlResolver> => ({
-  getAssetUrl: jest.fn(),
+const createMockAssetUrlResolver = (): MockedObject<AssetUrlResolver> => ({
+  getAssetUrl: vi.fn(),
 });
 
 describe('DownloadService', () => {
@@ -23,7 +26,7 @@ describe('DownloadService', () => {
   };
 
   // Test dependencies
-  let mockAssetUrlResolver: jest.Mocked<AssetUrlResolver>;
+  let mockAssetUrlResolver: MockedObject<AssetUrlResolver>;
   let downloadService: DownloadService;
 
   beforeEach(() => {

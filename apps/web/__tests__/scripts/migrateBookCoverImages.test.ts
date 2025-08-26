@@ -1,4 +1,7 @@
+
+
 // Import with proper typing - using underscore to indicate unused type imports
+import { vi, describe, it, test, expect, beforeAll, beforeEach, afterAll, afterEach } from 'vitest';
 import type { BlobPathService as _BlobPathService } from '../../utils/services/BlobPathService';
 import type { BlobService as _IBlobService } from '../../utils/services/BlobService';
 
@@ -12,13 +15,13 @@ const translations = require('../../translations.js').default;
 
 // Create a mock class that implements our interface requirements
 class MockBlobService {
-  uploadFile = jest.fn().mockResolvedValue({
+  uploadFile = vi.fn().mockResolvedValue({
     url: 'https://public.blob.vercel-storage.com/test-url',
     size: 1024,
     uploadedAt: new Date().toISOString(),
   });
 
-  getFileInfo = jest.fn().mockResolvedValue({
+  getFileInfo = vi.fn().mockResolvedValue({
     size: 1024,
     uploadedAt: new Date().toISOString(),
     contentType: 'image/png',
@@ -30,23 +33,23 @@ class MockBlobService {
 }
 
 // Mock the BlobService module
-jest.mock('../../utils/services/BlobService', () => {
+vi.mock('../../utils/services/BlobService', () => {
   return {
-    BlobService: jest.fn().mockImplementation(() => new MockBlobService()),
+    BlobService: vi.fn().mockImplementation(() => new MockBlobService()),
     blobService: new MockBlobService(),
   };
 });
 
 // Mock file existence
-jest.mock('fs/promises', () => ({
-  readFile: jest.fn().mockResolvedValue(Buffer.from('mock file content')),
-  writeFile: jest.fn().mockResolvedValue(undefined),
-  stat: jest.fn().mockResolvedValue({
+vi.mock('fs/promises', () => ({
+  readFile: vi.fn().mockResolvedValue(Buffer.from('mock file content')),
+  writeFile: vi.fn().mockResolvedValue(undefined),
+  stat: vi.fn().mockResolvedValue({
     isFile: () => true,
     size: 1024,
     mtimeMs: Date.now(),
   }),
-  access: jest.fn().mockResolvedValue(undefined),
+  access: vi.fn().mockResolvedValue(undefined),
 }));
 
 // Define the types we'll need
@@ -333,8 +336,8 @@ describe('CoverImageMigrationService', () => {
 
   beforeEach(() => {
     // Import the mocked versions dynamically to get the mock implementations
-    const { BlobService } = jest.requireMock('../../utils/services/BlobService');
-    const { BlobPathService } = jest.requireActual('../../utils/services/BlobPathService');
+    const { BlobService } = vi.importMock('../../utils/services/BlobService');
+    const { BlobPathService } = await vi.importActual('../../utils/services/BlobPathService');
 
     migrationService = new CoverImageMigrationService(
       new BlobService(),
@@ -349,7 +352,7 @@ describe('CoverImageMigrationService', () => {
   });
 
   it('should correctly map paths using BlobPathService', () => {
-    const { BlobPathService } = jest.requireActual('../../utils/services/BlobPathService');
+    const { BlobPathService } = await vi.importActual('../../utils/services/BlobPathService');
     const blobPathService = new BlobPathService();
     const examplePath = '/assets/hamlet/images/hamlet-07.png';
     const blobPath = blobPathService.convertLegacyPath(examplePath);
@@ -410,7 +413,7 @@ describe('CoverImageMigrationService', () => {
 
   it('should handle errors during migration', async () => {
     // Get the mock BlobService implementation
-    const { BlobService } = jest.requireMock('../../utils/services/BlobService');
+    const { BlobService } = vi.importMock('../../utils/services/BlobService');
 
     // Create mock instance
     const mockInstance = new BlobService();

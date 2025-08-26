@@ -1,6 +1,8 @@
+
+
+import { vi, describe, it, test, expect, beforeAll, beforeEach, afterAll, afterEach } from 'vitest';
 import * as fs from 'fs';
 import * as path from 'path';
-import { describe, expect, it } from '@jest/globals';
 
 /**
  * Basic test for the CDN URL verification script

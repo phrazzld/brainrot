@@ -1,3 +1,6 @@
+
+
+import { vi, describe, it, test, expect, beforeAll, beforeEach, afterAll, afterEach } from 'vitest';
 import { convertBook, convertChaptersToText, BookConversionOptions } from './batchConverter';
 import * as fs from 'fs';
 import * as path from 'path';
@@ -5,34 +8,34 @@ import { exec } from 'child_process';
 import { markdownToEpub, markdownToPdf, markdownToKindle } from './pandocConverters';
 
 // Mock modules
-jest.mock('fs', () => ({
-  ...jest.requireActual('fs'),
-  readdir: jest.fn(),
-  readFile: jest.fn(),
-  writeFile: jest.fn(),
-  mkdir: jest.fn(),
-  existsSync: jest.fn(),
+vi.mock('fs', () => ({
+  ...await vi.importActual('fs'),
+  readdir: vi.fn(),
+  readFile: vi.fn(),
+  writeFile: vi.fn(),
+  mkdir: vi.fn(),
+  existsSync: vi.fn(),
 }));
-jest.mock('child_process');
-jest.mock('./pandocConverters', () => ({
-  markdownToEpub: jest.fn().mockResolvedValue('/output/book.epub'),
-  markdownToPdf: jest.fn().mockResolvedValue('/output/book.pdf'),
-  markdownToKindle: jest.fn().mockResolvedValue('/output/book.mobi'),
+vi.mock('child_process');
+vi.mock('./pandocConverters', () => ({
+  markdownToEpub: vi.fn().mockResolvedValue('/output/book.epub'),
+  markdownToPdf: vi.fn().mockResolvedValue('/output/book.pdf'),
+  markdownToKindle: vi.fn().mockResolvedValue('/output/book.mobi'),
 }));
 
 describe('batchConverter', () => {
-  const mockReaddir = jest.mocked(fs.readdir);
-  const mockReadFile = jest.mocked(fs.readFile);
-  const mockWriteFile = jest.mocked(fs.writeFile);
-  const mockMkdir = jest.mocked(fs.mkdir);
-  const mockExistsSync = jest.mocked(fs.existsSync);
-  const mockExec = jest.mocked(exec);
-  const mockMarkdownToEpub = jest.mocked(markdownToEpub);
-  const mockMarkdownToPdf = jest.mocked(markdownToPdf);
-  const mockMarkdownToKindle = jest.mocked(markdownToKindle);
+  const mockReaddir = vi.mocked(fs.readdir);
+  const mockReadFile = vi.mocked(fs.readFile);
+  const mockWriteFile = vi.mocked(fs.writeFile);
+  const mockMkdir = vi.mocked(fs.mkdir);
+  const mockExistsSync = vi.mocked(fs.existsSync);
+  const mockExec = vi.mocked(exec);
+  const mockMarkdownToEpub = vi.mocked(markdownToEpub);
+  const mockMarkdownToPdf = vi.mocked(markdownToPdf);
+  const mockMarkdownToKindle = vi.mocked(markdownToKindle);
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
     
     // Setup default mock implementations
     mockReaddir.mockImplementation((path, callback) => {

@@ -1,4 +1,7 @@
+
+
 // Use namespaced imports to avoid redeclaration conflicts
+import { vi, describe, it, test, expect, beforeAll, beforeEach, afterAll, afterEach } from 'vitest';
 import * as _fs from 'fs';
 import * as _path from 'path';
 
@@ -9,15 +12,15 @@ const fs = require('fs');
 const path = require('path');
 const utils = require('../../utils.js');
 
-// Use jest.requireActual to import our mock instead of the actual module
+// Use vi.importActual to import our mock instead of the actual module
 // This avoids ESM-related issues with import.meta
-const cleanupLocalAssets = jest.requireActual('../../__mocks__/cleanupLocalAssets');
+const cleanupLocalAssets = await vi.importActual('../../__mocks__/cleanupLocalAssets');
 
 // Mock modules
-jest.mock('fs');
-jest.mock('path');
-jest.mock('../../utils');
-jest.mock('../../translations', () => [
+vi.mock('fs');
+vi.mock('path');
+vi.mock('../../utils');
+vi.mock('../../translations', () => [
   {
     slug: 'test-book',
     title: 'Test Book',
@@ -36,10 +39,10 @@ jest.mock('../../translations', () => [
 describe('cleanupLocalAssets', () => {
   // Setup and teardown
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
 
     // Mock utils.assetExistsInBlobStorage
-    jest.mocked(utils.assetExistsInBlobStorage).mockImplementation(async (path: string) => {
+    vi.mocked(utils.assetExistsInBlobStorage).mockImplementation(async (path: string) => {
       // Return true for cover and text, false for audio to test both scenarios
       if (path.includes('audio')) {
         return false;
@@ -48,13 +51,13 @@ describe('cleanupLocalAssets', () => {
     });
 
     // Mock fs functions
-    jest.mocked(fs.existsSync).mockReturnValue(true);
-    jest.mocked(fs.unlinkSync).mockReturnValue(undefined);
-    jest.mocked(fs.mkdirSync).mockReturnValue(undefined);
-    jest.mocked(fs.writeFileSync).mockReturnValue(undefined);
+    vi.mocked(fs.existsSync).mockReturnValue(true);
+    vi.mocked(fs.unlinkSync).mockReturnValue(undefined);
+    vi.mocked(fs.mkdirSync).mockReturnValue(undefined);
+    vi.mocked(fs.writeFileSync).mockReturnValue(undefined);
 
     // Mock path functions
-    jest.mocked(path.join).mockImplementation((...parts: string[]) => parts.join('/'));
+    vi.mocked(path.join).mockImplementation((...parts: string[]) => parts.join('/'));
   });
 
   it('should run in dry-run mode without deleting files', async () => {

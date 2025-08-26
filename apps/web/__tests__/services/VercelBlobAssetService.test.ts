@@ -1,11 +1,14 @@
+
+
+import { vi, describe, it, test, expect, beforeAll, beforeEach, afterAll, afterEach, MockedObject } from 'vitest';
 import { AssetType, AssetUrlOptions } from '../../types/assets';
 import { Logger } from '../../utils/logger';
 import { AssetPathService } from '../../utils/services/AssetPathService';
 import { VercelBlobAssetService } from '../../utils/services/VercelBlobAssetService';
 
 // Mock @vercel/blob
-jest.mock('@vercel/blob', () => ({
-  put: jest.fn().mockResolvedValue({
+vi.mock('@vercel/blob', () => ({
+  put: vi.fn().mockResolvedValue({
     url: 'https://example.com/assets/test.txt',
     pathname: 'assets/test.txt',
     contentDisposition: 'inline',
@@ -13,7 +16,7 @@ jest.mock('@vercel/blob', () => ({
     contentLength: 100,
     uploadedAt: new Date(),
   }),
-  list: jest.fn().mockResolvedValue({
+  list: vi.fn().mockResolvedValue({
     blobs: [
       {
         url: 'https://example.com/assets/audio/the-iliad/chapter-01.mp3',
@@ -34,14 +37,14 @@ jest.mock('@vercel/blob', () => ({
     ],
     cursor: undefined,
   }),
-  head: jest.fn().mockResolvedValue({
+  head: vi.fn().mockResolvedValue({
     url: 'https://example.com/assets/audio/the-iliad/chapter-01.mp3',
     pathname: 'assets/audio/the-iliad/chapter-01.mp3',
     contentType: 'audio/mpeg',
     contentLength: 1000000,
     uploadedAt: new Date(),
   }),
-  del: jest.fn().mockResolvedValue(undefined),
+  del: vi.fn().mockResolvedValue(undefined),
 }));
 
 // Mock File constructor for uploads
@@ -80,16 +83,16 @@ const mockArrayBuffer = new ArrayBuffer(8);
 const mockTextResponse = 'This is the text content';
 
 // Create mock logger
-const createMockLogger = (): jest.Mocked<Logger> => ({
-  info: jest.fn(),
-  debug: jest.fn(),
-  warn: jest.fn(),
-  error: jest.fn(),
-  child: jest.fn().mockReturnThis(),
+const createMockLogger = (): MockedObject<Logger> => ({
+  info: vi.fn(),
+  debug: vi.fn(),
+  warn: vi.fn(),
+  error: vi.fn(),
+  child: vi.fn().mockReturnThis(),
 });
 
 // Mock global.fetch for testing fetchAsset and fetchTextAsset
-global.fetch = jest.fn().mockImplementation(() => {
+global.fetch = vi.fn().mockImplementation(() => {
   return Promise.resolve({
     ok: true,
     status: 200,
@@ -104,11 +107,11 @@ const { put, list, head, del } = require('@vercel/blob');
 describe('VercelBlobAssetService', () => {
   let service: VercelBlobAssetService;
   let pathService: AssetPathService;
-  let mockLogger: jest.Mocked<Logger>;
+  let mockLogger: MockedObject<Logger>;
 
   beforeEach(() => {
     // Clear all mocks
-    jest.clearAllMocks();
+    vi.clearAllMocks();
 
     // Create dependencies
     pathService = new AssetPathService();
@@ -149,7 +152,7 @@ describe('VercelBlobAssetService', () => {
     it('should add cache busting when requested', async () => {
       // Mock Date.now() for consistent testing
       const originalDateNow = Date.now;
-      Date.now = jest.fn(() => 1234567890);
+      Date.now = vi.fn(() => 1234567890);
 
       try {
         const options: AssetUrlOptions = { cacheBusting: true };
@@ -358,13 +361,13 @@ describe('VercelBlobAssetService', () => {
   describe('Error handling', () => {
     it('should handle retry logic on transient errors', async () => {
       // Clean call counting
-      jest.clearAllMocks();
+      vi.clearAllMocks();
 
       // Setup a special counter for the number of fetch calls
       let fetchCallCount = 0;
 
       // Setup custom fetch mock for this test that fails twice then succeeds
-      global.fetch = jest.fn().mockImplementation(() => {
+      global.fetch = vi.fn().mockImplementation(() => {
         fetchCallCount++;
         if (fetchCallCount <= 2) {
           throw new Error(`Network error ${fetchCallCount}`);

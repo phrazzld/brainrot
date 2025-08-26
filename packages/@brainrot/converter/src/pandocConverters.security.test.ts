@@ -1,18 +1,21 @@
+
+
+import { vi, describe, it, test, expect, beforeAll, beforeEach, afterAll, afterEach } from 'vitest';
 import { markdownToEpub, markdownToPdf, markdownToKindle } from './pandocConverters';
 import { spawn } from 'child_process';
 import * as fs from 'fs';
 import * as path from 'path';
 
 // Mock child_process spawn
-jest.mock('child_process');
-const mockSpawn = jest.mocked(spawn);
+vi.mock('child_process');
+const mockSpawn = vi.mocked(spawn);
 
 // Mock fs functions
-jest.mock('fs', () => ({
-  ...jest.requireActual('fs'),
+vi.mock('fs', async () => ({
+  ...(await vi.importActual('fs')),
   promises: {
-    writeFile: jest.fn(),
-    unlink: jest.fn()
+    writeFile: vi.fn(),
+    unlink: vi.fn()
   }
 }));
 
@@ -22,12 +25,12 @@ describe('pandocConverters Security Tests', () => {
 
   beforeEach(() => {
     // Reset mocks
-    jest.clearAllMocks();
+    vi.clearAllMocks();
 
     // Mock successful pandoc process
     mockPandocProcess = {
-      stderr: { on: jest.fn() },
-      on: jest.fn((event, callback) => {
+      stderr: { on: vi.fn() },
+      on: vi.fn((event, callback) => {
         if (event === 'close') {
           callback(0); // Success
         }
@@ -36,8 +39,8 @@ describe('pandocConverters Security Tests', () => {
 
     // Mock successful ebook-convert process
     mockEbookConvertProcess = {
-      stderr: { on: jest.fn() },
-      on: jest.fn((event, callback) => {
+      stderr: { on: vi.fn() },
+      on: vi.fn((event, callback) => {
         if (event === 'close') {
           callback(0); // Success
         }
@@ -57,8 +60,8 @@ describe('pandocConverters Security Tests', () => {
 
   describe('Command Injection Prevention', () => {
     it('should reject metadata fields not in allowlist', async () => {
-      const consoleSpy = jest.spyOn(console, 'error').mockImplementation();
-      const consoleWarnSpy = jest.spyOn(console, 'warn').mockImplementation();
+      const consoleSpy = vi.spyOn(console, 'error').mockImplementation();
+      const consoleWarnSpy = vi.spyOn(console, 'warn').mockImplementation();
 
       await markdownToEpub('# Test', {
         metadata: {
@@ -94,7 +97,7 @@ describe('pandocConverters Security Tests', () => {
     });
 
     it('should reject shell metacharacters in metadata values', async () => {
-      const consoleSpy = jest.spyOn(console, 'error').mockImplementation();
+      const consoleSpy = vi.spyOn(console, 'error').mockImplementation();
 
       const dangerousInputs = [
         { title: 'Title; rm -rf /' },
@@ -106,7 +109,7 @@ describe('pandocConverters Security Tests', () => {
       ];
 
       for (const dangerousInput of dangerousInputs) {
-        jest.clearAllMocks();
+        vi.clearAllMocks();
         
         await markdownToEpub('# Test', dangerousInput);
 
@@ -172,7 +175,7 @@ describe('pandocConverters Security Tests', () => {
       let args = pandocCall?.[1] as string[];
       expect(args[0]).toBe('--sandbox');
 
-      jest.clearAllMocks();
+      vi.clearAllMocks();
 
       // Test PDF
       await markdownToPdf('# Test', {});
@@ -201,7 +204,7 @@ describe('pandocConverters Security Tests', () => {
     });
 
     it('should reject backslash and other escape characters', async () => {
-      const consoleSpy = jest.spyOn(console, 'error').mockImplementation();
+      const consoleSpy = vi.spyOn(console, 'error').mockImplementation();
 
       const escapeAttempts = [
         { title: 'Title\\nNewline' },
@@ -211,7 +214,7 @@ describe('pandocConverters Security Tests', () => {
       ];
 
       for (const escapeAttempt of escapeAttempts) {
-        jest.clearAllMocks();
+        vi.clearAllMocks();
         
         await markdownToEpub('# Test', escapeAttempt);
 

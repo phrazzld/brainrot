@@ -1,3 +1,6 @@
+
+
+import { vi, describe, it, test, expect, beforeAll, beforeEach, afterAll, afterEach } from 'vitest';
 import { AssetType } from '@/types/assets';
 import { AssetNameValidator } from '@/utils/validators/AssetNameValidator';
 
@@ -25,9 +28,9 @@ describe('AssetNameValidator', () => {
 
     test('should delegate to the correct validator based on asset type', () => {
       // Mock the specialized validators
-      jest.spyOn(validator, 'validateAudioAssetName').mockReturnValue('audio-result.mp3');
-      jest.spyOn(validator, 'validateTextAssetName').mockReturnValue('text-result.txt');
-      jest.spyOn(validator, 'validateImageAssetName').mockReturnValue('image-result.jpg');
+      vi.spyOn(validator, 'validateAudioAssetName').mockReturnValue('audio-result.mp3');
+      vi.spyOn(validator, 'validateTextAssetName').mockReturnValue('text-result.txt');
+      vi.spyOn(validator, 'validateImageAssetName').mockReturnValue('image-result.jpg');
 
       // Verify correct delegation
       expect(validator.validateAssetName(AssetType.AUDIO, 'test.mp3')).toBe('audio-result.mp3');

@@ -1,3 +1,6 @@
+
+
+import { vi, describe, it, test, expect, beforeAll, beforeEach, afterAll, afterEach } from 'vitest';
 import * as nextNavigation from 'next/navigation';
 
 import { act, renderHook } from '@testing-library/react';
@@ -7,26 +10,26 @@ import { Translation } from '@/utils/types';
 
 // Type for mocked module
 type MockedNavigation = typeof nextNavigation & {
-  useParams: jest.Mock;
-  useSearchParams: jest.Mock;
-  useRouter: jest.Mock;
-  ReadonlyURLSearchParams: jest.Mock;
+  useParams: ReturnType<typeof vi.fn>;
+  useSearchParams: ReturnType<typeof vi.fn>;
+  useRouter: ReturnType<typeof vi.fn>;
+  ReadonlyURLSearchParams: ReturnType<typeof vi.fn>;
 };
 
 // Mock dependencies
-jest.mock('next/navigation', () => ({
-  useParams: jest.fn().mockReturnValue({ slug: 'test-book' }),
-  useSearchParams: jest.fn().mockReturnValue({
-    get: jest.fn((param) => {
+vi.mock('next/navigation', () => ({
+  useParams: vi.fn().mockReturnValue({ slug: 'test-book' }),
+  useSearchParams: vi.fn().mockReturnValue({
+    get: vi.fn((param) => {
       if (param === 'c') return '0';
       if (param === 't') return '0';
       return null;
     }),
   }),
-  useRouter: jest.fn().mockReturnValue({
-    replace: jest.fn(),
+  useRouter: vi.fn().mockReturnValue({
+    replace: vi.fn(),
   }),
-  ReadonlyURLSearchParams: jest.fn(),
+  ReadonlyURLSearchParams: vi.fn(),
 }));
 
 // Get the mocked module
@@ -50,7 +53,7 @@ const mockTranslations: Translation[] = [
 
 describe('useChapterNavigation', () => {
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('should initialize with correct state', () => {
@@ -127,7 +130,7 @@ describe('useChapterNavigation', () => {
   });
 
   it('should throttle timestamp updates', () => {
-    jest.useFakeTimers();
+    vi.useFakeTimers();
     const { result } = renderHook(() => useChapterNavigation(mockTranslations));
     const router = mockedNavigation.useRouter();
 
@@ -141,7 +144,7 @@ describe('useChapterNavigation', () => {
     expect(router.replace).toHaveBeenCalledWith('/reading-room/test-book?c=0&t=10');
 
     // Reset mock to check next call
-    jest.mocked(router.replace).mockClear();
+    vi.mocked(router.replace).mockClear();
 
     // Try another timestamp update immediately - should be throttled
     act(() => {
@@ -153,7 +156,7 @@ describe('useChapterNavigation', () => {
     expect(router.replace).not.toHaveBeenCalled();
 
     // Advance time past throttle window
-    jest.advanceTimersByTime(5500);
+    vi.advanceTimersByTime(5500);
 
     // Try timestamp update again
     act(() => {
@@ -164,11 +167,11 @@ describe('useChapterNavigation', () => {
     // Should update now
     expect(router.replace).toHaveBeenCalledWith('/reading-room/test-book?c=0&t=30');
 
-    jest.useRealTimers();
+    vi.useRealTimers();
   });
 
   it('should handle navigation during timestamp throttling', () => {
-    jest.useFakeTimers();
+    vi.useFakeTimers();
     const { result } = renderHook(() => useChapterNavigation(mockTranslations));
     const router = mockedNavigation.useRouter();
 
@@ -178,7 +181,7 @@ describe('useChapterNavigation', () => {
       actions.updateTimestamp(10);
     });
 
-    jest.mocked(router.replace).mockClear();
+    vi.mocked(router.replace).mockClear();
 
     // Try to update timestamp again - should be throttled
     act(() => {
@@ -198,6 +201,6 @@ describe('useChapterNavigation', () => {
     // Should update router despite timestamp throttling
     expect(router.replace).toHaveBeenCalledWith('/reading-room/test-book?c=1');
 
-    jest.useRealTimers();
+    vi.useRealTimers();
   });
 });

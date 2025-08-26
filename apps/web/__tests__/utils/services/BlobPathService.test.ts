@@ -1,35 +1,38 @@
+
+
+import { vi, describe, it, test, expect, beforeAll, beforeEach, afterAll, afterEach, MockedObject } from 'vitest';
 import { AssetType } from '../../../types/assets';
 import { AssetPathService } from '../../../utils/services/AssetPathService';
 import { BlobPathService, blobPathService } from '../../../utils/services/BlobPathService';
 
 describe('BlobPathService', () => {
   let service: BlobPathService;
-  let mockAssetPathService: jest.Mocked<AssetPathService>;
+  let mockAssetPathService: MockedObject<AssetPathService>;
 
   beforeEach(() => {
     // Create a mock for AssetPathService
     mockAssetPathService = {
-      getAssetPath: jest.fn(),
-      getAudioPath: jest.fn(),
-      getBrainrotTextPath: jest.fn(),
-      getTextPath: jest.fn(),
-      getImagePath: jest.fn(),
-      getSourceTextPath: jest.fn(),
-      getBookImagePath: jest.fn(),
-      getSharedImagePath: jest.fn(),
-      getSiteAssetPath: jest.fn(),
-      normalizeLegacyPath: jest.fn(),
-      getBookSlugFromPath: jest.fn(),
-      convertLegacyPath: jest.fn(),
-      convertAssetsPrefixPath: jest.fn(),
-      convertBooksPrefixPath: jest.fn(),
-      convertDirectPath: jest.fn(),
-      processAssetTypeAndRemainder: jest.fn(),
-      processAudioRemainder: jest.fn(),
-      processTextRemainder: jest.fn(),
-      padChapter: jest.fn(),
-      mapAssetType: jest.fn(),
-    } as unknown as jest.Mocked<AssetPathService>;
+      getAssetPath: vi.fn(),
+      getAudioPath: vi.fn(),
+      getBrainrotTextPath: vi.fn(),
+      getTextPath: vi.fn(),
+      getImagePath: vi.fn(),
+      getSourceTextPath: vi.fn(),
+      getBookImagePath: vi.fn(),
+      getSharedImagePath: vi.fn(),
+      getSiteAssetPath: vi.fn(),
+      normalizeLegacyPath: vi.fn(),
+      getBookSlugFromPath: vi.fn(),
+      convertLegacyPath: vi.fn(),
+      convertAssetsPrefixPath: vi.fn(),
+      convertBooksPrefixPath: vi.fn(),
+      convertDirectPath: vi.fn(),
+      processAssetTypeAndRemainder: vi.fn(),
+      processAudioRemainder: vi.fn(),
+      processTextRemainder: vi.fn(),
+      padChapter: vi.fn(),
+      mapAssetType: vi.fn(),
+    } as unknown as MockedObject<AssetPathService>;
 
     // Create a new instance with our mock
     service = new BlobPathService(mockAssetPathService);

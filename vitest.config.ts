@@ -5,6 +5,12 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'node',
+    environmentMatchGlobs: [
+      // Use jsdom for component and hook tests
+      ['apps/web/**/*.test.tsx', 'jsdom'],
+      ['apps/web/__tests__/hooks/**', 'jsdom'],
+      ['apps/web/__tests__/components/**', 'jsdom'],
+    ],
     include: [
       'packages/**/*.test.ts',
       'apps/**/*.test.ts',

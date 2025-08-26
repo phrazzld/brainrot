@@ -1,3 +1,6 @@
+
+
+import { vi, describe, it, test, expect, beforeAll, beforeEach, afterAll, afterEach } from 'vitest';
 import {
   assetExistsInBlobStorage,
   clearBlobUrlCache,
@@ -9,16 +12,16 @@ import { blobPathService } from '../../utils/services/BlobPathService';
 import { blobService } from '../../utils/services/BlobService';
 
 // Mock services
-jest.mock('../../utils/services/BlobService', () => ({
+vi.mock('../../utils/services/BlobService', () => ({
   blobService: {
-    getUrlForPath: jest.fn(),
-    getFileInfo: jest.fn(),
+    getUrlForPath: vi.fn(),
+    getFileInfo: vi.fn(),
   },
 }));
 
-jest.mock('../../utils/services/BlobPathService', () => ({
+vi.mock('../../utils/services/BlobPathService', () => ({
   blobPathService: {
-    convertLegacyPath: jest.fn(),
+    convertLegacyPath: vi.fn(),
   },
 }));
 
@@ -27,16 +30,16 @@ describe('Blob URL Utilities', () => {
   const originalEnv = { ...process.env };
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
     clearBlobUrlCache();
 
     // Mock implementation for convertLegacyPath
-    (blobPathService.convertLegacyPath as jest.Mock).mockImplementation((path: string) =>
+    (blobPathService.convertLegacyPath as ReturnType<typeof vi.fn>).mockImplementation((path: string) =>
       path.replace(/^\/assets\//, 'books/').replace(/^\//, ''),
     );
 
     // Mock implementation for getUrlForPath with proper typing
-    (blobService.getUrlForPath as jest.Mock).mockImplementation(
+    (blobService.getUrlForPath as ReturnType<typeof vi.fn>).mockImplementation(
       (path: string, options?: { baseUrl?: string; noCache?: boolean }) => {
         const baseUrl = options?.baseUrl || 'https://public.blob.vercel-storage.com';
         return `${baseUrl}/${path}`;
@@ -175,7 +178,7 @@ describe('Blob URL Utilities', () => {
       expect(blobPathService.convertLegacyPath).toHaveBeenCalledWith(legacyPath);
       expect(blobService.getUrlForPath).toHaveBeenCalled();
 
-      jest.clearAllMocks();
+      vi.clearAllMocks();
 
       // With useBlobStorage = false
       result = getAssetUrl(legacyPath, false);
@@ -199,7 +202,7 @@ describe('Blob URL Utilities', () => {
 
   describe('assetExistsInBlobStorage', () => {
     beforeEach(() => {
-      (blobService.getFileInfo as jest.Mock).mockImplementation(async (url: string) => {
+      (blobService.getFileInfo as ReturnType<typeof vi.fn>).mockImplementation(async (url: string) => {
         if (url.includes('exists')) {
           return { url, pathname: 'exists.png', size: 1024 };
         }

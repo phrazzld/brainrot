@@ -1,31 +1,34 @@
+
+
+import { vi, describe, it, test, expect, beforeAll, beforeEach, afterAll, afterEach, MockedFunction, MockedObject } from 'vitest';
 import { MockResponse } from '../../__mocks__/MockResponse';
 import { fetchTextWithFallback } from '../../utils/getBlobUrl';
 import { blobPathService } from '../../utils/services/BlobPathService';
 import { blobService } from '../../utils/services/BlobService';
 
 // Mock the required services
-jest.mock('../../utils/services/BlobService');
-jest.mock('../../utils/services/BlobPathService');
-jest.mock('../../utils/logger', () => ({
+vi.mock('../../utils/services/BlobService');
+vi.mock('../../utils/services/BlobPathService');
+vi.mock('../../utils/logger', () => ({
   logger: {
-    child: jest.fn(() => ({
-      info: jest.fn(),
-      warn: jest.fn(),
-      error: jest.fn(),
+    child: vi.fn(() => ({
+      info: vi.fn(),
+      warn: vi.fn(),
+      error: vi.fn(),
     })),
   },
 }));
 
 // Mock global fetch
-global.fetch = jest.fn();
+global.fetch = vi.fn();
 
 describe('fetchTextWithFallback', () => {
-  const mockBlobService = blobService as jest.Mocked<typeof blobService>;
-  const mockBlobPathService = blobPathService as jest.Mocked<typeof blobPathService>;
+  const mockBlobService = blobService as MockedObject<typeof blobService>;
+  const mockBlobPathService = blobPathService as MockedObject<typeof blobPathService>;
   const mockFetch = global.fetch as jest.MockedFunction<typeof fetch>;
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
     // Reset environment variables
     process.env.NEXT_PUBLIC_BLOB_BASE_URL = 'https://example.blob.vercel-storage.com';
   });
