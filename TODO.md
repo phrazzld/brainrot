@@ -63,7 +63,7 @@ Generated from TASK.md on 2025-08-24
   - ✅ Build verified working with simplified scripts
   ```
 
-- [ ] Archive migration scripts to tools/legacy-scripts
+- [x] Archive migration scripts to tools/legacy-scripts
   - **Success criteria**: 
     - Create `tools/legacy-scripts/` directory
     - Move migration script files from `apps/web/scripts/`
@@ -71,6 +71,15 @@ Generated from TASK.md on 2025-08-24
     - Update package.json with reference to archived location
   - **Dependencies**: Script removal complete
   - **Estimated complexity**: SIMPLE (2 hours)
+  ```
+  Work Log:
+  - ✅ Created tools/legacy-scripts/ directory
+  - ✅ Moved 22 legacy scripts from apps/web/scripts/
+  - ✅ Scripts archived: audit (3), verify (10), standardize (3), reorganize (2), cleanup (1), testing/benchmark (3)
+  - ✅ Created comprehensive README.md with detailed documentation for each script
+  - ✅ Added reference in package.json ("// LEGACY_SCRIPTS" comment)
+  - ✅ Preserved historical context and migration timeline
+  ```
 
 - [ ] Update CI/CD workflows for simplified scripts
   - **Files**: `.github/workflows/*.yml`
