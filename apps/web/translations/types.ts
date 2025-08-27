@@ -16,6 +16,7 @@ export interface Chapter {
  */
 export interface Translation {
   slug: string;
+  bookSlug?: string; // Optional for backward compatibility
   title: string;
   shortDescription: string;
   coverImage: string;

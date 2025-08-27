@@ -109,7 +109,11 @@ export function createRequestMetadata(
  * Creates a request-scoped logger with correlation ID
  */
 export function createScopedLogger(correlationId: string, baseLogger?: Logger): Logger {
-  return createRequestLogger(correlationId, baseLogger);
+  // Use base logger if provided, otherwise use createRequestLogger
+  if (baseLogger) {
+    return baseLogger.child({ correlationId });
+  }
+  return createRequestLogger(correlationId);
 }
 
 /**

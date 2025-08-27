@@ -68,7 +68,8 @@ function getCacheKey(request: AssetRequest): string {
  * Gets asset type based on request
  */
 function getAssetType(request: AssetRequest): AssetType {
-  return request.type === 'chapter' ? AssetType.CHAPTER_AUDIOBOOK : AssetType.FULL_AUDIOBOOK;
+  // Both chapter and full audiobooks are audio assets
+  return AssetType.AUDIO;
 }
 
 /**
@@ -110,11 +111,16 @@ export async function resolveAssetUrl(
   try {
     // Use URL resolver if available
     if (urlResolver) {
-      const url = await urlResolver.getAssetUrl({
-        bookSlug: request.slug,
-        assetType,
-        chapter: request.chapter?.toString(),
-      });
+      // Generate asset name based on request type
+      const assetName = request.type === 'chapter' && request.chapter 
+        ? `chapter-${request.chapter}.mp3`
+        : 'full-audiobook.mp3';
+      
+      const url = await urlResolver.getAssetUrl(
+        AssetType.AUDIO,
+        request.slug,
+        assetName,
+      );
 
       // Cache the result
       const metadata: AssetMetadata = {

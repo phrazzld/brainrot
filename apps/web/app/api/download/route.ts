@@ -3,14 +3,19 @@ import { NextRequest, NextResponse } from 'next/server';
 import { randomUUID } from 'crypto';
 
 import { AssetType } from '@/types/assets';
-import { createRequestLogger } from '@/utils/logger';
+import { createRequestLogger, logger } from '@/utils/logger';
 
 import { handleCriticalError, handleDownloadServiceError } from './errorHandlers';
 import { safeLog } from './logging/safeLogger';
 import { createDownloadService } from './serviceFactory';
 import { createAssetService } from './services/AssetService';
 import { proxyAssetDownload } from './services/ProxyService';
-import { RequestMetadata, createRequestService } from './services/RequestService';
+import { 
+  RequestMetadata, 
+  ClientInfo,
+  ClientClassification,
+  createRequestService 
+} from './services/RequestService';
 import { createResponseService } from './services/ResponseService';
 import { createValidationService } from './services/ValidationService';
 
@@ -66,18 +71,18 @@ const requestService = createRequestService({
 });
 
 const validationService = createValidationService({
-  logger: console,
+  logger,
   validTypes: ['full', 'chapter'],
   maxChapter: 999,
 });
 
 const assetService = createAssetService({
-  logger: console,
+  logger,
   blobBaseUrl: process.env.NEXT_PUBLIC_BLOB_BASE_URL,
 });
 
 const responseService = createResponseService({
-  logger: console,
+  logger,
   includeStackTrace: process.env.NODE_ENV !== 'production',
 });
 
