@@ -8,9 +8,9 @@ import { createRequestLogger } from '@/utils/logger';
 import { handleCriticalError, handleDownloadServiceError } from './errorHandlers';
 import { safeLog } from './logging/safeLogger';
 import { proxyAssetDownload } from './services/ProxyService';
-import { validateRequestParameters } from './requestValidation';
 import { createDownloadService } from './serviceFactory';
 import { createRequestService, RequestMetadata } from './services/RequestService';
+import { createValidationService } from './services/ValidationService';
 
 /**
  * Download API route handler
@@ -58,9 +58,15 @@ type ValidationResult = {
   errorResponse?: NextResponse;
 };
 
-// Create request service instance
+// Create service instances
 const requestService = createRequestService({
   environment: process.env.NODE_ENV || 'development'
+});
+
+const validationService = createValidationService({
+  logger: console,
+  validTypes: ['full', 'chapter'],
+  maxChapter: 999
 });
 
 /**
@@ -90,7 +96,40 @@ function initializeRequest(req: NextRequest): RequestContext {
  */
 function validateRequest(context: RequestContext): ValidationResult {
   const { searchParams, log, correlationId } = context;
-  return validateRequestParameters(searchParams, log, correlationId);
+  
+  // Extract parameters from URL search params
+  const params = {
+    slug: searchParams.get('slug') || undefined,
+    type: searchParams.get('type') || undefined,
+    chapter: searchParams.get('chapter') || undefined,
+    proxy: searchParams.get('proxy') || undefined
+  };
+  
+  // Use ValidationService to validate
+  const result = validationService.validateDownloadParams(params);
+  
+  // Convert ValidationService result to route's expected format
+  if (!result.success) {
+    const errorMessage = result.errors?.[0]?.message || 'Validation failed';
+    const status = result.errors?.[0]?.code?.includes('MISSING') ? 400 : 400;
+    
+    return {
+      valid: false,
+      errorResponse: NextResponse.json(
+        { error: errorMessage, correlationId },
+        { status }
+      )
+    };
+  }
+  
+  // Return validated parameters
+  const validatedData = result.data!;
+  return {
+    valid: true,
+    slug: validatedData.slug,
+    type: validatedData.type,
+    chapter: validatedData.chapter?.toString()
+  };
 }
 
 /**
