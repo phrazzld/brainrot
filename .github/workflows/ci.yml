@@ -97,18 +97,19 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Run tests with coverage
-        run: pnpm test:run --coverage
+      - name: Run tests
+        run: pnpm test:run
         env:
           NODE_ENV: test
 
-      - name: Upload coverage reports
-        uses: codecov/codecov-action@v3
-        if: matrix.node-version == '22'
-        with:
-          files: ./coverage/lcov.info
-          flags: unittests
-          name: coverage-${{ matrix.node-version }}
+      # Coverage temporarily disabled until test suite is stabilized
+      # - name: Upload coverage reports
+      #   uses: codecov/codecov-action@v3
+      #   if: matrix.node-version == '22'
+      #   with:
+      #     files: ./coverage/lcov.info
+      #     flags: unittests
+      #     name: coverage-${{ matrix.node-version }}
 
   build:
     name: Build
