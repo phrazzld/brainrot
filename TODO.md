@@ -1,6 +1,7 @@
 # Brainrot Publishing House Critical Improvements TODO
 
-Generated from TASK.md on 2025-08-24
+Generated from TASK.md on 2025-08-24  
+Last updated: 2025-08-27 after PR backlog cleanup
 
 ## 🚨 Critical Path Items (Must complete in order)
 
@@ -520,7 +521,106 @@ Generated from TASK.md on 2025-08-24
   - No security vulnerabilities
   - Linting clean (warnings acceptable)
   - 80% tests passing (migration artifacts)
+  
+  ADDITIONAL WORK COMPLETED (August 2025):
+  - ✅ Closed 19 obsolete PRs (Vitest migration, Jest updates, script cleanup already merged)
+  - ✅ Fixed critical TypeScript errors blocking CI
+  - ✅ Resolved tsconfig module resolution issues
+  - ✅ Fixed type imports and AssetType usage
+  - ✅ Archived legacy utilities to prevent import errors
+  - ✅ TypeScript now compiles successfully
   ```
+
+## 🚨 POST-MIGRATION CRITICAL FIXES (New - August 2025)
+
+### CI/CD Pipeline Recovery
+
+- [~] Fix failing CI/CD pipeline
+  - **Current Status**: CI failing on master branch since 2025-08-25
+  - **Files to investigate**: `.github/workflows/ci.yml`, test configurations
+  - **Success criteria**:
+    - All CI checks pass on master branch
+    - TypeScript compilation successful
+    - Tests pass in CI environment  
+    - Build completes successfully
+  - **Priority**: CRITICAL - blocks all PR merges
+  - **Estimated complexity**: MEDIUM (4-6 hours)
+
+  ```
+  Work Log:
+  - ✅ Fixed tsconfig module resolution (NodeNext → bundler)
+  - ✅ Added missing type imports (ClientInfo, ClientClassification) 
+  - ✅ Fixed AssetType usage in AssetService
+  - ✅ Added bookSlug to Translation interface for backward compatibility
+  - ✅ Moved legacy ScriptPathUtils to archive/ directory
+  - ✅ Fixed ArrayBuffer type issues in MockResponse test utilities
+  - ✅ TypeScript compilation now passes locally
+  - 🔄 Need to verify CI passes on next push
+  ```
+
+### Test Suite Stabilization
+
+- [ ] Fix failing Vitest test suite
+  - **Current Status**: 49 failed, 222 passed (34 failed test files)
+  - **Root causes**:
+    - Converter tests failing due to missing pandoc binary in test environment
+    - Mock setup issues with new Vitest configuration
+    - Path resolution problems after file moves
+  - **Success criteria**:
+    - All test files passing (target: >90% pass rate)
+    - Consistent test execution across environments
+    - Proper mocking of external dependencies
+  - **Priority**: HIGH - needed for reliable development
+  - **Estimated complexity**: MEDIUM (6-8 hours)
+
+  ```
+  Work Log:
+  - 🔄 Identified 34 failing test files out of 46 total
+  - 🔄 Main issues: converter tests need pandoc binary, mock configuration
+  - 🔄 Test execution time good: 2.04s total
+  - 🔄 Need to fix converter mocks and path imports
+  ```
+
+### Dependency Update Pipeline
+
+- [ ] Merge safe dependency updates
+  - **Current Status**: 13 safe Dependabot PRs ready to merge
+  - **Safe updates identified**:
+    - chalk, p-retry, playwright updates  
+    - @vercel/blob, dotenv, marked, commander updates
+    - Next.js and ESLint minor updates
+  - **Success criteria**:
+    - All safe dependency PRs merged successfully
+    - No breaking changes introduced
+    - CI passes after each merge
+  - **Priority**: MEDIUM - security and maintenance
+  - **Estimated complexity**: SIMPLE (2-3 hours)
+
+  ```
+  Work Log:
+  - ✅ Closed 19 obsolete/redundant PRs (Jest updates, outdated work)
+  - ✅ Identified 13 safe dependency updates ready to merge
+  - ✅ Closed major breaking changes for dedicated migration (Tailwind v4, ESLint v9)
+  - 🔄 Waiting for CI to be fixed before merging remaining PRs
+  ```
+
+## 🚀 Next Priority Tasks
+
+### Immediate (This Week)
+1. **Fix CI/CD Pipeline** - CRITICAL blocker for all development
+2. **Stabilize Test Suite** - Essential for reliable development workflow  
+3. **Merge Safe Dependencies** - Security and maintenance updates
+
+### Future Planning (Next Sprint)
+1. **Tailwind v4 Migration** - Plan breaking change upgrade
+2. **ESLint v9 Migration** - Migrate to flat config format
+3. **GitHub Actions Batch Update** - Update all action versions together
+
+### Monitoring & Maintenance
+- Monitor security vulnerability reports from GitHub
+- Track CI/CD pipeline health metrics  
+- Review and merge future Dependabot PRs promptly
+- Keep documentation updated with any architectural changes
 
 ## 🚀 Deployment & Monitoring
 

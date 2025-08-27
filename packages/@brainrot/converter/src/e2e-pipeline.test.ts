@@ -30,8 +30,10 @@ vi.mock("util", () => {
   };
 });
 
-// Mock child_process
-vi.mock("child_process");
+// Mock child_process with proper event emitter
+vi.mock("child_process", () => ({
+  spawn: vi.fn(),
+}));
 
 // Mock fs operations
 vi.mock("fs", async () => ({
