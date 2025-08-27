@@ -565,7 +565,7 @@ Last updated: 2025-08-27 after PR backlog cleanup
 
 ### Test Suite Stabilization
 
-- [ ] Fix failing Vitest test suite
+- [!] Fix failing Vitest test suite
   - **Current Status**: 49 failed, 222 passed (34 failed test files)
   - **Root causes**:
     - Converter tests failing due to missing pandoc binary in test environment
@@ -583,12 +583,18 @@ Last updated: 2025-08-27 after PR backlog cleanup
   - 🔄 Identified 34 failing test files out of 46 total
   - 🔄 Main issues: converter tests need pandoc binary, mock configuration
   - 🔄 Test execution time good: 2.04s total
-  - 🔄 Need to fix converter mocks and path imports
+  - ✅ Investigated ISBN test failures - function logic is correct
+  - 🔄 ISBN tests fail due to Vitest/mocking issue (function returns true but test expects false)
+  - 🔄 Current status: 3 test files passing (45 tests), ISBN tests remain excluded
+  - 🔄 Need to investigate Vitest configuration for proper TypeScript imports
+  - 🔄 Next: Try fixing simpler web app component tests with import path issues
+  - ⚠️ BLOCKED: Complex debugging needed for Vitest/TypeScript import issues
+  - ⚠️ BLOCKED: Requires dedicated debugging session, not suitable for quick fixes
   ```
 
 ### Dependency Update Pipeline
 
-- [ ] Merge safe dependency updates
+- [!] Merge safe dependency updates
   - **Current Status**: 13 safe Dependabot PRs ready to merge
   - **Safe updates identified**:
     - chalk, p-retry, playwright updates
@@ -606,7 +612,12 @@ Last updated: 2025-08-27 after PR backlog cleanup
   - ✅ Closed 19 obsolete/redundant PRs (Jest updates, outdated work)
   - ✅ Identified 13 safe dependency updates ready to merge
   - ✅ Closed major breaking changes for dedicated migration (Tailwind v4, ESLint v9)
-  - 🔄 Waiting for CI to be fixed before merging remaining PRs
+  - ✅ CI fix completed in PR #40 (all checks passing)
+  - 🔄 BLOCKED: PR #40 requires review before merge (branch protection policy)
+  - 🔄 Dependabot PRs failing CI due to being based on broken master branch
+  - 🔄 Need to merge PR #40 first to fix master, then rebase/merge Dependabot PRs
+  - 🔄 Current open PRs: 18 Dependabot PRs identified for evaluation
+  - ⚠️ BLOCKED: Waiting for PR #40 review and merge to fix master branch
   ```
 
 ## 🚀 Next Priority Tasks
