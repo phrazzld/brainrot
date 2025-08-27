@@ -107,3 +107,4 @@ coverage/
 
 # security audit results
 *-audit-results.json
+performance-baseline-*.json

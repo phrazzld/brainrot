@@ -1,9 +1,9 @@
 /**
  * Type-safe interfaces for mocked services
  * These interfaces ensure that mocks match their real counterparts
- * while adding the correct jest.Mock types for test functionality
+ * while adding the correct Mock types for test functionality
  */
-import { jest } from '@jest/globals';
+import { MockedFunction } from 'vitest';
 
 import { Logger } from '../../../utils/logger';
 import { BlobPathService } from '../../../utils/services/BlobPathService';
@@ -14,40 +14,40 @@ import { VercelBlobAssetService } from '../../../utils/services/VercelBlobAssetS
  * Type-safe mock for the Logger service
  */
 export interface MockLogger extends Logger {
-  info: jest.MockedFunction<Logger['info']>;
-  debug: jest.MockedFunction<Logger['debug']>;
-  warn: jest.MockedFunction<Logger['warn']>;
-  error: jest.MockedFunction<Logger['error']>;
-  child: jest.MockedFunction<Logger['child']>;
+  info: MockedFunction<Logger['info']>;
+  debug: MockedFunction<Logger['debug']>;
+  warn: MockedFunction<Logger['warn']>;
+  error: MockedFunction<Logger['error']>;
+  child: MockedFunction<Logger['child']>;
 }
 
 /**
  * Type-safe mock for the BlobService
  */
 export interface MockBlobService extends Omit<BlobService, 'uploadFile'> {
-  uploadFile: jest.MockedFunction<BlobService['uploadFile']>;
-  uploadText: jest.MockedFunction<BlobService['uploadText']>;
-  listFiles: jest.MockedFunction<BlobService['listFiles']>;
-  getFileInfo: jest.MockedFunction<BlobService['getFileInfo']>;
-  deleteFile: jest.MockedFunction<BlobService['deleteFile']>;
-  getUrlForPath: jest.MockedFunction<BlobService['getUrlForPath']>;
-  fetchText: jest.MockedFunction<BlobService['fetchText']>;
+  uploadFile: MockedFunction<BlobService['uploadFile']>;
+  uploadText: MockedFunction<BlobService['uploadText']>;
+  listFiles: MockedFunction<BlobService['listFiles']>;
+  getFileInfo: MockedFunction<BlobService['getFileInfo']>;
+  deleteFile: MockedFunction<BlobService['deleteFile']>;
+  getUrlForPath: MockedFunction<BlobService['getUrlForPath']>;
+  fetchText: MockedFunction<BlobService['fetchText']>;
 }
 
 /**
  * Type-safe mock for the BlobPathService
  */
 export interface MockBlobPathService extends BlobPathService {
-  getAssetPath: jest.MockedFunction<BlobPathService['getAssetPath']>;
-  getBookImagePath: jest.MockedFunction<BlobPathService['getBookImagePath']>;
-  getBrainrotTextPath: jest.MockedFunction<BlobPathService['getBrainrotTextPath']>;
-  getFulltextPath: jest.MockedFunction<BlobPathService['getFulltextPath']>;
-  getSourceTextPath: jest.MockedFunction<BlobPathService['getSourceTextPath']>;
-  getSharedImagePath: jest.MockedFunction<BlobPathService['getSharedImagePath']>;
-  getSiteAssetPath: jest.MockedFunction<BlobPathService['getSiteAssetPath']>;
-  getAudioPath: jest.MockedFunction<BlobPathService['getAudioPath']>;
-  convertLegacyPath: jest.MockedFunction<BlobPathService['convertLegacyPath']>;
-  getBookSlugFromPath: jest.MockedFunction<BlobPathService['getBookSlugFromPath']>;
+  getAssetPath: MockedFunction<BlobPathService['getAssetPath']>;
+  getBookImagePath: MockedFunction<BlobPathService['getBookImagePath']>;
+  getBrainrotTextPath: MockedFunction<BlobPathService['getBrainrotTextPath']>;
+  getFulltextPath: MockedFunction<BlobPathService['getFulltextPath']>;
+  getSourceTextPath: MockedFunction<BlobPathService['getSourceTextPath']>;
+  getSharedImagePath: MockedFunction<BlobPathService['getSharedImagePath']>;
+  getSiteAssetPath: MockedFunction<BlobPathService['getSiteAssetPath']>;
+  getAudioPath: MockedFunction<BlobPathService['getAudioPath']>;
+  convertLegacyPath: MockedFunction<BlobPathService['convertLegacyPath']>;
+  getBookSlugFromPath: MockedFunction<BlobPathService['getBookSlugFromPath']>;
 }
 
 /**
@@ -64,23 +64,23 @@ export interface MockVercelBlobAssetService
     | 'deleteAsset'
     | 'listAssets'
   > {
-  getAssetUrl: jest.MockedFunction<VercelBlobAssetService['getAssetUrl']>;
-  assetExists: jest.MockedFunction<VercelBlobAssetService['assetExists']>;
-  fetchAsset: jest.MockedFunction<VercelBlobAssetService['fetchAsset']>;
-  fetchTextAsset: jest.MockedFunction<VercelBlobAssetService['fetchTextAsset']>;
-  uploadAsset: jest.MockedFunction<VercelBlobAssetService['uploadAsset']>;
-  deleteAsset: jest.MockedFunction<VercelBlobAssetService['deleteAsset']>;
-  listAssets: jest.MockedFunction<VercelBlobAssetService['listAssets']>;
+  getAssetUrl: MockedFunction<VercelBlobAssetService['getAssetUrl']>;
+  assetExists: MockedFunction<VercelBlobAssetService['assetExists']>;
+  fetchAsset: MockedFunction<VercelBlobAssetService['fetchAsset']>;
+  fetchTextAsset: MockedFunction<VercelBlobAssetService['fetchTextAsset']>;
+  uploadAsset: MockedFunction<VercelBlobAssetService['uploadAsset']>;
+  deleteAsset: MockedFunction<VercelBlobAssetService['deleteAsset']>;
+  listAssets: MockedFunction<VercelBlobAssetService['listAssets']>;
 }
 
 /**
  * Type-safe mock for Vercel Blob's primary functions
  */
 export interface MockVercelBlob {
-  put: jest.MockedFunction<(typeof import('@vercel/blob'))['put']>;
-  list: jest.MockedFunction<(typeof import('@vercel/blob'))['list']>;
-  head: jest.MockedFunction<(typeof import('@vercel/blob'))['head']>;
-  del: jest.MockedFunction<(typeof import('@vercel/blob'))['del']>;
+  put: MockedFunction<(typeof import('@vercel/blob'))['put']>;
+  list: MockedFunction<(typeof import('@vercel/blob'))['list']>;
+  head: MockedFunction<(typeof import('@vercel/blob'))['head']>;
+  del: MockedFunction<(typeof import('@vercel/blob'))['del']>;
 }
 
 /**
@@ -91,34 +91,34 @@ export interface MockResponse
     Response,
     'json' | 'text' | 'arrayBuffer' | 'blob' | 'formData' | 'clone' | 'bytes'
   > {
-  json: jest.MockedFunction<Response['json']>;
-  text: jest.MockedFunction<Response['text']>;
-  arrayBuffer: jest.MockedFunction<Response['arrayBuffer']>;
-  blob: jest.MockedFunction<Response['blob']>;
-  formData: jest.MockedFunction<Response['formData']>;
-  clone: jest.MockedFunction<Response['clone']>;
-  bytes: jest.MockedFunction<Response['bytes']>;
+  json: MockedFunction<Response['json']>;
+  text: MockedFunction<Response['text']>;
+  arrayBuffer: MockedFunction<Response['arrayBuffer']>;
+  blob: MockedFunction<Response['blob']>;
+  formData: MockedFunction<Response['formData']>;
+  clone: MockedFunction<Response['clone']>;
+  bytes: MockedFunction<Response['bytes']>;
 }
 
 /**
  * Type-safe mock for fetch function
  */
-export type MockFetch = jest.MockedFunction<typeof global.fetch>;
+export type MockFetch = MockedFunction<typeof global.fetch>;
 
 /**
  * Type-safe mock for AssetPathService
  */
 export interface MockAssetPathService {
-  getAssetPath: jest.MockedFunction<
+  getAssetPath: MockedFunction<
     (assetType: string, bookSlug: string | null, assetName: string) => string
   >;
-  normalizeLegacyPath: jest.MockedFunction<(legacyPath: string) => string>;
-  getTextPath: jest.MockedFunction<
+  normalizeLegacyPath: MockedFunction<(legacyPath: string) => string>;
+  getTextPath: MockedFunction<
     (bookSlug: string, textType: string, chapter?: string | number) => string
   >;
-  getBookSlugFromPath: jest.MockedFunction<(path: string) => string | null>;
-  getAudioPath: jest.MockedFunction<(bookSlug: string, chapter: string | number) => string>;
-  getImagePath: jest.MockedFunction<
+  getBookSlugFromPath: MockedFunction<(path: string) => string | null>;
+  getAudioPath: MockedFunction<(bookSlug: string, chapter: string | number) => string>;
+  getImagePath: MockedFunction<
     (bookSlug: string, imageType: string, chapter?: string | number, extension?: string) => string
   >;
 }

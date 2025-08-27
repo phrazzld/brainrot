@@ -1,12 +1,13 @@
 # 📚 Brainrot Publishing House - Monorepo
 
-> *Making classic literature absolutely bussin' for Gen Z, no cap fr fr*
+> _Making classic literature absolutely bussin' for Gen Z, no cap fr fr_
 
 ## 🚀 What Is This?
 
 Brainrot Publishing House creates hilarious Gen Z "brainrot" translations of classic literature. We're talking Shakespeare but make it TikTok. Fitzgerald but make it Discord. Homer but make it Twitch chat.
 
 This monorepo contains:
+
 - **Web App**: Next.js reading platform at [brainrot.pub](https://brainrot.pub) (eventually)
 - **Translations**: The actual book translations (our crown jewels)
 - **Publisher**: Automated publishing to Amazon KDP, Lulu, and more
@@ -40,6 +41,7 @@ brainrot/
 ## 🚦 Quick Start
 
 ### Prerequisites
+
 ```bash
 # Required versions
 node >= 22.0.0
@@ -51,6 +53,7 @@ cd brainrot
 ```
 
 ### Get Started
+
 ```bash
 # Install all dependencies
 pnpm install
@@ -69,6 +72,7 @@ pnpm test
 ```
 
 ### Monorepo Benefits
+
 - **⚡ Lightning fast builds** - Turborepo caches everything (174ms rebuilds!)
 - **📦 Shared packages** - Reusable code across all apps
 - **🔄 Unified pipeline** - One command to rule them all
@@ -78,20 +82,23 @@ pnpm test
 ## 📖 Available Books
 
 ### Currently Translated (8 books, 124 text files)
-- **The Great Gatsby** - *"back when i was a lil sus beta and way more vulnerable to getting absolutely ratio'd by life"*
-- **The Iliad** - *"greek drama hits different when paris catches feelings"*
-- **The Odyssey** - *"odysseus speed-running his way home while poseidon stays pressed"*
-- **The Aeneid** - *"aeneas carries his dad out of troy like a true sigma"*
-- **Alice in Wonderland** - *"alice falls down the most unhinged discord server"*
-- **Frankenstein** - *"victor creates life then ghosts harder than your crush"*
-- **Declaration of Independence** - *"the colonies said 'we're breaking up with u britain'"*
-- **Simple Sabotage Field Manual** - *"how to troll your workplace (CIA approved)"*
+
+- **The Great Gatsby** - _"back when i was a lil sus beta and way more vulnerable to getting absolutely ratio'd by life"_
+- **The Iliad** - _"greek drama hits different when paris catches feelings"_
+- **The Odyssey** - _"odysseus speed-running his way home while poseidon stays pressed"_
+- **The Aeneid** - _"aeneas carries his dad out of troy like a true sigma"_
+- **Alice in Wonderland** - _"alice falls down the most unhinged discord server"_
+- **Frankenstein** - _"victor creates life then ghosts harder than your crush"_
+- **Declaration of Independence** - _"the colonies said 'we're breaking up with u britain'"_
+- **Simple Sabotage Field Manual** - _"how to troll your workplace (CIA approved)"_
 
 ### In Progress
+
 - **La Divina Comedia** - Complex 3-part structure needs special handling
 - **Tao Te Ching** - Source text ready, translation pending
 
 ### Coming Soon
+
 - Pride and Prejudice
 - Hamlet
 - Romeo and Juliet
@@ -101,12 +108,13 @@ pnpm test
 ## 🔧 Development
 
 ### Tech Stack
+
 - **Monorepo**: Turborepo + pnpm workspaces
 - **Web**: Next.js 15 + React 19 + TypeScript
 - **Styling**: Tailwind CSS + Radix UI
 - **Storage**: Vercel Blob Storage
 - **Publishing**: Playwright (KDP) + Axios (Lulu API)
-- **Testing**: Jest + React Testing Library
+- **Testing**: Vitest + React Testing Library
 - **CI/CD**: GitHub Actions + Vercel
 
 ### Commands
@@ -116,8 +124,14 @@ pnpm test
 pnpm dev                        # Start all apps in dev mode
 pnpm dev --filter=@brainrot/web # Web app only
 pnpm build                      # Build everything (174ms with cache!)
-pnpm test                       # Run all tests
 pnpm lint                       # Lint all packages
+
+# Testing (Powered by Vitest)
+pnpm test                       # Run tests in watch mode
+pnpm test:run                   # Run tests once (CI mode)
+pnpm test:ui                    # Open Vitest UI for interactive testing
+pnpm test:coverage              # Generate coverage report
+pnpm test:watch                 # Alias for pnpm test
 
 # Content Pipeline
 pnpm generate:formats [book]    # Convert markdown to all formats
@@ -152,9 +166,10 @@ pnpm vault:push        # Share your changes
 ```
 
 Manual setup (if not using vault):
+
 - Copy `.env.example` to `.env.local`
 - Add `BLOB_READ_WRITE_TOKEN` - Vercel blob storage
-- Add `LULU_API_KEY` - For print publishing  
+- Add `LULU_API_KEY` - For print publishing
 - Add `KDP_EMAIL/PASSWORD` - For Amazon publishing
 
 See `docs/DOTENV_VAULT_SETUP.md` for complete setup guide.
@@ -175,12 +190,184 @@ gitleaks detect --source . -v
 ```
 
 **Security Features:**
+
 - **Pre-commit hooks** - Prevents accidental secret commits
 - **GitHub secret scanning** - Monitors pushed code
 - **Custom patterns** - Detects service-specific tokens
 - **Gitleaks integration** - Advanced local scanning
 
 See `docs/SECRETS.md` for rotation procedures.
+
+## 🧪 Testing
+
+### Test Stack
+
+We use **Vitest** for blazing-fast unit and integration testing:
+
+- **5-10x faster** than Jest
+- **Native ESM support** - No transforms needed
+- **HMR for tests** - Tests re-run instantly on save
+- **Compatible API** - Drop-in Jest replacement
+- **Built-in coverage** - Via c8/v8
+
+### Running Tests
+
+```bash
+# Interactive watch mode (recommended for development)
+pnpm test
+
+# Run all tests once
+pnpm test:run
+
+# Open Vitest UI - beautiful interface for test exploration
+pnpm test:ui
+
+# Generate coverage report
+pnpm test:coverage
+
+# Test specific packages
+pnpm test --filter=@brainrot/converter
+pnpm test --filter=@brainrot/web
+
+# Run specific test files
+pnpm test -- download.test.ts
+pnpm test -- --grep="security"
+```
+
+### Test Coverage
+
+We maintain **85%+ coverage** across all packages:
+
+```bash
+# Check coverage
+pnpm test:coverage
+
+# Coverage thresholds (enforced in CI)
+# - Branches: 85%
+# - Functions: 85%
+# - Lines: 85%
+# - Statements: 85%
+```
+
+### Jest → Vitest Migration
+
+We recently migrated from Jest to Vitest. Key changes:
+
+```typescript
+// Old (Jest)
+import { jest } from "@jest/globals";
+const mockFn = jest.fn();
+jest.mock("./module");
+
+// New (Vitest)
+import { vi } from "vitest";
+const mockFn = vi.fn();
+vi.mock("./module");
+```
+
+**Migration benefits:**
+
+- Test execution: ~50s → ~5s (10x speedup)
+- No more `ts-jest` configuration
+- Better TypeScript support out of the box
+- Simpler configuration (single `vitest.config.ts`)
+
+For migration details, see our [migration guide](docs/TESTING_MIGRATION.md).
+
+## 📝 Script Organization
+
+### Philosophy: Less is More
+
+We maintain a **minimalist script structure** focused on essential development tasks. We reduced from 74 scripts to just 7 core scripts in the web app, removing all one-time migration and utility scripts.
+
+### Essential Scripts (Web App)
+
+```bash
+# The Magnificent Seven - Everything you actually need
+pnpm dev         # Start dev server with Turbopack (blazing fast HMR)
+pnpm build       # Production build with Next.js optimizations
+pnpm test        # Run tests in watch mode with Vitest
+pnpm lint        # ESLint with Next.js rules
+pnpm format      # Prettier auto-formatting
+pnpm typecheck   # TypeScript type checking
+pnpm prettier:fix # Direct Prettier command (alias for format)
+```
+
+### Monorepo Scripts
+
+```bash
+# Core Development
+pnpm dev         # Start all apps in dev mode (Turborepo)
+pnpm build       # Build all packages (cached, ~13s)
+pnpm lint        # Lint all packages
+pnpm typecheck   # Type check everything
+pnpm clean       # Nuclear option - clear all caches
+
+# Testing Suite
+pnpm test        # Interactive watch mode
+pnpm test:run    # Single run (CI mode)
+pnpm test:ui     # Beautiful Vitest UI
+pnpm test:coverage # Coverage report
+
+# Content & Publishing
+pnpm generate:formats [book]  # Convert MD to all formats
+pnpm sync:blob [book]        # Upload to Vercel Blob
+pnpm monitor                 # API usage dashboard
+```
+
+### What We Removed (and Why)
+
+We archived **67 legacy scripts** that were:
+
+- **Migration scripts** (45): One-time data migrations now complete
+- **Audit/verify scripts** (15): Replaced with automated tests
+- **Standardization scripts** (10): Data is now standardized
+- **Utility scripts** (7): Either automated or rarely needed
+
+**Why remove them?**
+
+- **Clarity**: New developers see only what matters
+- **Maintenance**: Less scripts = less confusion
+- **Speed**: Faster package.json parsing
+- **Focus**: Essential workflows are obvious
+
+### Archived Scripts
+
+Legacy scripts are preserved in `/tools/legacy-scripts/` for historical reference:
+
+```bash
+# If you need migration scripts for reference
+ls tools/legacy-scripts/
+
+# Each script has documentation
+cat tools/legacy-scripts/README.md
+```
+
+**Important**: These scripts are archived, not deleted. They serve as:
+
+- Historical record of migrations performed
+- Reference for future similar tasks
+- Documentation of data transformation logic
+- Learning resource for complex operations
+
+### Adding New Scripts
+
+Before adding a new script, ask:
+
+1. **Is it used daily?** → Add to package.json
+2. **Is it a one-time task?** → Run with `tsx` directly
+3. **Is it rarely used?** → Document in README, don't add script
+4. **Is it project-specific?** → Add to that package only
+
+### Direct Execution (No Script Needed)
+
+```bash
+# For one-time or rare tasks, just use tsx directly
+tsx scripts/some-utility.ts
+
+# Or with Node
+node --loader tsx scripts/analyze-something.ts
+```
 
 ## 📚 Content Pipeline
 
@@ -191,10 +378,10 @@ graph LR
     B --> D[EPUB<br/>for E-readers]
     B --> E[PDF<br/>for Print]
     B --> F[MOBI<br/>for Kindle]
-    
+
     C --> G[Blob Storage]
     G --> H[Web App]
-    
+
     D --> I[Apple Books]
     E --> J[Lulu Print]
     F --> K[Amazon KDP]
@@ -212,6 +399,7 @@ graph LR
 ## 🏛️ Project Philosophy
 
 We believe classic literature should be:
+
 1. **Accessible** - No more "thou" and "forsooth"
 2. **Entertaining** - Actual laugh-out-loud moments
 3. **Relevant** - References that make sense today
@@ -224,7 +412,7 @@ This is currently a private project, but we're considering open-sourcing the tra
 
 ## 📄 License
 
-The translations are original creative works. Classic source texts are public domain. 
+The translations are original creative works. Classic source texts are public domain.
 
 ## 🔗 Links
 
@@ -236,6 +424,7 @@ The translations are original creative works. Classic source texts are public do
 ## ✅ Migration Complete
 
 This monorepo was successfully migrated from two repositories with full git history preserved:
+
 - ✅ `brainrot-publishing-house` → `apps/web/`
 - ✅ `brainrot-translations` → `content/translations/`
 
@@ -250,19 +439,24 @@ This monorepo was successfully migrated from two repositories with full git hist
 
 **Vercel deployment failing?**
 Make sure to configure the monorepo settings in Vercel dashboard:
+
 - Root Directory: (leave empty)
 - Build Command: `pnpm build --filter=@brainrot/web`
 - Output Directory: `apps/web/.next`
-See `docs/VERCEL_DEPLOYMENT.md` for complete deployment guide.
+  See `docs/VERCEL_DEPLOYMENT.md` for complete deployment guide.
 
 ### Build failing?
+
 Make sure you have:
+
 - Node.js >= 22.0.0
 - pnpm >= 8.15.1
 - All environment variables set
 
 ### Git history missing?
+
 We use subtree merge to preserve history. If you need to trace back:
+
 ```bash
 git log --follow apps/web/[file]
 git log --follow content/translations/[file]
@@ -271,30 +465,35 @@ git log --follow content/translations/[file]
 ## 📈 Roadmap
 
 ### Phase 1: Migration ✅ COMPLETE
+
 - [x] Create monorepo structure with Turborepo
 - [x] Migrate repositories with git subtree
 - [x] Set up 5 shared packages
 - [x] Fix Great Gatsby (blob simplification: 1000 lines → 37 lines)
 
 ### Phase 2: Publishing Pipeline ✅ COMPLETE
+
 - [x] Lulu API integration with OAuth2
 - [x] KDP automation with Playwright
 - [x] Batch processing for all books
 - [x] Mock mode for testing
 
 ### Phase 3: Production Launch (Current)
+
 - [x] Deploy to production on Vercel ✅
 - [ ] Test publishing pipeline with real credentials
 - [ ] Launch first 10 books on all platforms
 - [ ] Set up analytics and monitoring
 
 ### Phase 4: Scale
+
 - [ ] 50 books translated
 - [ ] AI-assisted translation tools
 - [ ] Subscription service
 - [ ] Mobile apps
 
 ### Phase 5: Empire
+
 - [ ] 500+ books
 - [ ] International versions
 - [ ] Educational partnerships
@@ -302,7 +501,7 @@ git log --follow content/translations/[file]
 
 ---
 
-*"We're not just translating books, we're translating culture. Shakespeare would've loved TikTok, and we're here to prove it."*
+_"We're not just translating books, we're translating culture. Shakespeare would've loved TikTok, and we're here to prove it."_
 
-**The Brainrot Publishing House Team** 
-*Making Literature Absolutely Bussin' Since 2024*
+**The Brainrot Publishing House Team**
+_Making Literature Absolutely Bussin' Since 2024_

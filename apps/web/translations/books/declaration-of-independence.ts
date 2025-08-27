@@ -9,7 +9,8 @@ const declarationOfIndependence: Translation = {
   title: 'the declaration of independence',
   shortDescription:
     'colonies went no cap on king george, dropped the hardest breakup letter in history. life, liberty, and vibes only.',
-  coverImage: 'https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-declaration-of-independence/images/america-02.png',
+  coverImage:
+    'https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-declaration-of-independence/images/america-02.png',
   status: 'available',
   chapters: [
     {

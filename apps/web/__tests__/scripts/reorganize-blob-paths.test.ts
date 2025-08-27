@@ -1,21 +1,23 @@
 // Use TypeScript imports to ensure proper typing
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, test, vi } from 'vitest';
+
 import { AssetType } from '../../types/assets';
 import { AssetPathService } from '../../utils/services/AssetPathService';
 
 // Mock modules that are used in the script
-jest.mock('@vercel/blob', () => ({
-  list: jest.fn(),
-  put: jest.fn(),
-  del: jest.fn(),
-  head: jest.fn(),
+vi.mock('@vercel/blob', () => ({
+  list: vi.fn(),
+  put: vi.fn(),
+  del: vi.fn(),
+  head: vi.fn(),
 }));
 
-jest.mock('../../utils/logger', () => ({
-  createLogger: jest.fn().mockReturnValue({
-    info: jest.fn(),
-    warn: jest.fn(),
-    error: jest.fn(),
-    debug: jest.fn(),
+vi.mock('../../utils/logger', () => ({
+  createLogger: vi.fn().mockReturnValue({
+    info: vi.fn(),
+    warn: vi.fn(),
+    error: vi.fn(),
+    debug: vi.fn(),
     level: 'info',
   }),
 }));

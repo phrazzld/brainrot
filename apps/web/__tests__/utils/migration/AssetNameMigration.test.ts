@@ -1,3 +1,5 @@
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, test, vi } from 'vitest';
+
 import { AssetType } from '@/types/assets';
 import { AssetNameMigration } from '@/utils/migration/AssetNameMigration';
 

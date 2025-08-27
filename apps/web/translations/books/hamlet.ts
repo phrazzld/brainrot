@@ -9,7 +9,8 @@ const hamlet: Translation = {
   title: 'hamlet',
   shortDescription:
     "hamlet mad pressed, dad ghost drops the worst dm of all time, uncle sus af. whole kingdom in shambles cuz bro won't touch grass.",
-  coverImage: 'https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/hamlet/images/hamlet-07.png',
+  coverImage:
+    'https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/hamlet/images/hamlet-07.png',
   status: 'available',
   chapters: [
     {

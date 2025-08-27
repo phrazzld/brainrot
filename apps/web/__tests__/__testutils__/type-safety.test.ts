@@ -2,6 +2,8 @@
  * Type safety test for mock utilities
  * This test ensures our mock factories create properly typed objects
  */
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, test, vi } from 'vitest';
+
 import { createMockAssetPathService, createMockLogger } from './mocks/factories';
 import { createBinaryResponse, createJsonResponse } from './network/index';
 

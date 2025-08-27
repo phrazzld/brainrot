@@ -1,7 +1,7 @@
 export interface TranslationFile {
   path: string;
   content: string;
-  type: 'markdown' | 'text' | 'html';
+  type: "markdown" | "text" | "html";
 }
 
 export interface TranslationChapter {

@@ -4,6 +4,8 @@
  * This test suite verifies the correctness of asset paths and access using the
  * standardized path structure from the migration project.
  */
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, test, vi } from 'vitest';
+
 import { createErrorResponse, createSuccessResponse } from '../../__mocks__/MockResponse';
 import {
   AUDIO_ASSETS,
@@ -18,12 +20,12 @@ import { blobPathService } from '../../utils/services/BlobPathService';
 import { BlobService } from '../../utils/services/BlobService';
 
 // Mock the Vercel Blob module
-jest.mock('@vercel/blob', () => ({
-  put: jest.fn().mockResolvedValue({
+vi.mock('@vercel/blob', () => ({
+  put: vi.fn().mockResolvedValue({
     url: 'https://test-blob-storage.com/test-asset',
     pathname: 'test-asset',
   }),
-  list: jest.fn().mockResolvedValue({
+  list: vi.fn().mockResolvedValue({
     blobs: [
       {
         url: 'https://test-blob-storage.com/assets/text/hamlet/chapter-01.txt',
@@ -36,31 +38,31 @@ jest.mock('@vercel/blob', () => ({
     ],
     cursor: undefined,
   }),
-  head: jest.fn().mockResolvedValue({
+  head: vi.fn().mockResolvedValue({
     url: 'https://test-blob-storage.com/test-asset',
     pathname: 'test-asset',
     contentType: 'text/plain',
     contentLength: 100,
   }),
-  del: jest.fn().mockResolvedValue(undefined),
+  del: vi.fn().mockResolvedValue(undefined),
 }));
 
 // Mock global.fetch
 const originalFetch = global.fetch;
-let mockFetchImplementation: jest.Mock;
+let mockFetchImplementation: ReturnType<typeof vi.fn>;
 
 describe('Asset Verification', () => {
   let blobService: BlobService;
 
   beforeEach(() => {
     // Reset all mocks
-    jest.clearAllMocks();
+    vi.clearAllMocks();
 
     // Create a new instance for each test
     blobService = new BlobService();
 
     // Set up fetch mock
-    mockFetchImplementation = jest.fn();
+    mockFetchImplementation = vi.fn();
     global.fetch = mockFetchImplementation;
 
     // Set environment variables for testing
@@ -213,7 +215,7 @@ describe('Asset Verification', () => {
     test('handles URL cache control options correctly', () => {
       // Mock Date.now
       const originalDateNow = Date.now;
-      Date.now = jest.fn(() => 1234567890);
+      Date.now = vi.fn(() => 1234567890);
 
       try {
         const expectedUrl = `${MOCK_BLOB_BASE_URL}/${TEXT_ASSETS.BRAINROT_CHAPTER.unified}?_t=1234567890`;

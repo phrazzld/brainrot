@@ -1,19 +1,20 @@
 // Use namespaced imports to avoid redeclaration conflicts
 import * as _fsPromises from 'fs/promises';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, test, vi } from 'vitest';
 
 // Then use CommonJS require but assign to the variable
 const fs = require('fs/promises');
 
 // Mock dependencies
-jest.mock('fs/promises');
-jest.mock('fs', () => ({
-  existsSync: jest.fn().mockReturnValue(true),
+vi.mock('fs/promises');
+vi.mock('fs', () => ({
+  existsSync: vi.fn().mockReturnValue(true),
 }));
 
 // Mock downloadFromSpaces with type-safe implementation
-jest.mock('../../utils/downloadFromSpaces', () => {
+vi.mock('../../utils/downloadFromSpaces', () => {
   return {
-    downloadFromSpaces: jest.fn().mockImplementation(() => {
+    downloadFromSpaces: vi.fn().mockImplementation(() => {
       return Promise.resolve({
         url: 'https://brainrot-publishing.nyc3.digitaloceanspaces.com/the-iliad/audio/book-01.mp3',
         content: Buffer.from('mock audio content'),
@@ -22,7 +23,7 @@ jest.mock('../../utils/downloadFromSpaces', () => {
         timeTaken: 500,
       });
     }),
-    getAudioPathFromUrl: jest.fn().mockImplementation((url) => {
+    getAudioPathFromUrl: vi.fn().mockImplementation((url) => {
       if (url.startsWith('http')) {
         const urlObj = new URL(url);
         return urlObj.pathname.startsWith('/') ? urlObj.pathname.slice(1) : urlObj.pathname;
@@ -33,7 +34,7 @@ jest.mock('../../utils/downloadFromSpaces', () => {
 });
 
 // Mock blobService with type-safe implementation
-jest.mock('../../utils/services/BlobService', () => {
+vi.mock('../../utils/services/BlobService', () => {
   const mockUploadResult = {
     url: 'https://public.blob.vercel-storage.com/the-iliad/audio/book-01.mp3',
     size: 1024 * 1024,
@@ -42,10 +43,10 @@ jest.mock('../../utils/services/BlobService', () => {
 
   return {
     blobService: {
-      uploadFile: jest.fn().mockImplementation(() => {
+      uploadFile: vi.fn().mockImplementation(() => {
         return Promise.resolve(mockUploadResult);
       }),
-      getFileInfo: jest.fn().mockImplementation((url) => {
+      getFileInfo: vi.fn().mockImplementation((url) => {
         // Simulate file already exists in some cases
         if (url.includes('book-02.mp3')) {
           return Promise.resolve({ size: 1024 * 1024 * 2, url });
@@ -57,7 +58,7 @@ jest.mock('../../utils/services/BlobService', () => {
         // Default behavior
         return Promise.resolve({ size: 1024 * 1024, url });
       }),
-      getUrlForPath: jest.fn().mockImplementation((path) => {
+      getUrlForPath: vi.fn().mockImplementation((path) => {
         return `https://public.blob.vercel-storage.com/${path}`;
       }),
     },
@@ -65,10 +66,10 @@ jest.mock('../../utils/services/BlobService', () => {
 });
 
 // Mock blobPathService with type-safe implementation
-jest.mock('../../utils/services/BlobPathService', () => {
+vi.mock('../../utils/services/BlobPathService', () => {
   return {
     blobPathService: {
-      convertLegacyPath: jest.fn().mockImplementation((path) => {
+      convertLegacyPath: vi.fn().mockImplementation((path) => {
         // Remove leading slash if present
         return path.startsWith('/') ? path.slice(1) : path;
       }),
@@ -77,7 +78,7 @@ jest.mock('../../utils/services/BlobPathService', () => {
 });
 
 // Mock translations
-jest.mock('../../translations/index', () => ({
+vi.mock('../../translations/index', () => ({
   default: [
     {
       slug: 'the-iliad',
@@ -140,7 +141,7 @@ let _parseArgs: ParseArgsFn; // Prefixed with underscore as it's unused
 // Setup to load the script - use require to avoid dynamic import issues in Jest
 beforeAll(() => {
   // Mock implementation needed for script loading
-  jest.mocked(fs.writeFile).mockResolvedValue(undefined as unknown as void);
+  vi.mocked(fs.writeFile).mockResolvedValue(undefined as unknown as void);
 
   try {
     // Require the script to test its functions
@@ -152,7 +153,7 @@ beforeAll(() => {
   } catch (error) {
     // Capture the error for test debugging but don't use console
     // This is a test setup issue if it occurs, not a test failure
-    jest.spyOn(global.console, 'error').mockImplementation(() => {});
+    vi.spyOn(global.console, 'error').mockImplementation(() => {});
     throw new Error(
       `Failed to load script module: ${error instanceof Error ? error.message : String(error)}`,
     );
@@ -161,7 +162,7 @@ beforeAll(() => {
 
 // Reset mocks before each test
 beforeEach(() => {
-  jest.clearAllMocks();
+  vi.clearAllMocks();
 });
 
 // Tests
@@ -177,7 +178,7 @@ describe('migrateAudioFilesWithContent script', () => {
       const { main } = require(scriptPath);
 
       // Mock exit to prevent actual exit
-      const mockExit = jest.spyOn(process, 'exit').mockImplementation((code) => {
+      const mockExit = vi.spyOn(process, 'exit').mockImplementation((code) => {
         throw new Error(`Process exit called with code: ${code}`);
       });
 

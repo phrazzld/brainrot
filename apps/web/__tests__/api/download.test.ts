@@ -1,52 +1,56 @@
 import { NextRequest } from 'next/server';
 
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, test, vi } from 'vitest';
+
 import { GET } from '@/app/api/download/route';
 import { AssetError, AssetErrorType } from '@/types/assets';
 
 // Mock crypto for reliable UUID generation in tests
-jest.mock('crypto', () => ({
-  randomUUID: jest.fn().mockReturnValue('test-correlation-id'),
+vi.mock('crypto', () => ({
+  randomUUID: vi.fn().mockReturnValue('test-correlation-id'),
 }));
 
 // Mock NextRequest and NextResponse
-jest.mock('next/server', () => ({
-  NextRequest: jest.fn().mockImplementation((url) => ({
+vi.mock('next/server', () => ({
+  NextRequest: vi.fn().mockImplementation((url) => ({
     url,
     method: 'GET',
     headers: {
-      get: jest.fn().mockImplementation((key) => (key === 'user-agent' ? 'test-user-agent' : null)),
-      forEach: jest.fn(),
+      get: vi.fn().mockImplementation((key) => (key === 'user-agent' ? 'test-user-agent' : null)),
+      forEach: vi.fn(),
     },
   })),
   NextResponse: {
-    json: jest.fn().mockImplementation((data, options) => ({
+    json: vi.fn().mockImplementation((data, options) => ({
       status: options?.status || 200,
       json: async () => data,
+      headers: new Map(),
+      ok: (options?.status || 200) >= 200 && (options?.status || 200) < 300,
     })),
   },
 }));
 
 // Mock the logger
-jest.mock('@/utils/logger', () => ({
-  createRequestLogger: jest.fn().mockImplementation(() => ({
-    debug: jest.fn(),
-    info: jest.fn(),
-    warn: jest.fn(),
-    error: jest.fn(),
+vi.mock('@/utils/logger', () => ({
+  createRequestLogger: vi.fn().mockImplementation(() => ({
+    debug: vi.fn(),
+    info: vi.fn(),
+    warn: vi.fn(),
+    error: vi.fn(),
   })),
   logger: {
-    debug: jest.fn(),
-    info: jest.fn(),
-    warn: jest.fn(),
-    error: jest.fn(),
+    debug: vi.fn(),
+    info: vi.fn(),
+    warn: vi.fn(),
+    error: vi.fn(),
   },
 }));
 
 // Mock the DownloadService
-jest.mock('@/services/downloadService', () => {
+vi.mock('@/services/downloadService', () => {
   return {
-    DownloadService: jest.fn().mockImplementation(() => ({
-      getDownloadUrl: jest.fn().mockImplementation(async ({ slug, type, chapter }) => {
+    DownloadService: vi.fn().mockImplementation(() => ({
+      getDownloadUrl: vi.fn().mockImplementation(async ({ slug, type, chapter }) => {
         if (slug === 'nonexistent') {
           throw new AssetError('Asset not found', AssetErrorType.NOT_FOUND, 'getAssetUrl', {
             assetPath: `assets/audio/${slug}/${type === 'full' ? 'full-audiobook.mp3' : `chapter-${chapter}.mp3`}`,
@@ -72,8 +76,8 @@ jest.mock('@/services/downloadService', () => {
 });
 
 // Mock the AssetServiceFactory
-jest.mock('@/utils/services/AssetServiceFactory', () => ({
-  createAssetService: jest.fn().mockImplementation(() => ({})),
+vi.mock('@/utils/services/AssetServiceFactory', () => ({
+  createAssetService: vi.fn().mockImplementation(() => ({})),
 }));
 
 // Use a partial interface for test requests
@@ -88,7 +92,7 @@ interface MockNextRequest {
 
 describe('Download API Route', () => {
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   // Helper function to create a test request with query parameters
@@ -98,10 +102,8 @@ describe('Download API Route', () => {
       url: `https://example.com/api/download${query ? `?${query}` : ''}`,
       method: 'GET',
       headers: {
-        get: jest
-          .fn()
-          .mockImplementation((key) => (key === 'user-agent' ? 'test-user-agent' : null)),
-        forEach: jest.fn(),
+        get: vi.fn().mockImplementation((key) => (key === 'user-agent' ? 'test-user-agent' : null)),
+        forEach: vi.fn(),
       },
     };
   };
@@ -243,7 +245,7 @@ describe('Download API Route', () => {
           get: jest
             .fn()
             .mockImplementation((key) => (key === 'user-agent' ? 'test-user-agent' : null)),
-          forEach: jest.fn(),
+          forEach: vi.fn(),
         },
       };
       const res = await GET(mockReq as unknown as NextRequest);
@@ -263,10 +265,10 @@ describe('Download API Route', () => {
   describe('Proxy Handling', () => {
     it('should call proxy handler when proxy=true is specified', async () => {
       // Mock the proxyFileDownload function
-      jest.mock('@/app/api/download/proxyService', () => ({
-        proxyFileDownload: jest.fn().mockResolvedValue({
+      vi.mock('@/app/api/download/proxyService', () => ({
+        proxyFileDownload: vi.fn().mockResolvedValue({
           status: 200,
-          json: jest.fn().mockResolvedValue({ proxied: true }),
+          json: vi.fn().mockResolvedValue({ proxied: true }),
         }),
       }));
 

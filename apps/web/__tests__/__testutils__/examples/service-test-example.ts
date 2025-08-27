@@ -2,7 +2,7 @@
  * Example test file demonstrating the use of type-safe test utilities
  * This is a reference implementation that shows best practices
  */
-import { jest } from '@jest/globals';
+import { jest } from 'vitest';
 
 import { AssetType } from '../../../types/assets';
 import { AssetPathService } from '../../../utils/services/AssetPathService';
@@ -26,11 +26,11 @@ describe('VercelBlobAssetService Example Test', () => {
 
   // Mock fetch function with proper typing
   const originalFetch = global.fetch;
-  const mockFetch = jest.fn<typeof fetch>() as jest.MockedFunction<typeof fetch>;
+  const mockFetch = vi.fn<typeof fetch>() as MockedFunction<typeof fetch>;
 
   beforeEach(() => {
     // Clear mock state before each test
-    jest.clearAllMocks();
+    vi.clearAllMocks();
 
     // Set up environment variables
     process.env.NEXT_PUBLIC_BLOB_BASE_URL = 'https://public.blob.vercel-storage.com';

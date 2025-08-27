@@ -2,7 +2,7 @@
  * Example showing best practices for using type-safe fixtures and utilities
  * This file demonstrates how to write clean, type-safe tests with the available utilities
  */
-import { expect } from '@jest/globals';
+import { expect } from 'vitest';
 
 import { AssetType } from '@/types/assets';
 
@@ -69,8 +69,8 @@ describe('AssetManager', () => {
   const assetManager = new AssetManager(mockAssetService, mockLogger);
 
   beforeEach(() => {
-    jest.clearAllMocks();
-    global.fetch = jest.fn();
+    vi.clearAllMocks();
+    global.fetch = vi.fn();
   });
 
   describe('fetchAsset', () => {
@@ -90,7 +90,7 @@ describe('AssetManager', () => {
         textAsset.assetName,
       );
       expectFetchCalledWith(textAsset.url);
-      expectLoggedWithContext(mockLogger.info as unknown as jest.Mock, {
+      expectLoggedWithContext(mockLogger.info as unknown as Mock, {
         msg: 'Fetching asset',
         assetType: AssetType.TEXT,
         bookSlug: 'hamlet',
@@ -103,7 +103,7 @@ describe('AssetManager', () => {
     it('should handle fetch errors gracefully', async () => {
       // Set up mocks with type-safe fixtures
       mockAssetService.getAssetUrl.mockResolvedValue(audioAsset.url);
-      global.fetch = jest.fn().mockResolvedValue(createErrorResponse(404, 'Not Found'));
+      global.fetch = vi.fn().mockResolvedValue(createErrorResponse(404, 'Not Found'));
 
       // Verify error handling
       await expect(
@@ -111,7 +111,7 @@ describe('AssetManager', () => {
       ).rejects.toThrow('HTTP error! Status: 404');
 
       // Verify error was logged
-      expectLoggedWithContext(mockLogger.error as unknown as jest.Mock, {
+      expectLoggedWithContext(mockLogger.error as unknown as Mock, {
         msg: 'Failed to fetch asset',
         assetType: AssetType.AUDIO,
         bookSlug: 'hamlet',
@@ -121,7 +121,7 @@ describe('AssetManager', () => {
     it('should handle network errors', async () => {
       // Set up mocks with type-safe fixtures
       mockAssetService.getAssetUrl.mockResolvedValue(audioAsset.url);
-      global.fetch = jest.fn().mockRejectedValue(new Error('Network error'));
+      global.fetch = vi.fn().mockRejectedValue(new Error('Network error'));
 
       // Verify error handling
       await expect(
@@ -129,7 +129,7 @@ describe('AssetManager', () => {
       ).rejects.toThrow('Network error');
 
       // Verify error was logged
-      expectLoggedWithContext(mockLogger.error as unknown as jest.Mock, {
+      expectLoggedWithContext(mockLogger.error as unknown as Mock, {
         msg: 'Failed to fetch asset',
         error: 'Network error',
       });

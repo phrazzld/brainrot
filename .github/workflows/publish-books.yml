@@ -4,22 +4,22 @@ on:
   push:
     branches: [main, master]
     paths:
-      - 'content/translations/books/**'
-      - 'apps/publisher/**'
-      - '.github/workflows/publish-books.yml'
+      - "content/translations/books/**"
+      - "apps/publisher/**"
+      - ".github/workflows/publish-books.yml"
   workflow_dispatch:
     inputs:
       book:
-        description: 'Book slug to publish (leave empty for all changed books)'
+        description: "Book slug to publish (leave empty for all changed books)"
         required: false
         type: string
       platforms:
-        description: 'Platforms to publish to'
+        description: "Platforms to publish to"
         required: false
-        default: 'kdp,lulu'
+        default: "kdp,lulu"
         type: string
       dry-run:
-        description: 'Run in dry-run mode'
+        description: "Run in dry-run mode"
         required: false
         default: false
         type: boolean
@@ -31,7 +31,7 @@ jobs:
     outputs:
       books: ${{ steps.changes.outputs.books }}
       has-changes: ${{ steps.changes.outputs.has-changes }}
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -73,11 +73,11 @@ jobs:
     if: needs.detect-changes.outputs.has-changes == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    
+
     strategy:
       matrix:
         book: ${{ fromJson(needs.detect-changes.outputs.books) }}
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -91,7 +91,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: 'pnpm'
+          cache: "pnpm"
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -117,11 +117,11 @@ jobs:
     if: needs.detect-changes.outputs.has-changes == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 10
-    
+
     strategy:
       matrix:
         book: ${{ fromJson(needs.detect-changes.outputs.books) }}
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -135,7 +135,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: 'pnpm'
+          cache: "pnpm"
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -160,12 +160,12 @@ jobs:
       github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     timeout-minutes: 30
-    
+
     strategy:
       matrix:
         book: ${{ fromJson(needs.detect-changes.outputs.books) }}
       fail-fast: false
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -179,7 +179,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: 'pnpm'
+          cache: "pnpm"
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -197,13 +197,13 @@ jobs:
       - name: Publish to platforms
         run: |
           cd apps/publisher
-          
+
           if [ "${{ github.event.inputs.dry-run }}" == "true" ]; then
             DRY_RUN_FLAG="--dry-run"
           else
             DRY_RUN_FLAG=""
           fi
-          
+
           node dist/index.js publish-all ${{ matrix.book }} \
             --platforms ${{ github.event.inputs.platforms }} \
             $DRY_RUN_FLAG
@@ -226,7 +226,7 @@ jobs:
     needs: [detect-changes, publish]
     if: always() && needs.detect-changes.outputs.has-changes == 'true'
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Send Slack notification
         if: env.SLACK_WEBHOOK_URL != ''
@@ -238,7 +238,7 @@ jobs:
           if [ "$STATUS" != "success" ]; then
             COLOR="danger"
           fi
-          
+
           curl -X POST $SLACK_WEBHOOK_URL \
             -H 'Content-Type: application/json' \
             -d "{

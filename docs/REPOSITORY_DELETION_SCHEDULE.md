@@ -5,24 +5,28 @@
 ### Deletion Date: September 20, 2025
 
 **Repositories to Delete:**
+
 1. **brainrot-publishing-house** - https://github.com/phrazzld/brainrot-publishing-house
 2. **brainrot-translations** - https://github.com/phrazzld/brainrot-translations
 
 ## Migration Status ✅
 
 Both repositories have been successfully migrated to the monorepo with full git history preserved:
+
 - **Migration Date**: August 2025
 - **Migration Method**: Git subtree merge
 - **History**: Fully preserved in monorepo
 - **Current Location**: https://github.com/phrazzld/brainrot
 
 ### Content Migration Map
+
 - `brainrot-publishing-house` → `apps/web/`
 - `brainrot-translations` → `content/translations/`
 
 ## Pre-Deletion Checklist
 
 ### ✅ Completed Tasks
+
 - [x] Full git history preserved via subtree merge
 - [x] All content migrated to monorepo
 - [x] CI/CD workflows recreated in monorepo
@@ -34,6 +38,7 @@ Both repositories have been successfully migrated to the monorepo with full git 
 - [x] Deprecation notices added to old repos
 
 ### 🔄 Tasks Before Deletion (by Sep 20, 2025)
+
 - [ ] Verify all GitHub issues are closed or migrated
 - [ ] Check for any remaining open PRs
 - [ ] Confirm no external services depend on old repos
@@ -44,6 +49,7 @@ Both repositories have been successfully migrated to the monorepo with full git 
 ## Backup Locations
 
 ### Local Backups Created
+
 ```bash
 # Backup commands run on Aug 21, 2025
 ~/Development/brainrot-publishing-house/  # Original local copy
@@ -51,6 +57,7 @@ Both repositories have been successfully migrated to the monorepo with full git 
 ```
 
 ### Git History Preserved In
+
 ```
 brainrot/apps/web/           # Full history from brainrot-publishing-house
 brainrot/content/translations/ # Full history from brainrot-translations
@@ -59,6 +66,7 @@ brainrot/content/translations/ # Full history from brainrot-translations
 ## Deprecation Notices
 
 Both repositories currently display deprecation notices in their README files:
+
 - Links to new monorepo
 - Migration completion date
 - Scheduled deletion date
@@ -69,6 +77,7 @@ Both repositories currently display deprecation notices in their README files:
 ### On September 20, 2025:
 
 1. **Final Verification**
+
    ```bash
    # Verify monorepo has everything
    cd ~/Development/brainrot
@@ -94,6 +103,7 @@ Both repositories currently display deprecation notices in their README files:
 ## Recovery Plan
 
 If content needs to be recovered after deletion:
+
 1. All history exists in the monorepo at `github.com/phrazzld/brainrot`
 2. Local backups exist in `~/Development/` directories
 3. Git history can be extracted using:
@@ -110,6 +120,6 @@ If content needs to be recovered after deletion:
 
 ---
 
-*Document Created: August 21, 2025*
-*Deletion Scheduled: September 20, 2025*
-*Final Deletion: September 21, 2025*
+_Document Created: August 21, 2025_
+_Deletion Scheduled: September 20, 2025_
+_Final Deletion: September 21, 2025_

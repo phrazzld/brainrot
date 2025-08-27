@@ -19,6 +19,7 @@ The monorepo is deployed to Vercel using the **brainrot-publishing-house** proje
 Navigate to: https://vercel.com/moomooskycow/brainrot-publishing-house/settings/general
 
 **Build & Development Settings:**
+
 - **Root Directory**: Leave empty (monorepo root)
 - **Framework Preset**: Next.js
 - **Build Command**: `pnpm build --filter=@brainrot/web`
@@ -57,6 +58,7 @@ NEXT_PUBLIC_BLOB_BASE_URL=https://82qos1wlxbd4iq1g.public.blob.vercel-storage.co
 ## Deployment Methods
 
 ### Automatic Deployment
+
 - Push to `main` or `master` branch triggers production deployment
 - Pull requests create preview deployments
 
@@ -104,11 +106,13 @@ vercel env pull .env.local --environment=preview
 ### Build Failures
 
 1. **Check pnpm version**: Should be 8.15.1
+
    ```bash
    pnpm --version
    ```
 
 2. **Verify Node version**: Should be 22.x
+
    ```bash
    node --version
    ```

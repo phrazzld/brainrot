@@ -7,7 +7,7 @@
   "scripts": {
     "build": "tsc",
     "clean": "rm -rf dist",
-    "test": "jest",
+    "test": "vitest",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
@@ -19,11 +19,8 @@
     "remove-markdown": "^0.5.0"
   },
   "devDependencies": {
-    "@types/jest": "^29.5.12",
     "@types/node": "^20.0.0",
     "@types/remove-markdown": "^0.3.4",
-    "jest": "^29.0.0",
-    "ts-jest": "^29.3.2",
     "typescript": "^5.5.0"
   },
   "exports": {

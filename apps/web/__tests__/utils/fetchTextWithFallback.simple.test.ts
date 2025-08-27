@@ -1,39 +1,41 @@
 /**
  * Simple test for fetchTextWithFallback using ES modules with explicit .js extensions
  */
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, test, vi } from 'vitest';
+
 import { fetchTextWithFallback } from '../../utils/getBlobUrl';
 import { blobPathService } from '../../utils/services/BlobPathService';
 import { blobService } from '../../utils/services/BlobService';
 import { createTextResponse as _createTextResponse } from '../__testutils__/fixtures/index';
 
 // Mock the BlobService
-jest.mock('../../utils/services/BlobService', () => ({
+vi.mock('../../utils/services/BlobService', () => ({
   blobService: {
-    getUrlForPath: jest.fn(),
-    fetchText: jest.fn(),
+    getUrlForPath: vi.fn(),
+    fetchText: vi.fn(),
   },
 }));
 
 // Mock the BlobPathService
-jest.mock('../../utils/services/BlobPathService', () => ({
+vi.mock('../../utils/services/BlobPathService', () => ({
   blobPathService: {
-    convertLegacyPath: jest.fn(),
+    convertLegacyPath: vi.fn(),
   },
 }));
 
 // Mock the logger
-jest.mock('../../utils/logger', () => ({
+vi.mock('../../utils/logger', () => ({
   logger: {
-    child: jest.fn(() => ({
-      info: jest.fn(),
-      warn: jest.fn(),
-      error: jest.fn(),
+    child: vi.fn(() => ({
+      info: vi.fn(),
+      warn: vi.fn(),
+      error: vi.fn(),
     })),
   },
 }));
 
 // Mock global fetch
-global.fetch = jest.fn();
+global.fetch = vi.fn();
 
 describe('fetchTextWithFallback (Simple Tests)', () => {
   const mockBlobService = blobService;
@@ -41,7 +43,7 @@ describe('fetchTextWithFallback (Simple Tests)', () => {
   const mockFetch = global.fetch;
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
     // Reset environment variables
     process.env.NEXT_PUBLIC_BLOB_BASE_URL = 'https://example.blob.vercel-storage.com';
   });

@@ -1,6 +1,6 @@
 /**
  * @brainrot/metadata - Book metadata parsing and validation
- * 
+ *
  * This package provides utilities for managing book metadata including
  * ISBN validation, YAML parsing, and metadata generation.
  */
@@ -14,7 +14,7 @@ export {
   formatISBN,
   generatePlaceholderISBN,
   extractISBN,
-} from './isbn';
+} from "./isbn";
 
 // Export schemas and types
 export type {
@@ -22,12 +22,9 @@ export type {
   BookISBN,
   BookPricing,
   PublishingConfig,
-} from './schemas';
+} from "./schemas";
 
-export {
-  bookMetadataSchema,
-  defaultMetadata,
-} from './schemas';
+export { bookMetadataSchema, defaultMetadata } from "./schemas";
 
 // Export metadata management functions
 export {
@@ -39,19 +36,16 @@ export {
   applyInheritance,
   updateMetadata,
   createBookMetadata,
-} from './metadata';
+} from "./metadata";
 
-export type {
-  ValidationError,
-  ParseResult,
-} from './metadata';
+export type { ValidationError, ParseResult } from "./metadata";
 
 // Re-export commonly used functions for convenience
-import { 
+import {
   parseBookMetadata as parse,
   generateMetadata as generate,
-} from './metadata';
-import { validateISBN as validateIsbn } from './isbn';
+} from "./metadata";
+import { validateISBN as validateIsbn } from "./isbn";
 
 export const parseMetadata = parse;
 export const createMetadata = generate;

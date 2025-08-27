@@ -2,6 +2,7 @@
  * Tests for path utilities
  */
 import * as path from 'path';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, test, vi } from 'vitest';
 
 import {
   getDirname,

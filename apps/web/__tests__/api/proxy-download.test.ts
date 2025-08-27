@@ -1,3 +1,5 @@
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, test, vi } from 'vitest';
+
 import { createSuccessResponse } from '@/__mocks__/MockResponse';
 import { proxyAssetDownload } from '@/app/api/download/proxyService';
 import { AssetError, AssetErrorType, AssetService, AssetType } from '@/types/assets';
@@ -13,35 +15,35 @@ const __mockNextResponse = {
 };
 
 // Mock the logger
-jest.mock('@/utils/logger', () => ({
-  createRequestLogger: jest.fn().mockImplementation(() => ({
-    debug: jest.fn(),
-    info: jest.fn(),
-    warn: jest.fn(),
-    error: jest.fn(),
-    child: jest.fn().mockReturnValue({
-      debug: jest.fn(),
-      info: jest.fn(),
-      warn: jest.fn(),
-      error: jest.fn(),
+vi.mock('@/utils/logger', () => ({
+  createRequestLogger: vi.fn().mockImplementation(() => ({
+    debug: vi.fn(),
+    info: vi.fn(),
+    warn: vi.fn(),
+    error: vi.fn(),
+    child: vi.fn().mockReturnValue({
+      debug: vi.fn(),
+      info: vi.fn(),
+      warn: vi.fn(),
+      error: vi.fn(),
     }),
   })),
   logger: {
-    debug: jest.fn(),
-    info: jest.fn(),
-    warn: jest.fn(),
-    error: jest.fn(),
-    child: jest.fn().mockReturnValue({
-      debug: jest.fn(),
-      info: jest.fn(),
-      warn: jest.fn(),
-      error: jest.fn(),
+    debug: vi.fn(),
+    info: vi.fn(),
+    warn: vi.fn(),
+    error: vi.fn(),
+    child: vi.fn().mockReturnValue({
+      debug: vi.fn(),
+      info: vi.fn(),
+      warn: vi.fn(),
+      error: vi.fn(),
     }),
   },
 }));
 
 // Mock the TimeoutError class
-jest.mock('node-fetch', () => {
+vi.mock('node-fetch', () => {
   class MockTimeoutError extends Error {
     constructor(url: string, timeoutMs: number) {
       super(`Request to ${url} timed out after ${timeoutMs}ms`);
@@ -52,7 +54,7 @@ jest.mock('node-fetch', () => {
 });
 
 // Mock fetch
-const mockFetch = jest.fn();
+const mockFetch = vi.fn();
 global.fetch = mockFetch;
 
 // Mock AbortController
@@ -61,13 +63,13 @@ global.AbortController = class MockAbortController {
     aborted: false,
     reason: undefined,
     onabort: null,
-    throwIfAborted: jest.fn(),
-    addEventListener: jest.fn(),
-    removeEventListener: jest.fn(),
-    dispatchEvent: jest.fn().mockReturnValue(true),
+    throwIfAborted: vi.fn(),
+    addEventListener: vi.fn(),
+    removeEventListener: vi.fn(),
+    dispatchEvent: vi.fn().mockReturnValue(true),
   } as unknown as AbortSignal;
 
-  abort = jest.fn(() => {
+  abort = vi.fn(() => {
     // Use type assertion with a more specific type
     (this.signal as unknown as { aborted: boolean }).aborted = true;
     (this.signal as unknown as { reason: Error }).reason = new DOMException(
@@ -78,13 +80,13 @@ global.AbortController = class MockAbortController {
 } as unknown as typeof AbortController;
 
 // Mock setTimeout
-jest.spyOn(global, 'setTimeout').mockImplementation((_fn) => {
+vi.spyOn(global, 'setTimeout').mockImplementation((_fn) => {
   // Don't actually call the timeout function to avoid unexpected aborts
   return 123 as unknown as NodeJS.Timeout;
 });
 
 // Mock clearTimeout
-jest.spyOn(global, 'clearTimeout').mockImplementation(() => {});
+vi.spyOn(global, 'clearTimeout').mockImplementation(() => {});
 
 // Mock response creation helper function
 const createMockResponseObject = (status = 200, statusText = 'OK', headers = {}) =>
@@ -95,7 +97,7 @@ const createMockResponseObject = (status = 200, statusText = 'OK', headers = {})
   });
 
 // Mock NextResponse
-jest.mock('next/server', () => {
+vi.mock('next/server', () => {
   // Create a function that meets the requirements of NextResponse
   const mockResponseFunction = jest
     .fn()
@@ -105,10 +107,10 @@ jest.mock('next/server', () => {
     }));
 
   // Add the required static json method to the function object
-  const jsonMethod = jest.fn().mockImplementation((data: unknown, options?: ResponseInit) => ({
+  const jsonMethod = vi.fn().mockImplementation((data: unknown, options?: ResponseInit) => ({
     ...createMockResponseObject(options?.status, options?.statusText, options?.headers),
     json: async () => data,
-    text: jest.fn().mockResolvedValue(JSON.stringify(data)),
+    text: vi.fn().mockResolvedValue(JSON.stringify(data)),
     body: null,
   }));
 
@@ -130,30 +132,30 @@ function createMockHeaders(headersObj: Record<string, string> = {}): Headers {
 // Helper to create mock readable stream
 function createMockStream(): ReadableStream {
   const mockReader = {
-    read: jest.fn().mockResolvedValue({ done: true, value: undefined }),
-    releaseLock: jest.fn(),
+    read: vi.fn().mockResolvedValue({ done: true, value: undefined }),
+    releaseLock: vi.fn(),
     closed: Promise.resolve(undefined),
-    cancel: jest.fn().mockResolvedValue(undefined),
+    cancel: vi.fn().mockResolvedValue(undefined),
   };
 
   // Create initial stream properties with proper typing
   const mockStream: Partial<ReadableStream> & {
-    getReader: jest.Mock;
-    pipeTo: jest.Mock;
-    cancel: jest.Mock;
-    pipeThrough?: jest.Mock;
-    tee?: jest.Mock;
+    getReader: ReturnType<typeof vi.fn>;
+    pipeTo: ReturnType<typeof vi.fn>;
+    cancel: ReturnType<typeof vi.fn>;
+    pipeThrough?: ReturnType<typeof vi.fn>;
+    tee?: ReturnType<typeof vi.fn>;
     locked: boolean;
   } = {
-    getReader: jest.fn().mockReturnValue(mockReader),
-    pipeTo: jest.fn().mockReturnValue(Promise.resolve()),
-    cancel: jest.fn().mockReturnValue(Promise.resolve()),
+    getReader: vi.fn().mockReturnValue(mockReader),
+    pipeTo: vi.fn().mockReturnValue(Promise.resolve()),
+    cancel: vi.fn().mockReturnValue(Promise.resolve()),
     locked: false,
   };
 
   // Add methods that reference the mockStream itself
-  mockStream.pipeThrough = jest.fn().mockReturnValue(mockStream);
-  mockStream.tee = jest.fn().mockReturnValue([mockStream, mockStream]);
+  mockStream.pipeThrough = vi.fn().mockReturnValue(mockStream);
+  mockStream.tee = vi.fn().mockReturnValue([mockStream, mockStream]);
 
   return mockStream as unknown as ReadableStream;
 }
@@ -178,17 +180,17 @@ class MockAssetService implements AssetService {
   }
 
   // Implement other required methods but with no-op functionality
-  assetExists = jest.fn().mockResolvedValue(true);
-  fetchAsset = jest.fn();
-  fetchTextAsset = jest.fn();
-  uploadAsset = jest.fn();
-  deleteAsset = jest.fn();
-  listAssets = jest.fn();
+  assetExists = vi.fn().mockResolvedValue(true);
+  fetchAsset = vi.fn();
+  fetchTextAsset = vi.fn();
+  uploadAsset = vi.fn();
+  deleteAsset = vi.fn();
+  listAssets = vi.fn();
 }
 
 describe('Proxy Download Service', () => {
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
 
     // Reset fetch mock to a default success response
     mockFetch.mockResolvedValue({

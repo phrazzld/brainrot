@@ -1,31 +1,33 @@
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, test, vi } from 'vitest';
+
 import { downloadFromSpaces, getAudioPathFromUrl } from '../../utils/downloadFromSpaces.js';
 import { assetPathService } from '../../utils/services/AssetPathService';
 
 // Mock fetch API
-global.fetch = jest.fn();
+global.fetch = vi.fn();
 
 describe('downloadFromSpaces', () => {
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
     // Mock environment variable
     process.env.NEXT_PUBLIC_SPACES_BASE_URL =
       'https://brainrot-publishing.nyc3.digitaloceanspaces.com';
   });
 
   afterEach(() => {
-    jest.resetAllMocks();
+    vi.resetAllMocks();
   });
 
   it('should download a file from a full URL', async () => {
     // Mock implementation
     const mockArrayBuffer = new ArrayBuffer(1024);
-    const mockFetch = global.fetch as jest.Mock;
+    const mockFetch = global.fetch as ReturnType<typeof vi.fn>;
     mockFetch.mockResolvedValueOnce({
       ok: true,
       headers: {
-        get: jest.fn().mockReturnValue('audio/mpeg'),
+        get: vi.fn().mockReturnValue('audio/mpeg'),
       },
-      arrayBuffer: jest.fn().mockResolvedValue(mockArrayBuffer),
+      arrayBuffer: vi.fn().mockResolvedValue(mockArrayBuffer),
     });
 
     // Define the legacy path - we don't need standard path here
@@ -55,13 +57,13 @@ describe('downloadFromSpaces', () => {
   it('should add base URL for path-only inputs', async () => {
     // Mock implementation
     const mockArrayBuffer = new ArrayBuffer(1024);
-    const mockFetch = global.fetch as jest.Mock;
+    const mockFetch = global.fetch as ReturnType<typeof vi.fn>;
     mockFetch.mockResolvedValueOnce({
       ok: true,
       headers: {
-        get: jest.fn().mockReturnValue('audio/mpeg'),
+        get: vi.fn().mockReturnValue('audio/mpeg'),
       },
-      arrayBuffer: jest.fn().mockResolvedValue(mockArrayBuffer),
+      arrayBuffer: vi.fn().mockResolvedValue(mockArrayBuffer),
     });
 
     // Call the function with legacy path (as this utility is for legacy paths)
@@ -87,13 +89,13 @@ describe('downloadFromSpaces', () => {
   it('should handle leading slashes in paths', async () => {
     // Mock implementation
     const mockArrayBuffer = new ArrayBuffer(1024);
-    const mockFetch = global.fetch as jest.Mock;
+    const mockFetch = global.fetch as ReturnType<typeof vi.fn>;
     mockFetch.mockResolvedValueOnce({
       ok: true,
       headers: {
-        get: jest.fn().mockReturnValue('audio/mpeg'),
+        get: vi.fn().mockReturnValue('audio/mpeg'),
       },
-      arrayBuffer: jest.fn().mockResolvedValue(mockArrayBuffer),
+      arrayBuffer: vi.fn().mockResolvedValue(mockArrayBuffer),
     });
 
     // Call the function with legacy path with leading slash
@@ -120,19 +122,19 @@ describe('downloadFromSpaces', () => {
   it('should retry on failure', async () => {
     // Mock implementation
     const mockArrayBuffer = new ArrayBuffer(1024);
-    const mockFetch = global.fetch as jest.Mock;
+    const mockFetch = global.fetch as ReturnType<typeof vi.fn>;
 
     // First call fails, second succeeds
     mockFetch.mockRejectedValueOnce(new Error('Network error')).mockResolvedValueOnce({
       ok: true,
       headers: {
-        get: jest.fn().mockReturnValue('audio/mpeg'),
+        get: vi.fn().mockReturnValue('audio/mpeg'),
       },
-      arrayBuffer: jest.fn().mockResolvedValue(mockArrayBuffer),
+      arrayBuffer: vi.fn().mockResolvedValue(mockArrayBuffer),
     });
 
     // Reduce timeout and retry delay for test
-    jest.spyOn(global, 'setTimeout').mockImplementation((callback: () => void) => {
+    vi.spyOn(global, 'setTimeout').mockImplementation((callback: () => void) => {
       callback();
       return 1 as unknown as NodeJS.Timeout;
     });
@@ -158,11 +160,11 @@ describe('downloadFromSpaces', () => {
 
   it('should throw after max retries', async () => {
     // Mock implementation
-    const mockFetch = global.fetch as jest.Mock;
+    const mockFetch = global.fetch as ReturnType<typeof vi.fn>;
     mockFetch.mockRejectedValue(new Error('Network error'));
 
     // Reduce timeout and retry delay for test
-    jest.spyOn(global, 'setTimeout').mockImplementation((callback: () => void) => {
+    vi.spyOn(global, 'setTimeout').mockImplementation((callback: () => void) => {
       callback();
       return 1 as unknown as NodeJS.Timeout;
     });

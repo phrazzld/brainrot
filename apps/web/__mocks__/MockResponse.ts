@@ -79,12 +79,17 @@ function initializeResponse(
   response.blob = async () => {
     if (body instanceof Blob) {
       return body;
-    } else if (
-      typeof body === 'string' ||
-      body instanceof ArrayBuffer ||
-      ArrayBuffer.isView(body)
-    ) {
+    } else if (typeof body === 'string') {
       return new Blob([body]);
+    } else if (body instanceof ArrayBuffer) {
+      return new Blob([body]);
+    } else if (ArrayBuffer.isView(body)) {
+      // Convert ArrayBufferView to ArrayBuffer for Blob constructor
+      const buffer = body.buffer.slice(
+        body.byteOffset,
+        body.byteOffset + body.byteLength,
+      ) as ArrayBuffer;
+      return new Blob([buffer]);
     }
     return new Blob([]);
   };

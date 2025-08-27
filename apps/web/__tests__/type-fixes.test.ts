@@ -1,4 +1,4 @@
-import { describe, expect, test } from '@jest/globals';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, test, vi } from 'vitest';
 
 // Let's create stubs for our type replacements and test their behavior
 

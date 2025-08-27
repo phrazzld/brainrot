@@ -1,4 +1,5 @@
 # Migration Rollback Plan
+
 ## Brainrot Publishing House Monorepo Migration
 
 **Document Version**: 1.0  
@@ -21,6 +22,7 @@ npm run dev  # Verify old app works
 ## Rollback Triggers
 
 ### Critical (Immediate Rollback)
+
 - [ ] Data loss detected (missing translations or chapters)
 - [ ] Vercel deployment completely broken
 - [ ] Git history corrupted or lost
@@ -28,12 +30,14 @@ npm run dev  # Verify old app works
 - [ ] Build system completely non-functional
 
 ### Major (Rollback Within 4 Hours)
+
 - [ ] More than 50% of books not loading
 - [ ] Publishing pipeline non-functional
 - [ ] Performance degradation > 5x
 - [ ] Critical security vulnerability introduced
 
 ### Minor (Fix Forward)
+
 - [ ] Individual book loading issues
 - [ ] Styling inconsistencies
 - [ ] Non-critical feature bugs
@@ -42,6 +46,7 @@ npm run dev  # Verify old app works
 ## Pre-Migration Checkpoints
 
 ### Backups Verified ✅
+
 - [x] Git mirror backup: `/Users/phaedrus/Development/backup-web`
 - [x] Git mirror backup: `/Users/phaedrus/Development/backup-translations`
 - [x] GitHub issues exported: `backups/brainrot-publishing-house-issues.json`
@@ -49,6 +54,7 @@ npm run dev  # Verify old app works
 - [x] Environment variables documented: `backups/env-files-inventory.md`
 
 ### Current State Snapshot
+
 ```bash
 # Record current state before migration
 echo "=== Pre-Migration State ===" > backups/pre-migration-state.txt
@@ -132,11 +138,13 @@ grep NEXT_PUBLIC_BLOB_BASE_URL .env.local
 ### After Rollback, Verify:
 
 #### Repository Health
+
 - [ ] Git history intact: `git log --oneline | head -20`
 - [ ] All branches present: `git branch -a`
 - [ ] No uncommitted changes: `git status`
 
 #### Application Functionality
+
 - [ ] Development server starts: `npm run dev`
 - [ ] No console errors in browser
 - [ ] Great Gatsby loads: `/reading-room/great-gatsby`
@@ -144,12 +152,14 @@ grep NEXT_PUBLIC_BLOB_BASE_URL .env.local
 - [ ] Text content displays correctly
 
 #### Build System
+
 - [ ] Build completes: `npm run build`
 - [ ] No TypeScript errors: `npm run typecheck`
 - [ ] Tests pass: `npm run test`
 - [ ] Linting passes: `npm run lint`
 
 #### Deployment
+
 - [ ] Vercel deployment succeeds
 - [ ] Production URL accessible
 - [ ] Blob storage URLs return 200
@@ -158,6 +168,7 @@ grep NEXT_PUBLIC_BLOB_BASE_URL .env.local
 ## Recovery Strategies by Failure Type
 
 ### Scenario 1: Partial Migration Failure
+
 ```bash
 # If migration fails mid-process
 cd /Users/phaedrus/Development/brainrot
@@ -168,6 +179,7 @@ git reset --hard HEAD  # Reset to last commit
 ```
 
 ### Scenario 2: Build System Failure
+
 ```bash
 # If monorepo build fails
 cd /Users/phaedrus/Development/brainrot
@@ -177,6 +189,7 @@ pnpm build --filter=@brainrot/web  # Try targeted build
 ```
 
 ### Scenario 3: Content Loss
+
 ```bash
 # If translations are missing
 cd /Users/phaedrus/Development
@@ -187,6 +200,7 @@ git commit -m "Restore missing translations"
 ```
 
 ### Scenario 4: Vercel Connection Issues
+
 ```bash
 # Manual Vercel CLI deployment
 cd /Users/phaedrus/Development/brainrot/apps/web
@@ -223,18 +237,23 @@ npx vercel --prod --yes
 **Impact**: [DESCRIPTION]
 
 ### What Happened
+
 [Describe the failure]
 
 ### Root Cause
+
 [Identify why it failed]
 
 ### Resolution
+
 [How it was fixed]
 
 ### Lessons Learned
+
 [What to do differently]
 
 ### Action Items
+
 - [ ] Update rollback plan
 - [ ] Fix root cause
 - [ ] Improve testing
@@ -249,6 +268,7 @@ npx vercel --prod --yes
 ## Tools & Resources
 
 ### Monitoring
+
 ```bash
 # Check application health
 curl -I https://[your-domain]/api/health
@@ -264,6 +284,7 @@ du -sh node_modules
 ```
 
 ### Useful Commands
+
 ```bash
 # Compare directories
 diff -r brainrot-publishing-house backup-web

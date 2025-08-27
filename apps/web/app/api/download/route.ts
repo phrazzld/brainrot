@@ -2,14 +2,22 @@ import { NextRequest, NextResponse } from 'next/server';
 
 import { randomUUID } from 'crypto';
 
-import { AssetType } from '@/types/assets.js';
-import { createRequestLogger } from '@/utils/logger.js';
+import { AssetType } from '@/types/assets';
+import { createRequestLogger, logger } from '@/utils/logger';
 
-import { handleCriticalError, handleDownloadServiceError } from './errorHandlers.js';
-import { safeLog } from './logging/safeLogger.js';
-import { proxyAssetDownload } from './proxyService.js';
-import { validateRequestParameters } from './requestValidation.js';
-import { createDownloadService } from './serviceFactory.js';
+import { handleCriticalError, handleDownloadServiceError } from './errorHandlers';
+import { safeLog } from './logging/safeLogger';
+import { createDownloadService } from './serviceFactory';
+import { createAssetService } from './services/AssetService';
+import { proxyAssetDownload } from './services/ProxyService';
+import {
+  ClientClassification,
+  ClientInfo,
+  RequestMetadata,
+  createRequestService,
+} from './services/RequestService';
+import { createResponseService } from './services/ResponseService';
+import { createValidationService } from './services/ValidationService';
 
 /**
  * Download API route handler
@@ -43,6 +51,7 @@ type RequestContext = {
   log: ReturnType<typeof createRequestLogger>;
   searchParams: URLSearchParams;
   headers: Headers;
+  metadata: RequestMetadata;
 };
 
 /**
@@ -56,61 +65,45 @@ type ValidationResult = {
   errorResponse?: NextResponse;
 };
 
+// Create service instances
+const requestService = createRequestService({
+  environment: process.env.NODE_ENV || 'development',
+});
+
+const validationService = createValidationService({
+  logger,
+  validTypes: ['full', 'chapter'],
+  maxChapter: 999,
+});
+
+const assetService = createAssetService({
+  logger,
+  blobBaseUrl: process.env.NEXT_PUBLIC_BLOB_BASE_URL,
+});
+
+const responseService = createResponseService({
+  logger,
+  includeStackTrace: process.env.NODE_ENV !== 'production',
+});
+
 /**
  * Initialize request processing by setting up logging and correlation ID
  * @param req - The incoming request
  * @returns Request context with correlationId, logger, and searchParams
  */
 function initializeRequest(req: NextRequest): RequestContext {
-  const correlationId = randomUUID();
-  const log = createRequestLogger(correlationId);
-  const { searchParams, pathname } = new URL(req.url);
+  // Use RequestService to create metadata and logger
+  const metadata = requestService.createMetadata(req);
+  const log = requestService.createLogger(metadata.correlationId);
+  const { searchParams } = new URL(req.url);
 
-  // Extract relevant headers for logging (skipping sensitive ones)
-  const headers: Record<string, string> = {};
-  const sensitiveHeaders = ['authorization', 'cookie', 'set-cookie'];
-
-  req.headers.forEach((value: string, key: string) => {
-    if (!sensitiveHeaders.includes(key.toLowerCase())) {
-      headers[key] = value;
-    }
-  });
-
-  // Extract request parameters for logging (skipping sensitive ones)
-  const params: Record<string, string> = {};
-  const sensitiveParams = ['auth', 'token', 'key', 'secret', 'password'];
-
-  searchParams.forEach((value, key) => {
-    if (!sensitiveParams.includes(key.toLowerCase())) {
-      params[key] = value;
-    }
-  });
-
-  // Log detailed request information
-  safeLog(log, 'info', {
-    msg: 'Download API request received',
-    correlationId,
-    method: req.method,
-    url: req.url,
-    pathname,
-    params,
-    isProxyRequest: searchParams.get('proxy') === 'true',
-    referer: req.headers.get('referer'),
-    userAgent: req.headers.get('user-agent'),
-    acceptHeaders: {
-      accept: req.headers.get('accept'),
-      acceptEncoding: req.headers.get('accept-encoding'),
-      acceptLanguage: req.headers.get('accept-language'),
-    },
-    origin: req.headers.get('origin'),
-    host: req.headers.get('host'),
-    contentType: req.headers.get('content-type'),
-    timestamp: new Date().toISOString(),
-    environment: process.env.NODE_ENV || 'development',
-    deployment: process.env.VERCEL_URL || 'local',
-  });
-
-  return { correlationId, log, searchParams, headers: req.headers };
+  return {
+    correlationId: metadata.correlationId,
+    log,
+    searchParams,
+    headers: req.headers,
+    metadata,
+  };
 }
 
 /**
@@ -119,8 +112,47 @@ function initializeRequest(req: NextRequest): RequestContext {
  * @returns Validation result and error response if invalid
  */
 function validateRequest(context: RequestContext): ValidationResult {
-  const { searchParams, log, correlationId } = context;
-  return validateRequestParameters(searchParams, log, correlationId);
+  const { searchParams, correlationId } = context;
+
+  // Extract parameters from URL search params
+  const params = {
+    slug: searchParams.get('slug') || undefined,
+    type: searchParams.get('type') || undefined,
+    chapter: searchParams.get('chapter') || undefined,
+    proxy: searchParams.get('proxy') || undefined,
+  };
+
+  // Use ValidationService to validate
+  const result = validationService.validateDownloadParams(params);
+
+  // Convert ValidationService result to route's expected format
+  if (!result.success) {
+    const errorMessage = result.errors?.[0]?.message || 'Validation failed';
+    const status = result.errors?.[0]?.code?.includes('MISSING') ? 400 : 400;
+
+    return {
+      valid: false,
+      errorResponse: NextResponse.json({ error: errorMessage, correlationId }, { status }),
+    };
+  }
+
+  // Return validated parameters
+  const validatedData = result.data;
+  if (!validatedData) {
+    return {
+      valid: false,
+      errorResponse: NextResponse.json(
+        { error: 'Validation failed', correlationId },
+        { status: 400 },
+      ),
+    };
+  }
+  return {
+    valid: true,
+    slug: validatedData.slug,
+    type: validatedData.type,
+    chapter: validatedData.chapter?.toString(),
+  };
 }
 
 /**
@@ -191,82 +223,6 @@ function extractRequestParams(searchParams?: URLSearchParams): Record<string, st
   return requestParams;
 }
 
-// Define types for client information
-type ClientInfo = {
-  userAgent: string;
-  referer: string;
-  origin: string;
-  accept: string;
-  acceptEncoding: string;
-  acceptLanguage: string;
-};
-
-type ClientClassification = {
-  isMobile: boolean;
-  isIOS: boolean;
-  isAndroid: boolean;
-  browser: string;
-};
-
-/**
- * Get header value safely
- */
-function getHeaderValue(headers: Record<string, string> | undefined, key: string): string {
-  return headers?.[key] || '';
-}
-
-/**
- * Extract basic client information from headers
- */
-function extractClientInfo(headers?: Record<string, string>): ClientInfo {
-  return {
-    userAgent: getHeaderValue(headers, 'user-agent'),
-    referer: getHeaderValue(headers, 'referer'),
-    origin: getHeaderValue(headers, 'origin'),
-    accept: getHeaderValue(headers, 'accept'),
-    acceptEncoding: getHeaderValue(headers, 'accept-encoding'),
-    acceptLanguage: getHeaderValue(headers, 'accept-language'),
-  };
-}
-
-/**
- * Determine browser type from user agent
- */
-function determineBrowser(userAgent: string): string {
-  if (userAgent.includes('Chrome')) return 'Chrome';
-  if (userAgent.includes('Safari') && !userAgent.includes('Chrome')) return 'Safari';
-  if (userAgent.includes('Firefox')) return 'Firefox';
-  if (userAgent.includes('Edg/')) return 'Edge';
-  return 'Other';
-}
-
-/**
- * Analyze client information from headers
- */
-function analyzeClientInfo(headers?: Record<string, string>): {
-  clientInfo: ClientInfo;
-  clientClassification: ClientClassification;
-} {
-  const clientInfo = extractClientInfo(headers);
-  const { userAgent } = clientInfo;
-
-  // Determine client platform/browser for analytics
-  const isMobile = userAgent.includes('Mobile') || userAgent.includes('Android');
-  const isIOS = userAgent.includes('iPhone') || userAgent.includes('iPad');
-  const isAndroid = userAgent.includes('Android');
-  const browser = determineBrowser(userAgent);
-
-  return {
-    clientInfo,
-    clientClassification: {
-      isMobile,
-      isIOS,
-      isAndroid,
-      browser,
-    },
-  };
-}
-
 /**
  * Type for proxy logging context
  */
@@ -307,69 +263,6 @@ function logProxyRequest(context: ProxyLogContext): void {
   });
 }
 
-/**
- * Generate asset name based on download type and chapter
- */
-function generateAssetName(
-  validation: { type: 'full' | 'chapter'; chapter?: string },
-  correlationId: string,
-): { assetName: string; error?: NextResponse } {
-  if (validation.type === 'full') {
-    return { assetName: 'full-audiobook.mp3' };
-  }
-
-  if (!validation.chapter) {
-    const error = NextResponse.json(
-      {
-        error: 'Invalid request',
-        message: 'Chapter parameter is required when type is "chapter"',
-        correlationId,
-      },
-      { status: 400 },
-    );
-    return { assetName: '', error };
-  }
-
-  // Format chapter with leading zeros
-  const paddedChapter = String(parseInt(validation.chapter, 10)).padStart(2, '0');
-  return { assetName: `chapter-${paddedChapter}.mp3` };
-}
-
-/**
- * Generate operation ID for proxy tracking
- */
-function generateOperationId(): string {
-  return `px-${Date.now().toString(36)}-${Math.random().toString(36).substring(2, 5)}`;
-}
-
-/**
- * Format error response for proxy errors
- */
-function formatErrorResponse(
-  proxyError: unknown,
-  correlationId: string,
-  operationId: string,
-): Record<string, unknown> {
-  const errorResponse = {
-    error: 'Proxy error',
-    message: 'Failed to proxy download through API',
-    correlationId,
-    operationId,
-  };
-
-  // Add detailed error information in non-production environments
-  if (process.env.NODE_ENV !== 'production') {
-    Object.assign(errorResponse, {
-      details: proxyError instanceof Error ? proxyError.message : String(proxyError),
-      errorType: proxyError instanceof Error ? proxyError.constructor.name : typeof proxyError,
-      stack: proxyError instanceof Error ? proxyError.stack : undefined,
-      timestamp: new Date().toISOString(),
-    });
-  }
-
-  return errorResponse;
-}
-
 // Import AssetService type if needed, or create a placeholder for it
 type AssetService = ReturnType<
   NonNullable<ReturnType<typeof createDownloadService>>['getAssetService']
@@ -403,11 +296,11 @@ async function handleProxyRequest(context: ProxyRequestContext): Promise<NextRes
   const { url, filename, validation, log, correlationId, searchParams, headers } = context;
 
   // Generate a unique operation ID for this proxy operation
-  const operationId = generateOperationId();
+  const operationId = requestService.generateOperationId();
 
   // Extract request parameters and client information
   const requestParams = extractRequestParams(searchParams);
-  const { clientInfo, clientClassification } = analyzeClientInfo(headers);
+  const { clientInfo, clientClassification } = requestService.analyzeClientInfo(headers || {});
 
   // Log proxy request
   logProxyRequest({
@@ -442,8 +335,20 @@ async function handleProxyRequest(context: ProxyRequestContext): Promise<NextRes
     }
 
     // Generate asset name based on validation parameters
-    const { assetName, error } = generateAssetName(validation, correlationId);
-    if (error) return error;
+    const { assetName, error } = assetService.generateAssetName(
+      validation.type,
+      validation.chapter,
+    );
+    if (error) {
+      return NextResponse.json(
+        {
+          error: 'Invalid request',
+          message: error,
+          correlationId,
+        },
+        { status: 400 },
+      );
+    }
 
     // Use the proxyAssetDownload function with the config object
     const response = await proxyAssetDownload({
@@ -488,48 +393,9 @@ async function handleProxyRequest(context: ProxyRequestContext): Promise<NextRes
     });
 
     // Return environment-aware structured error response
-    const errorResponse = formatErrorResponse(proxyError, correlationId, operationId);
+    const errorResponse = responseService.formatProxyError(proxyError, correlationId, operationId);
     return NextResponse.json(errorResponse, { status: 500 });
   }
-}
-
-/**
- * Get the download URL from the service
- * @param params - Download request parameters
- * @param downloadService - The download service instance
- * @param log - Logger instance
- * @returns The generated URL and validated parameters
- */
-async function getDownloadUrl(
-  params: {
-    slug: string;
-    type: 'full' | 'chapter';
-    chapter?: string;
-    correlationId: string;
-  },
-  downloadService: NonNullable<ReturnType<typeof createDownloadService>>,
-  log: ReturnType<typeof createRequestLogger>,
-) {
-  const { slug, type, chapter, correlationId } = params;
-
-  // Call the download service to get the URL
-  // We're using NonNullable in the function parameter so we know it's not null
-  const url = await downloadService.getDownloadUrl({
-    slug,
-    type,
-    chapter,
-    correlationId,
-  });
-
-  // Log successful URL generation
-  safeLog(log, 'info', {
-    msg: 'Successfully generated download URL',
-    slug,
-    type,
-    chapter,
-  });
-
-  return { url, validatedSlug: slug, validatedType: type, chapter };
 }
 
 /**
@@ -565,16 +431,23 @@ async function processDownloadRequest(
     const validatedSlug = validation.slug || '';
     const validatedType = validation.type || 'full';
 
-    const { url } = await getDownloadUrl(
-      {
-        slug: validatedSlug,
-        type: validatedType,
-        chapter: validation.chapter,
-        correlationId,
-      },
-      downloadService,
-      log,
-    );
+    // Get download URL using AssetService
+    const { url, error: urlError } = await assetService.getDownloadUrl({
+      slug: validatedSlug,
+      type: validatedType,
+      chapter: validation.chapter ? parseInt(validation.chapter, 10) : undefined,
+    });
+
+    if (urlError) {
+      return NextResponse.json(
+        {
+          error: 'Asset resolution failed',
+          message: urlError,
+          correlationId,
+        },
+        { status: 404 },
+      );
+    }
 
     // Create filename for download
     const filename = createDownloadFilename(validatedSlug, validatedType, validation.chapter);

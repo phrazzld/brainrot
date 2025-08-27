@@ -1,18 +1,18 @@
-import { spawn } from 'child_process';
-import { promisify } from 'util';
-import * as fs from 'fs';
-import * as path from 'path';
+import { spawn } from "child_process";
+import { promisify } from "util";
+import * as fs from "fs";
+import * as path from "path";
 
 const writeFile = promisify(fs.writeFile);
 const unlink = promisify(fs.unlink);
 
 // Security: Allowed metadata fields to prevent arbitrary command injection
 const ALLOWED_METADATA_FIELDS = new Set([
-  'title',
-  'author',
-  'date',
-  'language',
-  'publisher'
+  "title",
+  "author",
+  "date",
+  "language",
+  "publisher",
 ]);
 
 // Security: Safe characters for metadata values (alphanumeric + basic punctuation)
@@ -35,23 +35,32 @@ export interface ConversionOptions {
  * @param value - The metadata value
  * @returns Object with safe flag and sanitized value if safe
  */
-function sanitizeMetadata(key: string, value: string): { safe: boolean; sanitized?: string } {
+function sanitizeMetadata(
+  key: string,
+  value: string,
+): { safe: boolean; sanitized?: string } {
   // Check if field is allowed
   if (!ALLOWED_METADATA_FIELDS.has(key)) {
-    console.error(`[SECURITY] Rejected metadata field not in allowlist: ${key}`);
+    console.error(
+      `[SECURITY] Rejected metadata field not in allowlist: ${key}`,
+    );
     return { safe: false };
   }
 
   // Check for safe characters only
   if (!SAFE_CHAR_REGEX.test(value)) {
-    console.error(`[SECURITY] Rejected unsafe metadata value for ${key}: contains forbidden characters`);
+    console.error(
+      `[SECURITY] Rejected unsafe metadata value for ${key}: contains forbidden characters`,
+    );
     return { safe: false };
   }
 
   // Additional check for shell metacharacters
-  const dangerousChars = [';', '|', '&', '$', '`', '\\', '\n', '\r', '\0'];
-  if (dangerousChars.some(char => value.includes(char))) {
-    console.error(`[SECURITY] Rejected metadata value with shell metacharacters for ${key}`);
+  const dangerousChars = [";", "|", "&", "$", "`", "\\", "\n", "\r", "\0"];
+  if (dangerousChars.some((char) => value.includes(char))) {
+    console.error(
+      `[SECURITY] Rejected metadata value with shell metacharacters for ${key}`,
+    );
     return { safe: false };
   }
 
@@ -65,22 +74,22 @@ function sanitizeMetadata(key: string, value: string): { safe: boolean; sanitize
  */
 function executePandoc(args: string[]): Promise<void> {
   return new Promise((resolve, reject) => {
-    const pandoc = spawn('pandoc', args, {
-      stdio: ['pipe', 'pipe', 'pipe'],
-      shell: false // Security: Never use shell
+    const pandoc = spawn("pandoc", args, {
+      stdio: ["pipe", "pipe", "pipe"],
+      shell: false, // Security: Never use shell
     });
 
-    let stderr = '';
-    
-    pandoc.stderr.on('data', (data) => {
+    let stderr = "";
+
+    pandoc.stderr.on("data", (data) => {
       stderr += data.toString();
     });
 
-    pandoc.on('error', (error) => {
+    pandoc.on("error", (error) => {
       reject(new Error(`Pandoc execution failed: ${error.message}`));
     });
 
-    pandoc.on('close', (code) => {
+    pandoc.on("close", (code) => {
       if (code === 0) {
         resolve();
       } else {
@@ -98,58 +107,66 @@ function executePandoc(args: string[]): Promise<void> {
  */
 export async function markdownToEpub(
   markdown: string,
-  options: ConversionOptions = {}
+  options: ConversionOptions = {},
 ): Promise<string> {
-  const tempDir = options.tempDir || '/tmp';
+  const tempDir = options.tempDir || "/tmp";
   const inputFile = path.join(tempDir, `input-${Date.now()}.md`);
-  const outputFile = options.outputPath || path.join(tempDir, `output-${Date.now()}.epub`);
+  const outputFile =
+    options.outputPath || path.join(tempDir, `output-${Date.now()}.epub`);
 
   try {
     // Write markdown to temporary file
-    await writeFile(inputFile, markdown, 'utf8');
+    await writeFile(inputFile, markdown, "utf8");
 
     // Build pandoc command arguments safely
     const args = [
-      '--sandbox', // Security: Enable pandoc sandbox mode
+      "--sandbox", // Security: Enable pandoc sandbox mode
       inputFile,
-      '-o', outputFile,
-      '--toc',
-      '--toc-depth=2'
+      "-o",
+      outputFile,
+      "--toc",
+      "--toc-depth=2",
     ];
 
     // Safely add metadata after sanitization
     if (options.title) {
-      const { safe, sanitized } = sanitizeMetadata('title', options.title);
+      const { safe, sanitized } = sanitizeMetadata("title", options.title);
       if (safe && sanitized) {
-        args.push('--metadata', `title=${sanitized}`);
+        args.push("--metadata", `title=${sanitized}`);
       }
     }
 
     if (options.author) {
-      const { safe, sanitized } = sanitizeMetadata('author', options.author);
+      const { safe, sanitized } = sanitizeMetadata("author", options.author);
       if (safe && sanitized) {
-        args.push('--metadata', `author=${sanitized}`);
+        args.push("--metadata", `author=${sanitized}`);
       }
     }
 
     if (options.date) {
-      const { safe, sanitized } = sanitizeMetadata('date', options.date);
+      const { safe, sanitized } = sanitizeMetadata("date", options.date);
       if (safe && sanitized) {
-        args.push('--metadata', `date=${sanitized}`);
+        args.push("--metadata", `date=${sanitized}`);
       }
     }
 
     if (options.language) {
-      const { safe, sanitized } = sanitizeMetadata('language', options.language);
+      const { safe, sanitized } = sanitizeMetadata(
+        "language",
+        options.language,
+      );
       if (safe && sanitized) {
-        args.push('--metadata', `lang=${sanitized}`);
+        args.push("--metadata", `lang=${sanitized}`);
       }
     }
 
     if (options.publisher) {
-      const { safe, sanitized } = sanitizeMetadata('publisher', options.publisher);
+      const { safe, sanitized } = sanitizeMetadata(
+        "publisher",
+        options.publisher,
+      );
       if (safe && sanitized) {
-        args.push('--metadata', `publisher=${sanitized}`);
+        args.push("--metadata", `publisher=${sanitized}`);
       }
     }
 
@@ -158,7 +175,7 @@ export async function markdownToEpub(
       for (const [key, value] of Object.entries(options.metadata)) {
         const { safe, sanitized } = sanitizeMetadata(key, value);
         if (safe && sanitized) {
-          args.push('--metadata', `${key}=${sanitized}`);
+          args.push("--metadata", `${key}=${sanitized}`);
         } else {
           console.warn(`[SECURITY] Skipping unsafe metadata field: ${key}`);
         }
@@ -189,44 +206,46 @@ export async function markdownToEpub(
  */
 export async function markdownToPdf(
   markdown: string,
-  options: ConversionOptions = {}
+  options: ConversionOptions = {},
 ): Promise<string> {
-  const tempDir = options.tempDir || '/tmp';
+  const tempDir = options.tempDir || "/tmp";
   const inputFile = path.join(tempDir, `input-${Date.now()}.md`);
-  const outputFile = options.outputPath || path.join(tempDir, `output-${Date.now()}.pdf`);
+  const outputFile =
+    options.outputPath || path.join(tempDir, `output-${Date.now()}.pdf`);
 
   try {
     // Write markdown to temporary file
-    await writeFile(inputFile, markdown, 'utf8');
+    await writeFile(inputFile, markdown, "utf8");
 
     // Build pandoc command arguments safely
     const args = [
-      '--sandbox', // Security: Enable pandoc sandbox mode
+      "--sandbox", // Security: Enable pandoc sandbox mode
       inputFile,
-      '-o', outputFile,
-      '--pdf-engine=xelatex',
-      '--toc'
+      "-o",
+      outputFile,
+      "--pdf-engine=xelatex",
+      "--toc",
     ];
 
     // Safely add metadata after sanitization
     if (options.title) {
-      const { safe, sanitized } = sanitizeMetadata('title', options.title);
+      const { safe, sanitized } = sanitizeMetadata("title", options.title);
       if (safe && sanitized) {
-        args.push('--metadata', `title=${sanitized}`);
+        args.push("--metadata", `title=${sanitized}`);
       }
     }
 
     if (options.author) {
-      const { safe, sanitized } = sanitizeMetadata('author', options.author);
+      const { safe, sanitized } = sanitizeMetadata("author", options.author);
       if (safe && sanitized) {
-        args.push('--metadata', `author=${sanitized}`);
+        args.push("--metadata", `author=${sanitized}`);
       }
     }
 
     if (options.date) {
-      const { safe, sanitized } = sanitizeMetadata('date', options.date);
+      const { safe, sanitized } = sanitizeMetadata("date", options.date);
       if (safe && sanitized) {
-        args.push('--metadata', `date=${sanitized}`);
+        args.push("--metadata", `date=${sanitized}`);
       }
     }
 
@@ -235,7 +254,7 @@ export async function markdownToPdf(
       for (const [key, value] of Object.entries(options.metadata)) {
         const { safe, sanitized } = sanitizeMetadata(key, value);
         if (safe && sanitized) {
-          args.push('--metadata', `${key}=${sanitized}`);
+          args.push("--metadata", `${key}=${sanitized}`);
         } else {
           console.warn(`[SECURITY] Skipping unsafe metadata field: ${key}`);
         }
@@ -267,41 +286,43 @@ export async function markdownToPdf(
  */
 export async function markdownToKindle(
   markdown: string,
-  options: ConversionOptions = {}
+  options: ConversionOptions = {},
 ): Promise<string> {
   // First convert to EPUB
   const epubPath = await markdownToEpub(markdown, {
     ...options,
-    outputPath: undefined // Let it use temp path
+    outputPath: undefined, // Let it use temp path
   });
 
-  const outputFile = options.outputPath || epubPath.replace('.epub', '.mobi');
+  const outputFile = options.outputPath || epubPath.replace(".epub", ".mobi");
 
   try {
     // Use spawn for ebook-convert as well
     const args = [epubPath, outputFile];
-    
+
     await new Promise<void>((resolve, reject) => {
-      const convert = spawn('ebook-convert', args, {
-        stdio: ['pipe', 'pipe', 'pipe'],
-        shell: false // Security: Never use shell
+      const convert = spawn("ebook-convert", args, {
+        stdio: ["pipe", "pipe", "pipe"],
+        shell: false, // Security: Never use shell
       });
 
-      let stderr = '';
-      
-      convert.stderr.on('data', (data) => {
+      let stderr = "";
+
+      convert.stderr.on("data", (data) => {
         stderr += data.toString();
       });
 
-      convert.on('error', (error) => {
+      convert.on("error", (error) => {
         reject(new Error(`ebook-convert execution failed: ${error.message}`));
       });
 
-      convert.on('close', (code) => {
+      convert.on("close", (code) => {
         if (code === 0) {
           resolve();
         } else {
-          reject(new Error(`ebook-convert failed with code ${code}: ${stderr}`));
+          reject(
+            new Error(`ebook-convert failed with code ${code}: ${stderr}`),
+          );
         }
       });
     });
@@ -317,6 +338,8 @@ export async function markdownToKindle(
     try {
       await unlink(epubPath);
     } catch {}
-    throw new Error(`Kindle conversion failed. Make sure Calibre is installed: ${error}`);
+    throw new Error(
+      `Kindle conversion failed. Make sure Calibre is installed: ${error}`,
+    );
   }
 }

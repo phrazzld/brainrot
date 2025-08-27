@@ -4,6 +4,7 @@
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
 
 import '@testing-library/jest-dom';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, test, vi } from 'vitest';
 
 // Import the component after setting up mocks
 import ReadingRoom from '../../app/reading-room/[slug]/page';
@@ -11,19 +12,19 @@ import { fetchTextWithFallback } from '../../utils/getBlobUrl';
 import { act, render, screen, waitFor } from '../utils/test-utils';
 
 // Mock the utils module
-jest.mock('../../utils/getBlobUrl', () => ({
-  fetchTextWithFallback: jest.fn(),
+vi.mock('../../utils/getBlobUrl', () => ({
+  fetchTextWithFallback: vi.fn(),
 }));
 
 // Mock next/navigation
-jest.mock('next/navigation', () => ({
-  useParams: jest.fn(),
-  useRouter: jest.fn(),
-  useSearchParams: jest.fn(),
+vi.mock('next/navigation', () => ({
+  useParams: vi.fn(),
+  useRouter: vi.fn(),
+  useSearchParams: vi.fn(),
 }));
 
 // Mock translations
-jest.mock('../../translations', () => [
+vi.mock('../../translations', () => [
   {
     slug: 'test-book',
     title: 'Test Book',
@@ -52,40 +53,40 @@ jest.mock('../../translations', () => [
 
 // Set up mock implementations for navigation hooks
 const mockRouter = {
-  push: jest.fn(),
-  replace: jest.fn(),
+  push: vi.fn(),
+  replace: vi.fn(),
 };
 
 const mockSearchParams = {
-  get: jest.fn(),
+  get: vi.fn(),
 };
 
 // Mock WaveSurfer
-jest.mock('wavesurfer', () => ({
+vi.mock('wavesurfer', () => ({
   __esModule: true,
   default: {
-    create: jest.fn().mockReturnValue({
-      load: jest.fn(),
-      on: jest.fn(),
-      destroy: jest.fn(),
-      playPause: jest.fn(),
-      isPlaying: jest.fn().mockReturnValue(false),
-      getCurrentTime: jest.fn().mockReturnValue(0),
-      getDuration: jest.fn().mockReturnValue(120),
-      seekTo: jest.fn(),
-      pause: jest.fn(),
+    create: vi.fn().mockReturnValue({
+      load: vi.fn(),
+      on: vi.fn(),
+      destroy: vi.fn(),
+      playPause: vi.fn(),
+      isPlaying: vi.fn().mockReturnValue(false),
+      getCurrentTime: vi.fn().mockReturnValue(0),
+      getDuration: vi.fn().mockReturnValue(120),
+      seekTo: vi.fn(),
+      pause: vi.fn(),
     }),
   },
 }));
 
 describe('Reading Room with Blob Storage', () => {
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
 
     // Default mock implementations
-    (useParams as jest.Mock).mockReturnValue({ slug: 'test-book' });
-    (useRouter as jest.Mock).mockReturnValue(mockRouter);
-    (useSearchParams as jest.Mock).mockReturnValue(mockSearchParams);
+    (useParams as ReturnType<typeof vi.fn>).mockReturnValue({ slug: 'test-book' });
+    (useRouter as ReturnType<typeof vi.fn>).mockReturnValue(mockRouter);
+    (useSearchParams as ReturnType<typeof vi.fn>).mockReturnValue(mockSearchParams);
     mockSearchParams.get.mockImplementation((param) => {
       if (param === 'c') return '0';
       if (param === 't') return null;
@@ -93,7 +94,7 @@ describe('Reading Room with Blob Storage', () => {
     });
 
     // Mock the fetchTextWithFallback function
-    (fetchTextWithFallback as jest.Mock).mockResolvedValue(
+    (fetchTextWithFallback as ReturnType<typeof vi.fn>).mockResolvedValue(
       'Test chapter content from Blob storage',
     );
 
@@ -118,7 +119,9 @@ describe('Reading Room with Blob Storage', () => {
 
   it('should handle fetch failures gracefully', async () => {
     // Mock a fetch failure
-    (fetchTextWithFallback as jest.Mock).mockRejectedValue(new Error('Failed to fetch'));
+    (fetchTextWithFallback as ReturnType<typeof vi.fn>).mockRejectedValue(
+      new Error('Failed to fetch'),
+    );
 
     await act(async () => {
       render(<ReadingRoom />);
@@ -157,7 +160,7 @@ describe('Reading Room with Blob Storage', () => {
     });
 
     // Clear previous calls to track new calls
-    (fetchTextWithFallback as jest.Mock).mockClear();
+    (fetchTextWithFallback as ReturnType<typeof vi.fn>).mockClear();
 
     // Re-render with new chapter
     await act(async () => {
@@ -217,7 +220,7 @@ describe('Reading Room with Blob Storage', () => {
     });
 
     // Clear previous calls
-    (fetchTextWithFallback as jest.Mock).mockClear();
+    (fetchTextWithFallback as ReturnType<typeof vi.fn>).mockClear();
 
     // Change to chapter 2 (no audio)
     mockSearchParams.get.mockImplementation((param) => {
@@ -243,7 +246,7 @@ describe('Reading Room with Blob Storage', () => {
     });
 
     // Clear previous calls again
-    (fetchTextWithFallback as jest.Mock).mockClear();
+    (fetchTextWithFallback as ReturnType<typeof vi.fn>).mockClear();
 
     await act(async () => {
       rerenderFn(<ReadingRoom />);

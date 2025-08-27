@@ -21,6 +21,7 @@ npx dotenv-vault new
 ```
 
 This creates a new vault project and generates:
+
 - `.env.vault` - Encrypted secrets file (safe to commit)
 - `.env.me` - Your personal vault key (NEVER commit this)
 
@@ -121,6 +122,7 @@ npx dotenv-vault pull
 Add the `DOTENV_KEY` to GitHub Secrets:
 
 1. Get your CI key:
+
    ```bash
    npx dotenv-vault keys ci
    ```
@@ -140,6 +142,7 @@ Add the `DOTENV_KEY` to GitHub Secrets:
 ### Vercel
 
 1. Get production key:
+
    ```bash
    npx dotenv-vault keys production
    ```
@@ -220,31 +223,34 @@ npx dotenv-vault push
 
 ## Quick Reference
 
-| Command | Description |
-|---------|-------------|
-| `npx dotenv-vault login` | Authenticate with vault service |
-| `npx dotenv-vault new` | Create new vault project |
-| `npx dotenv-vault push` | Push local secrets to vault |
-| `npx dotenv-vault pull` | Pull secrets from vault |
-| `npx dotenv-vault open` | Open vault dashboard |
-| `npx dotenv-vault status` | Check vault sync status |
-| `npx dotenv-vault keys ci` | Get CI/CD integration key |
-| `npx dotenv-vault logout` | Logout from vault |
+| Command                    | Description                     |
+| -------------------------- | ------------------------------- |
+| `npx dotenv-vault login`   | Authenticate with vault service |
+| `npx dotenv-vault new`     | Create new vault project        |
+| `npx dotenv-vault push`    | Push local secrets to vault     |
+| `npx dotenv-vault pull`    | Pull secrets from vault         |
+| `npx dotenv-vault open`    | Open vault dashboard            |
+| `npx dotenv-vault status`  | Check vault sync status         |
+| `npx dotenv-vault keys ci` | Get CI/CD integration key       |
+| `npx dotenv-vault logout`  | Logout from vault               |
 
 ## Environment Variables Reference
 
 The following secrets are managed in the vault:
 
 ### Required
+
 - `BLOB_READ_WRITE_TOKEN` - Vercel Blob storage access
 - `NEXT_PUBLIC_BLOB_BASE_URL` - Blob storage base URL
 
 ### Optional (AI Services)
+
 - `OPENAI_API_KEY` - OpenAI API access
 - `ANTHROPIC_API_KEY` - Anthropic Claude access
 - `OPENROUTER_API_KEY` - OpenRouter API access
 
 ### Publishing (Sensitive)
+
 - `LULU_API_KEY` - Lulu publishing API
 - `LULU_API_SECRET` - Lulu API secret
 - `KDP_EMAIL` - Amazon KDP email

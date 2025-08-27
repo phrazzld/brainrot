@@ -1,9 +1,11 @@
 words that need phonetic replacement before plumbing through eleven labs:
+
 - smh (s-m-h)
 - asf (a-s-f)
 - fr (for real)
 
 o1 example prompt for generating translations:
+
 ```
 <context>
 role: o1 model initialization

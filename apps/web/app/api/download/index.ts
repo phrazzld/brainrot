@@ -6,18 +6,22 @@
  */
 
 // Export main proxy service functions
-export { proxyAssetDownload, proxyFileDownload, createDownloadHeaders } from './proxyService.js';
-export type { ProxyAssetConfig } from './proxyService.js';
-export type { ProxyFileConfig } from './fetching/legacyProxyService.js';
+export {
+  proxyAssetDownload,
+  proxyFileDownload,
+  createDownloadHeaders,
+} from './services/ProxyService';
+export type { ProxyAssetConfig } from './services/ProxyService';
+export type { ProxyFileConfig } from './fetching/legacyProxyService';
 
 // Export error handling utilities
-export { createProxyErrorResponse } from './errors/errorResponses.js';
-export { extractErrorDetails } from './errors/errorExtractor.js';
-export { TimeoutError } from './errors/errorTypes.js';
+export { createProxyErrorResponse } from './errors/errorResponses';
+export { extractErrorDetails } from './errors/errorExtractor';
+export { TimeoutError } from './errors/errorTypes';
 
 // Export fetching utilities
-export { fetchWithTimeout } from './fetching/fetchWithTimeout.js';
-export { FETCH_TIMEOUT_MS } from './fetching/fetchWithTimeout.js';
+export { fetchWithTimeout } from './fetching/fetchWithTimeout';
+export { FETCH_TIMEOUT_MS } from './fetching/fetchWithTimeout';
 
 // Export logging utilities
-export { safeLog, sanitizeUrlForLogging } from './logging/safeLogger.js';
+export { safeLog, sanitizeUrlForLogging } from './logging/safeLogger';

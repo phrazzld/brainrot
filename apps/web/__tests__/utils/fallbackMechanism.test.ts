@@ -1,3 +1,5 @@
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, test, vi } from 'vitest';
+
 import {
   assetExistsInBlobStorage,
   clearBlobUrlCache,
@@ -8,34 +10,34 @@ import { blobPathService } from '../../utils/services/BlobPathService';
 import { blobService } from '../../utils/services/BlobService';
 
 // Mock the services
-jest.mock('../../utils/services/BlobService', () => ({
+vi.mock('../../utils/services/BlobService', () => ({
   blobService: {
-    getUrlForPath: jest.fn((path) => `https://blob-storage.example.com/${path}`),
-    fetchText: jest.fn(),
-    getFileInfo: jest.fn(),
+    getUrlForPath: vi.fn((path) => `https://blob-storage.example.com/${path}`),
+    fetchText: vi.fn(),
+    getFileInfo: vi.fn(),
   },
 }));
 
-jest.mock('../../utils/services/BlobPathService', () => ({
+vi.mock('../../utils/services/BlobPathService', () => ({
   blobPathService: {
-    convertLegacyPath: jest.fn((path) => path.replace(/^\/assets\//, 'books/').replace(/^\//, '')),
+    convertLegacyPath: vi.fn((path) => path.replace(/^\/assets\//, 'books/').replace(/^\//, '')),
   },
 }));
 
 // Mock global fetch
-const mockFetch = jest.fn();
+const mockFetch = vi.fn();
 global.fetch = mockFetch;
 
 describe('Fallback mechanism', () => {
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
     clearBlobUrlCache();
   });
 
   describe('getAssetUrlWithFallback', () => {
     it('should return Blob URL when asset exists in Blob storage', async () => {
       // Mock asset exists in Blob
-      (blobService.getFileInfo as jest.Mock).mockResolvedValueOnce({
+      (blobService.getFileInfo as ReturnType<typeof vi.fn>).mockResolvedValueOnce({
         url: 'https://blob-storage.example.com/books/hamlet/images/hamlet-01.png',
         size: 1024,
       });
@@ -49,7 +51,9 @@ describe('Fallback mechanism', () => {
 
     it('should return legacy path when asset does not exist in Blob storage', async () => {
       // Mock asset doesn't exist in Blob
-      (blobService.getFileInfo as jest.Mock).mockRejectedValueOnce(new Error('Not found'));
+      (blobService.getFileInfo as ReturnType<typeof vi.fn>).mockRejectedValueOnce(
+        new Error('Not found'),
+      );
 
       const legacyPath = '/assets/hamlet/images/not-migrated.png';
       const result = await getAssetUrlWithFallback(legacyPath);
@@ -60,7 +64,7 @@ describe('Fallback mechanism', () => {
 
     it('should use cache for repeated existence checks', async () => {
       // First check - asset exists
-      (blobService.getFileInfo as jest.Mock).mockResolvedValueOnce({
+      (blobService.getFileInfo as ReturnType<typeof vi.fn>).mockResolvedValueOnce({
         url: 'https://blob-storage.example.com/books/hamlet/images/hamlet-01.png',
         size: 1024,
       });
@@ -78,7 +82,9 @@ describe('Fallback mechanism', () => {
 
     it('should handle errors and fall back to local path', async () => {
       // Mock a network error
-      (blobService.getFileInfo as jest.Mock).mockRejectedValueOnce(new Error('Network error'));
+      (blobService.getFileInfo as ReturnType<typeof vi.fn>).mockRejectedValueOnce(
+        new Error('Network error'),
+      );
 
       const legacyPath = '/assets/hamlet/images/hamlet-01.png';
       const result = await getAssetUrlWithFallback(legacyPath);
@@ -90,7 +96,9 @@ describe('Fallback mechanism', () => {
   describe('fetchTextWithFallback', () => {
     it('should fetch from Blob storage when successful', async () => {
       // Mock successful fetch from Blob
-      (blobService.fetchText as jest.Mock).mockResolvedValueOnce('Text content from Blob');
+      (blobService.fetchText as ReturnType<typeof vi.fn>).mockResolvedValueOnce(
+        'Text content from Blob',
+      );
 
       const legacyPath = '/assets/hamlet/text/brainrot/chapter-1.txt';
       const result = await fetchTextWithFallback(legacyPath);
@@ -102,12 +110,14 @@ describe('Fallback mechanism', () => {
 
     it('should fall back to local path when Blob fetch fails', async () => {
       // Mock Blob fetch failure
-      (blobService.fetchText as jest.Mock).mockRejectedValueOnce(new Error('Blob fetch failed'));
+      (blobService.fetchText as ReturnType<typeof vi.fn>).mockRejectedValueOnce(
+        new Error('Blob fetch failed'),
+      );
 
       // Mock successful fetch from local path
       mockFetch.mockResolvedValueOnce({
         ok: true,
-        text: jest.fn().mockResolvedValueOnce('Text content from local path'),
+        text: vi.fn().mockResolvedValueOnce('Text content from local path'),
       });
 
       const legacyPath = '/assets/hamlet/text/brainrot/chapter-1.txt';
@@ -120,7 +130,9 @@ describe('Fallback mechanism', () => {
 
     it('should throw error when both fetches fail', async () => {
       // Mock Blob fetch failure
-      (blobService.fetchText as jest.Mock).mockRejectedValueOnce(new Error('Blob fetch failed'));
+      (blobService.fetchText as ReturnType<typeof vi.fn>).mockRejectedValueOnce(
+        new Error('Blob fetch failed'),
+      );
 
       // Mock local fetch failure
       mockFetch.mockResolvedValueOnce({
@@ -140,7 +152,7 @@ describe('Fallback mechanism', () => {
   describe('assetExistsInBlobStorage with caching', () => {
     it('should cache existence check results', async () => {
       // First check
-      (blobService.getFileInfo as jest.Mock).mockResolvedValueOnce({
+      (blobService.getFileInfo as ReturnType<typeof vi.fn>).mockResolvedValueOnce({
         size: 1024,
       });
 
@@ -159,7 +171,7 @@ describe('Fallback mechanism', () => {
 
     it('should bypass cache when useCache is false', async () => {
       // Setup mocks for both calls
-      (blobService.getFileInfo as jest.Mock)
+      (blobService.getFileInfo as ReturnType<typeof vi.fn>)
         .mockResolvedValueOnce({ size: 1024 })
         .mockResolvedValueOnce({ size: 2048 });
 
@@ -178,20 +190,22 @@ describe('Fallback mechanism', () => {
   describe('Audio URL handling', () => {
     it('should properly handle audio URLs with the standard format', async () => {
       // Mock the blobPathService.convertLegacyPath function for audio paths
-      (blobPathService.convertLegacyPath as jest.Mock).mockImplementationOnce((path) => {
-        if (path.match(/^\/[^/]+\/audio\//)) {
-          // Convert audio path format
-          const audioMatch = path.match(/^\/([^/]+)\/audio\/(.+)$/);
-          if (audioMatch) {
-            const [, bookSlug, filename] = audioMatch;
-            return `books/${bookSlug}/audio/${filename}`;
+      (blobPathService.convertLegacyPath as ReturnType<typeof vi.fn>).mockImplementationOnce(
+        (path) => {
+          if (path.match(/^\/[^/]+\/audio\//)) {
+            // Convert audio path format
+            const audioMatch = path.match(/^\/([^/]+)\/audio\/(.+)$/);
+            if (audioMatch) {
+              const [, bookSlug, filename] = audioMatch;
+              return `books/${bookSlug}/audio/${filename}`;
+            }
           }
-        }
-        return path.replace(/^\//, '');
-      });
+          return path.replace(/^\//, '');
+        },
+      );
 
       // Mock asset exists in Blob
-      (blobService.getFileInfo as jest.Mock).mockResolvedValueOnce({
+      (blobService.getFileInfo as ReturnType<typeof vi.fn>).mockResolvedValueOnce({
         url: 'https://blob-storage.example.com/books/the-iliad/audio/book-01.mp3',
         size: 1024,
       });
@@ -205,14 +219,14 @@ describe('Fallback mechanism', () => {
 
     it('should handle full URL audio sources', async () => {
       // Mock the condition where a full URL is detected
-      (blobPathService.convertLegacyPath as jest.Mock).mockImplementationOnce(
+      (blobPathService.convertLegacyPath as ReturnType<typeof vi.fn>).mockImplementationOnce(
         (path) => path, // For full URLs, just return as is
       );
 
       // Mock asset exists in Blob by passing a URL check
       process.env.NEXT_PUBLIC_BLOB_BASE_URL = 'https://public.blob.vercel-storage.com';
 
-      (blobService.getFileInfo as jest.Mock).mockResolvedValueOnce({
+      (blobService.getFileInfo as ReturnType<typeof vi.fn>).mockResolvedValueOnce({
         url: 'https://public.blob.vercel-storage.com/books/the-iliad/audio/book-01.mp3',
         size: 1024,
       });
@@ -220,7 +234,7 @@ describe('Fallback mechanism', () => {
       const audioSrc = 'https://public.blob.vercel-storage.com/books/the-iliad/audio/book-01.mp3';
 
       // We need to mock the URL check logic to make it pass without hitting actual URL endpoints
-      jest.spyOn(global, 'fetch').mockImplementationOnce(() =>
+      vi.spyOn(global, 'fetch').mockImplementationOnce(() =>
         Promise.resolve({
           ok: true,
           status: 200,
@@ -240,7 +254,7 @@ describe('Fallback mechanism', () => {
       process.env.NEXT_PUBLIC_BLOB_BASE_URL = 'https://tenant-specific.blob.vercel-storage.com';
 
       // Don't convert tenant-specific URLs
-      (blobPathService.convertLegacyPath as jest.Mock).mockImplementationOnce(
+      (blobPathService.convertLegacyPath as ReturnType<typeof vi.fn>).mockImplementationOnce(
         (path) => path, // For full URLs, just return as is
       );
 
@@ -249,13 +263,13 @@ describe('Fallback mechanism', () => {
         'https://tenant-specific.blob.vercel-storage.com/books/the-iliad/audio/book-01.mp3';
 
       // Mock a successful getFileInfo response
-      (blobService.getFileInfo as jest.Mock).mockResolvedValueOnce({
+      (blobService.getFileInfo as ReturnType<typeof vi.fn>).mockResolvedValueOnce({
         url: normalizedAudioSrc,
         size: 1024,
       });
 
       // Mock the URL check to avoid actual HTTP requests
-      jest.spyOn(global, 'fetch').mockImplementationOnce(() =>
+      vi.spyOn(global, 'fetch').mockImplementationOnce(() =>
         Promise.resolve({
           ok: true,
           status: 200,

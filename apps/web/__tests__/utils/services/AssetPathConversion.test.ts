@@ -1,3 +1,5 @@
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, test, vi } from 'vitest';
+
 import { AssetPathService } from '../../../utils/services/AssetPathService';
 
 describe('AssetPathService - Path Conversion', () => {

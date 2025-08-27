@@ -2,8 +2,8 @@
  * Factory functions for creating type-safe mocks
  * These factories ensure consistent mocking patterns across tests
  */
-import { jest } from '@jest/globals';
 import { HeadBlobResult, ListBlobResultBlob, PutBlobResult } from '@vercel/blob';
+import { vi } from 'vitest';
 
 import { Logger } from '../../../utils/logger';
 import {
@@ -26,11 +26,11 @@ type LogData = Record<string, unknown>;
  */
 export function createMockLogger(customImplementations: Partial<MockLogger> = {}): MockLogger {
   const mockLogger: MockLogger = {
-    info: jest.fn<(obj: LogData) => void>(),
-    debug: jest.fn<(obj: LogData) => void>(),
-    warn: jest.fn<(obj: LogData) => void>(),
-    error: jest.fn<(obj: LogData) => void>(),
-    child: jest.fn<(bindings: LogData) => Logger>(),
+    info: vi.fn<(obj: LogData) => void>(),
+    debug: vi.fn<(obj: LogData) => void>(),
+    warn: vi.fn<(obj: LogData) => void>(),
+    error: vi.fn<(obj: LogData) => void>(),
+    child: vi.fn<(bindings: LogData) => Logger>(),
     ...customImplementations,
   };
 
@@ -47,7 +47,7 @@ export function createMockLogger(customImplementations: Partial<MockLogger> = {}
 export function createMockBlobService(
   customImplementations: Partial<MockBlobService> = {},
 ): MockBlobService {
-  const mockUploadFile = jest.fn<MockBlobService['uploadFile']>().mockResolvedValue({
+  const mockUploadFile = vi.fn<MockBlobService['uploadFile']>().mockResolvedValue({
     url: 'https://example.com/mock-file.txt',
     downloadUrl: 'https://example.com/mock-file.txt?download=1',
     pathname: 'mock-file.txt',
@@ -55,7 +55,7 @@ export function createMockBlobService(
     contentType: 'text/plain',
   });
 
-  const mockUploadText = jest.fn<MockBlobService['uploadText']>().mockResolvedValue({
+  const mockUploadText = vi.fn<MockBlobService['uploadText']>().mockResolvedValue({
     url: 'https://example.com/mock-text.txt',
     downloadUrl: 'https://example.com/mock-text.txt?download=1',
     pathname: 'mock-text.txt',
@@ -63,12 +63,12 @@ export function createMockBlobService(
     contentType: 'text/plain',
   });
 
-  const mockListFiles = jest.fn<MockBlobService['listFiles']>().mockResolvedValue({
+  const mockListFiles = vi.fn<MockBlobService['listFiles']>().mockResolvedValue({
     blobs: [],
     cursor: undefined,
   });
 
-  const mockGetFileInfo = jest.fn<MockBlobService['getFileInfo']>().mockResolvedValue({
+  const mockGetFileInfo = vi.fn<MockBlobService['getFileInfo']>().mockResolvedValue({
     url: 'https://example.com/mock-file.txt',
     downloadUrl: 'https://example.com/mock-file.txt?download=1',
     pathname: 'mock-file.txt',
@@ -79,7 +79,7 @@ export function createMockBlobService(
     uploadedAt: new Date(),
   });
 
-  const mockDeleteFile = jest.fn<MockBlobService['deleteFile']>().mockResolvedValue(undefined);
+  const mockDeleteFile = vi.fn<MockBlobService['deleteFile']>().mockResolvedValue(undefined);
   const mockGetUrlForPath = jest
     .fn()
     .mockImplementation(
@@ -127,13 +127,13 @@ export function createMockBlobPathService(
     getSourceTextPath: jest
       .fn()
       .mockImplementation((bookSlug, filename) => `books/${bookSlug}/text/source/${filename}`),
-    getSharedImagePath: jest.fn().mockImplementation((filename) => `images/${filename}`),
-    getSiteAssetPath: jest.fn().mockImplementation((filename) => `site-assets/${filename}`),
+    getSharedImagePath: vi.fn().mockImplementation((filename) => `images/${filename}`),
+    getSiteAssetPath: vi.fn().mockImplementation((filename) => `site-assets/${filename}`),
     getAudioPath: jest
       .fn()
       .mockImplementation((bookSlug, chapter) => `books/${bookSlug}/audio/${chapter}.mp3`),
-    convertLegacyPath: jest.fn().mockImplementation((legacyPath) => legacyPath),
-    getBookSlugFromPath: jest.fn().mockImplementation((path: string) => {
+    convertLegacyPath: vi.fn().mockImplementation((legacyPath) => legacyPath),
+    getBookSlugFromPath: vi.fn().mockImplementation((path: string) => {
       const match = path.match(/books\/([^/]+)/);
       return match ? match[1] : null;
     }),
@@ -165,7 +165,7 @@ export function createMockVercelBlobAssetService(
     .fn<MockVercelBlobAssetService['fetchTextAsset']>()
     .mockResolvedValue('Mock text content');
 
-  const mockUploadAsset = jest.fn<MockVercelBlobAssetService['uploadAsset']>().mockResolvedValue({
+  const mockUploadAsset = vi.fn<MockVercelBlobAssetService['uploadAsset']>().mockResolvedValue({
     url: 'https://example.com/assets/mock-asset.txt',
     path: 'assets/mock-asset.txt',
     size: 100,
@@ -177,7 +177,7 @@ export function createMockVercelBlobAssetService(
     .fn<MockVercelBlobAssetService['deleteAsset']>()
     .mockResolvedValue(true);
 
-  const mockListAssets = jest.fn<MockVercelBlobAssetService['listAssets']>().mockResolvedValue({
+  const mockListAssets = vi.fn<MockVercelBlobAssetService['listAssets']>().mockResolvedValue({
     assets: [],
     hasMore: false,
   });
@@ -228,20 +228,20 @@ export function createMockVercelBlob(
     uploadedAt: new Date(),
   };
 
-  const putMock = jest.fn<() => Promise<unknown>>();
+  const putMock = vi.fn<() => Promise<unknown>>();
   putMock.mockResolvedValue(mockPutResult);
 
-  const listMock = jest.fn<() => Promise<unknown>>();
+  const listMock = vi.fn<() => Promise<unknown>>();
   listMock.mockResolvedValue({
     blobs: [mockListResult],
     cursor: undefined,
     hasMore: false,
   });
 
-  const headMock = jest.fn<() => Promise<unknown>>();
+  const headMock = vi.fn<() => Promise<unknown>>();
   headMock.mockResolvedValue(mockHeadResult);
 
-  const delMock = jest.fn<() => Promise<unknown>>();
+  const delMock = vi.fn<() => Promise<unknown>>();
   delMock.mockResolvedValue(undefined);
 
   return {
@@ -268,7 +268,7 @@ export function createMockResponse(
   const ok = status >= 200 && status < 300;
 
   // Create text implementation based on body type
-  const textImpl = jest.fn<() => Promise<string>>().mockImplementation(async () => {
+  const textImpl = vi.fn<() => Promise<string>>().mockImplementation(async () => {
     if (typeof body === 'string') {
       return body;
     } else if (body instanceof Blob) {
@@ -280,13 +280,13 @@ export function createMockResponse(
   });
 
   // Create json implementation that parses text
-  const jsonImpl = jest.fn<() => Promise<unknown>>().mockImplementation(async () => {
+  const jsonImpl = vi.fn<() => Promise<unknown>>().mockImplementation(async () => {
     const text = await textImpl();
     return JSON.parse(text as string);
   });
 
   // Create arrayBuffer implementation
-  const arrayBufferImpl = jest.fn<() => Promise<ArrayBuffer>>().mockImplementation(async () => {
+  const arrayBufferImpl = vi.fn<() => Promise<ArrayBuffer>>().mockImplementation(async () => {
     if (body instanceof ArrayBuffer) {
       return body;
     } else if (typeof body === 'string') {
@@ -298,7 +298,7 @@ export function createMockResponse(
   });
 
   // Create blob implementation
-  const blobImpl = jest.fn<() => Promise<Blob>>().mockImplementation(async () => {
+  const blobImpl = vi.fn<() => Promise<Blob>>().mockImplementation(async () => {
     if (body instanceof Blob) {
       return body;
     }
@@ -306,7 +306,7 @@ export function createMockResponse(
   });
 
   // Create bytes implementation
-  const bytesImpl = jest.fn<() => Promise<Uint8Array>>().mockImplementation(async () => {
+  const bytesImpl = vi.fn<() => Promise<Uint8Array>>().mockImplementation(async () => {
     if (body instanceof ArrayBuffer) {
       return new Uint8Array(body);
     } else if (typeof body === 'string') {
@@ -333,8 +333,8 @@ export function createMockResponse(
     arrayBuffer: arrayBufferImpl,
     blob: blobImpl,
     bytes: bytesImpl,
-    formData: jest.fn<() => Promise<FormData>>().mockResolvedValue(new FormData()),
-    clone: jest.fn<() => Response>(),
+    formData: vi.fn<() => Promise<FormData>>().mockResolvedValue(new FormData()),
+    clone: vi.fn<() => Response>(),
   };
 
   return response;
@@ -345,7 +345,7 @@ export function createMockResponse(
  * @param responseFactory Function that returns the response for each fetch call
  */
 export function createMockFetch(responseFactory: () => Response | Promise<Response>): MockFetch {
-  return jest.fn<typeof fetch>().mockImplementation(() => Promise.resolve(responseFactory()));
+  return vi.fn<typeof fetch>().mockImplementation(() => Promise.resolve(responseFactory()));
 }
 
 /**

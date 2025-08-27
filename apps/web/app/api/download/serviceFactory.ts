@@ -21,7 +21,7 @@ export function createDownloadService(
   _correlationId?: string,
 ): DownloadService | null {
   // Temporarily disabled - audio downloads not supported
-  safeLog(log, 'Download service disabled - no audio files available', 'info');
+  safeLog(log, 'info', { msg: 'Download service disabled - no audio files available' });
   return null;
   /* Original implementation commented out - depended on deleted services
   try {

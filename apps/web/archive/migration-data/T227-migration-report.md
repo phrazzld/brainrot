@@ -25,20 +25,17 @@ Initial dry run testing revealed that all 62 audio files were already present in
 To ensure file integrity and verify the migration, we ran forced migrations for each book:
 
 1. **The Aeneid**:
-
    - 12 out of 12 files successfully re-migrated
    - 103.54 MB of audio data processed
    - All files validated for proper size and format
    - Average file size: 8.63 MB
 
 2. **Hamlet**:
-
    - 1 out of 1 file successfully re-migrated
    - 33.62 MB of audio data processed
    - File validated for proper size and format
 
 3. **The Declaration of Independence**:
-
    - 1 out of 1 file successfully re-migrated
    - 3.15 MB of audio data processed
    - File validated for proper size and format

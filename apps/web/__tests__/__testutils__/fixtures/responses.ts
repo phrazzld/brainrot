@@ -5,7 +5,7 @@
 /**
  * Response options interface
  */
-import { jest } from '@jest/globals';
+import { jest } from 'vitest';
 
 /**
  * Type for response body
@@ -53,13 +53,13 @@ function processResponseBody(body: ResponseBodyType): {
  * Response methods interface
  */
 interface ResponseMethods {
-  text: jest.Mock<() => Promise<string>>;
-  json: jest.Mock<() => Promise<unknown>>;
-  arrayBuffer: jest.Mock<() => Promise<ArrayBuffer>>;
-  blob: jest.Mock<() => Promise<Blob>>;
-  formData: jest.Mock<() => Promise<FormData>>;
-  clone: jest.Mock;
-  bytes?: jest.Mock<() => Promise<Uint8Array>>;
+  text: Mock<() => Promise<string>>;
+  json: Mock<() => Promise<unknown>>;
+  arrayBuffer: Mock<() => Promise<ArrayBuffer>>;
+  blob: Mock<() => Promise<Blob>>;
+  formData: Mock<() => Promise<FormData>>;
+  clone: Mock;
+  bytes?: Mock<() => Promise<Uint8Array>>;
 }
 
 /**
@@ -71,7 +71,7 @@ function createResponseMethods(
   contentType: string,
 ): ResponseMethods {
   // Create text implementation
-  const textImpl = jest.fn().mockImplementation(async () => {
+  const textImpl = vi.fn().mockImplementation(async () => {
     if (typeof responseBody === 'string') {
       return responseBody;
     } else if (responseBody instanceof Blob) {
@@ -83,7 +83,7 @@ function createResponseMethods(
   });
 
   // Create json implementation
-  const jsonImpl = jest.fn().mockImplementation(async () => {
+  const jsonImpl = vi.fn().mockImplementation(async () => {
     const text = await textImpl();
     try {
       return JSON.parse(text as string);
@@ -93,7 +93,7 @@ function createResponseMethods(
   });
 
   // Create arrayBuffer implementation
-  const arrayBufferImpl = jest.fn().mockImplementation(async () => {
+  const arrayBufferImpl = vi.fn().mockImplementation(async () => {
     if (responseBody instanceof ArrayBuffer) {
       return responseBody;
     } else if (typeof responseBody === 'string') {
@@ -105,7 +105,7 @@ function createResponseMethods(
   });
 
   // Create blob implementation
-  const blobImpl = jest.fn().mockImplementation(async () => {
+  const blobImpl = vi.fn().mockImplementation(async () => {
     if (responseBody instanceof Blob) {
       return responseBody;
     }
@@ -115,10 +115,10 @@ function createResponseMethods(
   });
 
   // Create formData implementation
-  const formDataImpl = jest.fn<() => Promise<FormData>>().mockResolvedValue(new FormData());
+  const formDataImpl = vi.fn<() => Promise<FormData>>().mockResolvedValue(new FormData());
 
   // Create bytes implementation
-  const bytesImpl = jest.fn<() => Promise<Uint8Array>>().mockImplementation(async () => {
+  const bytesImpl = vi.fn<() => Promise<Uint8Array>>().mockImplementation(async () => {
     if (responseBody instanceof ArrayBuffer) {
       return new Uint8Array(responseBody);
     } else if (typeof responseBody === 'string') {
@@ -131,13 +131,13 @@ function createResponseMethods(
   });
 
   // Create a mock for clone that returns itself
-  const cloneImpl = jest.fn();
+  const cloneImpl = vi.fn();
 
   return {
-    text: textImpl as jest.Mock<() => Promise<string>>,
-    json: jsonImpl as jest.Mock<() => Promise<unknown>>,
-    arrayBuffer: arrayBufferImpl as jest.Mock<() => Promise<ArrayBuffer>>,
-    blob: blobImpl as jest.Mock<() => Promise<Blob>>,
+    text: textImpl as Mock<() => Promise<string>>,
+    json: jsonImpl as Mock<() => Promise<unknown>>,
+    arrayBuffer: arrayBufferImpl as Mock<() => Promise<ArrayBuffer>>,
+    blob: blobImpl as Mock<() => Promise<Blob>>,
     formData: formDataImpl,
     bytes: bytesImpl,
     clone: cloneImpl,
@@ -249,7 +249,7 @@ function createNetworkError(message = 'Network error') {
 function createSuccessFetch(
   data: unknown,
   options: ResponseOptions = {},
-): jest.Mock<() => Promise<Response>> {
+): Mock<() => Promise<Response>> {
   return jest
     .fn<() => Promise<Response>>()
     .mockResolvedValue(
@@ -266,7 +266,7 @@ function createErrorFetch(
   status = 404,
   statusText = 'Not Found',
   errorBody: string | Record<string, unknown> = '',
-): jest.Mock<() => Promise<Response>> {
+): Mock<() => Promise<Response>> {
   return jest
     .fn<() => Promise<Response>>()
     .mockResolvedValue(createErrorResponse(status, statusText, errorBody));
@@ -276,7 +276,7 @@ function createErrorFetch(
  * Creates a fetch function that throws a network error
  */
 function createNetworkErrorFetch(message = 'Network error') {
-  return jest.fn().mockImplementation(() => {
+  return vi.fn().mockImplementation(() => {
     throw new TypeError(message);
   });
 }

@@ -6,7 +6,7 @@ export interface Chapter {
   slug?: string;
   wordCount?: number;
   translationNotes?: string;
-  status?: 'draft' | 'translated' | 'reviewed' | 'published';
+  status?: "draft" | "translated" | "reviewed" | "published";
   createdAt?: Date;
   updatedAt?: Date;
 }

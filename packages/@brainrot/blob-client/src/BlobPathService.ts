@@ -1,11 +1,11 @@
 /**
  * BlobPathService - Path generation for blob storage
- * 
+ *
  * Generates standardized paths for different types of assets in the blob storage.
  * This is a simplified version focused on the core blob storage needs.
  */
 
-export type AssetType = 'text' | 'images' | 'audio' | 'epub' | 'pdf';
+export type AssetType = "text" | "images" | "audio" | "epub" | "pdf";
 
 export class BlobPathService {
   /**
@@ -29,15 +29,19 @@ export class BlobPathService {
    * @param bookSlug Book identifier
    * @param chapter Chapter identifier (number, "introduction", or "fulltext")
    */
-  public getBrainrotTextPath(bookSlug: string, chapter: string | number): string {
-    if (chapter === 'fulltext') {
-      return this.getTextPath(bookSlug, 'brainrot-fulltext.txt');
+  public getBrainrotTextPath(
+    bookSlug: string,
+    chapter: string | number,
+  ): string {
+    if (chapter === "fulltext") {
+      return this.getTextPath(bookSlug, "brainrot-fulltext.txt");
     }
-    
-    const chapterName = typeof chapter === 'number' 
-      ? `chapter-${chapter}`
-      : chapter.toLowerCase().replace(/\s+/g, '-');
-    
+
+    const chapterName =
+      typeof chapter === "number"
+        ? `chapter-${chapter}`
+        : chapter.toLowerCase().replace(/\s+/g, "-");
+
     return this.getTextPath(bookSlug, `brainrot-${chapterName}.txt`);
   }
 
@@ -64,7 +68,7 @@ export class BlobPathService {
    * @param bookSlug Book identifier
    * @param format Cover format (e.g., "paperback", "hardcover", "ebook")
    */
-  public getCoverPath(bookSlug: string, format: string = 'ebook'): string {
+  public getCoverPath(bookSlug: string, format: string = "ebook"): string {
     return this.getImagePath(bookSlug, `cover-${format}.jpg`);
   }
 
@@ -74,10 +78,9 @@ export class BlobPathService {
    * @param chapter Chapter number or "full" for full audiobook
    */
   public getAudioPath(bookSlug: string, chapter: string | number): string {
-    const filename = chapter === 'full' 
-      ? 'full-audiobook.mp3'
-      : `chapter-${chapter}.mp3`;
-    
+    const filename =
+      chapter === "full" ? "full-audiobook.mp3" : `chapter-${chapter}.mp3`;
+
     return `${this.getBookBasePath(bookSlug)}/audio/${filename}`;
   }
 
@@ -86,7 +89,7 @@ export class BlobPathService {
    * @param bookSlug Book identifier
    * @param variant Optional variant (e.g., "brainrot", "original")
    */
-  public getEpubPath(bookSlug: string, variant: string = 'brainrot'): string {
+  public getEpubPath(bookSlug: string, variant: string = "brainrot"): string {
     return `${this.getBookBasePath(bookSlug)}/epub/${bookSlug}-${variant}.epub`;
   }
 
@@ -95,7 +98,7 @@ export class BlobPathService {
    * @param bookSlug Book identifier
    * @param format PDF format (e.g., "paperback", "hardcover", "digital")
    */
-  public getPdfPath(bookSlug: string, format: string = 'digital'): string {
+  public getPdfPath(bookSlug: string, format: string = "digital"): string {
     return `${this.getBookBasePath(bookSlug)}/pdf/${bookSlug}-${format}.pdf`;
   }
 
@@ -133,12 +136,12 @@ export class BlobPathService {
   public getAssetTypeFromPath(path: string): AssetType | null {
     const match = path.match(/^books\/[^/]+\/([^/]+)\//);
     if (!match) return null;
-    
+
     const type = match[1];
-    if (['text', 'images', 'audio', 'epub', 'pdf'].includes(type)) {
+    if (["text", "images", "audio", "epub", "pdf"].includes(type)) {
       return type as AssetType;
     }
-    
+
     return null;
   }
 
@@ -148,7 +151,7 @@ export class BlobPathService {
    * @returns Normalized path without leading/trailing slashes
    */
   public normalizePath(path: string): string {
-    return path.replace(/^\/+|\/+$/g, '').replace(/\/+/g, '/');
+    return path.replace(/^\/+|\/+$/g, "").replace(/\/+/g, "/");
   }
 
   /**
@@ -157,7 +160,7 @@ export class BlobPathService {
    * @returns True if the path is for a book asset
    */
   public isBookAssetPath(path: string): boolean {
-    return path.startsWith('books/');
+    return path.startsWith("books/");
   }
 
   /**
@@ -166,7 +169,7 @@ export class BlobPathService {
    * @returns True if the path is for a shared asset
    */
   public isSharedAssetPath(path: string): boolean {
-    return path.startsWith('images/') || path.startsWith('site-assets/');
+    return path.startsWith("images/") || path.startsWith("site-assets/");
   }
 }
 

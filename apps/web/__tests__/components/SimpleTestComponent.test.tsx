@@ -2,6 +2,7 @@ import React from 'react';
 
 import '@testing-library/jest-dom';
 import { fireEvent, screen } from '@testing-library/react';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, test, vi } from 'vitest';
 
 import SimpleTestComponent from '../../components/SimpleTestComponent';
 import { render } from '../utils/test-utils';

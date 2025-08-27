@@ -1,6 +1,6 @@
 # The Great Gatsby - Brainrot Edition Metadata
 title: "The Great Gatsby (Brainrot Edition)"
-author: "F. Scott Fitzgerald" 
+author: "F. Scott Fitzgerald"
 translator: "Brainrot Publishing House"
 original_year: 1925
 translation_year: 2024
@@ -69,9 +69,9 @@ markets:
 
 # Additional metadata
 bisac_codes:
-  - "FIC004000"  # Fiction / Classics
-  - "HUM008000"  # Humor / Form / Parodies
-  - "YAF000000"  # Young Adult Fiction / General
+  - "FIC004000" # Fiction / Classics
+  - "HUM008000" # Humor / Form / Parodies
+  - "YAF000000" # Young Adult Fiction / General
 
 copyright: "Translation © 2024 Brainrot Publishing House"
 rights: "All rights reserved. Original work in public domain."

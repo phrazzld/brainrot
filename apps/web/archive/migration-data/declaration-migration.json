@@ -8,9 +8,7 @@
     "totalDownloadSize": 3299171,
     "totalUploadSize": 0,
     "totalDuration": 5278,
-    "booksCovered": [
-      "the-declaration-of-independence"
-    ],
+    "booksCovered": ["the-declaration-of-independence"],
     "validationSuccess": 1,
     "validationFailed": 0,
     "startTime": "2025-04-28T06:16:14.540Z",
@@ -18,9 +16,7 @@
   },
   "options": {
     "dryRun": false,
-    "books": [
-      "the-declaration-of-independence"
-    ],
+    "books": ["the-declaration-of-independence"],
     "force": true,
     "retries": 3,
     "concurrency": 3,

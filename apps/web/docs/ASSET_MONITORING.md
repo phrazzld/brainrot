@@ -141,7 +141,6 @@ alertmanager-cli import /monitoring/asset-alerts.json
 ```
 
 3. Configure notification channels with appropriate credentials:
-
    - Slack webhook URL
    - Email recipients
    - PagerDuty integration key

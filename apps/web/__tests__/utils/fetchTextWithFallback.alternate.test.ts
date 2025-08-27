@@ -1,4 +1,6 @@
 // Import dependencies using ES modules with explicit .js extensions
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, test, vi } from 'vitest';
+
 import { fetchTextWithFallback } from '../../utils/getBlobUrl';
 import { blobPathService } from '../../utils/services/BlobPathService';
 import { blobService } from '../../utils/services/BlobService';
@@ -12,29 +14,29 @@ import { createMockLogger } from '../__testutils__/mocks/factories';
 
 // Create a cleaner implementation by directly mocking the BlobService fetchText method
 // Since this is the primary method tested in the fetchTextWithFallback function
-jest.mock('../../utils/services/BlobService', () => ({
+vi.mock('../../utils/services/BlobService', () => ({
   blobService: {
-    getUrlForPath: jest.fn(),
-    fetchText: jest.fn(),
+    getUrlForPath: vi.fn(),
+    fetchText: vi.fn(),
   },
 }));
 
-jest.mock('../../utils/services/BlobPathService', () => ({
+vi.mock('../../utils/services/BlobPathService', () => ({
   blobPathService: {
-    convertLegacyPath: jest.fn(),
+    convertLegacyPath: vi.fn(),
   },
 }));
 
 // Create a properly typed mock logger
 const mockLogger = createMockLogger();
-jest.mock('../../utils/logger', () => ({
+vi.mock('../../utils/logger', () => ({
   logger: {
-    child: jest.fn(() => mockLogger),
+    child: vi.fn(() => mockLogger),
   },
 }));
 
 // Mock global fetch
-global.fetch = jest.fn();
+global.fetch = vi.fn();
 
 describe('fetchTextWithFallback', () => {
   const mockBlobService = blobService;
@@ -42,7 +44,7 @@ describe('fetchTextWithFallback', () => {
   const mockFetch = global.fetch;
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
     // Reset environment variables
     process.env.NEXT_PUBLIC_BLOB_BASE_URL = 'https://example.blob.vercel-storage.com';
   });
