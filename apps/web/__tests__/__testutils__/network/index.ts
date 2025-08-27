@@ -42,7 +42,7 @@ export function createJsonResponse<T>(data: T, options: ResponseOptions = {}): R
 export function createJsonFetch<T>(
   data: T,
   options: ResponseOptions = {},
-): jest.MockedFunction<typeof fetch> {
+): MockedFunction<typeof fetch> {
   return createMockFetch(() => createJsonResponse(data, options));
 }
 
@@ -79,8 +79,8 @@ export function createErrorResponse(
  */
 export function createNetworkErrorFetch(
   errorMessage = 'Network request failed',
-): jest.MockedFunction<typeof fetch> {
-  return jest.fn().mockRejectedValue(new Error(errorMessage));
+): MockedFunction<typeof fetch> {
+  return vi.fn().mockRejectedValue(new Error(errorMessage));
 }
 
 /**

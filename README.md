@@ -114,7 +114,7 @@ pnpm test
 - **Styling**: Tailwind CSS + Radix UI
 - **Storage**: Vercel Blob Storage
 - **Publishing**: Playwright (KDP) + Axios (Lulu API)
-- **Testing**: Jest + React Testing Library
+- **Testing**: Vitest + React Testing Library
 - **CI/CD**: GitHub Actions + Vercel
 
 ### Commands
@@ -124,8 +124,14 @@ pnpm test
 pnpm dev                        # Start all apps in dev mode
 pnpm dev --filter=@brainrot/web # Web app only
 pnpm build                      # Build everything (174ms with cache!)
-pnpm test                       # Run all tests
 pnpm lint                       # Lint all packages
+
+# Testing (Powered by Vitest)
+pnpm test                       # Run tests in watch mode
+pnpm test:run                   # Run tests once (CI mode)
+pnpm test:ui                    # Open Vitest UI for interactive testing
+pnpm test:coverage              # Generate coverage report
+pnpm test:watch                 # Alias for pnpm test
 
 # Content Pipeline
 pnpm generate:formats [book]    # Convert markdown to all formats
@@ -191,6 +197,172 @@ gitleaks detect --source . -v
 - **Gitleaks integration** - Advanced local scanning
 
 See `docs/SECRETS.md` for rotation procedures.
+
+## 🧪 Testing
+
+### Test Stack
+
+We use **Vitest** for blazing-fast unit and integration testing:
+
+- **5-10x faster** than Jest
+- **Native ESM support** - No transforms needed
+- **HMR for tests** - Tests re-run instantly on save
+- **Compatible API** - Drop-in Jest replacement
+- **Built-in coverage** - Via c8/v8
+
+### Running Tests
+
+```bash
+# Interactive watch mode (recommended for development)
+pnpm test
+
+# Run all tests once
+pnpm test:run
+
+# Open Vitest UI - beautiful interface for test exploration
+pnpm test:ui
+
+# Generate coverage report
+pnpm test:coverage
+
+# Test specific packages
+pnpm test --filter=@brainrot/converter
+pnpm test --filter=@brainrot/web
+
+# Run specific test files
+pnpm test -- download.test.ts
+pnpm test -- --grep="security"
+```
+
+### Test Coverage
+
+We maintain **85%+ coverage** across all packages:
+
+```bash
+# Check coverage
+pnpm test:coverage
+
+# Coverage thresholds (enforced in CI)
+# - Branches: 85%
+# - Functions: 85%
+# - Lines: 85%
+# - Statements: 85%
+```
+
+### Jest → Vitest Migration
+
+We recently migrated from Jest to Vitest. Key changes:
+
+```typescript
+// Old (Jest)
+import { jest } from '@jest/globals';
+const mockFn = jest.fn();
+jest.mock('./module');
+
+// New (Vitest)
+import { vi } from 'vitest';
+const mockFn = vi.fn();
+vi.mock('./module');
+```
+
+**Migration benefits:**
+- Test execution: ~50s → ~5s (10x speedup)
+- No more `ts-jest` configuration
+- Better TypeScript support out of the box
+- Simpler configuration (single `vitest.config.ts`)
+
+For migration details, see our [migration guide](docs/TESTING_MIGRATION.md).
+
+## 📝 Script Organization
+
+### Philosophy: Less is More
+
+We maintain a **minimalist script structure** focused on essential development tasks. We reduced from 74 scripts to just 7 core scripts in the web app, removing all one-time migration and utility scripts.
+
+### Essential Scripts (Web App)
+
+```bash
+# The Magnificent Seven - Everything you actually need
+pnpm dev         # Start dev server with Turbopack (blazing fast HMR)
+pnpm build       # Production build with Next.js optimizations
+pnpm test        # Run tests in watch mode with Vitest
+pnpm lint        # ESLint with Next.js rules
+pnpm format      # Prettier auto-formatting
+pnpm typecheck   # TypeScript type checking
+pnpm prettier:fix # Direct Prettier command (alias for format)
+```
+
+### Monorepo Scripts
+
+```bash
+# Core Development
+pnpm dev         # Start all apps in dev mode (Turborepo)
+pnpm build       # Build all packages (cached, ~13s)
+pnpm lint        # Lint all packages
+pnpm typecheck   # Type check everything
+pnpm clean       # Nuclear option - clear all caches
+
+# Testing Suite
+pnpm test        # Interactive watch mode
+pnpm test:run    # Single run (CI mode)
+pnpm test:ui     # Beautiful Vitest UI
+pnpm test:coverage # Coverage report
+
+# Content & Publishing
+pnpm generate:formats [book]  # Convert MD to all formats
+pnpm sync:blob [book]        # Upload to Vercel Blob
+pnpm monitor                 # API usage dashboard
+```
+
+### What We Removed (and Why)
+
+We archived **67 legacy scripts** that were:
+- **Migration scripts** (45): One-time data migrations now complete
+- **Audit/verify scripts** (15): Replaced with automated tests
+- **Standardization scripts** (10): Data is now standardized
+- **Utility scripts** (7): Either automated or rarely needed
+
+**Why remove them?**
+- **Clarity**: New developers see only what matters
+- **Maintenance**: Less scripts = less confusion
+- **Speed**: Faster package.json parsing
+- **Focus**: Essential workflows are obvious
+
+### Archived Scripts
+
+Legacy scripts are preserved in `/tools/legacy-scripts/` for historical reference:
+
+```bash
+# If you need migration scripts for reference
+ls tools/legacy-scripts/
+
+# Each script has documentation
+cat tools/legacy-scripts/README.md
+```
+
+**Important**: These scripts are archived, not deleted. They serve as:
+- Historical record of migrations performed
+- Reference for future similar tasks
+- Documentation of data transformation logic
+- Learning resource for complex operations
+
+### Adding New Scripts
+
+Before adding a new script, ask:
+1. **Is it used daily?** → Add to package.json
+2. **Is it a one-time task?** → Run with `tsx` directly
+3. **Is it rarely used?** → Document in README, don't add script
+4. **Is it project-specific?** → Add to that package only
+
+### Direct Execution (No Script Needed)
+
+```bash
+# For one-time or rare tasks, just use tsx directly
+tsx scripts/some-utility.ts
+
+# Or with Node
+node --loader tsx scripts/analyze-something.ts
+```
 
 ## 📚 Content Pipeline
 

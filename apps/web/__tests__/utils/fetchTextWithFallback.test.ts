@@ -36,7 +36,7 @@ global.fetch = vi.fn();
 describe('fetchTextWithFallback', () => {
   const mockBlobService = blobService as MockedObject<typeof blobService>;
   const mockBlobPathService = blobPathService as MockedObject<typeof blobPathService>;
-  const mockFetch = global.fetch as jest.MockedFunction<typeof fetch>;
+  const mockFetch = global.fetch as vi.MockedFunction<typeof fetch>;
 
   beforeEach(() => {
     vi.clearAllMocks();

@@ -2,7 +2,7 @@
  * Type-safe assertion utilities for common test patterns
  * These utilities improve testing by adding type safety to assertions
  */
-import { expect } from '@jest/globals';
+import { expect } from 'vitest';
 
 /**
  * Asserts that a function was called with a parameter containing expected properties
@@ -13,7 +13,7 @@ import { expect } from '@jest/globals';
  * @param expectedProps Expected properties in the parameter object
  */
 function expectCalledWithObjectContaining(
-  mockFn: jest.Mock,
+  mockFn: Mock,
   paramIndex: number,
   expectedProps: Record<string, unknown>,
 ): void {
@@ -34,10 +34,10 @@ function expectCalledWithObjectContaining(
  * @param expectedContext The expected context fields
  */
 function expectLoggedWithContext(
-  loggerFn: jest.Mock | jest.MockedFunction<(...args: unknown[]) => unknown>,
+  loggerFn: Mock | MockedFunction<(...args: unknown[]) => unknown>,
   expectedContext: Record<string, unknown>,
 ): void {
-  expectCalledWithObjectContaining(loggerFn as jest.Mock, 0, expectedContext);
+  expectCalledWithObjectContaining(loggerFn as Mock, 0, expectedContext);
 }
 
 /**
@@ -163,7 +163,7 @@ function expectObjectShape(
  * @param predicates Functions that check if parameters are of the expected type/shape
  */
 function expectCalledWithTypes(
-  mockFn: jest.Mock,
+  mockFn: Mock,
   ...predicates: Array<(value: unknown) => boolean>
 ): void {
   expect(mockFn).toHaveBeenCalled();
