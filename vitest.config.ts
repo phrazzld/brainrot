@@ -2,6 +2,10 @@ import { defineConfig } from 'vitest/config';
 import { resolve } from 'path';
 
 export default defineConfig({
+  esbuild: {
+    jsx: 'automatic',
+    target: 'node18',
+  },
   test: {
     globals: true,
     environment: 'node',
@@ -23,7 +27,7 @@ export default defineConfig({
       '**/.next/**',
       '**/build/**',
     ],
-    setupFiles: ['./test/setup.node.ts'],
+    setupFiles: ['./test/setup.node.ts', './test/setup.jsdom.ts'],
     coverage: {
       provider: 'v8',
       reporter: ['text', 'json', 'html', 'lcov'],

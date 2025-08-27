@@ -1,5 +1,4 @@
 import { beforeAll, afterEach, vi } from 'vitest';
-import '@testing-library/react';
 
 // Set up test environment variables
 process.env.NODE_ENV = 'test';
@@ -57,8 +56,11 @@ vi.mock('next/navigation', () => ({
 // Mock Next.js Image component
 vi.mock('next/image', () => ({
   default: ({ src, alt, ...props }: any) => {
-    // eslint-disable-next-line @next/next/no-img-element
-    return <img src={src} alt={alt} {...props} />;
+    // Create a mock element without JSX
+    return {
+      type: 'img',
+      props: { src, alt, ...props }
+    };
   },
 }));
 

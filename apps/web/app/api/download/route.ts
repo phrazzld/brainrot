@@ -2,14 +2,15 @@ import { NextRequest, NextResponse } from 'next/server';
 
 import { randomUUID } from 'crypto';
 
-import { AssetType } from '@/types/assets.js';
-import { createRequestLogger } from '@/utils/logger.js';
+import { AssetType } from '@/types/assets';
+import { createRequestLogger } from '@/utils/logger';
 
-import { handleCriticalError, handleDownloadServiceError } from './errorHandlers.js';
-import { safeLog } from './logging/safeLogger.js';
-import { proxyAssetDownload } from './proxyService.js';
-import { validateRequestParameters } from './requestValidation.js';
-import { createDownloadService } from './serviceFactory.js';
+import { handleCriticalError, handleDownloadServiceError } from './errorHandlers';
+import { safeLog } from './logging/safeLogger';
+import { proxyAssetDownload } from './services/ProxyService';
+import { validateRequestParameters } from './requestValidation';
+import { createDownloadService } from './serviceFactory';
+import { createRequestService, RequestMetadata } from './services/RequestService';
 
 /**
  * Download API route handler
@@ -43,6 +44,7 @@ type RequestContext = {
   log: ReturnType<typeof createRequestLogger>;
   searchParams: URLSearchParams;
   headers: Headers;
+  metadata: RequestMetadata;
 };
 
 /**
@@ -56,61 +58,29 @@ type ValidationResult = {
   errorResponse?: NextResponse;
 };
 
+// Create request service instance
+const requestService = createRequestService({
+  environment: process.env.NODE_ENV || 'development'
+});
+
 /**
  * Initialize request processing by setting up logging and correlation ID
  * @param req - The incoming request
  * @returns Request context with correlationId, logger, and searchParams
  */
 function initializeRequest(req: NextRequest): RequestContext {
-  const correlationId = randomUUID();
-  const log = createRequestLogger(correlationId);
-  const { searchParams, pathname } = new URL(req.url);
+  // Use RequestService to create metadata and logger
+  const metadata = requestService.createMetadata(req);
+  const log = requestService.createLogger(metadata.correlationId);
+  const { searchParams } = new URL(req.url);
 
-  // Extract relevant headers for logging (skipping sensitive ones)
-  const headers: Record<string, string> = {};
-  const sensitiveHeaders = ['authorization', 'cookie', 'set-cookie'];
-
-  req.headers.forEach((value: string, key: string) => {
-    if (!sensitiveHeaders.includes(key.toLowerCase())) {
-      headers[key] = value;
-    }
-  });
-
-  // Extract request parameters for logging (skipping sensitive ones)
-  const params: Record<string, string> = {};
-  const sensitiveParams = ['auth', 'token', 'key', 'secret', 'password'];
-
-  searchParams.forEach((value, key) => {
-    if (!sensitiveParams.includes(key.toLowerCase())) {
-      params[key] = value;
-    }
-  });
-
-  // Log detailed request information
-  safeLog(log, 'info', {
-    msg: 'Download API request received',
-    correlationId,
-    method: req.method,
-    url: req.url,
-    pathname,
-    params,
-    isProxyRequest: searchParams.get('proxy') === 'true',
-    referer: req.headers.get('referer'),
-    userAgent: req.headers.get('user-agent'),
-    acceptHeaders: {
-      accept: req.headers.get('accept'),
-      acceptEncoding: req.headers.get('accept-encoding'),
-      acceptLanguage: req.headers.get('accept-language'),
-    },
-    origin: req.headers.get('origin'),
-    host: req.headers.get('host'),
-    contentType: req.headers.get('content-type'),
-    timestamp: new Date().toISOString(),
-    environment: process.env.NODE_ENV || 'development',
-    deployment: process.env.VERCEL_URL || 'local',
-  });
-
-  return { correlationId, log, searchParams, headers: req.headers };
+  return { 
+    correlationId: metadata.correlationId, 
+    log, 
+    searchParams, 
+    headers: req.headers,
+    metadata 
+  };
 }
 
 /**
