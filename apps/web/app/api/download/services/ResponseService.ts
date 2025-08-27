@@ -222,6 +222,40 @@ function getCorsHeaders(origin?: string): Record<string, string> {
 }
 
 /**
+ * Formats proxy error response with environment-aware details
+ */
+export function formatProxyError(
+  error: unknown,
+  correlationId: string,
+  operationId?: string,
+  config: ResponseServiceConfig = {}
+): Record<string, unknown> {
+  const { includeStackTrace = process.env.NODE_ENV !== 'production' } = config;
+  
+  const errorResponse: Record<string, unknown> = {
+    error: 'Proxy error',
+    message: 'Failed to proxy download through API',
+    correlationId
+  };
+
+  if (operationId) {
+    errorResponse.operationId = operationId;
+  }
+
+  // Add detailed error information in non-production environments
+  if (includeStackTrace) {
+    Object.assign(errorResponse, {
+      details: error instanceof Error ? error.message : String(error),
+      errorType: error instanceof Error ? error.constructor.name : typeof error,
+      stack: error instanceof Error ? error.stack : undefined,
+      timestamp: new Date().toISOString()
+    });
+  }
+
+  return errorResponse;
+}
+
+/**
  * Creates cache control headers
  */
 export function getCacheHeaders(
@@ -257,6 +291,8 @@ export function createResponseService(config: ResponseServiceConfig = {}) {
       createRedirectResponse(url, permanent, config),
     stream: (stream: ReadableStream, contentType?: string, metadata?: Record<string, string>) => 
       createStreamResponse(stream, contentType, metadata, config),
+    formatProxyError: (error: unknown, correlationId: string, operationId?: string) =>
+      formatProxyError(error, correlationId, operationId, config),
     getCacheHeaders,
     HttpStatus
   };

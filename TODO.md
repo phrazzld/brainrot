@@ -274,7 +274,7 @@ Generated from TASK.md on 2025-08-24
   - Validation logic properly extracted and centralized in service layer
   ```
 
-- [ ] Extract remaining business logic
+- [~] Extract remaining business logic
   - **From**: `apps/web/app/api/download/route.ts` lines 301-671
   - **To**: Appropriate services
   - **Success criteria**: 

@@ -242,6 +242,74 @@ export function clearAssetCache(): void {
 }
 
 /**
+ * Generates asset name based on download type and chapter
+ */
+export function generateAssetName(
+  type: 'full' | 'chapter',
+  chapter?: string | number,
+  config: AssetServiceConfig = {}
+): { assetName: string; error?: string } {
+  const { logger = console } = config;
+  
+  if (type === 'full') {
+    logger.debug?.({ msg: 'Generated asset name for full audiobook' });
+    return { assetName: 'full-audiobook.mp3' };
+  }
+
+  if (!chapter) {
+    logger.warn?.({ msg: 'Chapter required for chapter type download' });
+    return { 
+      assetName: '', 
+      error: 'Chapter parameter is required when type is "chapter"' 
+    };
+  }
+
+  // Format chapter with leading zeros
+  const chapterNum = typeof chapter === 'string' ? parseInt(chapter, 10) : chapter;
+  const paddedChapter = String(chapterNum).padStart(2, '0');
+  const assetName = `chapter-${paddedChapter}.mp3`;
+  
+  logger.debug?.({ msg: 'Generated asset name for chapter', chapter: chapterNum, assetName });
+  return { assetName };
+}
+
+/**
+ * Gets download URL for an asset
+ */
+export async function getDownloadUrl(
+  request: AssetRequest,
+  config: AssetServiceConfig = {}
+): Promise<{ url: string; error?: string }> {
+  const { logger = console } = config;
+  
+  logger.info?.({ 
+    msg: 'Getting download URL',
+    slug: request.slug,
+    type: request.type,
+    chapter: request.chapter 
+  });
+
+  // Use resolveAssetUrl to get the URL
+  const result = await resolveAssetUrl(request, config);
+  
+  if (!result.success || !result.url) {
+    return { 
+      url: '', 
+      error: result.error || 'Failed to resolve asset URL' 
+    };
+  }
+
+  logger.info?.({ 
+    msg: 'Successfully generated download URL',
+    slug: request.slug,
+    type: request.type,
+    chapter: request.chapter
+  });
+
+  return { url: result.url };
+}
+
+/**
  * Factory function to create AssetService
  */
 export function createAssetService(config: AssetServiceConfig = {}) {
@@ -260,6 +328,9 @@ export function createAssetService(config: AssetServiceConfig = {}) {
   return {
     resolveUrl: (request: AssetRequest) => resolveAssetUrl(request, config),
     validateExists: (url: string) => validateAssetExists(url, config),
-    clearCache: clearAssetCache
+    clearCache: clearAssetCache,
+    generateAssetName: (type: 'full' | 'chapter', chapter?: string | number) => 
+      generateAssetName(type, chapter, config),
+    getDownloadUrl: (request: AssetRequest) => getDownloadUrl(request, config)
   };
 }

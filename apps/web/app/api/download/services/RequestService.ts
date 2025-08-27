@@ -23,6 +23,28 @@ export interface RequestMetadata {
 /**
  * Configuration for RequestService
  */
+export interface ClientInfo {
+  userAgent: string;
+  referer: string;
+  origin: string;
+  accept: string;
+  acceptEncoding: string;
+  acceptLanguage: string;
+}
+
+/**
+ * Client classification based on user agent
+ */
+export interface ClientClassification {
+  isMobile: boolean;
+  isIOS: boolean;
+  isAndroid: boolean;
+  browser: string;
+}
+
+/**
+ * Configuration for RequestService
+ */
 export interface RequestServiceConfig {
   logger?: Logger;
   generateId?: () => string;
@@ -112,12 +134,81 @@ export function sanitizeUrlForLogging(url: string): string {
 }
 
 /**
+ * Generates operation ID for request tracking
+ */
+export function generateOperationId(): string {
+  return `px-${Date.now().toString(36)}-${Math.random().toString(36).substring(2, 5)}`;
+}
+
+/**
+ * Extracts client information from headers
+ */
+export function extractClientInfo(headers: Headers | Record<string, string>): ClientInfo {
+  const getHeader = (key: string): string => {
+    if (headers instanceof Headers) {
+      return headers.get(key) || '';
+    }
+    return headers[key] || '';
+  };
+
+  return {
+    userAgent: getHeader('user-agent'),
+    referer: getHeader('referer'),
+    origin: getHeader('origin'),
+    accept: getHeader('accept'),
+    acceptEncoding: getHeader('accept-encoding'),
+    acceptLanguage: getHeader('accept-language')
+  };
+}
+
+/**
+ * Determines browser type from user agent
+ */
+export function determineBrowser(userAgent: string): string {
+  if (userAgent.includes('Chrome')) return 'Chrome';
+  if (userAgent.includes('Safari') && !userAgent.includes('Chrome')) return 'Safari';
+  if (userAgent.includes('Firefox')) return 'Firefox';
+  if (userAgent.includes('Edg/')) return 'Edge';
+  return 'Other';
+}
+
+/**
+ * Analyzes client information from headers
+ */
+export function analyzeClientInfo(headers: Headers | Record<string, string>): {
+  clientInfo: ClientInfo;
+  clientClassification: ClientClassification;
+} {
+  const clientInfo = extractClientInfo(headers);
+  const { userAgent } = clientInfo;
+
+  // Determine client platform/browser for analytics
+  const isMobile = userAgent.includes('Mobile') || userAgent.includes('Android');
+  const isIOS = userAgent.includes('iPhone') || userAgent.includes('iPad');
+  const isAndroid = userAgent.includes('Android');
+  const browser = determineBrowser(userAgent);
+
+  return {
+    clientInfo,
+    clientClassification: {
+      isMobile,
+      isIOS,
+      isAndroid,
+      browser
+    }
+  };
+}
+
+/**
  * Factory function to create RequestService
  */
 export function createRequestService(config: RequestServiceConfig = {}) {
   return {
     createMetadata: (request: NextRequest) => createRequestMetadata(request, config),
     createLogger: (correlationId: string) => createScopedLogger(correlationId, config.logger),
-    sanitizeUrl: sanitizeUrlForLogging
+    sanitizeUrl: sanitizeUrlForLogging,
+    generateOperationId,
+    extractClientInfo,
+    analyzeClientInfo
   };
 }
