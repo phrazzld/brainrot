@@ -4,25 +4,25 @@
  * This script verifies that all assets have been properly migrated to Blob storage.
  * It generates a report of what has been migrated and what still needs to be migrated.
  */
-import * as dotenv from 'dotenv';
-import * as fs from 'fs';
-import * as path from 'path';
+import * as dotenv from "dotenv";
+import * as fs from "fs";
+import * as path from "path";
 
-import translations from '../translations/index.js';
-import { assetExistsInBlobStorage } from '../utils.js';
-import { logger as rootLogger } from '../utils/logger.js';
-import { adaptTranslation } from '../utils/migration/TranslationAdapter.js';
+import translations from "../translations/index.js";
+import { assetExistsInBlobStorage } from "../utils.js";
+import { logger as rootLogger } from "../utils/logger.js";
+import { adaptTranslation } from "../utils/migration/TranslationAdapter.js";
 
 // Create a script-specific logger instance
-const logger = rootLogger.child({ script: 'verifyBlobStorage.ts' });
+const logger = rootLogger.child({ script: "verifyBlobStorage.ts" });
 
 // Load environment variables from .env.local
-dotenv.config({ path: '.env.local' });
+dotenv.config({ path: ".env.local" });
 
 interface AssetVerificationResult {
   path: string;
   exists: boolean;
-  type: 'cover' | 'chapter' | 'audio';
+  type: "cover" | "chapter" | "audio";
 }
 
 interface BookVerificationResult {
@@ -57,7 +57,7 @@ interface VerificationReport {
  */
 async function verifyAsset(
   assetPath: string,
-  assetType: 'cover' | 'chapter' | 'audio',
+  assetType: "cover" | "chapter" | "audio",
   bookSlug: string,
   counters: { totalAssets: number; migratedAssets: number },
 ): Promise<AssetVerificationResult> {
@@ -123,7 +123,7 @@ function initializeBookResult(book: {
     coverImage: {
       path: book.coverImage,
       exists: false,
-      type: 'cover',
+      type: "cover",
     },
     chapters: [],
     audio: [],
@@ -165,14 +165,24 @@ async function verifyChapterAssets(
 ): Promise<void> {
   // Verify chapter text
   bookResult.summary.total++;
-  const chapterResult = await verifyAsset(chapter.text, 'chapter', bookSlug, counters);
+  const chapterResult = await verifyAsset(
+    chapter.text,
+    "chapter",
+    bookSlug,
+    counters,
+  );
   bookResult.chapters.push(chapterResult);
   updateBookSummary(bookResult, chapterResult);
 
   // Verify audio if available
   if (chapter.audioSrc) {
     bookResult.summary.total++;
-    const audioResult = await verifyAsset(chapter.audioSrc, 'audio', bookSlug, counters);
+    const audioResult = await verifyAsset(
+      chapter.audioSrc,
+      "audio",
+      bookSlug,
+      counters,
+    );
     bookResult.audio.push(audioResult);
     updateBookSummary(bookResult, audioResult);
   }
@@ -187,14 +197,23 @@ async function verifyBookAssets(
   },
   counters: { totalAssets: number; migratedAssets: number },
 ): Promise<BookVerificationResult> {
-  logger.info({ msg: `Verifying book assets`, bookTitle: book.title, bookSlug: book.slug });
+  logger.info({
+    msg: `Verifying book assets`,
+    bookTitle: book.title,
+    bookSlug: book.slug,
+  });
 
   // Initialize book result
   const bookResult = initializeBookResult(book);
 
   // Verify cover image
   bookResult.summary.total++;
-  const coverResult = await verifyAsset(book.coverImage, 'cover', book.slug, counters);
+  const coverResult = await verifyAsset(
+    book.coverImage,
+    "cover",
+    book.slug,
+    counters,
+  );
   bookResult.coverImage = coverResult;
   updateBookSummary(bookResult, coverResult, true);
 
@@ -211,13 +230,16 @@ async function verifyBookAssets(
  */
 function saveVerificationReport(report: VerificationReport): string {
   // Create reports directory if it doesn't exist
-  const reportDir = path.join(process.cwd(), 'reports');
+  const reportDir = path.join(process.cwd(), "reports");
   if (!fs.existsSync(reportDir)) {
     fs.mkdirSync(reportDir);
   }
 
   // Generate report path and save the report
-  const reportPath = path.join(reportDir, `blob-verification-${Date.now()}.json`);
+  const reportPath = path.join(
+    reportDir,
+    `blob-verification-${Date.now()}.json`,
+  );
   fs.writeFileSync(reportPath, JSON.stringify(report, null, 2));
   logger.info({ msg: `Verification report saved`, path: reportPath });
 
@@ -230,13 +252,15 @@ function saveVerificationReport(report: VerificationReport): string {
 function calculateOverallSummary(
   bookResults: BookVerificationResult[],
   counters: { totalAssets: number; migratedAssets: number },
-): VerificationReport['overallSummary'] {
+): VerificationReport["overallSummary"] {
   return {
     totalBooks: translations.length,
     booksWithCover: bookResults.filter((b) => b.coverImage.exists).length,
     booksWithAllContent: bookResults.filter(
       (b) =>
-        b.coverImage.exists && b.chapters.every((c) => c.exists) && b.audio.every((a) => a.exists),
+        b.coverImage.exists &&
+        b.chapters.every((c) => c.exists) &&
+        b.audio.every((a) => a.exists),
     ).length,
     totalAssets: counters.totalAssets,
     migratedAssets: counters.migratedAssets,
@@ -248,7 +272,7 @@ function calculateOverallSummary(
  * Main function to verify all assets and generate a report
  */
 async function verifyBlobStorage(): Promise<VerificationReport> {
-  logger.info({ msg: 'Starting Blob storage verification' });
+  logger.info({ msg: "Starting Blob storage verification" });
 
   const bookResults: BookVerificationResult[] = [];
   const counters = { totalAssets: 0, migratedAssets: 0 };
@@ -272,7 +296,7 @@ async function verifyBlobStorage(): Promise<VerificationReport> {
 
   // Output summary
   logger.info({
-    msg: 'Blob Storage Verification Report',
+    msg: "Blob Storage Verification Report",
     summary: {
       date: new Date().toLocaleString(),
       totalBooks: overallSummary.totalBooks,
@@ -293,8 +317,10 @@ async function verifyBlobStorage(): Promise<VerificationReport> {
 // Run the verification if executed directly
 if (require.main === module) {
   verifyBlobStorage()
-    .then(() => logger.info({ msg: 'Blob storage verification complete!' }))
-    .catch((error) => logger.error({ msg: 'Blob storage verification failed', error }));
+    .then(() => logger.info({ msg: "Blob storage verification complete!" }))
+    .catch((error) =>
+      logger.error({ msg: "Blob storage verification failed", error }),
+    );
 }
 
 export default verifyBlobStorage;

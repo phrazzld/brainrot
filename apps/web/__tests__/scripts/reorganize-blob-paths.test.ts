@@ -1,7 +1,6 @@
-
-
 // Use TypeScript imports to ensure proper typing
-import { vi, describe, it, test, expect, beforeAll, beforeEach, afterAll, afterEach } from 'vitest';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, test, vi } from 'vitest';
+
 import { AssetType } from '../../types/assets';
 import { AssetPathService } from '../../utils/services/AssetPathService';
 

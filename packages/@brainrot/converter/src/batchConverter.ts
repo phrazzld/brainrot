@@ -1,9 +1,14 @@
-import * as fs from 'fs';
-import * as path from 'path';
-import { promisify } from 'util';
-import { stripMarkdown } from './stripMarkdown';
-import { chapterToText, ChapterContent } from './markdownToText';
-import { markdownToEpub, markdownToPdf, markdownToKindle, ConversionOptions } from './pandocConverters';
+import * as fs from "fs";
+import * as path from "path";
+import { promisify } from "util";
+import { stripMarkdown } from "./stripMarkdown";
+import { chapterToText, ChapterContent } from "./markdownToText";
+import {
+  markdownToEpub,
+  markdownToPdf,
+  markdownToKindle,
+  ConversionOptions,
+} from "./pandocConverters";
 
 const readFile = promisify(fs.readFile);
 const writeFile = promisify(fs.writeFile);
@@ -13,7 +18,7 @@ const mkdir = promisify(fs.mkdir);
 export interface BookConversionOptions extends ConversionOptions {
   inputDir: string;
   outputDir: string;
-  formats?: ('text' | 'epub' | 'pdf' | 'kindle')[];
+  formats?: ("text" | "epub" | "pdf" | "kindle")[];
   chapterPattern?: RegExp;
 }
 
@@ -29,9 +34,11 @@ export interface ConversionResult {
  * @param options - Book conversion options
  * @returns Array of conversion results
  */
-export async function convertBook(options: BookConversionOptions): Promise<ConversionResult[]> {
+export async function convertBook(
+  options: BookConversionOptions,
+): Promise<ConversionResult[]> {
   const results: ConversionResult[] = [];
-  const formats = options.formats || ['text'];
+  const formats = options.formats || ["text"];
 
   try {
     // Ensure output directory exists
@@ -39,18 +46,16 @@ export async function convertBook(options: BookConversionOptions): Promise<Conve
 
     // Read all markdown files from input directory
     const files = await readdir(options.inputDir);
-    const markdownFiles = files
-      .filter(file => file.endsWith('.md'))
-      .sort(); // Ensure chapters are in order
+    const markdownFiles = files.filter((file) => file.endsWith(".md")).sort(); // Ensure chapters are in order
 
     // Read and combine all markdown content
     const chapters: ChapterContent[] = [];
-    let combinedMarkdown = '';
+    let combinedMarkdown = "";
 
     for (const file of markdownFiles) {
       const filePath = path.join(options.inputDir, file);
-      const content = await readFile(filePath, 'utf8');
-      
+      const content = await readFile(filePath, "utf8");
+
       // Extract chapter title from filename or content
       const chapterTitle = extractChapterTitle(file, content);
       const chapterNumber = extractChapterNumber(file);
@@ -58,7 +63,7 @@ export async function convertBook(options: BookConversionOptions): Promise<Conve
       chapters.push({
         title: chapterTitle,
         content: content,
-        number: chapterNumber
+        number: chapterNumber,
       });
 
       combinedMarkdown += `\n\n# ${chapterTitle}\n\n${content}`;
@@ -70,30 +75,32 @@ export async function convertBook(options: BookConversionOptions): Promise<Conve
         let outputPath: string;
 
         switch (format) {
-          case 'text':
-            outputPath = path.join(options.outputDir, 'book.txt');
-            const textContent = chapters.map(ch => chapterToText(ch)).join('\n\n---\n\n');
-            await writeFile(outputPath, textContent, 'utf8');
+          case "text":
+            outputPath = path.join(options.outputDir, "book.txt");
+            const textContent = chapters
+              .map((ch) => chapterToText(ch))
+              .join("\n\n---\n\n");
+            await writeFile(outputPath, textContent, "utf8");
             break;
 
-          case 'epub':
+          case "epub":
             outputPath = await markdownToEpub(combinedMarkdown, {
               ...options,
-              outputPath: path.join(options.outputDir, 'book.epub')
+              outputPath: path.join(options.outputDir, "book.epub"),
             });
             break;
 
-          case 'pdf':
+          case "pdf":
             outputPath = await markdownToPdf(combinedMarkdown, {
               ...options,
-              outputPath: path.join(options.outputDir, 'book.pdf')
+              outputPath: path.join(options.outputDir, "book.pdf"),
             });
             break;
 
-          case 'kindle':
+          case "kindle":
             outputPath = await markdownToKindle(combinedMarkdown, {
               ...options,
-              outputPath: path.join(options.outputDir, 'book.mobi')
+              outputPath: path.join(options.outputDir, "book.mobi"),
             });
             break;
 
@@ -104,14 +111,14 @@ export async function convertBook(options: BookConversionOptions): Promise<Conve
         results.push({
           format,
           path: outputPath,
-          success: true
+          success: true,
         });
       } catch (error) {
         results.push({
           format,
-          path: '',
+          path: "",
           success: false,
-          error: error instanceof Error ? error.message : String(error)
+          error: error instanceof Error ? error.message : String(error),
         });
       }
     }
@@ -130,7 +137,7 @@ export async function convertBook(options: BookConversionOptions): Promise<Conve
  */
 export async function convertChaptersToText(
   inputDir: string,
-  outputDir: string
+  outputDir: string,
 ): Promise<string[]> {
   const outputPaths: string[] = [];
 
@@ -140,18 +147,16 @@ export async function convertChaptersToText(
 
     // Read all markdown files
     const files = await readdir(inputDir);
-    const markdownFiles = files
-      .filter(file => file.endsWith('.md'))
-      .sort();
+    const markdownFiles = files.filter((file) => file.endsWith(".md")).sort();
 
     for (const file of markdownFiles) {
       const inputPath = path.join(inputDir, file);
-      const outputPath = path.join(outputDir, file.replace('.md', '.txt'));
-      
-      const content = await readFile(inputPath, 'utf8');
+      const outputPath = path.join(outputDir, file.replace(".md", ".txt"));
+
+      const content = await readFile(inputPath, "utf8");
       const textContent = stripMarkdown(content);
-      
-      await writeFile(outputPath, textContent, 'utf8');
+
+      await writeFile(outputPath, textContent, "utf8");
       outputPaths.push(outputPath);
     }
 
@@ -173,9 +178,9 @@ function extractChapterTitle(filename: string, content: string): string {
 
   // Fall back to filename
   return filename
-    .replace('.md', '')
-    .replace(/-/g, ' ')
-    .replace(/\b\w/g, c => c.toUpperCase());
+    .replace(".md", "")
+    .replace(/-/g, " ")
+    .replace(/\b\w/g, (c) => c.toUpperCase());
 }
 
 /**

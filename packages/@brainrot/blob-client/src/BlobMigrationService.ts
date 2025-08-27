@@ -1,9 +1,9 @@
-import * as fs from 'fs';
-import * as path from 'path';
-import { promisify } from 'util';
-import { BlobService } from './BlobService';
-import { BlobPathService } from './BlobPathService';
-import { BlobBatchUploader } from './BlobBatchUploader';
+import * as fs from "fs";
+import * as path from "path";
+import { promisify } from "util";
+import { BlobService } from "./BlobService";
+import { BlobPathService } from "./BlobPathService";
+import { BlobBatchUploader } from "./BlobBatchUploader";
 
 const readdir = promisify(fs.readdir);
 const readFile = promisify(fs.readFile);
@@ -41,7 +41,7 @@ export class BlobMigrationService {
   constructor(
     blobService?: BlobService,
     pathService?: BlobPathService,
-    batchUploader?: BlobBatchUploader
+    batchUploader?: BlobBatchUploader,
   ) {
     this.blobService = blobService || new BlobService();
     this.pathService = pathService || new BlobPathService();
@@ -51,9 +51,9 @@ export class BlobMigrationService {
   private log(message: string, options?: MigrationOptions): void {
     const timestamp = new Date().toISOString();
     const logEntry = `[${timestamp}] ${message}`;
-    
+
     this.migrationLog.push(logEntry);
-    
+
     if (options?.verbose) {
       console.log(logEntry);
     }
@@ -61,8 +61,8 @@ export class BlobMigrationService {
 
   private async saveLogs(options?: MigrationOptions): Promise<void> {
     if (options?.logFile && this.migrationLog.length > 0) {
-      const logContent = this.migrationLog.join('\n');
-      await writeFile(options.logFile, logContent, 'utf8');
+      const logContent = this.migrationLog.join("\n");
+      await writeFile(options.logFile, logContent, "utf8");
     }
   }
 
@@ -72,7 +72,7 @@ export class BlobMigrationService {
    */
   public async migrateGreatGatsbyToText(
     markdownDir: string,
-    options: MigrationOptions = {}
+    options: MigrationOptions = {},
   ): Promise<MigrationResult> {
     const startTime = Date.now();
     const result: MigrationResult = {
@@ -82,67 +82,73 @@ export class BlobMigrationService {
       duration: 0,
     };
 
-    this.log('Starting Great Gatsby text migration', options);
-    
+    this.log("Starting Great Gatsby text migration", options);
+
     try {
       // Read all markdown files
       const files = await readdir(markdownDir);
-      const markdownFiles = files.filter(f => f.endsWith('.md')).sort();
-      
-      this.log(`Found ${markdownFiles.length} markdown files to process`, options);
+      const markdownFiles = files.filter((f) => f.endsWith(".md")).sort();
+
+      this.log(
+        `Found ${markdownFiles.length} markdown files to process`,
+        options,
+      );
 
       for (const file of markdownFiles) {
         const filePath = path.join(markdownDir, file);
-        
+
         try {
           // Read markdown content
-          const content = await readFile(filePath, 'utf8');
-          
+          const content = await readFile(filePath, "utf8");
+
           // Convert filename to appropriate text filename
           let textFilename: string;
-          if (file.includes('introduction')) {
-            textFilename = 'brainrot-introduction.txt';
-          } else if (file.includes('chapter')) {
+          if (file.includes("introduction")) {
+            textFilename = "brainrot-introduction.txt";
+          } else if (file.includes("chapter")) {
             const chapterMatch = file.match(/chapter[_-]?(\d+)/i);
             if (chapterMatch) {
               textFilename = `brainrot-chapter-${chapterMatch[1]}.txt`;
             } else {
-              textFilename = file.replace('.md', '.txt');
+              textFilename = file.replace(".md", ".txt");
             }
           } else {
-            textFilename = file.replace('.md', '.txt');
+            textFilename = file.replace(".md", ".txt");
           }
 
           // Generate blob path
-          const blobPath = this.pathService.getTextPath('great-gatsby', textFilename);
-          
+          const blobPath = this.pathService.getTextPath(
+            "great-gatsby",
+            textFilename,
+          );
+
           this.log(`Processing ${file} -> ${blobPath}`, options);
 
           if (!options.dryRun) {
             // Strip markdown formatting (simple version - you might want to use the converter package)
             let textContent = content;
             // Remove markdown headers
-            textContent = textContent.replace(/^#{1,6}\s+/gm, '');
+            textContent = textContent.replace(/^#{1,6}\s+/gm, "");
             // Remove bold/italic markers
-            textContent = textContent.replace(/\*\*([^*]+)\*\*/g, '$1');
-            textContent = textContent.replace(/\*([^*]+)\*/g, '$1');
-            textContent = textContent.replace(/__([^_]+)__/g, '$1');
-            textContent = textContent.replace(/_([^_]+)_/g, '$1');
+            textContent = textContent.replace(/\*\*([^*]+)\*\*/g, "$1");
+            textContent = textContent.replace(/\*([^*]+)\*/g, "$1");
+            textContent = textContent.replace(/__([^_]+)__/g, "$1");
+            textContent = textContent.replace(/_([^_]+)_/g, "$1");
             // Remove links
-            textContent = textContent.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
+            textContent = textContent.replace(/\[([^\]]+)\]\([^)]+\)/g, "$1");
             // Clean up extra whitespace
-            textContent = textContent.replace(/\n{3,}/g, '\n\n');
+            textContent = textContent.replace(/\n{3,}/g, "\n\n");
             textContent = textContent.trim();
 
             // Upload to blob storage
             const uploadResult = await this.blobService.uploadText(
               textContent,
               blobPath,
-              { 
-                contentType: 'text/plain'
-              } as any
+              {
+                contentType: "text/plain",
+              } as any,
             );
-            
+
             if (uploadResult.checksum) {
               result.migratedPaths.push(blobPath);
               this.log(`✓ Uploaded ${blobPath}`, options);
@@ -155,7 +161,8 @@ export class BlobMigrationService {
             this.log(`[DRY RUN] Would upload ${blobPath}`, options);
           }
         } catch (error) {
-          const errorMsg = error instanceof Error ? error.message : String(error);
+          const errorMsg =
+            error instanceof Error ? error.message : String(error);
           result.errors.push({ path: file, error: errorMsg });
           this.log(`✗ Error processing ${file}: ${errorMsg}`, options);
         }
@@ -167,7 +174,10 @@ export class BlobMigrationService {
     } finally {
       result.duration = Date.now() - startTime;
       this.log(`Migration completed in ${result.duration}ms`, options);
-      this.log(`Migrated: ${result.migratedPaths.length}, Skipped: ${result.skipped.length}, Errors: ${result.errors.length}`, options);
+      this.log(
+        `Migrated: ${result.migratedPaths.length}, Skipped: ${result.skipped.length}, Errors: ${result.errors.length}`,
+        options,
+      );
       await this.saveLogs(options);
     }
 
@@ -181,7 +191,7 @@ export class BlobMigrationService {
    */
   public async migratePaths(
     mappings: PathMapping[],
-    options: MigrationOptions = {}
+    options: MigrationOptions = {},
   ): Promise<MigrationResult> {
     const startTime = Date.now();
     const result: MigrationResult = {
@@ -191,28 +201,37 @@ export class BlobMigrationService {
       duration: 0,
     };
 
-    this.log(`Starting path migration for ${mappings.length} mappings`, options);
+    this.log(
+      `Starting path migration for ${mappings.length} mappings`,
+      options,
+    );
 
     for (const mapping of mappings) {
       try {
         this.log(`Migrating ${mapping.oldPath} -> ${mapping.newPath}`, options);
-        
+
         if (!options.dryRun) {
           // Fetch content from old path
           const oldUrl = this.blobService.getUrlForPath(mapping.oldPath);
           const content = await this.blobService.fetchText(oldUrl);
-          
+
           // Upload to new path
           await this.blobService.uploadText(content, mapping.newPath);
-          
+
           // Delete old file
           await this.blobService.deleteFile(oldUrl);
-          
+
           result.migratedPaths.push(mapping.newPath);
-          this.log(`✓ Migrated ${mapping.oldPath} -> ${mapping.newPath}`, options);
+          this.log(
+            `✓ Migrated ${mapping.oldPath} -> ${mapping.newPath}`,
+            options,
+          );
         } else {
           result.migratedPaths.push(mapping.newPath);
-          this.log(`[DRY RUN] Would migrate ${mapping.oldPath} -> ${mapping.newPath}`, options);
+          this.log(
+            `[DRY RUN] Would migrate ${mapping.oldPath} -> ${mapping.newPath}`,
+            options,
+          );
         }
       } catch (error) {
         const errorMsg = error instanceof Error ? error.message : String(error);
@@ -224,7 +243,7 @@ export class BlobMigrationService {
     result.duration = Date.now() - startTime;
     this.log(`Path migration completed in ${result.duration}ms`, options);
     await this.saveLogs(options);
-    
+
     return result;
   }
 
@@ -236,19 +255,22 @@ export class BlobMigrationService {
     options: MigrationOptions & {
       patterns?: RegExp[];
       olderThan?: Date;
-    } = {}
+    } = {},
   ): Promise<{ deleted: string[]; kept: string[] }> {
-    this.log('Starting cleanup of obsolete files', options);
-    
-    const result = await this.batchUploader.deleteOldAssets('', {
+    this.log("Starting cleanup of obsolete files", options);
+
+    const result = await this.batchUploader.deleteOldAssets("", {
       dryRun: options.dryRun,
       exclude: options.patterns,
       olderThan: options.olderThan,
     });
-    
-    this.log(`Cleanup completed: ${result.deleted.length} deleted, ${result.kept.length} kept`, options);
+
+    this.log(
+      `Cleanup completed: ${result.deleted.length} deleted, ${result.kept.length} kept`,
+      options,
+    );
     await this.saveLogs(options);
-    
+
     return result;
   }
 
@@ -259,7 +281,7 @@ export class BlobMigrationService {
    */
   public async verifyBookAssets(
     _bookSlug: string,
-    expectedFiles: string[]
+    expectedFiles: string[],
   ): Promise<{
     existing: string[];
     missing: string[];
@@ -271,7 +293,7 @@ export class BlobMigrationService {
 
     for (const file of expectedFiles) {
       const url = this.blobService.getUrlForPath(file);
-      
+
       try {
         await this.blobService.getFileInfo(url);
         result.existing.push(file);
@@ -290,38 +312,40 @@ export class BlobMigrationService {
    */
   public async generateMigrationPlan(
     sourceDir: string,
-    bookSlug: string
+    bookSlug: string,
   ): Promise<PathMapping[]> {
     const mappings: PathMapping[] = [];
-    
+
     const processDirectory = async (dir: string, assetType: string) => {
       try {
         const files = await readdir(dir);
-        
+
         for (const file of files) {
           const filePath = path.join(dir, file);
           const fileStat = await stat(filePath);
-          
+
           if (fileStat.isFile()) {
             let newPath: string;
-            
+
             switch (assetType) {
-              case 'text':
+              case "text":
                 newPath = this.pathService.getTextPath(bookSlug, file);
                 break;
-              case 'images':
+              case "images":
                 newPath = this.pathService.getImagePath(bookSlug, file);
                 break;
-              case 'audio':
+              case "audio":
                 newPath = this.pathService.getAudioPath(
                   bookSlug,
-                  file.includes('full') ? 'full' : file.match(/\d+/)?.[0] || '1'
+                  file.includes("full")
+                    ? "full"
+                    : file.match(/\d+/)?.[0] || "1",
                 );
                 break;
               default:
                 newPath = `${this.pathService.getBookBasePath(bookSlug)}/${assetType}/${file}`;
             }
-            
+
             mappings.push({
               oldPath: filePath,
               newPath,
@@ -334,10 +358,10 @@ export class BlobMigrationService {
     };
 
     // Process different asset types
-    await processDirectory(path.join(sourceDir, 'text'), 'text');
-    await processDirectory(path.join(sourceDir, 'images'), 'images');
-    await processDirectory(path.join(sourceDir, 'audio'), 'audio');
-    
+    await processDirectory(path.join(sourceDir, "text"), "text");
+    await processDirectory(path.join(sourceDir, "images"), "images");
+    await processDirectory(path.join(sourceDir, "audio"), "audio");
+
     return mappings;
   }
 }

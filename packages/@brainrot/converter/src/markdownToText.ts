@@ -1,4 +1,4 @@
-import { stripMarkdown } from './stripMarkdown';
+import { stripMarkdown } from "./stripMarkdown";
 
 export interface ChapterContent {
   title: string;
@@ -14,7 +14,7 @@ export interface ChapterContent {
  */
 export function markdownToText(markdown: string, title?: string): string {
   if (!markdown) {
-    return '';
+    return "";
   }
 
   let text = stripMarkdown(markdown);
@@ -25,10 +25,13 @@ export function markdownToText(markdown: string, title?: string): string {
   }
 
   // Format chapter breaks and uppercase
-  text = text.replace(/^(CHAPTER|Chapter)\s+(\d+|[IVXLCDM]+)/gmi, '\n\nCHAPTER $2\n');
+  text = text.replace(
+    /^(CHAPTER|Chapter)\s+(\d+|[IVXLCDM]+)/gim,
+    "\n\nCHAPTER $2\n",
+  );
 
   // Ensure proper paragraph spacing
-  text = text.replace(/\n\n+/g, '\n\n');
+  text = text.replace(/\n\n+/g, "\n\n");
 
   return text.trim();
 }
@@ -39,9 +42,10 @@ export function markdownToText(markdown: string, title?: string): string {
  * @returns Formatted text with chapter header
  */
 export function chapterToText(chapter: ChapterContent): string {
-  const chapterHeader = chapter.number !== undefined
-    ? `CHAPTER ${chapter.number}: ${chapter.title.toUpperCase()}`
-    : chapter.title.toUpperCase();
+  const chapterHeader =
+    chapter.number !== undefined
+      ? `CHAPTER ${chapter.number}: ${chapter.title.toUpperCase()}`
+      : chapter.title.toUpperCase();
 
   const content = stripMarkdown(chapter.content);
 
@@ -54,10 +58,13 @@ export function chapterToText(chapter: ChapterContent): string {
  * @param bookTitle - Optional book title to add at the beginning
  * @returns Complete formatted text document
  */
-export function chaptersToText(chapters: ChapterContent[], bookTitle?: string): string {
+export function chaptersToText(
+  chapters: ChapterContent[],
+  bookTitle?: string,
+): string {
   const chaptersText = chapters
-    .map(chapter => chapterToText(chapter))
-    .join('\n\n---\n\n');
+    .map((chapter) => chapterToText(chapter))
+    .join("\n\n---\n\n");
 
   if (bookTitle) {
     return `${bookTitle.toUpperCase()}\n\n===\n\n${chaptersText}`;

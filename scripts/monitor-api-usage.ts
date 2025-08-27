@@ -4,11 +4,11 @@
  * Tracks usage across all integrated services and alerts on anomalies
  */
 
-import { promises as fs } from 'fs';
-import path from 'path';
-import chalk from 'chalk';
-import ora from 'ora';
-import axios from 'axios';
+import { promises as fs } from "fs";
+import path from "path";
+import chalk from "chalk";
+import ora from "ora";
+import axios from "axios";
 
 interface ServiceUsage {
   service: string;
@@ -28,27 +28,27 @@ const THRESHOLDS: Record<string, UsageThresholds> = {
   vercel: {
     daily: 10000,
     monthly: 300000,
-    costLimit: 100
+    costLimit: 100,
   },
   openai: {
     daily: 1000,
     monthly: 30000,
-    costLimit: 50
+    costLimit: 50,
   },
   anthropic: {
     daily: 1000,
     monthly: 30000,
-    costLimit: 50
+    costLimit: 50,
   },
   lulu: {
     daily: 100,
     monthly: 3000,
-    costLimit: 0 // Free API
-  }
+    costLimit: 0, // Free API
+  },
 };
 
-const USAGE_LOG_PATH = path.join(process.cwd(), 'monitoring', 'api-usage.json');
-const ALERT_LOG_PATH = path.join(process.cwd(), 'monitoring', 'alerts.json');
+const USAGE_LOG_PATH = path.join(process.cwd(), "monitoring", "api-usage.json");
+const ALERT_LOG_PATH = path.join(process.cwd(), "monitoring", "alerts.json");
 
 class APIMonitor {
   private spinner = ora();
@@ -59,50 +59,58 @@ class APIMonitor {
     const token = process.env.VERCEL_TOKEN;
     if (!token) {
       return {
-        service: 'vercel',
+        service: "vercel",
         requests: 0,
         cost: 0,
         lastChecked: new Date(),
-        anomalies: ['No VERCEL_TOKEN configured']
+        anomalies: ["No VERCEL_TOKEN configured"],
       };
     }
 
     try {
       // Mock API call - replace with actual Vercel API
-      const response = await axios.get('https://api.vercel.com/v1/usage', {
-        headers: { Authorization: `Bearer ${token}` }
-      }).catch(() => ({
-        data: {
-          requests: Math.floor(Math.random() * 5000),
-          bandwidth: Math.floor(Math.random() * 100),
-          cost: Math.random() * 10
-        }
-      }));
+      const response = await axios
+        .get("https://api.vercel.com/v1/usage", {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        .catch(() => ({
+          data: {
+            requests: Math.floor(Math.random() * 5000),
+            bandwidth: Math.floor(Math.random() * 100),
+            cost: Math.random() * 10,
+          },
+        }));
 
       const usage: ServiceUsage = {
-        service: 'vercel',
+        service: "vercel",
         requests: response.data.requests || 0,
         cost: response.data.cost || 0,
         lastChecked: new Date(),
-        anomalies: []
+        anomalies: [],
       };
 
       // Check thresholds
       if (usage.requests > THRESHOLDS.vercel.daily) {
-        usage.anomalies.push(`Daily request limit exceeded: ${usage.requests}/${THRESHOLDS.vercel.daily}`);
+        usage.anomalies.push(
+          `Daily request limit exceeded: ${usage.requests}/${THRESHOLDS.vercel.daily}`,
+        );
       }
       if (usage.cost > THRESHOLDS.vercel.costLimit) {
-        usage.anomalies.push(`Cost limit exceeded: $${usage.cost}/$${THRESHOLDS.vercel.costLimit}`);
+        usage.anomalies.push(
+          `Cost limit exceeded: $${usage.cost}/$${THRESHOLDS.vercel.costLimit}`,
+        );
       }
 
       return usage;
     } catch (error) {
       return {
-        service: 'vercel',
+        service: "vercel",
         requests: 0,
         cost: 0,
         lastChecked: new Date(),
-        anomalies: [`API check failed: ${error instanceof Error ? error.message : 'Unknown error'}`]
+        anomalies: [
+          `API check failed: ${error instanceof Error ? error.message : "Unknown error"}`,
+        ],
       };
     }
   }
@@ -111,36 +119,40 @@ class APIMonitor {
     const apiKey = process.env.OPENAI_API_KEY;
     if (!apiKey) {
       return {
-        service: 'openai',
+        service: "openai",
         requests: 0,
         cost: 0,
         lastChecked: new Date(),
-        anomalies: ['No OPENAI_API_KEY configured']
+        anomalies: ["No OPENAI_API_KEY configured"],
       };
     }
 
     try {
       // Mock API call - replace with actual OpenAI usage API
       const usage: ServiceUsage = {
-        service: 'openai',
+        service: "openai",
         requests: Math.floor(Math.random() * 500),
         cost: Math.random() * 5,
         lastChecked: new Date(),
-        anomalies: []
+        anomalies: [],
       };
 
       if (usage.requests > THRESHOLDS.openai.daily) {
-        usage.anomalies.push(`Daily request limit exceeded: ${usage.requests}/${THRESHOLDS.openai.daily}`);
+        usage.anomalies.push(
+          `Daily request limit exceeded: ${usage.requests}/${THRESHOLDS.openai.daily}`,
+        );
       }
 
       return usage;
     } catch (error) {
       return {
-        service: 'openai',
+        service: "openai",
         requests: 0,
         cost: 0,
         lastChecked: new Date(),
-        anomalies: [`API check failed: ${error instanceof Error ? error.message : 'Unknown error'}`]
+        anomalies: [
+          `API check failed: ${error instanceof Error ? error.message : "Unknown error"}`,
+        ],
       };
     }
   }
@@ -149,75 +161,84 @@ class APIMonitor {
     const token = process.env.BLOB_READ_WRITE_TOKEN;
     if (!token) {
       return {
-        service: 'blob-storage',
+        service: "blob-storage",
         requests: 0,
         cost: 0,
         lastChecked: new Date(),
-        anomalies: ['No BLOB_READ_WRITE_TOKEN configured']
+        anomalies: ["No BLOB_READ_WRITE_TOKEN configured"],
       };
     }
 
     try {
       // Check blob storage usage via Vercel API
       const usage: ServiceUsage = {
-        service: 'blob-storage',
+        service: "blob-storage",
         requests: Math.floor(Math.random() * 1000),
         cost: 0, // Included in Vercel
         lastChecked: new Date(),
-        anomalies: []
+        anomalies: [],
       };
 
       // Check for unusual patterns
       const hourlyRate = usage.requests / 24;
       if (hourlyRate > 100) {
-        usage.anomalies.push(`High request rate: ${hourlyRate.toFixed(0)} requests/hour`);
+        usage.anomalies.push(
+          `High request rate: ${hourlyRate.toFixed(0)} requests/hour`,
+        );
       }
 
       return usage;
     } catch (error) {
       return {
-        service: 'blob-storage',
+        service: "blob-storage",
         requests: 0,
         cost: 0,
         lastChecked: new Date(),
-        anomalies: [`Check failed: ${error instanceof Error ? error.message : 'Unknown error'}`]
+        anomalies: [
+          `Check failed: ${error instanceof Error ? error.message : "Unknown error"}`,
+        ],
       };
     }
   }
 
   async checkAllServices(): Promise<void> {
-    this.spinner.start('Checking API usage across all services...');
+    this.spinner.start("Checking API usage across all services...");
 
     const services = [
       this.checkVercelUsage(),
       this.checkOpenAIUsage(),
-      this.checkBlobStorageUsage()
+      this.checkBlobStorageUsage(),
     ];
 
     const results = await Promise.all(services);
-    
+
     for (const result of results) {
       this.usage.set(result.service, result);
       if (result.anomalies.length > 0) {
-        this.alerts.push(...result.anomalies.map(a => `[${result.service}] ${a}`));
+        this.alerts.push(
+          ...result.anomalies.map((a) => `[${result.service}] ${a}`),
+        );
       }
     }
 
-    this.spinner.succeed('API usage check complete');
+    this.spinner.succeed("API usage check complete");
   }
 
   async loadPreviousUsage(): Promise<void> {
     try {
-      const data = await fs.readFile(USAGE_LOG_PATH, 'utf-8');
+      const data = await fs.readFile(USAGE_LOG_PATH, "utf-8");
       const previousUsage = JSON.parse(data);
-      
+
       // Compare with previous usage for anomaly detection
       for (const [service, current] of this.usage) {
         const previous = previousUsage[service];
         if (previous) {
-          const increase = ((current.requests - previous.requests) / previous.requests) * 100;
+          const increase =
+            ((current.requests - previous.requests) / previous.requests) * 100;
           if (increase > 50) {
-            this.alerts.push(`[${service}] Usage spike detected: ${increase.toFixed(0)}% increase`);
+            this.alerts.push(
+              `[${service}] Usage spike detected: ${increase.toFixed(0)}% increase`,
+            );
           }
         }
       }
@@ -246,20 +267,20 @@ class APIMonitor {
 
     const alertData = {
       timestamp: new Date().toISOString(),
-      alerts: this.alerts
+      alerts: this.alerts,
     };
 
     // Append to alerts file
     let existingAlerts = [];
     try {
-      const data = await fs.readFile(ALERT_LOG_PATH, 'utf-8');
+      const data = await fs.readFile(ALERT_LOG_PATH, "utf-8");
       existingAlerts = JSON.parse(data);
     } catch {
       // No existing alerts
     }
 
     existingAlerts.push(alertData);
-    
+
     // Keep only last 100 alerts
     if (existingAlerts.length > 100) {
       existingAlerts = existingAlerts.slice(-100);
@@ -269,39 +290,43 @@ class APIMonitor {
   }
 
   displayReport(): void {
-    console.log('\n' + chalk.bold.blue('📊 API Usage Report'));
-    console.log('─'.repeat(50));
+    console.log("\n" + chalk.bold.blue("📊 API Usage Report"));
+    console.log("─".repeat(50));
 
     let totalCost = 0;
-    
+
     for (const [service, usage] of this.usage) {
-      const statusIcon = usage.anomalies.length > 0 ? '⚠️ ' : '✅';
-      
+      const statusIcon = usage.anomalies.length > 0 ? "⚠️ " : "✅";
+
       console.log(`\n${statusIcon} ${chalk.bold(service.toUpperCase())}`);
       console.log(`   Requests: ${chalk.cyan(usage.requests.toString())}`);
       console.log(`   Cost: ${chalk.green(`$${usage.cost.toFixed(2)}`)}`);
-      console.log(`   Last Checked: ${chalk.gray(usage.lastChecked.toLocaleString())}`);
-      
+      console.log(
+        `   Last Checked: ${chalk.gray(usage.lastChecked.toLocaleString())}`,
+      );
+
       if (usage.anomalies.length > 0) {
-        console.log(`   ${chalk.yellow('Anomalies:')}`);
+        console.log(`   ${chalk.yellow("Anomalies:")}`);
         for (const anomaly of usage.anomalies) {
-          console.log(`     ${chalk.yellow('•')} ${anomaly}`);
+          console.log(`     ${chalk.yellow("•")} ${anomaly}`);
         }
       }
-      
+
       totalCost += usage.cost;
     }
 
-    console.log('\n' + '─'.repeat(50));
-    console.log(`${chalk.bold('Total Cost:')} ${chalk.green(`$${totalCost.toFixed(2)}`)}`);
+    console.log("\n" + "─".repeat(50));
+    console.log(
+      `${chalk.bold("Total Cost:")} ${chalk.green(`$${totalCost.toFixed(2)}`)}`,
+    );
 
     if (this.alerts.length > 0) {
-      console.log('\n' + chalk.bold.red('🚨 Alerts:'));
+      console.log("\n" + chalk.bold.red("🚨 Alerts:"));
       for (const alert of this.alerts) {
-        console.log(`  ${chalk.red('•')} ${alert}`);
+        console.log(`  ${chalk.red("•")} ${alert}`);
       }
     } else {
-      console.log('\n' + chalk.green('✅ No alerts - all systems normal'));
+      console.log("\n" + chalk.green("✅ No alerts - all systems normal"));
     }
   }
 
@@ -313,27 +338,27 @@ class APIMonitor {
     if (slackWebhook) {
       try {
         await axios.post(slackWebhook, {
-          text: '🚨 API Usage Alerts',
+          text: "🚨 API Usage Alerts",
           blocks: [
             {
-              type: 'section',
+              type: "section",
               text: {
-                type: 'mrkdwn',
-                text: `*API Usage Alerts* - ${new Date().toLocaleString()}`
-              }
+                type: "mrkdwn",
+                text: `*API Usage Alerts* - ${new Date().toLocaleString()}`,
+              },
             },
             {
-              type: 'section',
+              type: "section",
               text: {
-                type: 'mrkdwn',
-                text: this.alerts.map(a => `• ${a}`).join('\n')
-              }
-            }
-          ]
+                type: "mrkdwn",
+                text: this.alerts.map((a) => `• ${a}`).join("\n"),
+              },
+            },
+          ],
         });
-        console.log(chalk.green('\n✅ Alerts sent to Slack'));
+        console.log(chalk.green("\n✅ Alerts sent to Slack"));
       } catch (error) {
-        console.log(chalk.yellow('\n⚠️  Failed to send Slack alert'));
+        console.log(chalk.yellow("\n⚠️  Failed to send Slack alert"));
       }
     }
 
@@ -342,11 +367,13 @@ class APIMonitor {
     if (discordWebhook) {
       try {
         await axios.post(discordWebhook, {
-          content: '🚨 **API Usage Alerts**\n' + this.alerts.map(a => `• ${a}`).join('\n')
+          content:
+            "🚨 **API Usage Alerts**\n" +
+            this.alerts.map((a) => `• ${a}`).join("\n"),
         });
-        console.log(chalk.green('✅ Alerts sent to Discord'));
+        console.log(chalk.green("✅ Alerts sent to Discord"));
       } catch (error) {
-        console.log(chalk.yellow('⚠️  Failed to send Discord alert'));
+        console.log(chalk.yellow("⚠️  Failed to send Discord alert"));
       }
     }
   }
@@ -364,8 +391,8 @@ class APIMonitor {
 // Run if called directly
 if (require.main === module) {
   const monitor = new APIMonitor();
-  monitor.run().catch(error => {
-    console.error(chalk.red('Error:'), error);
+  monitor.run().catch((error) => {
+    console.error(chalk.red("Error:"), error);
     process.exit(1);
   });
 }

@@ -2,18 +2,18 @@
 /**
  * Verify standardized URLs are working correctly
  */
-import * as dotenv from 'dotenv';
+import * as dotenv from "dotenv";
 
-import translations from '../translations/index.js';
-import { Translation } from '../translations/types.js';
-import { getAssetUrl } from '../utils/getBlobUrl.js';
-import { Logger, createRequestLogger } from '../utils/logger.js';
+import translations from "../translations/index.js";
+import { Translation } from "../translations/types.js";
+import { getAssetUrl } from "../utils/getBlobUrl.js";
+import { Logger, createRequestLogger } from "../utils/logger.js";
 
 // Create a verification-specific logger
-const verifyLogger = createRequestLogger('verify-standardized-urls');
+const verifyLogger = createRequestLogger("verify-standardized-urls");
 
 // Load environment variables
-dotenv.config({ path: '.env.local' });
+dotenv.config({ path: ".env.local" });
 
 /**
  * Tests a URL and logs the results
@@ -23,29 +23,29 @@ async function testUrl(path: string, description: string) {
   const testLogger = verifyLogger.child({ path, description });
 
   testLogger.info({ msg: `Testing URL for ${description}` });
-  testLogger.info({ path, url, msg: 'Generated URL' });
+  testLogger.info({ path, url, msg: "Generated URL" });
 
   try {
-    const response = await fetch(url, { method: 'HEAD' });
+    const response = await fetch(url, { method: "HEAD" });
     const status = response.status;
     const ok = response.ok;
 
     testLogger.info({
       status,
       ok,
-      msg: `Response status: ${status} ${ok ? '✅' : '❌'}`,
+      msg: `Response status: ${status} ${ok ? "✅" : "❌"}`,
     });
 
     if (status === 404) {
       // Try to fetch actual content to get error details
       const actualResponse = await fetch(url);
       const text = await actualResponse.text();
-      if (text.includes('404')) {
-        testLogger.error({ msg: 'File not found at URL' });
+      if (text.includes("404")) {
+        testLogger.error({ msg: "File not found at URL" });
       }
     }
   } catch (error) {
-    testLogger.error({ error, msg: 'Error fetching URL' });
+    testLogger.error({ error, msg: "Error fetching URL" });
   }
 }
 
@@ -55,17 +55,29 @@ async function testUrl(path: string, description: string) {
 async function testSpecificPaths() {
   const testPaths = [
     // Hamlet text (standard format)
-    { path: '/assets/text/hamlet/brainrot-act-01.txt', desc: 'Hamlet Act 1 (standard)' },
+    {
+      path: "/assets/text/hamlet/brainrot-act-01.txt",
+      desc: "Hamlet Act 1 (standard)",
+    },
 
     // Iliad text (non-standard format)
-    { path: '/assets/the-iliad/text/book-01.txt', desc: 'Iliad Book 1 (non-standard)' },
+    {
+      path: "/assets/the-iliad/text/book-01.txt",
+      desc: "Iliad Book 1 (non-standard)",
+    },
 
     // Odyssey text
-    { path: '/assets/the-odyssey/text/book-01.txt', desc: 'Odyssey Book 1 (non-standard)' },
+    {
+      path: "/assets/the-odyssey/text/book-01.txt",
+      desc: "Odyssey Book 1 (non-standard)",
+    },
 
     // Images
-    { path: '/assets/hamlet/images/hamlet-07.png', desc: 'Hamlet cover image' },
-    { path: '/assets/the-iliad/images/the-iliad-01.png', desc: 'Iliad cover image' },
+    { path: "/assets/hamlet/images/hamlet-07.png", desc: "Hamlet cover image" },
+    {
+      path: "/assets/the-iliad/images/the-iliad-01.png",
+      desc: "Iliad cover image",
+    },
   ];
 
   for (const test of testPaths) {
@@ -83,14 +95,14 @@ async function testBookChapter(book: Translation, bookLogger: Logger) {
     if (chapter.text) {
       bookLogger.info({ url: chapter.text, msg: `Chapter 1 text URL` });
       try {
-        const response = await fetch(chapter.text, { method: 'HEAD' });
+        const response = await fetch(chapter.text, { method: "HEAD" });
         bookLogger.info({
           status: response.status,
           ok: response.ok,
-          msg: `Text status: ${response.status} ${response.ok ? '✅' : '❌'}`,
+          msg: `Text status: ${response.status} ${response.ok ? "✅" : "❌"}`,
         });
       } catch (error) {
-        bookLogger.error({ error, msg: 'Error fetching chapter text' });
+        bookLogger.error({ error, msg: "Error fetching chapter text" });
       }
     }
   }
@@ -103,14 +115,14 @@ async function testBookCover(book: Translation, bookLogger: Logger) {
   if (book.coverImage) {
     bookLogger.info({ url: book.coverImage, msg: `Cover image URL` });
     try {
-      const response = await fetch(book.coverImage, { method: 'HEAD' });
+      const response = await fetch(book.coverImage, { method: "HEAD" });
       bookLogger.info({
         status: response.status,
         ok: response.ok,
-        msg: `Cover status: ${response.status} ${response.ok ? '✅' : '❌'}`,
+        msg: `Cover status: ${response.status} ${response.ok ? "✅" : "❌"}`,
       });
     } catch (error) {
-      bookLogger.error({ error, msg: 'Error fetching cover image' });
+      bookLogger.error({ error, msg: "Error fetching cover image" });
     }
   }
 }
@@ -119,9 +131,9 @@ async function testBookCover(book: Translation, bookLogger: Logger) {
  * Tests URLs from book translations
  */
 async function testTranslationUrls() {
-  verifyLogger.info({ msg: '=== Testing Translation URLs ===' });
+  verifyLogger.info({ msg: "=== Testing Translation URLs ===" });
 
-  const booksToTest = ['hamlet', 'the-iliad', 'the-odyssey'];
+  const booksToTest = ["hamlet", "the-iliad", "the-odyssey"];
 
   for (const bookSlug of booksToTest) {
     const book = translations.find((t) => t.slug === bookSlug);
@@ -139,10 +151,10 @@ async function testTranslationUrls() {
  * Main function that orchestrates the verification
  */
 async function main() {
-  verifyLogger.info({ msg: '=== Verifying Standardized URLs ===' });
+  verifyLogger.info({ msg: "=== Verifying Standardized URLs ===" });
   verifyLogger.info({
     baseUrl: process.env.NEXT_PUBLIC_BLOB_BASE_URL,
-    msg: 'Using Blob base URL',
+    msg: "Using Blob base URL",
   });
 
   await testSpecificPaths();
@@ -150,6 +162,6 @@ async function main() {
 }
 
 main().catch((error) => {
-  verifyLogger.error({ error, msg: 'Verification process failed' });
+  verifyLogger.error({ error, msg: "Verification process failed" });
   process.exit(1);
 });

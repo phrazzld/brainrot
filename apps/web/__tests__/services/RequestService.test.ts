@@ -1,15 +1,17 @@
-import { vi, describe, it, expect, beforeEach } from 'vitest';
 import { NextRequest } from 'next/server';
+
+import { beforeEach, describe, expect, it, vi } from 'vitest';
+
 import {
-  createRequestService,
-  createRequestMetadata,
-  createScopedLogger,
-  sanitizeUrlForLogging,
-  generateOperationId,
-  extractClientInfo,
-  determineBrowser,
+  type RequestServiceConfig,
   analyzeClientInfo,
-  type RequestServiceConfig
+  createRequestMetadata,
+  createRequestService,
+  createScopedLogger,
+  determineBrowser,
+  extractClientInfo,
+  generateOperationId,
+  sanitizeUrlForLogging,
 } from '../../app/api/download/services/RequestService';
 
 // Mock NextRequest
@@ -39,9 +41,9 @@ describe('RequestService', () => {
           get: vi.fn((key: string) => {
             const headers: Record<string, string> = {
               'user-agent': 'Mozilla/5.0',
-              'referer': 'https://referrer.com',
-              'origin': 'https://origin.com',
-              'host': 'example.com',
+              referer: 'https://referrer.com',
+              origin: 'https://origin.com',
+              host: 'example.com',
             };
             return headers[key] || null;
           }),
@@ -72,7 +74,7 @@ describe('RequestService', () => {
         expect.objectContaining({
           msg: 'Download API request received',
           correlationId: 'test-correlation-id',
-        })
+        }),
       );
     });
 
@@ -120,7 +122,7 @@ describe('RequestService', () => {
         expect.objectContaining({
           correlationId: 'test-correlation-id',
           msg: 'Test message',
-        })
+        }),
       );
 
       logger.error({ msg: 'Error message' });
@@ -128,7 +130,7 @@ describe('RequestService', () => {
         expect.objectContaining({
           correlationId: 'test-correlation-id',
           msg: 'Error message',
-        })
+        }),
       );
     });
 
@@ -141,7 +143,7 @@ describe('RequestService', () => {
         expect.objectContaining({
           correlationId: 'test-correlation-id',
           msg: 'Test message',
-        })
+        }),
       );
 
       consoleSpy.mockRestore();
@@ -153,14 +155,18 @@ describe('RequestService', () => {
       const url = 'https://example.com/api?token=secret&key=apikey&data=safe';
       const sanitized = sanitizeUrlForLogging(url);
 
-      expect(decodeURIComponent(sanitized)).toBe('https://example.com/api?token=[REDACTED]&key=[REDACTED]&data=safe');
+      expect(decodeURIComponent(sanitized)).toBe(
+        'https://example.com/api?token=[REDACTED]&key=[REDACTED]&data=safe',
+      );
     });
 
     it('should handle multiple sensitive params', () => {
       const url = 'https://example.com/api?password=pass123&auth=bearer&secret=xyz&user=john';
       const sanitized = sanitizeUrlForLogging(url);
 
-      expect(decodeURIComponent(sanitized)).toBe('https://example.com/api?password=[REDACTED]&auth=[REDACTED]&secret=[REDACTED]&user=john');
+      expect(decodeURIComponent(sanitized)).toBe(
+        'https://example.com/api?password=[REDACTED]&auth=[REDACTED]&secret=[REDACTED]&user=john',
+      );
     });
 
     it('should handle invalid URLs gracefully', () => {
@@ -224,9 +230,9 @@ describe('RequestService', () => {
     it('should extract info from plain object', () => {
       const headers = {
         'user-agent': 'Mozilla/5.0',
-        'referer': 'https://referrer.com',
-        'origin': 'https://origin.com',
-        'accept': 'application/json',
+        referer: 'https://referrer.com',
+        origin: 'https://origin.com',
+        accept: 'application/json',
         'accept-encoding': 'gzip',
         'accept-language': 'en',
       };
@@ -256,22 +262,26 @@ describe('RequestService', () => {
 
   describe('determineBrowser', () => {
     it('should identify Chrome', () => {
-      const userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36';
+      const userAgent =
+        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36';
       expect(determineBrowser(userAgent)).toBe('Chrome');
     });
 
     it('should identify Safari', () => {
-      const userAgent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.1 Safari/605.1.15';
+      const userAgent =
+        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.1 Safari/605.1.15';
       expect(determineBrowser(userAgent)).toBe('Safari');
     });
 
     it('should identify Firefox', () => {
-      const userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:89.0) Gecko/20100101 Firefox/89.0';
+      const userAgent =
+        'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:89.0) Gecko/20100101 Firefox/89.0';
       expect(determineBrowser(userAgent)).toBe('Firefox');
     });
 
     it('should identify Edge', () => {
-      const userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36 Edg/91.0.864.59';
+      const userAgent =
+        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36 Edg/91.0.864.59';
       expect(determineBrowser(userAgent)).toBe('Edge');
     });
 
@@ -284,7 +294,8 @@ describe('RequestService', () => {
   describe('analyzeClientInfo', () => {
     it('should detect mobile iOS device', () => {
       const headers = {
-        'user-agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 14_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.1 Mobile/15E148 Safari/604.1',
+        'user-agent':
+          'Mozilla/5.0 (iPhone; CPU iPhone OS 14_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.1 Mobile/15E148 Safari/604.1',
       };
 
       const { clientInfo, clientClassification } = analyzeClientInfo(headers);
@@ -297,7 +308,8 @@ describe('RequestService', () => {
 
     it('should detect mobile Android device', () => {
       const headers = {
-        'user-agent': 'Mozilla/5.0 (Linux; Android 11; SM-G991B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.120 Mobile Safari/537.36',
+        'user-agent':
+          'Mozilla/5.0 (Linux; Android 11; SM-G991B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.120 Mobile Safari/537.36',
       };
 
       const { clientInfo, clientClassification } = analyzeClientInfo(headers);
@@ -310,7 +322,8 @@ describe('RequestService', () => {
 
     it('should detect desktop device', () => {
       const headers = {
-        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+        'user-agent':
+          'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
       };
 
       const { clientInfo, clientClassification } = analyzeClientInfo(headers);
@@ -323,7 +336,8 @@ describe('RequestService', () => {
 
     it('should detect iPad as iOS', () => {
       const headers = {
-        'user-agent': 'Mozilla/5.0 (iPad; CPU OS 14_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.1 Safari/605.1.15',
+        'user-agent':
+          'Mozilla/5.0 (iPad; CPU OS 14_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.1 Safari/605.1.15',
       };
 
       const { clientClassification } = analyzeClientInfo(headers);
@@ -353,10 +367,10 @@ describe('RequestService', () => {
 
     it('should use provided config in service methods', () => {
       const mockGenerateId = vi.fn(() => 'custom-id');
-      const service = createRequestService({ 
+      const service = createRequestService({
         logger: mockLogger,
         generateId: mockGenerateId,
-        environment: 'production'
+        environment: 'production',
       });
 
       const mockRequest = {
@@ -368,7 +382,7 @@ describe('RequestService', () => {
       } as unknown as NextRequest;
 
       const metadata = service.createMetadata(mockRequest);
-      
+
       expect(metadata.correlationId).toBe('custom-id');
       expect(metadata.environment).toBe('production');
       expect(mockGenerateId).toHaveBeenCalled();
@@ -376,15 +390,15 @@ describe('RequestService', () => {
 
     it('should properly bind functions to config', () => {
       const service = createRequestService({ logger: mockLogger });
-      
+
       const logger = service.createLogger('test-id');
       logger.info({ msg: 'Test' });
-      
+
       expect(mockLogger.info).toHaveBeenCalledWith(
         expect.objectContaining({
           correlationId: 'test-id',
-          msg: 'Test'
-        })
+          msg: 'Test',
+        }),
       );
     });
   });

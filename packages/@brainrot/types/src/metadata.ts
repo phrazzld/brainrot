@@ -1,10 +1,10 @@
 export interface ISBN {
-  format: 'ebook' | 'paperback' | 'hardcover';
+  format: "ebook" | "paperback" | "hardcover";
   isbn13: string;
 }
 
 export interface Pricing {
-  format: 'ebook' | 'paperback' | 'hardcover';
+  format: "ebook" | "paperback" | "hardcover";
   price: number;
   currency: string;
 }
@@ -27,7 +27,7 @@ export interface BookMetadata {
   dimensions?: {
     width: number;
     height: number;
-    unit: 'inch' | 'cm';
+    unit: "inch" | "cm";
   };
   copyright?: string;
   publisher?: string;

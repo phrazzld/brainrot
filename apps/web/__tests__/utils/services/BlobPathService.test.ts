@@ -1,6 +1,16 @@
+import {
+  MockedObject,
+  afterAll,
+  afterEach,
+  beforeAll,
+  beforeEach,
+  describe,
+  expect,
+  it,
+  test,
+  vi,
+} from 'vitest';
 
-
-import { vi, describe, it, test, expect, beforeAll, beforeEach, afterAll, afterEach, MockedObject } from 'vitest';
 import { AssetType } from '../../../types/assets';
 import { AssetPathService } from '../../../utils/services/AssetPathService';
 import { BlobPathService, blobPathService } from '../../../utils/services/BlobPathService';

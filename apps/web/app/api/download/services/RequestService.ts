@@ -1,6 +1,8 @@
 import { NextRequest } from 'next/server';
+
 import { randomUUID } from 'crypto';
-import { createRequestLogger, Logger } from '@/utils/logger';
+
+import { Logger, createRequestLogger } from '@/utils/logger';
 
 /**
  * Request metadata extracted from incoming request
@@ -56,17 +58,17 @@ export interface RequestServiceConfig {
  */
 export function createRequestMetadata(
   request: NextRequest,
-  config: RequestServiceConfig = {}
+  config: RequestServiceConfig = {},
 ): RequestMetadata {
   const {
     logger = console,
     generateId = randomUUID,
-    environment = process.env.NODE_ENV || 'development'
+    environment = process.env.NODE_ENV || 'development',
   } = config;
 
   const url = new URL(request.url);
   const correlationId = generateId();
-  
+
   // Extract query parameters
   const params: Record<string, string> = {};
   url.searchParams.forEach((value, key) => {
@@ -85,7 +87,7 @@ export function createRequestMetadata(
     origin: request.headers.get('origin'),
     host: request.headers.get('host'),
     timestamp: new Date().toISOString(),
-    environment
+    environment,
   };
 
   // Log request received
@@ -97,7 +99,7 @@ export function createRequestMetadata(
     params: metadata.params,
     isProxyRequest: metadata.isProxyRequest,
     userAgent: metadata.userAgent,
-    environment: metadata.environment
+    environment: metadata.environment,
   });
 
   return metadata;
@@ -106,10 +108,7 @@ export function createRequestMetadata(
 /**
  * Creates a request-scoped logger with correlation ID
  */
-export function createScopedLogger(
-  correlationId: string,
-  baseLogger?: Logger
-): Logger {
+export function createScopedLogger(correlationId: string, baseLogger?: Logger): Logger {
   return createRequestLogger(correlationId, baseLogger);
 }
 
@@ -120,13 +119,13 @@ export function sanitizeUrlForLogging(url: string): string {
   try {
     const urlObj = new URL(url);
     const sensitiveParams = ['token', 'key', 'secret', 'password', 'auth'];
-    
-    sensitiveParams.forEach(param => {
+
+    sensitiveParams.forEach((param) => {
       if (urlObj.searchParams.has(param)) {
         urlObj.searchParams.set(param, '[REDACTED]');
       }
     });
-    
+
     return urlObj.toString();
   } catch {
     return '[INVALID_URL]';
@@ -157,7 +156,7 @@ export function extractClientInfo(headers: Headers | Record<string, string>): Cl
     origin: getHeader('origin'),
     accept: getHeader('accept'),
     acceptEncoding: getHeader('accept-encoding'),
-    acceptLanguage: getHeader('accept-language')
+    acceptLanguage: getHeader('accept-language'),
   };
 }
 
@@ -194,8 +193,8 @@ export function analyzeClientInfo(headers: Headers | Record<string, string>): {
       isMobile,
       isIOS,
       isAndroid,
-      browser
-    }
+      browser,
+    },
   };
 }
 
@@ -209,6 +208,6 @@ export function createRequestService(config: RequestServiceConfig = {}) {
     sanitizeUrl: sanitizeUrlForLogging,
     generateOperationId,
     extractClientInfo,
-    analyzeClientInfo
+    analyzeClientInfo,
   };
 }

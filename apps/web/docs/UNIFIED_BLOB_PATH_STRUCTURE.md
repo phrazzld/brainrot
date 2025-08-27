@@ -102,7 +102,6 @@ Example: `assets/site/icons/download-icon.svg`
 ## Implementation Notes
 
 1. **Addressing the "books/" Prefix Inconsistency**:
-
    - The current inconsistency where some paths include a "books/" prefix while others don't will be resolved
    - All book-specific assets will now use the `assets/[type]/[book-slug]/` pattern without a "books/" prefix
    - The path service will handle conversion from legacy paths

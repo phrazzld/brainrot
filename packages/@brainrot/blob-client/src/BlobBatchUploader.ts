@@ -1,15 +1,16 @@
-import * as fs from 'fs';
-import * as path from 'path';
-import pLimit from 'p-limit';
-import { promisify } from 'util';
-import { BlobService, UploadOptions } from './BlobService';
-import { BlobPathService } from './BlobPathService';
+import * as fs from "fs";
+import * as path from "path";
+import pLimit from "p-limit";
+import { promisify } from "util";
+import { BlobService, UploadOptions } from "./BlobService";
+import { BlobPathService } from "./BlobPathService";
 
 const readdir = promisify(fs.readdir);
 const stat = promisify(fs.stat);
 const readFile = promisify(fs.readFile);
 
-export interface BatchUploadOptions extends Omit<UploadOptions, 'pathname' | 'filename'> {
+export interface BatchUploadOptions
+  extends Omit<UploadOptions, "pathname" | "filename"> {
   concurrency?: number;
   skipUnchanged?: boolean;
   onFileProgress?: (file: string, progress: number) => void;
@@ -26,7 +27,7 @@ export interface BatchUploadResult {
 
 export interface BookAssetUploadOptions extends BatchUploadOptions {
   bookSlug: string;
-  assetTypes?: Array<'text' | 'images' | 'audio' | 'epub' | 'pdf'>;
+  assetTypes?: Array<"text" | "images" | "audio" | "epub" | "pdf">;
 }
 
 /**
@@ -48,7 +49,7 @@ export class BlobBatchUploader {
    */
   public async uploadBookAssets(
     localDir: string,
-    options: BookAssetUploadOptions
+    options: BookAssetUploadOptions,
   ): Promise<BatchUploadResult> {
     const startTime = Date.now();
     const result: BatchUploadResult = {
@@ -59,15 +60,19 @@ export class BlobBatchUploader {
       duration: 0,
     };
 
-    const { bookSlug, assetTypes = ['text', 'images', 'audio', 'epub', 'pdf'] } = options;
+    const {
+      bookSlug,
+      assetTypes = ["text", "images", "audio", "epub", "pdf"],
+    } = options;
 
     try {
       // Collect all files to upload
-      const filesToUpload: Array<{ localPath: string; remotePath: string }> = [];
+      const filesToUpload: Array<{ localPath: string; remotePath: string }> =
+        [];
 
       for (const assetType of assetTypes) {
         const assetDir = path.join(localDir, assetType);
-        
+
         // Check if directory exists
         try {
           const dirStat = await stat(assetDir);
@@ -78,40 +83,45 @@ export class BlobBatchUploader {
 
         // Read all files in the directory
         const files = await readdir(assetDir);
-        
+
         for (const file of files) {
           const localPath = path.join(assetDir, file);
           const fileStat = await stat(localPath);
-          
+
           if (fileStat.isFile()) {
             let remotePath: string;
-            
+
             // Generate appropriate remote path based on asset type
             switch (assetType) {
-              case 'text':
+              case "text":
                 remotePath = this.pathService.getTextPath(bookSlug, file);
                 break;
-              case 'images':
+              case "images":
                 remotePath = this.pathService.getImagePath(bookSlug, file);
                 break;
-              case 'audio':
+              case "audio":
                 remotePath = this.pathService.getAudioPath(
                   bookSlug,
-                  file.includes('full') ? 'full' : file.match(/\d+/)?.[0] || '1'
+                  file.includes("full")
+                    ? "full"
+                    : file.match(/\d+/)?.[0] || "1",
                 );
                 break;
-              case 'epub':
+              case "epub":
                 remotePath = this.pathService.getEpubPath(bookSlug);
                 break;
-              case 'pdf':
-                const format = file.includes('paperback') ? 'paperback' :
-                               file.includes('hardcover') ? 'hardcover' : 'digital';
+              case "pdf":
+                const format = file.includes("paperback")
+                  ? "paperback"
+                  : file.includes("hardcover")
+                    ? "hardcover"
+                    : "digital";
                 remotePath = this.pathService.getPdfPath(bookSlug, format);
                 break;
               default:
                 remotePath = `${this.pathService.getBookBasePath(bookSlug)}/${assetType}/${file}`;
             }
-            
+
             filesToUpload.push({ localPath, remotePath });
             result.totalSize += fileStat.size;
           }
@@ -128,9 +138,9 @@ export class BlobBatchUploader {
               const content = await readFile(file.localPath);
               const needsUpload = await this.blobService.needsUpload(
                 this.blobService.getUrlForPath(file.remotePath),
-                content
+                content,
               );
-              
+
               if (!needsUpload) {
                 result.skipped.push(file.remotePath);
                 if (options.onFileProgress) {
@@ -139,7 +149,7 @@ export class BlobBatchUploader {
                 if (options.onTotalProgress) {
                   options.onTotalProgress(
                     result.uploaded.length + result.skipped.length,
-                    filesToUpload.length
+                    filesToUpload.length,
                   );
                 }
                 return;
@@ -147,21 +157,25 @@ export class BlobBatchUploader {
             }
 
             // Upload the file
-            await this.blobService.uploadTextFile(file.localPath, file.remotePath, {
-              ...options,
-              onProgress: (progress) => {
-                if (options.onFileProgress) {
-                  options.onFileProgress(file.localPath, progress.percent);
-                }
+            await this.blobService.uploadTextFile(
+              file.localPath,
+              file.remotePath,
+              {
+                ...options,
+                onProgress: (progress) => {
+                  if (options.onFileProgress) {
+                    options.onFileProgress(file.localPath, progress.percent);
+                  }
+                },
               },
-            });
-            
+            );
+
             result.uploaded.push(file.remotePath);
-            
+
             if (options.onTotalProgress) {
               options.onTotalProgress(
                 result.uploaded.length + result.skipped.length,
-                filesToUpload.length
+                filesToUpload.length,
               );
             }
           } catch (error) {
@@ -170,12 +184,12 @@ export class BlobBatchUploader {
               error: error instanceof Error ? error.message : String(error),
             });
           }
-        })
+        }),
       );
 
       await Promise.all(uploadPromises);
     } catch (error) {
-      console.error('Error in batch upload:', error);
+      console.error("Error in batch upload:", error);
       throw error;
     } finally {
       result.duration = Date.now() - startTime;
@@ -191,7 +205,7 @@ export class BlobBatchUploader {
    */
   public async uploadTextFiles(
     files: Array<{ localPath: string; remotePath: string }>,
-    options: BatchUploadOptions = {}
+    options: BatchUploadOptions = {},
   ): Promise<BatchUploadResult> {
     const startTime = Date.now();
     const result: BatchUploadResult = {
@@ -203,40 +217,44 @@ export class BlobBatchUploader {
     };
 
     const limit = pLimit(options.concurrency || 5);
-    
+
     const uploadPromises = files.map((file) =>
       limit(async () => {
         try {
           const fileStat = await stat(file.localPath);
           result.totalSize += fileStat.size;
-          
+
           // Check if we should skip unchanged files
           if (options.skipUnchanged) {
-            const content = await readFile(file.localPath, 'utf8');
+            const content = await readFile(file.localPath, "utf8");
             const needsUpload = await this.blobService.needsUpload(
               this.blobService.getUrlForPath(file.remotePath),
-              content
+              content,
             );
-            
+
             if (!needsUpload) {
               result.skipped.push(file.remotePath);
               if (options.onTotalProgress) {
                 options.onTotalProgress(
                   result.uploaded.length + result.skipped.length,
-                  files.length
+                  files.length,
                 );
               }
               return;
             }
           }
 
-          await this.blobService.uploadTextFile(file.localPath, file.remotePath, options);
+          await this.blobService.uploadTextFile(
+            file.localPath,
+            file.remotePath,
+            options,
+          );
           result.uploaded.push(file.remotePath);
-          
+
           if (options.onTotalProgress) {
             options.onTotalProgress(
               result.uploaded.length + result.skipped.length,
-              files.length
+              files.length,
             );
           }
         } catch (error) {
@@ -245,12 +263,12 @@ export class BlobBatchUploader {
             error: error instanceof Error ? error.message : String(error),
           });
         }
-      })
+      }),
     );
 
     await Promise.all(uploadPromises);
     result.duration = Date.now() - startTime;
-    
+
     return result;
   }
 
@@ -265,25 +283,29 @@ export class BlobBatchUploader {
       dryRun?: boolean;
       exclude?: RegExp[];
       olderThan?: Date;
-    } = {}
+    } = {},
   ): Promise<{ deleted: string[]; kept: string[] }> {
     const result = { deleted: [] as string[], kept: [] as string[] };
-    
+
     try {
       // List all files with the given prefix
       let cursor: string | undefined;
       const allBlobs: string[] = [];
-      
+
       do {
-        const response = await this.blobService.listFiles({ prefix, cursor, limit: 1000 });
-        response.blobs.forEach(blob => allBlobs.push(blob.url));
+        const response = await this.blobService.listFiles({
+          prefix,
+          cursor,
+          limit: 1000,
+        });
+        response.blobs.forEach((blob) => allBlobs.push(blob.url));
         cursor = response.cursor;
       } while (cursor);
 
       // Filter files based on criteria
       for (const url of allBlobs) {
         let shouldDelete = true;
-        
+
         // Check exclusion patterns
         if (options.exclude) {
           for (const pattern of options.exclude) {
@@ -293,7 +315,7 @@ export class BlobBatchUploader {
             }
           }
         }
-        
+
         // Check age if specified
         if (shouldDelete && options.olderThan) {
           try {
@@ -307,7 +329,7 @@ export class BlobBatchUploader {
             shouldDelete = false;
           }
         }
-        
+
         if (shouldDelete) {
           result.deleted.push(url);
           if (!options.dryRun) {
@@ -318,10 +340,10 @@ export class BlobBatchUploader {
         }
       }
     } catch (error) {
-      console.error('Error deleting old assets:', error);
+      console.error("Error deleting old assets:", error);
       throw error;
     }
-    
+
     return result;
   }
 }

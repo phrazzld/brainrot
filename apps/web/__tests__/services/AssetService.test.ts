@@ -1,15 +1,17 @@
-import { vi, describe, it, expect, beforeEach, type MockedFunction } from 'vitest';
-import { 
-  createAssetService, 
-  resolveAssetUrl, 
+import { type MockedFunction, beforeEach, describe, expect, it, vi } from 'vitest';
+
+import { AssetType } from '@/types/assets';
+
+import {
+  type AssetRequest,
+  type AssetServiceConfig,
+  clearAssetCache,
+  createAssetService,
   generateAssetName,
   getDownloadUrl,
+  resolveAssetUrl,
   validateAssetExists,
-  clearAssetCache,
-  type AssetServiceConfig,
-  type AssetRequest
 } from '../../app/api/download/services/AssetService';
-import { AssetType } from '@/types/assets';
 
 // Mock dependencies
 const mockLogger = {
@@ -32,7 +34,7 @@ describe('AssetService', () => {
   describe('generateAssetName', () => {
     it('should generate name for full audiobook', () => {
       const result = generateAssetName('full', undefined, { logger: mockLogger });
-      
+
       expect(result.assetName).toBe('full-audiobook.mp3');
       expect(result.error).toBeUndefined();
       expect(mockLogger.debug).toHaveBeenCalled();
@@ -40,21 +42,21 @@ describe('AssetService', () => {
 
     it('should generate name for chapter with padding', () => {
       const result = generateAssetName('chapter', '5', { logger: mockLogger });
-      
+
       expect(result.assetName).toBe('chapter-05.mp3');
       expect(result.error).toBeUndefined();
     });
 
     it('should handle chapter as number', () => {
       const result = generateAssetName('chapter', 12, { logger: mockLogger });
-      
+
       expect(result.assetName).toBe('chapter-12.mp3');
       expect(result.error).toBeUndefined();
     });
 
     it('should return error when chapter missing for chapter type', () => {
       const result = generateAssetName('chapter', undefined, { logger: mockLogger });
-      
+
       expect(result.assetName).toBe('');
       expect(result.error).toBe('Chapter parameter is required when type is "chapter"');
       expect(mockLogger.warn).toHaveBeenCalled();
@@ -70,10 +72,10 @@ describe('AssetService', () => {
     it('should resolve URL from cache when available', async () => {
       // First call to populate cache
       mockUrlResolver.getAssetUrl.mockResolvedValueOnce('https://example.com/test.mp3');
-      const config: AssetServiceConfig = { 
-        logger: mockLogger, 
+      const config: AssetServiceConfig = {
+        logger: mockLogger,
         urlResolver: mockUrlResolver,
-        cacheTtl: 5000
+        cacheTtl: 5000,
       };
 
       const result1 = await resolveAssetUrl(mockRequest, config);
@@ -84,25 +86,25 @@ describe('AssetService', () => {
       const result2 = await resolveAssetUrl(mockRequest, config);
       expect(result2.success).toBe(true);
       expect(result2.url).toBe('https://example.com/test.mp3');
-      
+
       // URL resolver should only be called once
       expect(mockUrlResolver.getAssetUrl).toHaveBeenCalledTimes(1);
       expect(mockLogger.debug).toHaveBeenCalledWith(
         expect.objectContaining({
           msg: 'Asset URL resolved from cache',
-        })
+        }),
       );
     });
 
     it('should use URL resolver when not in cache', async () => {
       mockUrlResolver.getAssetUrl.mockResolvedValueOnce('https://example.com/test.mp3');
-      const config: AssetServiceConfig = { 
-        logger: mockLogger, 
-        urlResolver: mockUrlResolver 
+      const config: AssetServiceConfig = {
+        logger: mockLogger,
+        urlResolver: mockUrlResolver,
       };
 
       const result = await resolveAssetUrl(mockRequest, config);
-      
+
       expect(result.success).toBe(true);
       expect(result.url).toBe('https://example.com/test.mp3');
       expect(result.type).toBe(AssetType.FULL_AUDIOBOOK);
@@ -114,20 +116,20 @@ describe('AssetService', () => {
     });
 
     it('should use fallback when no resolver and fallback enabled', async () => {
-      const config: AssetServiceConfig = { 
+      const config: AssetServiceConfig = {
         logger: mockLogger,
         blobBaseUrl: 'https://blob.example.com',
-        fallbackEnabled: true
+        fallbackEnabled: true,
       };
 
       const result = await resolveAssetUrl(mockRequest, config);
-      
+
       expect(result.success).toBe(true);
       expect(result.url).toBe('https://blob.example.com/assets/audio/test-book/full-audiobook.mp3');
       expect(mockLogger.info).toHaveBeenCalledWith(
         expect.objectContaining({
           msg: 'Asset URL constructed using fallback',
-        })
+        }),
       );
     });
 
@@ -135,17 +137,17 @@ describe('AssetService', () => {
       const chapterRequest: AssetRequest = {
         slug: 'test-book',
         type: 'chapter',
-        chapter: 3
+        chapter: 3,
       };
-      
-      const config: AssetServiceConfig = { 
+
+      const config: AssetServiceConfig = {
         logger: mockLogger,
         blobBaseUrl: 'https://blob.example.com/',
-        fallbackEnabled: true
+        fallbackEnabled: true,
       };
 
       const result = await resolveAssetUrl(chapterRequest, config);
-      
+
       expect(result.success).toBe(true);
       expect(result.url).toBe('https://blob.example.com/assets/audio/test-book/chapter-03.mp3');
       expect(result.type).toBe(AssetType.CHAPTER_AUDIOBOOK);
@@ -153,32 +155,32 @@ describe('AssetService', () => {
 
     it('should handle errors from URL resolver', async () => {
       mockUrlResolver.getAssetUrl.mockRejectedValueOnce(new Error('Network error'));
-      const config: AssetServiceConfig = { 
-        logger: mockLogger, 
+      const config: AssetServiceConfig = {
+        logger: mockLogger,
         urlResolver: mockUrlResolver,
-        fallbackEnabled: false
+        fallbackEnabled: false,
       };
 
       const result = await resolveAssetUrl(mockRequest, config);
-      
+
       expect(result.success).toBe(false);
       expect(result.error).toBe('Failed to resolve asset URL');
       expect(mockLogger.error).toHaveBeenCalledWith(
         expect.objectContaining({
           msg: 'Failed to resolve asset URL',
           error: 'Network error',
-        })
+        }),
       );
     });
 
     it('should return error when no resolver and fallback disabled', async () => {
-      const config: AssetServiceConfig = { 
+      const config: AssetServiceConfig = {
         logger: mockLogger,
-        fallbackEnabled: false
+        fallbackEnabled: false,
       };
 
       const result = await resolveAssetUrl(mockRequest, config);
-      
+
       expect(result.success).toBe(false);
       expect(result.error).toBe('Failed to resolve asset URL');
     });
@@ -187,9 +189,9 @@ describe('AssetService', () => {
   describe('getDownloadUrl', () => {
     it('should return URL on success', async () => {
       mockUrlResolver.getAssetUrl.mockResolvedValueOnce('https://example.com/test.mp3');
-      const config: AssetServiceConfig = { 
-        logger: mockLogger, 
-        urlResolver: mockUrlResolver 
+      const config: AssetServiceConfig = {
+        logger: mockLogger,
+        urlResolver: mockUrlResolver,
       };
 
       const request: AssetRequest = {
@@ -198,22 +200,22 @@ describe('AssetService', () => {
       };
 
       const result = await getDownloadUrl(request, config);
-      
+
       expect(result.url).toBe('https://example.com/test.mp3');
       expect(result.error).toBeUndefined();
       expect(mockLogger.info).toHaveBeenCalledWith(
         expect.objectContaining({
           msg: 'Successfully generated download URL',
-        })
+        }),
       );
     });
 
     it('should return error when resolution fails', async () => {
       mockUrlResolver.getAssetUrl.mockRejectedValueOnce(new Error('Not found'));
-      const config: AssetServiceConfig = { 
-        logger: mockLogger, 
+      const config: AssetServiceConfig = {
+        logger: mockLogger,
         urlResolver: mockUrlResolver,
-        fallbackEnabled: false
+        fallbackEnabled: false,
       };
 
       const request: AssetRequest = {
@@ -222,7 +224,7 @@ describe('AssetService', () => {
       };
 
       const result = await getDownloadUrl(request, config);
-      
+
       expect(result.url).toBe('');
       expect(result.error).toBe('Failed to resolve asset URL');
     });
@@ -232,21 +234,21 @@ describe('AssetService', () => {
     it('should return true for valid URL', async () => {
       const config: AssetServiceConfig = { logger: mockLogger };
       const result = await validateAssetExists('https://example.com/test.mp3', config);
-      
+
       expect(result).toBe(true);
       expect(mockLogger.debug).toHaveBeenCalledWith(
         expect.objectContaining({
           msg: 'Validating asset existence',
-        })
+        }),
       );
     });
 
     it('should handle validation errors gracefully', async () => {
       const config: AssetServiceConfig = { logger: mockLogger };
-      
+
       // Since current implementation always returns true, this tests the structure
       const result = await validateAssetExists('https://example.com/test.mp3', config);
-      
+
       expect(result).toBe(true);
     });
   });
@@ -254,7 +256,7 @@ describe('AssetService', () => {
   describe('createAssetService', () => {
     it('should create service with all methods', () => {
       const service = createAssetService({ logger: mockLogger });
-      
+
       expect(service).toHaveProperty('resolveUrl');
       expect(service).toHaveProperty('validateExists');
       expect(service).toHaveProperty('clearCache');
@@ -268,11 +270,11 @@ describe('AssetService', () => {
     });
 
     it('should use provided config in service methods', async () => {
-      const service = createAssetService({ 
+      const service = createAssetService({
         logger: mockLogger,
-        blobBaseUrl: 'https://custom.blob.com'
+        blobBaseUrl: 'https://custom.blob.com',
       });
-      
+
       const { assetName } = service.generateAssetName('full');
       expect(assetName).toBe('full-audiobook.mp3');
     });
@@ -280,11 +282,11 @@ describe('AssetService', () => {
     it('should set up periodic cache cleanup', () => {
       vi.useFakeTimers();
       const setIntervalSpy = vi.spyOn(global, 'setInterval');
-      
+
       createAssetService({ logger: mockLogger });
-      
+
       expect(setIntervalSpy).toHaveBeenCalledWith(expect.any(Function), 60000);
-      
+
       vi.useRealTimers();
     });
   });
@@ -292,21 +294,21 @@ describe('AssetService', () => {
   describe('Cache management', () => {
     it('should clear cache when clearAssetCache is called', async () => {
       mockUrlResolver.getAssetUrl.mockResolvedValue('https://example.com/test.mp3');
-      const config: AssetServiceConfig = { 
-        logger: mockLogger, 
+      const config: AssetServiceConfig = {
+        logger: mockLogger,
         urlResolver: mockUrlResolver,
-        cacheTtl: 5000
+        cacheTtl: 5000,
       };
 
       const request: AssetRequest = { slug: 'test-book', type: 'full' };
-      
+
       // Populate cache
       await resolveAssetUrl(request, config);
       expect(mockUrlResolver.getAssetUrl).toHaveBeenCalledTimes(1);
-      
+
       // Clear cache
       clearAssetCache();
-      
+
       // Should call resolver again after cache clear
       await resolveAssetUrl(request, config);
       expect(mockUrlResolver.getAssetUrl).toHaveBeenCalledTimes(2);
@@ -315,25 +317,25 @@ describe('AssetService', () => {
     it('should expire cache after TTL', async () => {
       vi.useFakeTimers();
       mockUrlResolver.getAssetUrl.mockResolvedValue('https://example.com/test.mp3');
-      const config: AssetServiceConfig = { 
-        logger: mockLogger, 
+      const config: AssetServiceConfig = {
+        logger: mockLogger,
         urlResolver: mockUrlResolver,
-        cacheTtl: 1000 // 1 second TTL
+        cacheTtl: 1000, // 1 second TTL
       };
 
       const request: AssetRequest = { slug: 'test-book', type: 'full' };
-      
+
       // First call
       await resolveAssetUrl(request, config);
       expect(mockUrlResolver.getAssetUrl).toHaveBeenCalledTimes(1);
-      
+
       // Advance time past TTL
       vi.advanceTimersByTime(1100);
-      
+
       // Should call resolver again after TTL expiry
       await resolveAssetUrl(request, config);
       expect(mockUrlResolver.getAssetUrl).toHaveBeenCalledTimes(2);
-      
+
       vi.useRealTimers();
     });
   });

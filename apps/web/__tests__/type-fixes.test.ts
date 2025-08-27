@@ -1,4 +1,4 @@
-import { describe, expect, test, vi, it, beforeAll, beforeEach, afterAll, afterEach } from 'vitest';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, test, vi } from 'vitest';
 
 // Let's create stubs for our type replacements and test their behavior
 

@@ -1,7 +1,7 @@
-import { readFile } from 'fs/promises';
-import { join } from 'path';
-import { homedir } from 'os';
-import { Logger } from './logger.js';
+import { readFile } from "fs/promises";
+import { join } from "path";
+import { homedir } from "os";
+import { Logger } from "./logger.js";
 
 export interface KdpConfig {
   email?: string;
@@ -58,31 +58,31 @@ export class ConfigManager {
         enabled: false,
       },
       defaults: {
-        platforms: ['kdp', 'lulu'],
+        platforms: ["kdp", "lulu"],
         skipValidation: false,
         dryRun: false,
       },
       paths: {
-        contentDir: 'content/translations/books',
-        generatedDir: 'generated',
-        reportsDir: 'publishing-reports',
+        contentDir: "content/translations/books",
+        generatedDir: "generated",
+        reportsDir: "publishing-reports",
       },
     };
 
     // Try to load config from various sources
     const configPaths = [
       customPath,
-      '.publishrc.json',
-      join(homedir(), '.brainrot', 'publisher.config.json'),
+      ".publishrc.json",
+      join(homedir(), ".brainrot", "publisher.config.json"),
     ].filter(Boolean) as string[];
 
     let mergedConfig = { ...defaultConfig };
 
     for (const configPath of configPaths) {
       try {
-        const configContent = await readFile(configPath, 'utf-8');
+        const configContent = await readFile(configPath, "utf-8");
         const config = JSON.parse(configContent);
-        
+
         // Deep merge configuration
         if (config.kdp) {
           mergedConfig.kdp = { ...mergedConfig.kdp, ...config.kdp };
@@ -94,12 +94,15 @@ export class ConfigManager {
           mergedConfig.ingram = { ...mergedConfig.ingram, ...config.ingram };
         }
         if (config.defaults) {
-          mergedConfig.defaults = { ...mergedConfig.defaults, ...config.defaults };
+          mergedConfig.defaults = {
+            ...mergedConfig.defaults,
+            ...config.defaults,
+          };
         }
         if (config.paths) {
           mergedConfig.paths = { ...mergedConfig.paths, ...config.paths };
         }
-        
+
         Logger.debug(`Loaded config from ${configPath}`);
         break;
       } catch (error) {
@@ -127,8 +130,9 @@ export class ConfigManager {
   }
 
   static async save(config: PublisherConfig, path?: string): Promise<void> {
-    const savePath = path || join(homedir(), '.brainrot', 'publisher.config.json');
-    
+    const savePath =
+      path || join(homedir(), ".brainrot", "publisher.config.json");
+
     // Don't save sensitive credentials to file
     const configToSave = {
       ...config,
@@ -153,22 +157,24 @@ export class ConfigManager {
 
   static get(key: keyof PublisherConfig): any {
     if (!this.config) {
-      throw new Error('Configuration not loaded. Call ConfigManager.load() first.');
+      throw new Error(
+        "Configuration not loaded. Call ConfigManager.load() first.",
+      );
     }
     return this.config[key];
   }
 
-  static isConfigured(platform: 'kdp' | 'lulu' | 'ingram'): boolean {
+  static isConfigured(platform: "kdp" | "lulu" | "ingram"): boolean {
     if (!this.config) {
       return false;
     }
 
     switch (platform) {
-      case 'kdp':
+      case "kdp":
         return !!(this.config.kdp?.email && this.config.kdp?.password);
-      case 'lulu':
+      case "lulu":
         return !!(this.config.lulu?.apiKey && this.config.lulu?.apiSecret);
-      case 'ingram':
+      case "ingram":
         return !!(this.config.ingram?.username && this.config.ingram?.password);
       default:
         return false;
@@ -178,10 +184,10 @@ export class ConfigManager {
 
 // Helper function for fs.writeFile
 async function writeFile(path: string, content: string): Promise<void> {
-  const { writeFile: fsWriteFile } = await import('fs/promises');
-  const { dirname } = await import('path');
-  const { mkdir } = await import('fs/promises');
-  
+  const { writeFile: fsWriteFile } = await import("fs/promises");
+  const { dirname } = await import("path");
+  const { mkdir } = await import("fs/promises");
+
   // Ensure directory exists
   await mkdir(dirname(path), { recursive: true });
   await fsWriteFile(path, content);

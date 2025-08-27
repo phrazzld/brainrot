@@ -8,9 +8,7 @@
     "totalDownloadSize": 35254554,
     "totalUploadSize": 0,
     "totalDuration": 21783,
-    "booksCovered": [
-      "hamlet"
-    ],
+    "booksCovered": ["hamlet"],
     "validationSuccess": 1,
     "validationFailed": 0,
     "startTime": "2025-04-28T06:15:37.423Z",
@@ -18,9 +16,7 @@
   },
   "options": {
     "dryRun": false,
-    "books": [
-      "hamlet"
-    ],
+    "books": ["hamlet"],
     "force": true,
     "retries": 3,
     "concurrency": 3,

@@ -1,6 +1,16 @@
+import {
+  MockedObject,
+  afterAll,
+  afterEach,
+  beforeAll,
+  beforeEach,
+  describe,
+  expect,
+  it,
+  test,
+  vi,
+} from 'vitest';
 
-
-import { vi, describe, it, test, expect, beforeAll, beforeEach, afterAll, afterEach, MockedObject } from 'vitest';
 import { DownloadRequestParams, DownloadService } from '../../services/downloadService';
 import { AssetNotFoundError, AssetUrlResolver } from '../../types/dependencies';
 

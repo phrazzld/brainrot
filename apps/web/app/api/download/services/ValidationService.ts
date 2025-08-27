@@ -3,7 +3,7 @@ import { Logger } from '@/utils/logger';
 /**
  * Validation result with success/failure status and errors
  */
-export interface ValidationResult<T = any> {
+export interface ValidationResult<T = unknown> {
   success: boolean;
   data?: T;
   errors?: ValidationError[];
@@ -16,7 +16,7 @@ export interface ValidationError {
   field: string;
   message: string;
   code?: string;
-  value?: any;
+  value?: unknown;
 }
 
 /**
@@ -64,13 +64,13 @@ const DEFAULT_SLUG_PATTERN = /^[a-zA-Z0-9-]+$/;
  */
 export function validateDownloadParams(
   params: DownloadParams,
-  config: ValidationServiceConfig = {}
+  config: ValidationServiceConfig = {},
 ): ValidationResult<ValidatedDownloadParams> {
   const {
     logger = console,
     validTypes = DEFAULT_VALID_TYPES,
     slugPattern = DEFAULT_SLUG_PATTERN,
-    maxChapter = 999
+    maxChapter = 999,
   } = config;
 
   const errors: ValidationError[] = [];
@@ -80,7 +80,7 @@ export function validateDownloadParams(
     errors.push({
       field: 'slug',
       message: 'Missing required parameter: slug',
-      code: 'MISSING_SLUG'
+      code: 'MISSING_SLUG',
     });
     logger.warn?.({ msg: 'Missing required parameter', param: 'slug' });
   } else if (!slugPattern.test(params.slug)) {
@@ -88,7 +88,7 @@ export function validateDownloadParams(
       field: 'slug',
       message: 'Invalid slug format',
       code: 'INVALID_SLUG',
-      value: params.slug
+      value: params.slug,
     });
     logger.warn?.({ msg: 'Invalid slug format', param: 'slug', value: params.slug });
   }
@@ -98,7 +98,7 @@ export function validateDownloadParams(
     errors.push({
       field: 'type',
       message: 'Missing required parameter: type',
-      code: 'MISSING_TYPE'
+      code: 'MISSING_TYPE',
     });
     logger.warn?.({ msg: 'Missing required parameter', param: 'type' });
   } else if (!validTypes.includes(params.type)) {
@@ -106,7 +106,7 @@ export function validateDownloadParams(
       field: 'type',
       message: `Invalid type. Must be one of: ${validTypes.join(', ')}`,
       code: 'INVALID_TYPE',
-      value: params.type
+      value: params.type,
     });
     logger.warn?.({ msg: 'Invalid value for parameter', param: 'type', value: params.type });
   }
@@ -117,7 +117,7 @@ export function validateDownloadParams(
       errors.push({
         field: 'chapter',
         message: 'Missing required parameter: chapter (required when type is "chapter")',
-        code: 'MISSING_CHAPTER'
+        code: 'MISSING_CHAPTER',
       });
       logger.warn?.({ msg: 'Missing required parameter', param: 'chapter' });
     } else {
@@ -127,7 +127,7 @@ export function validateDownloadParams(
           field: 'chapter',
           message: `Invalid chapter number. Must be between 1 and ${maxChapter}`,
           code: 'INVALID_CHAPTER',
-          value: params.chapter
+          value: params.chapter,
         });
         logger.warn?.({ msg: 'Invalid chapter number', param: 'chapter', value: params.chapter });
       }
@@ -138,15 +138,15 @@ export function validateDownloadParams(
   if (errors.length > 0) {
     return {
       success: false,
-      errors
+      errors,
     };
   }
 
   // Build validated params
   const validatedParams: ValidatedDownloadParams = {
-    slug: params.slug!,
+    slug: params.slug || '',
     type: params.type as 'full' | 'chapter',
-    isProxy: params.proxy === 'true'
+    isProxy: params.proxy === 'true',
   };
 
   if (params.type === 'chapter' && params.chapter) {
@@ -155,7 +155,7 @@ export function validateDownloadParams(
 
   return {
     success: true,
-    data: validatedParams
+    data: validatedParams,
   };
 }
 
@@ -164,24 +164,26 @@ export function validateDownloadParams(
  */
 export function validateParameter(
   name: string,
-  value: any,
-  validator: (val: any) => boolean,
-  errorMessage: string
+  value: unknown,
+  validator: (val: unknown) => boolean,
+  errorMessage: string,
 ): ValidationResult {
   if (!validator(value)) {
     return {
       success: false,
-      errors: [{
-        field: name,
-        message: errorMessage,
-        value
-      }]
+      errors: [
+        {
+          field: name,
+          message: errorMessage,
+          value,
+        },
+      ],
     };
   }
-  
+
   return {
     success: true,
-    data: value
+    data: value,
   };
 }
 
@@ -190,8 +192,7 @@ export function validateParameter(
  */
 export function createValidationService(config: ValidationServiceConfig = {}) {
   return {
-    validateDownloadParams: (params: DownloadParams) => 
-      validateDownloadParams(params, config),
-    validateParameter
+    validateDownloadParams: (params: DownloadParams) => validateDownloadParams(params, config),
+    validateParameter,
   };
 }

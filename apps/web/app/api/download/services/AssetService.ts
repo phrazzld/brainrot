@@ -1,6 +1,6 @@
-import { Logger } from '@/utils/logger';
 import { AssetType } from '@/types/assets';
 import { AssetNotFoundError, AssetUrlResolver } from '@/types/dependencies';
+import { Logger } from '@/utils/logger';
 
 /**
  * Asset resolution result
@@ -76,14 +76,14 @@ function getAssetType(request: AssetRequest): AssetType {
  */
 export async function resolveAssetUrl(
   request: AssetRequest,
-  config: AssetServiceConfig = {}
+  config: AssetServiceConfig = {},
 ): Promise<AssetResolutionResult> {
   const {
     logger = console,
     urlResolver,
     blobBaseUrl = process.env.NEXT_PUBLIC_BLOB_BASE_URL,
     cacheTtl = 300000, // 5 minutes default
-    fallbackEnabled = true
+    fallbackEnabled = true,
   } = config;
 
   const cacheKey = getCacheKey(request);
@@ -91,19 +91,19 @@ export async function resolveAssetUrl(
 
   // Check cache first
   const cached = assetCache.get(cacheKey);
-  if (cached && (Date.now() - cached.timestamp < cacheTtl)) {
+  if (cached && Date.now() - cached.timestamp < cacheTtl) {
     logger.debug?.({
       msg: 'Asset URL resolved from cache',
       slug: request.slug,
       type: request.type,
-      chapter: request.chapter
+      chapter: request.chapter,
     });
-    
+
     return {
       success: true,
       url: cached.url,
       type: assetType,
-      metadata: cached.metadata
+      metadata: cached.metadata,
     };
   }
 
@@ -113,80 +113,79 @@ export async function resolveAssetUrl(
       const url = await urlResolver.getAssetUrl({
         bookSlug: request.slug,
         assetType,
-        chapter: request.chapter?.toString()
+        chapter: request.chapter?.toString(),
       });
 
       // Cache the result
       const metadata: AssetMetadata = {
         contentType: 'audio/mpeg',
-        lastModified: new Date()
+        lastModified: new Date(),
       };
-      
+
       assetCache.set(cacheKey, {
         url,
         metadata,
-        timestamp: Date.now()
+        timestamp: Date.now(),
       });
 
       logger.info?.({
         msg: 'Asset URL resolved successfully',
         slug: request.slug,
         type: request.type,
-        chapter: request.chapter
+        chapter: request.chapter,
       });
 
       return {
         success: true,
         url,
         type: assetType,
-        metadata
+        metadata,
       };
     }
 
     // Fallback to constructing URL directly
     if (fallbackEnabled && blobBaseUrl) {
       const url = constructBlobUrl(request, blobBaseUrl);
-      
+
       const metadata: AssetMetadata = {
-        contentType: 'audio/mpeg'
+        contentType: 'audio/mpeg',
       };
 
       logger.info?.({
         msg: 'Asset URL constructed using fallback',
         slug: request.slug,
         type: request.type,
-        chapter: request.chapter
+        chapter: request.chapter,
       });
 
       return {
         success: true,
         url,
         type: assetType,
-        metadata
+        metadata,
       };
     }
 
     throw new Error('No URL resolver available and fallback disabled');
-
   } catch (error) {
     logger.error?.({
       msg: 'Failed to resolve asset URL',
       error: error instanceof Error ? error.message : String(error),
       slug: request.slug,
       type: request.type,
-      chapter: request.chapter
+      chapter: request.chapter,
     });
 
     if (error instanceof AssetNotFoundError) {
       return {
         success: false,
-        error: `Asset not found: ${request.slug}`
+        error: `Asset not found: ${request.slug}`,
       };
     }
 
     return {
       success: false,
-      error: 'Failed to resolve asset URL'
+      error: 'Failed to resolve asset URL',
     };
   }
 }
@@ -196,12 +195,12 @@ export async function resolveAssetUrl(
  */
 function constructBlobUrl(request: AssetRequest, baseUrl: string): string {
   const base = baseUrl.endsWith('/') ? baseUrl.slice(0, -1) : baseUrl;
-  
+
   if (request.type === 'chapter' && request.chapter) {
     const paddedChapter = String(request.chapter).padStart(2, '0');
     return `${base}/assets/audio/${request.slug}/chapter-${paddedChapter}.mp3`;
   }
-  
+
   return `${base}/assets/audio/${request.slug}/full-audiobook.mp3`;
 }
 
@@ -210,26 +209,26 @@ function constructBlobUrl(request: AssetRequest, baseUrl: string): string {
  */
 export async function validateAssetExists(
   url: string,
-  config: AssetServiceConfig = {}
+  config: AssetServiceConfig = {},
 ): Promise<boolean> {
   const { logger = console } = config;
-  
+
   try {
     // In production, this would make a HEAD request to check if the asset exists
     // For now, we assume all properly formatted URLs are valid
     logger.debug?.({
       msg: 'Validating asset existence',
-      url
+      url,
     });
-    
+
     return true;
   } catch (error) {
     logger.error?.({
       msg: 'Asset validation failed',
       url,
-      error: error instanceof Error ? error.message : String(error)
+      error: error instanceof Error ? error.message : String(error),
     });
-    
+
     return false;
   }
 }
@@ -247,10 +246,10 @@ export function clearAssetCache(): void {
 export function generateAssetName(
   type: 'full' | 'chapter',
   chapter?: string | number,
-  config: AssetServiceConfig = {}
+  config: AssetServiceConfig = {},
 ): { assetName: string; error?: string } {
   const { logger = console } = config;
-  
+
   if (type === 'full') {
     logger.debug?.({ msg: 'Generated asset name for full audiobook' });
     return { assetName: 'full-audiobook.mp3' };
@@ -258,9 +257,9 @@ export function generateAssetName(
 
   if (!chapter) {
     logger.warn?.({ msg: 'Chapter required for chapter type download' });
-    return { 
-      assetName: '', 
-      error: 'Chapter parameter is required when type is "chapter"' 
+    return {
+      assetName: '',
+      error: 'Chapter parameter is required when type is "chapter"',
     };
   }
 
@@ -268,7 +267,7 @@ export function generateAssetName(
   const chapterNum = typeof chapter === 'string' ? parseInt(chapter, 10) : chapter;
   const paddedChapter = String(chapterNum).padStart(2, '0');
   const assetName = `chapter-${paddedChapter}.mp3`;
-  
+
   logger.debug?.({ msg: 'Generated asset name for chapter', chapter: chapterNum, assetName });
   return { assetName };
 }
@@ -278,32 +277,32 @@ export function generateAssetName(
  */
 export async function getDownloadUrl(
   request: AssetRequest,
-  config: AssetServiceConfig = {}
+  config: AssetServiceConfig = {},
 ): Promise<{ url: string; error?: string }> {
   const { logger = console } = config;
-  
-  logger.info?.({ 
+
+  logger.info?.({
     msg: 'Getting download URL',
     slug: request.slug,
     type: request.type,
-    chapter: request.chapter 
+    chapter: request.chapter,
   });
 
   // Use resolveAssetUrl to get the URL
   const result = await resolveAssetUrl(request, config);
-  
+
   if (!result.success || !result.url) {
-    return { 
-      url: '', 
-      error: result.error || 'Failed to resolve asset URL' 
+    return {
+      url: '',
+      error: result.error || 'Failed to resolve asset URL',
     };
   }
 
-  logger.info?.({ 
+  logger.info?.({
     msg: 'Successfully generated download URL',
     slug: request.slug,
     type: request.type,
-    chapter: request.chapter
+    chapter: request.chapter,
   });
 
   return { url: result.url };
@@ -317,7 +316,7 @@ export function createAssetService(config: AssetServiceConfig = {}) {
   setInterval(() => {
     const now = Date.now();
     const ttl = config.cacheTtl || 300000;
-    
+
     for (const [key, entry] of assetCache.entries()) {
       if (now - entry.timestamp > ttl * 2) {
         assetCache.delete(key);
@@ -329,8 +328,8 @@ export function createAssetService(config: AssetServiceConfig = {}) {
     resolveUrl: (request: AssetRequest) => resolveAssetUrl(request, config),
     validateExists: (url: string) => validateAssetExists(url, config),
     clearCache: clearAssetCache,
-    generateAssetName: (type: 'full' | 'chapter', chapter?: string | number) => 
+    generateAssetName: (type: 'full' | 'chapter', chapter?: string | number) =>
       generateAssetName(type, chapter, config),
-    getDownloadUrl: (request: AssetRequest) => getDownloadUrl(request, config)
+    getDownloadUrl: (request: AssetRequest) => getDownloadUrl(request, config),
   };
 }

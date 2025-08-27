@@ -58,6 +58,7 @@ thinking about all that, he started throwing shade to the immortal squad:
 </rules for adaptation>
 
 Here's a zoomer slang reference guide you should make heavy use of:
+
 ```
 A
 af/asf

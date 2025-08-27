@@ -1,19 +1,22 @@
 #!/usr/bin/env node
-import { config } from 'dotenv';
+import { config } from "dotenv";
 // import { list } from '@vercel/blob';  // Commented out - not available without token
-import { mkdirSync, writeFileSync } from 'fs';
-import { join } from 'path';
+import { mkdirSync, writeFileSync } from "fs";
+import { join } from "path";
 
-import logger from '../utils/logger.js';
-import { AssetPathService, VercelBlobAssetService } from '../utils/services/index.js';
+import logger from "../utils/logger.js";
+import {
+  AssetPathService,
+  VercelBlobAssetService,
+} from "../utils/services/index.js";
 
 // Load environment variables from .env.local
-config({ path: '.env.local' });
+config({ path: ".env.local" });
 
 interface StandardizationLog {
   originalPath: string;
   standardizedPath: string;
-  status: 'success' | 'error' | 'skipped';
+  status: "success" | "error" | "skipped";
   error?: string;
   timestamp: string;
 }
@@ -26,11 +29,15 @@ class MigrationLog {
   }
 
   save(filename: string): void {
-    const logDir = join(process.cwd(), 'migration-logs');
+    const logDir = join(process.cwd(), "migration-logs");
 
     mkdirSync(logDir, { recursive: true });
 
-    writeFileSync(join(logDir, filename), JSON.stringify(this.logs, null, 2), 'utf-8');
+    writeFileSync(
+      join(logDir, filename),
+      JSON.stringify(this.logs, null, 2),
+      "utf-8",
+    );
   }
 }
 
@@ -53,27 +60,31 @@ export class TextFileStandardizer {
 
   constructor(private options: StandardizationOptions) {
     this.pathService = new AssetPathService();
-    this.logger = logger.child({ name: 'TextFileStandardizer' });
+    this.logger = logger.child({ name: "TextFileStandardizer" });
 
     const config = {
-      baseUrl: 'https://kl4fq7f0qrmpbnkw.public.blob.vercel-storage.com',
-      rootPrefix: 'assets',
+      baseUrl: "https://kl4fq7f0qrmpbnkw.public.blob.vercel-storage.com",
+      rootPrefix: "assets",
     };
 
-    this.blobService = new VercelBlobAssetService(this.pathService, config, this.logger);
+    this.blobService = new VercelBlobAssetService(
+      this.pathService,
+      config,
+      this.logger,
+    );
     this.log = new MigrationLog();
   }
 
   async run(): Promise<void> {
     this.logger.info({
-      msg: 'Starting text file standardization',
+      msg: "Starting text file standardization",
       dryRun: this.options.dryRun,
-      books: this.options.books || 'all',
+      books: this.options.books || "all",
     });
 
     try {
       const files = await this.discoverTextFiles();
-      this.logger.info({ msg: 'Discovered text files', count: files.length });
+      this.logger.info({ msg: "Discovered text files", count: files.length });
 
       // Process files in batches for concurrency control
       const batches = this.createBatches(files, this.options.concurrency);
@@ -84,7 +95,7 @@ export class TextFileStandardizer {
 
       await this.generateReport();
     } catch (error) {
-      this.logger.error({ msg: 'Migration failed', error });
+      this.logger.error({ msg: "Migration failed", error });
       throw error;
     }
   }
@@ -103,9 +114,9 @@ export class TextFileStandardizer {
 
   private async discoverFromMigrationFiles(files: string[]): Promise<void> {
     const migrationFiles = [
-      'brainrot-text-migration.json',
-      'source-text-migration.json',
-      'custom-text-migration.json',
+      "brainrot-text-migration.json",
+      "source-text-migration.json",
+      "custom-text-migration.json",
     ];
 
     for (const migrationFile of migrationFiles) {
@@ -113,22 +124,26 @@ export class TextFileStandardizer {
         const fileContent = await import(`../${migrationFile}`);
         const migrationData = fileContent.default || fileContent;
 
-        if (typeof migrationData === 'object') {
+        if (typeof migrationData === "object") {
           this.processMigrationData(migrationData, files);
         }
       } catch (error) {
-        this.logger.debug({ msg: 'Could not load migration file', file: migrationFile, error });
+        this.logger.debug({
+          msg: "Could not load migration file",
+          file: migrationFile,
+          error,
+        });
       }
     }
   }
 
   private async discoverFromTranslations(files: string[]): Promise<void> {
     const books = this.options.books || [
-      'hamlet',
-      'the-iliad',
-      'the-odyssey',
-      'the-aeneid',
-      'huckleberry-finn',
+      "hamlet",
+      "the-iliad",
+      "the-odyssey",
+      "the-aeneid",
+      "huckleberry-finn",
     ];
 
     for (const book of books) {
@@ -141,27 +156,30 @@ export class TextFileStandardizer {
           this.processTranslationChapters(bookData.chapters, files);
         }
       } catch (error) {
-        this.logger.debug({ msg: 'Could not load translation', book, error });
+        this.logger.debug({ msg: "Could not load translation", book, error });
       }
     }
   }
 
-  private processTranslationChapters(chapters: { text?: string }[], files: string[]): void {
+  private processTranslationChapters(
+    chapters: { text?: string }[],
+    files: string[],
+  ): void {
     for (const chapter of chapters) {
       if (chapter.text) {
         let textPath = chapter.text;
 
         // Skip full URLs completely - we only want blob paths
-        if (textPath.startsWith('http://') || textPath.startsWith('https://')) {
+        if (textPath.startsWith("http://") || textPath.startsWith("https://")) {
           continue;
         }
 
         // Remove leading slash if present
-        if (textPath.startsWith('/')) {
+        if (textPath.startsWith("/")) {
           textPath = textPath.substring(1);
         }
 
-        if (textPath.endsWith('.txt')) {
+        if (textPath.endsWith(".txt")) {
           files.push(textPath);
         }
       }
@@ -171,14 +189,17 @@ export class TextFileStandardizer {
   /**
    * Process migration data to extract file paths
    */
-  private processMigrationData(migrationData: Record<string, unknown>, files: string[]): void {
+  private processMigrationData(
+    migrationData: Record<string, unknown>,
+    files: string[],
+  ): void {
     // Get filtered list of books
     const bookNames = this.getFilteredBookNames(migrationData);
 
     // Process each book
     for (const book of bookNames) {
       const bookData = migrationData[book];
-      if (typeof bookData !== 'object' || bookData === null) continue;
+      if (typeof bookData !== "object" || bookData === null) continue;
 
       this.processBookData(bookData, files);
     }
@@ -187,7 +208,9 @@ export class TextFileStandardizer {
   /**
    * Get list of book names, filtered by options.books if specified
    */
-  private getFilteredBookNames(migrationData: Record<string, unknown>): string[] {
+  private getFilteredBookNames(
+    migrationData: Record<string, unknown>,
+  ): string[] {
     const allBooks = Object.keys(migrationData);
 
     // If no book filter is specified, return all books
@@ -205,11 +228,11 @@ export class TextFileStandardizer {
    * Process a single book's data to extract file paths
    */
   private processBookData(bookData: unknown, files: string[]): void {
-    if (typeof bookData !== 'object' || bookData === null) return;
+    if (typeof bookData !== "object" || bookData === null) return;
 
     // Process each file in the book
     for (const [_fileName, fileInfo] of Object.entries(bookData)) {
-      if (typeof fileInfo !== 'object' || fileInfo === null) continue;
+      if (typeof fileInfo !== "object" || fileInfo === null) continue;
 
       this.processFileInfo(fileInfo, files);
     }
@@ -219,7 +242,10 @@ export class TextFileStandardizer {
    * Process a single file's info to extract its path
    */
   private processFileInfo(fileInfo: unknown, files: string[]): void {
-    const fileData = fileInfo as StandardizationLog & { blobPath?: string; blobUrl?: string };
+    const fileData = fileInfo as StandardizationLog & {
+      blobPath?: string;
+      blobUrl?: string;
+    };
 
     // Use blobPath, not blobUrl
     const blobPath = fileData.blobPath || fileData.originalPath;
@@ -231,7 +257,7 @@ export class TextFileStandardizer {
 
     // Clean and add the path
     let cleanPath = blobPath;
-    if (cleanPath.startsWith('/')) {
+    if (cleanPath.startsWith("/")) {
       cleanPath = cleanPath.substring(1);
     }
 
@@ -243,8 +269,8 @@ export class TextFileStandardizer {
    */
   private isValidTextFilePath(path: string | undefined): boolean {
     if (!path) return false;
-    if (path.startsWith('http://') || path.startsWith('https://')) return false;
-    if (!path.endsWith('.txt')) return false;
+    if (path.startsWith("http://") || path.startsWith("https://")) return false;
+    if (!path.endsWith(".txt")) return false;
 
     return true;
   }
@@ -269,13 +295,13 @@ export class TextFileStandardizer {
 
       // Check if already standardized
       if (blobPath === standardizedPath) {
-        this.logger.info({ msg: 'Path already standardized', blobPath });
+        this.logger.info({ msg: "Path already standardized", blobPath });
         this.skippedCount++;
 
         this.log.add({
           originalPath: blobPath,
           standardizedPath,
-          status: 'skipped',
+          status: "skipped",
           timestamp,
         });
 
@@ -283,7 +309,7 @@ export class TextFileStandardizer {
       }
 
       this.logger.info({
-        msg: 'Standardizing path',
+        msg: "Standardizing path",
         from: blobPath,
         to: standardizedPath,
       });
@@ -292,14 +318,14 @@ export class TextFileStandardizer {
         // For now, just log what would be done
         // In production, this would download and upload the file
         this.logger.info({
-          msg: 'Would copy file',
+          msg: "Would copy file",
           from: blobPath,
           to: standardizedPath,
-          note: 'Actual copy operation requires BLOB_READ_WRITE_TOKEN',
+          note: "Actual copy operation requires BLOB_READ_WRITE_TOKEN",
         });
 
         this.logger.info({
-          msg: 'File copied successfully',
+          msg: "File copied successfully",
           from: blobPath,
           to: standardizedPath,
         });
@@ -310,23 +336,24 @@ export class TextFileStandardizer {
       this.log.add({
         originalPath: blobPath,
         standardizedPath,
-        status: 'success',
+        status: "success",
         timestamp,
       });
     } catch (error) {
       this.errorCount++;
-      const errorMessage = error instanceof Error ? error.message : String(error);
+      const errorMessage =
+        error instanceof Error ? error.message : String(error);
 
       this.logger.error({
-        msg: 'Failed to process file',
+        msg: "Failed to process file",
         blobPath,
         error: errorMessage,
       });
 
       this.log.add({
         originalPath: blobPath,
-        standardizedPath: '',
-        status: 'error',
+        standardizedPath: "",
+        status: "error",
         error: errorMessage,
         timestamp,
       });
@@ -345,21 +372,24 @@ export class TextFileStandardizer {
       timestamp: new Date().toISOString(),
     };
 
-    this.logger.info({ msg: 'Standardization complete', ...report.summary });
+    this.logger.info({ msg: "Standardization complete", ...report.summary });
 
     if (this.options.logFile) {
       this.log.save(this.options.logFile);
-      this.logger.info({ msg: 'Log file saved', filename: this.options.logFile });
+      this.logger.info({
+        msg: "Log file saved",
+        filename: this.options.logFile,
+      });
     }
 
     // Save summary report
     const reportPath = join(
       process.cwd(),
-      'migration-logs',
+      "migration-logs",
       `text-standardization-report-${Date.now()}.json`,
     );
-    writeFileSync(reportPath, JSON.stringify(report, null, 2), 'utf-8');
-    this.logger.info({ msg: 'Report saved', path: reportPath });
+    writeFileSync(reportPath, JSON.stringify(report, null, 2), "utf-8");
+    this.logger.info({ msg: "Report saved", path: reportPath });
   }
 }
 
@@ -375,25 +405,25 @@ function parseArgs(): StandardizationOptions {
   for (let i = 0; i < args.length; i++) {
     const arg = args[i];
 
-    if (arg === '--dry-run') {
+    if (arg === "--dry-run") {
       options.dryRun = true;
-    } else if (arg.startsWith('--dry-run=')) {
-      options.dryRun = arg.split('=')[1] === 'true';
-    } else if (arg === '--books' && i + 1 < args.length) {
-      options.books = args[++i].split(',');
-    } else if (arg.startsWith('--books=')) {
-      options.books = arg.split('=')[1].split(',');
-    } else if (arg === '--log-file' && i + 1 < args.length) {
+    } else if (arg.startsWith("--dry-run=")) {
+      options.dryRun = arg.split("=")[1] === "true";
+    } else if (arg === "--books" && i + 1 < args.length) {
+      options.books = args[++i].split(",");
+    } else if (arg.startsWith("--books=")) {
+      options.books = arg.split("=")[1].split(",");
+    } else if (arg === "--log-file" && i + 1 < args.length) {
       options.logFile = args[++i];
-    } else if (arg.startsWith('--log-file=')) {
-      options.logFile = arg.split('=')[1];
-    } else if (arg === '--concurrency' && i + 1 < args.length) {
+    } else if (arg.startsWith("--log-file=")) {
+      options.logFile = arg.split("=")[1];
+    } else if (arg === "--concurrency" && i + 1 < args.length) {
       options.concurrency = parseInt(args[++i], 10);
-    } else if (arg.startsWith('--concurrency=')) {
-      options.concurrency = parseInt(arg.split('=')[1], 10);
-    } else if (arg === '--help' || arg === '-h') {
-      const scriptLogger = logger.child({ name: 'TextFileStandardizer' });
-      scriptLogger.info({ msg: 'Displaying help information' });
+    } else if (arg.startsWith("--concurrency=")) {
+      options.concurrency = parseInt(arg.split("=")[1], 10);
+    } else if (arg === "--help" || arg === "-h") {
+      const scriptLogger = logger.child({ name: "TextFileStandardizer" });
+      scriptLogger.info({ msg: "Displaying help information" });
 
       // Using console.error for displaying help is acceptable - it provides direct user visibility
       console.error(`
@@ -430,13 +460,13 @@ if (isDirectExecution) {
       process.exit(0);
     })
     .catch((error) => {
-      logger.child({ name: 'TextFileStandardizer' }).error({
-        msg: 'Standardization failed',
+      logger.child({ name: "TextFileStandardizer" }).error({
+        msg: "Standardization failed",
         error: error instanceof Error ? error.message : String(error),
       });
       // Keep console.error for direct user visibility of errors in the terminal
       console.error(
-        'Standardization failed:',
+        "Standardization failed:",
         error instanceof Error ? error.message : String(error),
       );
       process.exit(1);

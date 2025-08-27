@@ -1,20 +1,20 @@
 #!/usr/bin/env node
-import * as dotenv from 'dotenv';
-import { list } from '@vercel/blob';
-import type { ListBlobResult } from '@vercel/blob';
-import fs from 'fs';
-import fetch from 'node-fetch';
-import path from 'path';
+import * as dotenv from "dotenv";
+import { list } from "@vercel/blob";
+import type { ListBlobResult } from "@vercel/blob";
+import fs from "fs";
+import fetch from "node-fetch";
+import path from "path";
 
-import translations from '../translations/index.js';
-import { logger } from '../utils/logger.js';
+import translations from "../translations/index.js";
+import { logger } from "../utils/logger.js";
 
-dotenv.config({ path: '.env.local' });
+dotenv.config({ path: ".env.local" });
 
 // Initialize logger
 const scriptLogger = logger.child({
-  module: 'audio-file-access-verification',
-  script: 'verifyAudioFilesAccess',
+  module: "audio-file-access-verification",
+  script: "verifyAudioFilesAccess",
 });
 
 /**
@@ -36,7 +36,7 @@ interface ExpectedAudioFile {
   chapterIndex: number | null;
   chapterTitle: string | null;
   expectedPath: string;
-  status: 'available' | 'coming soon';
+  status: "available" | "coming soon";
 }
 
 /**
@@ -66,7 +66,7 @@ interface VerificationSummary {
   bookSummary: {
     [bookSlug: string]: {
       title: string;
-      status: 'available' | 'coming soon';
+      status: "available" | "coming soon";
       expected: number;
       found: number;
       accessible: number;
@@ -91,10 +91,15 @@ async function fetchAudioFiles(): Promise<AudioFile[]> {
         page,
       });
 
-      const result: ListBlobResult = await list({ prefix: 'assets/audio/', cursor });
+      const result: ListBlobResult = await list({
+        prefix: "assets/audio/",
+        cursor,
+      });
 
       // Filter for audio files
-      const allAudioFiles = result.blobs.filter((blob) => blob.pathname.endsWith('.mp3'));
+      const allAudioFiles = result.blobs.filter((blob) =>
+        blob.pathname.endsWith(".mp3"),
+      );
 
       // Transform to AudioFile format
       const transformedFiles = allAudioFiles.map((blob) => ({
@@ -124,7 +129,7 @@ async function fetchAudioFiles(): Promise<AudioFile[]> {
     return audioFiles;
   } catch (error) {
     scriptLogger.error({
-      msg: 'Error fetching audio files from Vercel Blob',
+      msg: "Error fetching audio files from Vercel Blob",
       error: error instanceof Error ? error.message : String(error),
       stack: error instanceof Error ? error.stack : undefined,
     });
@@ -153,7 +158,7 @@ function getExpectedAudioFiles(): ExpectedAudioFile[] {
     if (book.chapters) {
       book.chapters.forEach((chapter, index) => {
         const chapterNumber = index + 1;
-        const paddedChapterNumber = String(chapterNumber).padStart(2, '0');
+        const paddedChapterNumber = String(chapterNumber).padStart(2, "0");
 
         expectedFiles.push({
           bookSlug: book.slug,
@@ -211,14 +216,15 @@ async function verifyAudioFileAccess(
   try {
     // Attempt to access the file
     const response = await fetch(actual.url, {
-      method: 'HEAD',
+      method: "HEAD",
       headers: {
-        'User-Agent': 'BrainrotPublishingHouseAudioVerifier/1.0',
+        "User-Agent": "BrainrotPublishingHouseAudioVerifier/1.0",
       },
     });
 
     result.accessible = response.ok;
-    result.contentLength = parseInt(response.headers.get('content-length') || '0', 10) || null;
+    result.contentLength =
+      parseInt(response.headers.get("content-length") || "0", 10) || null;
 
     if (!response.ok) {
       result.error = `HTTP ${response.status}: ${response.statusText}`;
@@ -235,7 +241,7 @@ async function verifyAudioFileAccess(
  * Process result data for a single book
  */
 function processBookResults(
-  bookSummary: VerificationSummary['bookSummary'],
+  bookSummary: VerificationSummary["bookSummary"],
   result: AudioVerificationResult,
   missingFiles: ExpectedAudioFile[],
   inaccessibleFiles: { expected: ExpectedAudioFile; error: string }[],
@@ -255,7 +261,11 @@ function processBookResults(
     }
 
     // Check if it's a full audiobook
-    if (result.expected.chapterIndex === null && result.exists && result.accessible) {
+    if (
+      result.expected.chapterIndex === null &&
+      result.exists &&
+      result.accessible
+    ) {
       bookSummary[bookSlug].hasFullAudiobook = true;
     }
   }
@@ -277,10 +287,13 @@ function processBookResults(
 /**
  * Generate a verification summary
  */
-function generateSummary(results: AudioVerificationResult[]): VerificationSummary {
-  const bookSummary: VerificationSummary['bookSummary'] = {};
+function generateSummary(
+  results: AudioVerificationResult[],
+): VerificationSummary {
+  const bookSummary: VerificationSummary["bookSummary"] = {};
   const missingFiles: ExpectedAudioFile[] = [];
-  const inaccessibleFiles: { expected: ExpectedAudioFile; error: string }[] = [];
+  const inaccessibleFiles: { expected: ExpectedAudioFile; error: string }[] =
+    [];
 
   // Initialize book summary
   translations.forEach((book) => {
@@ -367,12 +380,16 @@ function generateHtmlReport(summary: VerificationSummary): string {
         ${Object.entries(summary.bookSummary)
           .map(([slug, info]) => {
             const foundPercentage =
-              info.expected > 0 ? ((info.found / info.expected) * 100).toFixed(2) : '0.00';
+              info.expected > 0
+                ? ((info.found / info.expected) * 100).toFixed(2)
+                : "0.00";
             const accessiblePercentage =
-              info.expected > 0 ? ((info.accessible / info.expected) * 100).toFixed(2) : '0.00';
+              info.expected > 0
+                ? ((info.accessible / info.expected) * 100).toFixed(2)
+                : "0.00";
 
             return `
-            <tr class="${info.status === 'available' ? 'available' : 'coming-soon'}">
+            <tr class="${info.status === "available" ? "available" : "coming-soon"}">
               <td>${info.title} (${slug})</td>
               <td>${info.status}</td>
               <td>${info.expected}</td>
@@ -382,7 +399,7 @@ function generateHtmlReport(summary: VerificationSummary): string {
             </tr>
           `;
           })
-          .join('')}
+          .join("")}
       </tbody>
     </table>
 
@@ -406,16 +423,16 @@ function generateHtmlReport(summary: VerificationSummary): string {
             <tr>
               <td>${file.bookTitle} (${file.bookSlug})</td>
               <td>${file.status}</td>
-              <td>${file.chapterIndex === null ? 'Full Audiobook' : `Chapter ${file.chapterIndex}: ${file.chapterTitle}`}</td>
+              <td>${file.chapterIndex === null ? "Full Audiobook" : `Chapter ${file.chapterIndex}: ${file.chapterTitle}`}</td>
               <td>${file.expectedPath}</td>
             </tr>
           `;
           })
-          .join('')}
+          .join("")}
       </tbody>
     </table>
     `
-        : '<p>No missing files.</p>'
+        : "<p>No missing files.</p>"
     }
 
     <h2>Inaccessible Files</h2>
@@ -439,17 +456,17 @@ function generateHtmlReport(summary: VerificationSummary): string {
             <tr>
               <td>${item.expected.bookTitle} (${item.expected.bookSlug})</td>
               <td>${item.expected.status}</td>
-              <td>${item.expected.chapterIndex === null ? 'Full Audiobook' : `Chapter ${item.expected.chapterIndex}: ${item.expected.chapterTitle}`}</td>
+              <td>${item.expected.chapterIndex === null ? "Full Audiobook" : `Chapter ${item.expected.chapterIndex}: ${item.expected.chapterTitle}`}</td>
               <td>${item.expected.expectedPath}</td>
               <td>${item.error}</td>
             </tr>
           `;
           })
-          .join('')}
+          .join("")}
       </tbody>
     </table>
     `
-        : '<p>No inaccessible files.</p>'
+        : "<p>No inaccessible files.</p>"
     }
   </div>
 </body>
@@ -463,7 +480,7 @@ function generateHtmlReport(summary: VerificationSummary): string {
 function parseArgs(): { skipAccessCheck: boolean } {
   const args = process.argv.slice(2);
   return {
-    skipAccessCheck: args.includes('--skip-access-check'),
+    skipAccessCheck: args.includes("--skip-access-check"),
   };
 }
 
@@ -475,19 +492,21 @@ async function verifyAudioFilesAccess(): Promise<void> {
   const options = parseArgs();
 
   scriptLogger.info({
-    msg: '🔍 Starting audio files accessibility verification...',
+    msg: "🔍 Starting audio files accessibility verification...",
     options,
   });
 
   try {
     // Create the output directory if it doesn't exist
-    const outputDir = path.join(process.cwd(), 'test-reports');
+    const outputDir = path.join(process.cwd(), "test-reports");
     if (!fs.existsSync(outputDir)) {
       fs.mkdirSync(outputDir, { recursive: true });
     }
 
     // 1. Get expected audio files from translations
-    scriptLogger.info({ msg: 'Getting expected audio files from translations data...' });
+    scriptLogger.info({
+      msg: "Getting expected audio files from translations data...",
+    });
     const expectedFiles = getExpectedAudioFiles();
     scriptLogger.info({
       msg: `Found ${expectedFiles.length} expected audio files in translations data`,
@@ -495,7 +514,9 @@ async function verifyAudioFilesAccess(): Promise<void> {
     });
 
     // 2. Fetch actual audio files from Vercel Blob
-    scriptLogger.info({ msg: 'Fetching actual audio files from Vercel Blob...' });
+    scriptLogger.info({
+      msg: "Fetching actual audio files from Vercel Blob...",
+    });
     const actualFiles = await fetchAudioFiles();
     scriptLogger.info({
       msg: `Found ${actualFiles.length} actual audio files in Vercel Blob`,
@@ -547,13 +568,19 @@ async function verifyAudioFilesAccess(): Promise<void> {
     }
 
     // 5. Generate summary
-    scriptLogger.info({ msg: 'Generating verification summary...' });
+    scriptLogger.info({ msg: "Generating verification summary..." });
     const summary = generateSummary(verificationResults);
 
     // 6. Generate and save reports
-    const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-    const htmlReportPath = path.join(outputDir, `audio-verification-${timestamp}.html`);
-    const jsonReportPath = path.join(outputDir, `audio-verification-${timestamp}.json`);
+    const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
+    const htmlReportPath = path.join(
+      outputDir,
+      `audio-verification-${timestamp}.html`,
+    );
+    const jsonReportPath = path.join(
+      outputDir,
+      `audio-verification-${timestamp}.json`,
+    );
 
     fs.writeFileSync(htmlReportPath, generateHtmlReport(summary));
     fs.writeFileSync(jsonReportPath, JSON.stringify(summary, null, 2));
@@ -567,7 +594,7 @@ async function verifyAudioFilesAccess(): Promise<void> {
     });
 
     scriptLogger.info({
-      msg: '📊 Summary:',
+      msg: "📊 Summary:",
       totalExpected: summary.totalExpected,
       totalFound: summary.totalFound,
       totalAccessible: summary.totalAccessible,
@@ -576,9 +603,11 @@ async function verifyAudioFilesAccess(): Promise<void> {
     });
 
     // Log summary of available books with full audiobooks
-    scriptLogger.info({ msg: 'Available books with full audiobooks:' });
+    scriptLogger.info({ msg: "Available books with full audiobooks:" });
     Object.entries(summary.bookSummary)
-      .filter(([_, info]) => info.status === 'available' && info.hasFullAudiobook)
+      .filter(
+        ([_, info]) => info.status === "available" && info.hasFullAudiobook,
+      )
       .forEach(([slug, info]) => {
         scriptLogger.info({
           msg: `  ✅ ${info.title} (${slug}): ${info.accessible}/${info.expected} files accessible`,
@@ -586,9 +615,11 @@ async function verifyAudioFilesAccess(): Promise<void> {
       });
 
     // Log summary of available books missing full audiobooks
-    scriptLogger.info({ msg: 'Available books missing full audiobooks:' });
+    scriptLogger.info({ msg: "Available books missing full audiobooks:" });
     Object.entries(summary.bookSummary)
-      .filter(([_, info]) => info.status === 'available' && !info.hasFullAudiobook)
+      .filter(
+        ([_, info]) => info.status === "available" && !info.hasFullAudiobook,
+      )
       .forEach(([slug, info]) => {
         scriptLogger.info({
           msg: `  ❌ ${info.title} (${slug}): missing full audiobook`,
@@ -596,7 +627,7 @@ async function verifyAudioFilesAccess(): Promise<void> {
       });
   } catch (error) {
     scriptLogger.error({
-      msg: 'Error during audio files verification:',
+      msg: "Error during audio files verification:",
       error: error instanceof Error ? error.message : String(error),
       stack: error instanceof Error ? error.stack : undefined,
     });
@@ -607,7 +638,7 @@ async function verifyAudioFilesAccess(): Promise<void> {
 // Run the verification
 verifyAudioFilesAccess().catch((error) => {
   scriptLogger.error({
-    msg: 'Unhandled error during verification:',
+    msg: "Unhandled error during verification:",
     error: error instanceof Error ? error.message : String(error),
     stack: error instanceof Error ? error.stack : undefined,
   });

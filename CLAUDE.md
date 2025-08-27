@@ -7,17 +7,19 @@ You are working on the **Brainrot Publishing House monorepo** - a fully integrat
 ## Current State (Phase 7.4 - Post-Migration Cleanup)
 
 ### ✅ What's Been Accomplished
+
 - **Monorepo Migration**: Complete with full git history preserved
 - **Build System**: Turborepo + pnpm workspace fully operational (107ms builds!)
 - **9 Workspace Packages**: All built and functional
 - **10 Books Migrated**: 124 text files generated and processed
-- **Package Ecosystem**: 5 shared packages (@brainrot/*) working perfectly
+- **Package Ecosystem**: 5 shared packages (@brainrot/\*) working perfectly
 - **CI/CD**: GitHub Actions workflows configured
 - **Security**: All vulnerabilities fixed (3 resolved via pnpm overrides)
 - **Documentation**: Architecture diagrams, publishing docs, contribution guide
 - **Test Infrastructure**: Fixed - all 73 converter tests passing
 
 ### 🔧 Remaining Tasks
+
 1. **Vercel Dashboard**: Manual configuration needed (see docs/VERCEL_MONOREPO_UPDATE.md)
 2. **Archive Old Repos**: GitHub settings change to make read-only
 3. **Publisher Linting**: ESLint version conflict needs resolution
@@ -26,6 +28,7 @@ You are working on the **Brainrot Publishing House monorepo** - a fully integrat
 ## Architecture Overview
 
 ### Monorepo Structure
+
 ```
 brainrot/                          # Monorepo root (THIS DIRECTORY)
 ├── apps/
@@ -49,6 +52,7 @@ brainrot/                          # Monorepo root (THIS DIRECTORY)
 ```
 
 ### Technology Stack
+
 - **Monorepo**: Turborepo 2.5.6 (exceptional caching)
 - **Package Manager**: pnpm 8.15.1 (workspace linking)
 - **Framework**: Next.js 15.4.6 with Turbopack
@@ -81,6 +85,7 @@ pnpm --filter=@brainrot/publisher build  # Publisher CLI only
 ```
 
 ## Environment Variables
+
 ```bash
 # Blob Storage (Required for web app)
 BLOB_READ_WRITE_TOKEN=vercel_blob_xxx
@@ -94,6 +99,7 @@ KDP_PASSWORD=xxx
 ```
 
 ## Performance Metrics
+
 - **Build Time**: 107ms with full cache (target was <60s)
 - **Cold Build**: ~7.5s
 - **Cache Hit Rate**: 99.9%
@@ -101,6 +107,7 @@ KDP_PASSWORD=xxx
 - **Test Suite**: 73 tests passing
 
 ## Current Books Available
+
 1. The Great Gatsby ✅
 2. The Iliad ✅
 3. Romeo and Juliet ✅
@@ -115,6 +122,7 @@ KDP_PASSWORD=xxx
 ## Critical Information
 
 ### GitHub Repository
+
 - **URL**: https://github.com/phrazzld/brainrot
 - **Branch Protection**: Enabled (1 review required)
 - **CODEOWNERS**: Configured
@@ -122,18 +130,21 @@ KDP_PASSWORD=xxx
 - **Old Repos**: Need archival (brainrot-publishing-house, brainrot-translations)
 
 ### Deployment Status
+
 - **Vercel Project**: Created but needs manual dashboard config
 - **Production URL**: https://brainrot-pzvw1wih4-moomooskycow.vercel.app
 - **Issue**: Deployment protection enabled (requires Vercel SSO)
 - **Action Required**: Disable in Vercel dashboard → Settings → Security & Privacy
 
 ### Known Issues
+
 1. **Vercel Deployment**: Requires manual dashboard configuration
 2. **Publisher Linting**: ESLint v8 deprecation warning
 3. **React Peer Deps**: Version mismatch warnings (React 19 vs 18)
 4. **Deprecated Packages**: Some subdependencies need updates
 
 ## What Makes This Special
+
 - **Cultural Reinterpretations**: Not just translations, complete Gen Z adaptations
 - **Example**: "In my younger and more vulnerable years" → "back when i was a lil sus beta and way more vulnerable to getting absolutely ratio'd by life"
 - **Scale Goal**: Hundreds of public domain books
@@ -149,6 +160,7 @@ KDP_PASSWORD=xxx
 ## Quick Troubleshooting
 
 ### If builds fail:
+
 ```bash
 pnpm install          # Reinstall dependencies
 pnpm clean           # Clear Turborepo cache
@@ -156,12 +168,14 @@ pnpm build --force   # Force rebuild
 ```
 
 ### If tests fail:
+
 ```bash
 pnpm test --filter=@brainrot/converter  # Test specific package
 pnpm test -- --clearCache               # Clear Jest cache
 ```
 
 ### If blob storage fails:
+
 1. Check environment variables are set
 2. Verify token hasn't expired
 3. Check network connectivity
@@ -169,5 +183,5 @@ pnpm test -- --clearCache               # Clear Jest cache
 
 ---
 
-*Last Updated: 2025-08-21*
-*Migration Status: Phase 7.4 - Post-Migration Cleanup (95% Complete)*
+_Last Updated: 2025-08-21_
+_Migration Status: Phase 7.4 - Post-Migration Cleanup (95% Complete)_

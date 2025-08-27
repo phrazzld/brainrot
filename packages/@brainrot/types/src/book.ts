@@ -1,5 +1,5 @@
-import { BookMetadata } from './metadata';
-import { Chapter } from './chapter';
+import { BookMetadata } from "./metadata";
+import { Chapter } from "./chapter";
 
 export interface Book {
   slug: string;
@@ -13,7 +13,7 @@ export interface Book {
   coverImage?: string;
   sourceLanguage?: string;
   targetLanguage?: string;
-  completionStatus?: 'draft' | 'in-progress' | 'complete';
+  completionStatus?: "draft" | "in-progress" | "complete";
   createdAt?: Date;
   updatedAt?: Date;
 }

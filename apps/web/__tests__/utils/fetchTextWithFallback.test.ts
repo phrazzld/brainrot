@@ -1,6 +1,17 @@
+import {
+  MockedFunction,
+  MockedObject,
+  afterAll,
+  afterEach,
+  beforeAll,
+  beforeEach,
+  describe,
+  expect,
+  it,
+  test,
+  vi,
+} from 'vitest';
 
-
-import { vi, describe, it, test, expect, beforeAll, beforeEach, afterAll, afterEach, MockedFunction, MockedObject } from 'vitest';
 import { MockResponse } from '../../__mocks__/MockResponse';
 import { fetchTextWithFallback } from '../../utils/getBlobUrl';
 import { blobPathService } from '../../utils/services/BlobPathService';

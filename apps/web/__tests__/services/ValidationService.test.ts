@@ -1,11 +1,12 @@
-import { vi, describe, it, expect, beforeEach } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
+
 import {
+  type DownloadParams,
+  type ValidatedDownloadParams,
+  type ValidationServiceConfig,
   createValidationService,
   validateDownloadParams,
   validateParameter,
-  type DownloadParams,
-  type ValidationServiceConfig,
-  type ValidatedDownloadParams
 } from '../../app/api/download/services/ValidationService';
 
 const mockLogger = {
@@ -52,7 +53,7 @@ describe('ValidationService', () => {
           expect.objectContaining({
             msg: 'Missing required parameter',
             param: 'slug',
-          })
+          }),
         );
       });
 
@@ -76,7 +77,7 @@ describe('ValidationService', () => {
             msg: 'Invalid slug format',
             param: 'slug',
             value: 'invalid slug!',
-          })
+          }),
         );
       });
 
@@ -327,12 +328,8 @@ describe('ValidationService', () => {
 
         expect(result.success).toBe(false);
         expect(result.errors).toHaveLength(2);
-        expect(result.errors).toContainEqual(
-          expect.objectContaining({ code: 'MISSING_SLUG' })
-        );
-        expect(result.errors).toContainEqual(
-          expect.objectContaining({ code: 'INVALID_TYPE' })
-        );
+        expect(result.errors).toContainEqual(expect.objectContaining({ code: 'MISSING_SLUG' }));
+        expect(result.errors).toContainEqual(expect.objectContaining({ code: 'INVALID_TYPE' }));
       });
     });
 
@@ -382,7 +379,7 @@ describe('ValidationService', () => {
         'email',
         'user@example.com',
         (val) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val),
-        'Invalid email format'
+        'Invalid email format',
       );
 
       expect(result.success).toBe(true);
@@ -395,25 +392,27 @@ describe('ValidationService', () => {
         'email',
         'invalid-email',
         (val) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val),
-        'Invalid email format'
+        'Invalid email format',
       );
 
       expect(result.success).toBe(false);
-      expect(result.errors).toEqual([{
-        field: 'email',
-        message: 'Invalid email format',
-        value: 'invalid-email',
-      }]);
+      expect(result.errors).toEqual([
+        {
+          field: 'email',
+          message: 'Invalid email format',
+          value: 'invalid-email',
+        },
+      ]);
     });
 
     it('should work with different validators', () => {
       const numberValidator = (val: any) => typeof val === 'number' && val > 0;
-      
+
       const result1 = validateParameter(
         'age',
         25,
         numberValidator,
-        'Age must be a positive number'
+        'Age must be a positive number',
       );
       expect(result1.success).toBe(true);
 
@@ -421,7 +420,7 @@ describe('ValidationService', () => {
         'age',
         -5,
         numberValidator,
-        'Age must be a positive number'
+        'Age must be a positive number',
       );
       expect(result2.success).toBe(false);
     });
@@ -446,7 +445,7 @@ describe('ValidationService', () => {
       };
 
       const service = createValidationService(config);
-      
+
       // Test that config is used
       const result1 = service.validateDownloadParams({
         slug: 'testbook',
@@ -470,12 +469,12 @@ describe('ValidationService', () => {
 
     it('should bind validateParameter correctly', () => {
       const service = createValidationService({ logger: mockLogger });
-      
+
       const result = service.validateParameter(
         'test',
         'value',
         (val) => val === 'value',
-        'Must be "value"'
+        'Must be "value"',
       );
 
       expect(result.success).toBe(true);
@@ -502,9 +501,7 @@ describe('ValidationService', () => {
       const result = validateDownloadParams(params, { logger: mockLogger });
 
       expect(result.success).toBe(false);
-      expect(result.errors).toContainEqual(
-        expect.objectContaining({ code: 'INVALID_CHAPTER' })
-      );
+      expect(result.errors).toContainEqual(expect.objectContaining({ code: 'INVALID_CHAPTER' }));
     });
 
     it('should handle special characters in slug', () => {

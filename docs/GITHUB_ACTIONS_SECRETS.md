@@ -7,9 +7,10 @@ This document lists all GitHub Actions secrets that need to be configured for th
 ## 🚨 Critical Secrets (Required for Basic Functionality)
 
 ### 1. BLOB_READ_WRITE_TOKEN
+
 - **Purpose**: Access to Vercel Blob storage for content sync
 - **Used by**: `sync-content.yml`, `deploy-web.yml`
-- **How to get**: 
+- **How to get**:
   1. Go to [Vercel Dashboard](https://vercel.com/dashboard)
   2. Navigate to Storage → Your Blob Store
   3. Go to Settings → Tokens
@@ -17,6 +18,7 @@ This document lists all GitHub Actions secrets that need to be configured for th
   5. Copy the token (starts with `vercel_blob_`)
 
 ### 2. VERCEL_TOKEN
+
 - **Purpose**: Deploy web app to Vercel
 - **Used by**: `deploy-web.yml`
 - **How to get**:
@@ -26,6 +28,7 @@ This document lists all GitHub Actions secrets that need to be configured for th
   4. Copy the token
 
 ### 3. VERCEL_ORG_ID
+
 - **Purpose**: Identify Vercel organization
 - **Used by**: `deploy-web.yml`
 - **How to get**:
@@ -33,6 +36,7 @@ This document lists all GitHub Actions secrets that need to be configured for th
   2. Copy the `orgId` value
 
 ### 4. VERCEL_PROJECT_ID
+
 - **Purpose**: Identify Vercel project
 - **Used by**: `deploy-web.yml`
 - **How to get**:
@@ -42,6 +46,7 @@ This document lists all GitHub Actions secrets that need to be configured for th
 ## 📚 Publishing Secrets (Required for Book Publishing)
 
 ### 5. LULU_API_KEY
+
 - **Purpose**: Authenticate with Lulu publishing API
 - **Used by**: `publish-books.yml`
 - **How to get**:
@@ -50,6 +55,7 @@ This document lists all GitHub Actions secrets that need to be configured for th
   3. Copy the API Key
 
 ### 6. LULU_API_SECRET
+
 - **Purpose**: Authenticate with Lulu publishing API
 - **Used by**: `publish-books.yml`
 - **How to get**:
@@ -57,12 +63,14 @@ This document lists all GitHub Actions secrets that need to be configured for th
   2. Copy the API Secret
 
 ### 7. KDP_EMAIL
+
 - **Purpose**: Amazon KDP login for automated publishing
 - **Used by**: `publish-books.yml`
 - **How to get**: Your Amazon KDP account email
 - **Security**: Consider using a dedicated service account
 
 ### 8. KDP_PASSWORD
+
 - **Purpose**: Amazon KDP login for automated publishing
 - **Used by**: `publish-books.yml`
 - **How to get**: Your Amazon KDP account password
@@ -71,11 +79,13 @@ This document lists all GitHub Actions secrets that need to be configured for th
 ## 🤖 AI Services (Optional - For Future Features)
 
 ### 9. OPENAI_API_KEY
+
 - **Purpose**: AI-powered translation assistance
 - **Used by**: `monitor-usage.yml` (future)
 - **How to get**: [OpenAI API Keys](https://platform.openai.com/api-keys)
 
 ### 10. ANTHROPIC_API_KEY
+
 - **Purpose**: Claude API for translation assistance
 - **Used by**: `monitor-usage.yml` (future)
 - **How to get**: [Anthropic Console](https://console.anthropic.com)
@@ -83,11 +93,13 @@ This document lists all GitHub Actions secrets that need to be configured for th
 ## 📢 Notification Secrets (Optional)
 
 ### 11. SLACK_WEBHOOK_URL
+
 - **Purpose**: Send deployment notifications to Slack
 - **Used by**: `deploy-web.yml`, `publish-books.yml`
 - **How to get**: [Slack Incoming Webhooks](https://api.slack.com/messaging/webhooks)
 
 ### 12. DISCORD_WEBHOOK_URL
+
 - **Purpose**: Send deployment notifications to Discord
 - **Used by**: `deploy-web.yml`, `publish-books.yml`
 - **How to get**: Server Settings → Integrations → Webhooks
@@ -95,11 +107,13 @@ This document lists all GitHub Actions secrets that need to be configured for th
 ## 🚀 Performance Secrets (Optional)
 
 ### 13. TURBO_TOKEN
+
 - **Purpose**: Remote caching for Turborepo
 - **Used by**: `ci.yml`
 - **How to get**: [Vercel Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
 
 ### 14. NEXT_PUBLIC_BLOB_BASE_URL
+
 - **Purpose**: Public URL for blob storage
 - **Used by**: `deploy-web.yml`
 - **Value**: `https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com`
@@ -108,6 +122,7 @@ This document lists all GitHub Actions secrets that need to be configured for th
 ## How to Add Secrets to GitHub
 
 ### Via GitHub Web Interface (Recommended)
+
 1. Go to https://github.com/phrazzld/brainrot/settings/secrets/actions
 2. Click "New repository secret"
 3. Enter the secret name exactly as listed above
@@ -115,6 +130,7 @@ This document lists all GitHub Actions secrets that need to be configured for th
 5. Click "Add secret"
 
 ### Via GitHub CLI
+
 ```bash
 # Example for adding BLOB_READ_WRITE_TOKEN
 gh secret set BLOB_READ_WRITE_TOKEN --repo phrazzld/brainrot
@@ -123,7 +139,9 @@ gh secret set BLOB_READ_WRITE_TOKEN --repo phrazzld/brainrot
 ```
 
 ### Bulk Addition Script
+
 Create a file `secrets.env` (DO NOT COMMIT):
+
 ```bash
 BLOB_READ_WRITE_TOKEN=vercel_blob_xxx...
 VERCEL_TOKEN=xxx...
@@ -131,6 +149,7 @@ VERCEL_TOKEN=xxx...
 ```
 
 Then run:
+
 ```bash
 # Add all secrets from file
 while IFS='=' read -r key value; do
@@ -191,16 +210,19 @@ gh run list --repo phrazzld/brainrot
 ## Troubleshooting
 
 ### Secret not available in workflow
+
 - Check the secret name matches exactly (case-sensitive)
 - Ensure the workflow has permission to access secrets
 - Verify the secret was added to the correct repository
 
 ### Workflow fails with authentication error
+
 - Verify the secret value was copied correctly (no extra spaces)
 - Check if the token/key has expired
 - Ensure the service account has necessary permissions
 
 ### Vercel deployment fails
+
 - Verify VERCEL_PROJECT_ID matches your actual project
 - Ensure VERCEL_TOKEN has full access permissions
 - Check if the project is linked correctly

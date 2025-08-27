@@ -7,24 +7,20 @@ This document establishes a baseline for download performance in Brainrot Publis
 Performance baselines were established using the `benchmark-downloads.ts` script, which:
 
 1. **Tests multiple asset sizes**:
-
    - Small assets (< 5MB): Chapters from "Hamlet"
    - Medium assets (5-15MB): Chapters from "The Iliad"
    - Large assets (> 15MB): Chapters from "The Aeneid"
 
 2. **Evaluates different access methods**:
-
    - API URL generation endpoint
    - Proxy download endpoint
 
 3. **Measures performance under various load levels**:
-
    - Single concurrent download (concurrency = 1)
    - Medium load (concurrency = 5)
    - High load (concurrency = 10)
 
 4. **Collects comprehensive metrics**:
-
    - Total response time
    - Time to first byte (TTFB)
    - Download duration
@@ -105,17 +101,14 @@ The most notable improvements are:
 Based on performance analysis, we identified the following potential bottlenecks and optimization opportunities:
 
 1. **TTFB for Large Assets**
-
    - Bottleneck: Initial response times for large assets increase disproportionately
    - Opportunity: Consider implementing progressive loading or range requests
 
 2. **Proxy Download Performance**
-
    - Bottleneck: Proxy endpoint latency increases significantly with concurrency
    - Opportunity: Add caching layer for frequently accessed assets
 
 3. **Performance under High Concurrency**
-
    - Bottleneck: Response times increase by ~60% at 10x concurrency
    - Opportunity: Implement rate limiting and queue management for high-load scenarios
 
@@ -148,7 +141,6 @@ Based on the baseline metrics, we recommend the following SLOs for download func
 To maintain and improve performance over time, we recommend implementing the following monitoring:
 
 1. **Key Metrics to Monitor**
-
    - Response times (p50, p95, p99) for both API and proxy endpoints
    - Success rates by asset size and endpoint type
    - TTFB for different asset sizes
@@ -156,14 +148,12 @@ To maintain and improve performance over time, we recommend implementing the fol
    - Error rates, categorized by error type
 
 2. **Alerting Thresholds**
-
    - Set alerts for response times exceeding 2x baseline p95
    - Alert on success rates dropping below 99% for any endpoint
    - Alert on TTFB exceeding 500ms for small/medium assets
    - Alert on transfer speeds dropping below 1,000 KB/s
 
 3. **Regular Performance Testing**
-
    - Run benchmark script weekly to detect performance regressions
    - Perform additional testing after major deployments
    - Compare results against baseline to identify trends

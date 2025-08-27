@@ -8,9 +8,7 @@
     "totalDownloadSize": 108569816,
     "totalUploadSize": 0,
     "totalDuration": 56398,
-    "booksCovered": [
-      "the-aeneid"
-    ],
+    "booksCovered": ["the-aeneid"],
     "validationSuccess": 12,
     "validationFailed": 0,
     "startTime": "2025-04-28T06:16:35.393Z",
@@ -18,9 +16,7 @@
   },
   "options": {
     "dryRun": false,
-    "books": [
-      "the-aeneid"
-    ],
+    "books": ["the-aeneid"],
     "force": true,
     "retries": 3,
     "concurrency": 3,

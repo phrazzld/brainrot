@@ -1,9 +1,9 @@
-import axios, { AxiosInstance, AxiosError } from 'axios';
-import FormData from 'form-data';
-import pRetry from 'p-retry';
-import fs from 'fs/promises';
-import path from 'path';
-import { Logger } from '../utils/logger.js';
+import axios, { AxiosInstance, AxiosError } from "axios";
+import FormData from "form-data";
+import pRetry from "p-retry";
+import fs from "fs/promises";
+import path from "path";
+import { Logger } from "../utils/logger.js";
 
 interface LuluConfig {
   apiKey: string;
@@ -49,7 +49,7 @@ interface BookDetails {
 
 interface JobStatus {
   id: string;
-  status: 'pending' | 'processing' | 'completed' | 'failed';
+  status: "pending" | "processing" | "completed" | "failed";
   progress?: number;
   error?: string;
   result?: any;
@@ -68,32 +68,32 @@ export class LuluService {
       mockMode: false,
       retryAttempts: 3,
       retryDelay: 1000,
-      ...config
+      ...config,
     };
 
-    const baseURL = this.config.sandbox 
-      ? 'https://api.sandbox.lulu.com'
-      : 'https://api.lulu.com';
+    const baseURL = this.config.sandbox
+      ? "https://api.sandbox.lulu.com"
+      : "https://api.lulu.com";
 
     this.client = axios.create({
       baseURL,
       timeout: 60000,
       headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      }
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
     });
 
     // Add request interceptor to include auth token
     this.client.interceptors.request.use(
       async (config) => {
-        if (!config.url?.includes('/auth/') && !this.config.mockMode) {
+        if (!config.url?.includes("/auth/") && !this.config.mockMode) {
           const token = await this.ensureValidToken();
           config.headers.Authorization = `Bearer ${token.access_token}`;
         }
         return config;
       },
-      (error) => Promise.reject(error)
+      (error) => Promise.reject(error),
     );
 
     // Add response interceptor for error handling
@@ -101,12 +101,12 @@ export class LuluService {
       (response) => response,
       async (error: AxiosError) => {
         if (error.response?.status === 401) {
-          Logger.debug('Token expired, refreshing...');
+          Logger.debug("Token expired, refreshing...");
           this.token = undefined;
           return this.client.request(error.config!);
         }
         return Promise.reject(error);
-      }
+      },
     );
   }
 
@@ -116,38 +116,40 @@ export class LuluService {
   private async authenticate(): Promise<OAuth2Token> {
     if (this.config.mockMode) {
       return {
-        access_token: 'mock-token',
-        token_type: 'Bearer',
+        access_token: "mock-token",
+        token_type: "Bearer",
         expires_in: 3600,
-        scope: 'print-api',
-        created_at: Date.now()
+        scope: "print-api",
+        created_at: Date.now(),
       };
     }
 
-    const authUrl = '/auth/realms/glasstree/protocol/openid-connect/token';
-    
+    const authUrl = "/auth/realms/glasstree/protocol/openid-connect/token";
+
     const formData = new URLSearchParams();
-    formData.append('client_id', this.config.apiKey);
-    formData.append('client_secret', this.config.apiSecret);
-    formData.append('grant_type', 'client_credentials');
+    formData.append("client_id", this.config.apiKey);
+    formData.append("client_secret", this.config.apiSecret);
+    formData.append("grant_type", "client_credentials");
 
     try {
       const response = await this.client.post(authUrl, formData, {
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        }
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
       });
 
       const token: OAuth2Token = {
         ...response.data,
-        created_at: Date.now()
+        created_at: Date.now(),
       };
 
-      Logger.debug('Successfully authenticated with Lulu API');
+      Logger.debug("Successfully authenticated with Lulu API");
       return token;
     } catch (error) {
-      Logger.error('Failed to authenticate with Lulu API', error);
-      throw new Error(`Authentication failed: ${this.extractErrorMessage(error)}`);
+      Logger.error("Failed to authenticate with Lulu API", error);
+      throw new Error(
+        `Authentication failed: ${this.extractErrorMessage(error)}`,
+      );
     }
   }
 
@@ -166,9 +168,9 @@ export class LuluService {
    */
   private isTokenExpired(): boolean {
     if (!this.token) return true;
-    const expiresAt = this.token.created_at + (this.token.expires_in * 1000);
+    const expiresAt = this.token.created_at + this.token.expires_in * 1000;
     const buffer = 60000; // 1 minute buffer
-    return Date.now() > (expiresAt - buffer);
+    return Date.now() > expiresAt - buffer;
   }
 
   /**
@@ -179,9 +181,9 @@ export class LuluService {
       const project: Project = {
         id: `mock-project-${Date.now()}`,
         title: details.title,
-        status: 'draft',
+        status: "draft",
         created_date: new Date().toISOString(),
-        modified_date: new Date().toISOString()
+        modified_date: new Date().toISOString(),
       };
       this.mockProjects.set(project.id, project);
       Logger.info(`[MOCK] Created project: ${project.id}`);
@@ -190,15 +192,15 @@ export class LuluService {
 
     return pRetry(
       async () => {
-        const response = await this.client.post('/projects', {
+        const response = await this.client.post("/projects", {
           title: details.title,
           author: details.author,
           description: details.description,
           isbn: details.isbn,
           category: details.category,
-          keywords: details.keywords?.join(','),
-          language: details.language || 'en',
-          copyright_year: details.copyright_year || new Date().getFullYear()
+          keywords: details.keywords?.join(","),
+          language: details.language || "en",
+          copyright_year: details.copyright_year || new Date().getFullYear(),
         });
 
         Logger.info(`Created project: ${response.data.id}`);
@@ -208,9 +210,11 @@ export class LuluService {
         retries: this.config.retryAttempts,
         minTimeout: this.config.retryDelay,
         onFailedAttempt: (error) => {
-          Logger.warn(`Create project attempt ${error.attemptNumber} failed: ${error.message}`);
-        }
-      }
+          Logger.warn(
+            `Create project attempt ${error.attemptNumber} failed: ${error.message}`,
+          );
+        },
+      },
     );
   }
 
@@ -221,9 +225,13 @@ export class LuluService {
     if (this.config.mockMode) {
       try {
         const stats = await fs.stat(pdfPath);
-        Logger.info(`[MOCK] Uploaded interior PDF: ${path.basename(pdfPath)} (${stats.size} bytes)`);
+        Logger.info(
+          `[MOCK] Uploaded interior PDF: ${path.basename(pdfPath)} (${stats.size} bytes)`,
+        );
       } catch {
-        Logger.info(`[MOCK] Uploaded interior PDF: ${path.basename(pdfPath)} (mock file)`);
+        Logger.info(
+          `[MOCK] Uploaded interior PDF: ${path.basename(pdfPath)} (mock file)`,
+        );
       }
       return;
     }
@@ -232,22 +240,18 @@ export class LuluService {
       async () => {
         const fileBuffer = await fs.readFile(pdfPath);
         const form = new FormData();
-        form.append('file', fileBuffer, {
+        form.append("file", fileBuffer, {
           filename: path.basename(pdfPath),
-          contentType: 'application/pdf'
+          contentType: "application/pdf",
         });
 
-        await this.client.post(
-          `/projects/${projectId}/interior`,
-          form,
-          {
-            headers: {
-              ...form.getHeaders()
-            },
-            maxContentLength: Infinity,
-            maxBodyLength: Infinity
-          }
-        );
+        await this.client.post(`/projects/${projectId}/interior`, form, {
+          headers: {
+            ...form.getHeaders(),
+          },
+          maxContentLength: Infinity,
+          maxBodyLength: Infinity,
+        });
 
         Logger.info(`Uploaded interior PDF for project ${projectId}`);
       },
@@ -256,9 +260,11 @@ export class LuluService {
         minTimeout: this.config.retryDelay,
         factor: 2, // Exponential backoff
         onFailedAttempt: (error) => {
-          Logger.warn(`Upload interior attempt ${error.attemptNumber} failed: ${error.message}`);
-        }
-      }
+          Logger.warn(
+            `Upload interior attempt ${error.attemptNumber} failed: ${error.message}`,
+          );
+        },
+      },
     );
   }
 
@@ -269,9 +275,13 @@ export class LuluService {
     if (this.config.mockMode) {
       try {
         const stats = await fs.stat(pdfPath);
-        Logger.info(`[MOCK] Uploaded cover PDF: ${path.basename(pdfPath)} (${stats.size} bytes)`);
+        Logger.info(
+          `[MOCK] Uploaded cover PDF: ${path.basename(pdfPath)} (${stats.size} bytes)`,
+        );
       } catch {
-        Logger.info(`[MOCK] Uploaded cover PDF: ${path.basename(pdfPath)} (mock file)`);
+        Logger.info(
+          `[MOCK] Uploaded cover PDF: ${path.basename(pdfPath)} (mock file)`,
+        );
       }
       return;
     }
@@ -283,22 +293,18 @@ export class LuluService {
       async () => {
         const fileBuffer = await fs.readFile(pdfPath);
         const form = new FormData();
-        form.append('file', fileBuffer, {
+        form.append("file", fileBuffer, {
           filename: path.basename(pdfPath),
-          contentType: 'application/pdf'
+          contentType: "application/pdf",
         });
 
-        await this.client.post(
-          `/projects/${projectId}/cover`,
-          form,
-          {
-            headers: {
-              ...form.getHeaders()
-            },
-            maxContentLength: Infinity,
-            maxBodyLength: Infinity
-          }
-        );
+        await this.client.post(`/projects/${projectId}/cover`, form, {
+          headers: {
+            ...form.getHeaders(),
+          },
+          maxContentLength: Infinity,
+          maxBodyLength: Infinity,
+        });
 
         Logger.info(`Uploaded cover PDF for project ${projectId}`);
       },
@@ -307,16 +313,21 @@ export class LuluService {
         minTimeout: this.config.retryDelay,
         factor: 2,
         onFailedAttempt: (error) => {
-          Logger.warn(`Upload cover attempt ${error.attemptNumber} failed: ${error.message}`);
-        }
-      }
+          Logger.warn(
+            `Upload cover attempt ${error.attemptNumber} failed: ${error.message}`,
+          );
+        },
+      },
     );
   }
 
   /**
    * Set pricing for territories
    */
-  async setPricing(projectId: string, pricing: PricingOptions[]): Promise<void> {
+  async setPricing(
+    projectId: string,
+    pricing: PricingOptions[],
+  ): Promise<void> {
     if (this.config.mockMode) {
       Logger.info(`[MOCK] Set pricing for project ${projectId}:`);
       Logger.debug(JSON.stringify(pricing, null, 2));
@@ -325,14 +336,14 @@ export class LuluService {
 
     return pRetry(
       async () => {
-        const pricingData = pricing.map(p => ({
+        const pricingData = pricing.map((p) => ({
           currency_code: p.currency,
           price: p.price,
-          territories: p.territories || ['WORLD']
+          territories: p.territories || ["WORLD"],
         }));
 
         await this.client.put(`/projects/${projectId}/pricing`, {
-          pricing: pricingData
+          pricing: pricingData,
         });
 
         Logger.info(`Set pricing for project ${projectId}`);
@@ -341,9 +352,11 @@ export class LuluService {
         retries: this.config.retryAttempts,
         minTimeout: this.config.retryDelay,
         onFailedAttempt: (error) => {
-          Logger.warn(`Set pricing attempt ${error.attemptNumber} failed: ${error.message}`);
-        }
-      }
+          Logger.warn(
+            `Set pricing attempt ${error.attemptNumber} failed: ${error.message}`,
+          );
+        },
+      },
     );
   }
 
@@ -354,13 +367,13 @@ export class LuluService {
     if (this.config.mockMode) {
       const project = this.mockProjects.get(projectId);
       if (project) {
-        project.status = 'published';
+        project.status = "published";
       }
       const jobId = `mock-job-${Date.now()}`;
       this.mockJobs.set(jobId, {
         id: jobId,
-        status: 'completed',
-        progress: 100
+        status: "completed",
+        progress: 100,
       });
       Logger.info(`[MOCK] Published project ${projectId}, job ID: ${jobId}`);
       return jobId;
@@ -368,7 +381,9 @@ export class LuluService {
 
     return pRetry(
       async () => {
-        const response = await this.client.post(`/projects/${projectId}/publish`);
+        const response = await this.client.post(
+          `/projects/${projectId}/publish`,
+        );
         const jobId = response.data.job_id || response.data.id;
         Logger.info(`Published project ${projectId}, job ID: ${jobId}`);
         return jobId;
@@ -377,9 +392,11 @@ export class LuluService {
         retries: this.config.retryAttempts,
         minTimeout: this.config.retryDelay,
         onFailedAttempt: (error) => {
-          Logger.warn(`Publish attempt ${error.attemptNumber} failed: ${error.message}`);
-        }
-      }
+          Logger.warn(
+            `Publish attempt ${error.attemptNumber} failed: ${error.message}`,
+          );
+        },
+      },
     );
   }
 
@@ -390,8 +407,8 @@ export class LuluService {
     if (this.config.mockMode) {
       const job = this.mockJobs.get(jobId) || {
         id: jobId,
-        status: 'completed' as const,
-        progress: 100
+        status: "completed" as const,
+        progress: 100,
       };
       Logger.debug(`[MOCK] Job ${jobId} status: ${job.status}`);
       return job;
@@ -404,10 +421,12 @@ export class LuluService {
         status: response.data.status,
         progress: response.data.progress,
         error: response.data.error,
-        result: response.data.result
+        result: response.data.result,
       };
     } catch (error) {
-      Logger.error(`Failed to check job status: ${this.extractErrorMessage(error)}`);
+      Logger.error(
+        `Failed to check job status: ${this.extractErrorMessage(error)}`,
+      );
       throw error;
     }
   }
@@ -415,24 +434,29 @@ export class LuluService {
   /**
    * Wait for job completion with polling
    */
-  async waitForJob(jobId: string, timeoutMs: number = 300000): Promise<JobStatus> {
+  async waitForJob(
+    jobId: string,
+    timeoutMs: number = 300000,
+  ): Promise<JobStatus> {
     const startTime = Date.now();
     const pollInterval = 5000; // 5 seconds
 
     while (Date.now() - startTime < timeoutMs) {
       const status = await this.checkJobStatus(jobId);
-      
-      if (status.status === 'completed') {
+
+      if (status.status === "completed") {
         Logger.info(`Job ${jobId} completed successfully`);
         return status;
       }
-      
-      if (status.status === 'failed') {
+
+      if (status.status === "failed") {
         throw new Error(`Job ${jobId} failed: ${status.error}`);
       }
 
-      Logger.debug(`Job ${jobId} status: ${status.status} (${status.progress}%)`);
-      await new Promise(resolve => setTimeout(resolve, pollInterval));
+      Logger.debug(
+        `Job ${jobId} status: ${status.status} (${status.progress}%)`,
+      );
+      await new Promise((resolve) => setTimeout(resolve, pollInterval));
     }
 
     throw new Error(`Job ${jobId} timed out after ${timeoutMs}ms`);
@@ -462,18 +486,26 @@ export class LuluService {
   /**
    * List all projects
    */
-  async listProjects(limit: number = 50, offset: number = 0): Promise<Project[]> {
+  async listProjects(
+    limit: number = 50,
+    offset: number = 0,
+  ): Promise<Project[]> {
     if (this.config.mockMode) {
-      return Array.from(this.mockProjects.values()).slice(offset, offset + limit);
+      return Array.from(this.mockProjects.values()).slice(
+        offset,
+        offset + limit,
+      );
     }
 
     try {
-      const response = await this.client.get('/projects', {
-        params: { limit, offset }
+      const response = await this.client.get("/projects", {
+        params: { limit, offset },
       });
       return response.data.results || [];
     } catch (error) {
-      Logger.error(`Failed to list projects: ${this.extractErrorMessage(error)}`);
+      Logger.error(
+        `Failed to list projects: ${this.extractErrorMessage(error)}`,
+      );
       throw error;
     }
   }
@@ -492,7 +524,9 @@ export class LuluService {
       await this.client.delete(`/projects/${projectId}`);
       Logger.info(`Deleted project ${projectId}`);
     } catch (error) {
-      Logger.error(`Failed to delete project: ${this.extractErrorMessage(error)}`);
+      Logger.error(
+        `Failed to delete project: ${this.extractErrorMessage(error)}`,
+      );
       throw error;
     }
   }
@@ -502,11 +536,13 @@ export class LuluService {
    */
   private extractErrorMessage(error: any): string {
     if (axios.isAxiosError(error)) {
-      return error.response?.data?.message || 
-             error.response?.data?.error || 
-             error.message;
+      return (
+        error.response?.data?.message ||
+        error.response?.data?.error ||
+        error.message
+      );
     }
-    return error?.message || 'Unknown error';
+    return error?.message || "Unknown error";
   }
 }
 

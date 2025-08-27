@@ -37,7 +37,7 @@ const nextConfig: NextConfig = {
       '.js': ['.js', '.ts', '.tsx'],
       '.jsx': ['.jsx', '.tsx'],
     };
-    
+
     // Ensure workspace packages are resolved correctly
     config.resolve.alias = {
       ...config.resolve.alias,
@@ -47,7 +47,7 @@ const nextConfig: NextConfig = {
       '@brainrot/metadata': '../../packages/@brainrot/metadata',
       '@brainrot/templates': '../../packages/@brainrot/templates',
     };
-    
+
     // Watch workspace packages for changes in development
     if (!isServer) {
       config.watchOptions = {
@@ -55,7 +55,7 @@ const nextConfig: NextConfig = {
         followSymlinks: true,
       };
     }
-    
+
     return config;
   },
 };

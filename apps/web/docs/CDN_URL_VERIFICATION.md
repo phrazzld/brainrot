@@ -124,13 +124,11 @@ The JSON output contains an array of test results, each with:
 The markdown output provides:
 
 1. **Summary section** with:
-
    - Environment info
    - Success rates for CDN, fallback, and Blob URLs
    - Configuration details
 
 2. **Tables for each book** showing:
-
    - Accessibility status (✅/❌)
    - HTTP status codes
    - Response times
@@ -151,13 +149,11 @@ Follow these steps when investigating download problems:
    ```
 
 2. **Check accessibility patterns**:
-
    - Are all CDN URLs failing?
    - Are fallback URLs working?
    - Do patterns match specific books or chapters?
 
 3. **Compare environments**:
-
    - Run in both development and production environments
    - Compare the results to find discrepancies
 
@@ -173,7 +169,6 @@ Follow these steps when investigating download problems:
    ```
 
 4. **Examine URL formats**:
-
    - Check if bucket and region are correct
    - Verify the path structure is consistent
    - Check that chapter numbers are formatted correctly

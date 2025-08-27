@@ -69,9 +69,9 @@ markets:
 
 # Additional metadata
 bisac_codes:
-  - "HIS027100"  # History / Military / World War II
-  - "HUM008000"  # Humor / Form / Parodies
-  - "BUS097000"  # Business / Workplace Culture
+  - "HIS027100" # History / Military / World War II
+  - "HUM008000" # Humor / Form / Parodies
+  - "BUS097000" # Business / Workplace Culture
 
 copyright: "Translation © 2024 Brainrot Publishing House"
 rights: "All rights reserved. Original work in public domain."

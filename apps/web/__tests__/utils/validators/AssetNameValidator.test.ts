@@ -1,6 +1,5 @@
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, test, vi } from 'vitest';
 
-
-import { vi, describe, it, test, expect, beforeAll, beforeEach, afterAll, afterEach } from 'vitest';
 import { AssetType } from '@/types/assets';
 import { AssetNameValidator } from '@/utils/validators/AssetNameValidator';
 

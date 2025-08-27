@@ -1,16 +1,16 @@
 #!/usr/bin/env tsx
-import * as path from 'path';
-import { head } from '@vercel/blob';
-import { config } from 'dotenv';
-import { promises as fs } from 'fs';
+import * as path from "path";
+import { head } from "@vercel/blob";
+import { config } from "dotenv";
+import { promises as fs } from "fs";
 
-import { AssetType } from '../types/assets.js';
-import { logger } from '../utils/logger.js';
-import { AssetPathService } from '../utils/services/AssetPathService.js';
-import { createAssetService } from '../utils/services/AssetServiceFactory.js';
+import { AssetType } from "../types/assets.js";
+import { logger } from "../utils/logger.js";
+import { AssetPathService } from "../utils/services/AssetPathService.js";
+import { createAssetService } from "../utils/services/AssetServiceFactory.js";
 
 // Load environment variables from .env.local
-config({ path: '.env.local' });
+config({ path: ".env.local" });
 
 interface VerificationResult {
   path: string;
@@ -21,7 +21,7 @@ interface VerificationResult {
 export class TextMigrationVerifier {
   private blobService: ReturnType<typeof createAssetService>;
   private pathService: AssetPathService;
-  private log = logger.child({ name: 'TextMigrationVerifier' });
+  private log = logger.child({ name: "TextMigrationVerifier" });
 
   constructor() {
     this.blobService = createAssetService();
@@ -35,16 +35,19 @@ export class TextMigrationVerifier {
 
       // Read from individual migration JSONs
       const migrationFiles = [
-        'source-text-migration.json',
-        'custom-text-migration.json',
-        'brainrot-text-migration.json',
+        "source-text-migration.json",
+        "custom-text-migration.json",
+        "brainrot-text-migration.json",
       ];
 
       for (const file of migrationFiles) {
         try {
           const content = await fs.readFile(
-            path.join('/Users/phaedrus/Development/brainrot-publishing-house', file),
-            'utf-8',
+            path.join(
+              "/Users/phaedrus/Development/brainrot-publishing-house",
+              file,
+            ),
+            "utf-8",
           );
           const migration = JSON.parse(content);
 
@@ -71,12 +74,12 @@ export class TextMigrationVerifier {
 
       // Sample random files for verification
       const sampled = files
-        .filter((f) => f.to.includes('/text/')) // Only text files
+        .filter((f) => f.to.includes("/text/")) // Only text files
         .sort(() => Math.random() - 0.5)
         .slice(0, sampleSize);
 
       this.log.info({
-        msg: 'Verifying standardized paths',
+        msg: "Verifying standardized paths",
         totalFiles: files.length,
         sampleSize: sampled.length,
       });
@@ -88,7 +91,7 @@ export class TextMigrationVerifier {
         results.push(result);
 
         this.log.info({
-          msg: 'Verification result',
+          msg: "Verification result",
           path: file.to,
           exists: result.exists,
           originalPath: file.from,
@@ -100,11 +103,11 @@ export class TextMigrationVerifier {
       const failed = results.filter((r) => !r.exists).length;
 
       this.log.info({
-        msg: 'Verification summary',
+        msg: "Verification summary",
         total: results.length,
         successful,
         failed,
-        successRate: ((successful / results.length) * 100).toFixed(2) + '%',
+        successRate: ((successful / results.length) * 100).toFixed(2) + "%",
       });
 
       // Save verification report
@@ -114,20 +117,23 @@ export class TextMigrationVerifier {
           total: results.length,
           successful,
           failed,
-          successRate: ((successful / results.length) * 100).toFixed(2) + '%',
+          successRate: ((successful / results.length) * 100).toFixed(2) + "%",
         },
         results,
       };
 
       const reportPath = path.join(
-        '/Users/phaedrus/Development/brainrot-publishing-house/migration-logs',
+        "/Users/phaedrus/Development/brainrot-publishing-house/migration-logs",
         `text-verification-${Date.now()}.json`,
       );
 
-      await fs.writeFile(reportPath, JSON.stringify(verificationReport, null, 2));
-      this.log.info({ msg: 'Verification report saved', path: reportPath });
+      await fs.writeFile(
+        reportPath,
+        JSON.stringify(verificationReport, null, 2),
+      );
+      this.log.info({ msg: "Verification report saved", path: reportPath });
     } catch (error) {
-      this.log.error({ msg: 'Failed to verify migration', error });
+      this.log.error({ msg: "Failed to verify migration", error });
       throw error;
     }
   }
@@ -144,16 +150,22 @@ export class TextMigrationVerifier {
       const [, bookSlug, assetName] = pathMatch;
 
       // Get URL using the service method
-      const blobUrl = await this.blobService.getAssetUrl(AssetType.TEXT, bookSlug, assetName, {
-        cacheBusting: false,
-      });
+      const blobUrl = await this.blobService.getAssetUrl(
+        AssetType.TEXT,
+        bookSlug,
+        assetName,
+        {
+          cacheBusting: false,
+        },
+      );
 
       // Try to get file metadata from blob storage
       await head(blobUrl);
       return { path: blobPath, exists: true };
     } catch (error: unknown) {
       // If file doesn't exist, return false
-      const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
+      const errorMessage =
+        error instanceof Error ? error.message : "Unknown error occurred";
       return {
         path: blobPath,
         exists: false,
@@ -171,14 +183,14 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   let sampleSize = 10;
 
   for (let i = 0; i < args.length; i++) {
-    if (args[i] === '--sample-size' && i + 1 < args.length) {
+    if (args[i] === "--sample-size" && i + 1 < args.length) {
       sampleSize = parseInt(args[i + 1], 10);
       i++;
     }
   }
 
   verifier.verifyStandardizedPaths(sampleSize).catch((error) => {
-    logger.error({ msg: 'Verification failed', error });
+    logger.error({ msg: "Verification failed", error });
     process.exit(1);
   });
 }

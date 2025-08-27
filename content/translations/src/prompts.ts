@@ -1,5 +1,9 @@
-export function buildSystemPrompt(author: string, title: string, notes: string = "") {
-   return `
+export function buildSystemPrompt(
+  author: string,
+  title: string,
+  notes: string = "",
+) {
+  return `
 <context>
 specialization:
 - classical lit, poetry, and high art knowledge (foundation)
@@ -66,13 +70,13 @@ it must reflect the original structure/plot but sabotage all readability with a 
 
 <other notes>
 ${notes}
-</other notes>`.trim()
+</other notes>`.trim();
 }
 
 export function buildUserPrompt(author: string, title: string) {
-   return `
+  return `
 translate the full text of '${title}' by ${author} according to the meltdown-tier rules in the system prompt.
 output only the final translation, in all lowercase, preserving the original structure but saturating every line with an extreme, borderline incoherent stack of zoomer slang, random memes, meltdown exclamations, chaotic run-ons, keysmashes, and weird references.
 no intro or outro. just meltdown.
-`.trim()
+`.trim();
 }

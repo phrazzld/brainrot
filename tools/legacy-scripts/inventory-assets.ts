@@ -13,13 +13,13 @@
  *   --output=<path>           Output file path (default: stdout)
  *   --filter=images|text|all  Filter by asset type (default: all)
  */
-import { existsSync } from 'fs';
-import fs from 'fs/promises';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import { existsSync } from "fs";
+import fs from "fs/promises";
+import path from "path";
+import { fileURLToPath } from "url";
 
 // Import BlobPathService from the project
-import { blobPathService } from '../utils/services/BlobPathService.js';
+import { blobPathService } from "../utils/services/BlobPathService.js";
 
 // Utility to get this file's directory
 const __filename = fileURLToPath(import.meta.url);
@@ -54,12 +54,14 @@ interface AssetInventory {
 }
 
 // Configuration
-const ASSETS_DIR = path.resolve(__dirname, '../public/assets');
-const IMAGE_EXTENSIONS = ['.png', '.jpg', '.jpeg', '.gif', '.svg', '.webp'];
-const TEXT_EXTENSIONS = ['.txt', '.md'];
+const ASSETS_DIR = path.resolve(__dirname, "../public/assets");
+const IMAGE_EXTENSIONS = [".png", ".jpg", ".jpeg", ".gif", ".svg", ".webp"];
+const TEXT_EXTENSIONS = [".txt", ".md"];
 
 // Helper functions
-async function fileStats(filePath: string): Promise<{ size: number; lastModified: string }> {
+async function fileStats(
+  filePath: string,
+): Promise<{ size: number; lastModified: string }> {
   const stats = await fs.stat(filePath);
   return {
     size: stats.size,
@@ -67,22 +69,25 @@ async function fileStats(filePath: string): Promise<{ size: number; lastModified
   };
 }
 
-function getAssetType(filePath: string): 'image' | 'text' | 'other' {
+function getAssetType(filePath: string): "image" | "text" | "other" {
   const ext = path.extname(filePath).toLowerCase();
-  if (IMAGE_EXTENSIONS.includes(ext)) return 'image';
-  if (TEXT_EXTENSIONS.includes(ext)) return 'text';
-  return 'other';
+  if (IMAGE_EXTENSIONS.includes(ext)) return "image";
+  if (TEXT_EXTENSIONS.includes(ext)) return "text";
+  return "other";
 }
 
 function isBrainrotText(filePath: string): boolean {
-  return filePath.includes('/text/brainrot/');
+  return filePath.includes("/text/brainrot/");
 }
 
 function isSourceText(filePath: string): boolean {
-  return filePath.includes('/text/source/');
+  return filePath.includes("/text/source/");
 }
 
-async function scanDirectory(dir: string, basePath: string = ''): Promise<string[]> {
+async function scanDirectory(
+  dir: string,
+  basePath: string = "",
+): Promise<string[]> {
   const files: string[] = [];
   const entries = await fs.readdir(dir, { withFileTypes: true });
 
@@ -128,7 +133,7 @@ async function createAssetInventory(): Promise<AssetInventory> {
     const fullPath = path.join(ASSETS_DIR, relativePath);
     const assetType = getAssetType(fullPath);
 
-    if (assetType === 'other') continue; // Skip non-asset files
+    if (assetType === "other") continue; // Skip non-asset files
 
     // Get file stats
     const stats = await fileStats(fullPath);
@@ -148,7 +153,7 @@ async function createAssetInventory(): Promise<AssetInventory> {
     };
 
     // Special case for shared images
-    if (relativePath.startsWith('images/')) {
+    if (relativePath.startsWith("images/")) {
       inventory.sharedImages.count++;
       inventory.sharedImages.files.push(assetEntry);
       continue;
@@ -170,7 +175,7 @@ async function createAssetInventory(): Promise<AssetInventory> {
     }
 
     // Add file to appropriate category
-    if (assetType === 'image') {
+    if (assetType === "image") {
       inventory.books[bookSlug].images.count++;
       inventory.books[bookSlug].images.files.push(assetEntry);
     } else if (isBrainrotText(relativePath)) {
@@ -193,11 +198,13 @@ function formatJson(inventory: AssetInventory): string {
 }
 
 function formatCsv(inventory: AssetInventory): string {
-  const rows: string[] = ['path,blobPath,size,lastModified,book,type'];
+  const rows: string[] = ["path,blobPath,size,lastModified,book,type"];
 
   // Add shared images
   for (const file of inventory.sharedImages.files) {
-    rows.push(`${file.path},${file.blobPath},${file.size},${file.lastModified},shared,image`);
+    rows.push(
+      `${file.path},${file.blobPath},${file.size},${file.lastModified},shared,image`,
+    );
   }
 
   // Add book assets
@@ -224,24 +231,24 @@ function formatCsv(inventory: AssetInventory): string {
     }
   }
 
-  return rows.join('\n');
+  return rows.join("\n");
 }
 
 function formatMarkdown(inventory: AssetInventory): string {
   const lines: string[] = [
-    '# Asset Inventory',
-    '',
+    "# Asset Inventory",
+    "",
     `- **Total Assets:** ${inventory.totalAssets}`,
     `- **Total Size:** ${formatSize(inventory.totalSize)}`,
     `- **Generated At:** ${inventory.generatedAt}`,
-    '',
-    '## Book Assets',
-    '',
+    "",
+    "## Book Assets",
+    "",
   ];
 
   // Book summary table
-  lines.push('| Book | Images | Brainrot Text | Source Text | Total Size |');
-  lines.push('|------|--------|--------------|-------------|------------|');
+  lines.push("| Book | Images | Brainrot Text | Source Text | Total Size |");
+  lines.push("|------|--------|--------------|-------------|------------|");
 
   for (const [bookSlug, book] of Object.entries(inventory.books)) {
     lines.push(
@@ -249,61 +256,61 @@ function formatMarkdown(inventory: AssetInventory): string {
     );
   }
 
-  lines.push('');
-  lines.push('## Shared Images');
-  lines.push('');
+  lines.push("");
+  lines.push("## Shared Images");
+  lines.push("");
   lines.push(`- **Count:** ${inventory.sharedImages.count}`);
-  lines.push('');
+  lines.push("");
 
   // Detail sections for each book
   for (const [bookSlug, book] of Object.entries(inventory.books)) {
     lines.push(`## ${bookSlug} Details`);
-    lines.push('');
+    lines.push("");
 
     if (book.images.count > 0) {
-      lines.push('### Images');
-      lines.push('');
-      lines.push('| Current Path | Future Blob Path | Size | Last Modified |');
-      lines.push('|--------------|------------------|------|---------------|');
+      lines.push("### Images");
+      lines.push("");
+      lines.push("| Current Path | Future Blob Path | Size | Last Modified |");
+      lines.push("|--------------|------------------|------|---------------|");
 
       for (const file of book.images.files) {
         lines.push(
           `| ${file.path} | ${file.blobPath} | ${formatSize(file.size)} | ${formatDate(file.lastModified)} |`,
         );
       }
-      lines.push('');
+      lines.push("");
     }
 
     if (book.brainrotText.count > 0) {
-      lines.push('### Brainrot Text');
-      lines.push('');
-      lines.push('| Current Path | Future Blob Path | Size | Last Modified |');
-      lines.push('|--------------|------------------|------|---------------|');
+      lines.push("### Brainrot Text");
+      lines.push("");
+      lines.push("| Current Path | Future Blob Path | Size | Last Modified |");
+      lines.push("|--------------|------------------|------|---------------|");
 
       for (const file of book.brainrotText.files) {
         lines.push(
           `| ${file.path} | ${file.blobPath} | ${formatSize(file.size)} | ${formatDate(file.lastModified)} |`,
         );
       }
-      lines.push('');
+      lines.push("");
     }
 
     if (book.sourceText.count > 0) {
-      lines.push('### Source Text');
-      lines.push('');
-      lines.push('| Current Path | Future Blob Path | Size | Last Modified |');
-      lines.push('|--------------|------------------|------|---------------|');
+      lines.push("### Source Text");
+      lines.push("");
+      lines.push("| Current Path | Future Blob Path | Size | Last Modified |");
+      lines.push("|--------------|------------------|------|---------------|");
 
       for (const file of book.sourceText.files) {
         lines.push(
           `| ${file.path} | ${file.blobPath} | ${formatSize(file.size)} | ${formatDate(file.lastModified)} |`,
         );
       }
-      lines.push('');
+      lines.push("");
     }
   }
 
-  return lines.join('\n');
+  return lines.join("\n");
 }
 
 // Utility functions
@@ -314,26 +321,26 @@ function formatSize(bytes: number): string {
 }
 
 function formatDate(isoDate: string): string {
-  return new Date(isoDate).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
+  return new Date(isoDate).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
   });
 }
 
 // Parse command line arguments
 function parseArgs(): Record<string, string> {
   const args: Record<string, string> = {
-    format: 'json',
-    output: '',
-    filter: 'all',
+    format: "json",
+    output: "",
+    filter: "all",
   };
 
   for (let i = 2; i < process.argv.length; i++) {
     const arg = process.argv[i];
 
-    if (arg.startsWith('--')) {
-      const [key, value] = arg.slice(2).split('=');
+    if (arg.startsWith("--")) {
+      const [key, value] = arg.slice(2).split("=");
       if (value) args[key] = value;
     }
   }
@@ -346,20 +353,20 @@ async function main() {
   try {
     const args = parseArgs();
 
-    console.log('Scanning assets directory...');
+    console.log("Scanning assets directory...");
     const inventory = await createAssetInventory();
 
     // Determine output format
     let output: string;
     switch (args.format.toLowerCase()) {
-      case 'csv':
+      case "csv":
         output = formatCsv(inventory);
         break;
-      case 'md':
-      case 'markdown':
+      case "md":
+      case "markdown":
         output = formatMarkdown(inventory);
         break;
-      case 'json':
+      case "json":
       default:
         output = formatJson(inventory);
         break;
@@ -380,7 +387,7 @@ async function main() {
     console.error(`Books: ${Object.keys(inventory.books).length}`);
     console.error(`Shared images: ${inventory.sharedImages.count}`);
   } catch (error) {
-    console.error('Error creating asset inventory:', error);
+    console.error("Error creating asset inventory:", error);
     process.exit(1);
   }
 }

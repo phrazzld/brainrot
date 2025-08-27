@@ -4,16 +4,16 @@ on:
   push:
     branches: [main, master]
     paths:
-      - 'apps/web/**'
-      - 'packages/**'
-      - 'pnpm-lock.yaml'
-      - '.github/workflows/deploy-web.yml'
+      - "apps/web/**"
+      - "packages/**"
+      - "pnpm-lock.yaml"
+      - ".github/workflows/deploy-web.yml"
   workflow_dispatch:
     inputs:
       environment:
-        description: 'Environment to deploy to'
+        description: "Environment to deploy to"
         required: true
-        default: 'production'
+        default: "production"
         type: choice
         options:
           - production
@@ -30,7 +30,7 @@ jobs:
     name: Deploy to Vercel
     runs-on: ubuntu-latest
     timeout-minutes: 20
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -46,7 +46,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: 'pnpm'
+          cache: "pnpm"
 
       - name: Install Vercel CLI
         run: pnpm add -g vercel@latest
@@ -89,7 +89,7 @@ jobs:
           script: |
             const deploymentUrl = '${{ steps.deploy.outputs.DEPLOYMENT_URL }}';
             const environment = '${{ steps.deploy.outputs.ENVIRONMENT }}';
-            
+
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
@@ -113,7 +113,7 @@ jobs:
               auto_merge: false,
               production_environment: '${{ steps.deploy.outputs.ENVIRONMENT }}' === 'production'
             });
-            
+
             await github.rest.repos.createDeploymentStatus({
               owner: context.repo.owner,
               repo: context.repo.repo,

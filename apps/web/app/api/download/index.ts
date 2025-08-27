@@ -6,7 +6,11 @@
  */
 
 // Export main proxy service functions
-export { proxyAssetDownload, proxyFileDownload, createDownloadHeaders } from './services/ProxyService';
+export {
+  proxyAssetDownload,
+  proxyFileDownload,
+  createDownloadHeaders,
+} from './services/ProxyService';
 export type { ProxyAssetConfig } from './services/ProxyService';
 export type { ProxyFileConfig } from './fetching/legacyProxyService';
 

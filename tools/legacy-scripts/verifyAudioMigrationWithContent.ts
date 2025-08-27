@@ -4,16 +4,18 @@
  * This script verifies that audio files exist in Blob storage and checks
  * that they are proper audio files (not just 1KB placeholders).
  */
-import * as fs from 'fs';
-import * as path from 'path';
+import * as fs from "fs";
+import * as path from "path";
 
-import translations from '../translations/index.js';
-import { logger as rootLogger } from '../utils/logger.js';
-import { adaptTranslation } from '../utils/migration/TranslationAdapter.js';
-import { blobService } from '../utils/services/BlobService.js';
+import translations from "../translations/index.js";
+import { logger as rootLogger } from "../utils/logger.js";
+import { adaptTranslation } from "../utils/migration/TranslationAdapter.js";
+import { blobService } from "../utils/services/BlobService.js";
 
 // Create script-specific logger
-const logger = rootLogger.child({ script: 'verifyAudioMigrationWithContent.ts' });
+const logger = rootLogger.child({
+  script: "verifyAudioMigrationWithContent.ts",
+});
 
 // Define verification result interface
 interface VerificationResult {
@@ -31,13 +33,15 @@ interface VerificationResult {
  * Get the Blob URL for an audio file path
  */
 function getBlobUrlForAudioPath(audioPath: string, baseUrl?: string): string {
-  if (audioPath.startsWith('http')) {
+  if (audioPath.startsWith("http")) {
     // If it's already a full URL, use it directly
     return audioPath;
   }
 
   // Generate URL with the book path
-  const normalizedPath = audioPath.startsWith('/') ? audioPath.substring(1) : audioPath;
+  const normalizedPath = audioPath.startsWith("/")
+    ? audioPath.substring(1)
+    : audioPath;
 
   if (baseUrl) {
     return `${baseUrl}/${normalizedPath}`;
@@ -50,11 +54,14 @@ function getBlobUrlForAudioPath(audioPath: string, baseUrl?: string): string {
 /**
  * Check if an audio file is valid (sufficient size and correct content type)
  */
-function isValidAudioFile(fileInfo: { size: number; contentType?: string }): boolean {
+function isValidAudioFile(fileInfo: {
+  size: number;
+  contentType?: string;
+}): boolean {
   return (
     fileInfo.size > 10 * 1024 &&
-    (fileInfo.contentType?.startsWith('audio/') ||
-      fileInfo.contentType === 'application/octet-stream')
+    (fileInfo.contentType?.startsWith("audio/") ||
+      fileInfo.contentType === "application/octet-stream")
   );
 }
 
@@ -68,10 +75,10 @@ function handleMissingAudioPath(
   stats.failed++;
   return {
     bookSlug,
-    audioPath: '',
-    blobUrl: '',
+    audioPath: "",
+    blobUrl: "",
     exists: false,
-    error: 'No audio path provided',
+    error: "No audio path provided",
   };
 }
 
@@ -89,7 +96,7 @@ function processFileInfo(
 
   if (validAudio) {
     logger.info({
-      msg: 'Valid audio file exists',
+      msg: "Valid audio file exists",
       url: blobUrl,
       size: fileInfo.size,
       contentType: fileInfo.contentType,
@@ -98,7 +105,7 @@ function processFileInfo(
     stats.successful++;
   } else if (fileInfo.size > 0) {
     logger.warn({
-      msg: 'Placeholder audio file exists',
+      msg: "Placeholder audio file exists",
       url: blobUrl,
       size: fileInfo.size,
       contentType: fileInfo.contentType,
@@ -107,7 +114,7 @@ function processFileInfo(
     stats.successful++; // Count as successful but warn
   } else {
     logger.error({
-      msg: 'File exists but is empty',
+      msg: "File exists but is empty",
       url: blobUrl,
       bookSlug,
     });
@@ -153,7 +160,7 @@ async function verifyAudioFile(
   } catch (error: unknown) {
     const errorMessage = error instanceof Error ? error.message : String(error);
     logger.error({
-      msg: 'Audio file not found',
+      msg: "Audio file not found",
       path: audioPath,
       bookSlug,
       error: errorMessage,
@@ -164,7 +171,7 @@ async function verifyAudioFile(
     return {
       bookSlug,
       audioPath,
-      blobUrl: '',
+      blobUrl: "",
       exists: false,
       error: error instanceof Error ? error.message : String(error),
     };
@@ -184,7 +191,7 @@ async function verifyBookAudioFiles(
   },
 ): Promise<VerificationResult[]> {
   logger.info({
-    msg: 'Verifying audio files for book',
+    msg: "Verifying audio files for book",
     bookTitle: book.title,
     bookSlug: book.slug,
   });
@@ -205,7 +212,12 @@ async function verifyBookAudioFiles(
   for (const chapter of chaptersWithAudio) {
     if (!chapter.audioSrc) continue;
 
-    const result = await verifyAudioFile(chapter.audioSrc, book.slug, baseUrl, stats);
+    const result = await verifyAudioFile(
+      chapter.audioSrc,
+      book.slug,
+      baseUrl,
+      stats,
+    );
 
     results.push(result);
   }
@@ -228,14 +240,17 @@ function saveVerificationReport(reportData: {
   };
   results: VerificationResult[];
 }): string {
-  const reportDir = path.resolve(process.cwd(), 'reports');
+  const reportDir = path.resolve(process.cwd(), "reports");
   if (!fs.existsSync(reportDir)) {
     fs.mkdirSync(reportDir, { recursive: true });
   }
 
-  const reportPath = path.resolve(reportDir, `audio-verification-content-${Date.now()}.json`);
+  const reportPath = path.resolve(
+    reportDir,
+    `audio-verification-content-${Date.now()}.json`,
+  );
   fs.writeFileSync(reportPath, JSON.stringify(reportData, null, 2));
-  logger.info({ msg: 'Verification report saved', path: reportPath });
+  logger.info({ msg: "Verification report saved", path: reportPath });
 
   return reportPath;
 }
@@ -244,11 +259,13 @@ function saveVerificationReport(reportData: {
  * Main verification function
  */
 async function verifyAudioMigration(): Promise<void> {
-  logger.info({ msg: 'Starting audio migration verification with content checks' });
+  logger.info({
+    msg: "Starting audio migration verification with content checks",
+  });
 
   // Use the Blob base URL from environment
   const baseUrl = process.env.NEXT_PUBLIC_BLOB_BASE_URL;
-  logger.info({ msg: 'Using Blob base URL', baseUrl });
+  logger.info({ msg: "Using Blob base URL", baseUrl });
 
   const results: VerificationResult[] = [];
   const stats = { totalFiles: 0, successful: 0, failed: 0 };
@@ -262,7 +279,9 @@ async function verifyAudioMigration(): Promise<void> {
 
   // Calculate statistics
   const successRate =
-    stats.totalFiles > 0 ? ((stats.successful / stats.totalFiles) * 100).toFixed(1) + '%' : '0%';
+    stats.totalFiles > 0
+      ? ((stats.successful / stats.totalFiles) * 100).toFixed(1) + "%"
+      : "0%";
 
   const placeholderCount = results.filter(
     (r) => r.exists && r.fileSize && r.fileSize < 10 * 1024,
@@ -272,7 +291,7 @@ async function verifyAudioMigration(): Promise<void> {
 
   // Log summary
   logger.info({
-    msg: 'Audio Migration Verification Summary',
+    msg: "Audio Migration Verification Summary",
     summary: {
       totalFiles: stats.totalFiles,
       filesFound: stats.successful,
@@ -298,7 +317,7 @@ async function verifyAudioMigration(): Promise<void> {
   };
 
   saveVerificationReport(reportData);
-  logger.info({ msg: 'Audio migration verification complete' });
+  logger.info({ msg: "Audio migration verification complete" });
 }
 
 // Complete verification function
@@ -306,7 +325,7 @@ async function verifyAudioMigrationWithContent(): Promise<void> {
   try {
     await verifyAudioMigration();
   } catch (error) {
-    logger.error({ msg: 'Error in verification', error });
+    logger.error({ msg: "Error in verification", error });
     throw error;
   }
 }
@@ -314,7 +333,7 @@ async function verifyAudioMigrationWithContent(): Promise<void> {
 // Run the verification if this is the main module
 if (require.main === module) {
   verifyAudioMigrationWithContent().catch((error) => {
-    logger.error({ msg: 'Verification failed', error });
+    logger.error({ msg: "Verification failed", error });
     process.exit(1);
   });
 }

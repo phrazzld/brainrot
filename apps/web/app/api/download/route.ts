@@ -7,12 +7,12 @@ import { createRequestLogger } from '@/utils/logger';
 
 import { handleCriticalError, handleDownloadServiceError } from './errorHandlers';
 import { safeLog } from './logging/safeLogger';
-import { proxyAssetDownload } from './services/ProxyService';
 import { createDownloadService } from './serviceFactory';
-import { createRequestService, RequestMetadata } from './services/RequestService';
-import { createValidationService } from './services/ValidationService';
 import { createAssetService } from './services/AssetService';
+import { proxyAssetDownload } from './services/ProxyService';
+import { RequestMetadata, createRequestService } from './services/RequestService';
 import { createResponseService } from './services/ResponseService';
+import { createValidationService } from './services/ValidationService';
 
 /**
  * Download API route handler
@@ -62,23 +62,23 @@ type ValidationResult = {
 
 // Create service instances
 const requestService = createRequestService({
-  environment: process.env.NODE_ENV || 'development'
+  environment: process.env.NODE_ENV || 'development',
 });
 
 const validationService = createValidationService({
   logger: console,
   validTypes: ['full', 'chapter'],
-  maxChapter: 999
+  maxChapter: 999,
 });
 
 const assetService = createAssetService({
   logger: console,
-  blobBaseUrl: process.env.NEXT_PUBLIC_BLOB_BASE_URL
+  blobBaseUrl: process.env.NEXT_PUBLIC_BLOB_BASE_URL,
 });
 
 const responseService = createResponseService({
   logger: console,
-  includeStackTrace: process.env.NODE_ENV !== 'production'
+  includeStackTrace: process.env.NODE_ENV !== 'production',
 });
 
 /**
@@ -92,12 +92,12 @@ function initializeRequest(req: NextRequest): RequestContext {
   const log = requestService.createLogger(metadata.correlationId);
   const { searchParams } = new URL(req.url);
 
-  return { 
-    correlationId: metadata.correlationId, 
-    log, 
-    searchParams, 
+  return {
+    correlationId: metadata.correlationId,
+    log,
+    searchParams,
     headers: req.headers,
-    metadata 
+    metadata,
   };
 }
 
@@ -107,40 +107,46 @@ function initializeRequest(req: NextRequest): RequestContext {
  * @returns Validation result and error response if invalid
  */
 function validateRequest(context: RequestContext): ValidationResult {
-  const { searchParams, log, correlationId } = context;
-  
+  const { searchParams, correlationId } = context;
+
   // Extract parameters from URL search params
   const params = {
     slug: searchParams.get('slug') || undefined,
     type: searchParams.get('type') || undefined,
     chapter: searchParams.get('chapter') || undefined,
-    proxy: searchParams.get('proxy') || undefined
+    proxy: searchParams.get('proxy') || undefined,
   };
-  
+
   // Use ValidationService to validate
   const result = validationService.validateDownloadParams(params);
-  
+
   // Convert ValidationService result to route's expected format
   if (!result.success) {
     const errorMessage = result.errors?.[0]?.message || 'Validation failed';
     const status = result.errors?.[0]?.code?.includes('MISSING') ? 400 : 400;
-    
+
+    return {
+      valid: false,
+      errorResponse: NextResponse.json({ error: errorMessage, correlationId }, { status }),
+    };
+  }
+
+  // Return validated parameters
+  const validatedData = result.data;
+  if (!validatedData) {
     return {
       valid: false,
       errorResponse: NextResponse.json(
-        { error: errorMessage, correlationId },
-        { status }
-      )
+        { error: 'Validation failed', correlationId },
+        { status: 400 },
+      ),
     };
   }
-  
-  // Return validated parameters
-  const validatedData = result.data!;
   return {
     valid: true,
     slug: validatedData.slug,
     type: validatedData.type,
-    chapter: validatedData.chapter?.toString()
+    chapter: validatedData.chapter?.toString(),
   };
 }
 
@@ -252,7 +258,6 @@ function logProxyRequest(context: ProxyLogContext): void {
   });
 }
 
-
 // Import AssetService type if needed, or create a placeholder for it
 type AssetService = ReturnType<
   NonNullable<ReturnType<typeof createDownloadService>>['getAssetService']
@@ -325,7 +330,10 @@ async function handleProxyRequest(context: ProxyRequestContext): Promise<NextRes
     }
 
     // Generate asset name based on validation parameters
-    const { assetName, error } = assetService.generateAssetName(validation.type, validation.chapter);
+    const { assetName, error } = assetService.generateAssetName(
+      validation.type,
+      validation.chapter,
+    );
     if (error) {
       return NextResponse.json(
         {
@@ -385,7 +393,6 @@ async function handleProxyRequest(context: ProxyRequestContext): Promise<NextRes
   }
 }
 
-
 /**
  * Processes a valid download request
  *
@@ -423,9 +430,9 @@ async function processDownloadRequest(
     const { url, error: urlError } = await assetService.getDownloadUrl({
       slug: validatedSlug,
       type: validatedType,
-      chapter: validation.chapter ? parseInt(validation.chapter, 10) : undefined
+      chapter: validation.chapter ? parseInt(validation.chapter, 10) : undefined,
     });
-    
+
     if (urlError) {
       return NextResponse.json(
         {

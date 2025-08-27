@@ -3,14 +3,14 @@
  * Migration script to standardize text file names and paths
  * Copies text files from legacy locations to standardized Vercel Blob paths
  */
-import * as path from 'path';
-import { put } from '@vercel/blob';
-import { existsSync } from 'fs';
-import { readFile, readdir, writeFile } from 'fs/promises';
+import * as path from "path";
+import { put } from "@vercel/blob";
+import { existsSync } from "fs";
+import { readFile, readdir, writeFile } from "fs/promises";
 
-import { logger as defaultLogger } from '../utils/logger.js';
-import { AssetPathService } from '../utils/services/AssetPathService.js';
-import { BlobService } from '../utils/services/BlobService.js';
+import { logger as defaultLogger } from "../utils/logger.js";
+import { AssetPathService } from "../utils/services/AssetPathService.js";
+import { BlobService } from "../utils/services/BlobService.js";
 
 const { join, relative } = path;
 
@@ -25,7 +25,7 @@ interface MigrationOptions {
 interface MigrationResult {
   originalPath: string;
   standardizedPath: string;
-  status: 'UPLOADED' | 'SKIPPED_DRY_RUN' | 'SKIPPED_EXISTS' | 'FAILED';
+  status: "UPLOADED" | "SKIPPED_DRY_RUN" | "SKIPPED_EXISTS" | "FAILED";
   error?: string;
   fileSize?: number;
   timestamp: string;
@@ -54,9 +54,9 @@ class MigrationLog {
 
     try {
       await writeFile(this.logFile, JSON.stringify(logData, null, 2));
-      this.logger.info({ msg: 'Migration log saved', path: this.logFile });
+      this.logger.info({ msg: "Migration log saved", path: this.logFile });
     } catch (error) {
-      this.logger.error({ msg: 'Failed to save migration log', error });
+      this.logger.error({ msg: "Failed to save migration log", error });
     }
   }
 }
@@ -82,7 +82,7 @@ class TextFileMigrator {
 
   async migrate(): Promise<void> {
     this.logger.info({
-      msg: 'Starting text file standardization migration',
+      msg: "Starting text file standardization migration",
       dryRun: this.options.dryRun,
       books: this.options.books,
       force: this.options.force,
@@ -90,7 +90,7 @@ class TextFileMigrator {
 
     try {
       const files = await this.discoverTextFiles();
-      this.logger.info({ msg: 'Discovered text files', count: files.length });
+      this.logger.info({ msg: "Discovered text files", count: files.length });
 
       // Process files in batches for concurrency control
       const batches = this.createBatches(files, this.options.concurrency);
@@ -101,26 +101,26 @@ class TextFileMigrator {
 
       await this.generateReport();
     } catch (error) {
-      this.logger.error({ msg: 'Migration failed', error });
+      this.logger.error({ msg: "Migration failed", error });
       throw error;
     }
   }
 
   private async discoverTextFiles(): Promise<string[]> {
     const files: string[] = [];
-    const publicPath = join(process.cwd(), 'public');
+    const publicPath = join(process.cwd(), "public");
 
     if (this.options.books && this.options.books.length > 0) {
       // Process specific books only
       for (const book of this.options.books) {
-        const bookPath = join(publicPath, 'assets', book);
+        const bookPath = join(publicPath, "assets", book);
         if (existsSync(bookPath)) {
           await this.scanDirectory(bookPath, files);
         }
       }
     } else {
       // Process all books
-      const assetsPath = join(publicPath, 'assets');
+      const assetsPath = join(publicPath, "assets");
       if (existsSync(assetsPath)) {
         await this.scanDirectory(assetsPath, files);
       }
@@ -128,7 +128,9 @@ class TextFileMigrator {
 
     // Filter to only .txt files in text directories
     return files.filter(
-      (file) => file.endsWith('.txt') && (file.includes('/text/') || file.includes('/brainrot/')),
+      (file) =>
+        file.endsWith(".txt") &&
+        (file.includes("/text/") || file.includes("/brainrot/")),
     );
   }
 
@@ -161,7 +163,7 @@ class TextFileMigrator {
 
     try {
       // Convert local path to app path
-      const publicPath = join(process.cwd(), 'public');
+      const publicPath = join(process.cwd(), "public");
       const relativePath = relative(publicPath, localPath);
       const appPath = `/${relativePath}`;
 
@@ -169,7 +171,7 @@ class TextFileMigrator {
       const standardizedPath = this.assetPathService.convertLegacyPath(appPath);
 
       this.logger.info({
-        msg: 'Processing file',
+        msg: "Processing file",
         localPath,
         appPath,
         standardizedPath,
@@ -184,11 +186,11 @@ class TextFileMigrator {
             this.results.push({
               originalPath: appPath,
               standardizedPath,
-              status: 'SKIPPED_EXISTS',
+              status: "SKIPPED_EXISTS",
               timestamp,
             });
             this.logger.info({
-              msg: 'File already exists in blob storage, skipping',
+              msg: "File already exists in blob storage, skipping",
               standardizedPath,
             });
             return;
@@ -196,7 +198,7 @@ class TextFileMigrator {
         } catch (error) {
           // If error checking existence, continue with upload
           this.logger.warn({
-            msg: 'Error checking file existence, proceeding with upload',
+            msg: "Error checking file existence, proceeding with upload",
             standardizedPath,
             error,
           });
@@ -207,54 +209,55 @@ class TextFileMigrator {
         this.results.push({
           originalPath: appPath,
           standardizedPath,
-          status: 'SKIPPED_DRY_RUN',
+          status: "SKIPPED_DRY_RUN",
           timestamp,
         });
         this.logger.info({
-          msg: 'Dry run - would upload file',
+          msg: "Dry run - would upload file",
           standardizedPath,
         });
         return;
       }
 
       // Read file content
-      const content = await readFile(localPath, 'utf-8');
-      const fileSize = Buffer.byteLength(content, 'utf-8');
+      const content = await readFile(localPath, "utf-8");
+      const fileSize = Buffer.byteLength(content, "utf-8");
 
       // Upload to Vercel Blob
       const blob = await put(standardizedPath, content, {
-        access: 'public',
+        access: "public",
         cacheControlMaxAge: 31536000, // 1 year
-        contentType: 'text/plain; charset=utf-8',
+        contentType: "text/plain; charset=utf-8",
       });
 
       this.results.push({
         originalPath: appPath,
         standardizedPath,
-        status: 'UPLOADED',
+        status: "UPLOADED",
         fileSize,
         timestamp,
       });
 
       this.logger.info({
-        msg: 'Successfully uploaded file',
+        msg: "Successfully uploaded file",
         standardizedPath,
         blobUrl: blob.url,
         fileSize,
       });
     } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : String(error);
+      const errorMessage =
+        error instanceof Error ? error.message : String(error);
 
       this.results.push({
         originalPath: localPath,
-        standardizedPath: 'ERROR',
-        status: 'FAILED',
+        standardizedPath: "ERROR",
+        status: "FAILED",
         error: errorMessage,
         timestamp,
       });
 
       this.logger.error({
-        msg: 'Failed to process file',
+        msg: "Failed to process file",
         localPath,
         error: errorMessage,
       });
@@ -267,17 +270,20 @@ class TextFileMigrator {
       options: this.options,
       summary: {
         total: this.results.length,
-        uploaded: this.results.filter((r) => r.status === 'UPLOADED').length,
-        skippedExists: this.results.filter((r) => r.status === 'SKIPPED_EXISTS').length,
-        skippedDryRun: this.results.filter((r) => r.status === 'SKIPPED_DRY_RUN').length,
-        failed: this.results.filter((r) => r.status === 'FAILED').length,
+        uploaded: this.results.filter((r) => r.status === "UPLOADED").length,
+        skippedExists: this.results.filter((r) => r.status === "SKIPPED_EXISTS")
+          .length,
+        skippedDryRun: this.results.filter(
+          (r) => r.status === "SKIPPED_DRY_RUN",
+        ).length,
+        failed: this.results.filter((r) => r.status === "FAILED").length,
       },
       results: this.results,
     };
 
     // Log summary
     this.logger.info({
-      msg: 'Migration complete',
+      msg: "Migration complete",
       summary: report.summary,
     });
 
@@ -285,7 +291,7 @@ class TextFileMigrator {
     if (this.options.logFile) {
       const migrationLog = new MigrationLog(
         this.options.logFile,
-        'text-standardization',
+        "text-standardization",
         this.logger,
       );
 
@@ -311,11 +317,11 @@ function parseArgs(): MigrationOptions {
   for (let i = 0; i < args.length; i++) {
     const arg = args[i];
 
-    if (arg === '--dry-run') {
+    if (arg === "--dry-run") {
       options.dryRun = true;
-    } else if (arg === '--force') {
+    } else if (arg === "--force") {
       options.force = true;
-    } else if (arg === '--help') {
+    } else if (arg === "--help") {
       // Using console.error as it's allowed by eslint config
       console.error(`
 Text File Standardization Migration Script
@@ -336,17 +342,20 @@ Examples:
   npm run standardize:text -- --force --concurrency=10 --log-file=migration.log
       `);
       process.exit(0);
-    } else if (arg.startsWith('--books=')) {
-      options.books = arg.substring('--books='.length).split(',');
-    } else if (arg.startsWith('--concurrency=')) {
-      options.concurrency = parseInt(arg.substring('--concurrency='.length), 10);
-    } else if (arg.startsWith('--log-file=')) {
-      options.logFile = arg.substring('--log-file='.length);
-    } else if (arg === '--books' && i + 1 < args.length) {
-      options.books = args[++i].split(',');
-    } else if (arg === '--concurrency' && i + 1 < args.length) {
+    } else if (arg.startsWith("--books=")) {
+      options.books = arg.substring("--books=".length).split(",");
+    } else if (arg.startsWith("--concurrency=")) {
+      options.concurrency = parseInt(
+        arg.substring("--concurrency=".length),
+        10,
+      );
+    } else if (arg.startsWith("--log-file=")) {
+      options.logFile = arg.substring("--log-file=".length);
+    } else if (arg === "--books" && i + 1 < args.length) {
+      options.books = args[++i].split(",");
+    } else if (arg === "--concurrency" && i + 1 < args.length) {
       options.concurrency = parseInt(args[++i], 10);
-    } else if (arg === '--log-file' && i + 1 < args.length) {
+    } else if (arg === "--log-file" && i + 1 < args.length) {
       options.logFile = args[++i];
     } else {
       console.error(`Unknown argument: ${arg}`);
@@ -365,13 +374,18 @@ async function main() {
   const blobService = new BlobService();
   const logger = defaultLogger;
 
-  const migrator = new TextFileMigrator(assetPathService, blobService, logger, options);
+  const migrator = new TextFileMigrator(
+    assetPathService,
+    blobService,
+    logger,
+    options,
+  );
 
   try {
     await migrator.migrate();
     process.exit(0);
   } catch (error) {
-    logger.error({ msg: 'Migration failed', error });
+    logger.error({ msg: "Migration failed", error });
     process.exit(1);
   }
 }
@@ -379,7 +393,7 @@ async function main() {
 // Run if executed directly
 if (import.meta.url === `file://${process.argv[1]}`) {
   main().catch((error) => {
-    console.error('Fatal error:', error);
+    console.error("Fatal error:", error);
     process.exit(1);
   });
 }

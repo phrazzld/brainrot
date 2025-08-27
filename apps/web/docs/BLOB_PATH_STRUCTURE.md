@@ -59,14 +59,12 @@ blob:/
 ## Path Generation Rules
 
 1. **Book Assets**: `books/[book-slug]/[type]/[filename]`
-
    - Images: `books/hamlet/images/hamlet-01.png`
    - Brainrot Text: `books/hamlet/text/brainrot/act-i.txt`
    - Source Text: `books/hamlet/text/source/hamlet-source.txt`
    - Audio: `books/hamlet/audio/act-i.mp3` (future)
 
 2. **Shared Assets**: `images/[filename]`
-
    - General images: `images/inferno-01.png`
 
 3. **UI Assets**: `site-assets/[filename]`
@@ -139,7 +137,6 @@ export const blobPathService = new BlobPathService();
 When migrating assets to the new Blob structure:
 
 1. **Path Mapping**: Create a mapping function that converts current paths to Blob paths:
-
    - `/assets/hamlet/images/hamlet-01.png` → `books/hamlet/images/hamlet-01.png`
    - `/assets/hamlet/text/brainrot/act-i.txt` → `books/hamlet/text/brainrot/act-i.txt`
 

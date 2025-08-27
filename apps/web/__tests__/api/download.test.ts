@@ -1,7 +1,6 @@
-
-
-import { vi, describe, it, test, expect, beforeAll, beforeEach, afterAll, afterEach } from 'vitest';
 import { NextRequest } from 'next/server';
+
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, test, vi } from 'vitest';
 
 import { GET } from '@/app/api/download/route';
 import { AssetError, AssetErrorType } from '@/types/assets';
@@ -103,9 +102,7 @@ describe('Download API Route', () => {
       url: `https://example.com/api/download${query ? `?${query}` : ''}`,
       method: 'GET',
       headers: {
-        get: vi
-          .fn()
-          .mockImplementation((key) => (key === 'user-agent' ? 'test-user-agent' : null)),
+        get: vi.fn().mockImplementation((key) => (key === 'user-agent' ? 'test-user-agent' : null)),
         forEach: vi.fn(),
       },
     };

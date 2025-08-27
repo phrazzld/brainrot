@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+
 import { fetchBookText } from '@/utils/simple-blob.js';
 
 interface TextLoaderState {

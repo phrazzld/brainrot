@@ -1,6 +1,5 @@
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, test, vi } from 'vitest';
 
-
-import { vi, describe, it, test, expect, beforeAll, beforeEach, afterAll, afterEach } from 'vitest';
 import {
   assetExistsInBlobStorage,
   clearBlobUrlCache,
@@ -52,7 +51,9 @@ describe('Fallback mechanism', () => {
 
     it('should return legacy path when asset does not exist in Blob storage', async () => {
       // Mock asset doesn't exist in Blob
-      (blobService.getFileInfo as ReturnType<typeof vi.fn>).mockRejectedValueOnce(new Error('Not found'));
+      (blobService.getFileInfo as ReturnType<typeof vi.fn>).mockRejectedValueOnce(
+        new Error('Not found'),
+      );
 
       const legacyPath = '/assets/hamlet/images/not-migrated.png';
       const result = await getAssetUrlWithFallback(legacyPath);
@@ -81,7 +82,9 @@ describe('Fallback mechanism', () => {
 
     it('should handle errors and fall back to local path', async () => {
       // Mock a network error
-      (blobService.getFileInfo as ReturnType<typeof vi.fn>).mockRejectedValueOnce(new Error('Network error'));
+      (blobService.getFileInfo as ReturnType<typeof vi.fn>).mockRejectedValueOnce(
+        new Error('Network error'),
+      );
 
       const legacyPath = '/assets/hamlet/images/hamlet-01.png';
       const result = await getAssetUrlWithFallback(legacyPath);
@@ -93,7 +96,9 @@ describe('Fallback mechanism', () => {
   describe('fetchTextWithFallback', () => {
     it('should fetch from Blob storage when successful', async () => {
       // Mock successful fetch from Blob
-      (blobService.fetchText as ReturnType<typeof vi.fn>).mockResolvedValueOnce('Text content from Blob');
+      (blobService.fetchText as ReturnType<typeof vi.fn>).mockResolvedValueOnce(
+        'Text content from Blob',
+      );
 
       const legacyPath = '/assets/hamlet/text/brainrot/chapter-1.txt';
       const result = await fetchTextWithFallback(legacyPath);
@@ -105,7 +110,9 @@ describe('Fallback mechanism', () => {
 
     it('should fall back to local path when Blob fetch fails', async () => {
       // Mock Blob fetch failure
-      (blobService.fetchText as ReturnType<typeof vi.fn>).mockRejectedValueOnce(new Error('Blob fetch failed'));
+      (blobService.fetchText as ReturnType<typeof vi.fn>).mockRejectedValueOnce(
+        new Error('Blob fetch failed'),
+      );
 
       // Mock successful fetch from local path
       mockFetch.mockResolvedValueOnce({
@@ -123,7 +130,9 @@ describe('Fallback mechanism', () => {
 
     it('should throw error when both fetches fail', async () => {
       // Mock Blob fetch failure
-      (blobService.fetchText as ReturnType<typeof vi.fn>).mockRejectedValueOnce(new Error('Blob fetch failed'));
+      (blobService.fetchText as ReturnType<typeof vi.fn>).mockRejectedValueOnce(
+        new Error('Blob fetch failed'),
+      );
 
       // Mock local fetch failure
       mockFetch.mockResolvedValueOnce({
@@ -181,17 +190,19 @@ describe('Fallback mechanism', () => {
   describe('Audio URL handling', () => {
     it('should properly handle audio URLs with the standard format', async () => {
       // Mock the blobPathService.convertLegacyPath function for audio paths
-      (blobPathService.convertLegacyPath as ReturnType<typeof vi.fn>).mockImplementationOnce((path) => {
-        if (path.match(/^\/[^/]+\/audio\//)) {
-          // Convert audio path format
-          const audioMatch = path.match(/^\/([^/]+)\/audio\/(.+)$/);
-          if (audioMatch) {
-            const [, bookSlug, filename] = audioMatch;
-            return `books/${bookSlug}/audio/${filename}`;
+      (blobPathService.convertLegacyPath as ReturnType<typeof vi.fn>).mockImplementationOnce(
+        (path) => {
+          if (path.match(/^\/[^/]+\/audio\//)) {
+            // Convert audio path format
+            const audioMatch = path.match(/^\/([^/]+)\/audio\/(.+)$/);
+            if (audioMatch) {
+              const [, bookSlug, filename] = audioMatch;
+              return `books/${bookSlug}/audio/${filename}`;
+            }
           }
-        }
-        return path.replace(/^\//, '');
-      });
+          return path.replace(/^\//, '');
+        },
+      );
 
       // Mock asset exists in Blob
       (blobService.getFileInfo as ReturnType<typeof vi.fn>).mockResolvedValueOnce({

@@ -4,7 +4,8 @@
  * No fallbacks, no caching, no legacy paths - just works
  */
 
-const BASE_URL = process.env.NEXT_PUBLIC_BLOB_BASE_URL || 
+const BASE_URL =
+  process.env.NEXT_PUBLIC_BLOB_BASE_URL ||
   'https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com';
 
 /**
@@ -22,10 +23,10 @@ export function getBlobUrl(bookSlug: string, filename: string): string {
 export async function fetchBookText(bookSlug: string, filename: string): Promise<string> {
   const url = getBlobUrl(bookSlug, filename);
   const response = await fetch(url);
-  
+
   if (!response.ok) {
     throw new Error(`Failed to load ${bookSlug}/${filename}: ${response.status}`);
   }
-  
+
   return response.text();
 }

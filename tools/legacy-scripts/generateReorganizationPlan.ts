@@ -5,14 +5,14 @@
  * reorganization plan with specific commands to standardize
  * all asset paths in Vercel Blob.
  */
-import { execSync } from 'child_process';
-import fs from 'fs';
-import path from 'path';
+import { execSync } from "child_process";
+import fs from "fs";
+import path from "path";
 
-import logger, { createRequestLogger } from '../utils/logger.js';
+import logger, { createRequestLogger } from "../utils/logger.js";
 
 // Configure logger for the reorganization planning process
-const _planLogger = createRequestLogger('reorg-plan');
+const _planLogger = createRequestLogger("reorg-plan");
 
 // Type definitions for report collections and metrics
 interface ReportCollection {
@@ -50,7 +50,7 @@ interface PlanOptions {
 function parseArgs(): PlanOptions {
   const args = process.argv.slice(2);
   const options: PlanOptions = {
-    outputDir: './asset-reorganization-plan',
+    outputDir: "./asset-reorganization-plan",
     verbose: false,
     runAudits: true,
   };
@@ -59,20 +59,20 @@ function parseArgs(): PlanOptions {
     const arg = args[i];
 
     switch (arg) {
-      case '--output':
-      case '-o':
+      case "--output":
+      case "-o":
         options.outputDir = args[++i];
         break;
-      case '--verbose':
-      case '-v':
+      case "--verbose":
+      case "-v":
         options.verbose = true;
         break;
-      case '--skip-audits':
-      case '-s':
+      case "--skip-audits":
+      case "-s":
         options.runAudits = false;
         break;
-      case '--help':
-      case '-h':
+      case "--help":
+      case "-h":
         printHelp();
         process.exit(0);
         break;
@@ -119,24 +119,30 @@ function createOutputDirectory(dirPath: string): void {
  * Run all asset audit tools
  */
 async function runAuditTools(verbose: boolean): Promise<void> {
-  logger.info({ message: 'Running asset audit tools...' });
+  logger.info({ message: "Running asset audit tools..." });
 
-  const verboseFlag = verbose ? ' --verbose' : '';
+  const verboseFlag = verbose ? " --verbose" : "";
 
   try {
-    logger.info({ message: 'Running text asset audit...' });
-    execSync(`npx tsx scripts/auditTextAssets.ts${verboseFlag}`, { stdio: 'inherit' });
+    logger.info({ message: "Running text asset audit..." });
+    execSync(`npx tsx scripts/auditTextAssets.ts${verboseFlag}`, {
+      stdio: "inherit",
+    });
 
-    logger.info({ message: 'Running image asset audit...' });
-    execSync(`npx tsx scripts/auditImageAssets.ts${verboseFlag}`, { stdio: 'inherit' });
+    logger.info({ message: "Running image asset audit..." });
+    execSync(`npx tsx scripts/auditImageAssets.ts${verboseFlag}`, {
+      stdio: "inherit",
+    });
 
-    logger.info({ message: 'Running audio asset audit...' });
-    execSync(`npx tsx scripts/auditAudioAssets.ts${verboseFlag}`, { stdio: 'inherit' });
+    logger.info({ message: "Running audio asset audit..." });
+    execSync(`npx tsx scripts/auditAudioAssets.ts${verboseFlag}`, {
+      stdio: "inherit",
+    });
 
-    logger.info({ message: 'All audit tools completed successfully' });
+    logger.info({ message: "All audit tools completed successfully" });
   } catch (error) {
-    logger.error({ message: 'Error running audit tools', error });
-    throw new Error('Failed to run audit tools');
+    logger.error({ message: "Error running audit tools", error });
+    throw new Error("Failed to run audit tools");
   }
 }
 
@@ -162,19 +168,30 @@ function readAuditReports(): {
 } {
   try {
     const textReport = JSON.parse(
-      fs.readFileSync(path.join('./text-assets-audit', 'text-assets-audit.json'), 'utf8'),
+      fs.readFileSync(
+        path.join("./text-assets-audit", "text-assets-audit.json"),
+        "utf8",
+      ),
     ) as AuditReport;
     const imageReport = JSON.parse(
-      fs.readFileSync(path.join('./image-assets-audit', 'image-assets-audit.json'), 'utf8'),
+      fs.readFileSync(
+        path.join("./image-assets-audit", "image-assets-audit.json"),
+        "utf8",
+      ),
     ) as AuditReport;
     const audioReport = JSON.parse(
-      fs.readFileSync(path.join('./audio-assets-audit', 'audio-assets-audit.json'), 'utf8'),
+      fs.readFileSync(
+        path.join("./audio-assets-audit", "audio-assets-audit.json"),
+        "utf8",
+      ),
     ) as AuditReport;
 
     return { text: textReport, image: imageReport, audio: audioReport };
   } catch (error) {
-    logger.error({ message: 'Error reading audit reports', error });
-    throw new Error('Failed to read audit reports, please run audit tools first');
+    logger.error({ message: "Error reading audit reports", error });
+    throw new Error(
+      "Failed to read audit reports, please run audit tools first",
+    );
   }
 }
 
@@ -197,13 +214,18 @@ function calculateAssetMetrics(reports: ReportCollection): AssetMetrics {
   const nonStandardizedAudioAssets = reports.audio.nonStandardizedAssets;
 
   // Calculate derived metrics
-  const totalSpecificAssets = totalTextAssets + totalImageAssets + totalAudioAssets;
+  const totalSpecificAssets =
+    totalTextAssets + totalImageAssets + totalAudioAssets;
   const totalStandardizedAssets =
     standardizedTextAssets + standardizedImageAssets + standardizedAudioAssets;
   const totalNonStandardizedAssets =
-    nonStandardizedTextAssets + nonStandardizedImageAssets + nonStandardizedAudioAssets;
+    nonStandardizedTextAssets +
+    nonStandardizedImageAssets +
+    nonStandardizedAudioAssets;
   const overallStandardizationRate =
-    totalSpecificAssets > 0 ? Math.round((totalStandardizedAssets / totalSpecificAssets) * 100) : 0;
+    totalSpecificAssets > 0
+      ? Math.round((totalStandardizedAssets / totalSpecificAssets) * 100)
+      : 0;
 
   return {
     totalAssets,
@@ -226,8 +248,11 @@ function calculateAssetMetrics(reports: ReportCollection): AssetMetrics {
 /**
  * Create a standardized command for the reorganization blob tool
  */
-function createReorganizationCommand(prefix: string, verbose: boolean = false): string {
-  return `npm run reorganize:blob -- --prefix="${prefix}"${verbose ? ' --verbose' : ''}`;
+function createReorganizationCommand(
+  prefix: string,
+  verbose: boolean = false,
+): string {
+  return `npm run reorganize:blob -- --prefix="${prefix}"${verbose ? " --verbose" : ""}`;
 }
 
 /**
@@ -237,14 +262,14 @@ function generateTextAssetCommands(report: AuditReport): string[] {
   const commands: string[] = [];
 
   if (report.nonStandardizedAssets > 0) {
-    commands.push(createReorganizationCommand('assets/text'));
+    commands.push(createReorganizationCommand("assets/text"));
 
     // Add specific commands for any legacy patterns found
     for (const path of report.pathIssues.nonStandardPath) {
-      if (path.includes('/books/') && path.includes('/text/')) {
-        commands.push(createReorganizationCommand('books'));
+      if (path.includes("/books/") && path.includes("/text/")) {
+        commands.push(createReorganizationCommand("books"));
       } else if (path.match(/^[^/]+\/text\//)) {
-        commands.push(createReorganizationCommand('text'));
+        commands.push(createReorganizationCommand("text"));
       }
     }
   }
@@ -259,18 +284,18 @@ function generateImageAssetCommands(report: AuditReport): string[] {
   const commands: string[] = [];
 
   if (report.nonStandardizedAssets > 0) {
-    commands.push(createReorganizationCommand('assets/image'));
-    commands.push(createReorganizationCommand('assets/shared'));
-    commands.push(createReorganizationCommand('assets/site'));
+    commands.push(createReorganizationCommand("assets/image"));
+    commands.push(createReorganizationCommand("assets/shared"));
+    commands.push(createReorganizationCommand("assets/site"));
 
     // Add specific commands for any legacy patterns found
     for (const path of report.pathIssues.nonStandardPath) {
-      if (path.includes('/images/')) {
-        commands.push(createReorganizationCommand('images'));
-      } else if (path.includes('/site-assets/')) {
-        commands.push(createReorganizationCommand('site-assets'));
-      } else if (path.includes('/books/')) {
-        commands.push(createReorganizationCommand('books'));
+      if (path.includes("/images/")) {
+        commands.push(createReorganizationCommand("images"));
+      } else if (path.includes("/site-assets/")) {
+        commands.push(createReorganizationCommand("site-assets"));
+      } else if (path.includes("/books/")) {
+        commands.push(createReorganizationCommand("books"));
       }
     }
   }
@@ -285,14 +310,14 @@ function generateAudioAssetCommands(report: AuditReport): string[] {
   const commands: string[] = [];
 
   if (report.nonStandardizedAssets > 0) {
-    commands.push(createReorganizationCommand('assets/audio'));
+    commands.push(createReorganizationCommand("assets/audio"));
 
     // Add specific commands for any legacy patterns found
     for (const path of report.pathIssues.nonStandardPath) {
       if (path.match(/^[^/]+\/audio\//)) {
-        commands.push(createReorganizationCommand('audio'));
-      } else if (path.includes('/books/') && path.includes('/audio/')) {
-        commands.push(createReorganizationCommand('books'));
+        commands.push(createReorganizationCommand("audio"));
+      } else if (path.includes("/books/") && path.includes("/audio/")) {
+        commands.push(createReorganizationCommand("books"));
       }
     }
   }
@@ -303,7 +328,9 @@ function generateAudioAssetCommands(report: AuditReport): string[] {
 /**
  * Combine all asset commands and remove duplicates
  */
-function generateAllReorganizationCommands(reports: ReportCollection): string[] {
+function generateAllReorganizationCommands(
+  reports: ReportCollection,
+): string[] {
   const textCommands = generateTextAssetCommands(reports.text);
   const imageCommands = generateImageAssetCommands(reports.image);
   const audioCommands = generateAudioAssetCommands(reports.audio);
@@ -317,7 +344,10 @@ function generateAllReorganizationCommands(reports: ReportCollection): string[] 
 /**
  * Create the summary section of the plan
  */
-function createPlanSummary(metrics: AssetMetrics, reports: ReportCollection): string {
+function createPlanSummary(
+  metrics: AssetMetrics,
+  reports: ReportCollection,
+): string {
   return `
 ## Summary
 
@@ -340,10 +370,10 @@ The following commands should be run in order to standardize all asset paths:
 
 \`\`\`bash
 # First, run in dry-run mode to preview changes (recommended)
-${commands.map((cmd) => `${cmd} --dry-run`).join('\n')}
+${commands.map((cmd) => `${cmd} --dry-run`).join("\n")}
 
 # Then run the actual reorganization commands
-${commands.join('\n')}
+${commands.join("\n")}
 \`\`\``;
 }
 
@@ -377,7 +407,10 @@ Detailed audit reports are available at:
 /**
  * Generate reorganization plan
  */
-function generateReorganizationPlan(reports: ReportCollection, _options: PlanOptions): string {
+function generateReorganizationPlan(
+  reports: ReportCollection,
+  _options: PlanOptions,
+): string {
   // Calculate metrics
   const metrics = calculateAssetMetrics(reports);
 
@@ -417,7 +450,7 @@ async function main(): Promise<void> {
     // Set log level if in server environment
     // We can't directly set the log level with our custom logger interface
 
-    logger.info({ message: 'Asset Reorganization Plan Generator' });
+    logger.info({ message: "Asset Reorganization Plan Generator" });
 
     // Create output directory
     createOutputDirectory(options.outputDir);
@@ -426,7 +459,7 @@ async function main(): Promise<void> {
     if (options.runAudits) {
       await runAuditTools(options.verbose);
     } else {
-      logger.info({ message: 'Skipping audit tools, using existing reports' });
+      logger.info({ message: "Skipping audit tools, using existing reports" });
     }
 
     // Read audit reports
@@ -436,7 +469,7 @@ async function main(): Promise<void> {
     const plan = generateReorganizationPlan(reports, options);
 
     // Save plan to file
-    const planPath = path.join(options.outputDir, 'reorganization-plan.md');
+    const planPath = path.join(options.outputDir, "reorganization-plan.md");
     saveReport(planPath, plan);
 
     logger.info({
@@ -447,7 +480,7 @@ Open the plan at: ${planPath}
     `,
     });
   } catch (error) {
-    logger.error({ message: 'Error generating reorganization plan', error });
+    logger.error({ message: "Error generating reorganization plan", error });
     process.exit(1);
   }
 }

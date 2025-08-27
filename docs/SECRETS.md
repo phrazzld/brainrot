@@ -7,33 +7,39 @@ This document outlines the procedures for managing, rotating, and securing sensi
 ## Secret Categories
 
 ### Critical Secrets (Rotate Monthly)
+
 - `BLOB_READ_WRITE_TOKEN` - Vercel Blob storage access
 - `KDP_PASSWORD` - Amazon KDP account access
 - `LULU_API_SECRET` - Lulu publishing API
 
 ### Important Secrets (Rotate Quarterly)
+
 - `VERCEL_TOKEN` - Deployment automation
 - `OPENAI_API_KEY` - AI translation services
 - `ANTHROPIC_API_KEY` - AI translation services
 - `SENTRY_DSN` - Error tracking
 
 ### Low Risk (Rotate Annually)
+
 - `SLACK_WEBHOOK_URL` - Notifications only
 - `DISCORD_WEBHOOK_URL` - Notifications only
 
 ## Storage Locations
 
 ### Local Development
+
 - **File**: `.env.local` (git ignored)
 - **Never commit**: Real values to version control
 - **Template**: Use `.env.example` as reference
 
 ### CI/CD Pipeline
+
 - **Location**: GitHub Actions Secrets
 - **Access**: Repository settings → Secrets and variables → Actions
 - **Naming**: Use exact variable names from `.env.example`
 
 ### Production
+
 - **Location**: Vercel Environment Variables
 - **Access**: Vercel Dashboard → Settings → Environment Variables
 - **Scopes**: Production, Preview, Development
@@ -117,6 +123,7 @@ node dist/index.js kdp check --dry-run
 ## Security Best Practices
 
 ### Do's
+
 - ✅ Use strong, unique passwords for each service
 - ✅ Enable 2FA where available (GitHub, Vercel, Amazon)
 - ✅ Rotate credentials immediately if exposed
@@ -126,6 +133,7 @@ node dist/index.js kdp check --dry-run
 - ✅ Store passwords in password managers or keychains
 
 ### Don'ts
+
 - ❌ Share credentials via email or chat
 - ❌ Commit secrets to version control
 - ❌ Use the same password across services
@@ -138,6 +146,7 @@ node dist/index.js kdp check --dry-run
 ### If a Secret is Exposed
 
 1. **Immediate Actions** (Within 5 minutes)
+
    ```bash
    # Rotate the exposed credential immediately
    # Follow service-specific rotation procedure above
@@ -239,17 +248,20 @@ echo "✅ All required variables are set"
 ## Monitoring & Alerts
 
 ### API Usage Monitoring
+
 - Vercel: Dashboard → Usage → API Requests
 - Lulu: Developer Console → Analytics
 - OpenAI: Usage → Activity
 - Monitor for unusual spikes or patterns
 
 ### Access Logs
+
 - GitHub: Settings → Security log
 - Vercel: Team Settings → Audit Log
 - Review weekly for unauthorized access
 
 ### Cost Alerts
+
 - Set up billing alerts for all paid services
 - Vercel: Settings → Billing → Usage Alerts
 - OpenAI: Usage → Limits
@@ -258,17 +270,20 @@ echo "✅ All required variables are set"
 ## Regular Audits
 
 ### Weekly
+
 - [ ] Review GitHub Actions run logs
 - [ ] Check Vercel deployment logs
 - [ ] Monitor API usage dashboards
 
 ### Monthly
+
 - [ ] Rotate critical secrets
 - [ ] Review access permissions
 - [ ] Audit third-party integrations
 - [ ] Update this documentation
 
 ### Quarterly
+
 - [ ] Rotate important secrets
 - [ ] Security training reminder
 - [ ] Review and update procedures
@@ -277,12 +292,14 @@ echo "✅ All required variables are set"
 ## Contact Information
 
 ### Service Support Contacts
+
 - **Vercel Support**: support@vercel.com
 - **GitHub Security**: https://github.com/security
 - **Lulu Support**: https://developers.lulu.com/support
 - **Amazon KDP**: https://kdp.amazon.com/help
 
 ### Internal Escalation
+
 1. Team Lead
 2. Security Officer
 3. CTO/Technical Director

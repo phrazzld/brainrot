@@ -1,12 +1,13 @@
 # 📚 Brainrot Publishing House - Monorepo
 
-> *Making classic literature absolutely bussin' for Gen Z, no cap fr fr*
+> _Making classic literature absolutely bussin' for Gen Z, no cap fr fr_
 
 ## 🚀 What Is This?
 
 Brainrot Publishing House creates hilarious Gen Z "brainrot" translations of classic literature. We're talking Shakespeare but make it TikTok. Fitzgerald but make it Discord. Homer but make it Twitch chat.
 
 This monorepo contains:
+
 - **Web App**: Next.js reading platform at [brainrot.pub](https://brainrot.pub) (eventually)
 - **Translations**: The actual book translations (our crown jewels)
 - **Publisher**: Automated publishing to Amazon KDP, Lulu, and more
@@ -40,6 +41,7 @@ brainrot/
 ## 🚦 Quick Start
 
 ### Prerequisites
+
 ```bash
 # Required versions
 node >= 22.0.0
@@ -51,6 +53,7 @@ cd brainrot
 ```
 
 ### Get Started
+
 ```bash
 # Install all dependencies
 pnpm install
@@ -69,6 +72,7 @@ pnpm test
 ```
 
 ### Monorepo Benefits
+
 - **⚡ Lightning fast builds** - Turborepo caches everything (174ms rebuilds!)
 - **📦 Shared packages** - Reusable code across all apps
 - **🔄 Unified pipeline** - One command to rule them all
@@ -78,20 +82,23 @@ pnpm test
 ## 📖 Available Books
 
 ### Currently Translated (8 books, 124 text files)
-- **The Great Gatsby** - *"back when i was a lil sus beta and way more vulnerable to getting absolutely ratio'd by life"*
-- **The Iliad** - *"greek drama hits different when paris catches feelings"*
-- **The Odyssey** - *"odysseus speed-running his way home while poseidon stays pressed"*
-- **The Aeneid** - *"aeneas carries his dad out of troy like a true sigma"*
-- **Alice in Wonderland** - *"alice falls down the most unhinged discord server"*
-- **Frankenstein** - *"victor creates life then ghosts harder than your crush"*
-- **Declaration of Independence** - *"the colonies said 'we're breaking up with u britain'"*
-- **Simple Sabotage Field Manual** - *"how to troll your workplace (CIA approved)"*
+
+- **The Great Gatsby** - _"back when i was a lil sus beta and way more vulnerable to getting absolutely ratio'd by life"_
+- **The Iliad** - _"greek drama hits different when paris catches feelings"_
+- **The Odyssey** - _"odysseus speed-running his way home while poseidon stays pressed"_
+- **The Aeneid** - _"aeneas carries his dad out of troy like a true sigma"_
+- **Alice in Wonderland** - _"alice falls down the most unhinged discord server"_
+- **Frankenstein** - _"victor creates life then ghosts harder than your crush"_
+- **Declaration of Independence** - _"the colonies said 'we're breaking up with u britain'"_
+- **Simple Sabotage Field Manual** - _"how to troll your workplace (CIA approved)"_
 
 ### In Progress
+
 - **La Divina Comedia** - Complex 3-part structure needs special handling
 - **Tao Te Ching** - Source text ready, translation pending
 
 ### Coming Soon
+
 - Pride and Prejudice
 - Hamlet
 - Romeo and Juliet
@@ -101,6 +108,7 @@ pnpm test
 ## 🔧 Development
 
 ### Tech Stack
+
 - **Monorepo**: Turborepo + pnpm workspaces
 - **Web**: Next.js 15 + React 19 + TypeScript
 - **Styling**: Tailwind CSS + Radix UI
@@ -152,9 +160,10 @@ pnpm vault:push        # Share your changes
 ```
 
 Manual setup (if not using vault):
+
 - Copy `.env.example` to `.env.local`
 - Add `BLOB_READ_WRITE_TOKEN` - Vercel blob storage
-- Add `LULU_API_KEY` - For print publishing  
+- Add `LULU_API_KEY` - For print publishing
 - Add `KDP_EMAIL/PASSWORD` - For Amazon publishing
 
 See `docs/DOTENV_VAULT_SETUP.md` for complete setup guide.
@@ -175,6 +184,7 @@ gitleaks detect --source . -v
 ```
 
 **Security Features:**
+
 - **Pre-commit hooks** - Prevents accidental secret commits
 - **GitHub secret scanning** - Monitors pushed code
 - **Custom patterns** - Detects service-specific tokens
@@ -191,10 +201,10 @@ graph LR
     B --> D[EPUB<br/>for E-readers]
     B --> E[PDF<br/>for Print]
     B --> F[MOBI<br/>for Kindle]
-    
+
     C --> G[Blob Storage]
     G --> H[Web App]
-    
+
     D --> I[Apple Books]
     E --> J[Lulu Print]
     F --> K[Amazon KDP]
@@ -212,6 +222,7 @@ graph LR
 ## 🏛️ Project Philosophy
 
 We believe classic literature should be:
+
 1. **Accessible** - No more "thou" and "forsooth"
 2. **Entertaining** - Actual laugh-out-loud moments
 3. **Relevant** - References that make sense today
@@ -224,7 +235,7 @@ This is currently a private project, but we're considering open-sourcing the tra
 
 ## 📄 License
 
-The translations are original creative works. Classic source texts are public domain. 
+The translations are original creative works. Classic source texts are public domain.
 
 ## 🔗 Links
 
@@ -236,6 +247,7 @@ The translations are original creative works. Classic source texts are public do
 ## ✅ Migration Complete
 
 This monorepo was successfully migrated from two repositories with full git history preserved:
+
 - ✅ `brainrot-publishing-house` → `apps/web/`
 - ✅ `brainrot-translations` → `content/translations/`
 
@@ -250,19 +262,24 @@ This monorepo was successfully migrated from two repositories with full git hist
 
 **Vercel deployment failing?**
 Make sure to configure the monorepo settings in Vercel dashboard:
+
 - Root Directory: (leave empty)
 - Build Command: `pnpm build --filter=@brainrot/web`
 - Output Directory: `apps/web/.next`
-See `docs/VERCEL_DEPLOYMENT.md` for complete deployment guide.
+  See `docs/VERCEL_DEPLOYMENT.md` for complete deployment guide.
 
 ### Build failing?
+
 Make sure you have:
+
 - Node.js >= 22.0.0
 - pnpm >= 8.15.1
 - All environment variables set
 
 ### Git history missing?
+
 We use subtree merge to preserve history. If you need to trace back:
+
 ```bash
 git log --follow apps/web/[file]
 git log --follow content/translations/[file]
@@ -271,30 +288,35 @@ git log --follow content/translations/[file]
 ## 📈 Roadmap
 
 ### Phase 1: Migration ✅ COMPLETE
+
 - [x] Create monorepo structure with Turborepo
 - [x] Migrate repositories with git subtree
 - [x] Set up 5 shared packages
 - [x] Fix Great Gatsby (blob simplification: 1000 lines → 37 lines)
 
 ### Phase 2: Publishing Pipeline ✅ COMPLETE
+
 - [x] Lulu API integration with OAuth2
 - [x] KDP automation with Playwright
 - [x] Batch processing for all books
 - [x] Mock mode for testing
 
 ### Phase 3: Production Launch (Current)
+
 - [x] Deploy to production on Vercel ✅
 - [ ] Test publishing pipeline with real credentials
 - [ ] Launch first 10 books on all platforms
 - [ ] Set up analytics and monitoring
 
 ### Phase 4: Scale
+
 - [ ] 50 books translated
 - [ ] AI-assisted translation tools
 - [ ] Subscription service
 - [ ] Mobile apps
 
 ### Phase 5: Empire
+
 - [ ] 500+ books
 - [ ] International versions
 - [ ] Educational partnerships
@@ -302,7 +324,7 @@ git log --follow content/translations/[file]
 
 ---
 
-*"We're not just translating books, we're translating culture. Shakespeare would've loved TikTok, and we're here to prove it."*
+_"We're not just translating books, we're translating culture. Shakespeare would've loved TikTok, and we're here to prove it."_
 
-**The Brainrot Publishing House Team** 
-*Making Literature Absolutely Bussin' Since 2024*
+**The Brainrot Publishing House Team**
+_Making Literature Absolutely Bussin' Since 2024_

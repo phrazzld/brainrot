@@ -1,6 +1,5 @@
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, test, vi } from 'vitest';
 
-
-import { vi, describe, it, test, expect, beforeAll, beforeEach, afterAll, afterEach } from 'vitest';
 import {
   assetExistsInBlobStorage,
   clearBlobUrlCache,
@@ -34,8 +33,8 @@ describe('Blob URL Utilities', () => {
     clearBlobUrlCache();
 
     // Mock implementation for convertLegacyPath
-    (blobPathService.convertLegacyPath as ReturnType<typeof vi.fn>).mockImplementation((path: string) =>
-      path.replace(/^\/assets\//, 'books/').replace(/^\//, ''),
+    (blobPathService.convertLegacyPath as ReturnType<typeof vi.fn>).mockImplementation(
+      (path: string) => path.replace(/^\/assets\//, 'books/').replace(/^\//, ''),
     );
 
     // Mock implementation for getUrlForPath with proper typing
@@ -202,12 +201,14 @@ describe('Blob URL Utilities', () => {
 
   describe('assetExistsInBlobStorage', () => {
     beforeEach(() => {
-      (blobService.getFileInfo as ReturnType<typeof vi.fn>).mockImplementation(async (url: string) => {
-        if (url.includes('exists')) {
-          return { url, pathname: 'exists.png', size: 1024 };
-        }
-        throw new Error('Not found');
-      });
+      (blobService.getFileInfo as ReturnType<typeof vi.fn>).mockImplementation(
+        async (url: string) => {
+          if (url.includes('exists')) {
+            return { url, pathname: 'exists.png', size: 1024 };
+          }
+          throw new Error('Not found');
+        },
+      );
     });
 
     it('should return true if the asset exists', async () => {

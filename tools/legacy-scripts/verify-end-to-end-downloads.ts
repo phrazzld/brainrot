@@ -1,26 +1,27 @@
-import chalk from 'chalk';
-import crypto from 'crypto';
-import fs from 'fs';
-import fetch from 'node-fetch';
-import path from 'path';
-import { performance } from 'perf_hooks';
+import chalk from "chalk";
+import crypto from "crypto";
+import fs from "fs";
+import fetch from "node-fetch";
+import path from "path";
+import { performance } from "perf_hooks";
 
-import { logger } from '../utils/logger.js';
+import { logger } from "../utils/logger.js";
 
 // Configuration
-const TEST_ENVIRONMENTS = ['local', 'development', 'staging', 'production'];
+const TEST_ENVIRONMENTS = ["local", "development", "staging", "production"];
 const BASE_URLS = {
-  local: 'http://localhost:3000',
-  development: process.env.DEV_URL || 'https://dev.example.com',
-  staging: process.env.STAGING_URL || 'https://staging.example.com',
-  production: process.env.PROD_URL || 'https://www.brainrot-publishing-house.com',
+  local: "http://localhost:3000",
+  development: process.env.DEV_URL || "https://dev.example.com",
+  staging: process.env.STAGING_URL || "https://staging.example.com",
+  production:
+    process.env.PROD_URL || "https://www.brainrot-publishing-house.com",
 };
 
 // Test data - we can expand this as needed
 const TEST_BOOKS = [
-  { slug: 'the-iliad', hasFullAudiobook: true, chapters: [1, 2] },
-  { slug: 'hamlet', hasFullAudiobook: true, chapters: [1, 2] },
-  { slug: 'the-aeneid', hasFullAudiobook: true, chapters: [1, 2] },
+  { slug: "the-iliad", hasFullAudiobook: true, chapters: [1, 2] },
+  { slug: "hamlet", hasFullAudiobook: true, chapters: [1, 2] },
+  { slug: "the-aeneid", hasFullAudiobook: true, chapters: [1, 2] },
 ];
 
 // Types for test data
@@ -54,16 +55,18 @@ interface TestSuite {
  */
 function getEnvironment(): string {
   const args = process.argv.slice(2);
-  const envArg = args.find((arg) => arg.startsWith('--env='));
-  let env = 'local';
+  const envArg = args.find((arg) => arg.startsWith("--env="));
+  let env = "local";
 
   if (envArg) {
-    env = envArg.split('=')[1];
+    env = envArg.split("=")[1];
   }
 
   if (!TEST_ENVIRONMENTS.includes(env)) {
-    logger.warn({ message: `Invalid environment: ${env}, defaulting to local` });
-    env = 'local';
+    logger.warn({
+      message: `Invalid environment: ${env}, defaulting to local`,
+    });
+    env = "local";
   }
 
   return env;
@@ -73,7 +76,7 @@ function getEnvironment(): string {
  * Calculate MD5 hash of a buffer for integrity verification
  */
 function calculateChecksum(buffer: Buffer): string {
-  return crypto.createHash('md5').update(buffer).digest('hex');
+  return crypto.createHash("md5").update(buffer).digest("hex");
 }
 
 /**
@@ -96,13 +99,14 @@ async function testDirectUrl(
   try {
     const response = await fetch(url, {
       headers: {
-        'User-Agent': 'BrainrotPublishingHouseE2ETest/1.0',
+        "User-Agent": "BrainrotPublishingHouseE2ETest/1.0",
       },
     });
 
     result.status = response.status;
-    result.contentType = response.headers.get('content-type') || undefined;
-    result.contentLength = parseInt(response.headers.get('content-length') || '0', 10) || undefined;
+    result.contentType = response.headers.get("content-type") || undefined;
+    result.contentLength =
+      parseInt(response.headers.get("content-length") || "0", 10) || undefined;
 
     if (!response.ok) {
       result.error = `HTTP ${response.status}: ${response.statusText}`;
@@ -128,7 +132,7 @@ async function testDirectUrl(
 async function testApiEndpoint(
   baseUrl: string,
   slug: string,
-  type: 'full' | 'chapter',
+  type: "full" | "chapter",
   chapter?: number,
 ): Promise<TestResult> {
   const startTime = performance.now();
@@ -139,11 +143,13 @@ async function testApiEndpoint(
   });
 
   const assetName =
-    type === 'full' ? 'full-audiobook.mp3' : `chapter-${String(chapter).padStart(2, '0')}.mp3`;
+    type === "full"
+      ? "full-audiobook.mp3"
+      : `chapter-${String(chapter).padStart(2, "0")}.mp3`;
   const apiUrl = `${baseUrl}/api/download?${params.toString()}`;
 
   const result: TestResult = {
-    assetType: 'audio',
+    assetType: "audio",
     bookSlug: slug,
     assetName,
     url: apiUrl,
@@ -154,7 +160,7 @@ async function testApiEndpoint(
   try {
     const response = await fetch(apiUrl, {
       headers: {
-        'User-Agent': 'BrainrotPublishingHouseE2ETest/1.0',
+        "User-Agent": "BrainrotPublishingHouseE2ETest/1.0",
       },
     });
 
@@ -169,13 +175,13 @@ async function testApiEndpoint(
 
     // Check that the URL is returned correctly
     if (!data.url) {
-      result.error = 'API response did not include download URL';
+      result.error = "API response did not include download URL";
       return result;
     }
 
     // Verify the actual URL works
     const urlVerification = await testDirectUrl(data.url, {
-      type: 'audio',
+      type: "audio",
       slug,
       asset: assetName,
     });
@@ -204,7 +210,7 @@ async function testApiEndpoint(
 async function testProxyEndpoint(
   baseUrl: string,
   slug: string,
-  type: 'full' | 'chapter',
+  type: "full" | "chapter",
   chapter?: number,
 ): Promise<TestResult> {
   const startTime = performance.now();
@@ -212,15 +218,17 @@ async function testProxyEndpoint(
     slug,
     type,
     ...(chapter ? { chapter: String(chapter) } : {}),
-    proxy: 'true',
+    proxy: "true",
   });
 
   const assetName =
-    type === 'full' ? 'full-audiobook.mp3' : `chapter-${String(chapter).padStart(2, '0')}.mp3`;
+    type === "full"
+      ? "full-audiobook.mp3"
+      : `chapter-${String(chapter).padStart(2, "0")}.mp3`;
   const proxyUrl = `${baseUrl}/api/download?${params.toString()}`;
 
   const result: TestResult = {
-    assetType: 'audio',
+    assetType: "audio",
     bookSlug: slug,
     assetName,
     url: proxyUrl,
@@ -231,13 +239,14 @@ async function testProxyEndpoint(
   try {
     const response = await fetch(proxyUrl, {
       headers: {
-        'User-Agent': 'BrainrotPublishingHouseE2ETest/1.0',
+        "User-Agent": "BrainrotPublishingHouseE2ETest/1.0",
       },
     });
 
     result.status = response.status;
-    result.contentType = response.headers.get('content-type') || undefined;
-    result.contentLength = parseInt(response.headers.get('content-length') || '0', 10) || undefined;
+    result.contentType = response.headers.get("content-type") || undefined;
+    result.contentLength =
+      parseInt(response.headers.get("content-length") || "0", 10) || undefined;
 
     if (!response.ok) {
       result.error = `HTTP ${response.status}: ${response.statusText}`;
@@ -268,20 +277,30 @@ async function testBookDownloads(
 
   // Test API endpoint for full audiobook if available
   if (book.hasFullAudiobook) {
-    logger.info({ message: `Testing full audiobook API endpoint for ${book.slug}` });
-    results.push(await testApiEndpoint(baseUrl, book.slug, 'full'));
+    logger.info({
+      message: `Testing full audiobook API endpoint for ${book.slug}`,
+    });
+    results.push(await testApiEndpoint(baseUrl, book.slug, "full"));
 
-    logger.info({ message: `Testing full audiobook proxy endpoint for ${book.slug}` });
-    results.push(await testProxyEndpoint(baseUrl, book.slug, 'full'));
+    logger.info({
+      message: `Testing full audiobook proxy endpoint for ${book.slug}`,
+    });
+    results.push(await testProxyEndpoint(baseUrl, book.slug, "full"));
   }
 
   // Test API endpoint for each chapter
   for (const chapter of book.chapters) {
-    logger.info({ message: `Testing chapter ${chapter} API endpoint for ${book.slug}` });
-    results.push(await testApiEndpoint(baseUrl, book.slug, 'chapter', chapter));
+    logger.info({
+      message: `Testing chapter ${chapter} API endpoint for ${book.slug}`,
+    });
+    results.push(await testApiEndpoint(baseUrl, book.slug, "chapter", chapter));
 
-    logger.info({ message: `Testing chapter ${chapter} proxy endpoint for ${book.slug}` });
-    results.push(await testProxyEndpoint(baseUrl, book.slug, 'chapter', chapter));
+    logger.info({
+      message: `Testing chapter ${chapter} proxy endpoint for ${book.slug}`,
+    });
+    results.push(
+      await testProxyEndpoint(baseUrl, book.slug, "chapter", chapter),
+    );
   }
 
   return results;
@@ -328,7 +347,7 @@ function generateHtmlReport(testSuite: TestSuite): string {
       <p><strong>Test Date:</strong> ${new Date().toISOString()}</p>
       <p><strong>Total Duration:</strong> ${(totalDuration / 1000).toFixed(2)}s</p>
       <p><strong>Tests:</strong> ${testSuite.totalTests}</p>
-      <p><strong>Success Rate:</strong> <span class="${successRate === 100 ? 'success' : 'failure'}">${successRate.toFixed(2)}%</span> (${testSuite.successful} passed, ${testSuite.failed} failed)</p>
+      <p><strong>Success Rate:</strong> <span class="${successRate === 100 ? "success" : "failure"}">${successRate.toFixed(2)}%</span> (${testSuite.successful} passed, ${testSuite.failed} failed)</p>
     </div>
 
     <h2>Test Results</h2>
@@ -347,20 +366,20 @@ function generateHtmlReport(testSuite: TestSuite): string {
       <tbody>
         ${testSuite.results
           .map((result) => {
-            const isProxy = result.url.includes('proxy=true');
+            const isProxy = result.url.includes("proxy=true");
             return `
-            <tr class="${result.success ? 'success' : 'failure'}">
+            <tr class="${result.success ? "success" : "failure"}">
               <td>${result.bookSlug}</td>
               <td>${result.assetName}</td>
-              <td>${isProxy ? 'Proxy' : 'Direct API'}</td>
+              <td>${isProxy ? "Proxy" : "Direct API"}</td>
               <td>${result.success ? '<span class="success">✓ Success</span>' : `<span class="failure">✗ Failed: ${result.error}</span>`}</td>
-              <td>${result.contentType || 'N/A'}</td>
-              <td class="content-length">${result.contentLength ? (result.contentLength / 1024).toFixed(2) : 'N/A'}</td>
+              <td>${result.contentType || "N/A"}</td>
+              <td class="content-length">${result.contentLength ? (result.contentLength / 1024).toFixed(2) : "N/A"}</td>
               <td class="duration">${result.durationMs}</td>
             </tr>
           `;
           })
-          .join('')}
+          .join("")}
       </tbody>
     </table>
   </div>
@@ -383,7 +402,9 @@ async function runTests() {
   const environment = getEnvironment();
   const baseUrl = BASE_URLS[environment as keyof typeof BASE_URLS];
 
-  logger.info({ message: `Running download E2E tests in ${environment} environment (${baseUrl})` });
+  logger.info({
+    message: `Running download E2E tests in ${environment} environment (${baseUrl})`,
+  });
 
   const testSuite: TestSuite = {
     environment,
@@ -410,15 +431,21 @@ async function runTests() {
   testSuite.failed = testSuite.totalTests - testSuite.successful;
 
   // Create output directory if it doesn't exist
-  const outputDir = path.join(process.cwd(), 'test-reports');
+  const outputDir = path.join(process.cwd(), "test-reports");
   if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir, { recursive: true });
   }
 
   // Save reports
-  const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-  const htmlPath = path.join(outputDir, `download-e2e-${environment}-${timestamp}.html`);
-  const jsonPath = path.join(outputDir, `download-e2e-${environment}-${timestamp}.json`);
+  const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
+  const htmlPath = path.join(
+    outputDir,
+    `download-e2e-${environment}-${timestamp}.html`,
+  );
+  const jsonPath = path.join(
+    outputDir,
+    `download-e2e-${environment}-${timestamp}.json`,
+  );
 
   fs.writeFileSync(htmlPath, generateHtmlReport(testSuite));
   fs.writeFileSync(jsonPath, generateJsonReport(testSuite));
@@ -432,17 +459,19 @@ async function runTests() {
 
   // Log some colored summary to the console
   // Using console.warn is allowed by the linting rules
-  console.warn('\n=======================================');
+  console.warn("\n=======================================");
   console.warn(chalk.bold(`Download E2E Test Results (${environment})`));
-  console.warn('=======================================');
+  console.warn("=======================================");
   console.warn(`Total Tests: ${chalk.bold(testSuite.totalTests)}`);
   console.warn(`Passed: ${chalk.green.bold(testSuite.successful)}`);
   console.warn(`Failed: ${chalk.red.bold(testSuite.failed)}`);
   console.warn(
     `Success Rate: ${successRate === 100 ? chalk.green.bold(`${successRate.toFixed(2)}%`) : chalk.yellow.bold(`${successRate.toFixed(2)}%`)}`,
   );
-  console.warn(`Duration: ${chalk.bold((testSuite.endTime - testSuite.startTime) / 1000)}s`);
-  console.warn('=======================================');
+  console.warn(
+    `Duration: ${chalk.bold((testSuite.endTime - testSuite.startTime) / 1000)}s`,
+  );
+  console.warn("=======================================");
 
   // Return failure exit code if any tests failed
   if (testSuite.failed > 0) {
@@ -452,6 +481,6 @@ async function runTests() {
 
 // Execute the tests
 runTests().catch((error) => {
-  logger.error({ message: 'Fatal error running tests:', error });
+  logger.error({ message: "Fatal error running tests:", error });
   process.exit(1);
 });

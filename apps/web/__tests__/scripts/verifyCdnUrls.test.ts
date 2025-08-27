@@ -1,8 +1,6 @@
-
-
-import { vi, describe, it, test, expect, beforeAll, beforeEach, afterAll, afterEach } from 'vitest';
 import * as fs from 'fs';
 import * as path from 'path';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, test, vi } from 'vitest';
 
 /**
  * Basic test for the CDN URL verification script

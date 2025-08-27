@@ -1,12 +1,11 @@
-
-
 /**
  * Asset Verification CI Tests
  *
  * These tests are designed to run in CI environments where real Blob storage may not be available.
  * They use mocked responses and focus on path generation and URL construction without actual HTTP requests.
  */
-import { vi, describe, it, test, expect, beforeAll, beforeEach, afterAll, afterEach } from 'vitest';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, test, vi } from 'vitest';
+
 import {
   AUDIO_ASSETS,
   IMAGE_ASSETS,

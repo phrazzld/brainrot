@@ -1,9 +1,7 @@
-
-
-import { vi, describe, it, test, expect, beforeAll, beforeEach, afterAll, afterEach } from 'vitest';
 import * as nextNavigation from 'next/navigation';
 
 import { act, renderHook } from '@testing-library/react';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, test, vi } from 'vitest';
 
 import { useChapterNavigation } from '@/hooks/useChapterNavigation';
 import { Translation } from '@/utils/types';

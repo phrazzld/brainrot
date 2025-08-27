@@ -1,9 +1,8 @@
-
-
 /**
  * Simple test for fetchTextWithFallback using ES modules with explicit .js extensions
  */
-import { vi, describe, it, test, expect, beforeAll, beforeEach, afterAll, afterEach } from 'vitest';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, test, vi } from 'vitest';
+
 import { fetchTextWithFallback } from '../../utils/getBlobUrl';
 import { blobPathService } from '../../utils/services/BlobPathService';
 import { blobService } from '../../utils/services/BlobService';

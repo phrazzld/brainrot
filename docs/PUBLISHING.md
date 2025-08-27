@@ -11,18 +11,18 @@ graph TB
     B --> D[EPUB]
     B --> E[PDF]
     B --> F[MOBI/KPF]
-    
+
     C -->|sync:blob| G[Vercel Blob Storage]
     G --> H[Web App]
-    
+
     D --> I[Apple Books]
     E --> J[Print Platforms]
     F --> K[Amazon Kindle]
-    
+
     J --> L[Lulu POD]
     J --> M[IngramSpark]
     J --> N[Amazon Print]
-    
+
     style A fill:#f9f,stroke:#333,stroke-width:4px
     style H fill:#9f9,stroke:#333,stroke-width:4px
     style K fill:#9f9,stroke:#333,stroke-width:4px
@@ -32,18 +32,22 @@ graph TB
 ## Pipeline Stages
 
 ### 1. Content Creation
+
 **Location**: `content/translations/books/[book-slug]/`
 
 Each book contains:
+
 - `brainrot/` - Chapter markdown files with Gen Z translations
 - `metadata.yaml` - Publishing metadata (ISBN, pricing, categories)
 - `source.txt` - Original public domain text (reference only)
 
 ### 2. Format Generation
+
 **Command**: `pnpm generate:formats [book-slug]`
 **Package**: `@brainrot/converter`
 
 Converts markdown to multiple formats:
+
 - **Text** (`.txt`) - For web reading
 - **EPUB** (`.epub`) - For e-readers
 - **PDF** (`.pdf`) - For print (paperback/hardcover variants)
@@ -52,10 +56,12 @@ Converts markdown to multiple formats:
 Output location: `content/translations/books/[book-slug]/generated/`
 
 ### 3. Web Distribution
+
 **Command**: `pnpm sync:blob [book-slug]`
 **Automation**: Fully Automated
 
 Process:
+
 1. Text files uploaded to Vercel Blob Storage
 2. Available at: `https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/[slug]/text/[filename]`
 3. Web app fetches content on-demand
@@ -64,11 +70,13 @@ Process:
 ### 4. Print Publishing
 
 #### Amazon KDP (Kindle Direct Publishing)
+
 **Command**: `pnpm publisher kdp publish [book-slug]`
 **Automation**: Semi-Automated (Playwright)
 **Formats**: Kindle eBook, Paperback
 
 Process:
+
 1. Browser automation with Playwright
 2. Handles 2FA authentication
 3. Uploads manuscript and cover
@@ -76,15 +84,18 @@ Process:
 5. Can save as draft or publish directly
 
 Credentials required:
+
 - `KDP_EMAIL`
 - `KDP_PASSWORD`
 
 #### Lulu Print-on-Demand
+
 **Command**: `pnpm publisher lulu publish [book-slug]`
 **Automation**: Fully Automated (API)
 **Formats**: Paperback, Hardcover
 
 Process:
+
 1. OAuth2 authentication
 2. Creates project via API
 3. Uploads interior PDF
@@ -93,23 +104,28 @@ Process:
 6. Publishes to Lulu marketplace
 
 Credentials required:
+
 - `LULU_API_KEY`
 - `LULU_API_SECRET`
 
 #### IngramSpark
+
 **Status**: Manual Process
 **Formats**: Paperback, Hardcover
 
 Process:
+
 1. Export print-ready PDF from generated files
 2. Manual upload via IngramSpark dashboard
 3. Manual metadata entry
 4. Manual pricing configuration
 
 ### 5. Unified Publishing
+
 **Command**: `pnpm publisher publish-all [book-slug]`
 
 Publishes to all configured platforms:
+
 1. Pre-flight checks (file validation, metadata completeness)
 2. Sequential platform publishing
 3. Generates consolidated report
@@ -117,18 +133,19 @@ Publishes to all configured platforms:
 
 ## Platform Comparison
 
-| Platform | Automation | Formats | Distribution | Royalties | Setup Time |
-|----------|------------|---------|--------------|-----------|------------|
-| Web (Vercel) | Full | Text | Global | N/A | Instant |
-| Amazon KDP | Semi | eBook, Print | Global | 35-70% | 24-72h |
-| Lulu | Full | Print | Global | Variable | 24-48h |
-| IngramSpark | Manual | Print | Bookstores | 35-45% | 1-2 weeks |
-| Apple Books | Planned | eBook | Global | 70% | TBD |
-| Google Play | Planned | eBook | Global | 70% | TBD |
+| Platform     | Automation | Formats      | Distribution | Royalties | Setup Time |
+| ------------ | ---------- | ------------ | ------------ | --------- | ---------- |
+| Web (Vercel) | Full       | Text         | Global       | N/A       | Instant    |
+| Amazon KDP   | Semi       | eBook, Print | Global       | 35-70%    | 24-72h     |
+| Lulu         | Full       | Print        | Global       | Variable  | 24-48h     |
+| IngramSpark  | Manual     | Print        | Bookstores   | 35-45%    | 1-2 weeks  |
+| Apple Books  | Planned    | eBook        | Global       | 70%       | TBD        |
+| Google Play  | Planned    | eBook        | Global       | 70%       | TBD        |
 
 ## Automation Scripts
 
 ### Generate All Formats
+
 ```bash
 # Single book
 pnpm generate:formats great-gatsby
@@ -144,6 +161,7 @@ pnpm generate:formats great-gatsby --dry-run
 ```
 
 ### Sync to Blob Storage
+
 ```bash
 # Single book
 pnpm sync:blob great-gatsby
@@ -159,6 +177,7 @@ pnpm sync:blob great-gatsby --delete
 ```
 
 ### Publisher CLI
+
 ```bash
 # List available books
 pnpm publisher list
@@ -185,16 +204,19 @@ pnpm publisher publish-all great-gatsby --mock
 ### GitHub Actions Workflows
 
 #### Content Sync (Daily)
+
 **File**: `.github/workflows/sync-content.yml`
 **Schedule**: Daily at 5 AM UTC
 **Action**: Syncs all book content to blob storage
 
 #### Book Publishing (On Change)
+
 **File**: `.github/workflows/publish-books.yml`
 **Trigger**: Changes to `content/translations/books/**`
 **Action**: Generates formats and uploads to blob storage
 
 #### Web Deployment (On Push)
+
 **File**: `.github/workflows/deploy-web.yml`
 **Trigger**: Push to main branch, changes in `apps/web/**`
 **Action**: Deploys web app to Vercel
@@ -202,6 +224,7 @@ pnpm publisher publish-all great-gatsby --mock
 ## Publishing Checklist
 
 ### Pre-Publishing
+
 - [ ] Translation complete and reviewed
 - [ ] Metadata.yaml created with ISBNs
 - [ ] Cover design ready (if applicable)
@@ -209,6 +232,7 @@ pnpm publisher publish-all great-gatsby --mock
 - [ ] Pricing strategy determined
 
 ### Format Generation
+
 - [ ] Run `pnpm generate:formats [book]`
 - [ ] Verify text files generated
 - [ ] Check EPUB validity (if using)
@@ -216,6 +240,7 @@ pnpm publisher publish-all great-gatsby --mock
 - [ ] Test Kindle preview
 
 ### Platform Publishing
+
 - [ ] Sync to blob storage for web
 - [ ] Publish to KDP (Kindle + Print)
 - [ ] Publish to Lulu (POD)
@@ -223,6 +248,7 @@ pnpm publisher publish-all great-gatsby --mock
 - [ ] Update tracking spreadsheet
 
 ### Post-Publishing
+
 - [ ] Verify live on all platforms
 - [ ] Test purchase flow
 - [ ] Update marketing materials
@@ -232,6 +258,7 @@ pnpm publisher publish-all great-gatsby --mock
 ## Metadata Requirements
 
 ### Required Fields
+
 ```yaml
 title: "The Great Gatsby but it's Gen Z"
 author: "F. Scott Fitzgerald"
@@ -242,28 +269,31 @@ publishDate: "2024-01-01"
 ```
 
 ### ISBN Assignment
+
 ```yaml
 isbn:
-  ebook: "979-8-88888-001-1"    # Kindle/EPUB
+  ebook: "979-8-88888-001-1" # Kindle/EPUB
   paperback: "979-8-88888-001-2" # Print on Demand
   hardcover: "979-8-88888-001-3" # Premium Edition
 ```
 
 ### Pricing Structure
+
 ```yaml
 pricing:
-  ebook: 4.99      # Standard ebook price
+  ebook: 4.99 # Standard ebook price
   paperback: 14.99 # POD paperback
   hardcover: 24.99 # Premium hardcover
 ```
 
 ### Platform Configuration
+
 ```yaml
 platforms:
-  kdp: true        # Amazon publishing
-  lulu: true       # Lulu marketplace
-  ingram: false    # Manual process
-  d2d: false       # Future platform
+  kdp: true # Amazon publishing
+  lulu: true # Lulu marketplace
+  ingram: false # Manual process
+  d2d: false # Future platform
 ```
 
 ## Troubleshooting
@@ -271,24 +301,28 @@ platforms:
 ### Common Issues
 
 #### Format Generation Fails
+
 - Check pandoc installation: `pandoc --version`
 - Verify markdown syntax in source files
 - Check metadata.yaml is valid YAML
 - Review error logs in console output
 
 #### Blob Storage Sync Errors
+
 - Verify `BLOB_READ_WRITE_TOKEN` is set
 - Check network connectivity
 - Review `sync-log.json` for details
 - Use `--force` flag to override checksums
 
 #### KDP Publishing Blocked
+
 - Check 2FA is properly configured
 - Verify KDP account is in good standing
 - Review screenshot captures for errors
 - Try headed mode: `--headed`
 
 #### Lulu API Errors
+
 - Verify API credentials are valid
 - Check OAuth token hasn't expired
 - Review API response in verbose mode
@@ -313,18 +347,21 @@ pnpm publisher validate great-gatsby
 ## Security Considerations
 
 ### Credential Management
+
 - Never commit credentials to repository
 - Use dotenv-vault for secret sharing
 - Rotate API keys monthly
 - Use 2FA where available
 
 ### File Validation
+
 - Validate all uploaded files
 - Check file sizes before upload
 - Verify checksums for integrity
 - Scan for malicious content
 
 ### API Rate Limiting
+
 - Respect platform rate limits
 - Implement exponential backoff
 - Cache API responses
@@ -333,6 +370,7 @@ pnpm publisher validate great-gatsby
 ## Future Enhancements
 
 ### Planned Features
+
 - Apple Books integration (iBooks Author)
 - Google Play Books support
 - Audiobook generation with AI voices
@@ -342,6 +380,7 @@ pnpm publisher validate great-gatsby
 - Automated marketing campaigns
 
 ### Platform Expansion
+
 - Barnes & Noble Press
 - Kobo Writing Life
 - Draft2Digital aggregation
@@ -349,6 +388,7 @@ pnpm publisher validate great-gatsby
 - BookBaby services
 
 ### Automation Improvements
+
 - Parallel platform publishing
 - Automatic cover generation
 - AI-powered description writing
@@ -358,18 +398,21 @@ pnpm publisher validate great-gatsby
 ## Support Resources
 
 ### Documentation
+
 - [Vercel Blob Storage](https://vercel.com/docs/storage/vercel-blob)
 - [Amazon KDP Guidelines](https://kdp.amazon.com)
 - [Lulu API Documentation](https://developers.lulu.com)
 - [IngramSpark File Creation](https://www.ingramspark.com/plan/tools)
 
 ### Tools
+
 - [Pandoc](https://pandoc.org) - Document conversion
 - [Calibre](https://calibre-ebook.com) - eBook management
 - [Playwright](https://playwright.dev) - Browser automation
 - [Commander.js](https://github.com/tj/commander.js) - CLI framework
 
 ### Community
+
 - Project Issues: [GitHub Issues](https://github.com/phrazzld/brainrot/issues)
 - Discord: #publishing channel
 - Email: publishing@brainrot.pub
@@ -392,5 +435,5 @@ ls publishing-reports/                  # Publishing history
 
 ---
 
-*Last Updated: 2025-08-19*
-*Version: 1.0.0*
+_Last Updated: 2025-08-19_
+_Version: 1.0.0_

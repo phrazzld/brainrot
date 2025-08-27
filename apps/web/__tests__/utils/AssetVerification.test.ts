@@ -1,12 +1,11 @@
-
-
 /**
  * Asset Verification Tests
  *
  * This test suite verifies the correctness of asset paths and access using the
  * standardized path structure from the migration project.
  */
-import { vi, describe, it, test, expect, beforeAll, beforeEach, afterAll, afterEach } from 'vitest';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, test, vi } from 'vitest';
+
 import { createErrorResponse, createSuccessResponse } from '../../__mocks__/MockResponse';
 import {
   AUDIO_ASSETS,

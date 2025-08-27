@@ -1,27 +1,28 @@
 #!/usr/bin/env node
-import * as dotenv from 'dotenv';
-import crypto from 'crypto';
-import fs from 'fs';
-import fetch from 'node-fetch';
-import path from 'path';
-import { performance } from 'perf_hooks';
+import * as dotenv from "dotenv";
+import crypto from "crypto";
+import fs from "fs";
+import fetch from "node-fetch";
+import path from "path";
+import { performance } from "perf_hooks";
 
-import translations from '../translations/index.js';
-import { logger as baseLogger } from '../utils/logger.js';
+import translations from "../translations/index.js";
+import { logger as baseLogger } from "../utils/logger.js";
 
-dotenv.config({ path: '.env.local' });
+dotenv.config({ path: ".env.local" });
 
 // Initialize logger
-const logger = baseLogger.child({ script: 'audio-download-test' });
+const logger = baseLogger.child({ script: "audio-download-test" });
 
 // Configuration
-const TEST_ENVIRONMENTS = ['local', 'development', 'staging', 'production'];
-const DEFAULT_ENVIRONMENT = 'local';
+const TEST_ENVIRONMENTS = ["local", "development", "staging", "production"];
+const DEFAULT_ENVIRONMENT = "local";
 const BASE_URLS = {
-  local: 'http://localhost:3000',
-  development: process.env.DEV_URL || 'https://dev.example.com',
-  staging: process.env.STAGING_URL || 'https://staging.example.com',
-  production: process.env.PROD_URL || 'https://www.brainrot-publishing-house.com',
+  local: "http://localhost:3000",
+  development: process.env.DEV_URL || "https://dev.example.com",
+  staging: process.env.STAGING_URL || "https://staging.example.com",
+  production:
+    process.env.PROD_URL || "https://www.brainrot-publishing-house.com",
 };
 
 // Types for test data
@@ -35,10 +36,10 @@ interface TestBook {
 interface TestResult {
   bookSlug: string;
   bookTitle: string;
-  assetType: 'full' | 'chapter';
+  assetType: "full" | "chapter";
   chapterNumber?: number;
   chapterTitle?: string;
-  testType: 'api' | 'proxy';
+  testType: "api" | "proxy";
   url: string;
   success: boolean;
   status?: number;
@@ -67,11 +68,11 @@ interface TestSuite {
  */
 function getEnvironment(): string {
   const args = process.argv.slice(2);
-  const envArg = args.find((arg) => arg.startsWith('--env='));
+  const envArg = args.find((arg) => arg.startsWith("--env="));
   let env = DEFAULT_ENVIRONMENT;
 
   if (envArg) {
-    env = envArg.split('=')[1];
+    env = envArg.split("=")[1];
   }
 
   if (!TEST_ENVIRONMENTS.includes(env)) {
@@ -91,27 +92,27 @@ function getEnvironment(): string {
  */
 function parseArgs(): {
   environment: string;
-  booksToTest: string[] | 'all';
+  booksToTest: string[] | "all";
   skipFullAudiobooks: boolean;
   maxChapters: number | null;
 } {
   const args = process.argv.slice(2);
   const environment = getEnvironment();
 
-  const booksArg = args.find((arg) => arg.startsWith('--books='));
-  let booksToTest: string[] | 'all' = 'all';
+  const booksArg = args.find((arg) => arg.startsWith("--books="));
+  let booksToTest: string[] | "all" = "all";
 
   if (booksArg) {
-    const booksVal = booksArg.split('=')[1];
-    booksToTest = booksVal === 'all' ? 'all' : booksVal.split(',');
+    const booksVal = booksArg.split("=")[1];
+    booksToTest = booksVal === "all" ? "all" : booksVal.split(",");
   }
 
-  const skipFullAudiobooks = args.includes('--skip-full');
+  const skipFullAudiobooks = args.includes("--skip-full");
 
-  const maxChaptersArg = args.find((arg) => arg.startsWith('--max-chapters='));
+  const maxChaptersArg = args.find((arg) => arg.startsWith("--max-chapters="));
   let maxChapters: number | null = null;
   if (maxChaptersArg) {
-    const maxChaptersVal = parseInt(maxChaptersArg.split('=')[1], 10);
+    const maxChaptersVal = parseInt(maxChaptersArg.split("=")[1], 10);
     maxChapters = isNaN(maxChaptersVal) ? null : maxChaptersVal;
   }
 
@@ -127,21 +128,24 @@ function parseArgs(): {
  * Calculate MD5 hash of a buffer for integrity verification
  */
 function calculateChecksum(buffer: Buffer): string {
-  return crypto.createHash('md5').update(buffer).digest('hex');
+  return crypto.createHash("md5").update(buffer).digest("hex");
 }
 
 /**
  * Get test books from translations data
  */
 function getTestBooks(options: {
-  booksToTest: string[] | 'all';
+  booksToTest: string[] | "all";
   maxChapters: number | null;
 }): TestBook[] {
   const testBooks: TestBook[] = [];
 
   for (const book of translations) {
     // Skip books that aren't in the list if specific books were requested
-    if (options.booksToTest !== 'all' && !options.booksToTest.includes(book.slug)) {
+    if (
+      options.booksToTest !== "all" &&
+      !options.booksToTest.includes(book.slug)
+    ) {
       continue;
     }
 
@@ -155,7 +159,9 @@ function getTestBooks(options: {
 
     // Limit chapters if maxChapters is set
     const chaptersToTest =
-      options.maxChapters !== null ? book.chapters.slice(0, options.maxChapters) : book.chapters;
+      options.maxChapters !== null
+        ? book.chapters.slice(0, options.maxChapters)
+        : book.chapters;
 
     // Map chapters to expected format
     const chapters = chaptersToTest.map((chapter, index) => ({
@@ -183,7 +189,7 @@ function getTestBooks(options: {
 interface ApiEndpointTestArgs {
   baseUrl: string;
   book: TestBook;
-  type: 'full' | 'chapter';
+  type: "full" | "chapter";
   chapterNumber?: number;
   chapterTitle?: string;
 }
@@ -213,7 +219,7 @@ async function testApiEndpoint({
     assetType: type,
     chapterNumber: chapterNumber,
     chapterTitle: chapterTitle,
-    testType: 'api',
+    testType: "api",
     url: apiUrl,
     success: false,
     durationMs: 0,
@@ -221,13 +227,13 @@ async function testApiEndpoint({
 
   try {
     logger.info({
-      msg: `Testing API endpoint for ${book.slug} ${type}${chapterNumber ? ` chapter ${chapterNumber}` : ''}`,
+      msg: `Testing API endpoint for ${book.slug} ${type}${chapterNumber ? ` chapter ${chapterNumber}` : ""}`,
       url: apiUrl,
     });
 
     const response = await fetch(apiUrl, {
       headers: {
-        'User-Agent': 'BrainrotPublishingHouseAudioTest/1.0',
+        "User-Agent": "BrainrotPublishingHouseAudioTest/1.0",
       },
     });
 
@@ -242,17 +248,19 @@ async function testApiEndpoint({
 
     // Check that the URL is returned correctly
     if (!data.url) {
-      result.error = 'API response did not include download URL';
+      result.error = "API response did not include download URL";
       return result;
     }
 
     // Try to access the URL to verify it works (just a HEAD request)
-    const urlVerification = await fetch(data.url, { method: 'HEAD' });
+    const urlVerification = await fetch(data.url, { method: "HEAD" });
 
     result.success = urlVerification.ok;
-    result.contentType = urlVerification.headers.get('content-type') || undefined;
+    result.contentType =
+      urlVerification.headers.get("content-type") || undefined;
     result.contentLength =
-      parseInt(urlVerification.headers.get('content-length') || '0', 10) || undefined;
+      parseInt(urlVerification.headers.get("content-length") || "0", 10) ||
+      undefined;
 
     if (!urlVerification.ok) {
       result.error = `API returned URL, but URL is not accessible: HTTP ${urlVerification.status}`;
@@ -272,7 +280,7 @@ async function testApiEndpoint({
 interface ProxyEndpointTestArgs {
   baseUrl: string;
   book: TestBook;
-  type: 'full' | 'chapter';
+  type: "full" | "chapter";
   chapterNumber?: number;
   chapterTitle?: string;
 }
@@ -292,7 +300,7 @@ async function testProxyEndpoint({
     slug: book.slug,
     type,
     ...(chapterNumber ? { chapter: String(chapterNumber) } : {}),
-    proxy: 'true',
+    proxy: "true",
   });
 
   const proxyUrl = `${baseUrl}/api/download?${params.toString()}`;
@@ -303,7 +311,7 @@ async function testProxyEndpoint({
     assetType: type,
     chapterNumber: chapterNumber,
     chapterTitle: chapterTitle,
-    testType: 'proxy',
+    testType: "proxy",
     url: proxyUrl,
     success: false,
     durationMs: 0,
@@ -311,22 +319,23 @@ async function testProxyEndpoint({
 
   try {
     logger.info({
-      msg: `Testing proxy endpoint for ${book.slug} ${type}${chapterNumber ? ` chapter ${chapterNumber}` : ''}`,
+      msg: `Testing proxy endpoint for ${book.slug} ${type}${chapterNumber ? ` chapter ${chapterNumber}` : ""}`,
       url: proxyUrl,
     });
 
     // First, just check if the proxy is accessible with a HEAD request
     const headResponse = await fetch(proxyUrl, {
-      method: 'HEAD',
+      method: "HEAD",
       headers: {
-        'User-Agent': 'BrainrotPublishingHouseAudioTest/1.0',
+        "User-Agent": "BrainrotPublishingHouseAudioTest/1.0",
       },
     });
 
     result.status = headResponse.status;
-    result.contentType = headResponse.headers.get('content-type') || undefined;
+    result.contentType = headResponse.headers.get("content-type") || undefined;
     result.contentLength =
-      parseInt(headResponse.headers.get('content-length') || '0', 10) || undefined;
+      parseInt(headResponse.headers.get("content-length") || "0", 10) ||
+      undefined;
 
     if (!headResponse.ok) {
       result.error = `HTTP ${headResponse.status}: ${headResponse.statusText}`;
@@ -342,8 +351,8 @@ async function testProxyEndpoint({
       // Get a small sample of the file to check integrity (e.g., first 1KB)
       const sampleResponse = await fetch(proxyUrl, {
         headers: {
-          'User-Agent': 'BrainrotPublishingHouseAudioTest/1.0',
-          Range: 'bytes=0-1023', // First 1KB
+          "User-Agent": "BrainrotPublishingHouseAudioTest/1.0",
+          Range: "bytes=0-1023", // First 1KB
         },
       });
 
@@ -382,7 +391,7 @@ async function testBookDownloads(
       await testApiEndpoint({
         baseUrl,
         book,
-        type: 'full',
+        type: "full",
       }),
     );
 
@@ -391,7 +400,7 @@ async function testBookDownloads(
       await testProxyEndpoint({
         baseUrl,
         book,
-        type: 'full',
+        type: "full",
       }),
     );
   }
@@ -408,7 +417,7 @@ async function testBookDownloads(
       await testApiEndpoint({
         baseUrl,
         book,
-        type: 'chapter',
+        type: "chapter",
         chapterNumber: chapter.index,
         chapterTitle: chapter.title,
       }),
@@ -419,7 +428,7 @@ async function testBookDownloads(
       await testProxyEndpoint({
         baseUrl,
         book,
-        type: 'chapter',
+        type: "chapter",
         chapterNumber: chapter.index,
         chapterTitle: chapter.title,
       }),
@@ -472,7 +481,7 @@ function generateHtmlReport(testSuite: TestSuite): string {
       <p><strong>Total Duration:</strong> ${(totalDuration / 1000).toFixed(2)}s</p>
       <p><strong>Books Tested:</strong> ${testSuite.totalBooks}</p>
       <p><strong>Total Tests:</strong> ${testSuite.totalTests}</p>
-      <p><strong>Success Rate:</strong> <span class="${successRate === 100 ? 'success' : 'failure'}">${successRate.toFixed(2)}%</span> (${testSuite.successfulTests} passed, ${testSuite.failedTests} failed)</p>
+      <p><strong>Success Rate:</strong> <span class="${successRate === 100 ? "success" : "failure"}">${successRate.toFixed(2)}%</span> (${testSuite.successfulTests} passed, ${testSuite.failedTests} failed)</p>
     </div>
 
     <h2>Test Results by Book</h2>
@@ -480,14 +489,17 @@ function generateHtmlReport(testSuite: TestSuite): string {
     <!-- Group results by book -->
     ${Array.from(new Set(testSuite.results.map((r) => r.bookSlug)))
       .map((bookSlug) => {
-        const bookResults = testSuite.results.filter((r) => r.bookSlug === bookSlug);
+        const bookResults = testSuite.results.filter(
+          (r) => r.bookSlug === bookSlug,
+        );
         const bookSuccessRate =
-          (bookResults.filter((r) => r.success).length / bookResults.length) * 100;
+          (bookResults.filter((r) => r.success).length / bookResults.length) *
+          100;
         const bookInfo = bookResults[0]; // Use the first result to get book title
 
         return `
       <h3>${bookInfo.bookTitle} (${bookSlug})</h3>
-      <p>Success Rate: <span class="${bookSuccessRate === 100 ? 'success' : 'failure'}">${bookSuccessRate.toFixed(2)}%</span></p>
+      <p>Success Rate: <span class="${bookSuccessRate === 100 ? "success" : "failure"}">${bookSuccessRate.toFixed(2)}%</span></p>
       
       <table>
         <thead>
@@ -504,27 +516,27 @@ function generateHtmlReport(testSuite: TestSuite): string {
           ${bookResults
             .map((result) => {
               const assetName =
-                result.assetType === 'full'
-                  ? 'Full Audiobook'
-                  : `Chapter ${result.chapterNumber}: ${result.chapterTitle || ''}`;
+                result.assetType === "full"
+                  ? "Full Audiobook"
+                  : `Chapter ${result.chapterNumber}: ${result.chapterTitle || ""}`;
 
               return `
-            <tr class="${result.success ? 'success' : 'failure'}">
+            <tr class="${result.success ? "success" : "failure"}">
               <td>${assetName}</td>
-              <td>${result.testType === 'api' ? 'API' : 'Proxy'}</td>
+              <td>${result.testType === "api" ? "API" : "Proxy"}</td>
               <td>${result.success ? '<span class="success">✓ Success</span>' : `<span class="failure">✗ Failed: ${result.error}</span>`}</td>
-              <td>${result.contentType || 'N/A'}</td>
-              <td class="content-length">${result.contentLength ? (result.contentLength / 1024).toFixed(2) : 'N/A'}</td>
+              <td>${result.contentType || "N/A"}</td>
+              <td class="content-length">${result.contentLength ? (result.contentLength / 1024).toFixed(2) : "N/A"}</td>
               <td class="duration">${result.durationMs}</td>
             </tr>
             `;
             })
-            .join('')}
+            .join("")}
         </tbody>
       </table>
       `;
       })
-      .join('')}
+      .join("")}
   </div>
 </body>
 </html>
@@ -545,7 +557,7 @@ async function runTests() {
   });
 
   // Create output directory if it doesn't exist
-  const outputDir = path.join(process.cwd(), 'test-reports');
+  const outputDir = path.join(process.cwd(), "test-reports");
   if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir, { recursive: true });
   }
@@ -606,19 +618,28 @@ async function runTests() {
     // Finalize results
     testSuite.endTime = performance.now();
     testSuite.totalTests = testSuite.results.length;
-    testSuite.successfulTests = testSuite.results.filter((r) => r.success).length;
+    testSuite.successfulTests = testSuite.results.filter(
+      (r) => r.success,
+    ).length;
     testSuite.failedTests = testSuite.totalTests - testSuite.successfulTests;
 
     // Generate and save reports
-    const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-    const htmlReportPath = path.join(outputDir, `audio-downloads-${environment}-${timestamp}.html`);
-    const jsonReportPath = path.join(outputDir, `audio-downloads-${environment}-${timestamp}.json`);
+    const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
+    const htmlReportPath = path.join(
+      outputDir,
+      `audio-downloads-${environment}-${timestamp}.html`,
+    );
+    const jsonReportPath = path.join(
+      outputDir,
+      `audio-downloads-${environment}-${timestamp}.json`,
+    );
 
     fs.writeFileSync(htmlReportPath, generateHtmlReport(testSuite));
     fs.writeFileSync(jsonReportPath, JSON.stringify(testSuite, null, 2));
 
     // Log summary
-    const successRate = (testSuite.successfulTests / testSuite.totalTests) * 100;
+    const successRate =
+      (testSuite.successfulTests / testSuite.totalTests) * 100;
     const duration = (testSuite.endTime - testSuite.startTime) / 1000;
 
     logger.info({
@@ -629,7 +650,7 @@ async function runTests() {
     });
 
     logger.info({
-      msg: '📊 Summary:',
+      msg: "📊 Summary:",
       totalBooks: testSuite.totalBooks,
       totalTests: testSuite.totalTests,
       successful: testSuite.successfulTests,
@@ -643,7 +664,7 @@ async function runTests() {
     }
   } catch (error) {
     logger.error({
-      msg: 'Fatal error running tests:',
+      msg: "Fatal error running tests:",
       error: error instanceof Error ? error.message : String(error),
       stack: error instanceof Error ? error.stack : undefined,
     });
@@ -654,7 +675,7 @@ async function runTests() {
 // Execute the tests
 runTests().catch((error) => {
   logger.error({
-    msg: 'Unhandled error running tests:',
+    msg: "Unhandled error running tests:",
     error: error instanceof Error ? error.message : String(error),
     stack: error instanceof Error ? error.stack : undefined,
   });

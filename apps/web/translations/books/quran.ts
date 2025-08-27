@@ -3,14 +3,14 @@
  */
 import { Translation } from '../types.js';
 
-
 const quran: Translation = {
   slug: 'quran',
   bookSlug: 'quran', // Added for simple blob client
   title: 'the quran',
   shortDescription:
     'final islamic scripture drops, prophet muhammad delivers divine bars. monotheism endgame achieved.',
-  coverImage: 'https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/assets/the-quran/images/quran-01.png',
+  coverImage:
+    'https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/assets/the-quran/images/quran-01.png',
   status: 'coming soon',
   chapters: [],
 };

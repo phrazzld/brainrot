@@ -1,22 +1,27 @@
-import { vi, describe, it, expect, beforeEach } from 'vitest';
 import { NextResponse } from 'next/server';
+
+import { beforeEach, describe, expect, it, vi } from 'vitest';
+
 import {
-  createResponseService,
-  createSuccessResponse,
+  type ErrorDetails,
+  HttpStatus,
+  type ResponseMetadata,
+  type ResponseServiceConfig,
   createErrorResponse,
   createRedirectResponse,
+  createResponseService,
   createStreamResponse,
+  createSuccessResponse,
   formatProxyError,
   getCacheHeaders,
-  HttpStatus,
-  type ResponseServiceConfig,
-  type ErrorDetails,
-  type ResponseMetadata
 } from '../../app/api/download/services/ResponseService';
 
 // Mock NextResponse
 class MockNextResponse {
-  constructor(public body: any, public init: any) {
+  constructor(
+    public body: any,
+    public init: any,
+  ) {
     this.type = 'stream';
   }
   type: string;
@@ -64,20 +69,20 @@ describe('ResponseService', () => {
         expect.objectContaining({
           status: 200,
           headers: {},
-        })
+        }),
       );
       expect(mockLogger.debug).toHaveBeenCalledWith(
         expect.objectContaining({
           msg: 'Creating success response',
           correlationId: 'test-id',
-        })
+        }),
       );
     });
 
     it('should include CORS headers when origin provided', () => {
-      const config: ResponseServiceConfig = { 
+      const config: ResponseServiceConfig = {
         logger: mockLogger,
-        corsOrigin: 'https://allowed-origin.com'
+        corsOrigin: 'https://allowed-origin.com',
       };
 
       createSuccessResponse({ test: 'data' }, {}, config);
@@ -91,17 +96,17 @@ describe('ResponseService', () => {
             'Access-Control-Allow-Headers': 'Content-Type, Authorization',
             'Access-Control-Max-Age': '86400',
           },
-        })
+        }),
       );
     });
 
     it('should merge default headers', () => {
-      const config: ResponseServiceConfig = { 
+      const config: ResponseServiceConfig = {
         logger: mockLogger,
         defaultHeaders: {
           'X-Custom-Header': 'value',
           'X-API-Version': 'v1',
-        }
+        },
       };
 
       createSuccessResponse({ test: 'data' }, {}, config);
@@ -113,7 +118,7 @@ describe('ResponseService', () => {
             'X-Custom-Header': 'value',
             'X-API-Version': 'v1',
           },
-        })
+        }),
       );
     });
   });
@@ -122,12 +127,7 @@ describe('ResponseService', () => {
     it('should create error response from string', () => {
       const config: ResponseServiceConfig = { logger: mockLogger };
 
-      const response = createErrorResponse(
-        'Something went wrong',
-        400,
-        'test-id',
-        config
-      );
+      const response = createErrorResponse('Something went wrong', 400, 'test-id', config);
 
       expect(MockNextResponse.json).toHaveBeenCalledWith(
         expect.objectContaining({
@@ -142,23 +142,23 @@ describe('ResponseService', () => {
         }),
         expect.objectContaining({
           status: 400,
-        })
+        }),
       );
       expect(mockLogger.error).toHaveBeenCalledWith(
         expect.objectContaining({
           msg: 'Creating error response',
           status: 400,
           error: 'Something went wrong',
-        })
+        }),
       );
     });
 
     it('should create error response from Error object', () => {
       const error = new Error('Test error');
       error.stack = 'Error stack trace';
-      const config: ResponseServiceConfig = { 
+      const config: ResponseServiceConfig = {
         logger: mockLogger,
-        includeStackTrace: true
+        includeStackTrace: true,
       };
 
       createErrorResponse(error, 500, 'test-id', config);
@@ -174,16 +174,16 @@ describe('ResponseService', () => {
         }),
         expect.objectContaining({
           status: 500,
-        })
+        }),
       );
     });
 
     it('should exclude stack trace in production', () => {
       const error = new Error('Test error');
       error.stack = 'Error stack trace';
-      const config: ResponseServiceConfig = { 
+      const config: ResponseServiceConfig = {
         logger: mockLogger,
-        includeStackTrace: false
+        includeStackTrace: false,
       };
 
       createErrorResponse(error, 500, undefined, config);
@@ -195,7 +195,7 @@ describe('ResponseService', () => {
             details: 'Error stack trace',
           }),
         }),
-        expect.any(Object)
+        expect.any(Object),
       );
     });
 
@@ -219,7 +219,7 @@ describe('ResponseService', () => {
         }),
         expect.objectContaining({
           status: 422,
-        })
+        }),
       );
     });
 
@@ -232,7 +232,7 @@ describe('ResponseService', () => {
         expect.any(Object),
         expect.objectContaining({
           status: 500,
-        })
+        }),
       );
     });
   });
@@ -247,14 +247,14 @@ describe('ResponseService', () => {
         'https://example.com',
         expect.objectContaining({
           status: 302,
-        })
+        }),
       );
       expect(mockLogger.info).toHaveBeenCalledWith(
         expect.objectContaining({
           msg: 'Creating redirect response',
           url: 'https://example.com',
           permanent: false,
-        })
+        }),
       );
     });
 
@@ -267,15 +267,15 @@ describe('ResponseService', () => {
         'https://example.com',
         expect.objectContaining({
           status: 301,
-        })
+        }),
       );
     });
 
     it('should include headers', () => {
-      const config: ResponseServiceConfig = { 
+      const config: ResponseServiceConfig = {
         logger: mockLogger,
         defaultHeaders: { 'X-Redirect-Reason': 'moved' },
-        corsOrigin: 'https://allowed.com'
+        corsOrigin: 'https://allowed.com',
       };
 
       createRedirectResponse('https://example.com', false, config);
@@ -287,7 +287,7 @@ describe('ResponseService', () => {
             'X-Redirect-Reason': 'moved',
             'Access-Control-Allow-Origin': 'https://allowed.com',
           }),
-        })
+        }),
       );
     });
   });
@@ -301,7 +301,7 @@ describe('ResponseService', () => {
         mockStream,
         'audio/mpeg',
         { 'Content-Disposition': 'attachment; filename="test.mp3"' },
-        config
+        config,
       );
 
       expect(response).toBeDefined();
@@ -311,7 +311,7 @@ describe('ResponseService', () => {
           msg: 'Creating stream response',
           contentType: 'audio/mpeg',
           hasMetadata: true,
-        })
+        }),
       );
     });
 
@@ -326,7 +326,7 @@ describe('ResponseService', () => {
       expect(mockLogger.debug).toHaveBeenCalledWith(
         expect.objectContaining({
           contentType: 'application/octet-stream',
-        })
+        }),
       );
     });
   });
@@ -457,7 +457,7 @@ describe('ResponseService', () => {
       };
 
       const service = createResponseService(config);
-      
+
       // Test success method uses config
       service.success({ data: 'test' });
       expect(MockNextResponse.json).toHaveBeenCalledWith(
@@ -466,11 +466,11 @@ describe('ResponseService', () => {
           headers: expect.objectContaining({
             'X-API': 'v1',
           }),
-        })
+        }),
       );
-      
+
       vi.clearAllMocks();
-      
+
       // Test error method uses config
       service.error(new Error('test'), 400, 'id');
       expect(mockLogger.error).toHaveBeenCalled();

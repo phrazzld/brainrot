@@ -1,20 +1,20 @@
-import { beforeAll, afterEach, vi } from 'vitest';
+import { beforeAll, afterEach, vi } from "vitest";
 
 // Set up test environment variables
-process.env.NODE_ENV = 'test';
-process.env.NEXT_PUBLIC_BLOB_BASE_URL = 'https://test.blob.vercel-storage.com';
-process.env.NEXT_PUBLIC_BLOB_DEV_URL = 'https://dev.blob.vercel-storage.com';
+process.env.NODE_ENV = "test";
+process.env.NEXT_PUBLIC_BLOB_BASE_URL = "https://test.blob.vercel-storage.com";
+process.env.NEXT_PUBLIC_BLOB_DEV_URL = "https://dev.blob.vercel-storage.com";
 
 // Polyfill TextDecoder and TextEncoder if needed
-if (typeof global.TextDecoder === 'undefined') {
-  const { TextDecoder, TextEncoder } = require('util');
+if (typeof global.TextDecoder === "undefined") {
+  const { TextDecoder, TextEncoder } = require("util");
   global.TextDecoder = TextDecoder as any;
   global.TextEncoder = TextEncoder as any;
 }
 
 // Mock window.URL.createObjectURL
-if (typeof window !== 'undefined') {
-  window.URL.createObjectURL = vi.fn(() => 'mock-blob-url');
+if (typeof window !== "undefined") {
+  window.URL.createObjectURL = vi.fn(() => "mock-blob-url");
   window.URL.revokeObjectURL = vi.fn();
 }
 
@@ -31,13 +31,13 @@ global.IntersectionObserver = vi.fn().mockImplementation(() => ({
   unobserve: vi.fn(),
   disconnect: vi.fn(),
   root: null,
-  rootMargin: '',
+  rootMargin: "",
   thresholds: [],
   takeRecords: () => [],
 }));
 
 // Mock Next.js navigation
-vi.mock('next/navigation', () => ({
+vi.mock("next/navigation", () => ({
   useRouter: () => ({
     push: vi.fn(),
     replace: vi.fn(),
@@ -45,21 +45,21 @@ vi.mock('next/navigation', () => ({
     back: vi.fn(),
     forward: vi.fn(),
     refresh: vi.fn(),
-    pathname: '/',
+    pathname: "/",
     query: {},
   }),
   useSearchParams: () => new URLSearchParams(),
-  usePathname: () => '/',
+  usePathname: () => "/",
   useParams: () => ({}),
 }));
 
 // Mock Next.js Image component
-vi.mock('next/image', () => ({
+vi.mock("next/image", () => ({
   default: ({ src, alt, ...props }: any) => {
     // Create a mock element without JSX
     return {
-      type: 'img',
-      props: { src, alt, ...props }
+      type: "img",
+      props: { src, alt, ...props },
     };
   },
 }));
@@ -71,6 +71,6 @@ afterEach(() => {
 });
 
 // Handle unhandled promise rejections
-process.on('unhandledRejection', (reason) => {
-  console.error('Unhandled Promise Rejection:', reason);
+process.on("unhandledRejection", (reason) => {
+  console.error("Unhandled Promise Rejection:", reason);
 });

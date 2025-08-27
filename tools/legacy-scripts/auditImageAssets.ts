@@ -6,15 +6,15 @@
  * to standardize the paths according to our unified path structure.
  */
 /* eslint-disable max-lines */
-import fs from 'fs';
-import path from 'path';
+import fs from "fs";
+import path from "path";
 
-import { createRequestLogger } from '../utils/logger.js';
-import { AssetPathService } from '../utils/services/AssetPathService.js';
-import { blobService } from '../utils/services/BlobService.js';
+import { createRequestLogger } from "../utils/logger.js";
+import { AssetPathService } from "../utils/services/AssetPathService.js";
+import { blobService } from "../utils/services/BlobService.js";
 
 // Configure logger
-const auditLogger = createRequestLogger('image-audit');
+const auditLogger = createRequestLogger("image-audit");
 
 // Initialize services
 const assetPathService = new AssetPathService();
@@ -32,8 +32,8 @@ interface ImageAssetInfo {
   bookSlug: string | null;
   isStandardized: boolean;
   standardizedPath: string;
-  assetType: 'image' | 'unknown';
-  imageType: 'cover' | 'chapter' | 'shared' | 'site' | 'unknown';
+  assetType: "image" | "unknown";
+  imageType: "cover" | "chapter" | "shared" | "site" | "unknown";
   needsReorganization: boolean;
 }
 
@@ -69,7 +69,7 @@ interface AuditResults {
 function parseArgs(): AuditOptions {
   const args = process.argv.slice(2);
   const options: AuditOptions = {
-    outputDir: './image-assets-audit',
+    outputDir: "./image-assets-audit",
     verbose: false,
   };
 
@@ -77,16 +77,16 @@ function parseArgs(): AuditOptions {
     const arg = args[i];
 
     switch (arg) {
-      case '--output':
-      case '-o':
+      case "--output":
+      case "-o":
         options.outputDir = args[++i];
         break;
-      case '--verbose':
-      case '-v':
+      case "--verbose":
+      case "-v":
         options.verbose = true;
         break;
-      case '--help':
-      case '-h':
+      case "--help":
+      case "-h":
         printHelp();
         process.exit(0);
         break;
@@ -163,14 +163,16 @@ async function listAllBlobs() {
  */
 function isImageAsset(path: string, contentType?: string): boolean {
   // Check if this is an image asset based on path pattern or content type
-  const isImageContentType = contentType ? contentType.startsWith('image/') : false;
+  const isImageContentType = contentType
+    ? contentType.startsWith("image/")
+    : false;
   const hasImageExtension = /\.(jpg|jpeg|png|gif|webp|svg|avif)$/i.test(path);
   const isInImagePath =
-    path.includes('/images/') ||
-    path.includes('/assets/image/') ||
-    path.includes('/assets/shared/') ||
-    path.includes('/site-assets/') ||
-    path.includes('/assets/site/');
+    path.includes("/images/") ||
+    path.includes("/assets/image/") ||
+    path.includes("/assets/shared/") ||
+    path.includes("/site-assets/") ||
+    path.includes("/assets/site/");
 
   return isImageContentType || hasImageExtension || isInImagePath;
 }
@@ -184,26 +186,39 @@ function isStandardizedPath(path: string): boolean {
   // 2. Shared images: assets/shared/file-name.ext
   // 3. Site assets: assets/site/file-name.ext
   return (
-    path.match(/^assets\/image\/[^/]+\/[^/]+\.(jpg|jpeg|png|gif|webp|svg|avif)$/i) !== null ||
-    path.match(/^assets\/shared\/[^/]+\.(jpg|jpeg|png|gif|webp|svg|avif)$/i) !== null ||
-    path.match(/^assets\/site\/[^/]+\.(jpg|jpeg|png|gif|webp|svg|avif)$/i) !== null
+    path.match(
+      /^assets\/image\/[^/]+\/[^/]+\.(jpg|jpeg|png|gif|webp|svg|avif)$/i,
+    ) !== null ||
+    path.match(/^assets\/shared\/[^/]+\.(jpg|jpeg|png|gif|webp|svg|avif)$/i) !==
+      null ||
+    path.match(/^assets\/site\/[^/]+\.(jpg|jpeg|png|gif|webp|svg|avif)$/i) !==
+      null
   );
 }
 
 /**
  * Determine the image type
  */
-function getImageType(path: string): 'cover' | 'chapter' | 'shared' | 'site' | 'unknown' {
-  if (path.includes('assets/shared/') || path.includes('/images/')) {
-    return 'shared';
-  } else if (path.includes('assets/site/') || path.includes('/site-assets/')) {
-    return 'site';
-  } else if (path.includes('cover') || path.endsWith('-cover.jpg') || path.endsWith('-cover.png')) {
-    return 'cover';
-  } else if (path.includes('chapter') || path.match(/chapter-\d+\.(jpg|png)/i)) {
-    return 'chapter';
+function getImageType(
+  path: string,
+): "cover" | "chapter" | "shared" | "site" | "unknown" {
+  if (path.includes("assets/shared/") || path.includes("/images/")) {
+    return "shared";
+  } else if (path.includes("assets/site/") || path.includes("/site-assets/")) {
+    return "site";
+  } else if (
+    path.includes("cover") ||
+    path.endsWith("-cover.jpg") ||
+    path.endsWith("-cover.png")
+  ) {
+    return "cover";
+  } else if (
+    path.includes("chapter") ||
+    path.match(/chapter-\d+\.(jpg|png)/i)
+  ) {
+    return "chapter";
   }
-  return 'unknown';
+  return "unknown";
 }
 
 /**
@@ -218,7 +233,10 @@ function processImageBlob(
   const bookSlug = assetPathService.getBookSlugFromPath(blob.pathname);
   if (bookSlug) {
     bookSlugs.add(bookSlug);
-  } else if (getImageType(blob.pathname) !== 'shared' && getImageType(blob.pathname) !== 'site') {
+  } else if (
+    getImageType(blob.pathname) !== "shared" &&
+    getImageType(blob.pathname) !== "site"
+  ) {
     // Non-shared/site images should have a book slug
     pathIssues.missingBookSlug.push(blob.pathname);
   }
@@ -231,7 +249,7 @@ function processImageBlob(
 
     // Check for inconsistent naming patterns
     if (
-      blob.pathname.includes('image') &&
+      blob.pathname.includes("image") &&
       !blob.pathname.match(/\.(jpg|jpeg|png|gif|webp|svg|avif)$/i)
     ) {
       pathIssues.wrongFileExtension.push(blob.pathname);
@@ -249,7 +267,7 @@ function processImageBlob(
     bookSlug,
     isStandardized: isStandardizedPath(blob.pathname),
     standardizedPath,
-    assetType: 'image',
+    assetType: "image",
     imageType,
     needsReorganization: blob.pathname !== standardizedPath,
   };
@@ -288,21 +306,21 @@ function initializeBookData(bookSlugs: Set<string>): Record<
   });
 
   // Add special categories for shared and site assets
-  byBook['shared'] = {
+  byBook["shared"] = {
     total: 0,
     standardized: 0,
     nonStandardized: 0,
     assets: [],
   };
 
-  byBook['site'] = {
+  byBook["site"] = {
     total: 0,
     standardized: 0,
     nonStandardized: 0,
     assets: [],
   };
 
-  byBook['unknown'] = {
+  byBook["unknown"] = {
     total: 0,
     standardized: 0,
     nonStandardized: 0,
@@ -357,11 +375,11 @@ function categorizeImageAssets(
 ): void {
   imageAssets.forEach((asset) => {
     // Categorize by book
-    let bookKey = asset.bookSlug || 'unknown';
-    if (asset.imageType === 'shared') {
-      bookKey = 'shared';
-    } else if (asset.imageType === 'site') {
-      bookKey = 'site';
+    let bookKey = asset.bookSlug || "unknown";
+    if (asset.imageType === "shared") {
+      bookKey = "shared";
+    } else if (asset.imageType === "site") {
+      bookKey = "site";
     }
 
     byBook[bookKey].total++;
@@ -387,10 +405,10 @@ function categorizeImageAssets(
  * Audit image assets in Vercel Blob storage
  */
 async function auditImageAssets(options: AuditOptions): Promise<AuditResults> {
-  auditLogger.info({ msg: 'Starting image asset audit...' });
+  auditLogger.info({ msg: "Starting image asset audit..." });
 
   // List all blobs
-  auditLogger.info({ msg: 'Listing all assets in Vercel Blob...' });
+  auditLogger.info({ msg: "Listing all assets in Vercel Blob..." });
   const allBlobs = await listAllBlobs();
   auditLogger.info({ msg: `Found ${allBlobs.length} total assets` });
 
@@ -415,8 +433,10 @@ async function auditImageAssets(options: AuditOptions): Promise<AuditResults> {
 
     if (options.verbose) {
       auditLogger.info({
-        msg: `${assetInfo.isStandardized ? '✓' : '✗'} ${assetInfo.path} ${
-          assetInfo.needsReorganization ? `-> ${assetInfo.standardizedPath}` : ''
+        msg: `${assetInfo.isStandardized ? "✓" : "✗"} ${assetInfo.path} ${
+          assetInfo.needsReorganization
+            ? `-> ${assetInfo.standardizedPath}`
+            : ""
         }`,
       });
     }
@@ -457,7 +477,9 @@ function createHtmlReport(results: AuditResults): string {
   const bookRows = Object.entries(results.byBook)
     .map(([bookSlug, bookInfo]) => {
       const standardizationRate =
-        bookInfo.total > 0 ? Math.round((bookInfo.standardized / bookInfo.total) * 100) : 0;
+        bookInfo.total > 0
+          ? Math.round((bookInfo.standardized / bookInfo.total) * 100)
+          : 0;
 
       return `
         <tr>
@@ -469,7 +491,7 @@ function createHtmlReport(results: AuditResults): string {
         </tr>
       `;
     })
-    .join('');
+    .join("");
 
   // Create a table of image types
   const imageTypeRows = Object.entries(results.byImageType)
@@ -487,7 +509,7 @@ function createHtmlReport(results: AuditResults): string {
         </tr>
       `;
     })
-    .join('');
+    .join("");
 
   // Create a table of assets that need reorganization
   const reorgAssets = Object.values(results.byBook)
@@ -506,12 +528,12 @@ function createHtmlReport(results: AuditResults): string {
       </tr>
     `,
     )
-    .join('');
+    .join("");
 
   // Create sections for different types of issues
   const issuesSections = Object.entries(results.pathIssues)
     .map(([issueType, paths]) => {
-      if (paths.length === 0) return '';
+      if (paths.length === 0) return "";
 
       const rows = paths
         .map(
@@ -522,7 +544,7 @@ function createHtmlReport(results: AuditResults): string {
         </tr>
       `,
         )
-        .join('');
+        .join("");
 
       return `
         <h3>${formatIssueType(issueType)} (${paths.length})</h3>
@@ -539,7 +561,7 @@ function createHtmlReport(results: AuditResults): string {
         </table>
       `;
     })
-    .join('');
+    .join("");
 
   return `
     <!DOCTYPE html>
@@ -569,7 +591,7 @@ function createHtmlReport(results: AuditResults): string {
         <p>Image assets: <strong>${results.imageAssets}</strong></p>
         <p>Standardized assets: <strong class="success">${results.standardizedAssets}</strong></p>
         <p>Non-standardized assets: <strong class="${
-          results.nonStandardizedAssets > 0 ? 'error' : 'success'
+          results.nonStandardizedAssets > 0 ? "error" : "success"
         }">${results.nonStandardizedAssets}</strong></p>
         <p>Standardization rate: <strong>${standardizationRate}%</strong></p>
         <p>Books with image assets: <strong>${results.bookCount}</strong></p>
@@ -649,10 +671,10 @@ function createHtmlReport(results: AuditResults): string {
  */
 function formatIssueType(issueType: string): string {
   return issueType
-    .replace(/([A-Z])/g, ' $1')
+    .replace(/([A-Z])/g, " $1")
     .replace(/^./, (str) => str.toUpperCase())
     .replace(/([A-Z])/g, (match) => match.toUpperCase())
-    .replace(/([a-z])([A-Z])/g, '$1 $2')
+    .replace(/([a-z])([A-Z])/g, "$1 $2")
     .replace(/^([a-zA-Z])/, (match) => match.toUpperCase());
 }
 
@@ -660,15 +682,15 @@ function formatIssueType(issueType: string): string {
  * Format bytes to a human-readable form
  */
 function formatBytes(bytes: number, decimals = 2): string {
-  if (bytes === 0) return '0 Bytes';
+  if (bytes === 0) return "0 Bytes";
 
   const k = 1024;
   const dm = decimals < 0 ? 0 : decimals;
-  const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+  const sizes = ["Bytes", "KB", "MB", "GB", "TB"];
 
   const i = Math.floor(Math.log(bytes) / Math.log(k));
 
-  return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+  return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + " " + sizes[i];
 }
 
 /**
@@ -681,28 +703,28 @@ async function main(): Promise<void> {
 
     // Verbose mode is already in options.verbose
 
-    auditLogger.info({ msg: 'Image Asset Audit Tool' });
+    auditLogger.info({ msg: "Image Asset Audit Tool" });
 
     // Create output directory
     createOutputDirectory(options.outputDir);
 
     // Run the audit
-    auditLogger.info({ msg: 'Analyzing image assets...' });
+    auditLogger.info({ msg: "Analyzing image assets..." });
     const results = await auditImageAssets(options);
 
     // Save results to file
-    const jsonPath = path.join(options.outputDir, 'image-assets-audit.json');
+    const jsonPath = path.join(options.outputDir, "image-assets-audit.json");
     saveReport(jsonPath, results);
 
     // Create HTML report
     const htmlReport = createHtmlReport(results);
-    const htmlPath = path.join(options.outputDir, 'image-assets-audit.html');
+    const htmlPath = path.join(options.outputDir, "image-assets-audit.html");
     fs.writeFileSync(htmlPath, htmlReport);
     auditLogger.info({ msg: `Saved HTML report to ${htmlPath}` });
 
     // Print summary
     auditLogger.info({
-      msg: 'Audit summary',
+      msg: "Audit summary",
       summary: {
         totalAssets: results.totalAssets,
         imageAssets: results.imageAssets,
@@ -710,14 +732,16 @@ async function main(): Promise<void> {
         nonStandardizedAssets: results.nonStandardizedAssets,
         standardizationRate:
           results.imageAssets > 0
-            ? Math.round((results.standardizedAssets / results.imageAssets) * 100)
+            ? Math.round(
+                (results.standardizedAssets / results.imageAssets) * 100,
+              )
             : 0,
         reportsDir: options.outputDir,
       },
     });
   } catch (error) {
     auditLogger.error({
-      msg: 'Error in image asset audit',
+      msg: "Error in image asset audit",
       error: error instanceof Error ? error.message : String(error),
       stack: error instanceof Error ? error.stack : undefined,
     });

@@ -5,15 +5,15 @@
  * identifies inconsistently named files, and generates a report of actions needed
  * to standardize the paths according to our unified path structure.
  */
-import fs from 'fs';
-import path from 'path';
+import fs from "fs";
+import path from "path";
 
-import { createRequestLogger } from '../utils/logger.js';
-import { AssetPathService } from '../utils/services/AssetPathService.js';
-import { blobService } from '../utils/services/BlobService.js';
+import { createRequestLogger } from "../utils/logger.js";
+import { AssetPathService } from "../utils/services/AssetPathService.js";
+import { blobService } from "../utils/services/BlobService.js";
 
 // Configure logger
-const auditLogger = createRequestLogger('text-audit');
+const auditLogger = createRequestLogger("text-audit");
 
 // Initialize services
 const assetPathService = new AssetPathService();
@@ -31,8 +31,8 @@ interface TextAssetInfo {
   bookSlug: string | null;
   isStandardized: boolean;
   standardizedPath: string;
-  assetType: 'text' | 'unknown'; // Only looking at text assets
-  textType: 'source' | 'brainrot' | 'unknown';
+  assetType: "text" | "unknown"; // Only looking at text assets
+  textType: "source" | "brainrot" | "unknown";
   needsReorganization: boolean;
 }
 
@@ -60,7 +60,7 @@ interface AuditResults {
 function parseArgs(): AuditOptions {
   const args = process.argv.slice(2);
   const options: AuditOptions = {
-    outputDir: './text-assets-audit',
+    outputDir: "./text-assets-audit",
     verbose: false,
   };
 
@@ -68,16 +68,16 @@ function parseArgs(): AuditOptions {
     const arg = args[i];
 
     switch (arg) {
-      case '--output':
-      case '-o':
+      case "--output":
+      case "-o":
         options.outputDir = args[++i];
         break;
-      case '--verbose':
-      case '-v':
+      case "--verbose":
+      case "-v":
         options.verbose = true;
         break;
-      case '--help':
-      case '-h':
+      case "--help":
+      case "-h":
         printHelp();
         process.exit(0);
         break;
@@ -155,12 +155,12 @@ async function listAllBlobs() {
 function isTextAsset(path: string): boolean {
   // Check if this is a text asset based on path pattern or extension
   return (
-    path.includes('/text/') ||
-    path.includes('/assets/text/') ||
-    path.endsWith('.txt') ||
-    path.endsWith('.md') ||
-    path.includes('brainrot') ||
-    path.includes('source-')
+    path.includes("/text/") ||
+    path.includes("/assets/text/") ||
+    path.endsWith(".txt") ||
+    path.endsWith(".md") ||
+    path.includes("brainrot") ||
+    path.includes("source-")
   );
 }
 
@@ -175,13 +175,13 @@ function isStandardizedPath(path: string): boolean {
 /**
  * Determine the text type (source or brainrot)
  */
-function getTextType(path: string): 'source' | 'brainrot' | 'unknown' {
-  if (path.includes('brainrot') || path.includes('brainrot-')) {
-    return 'brainrot';
-  } else if (path.includes('source') || path.includes('source-')) {
-    return 'source';
+function getTextType(path: string): "source" | "brainrot" | "unknown" {
+  if (path.includes("brainrot") || path.includes("brainrot-")) {
+    return "brainrot";
+  } else if (path.includes("source") || path.includes("source-")) {
+    return "source";
   }
-  return 'unknown';
+  return "unknown";
 }
 
 /**
@@ -209,15 +209,15 @@ function processTextBlob(
 
     // Check for inconsistent naming patterns
     if (
-      blob.pathname.includes('text') &&
-      !blob.pathname.includes('brainrot-') &&
-      !blob.pathname.includes('source-')
+      blob.pathname.includes("text") &&
+      !blob.pathname.includes("brainrot-") &&
+      !blob.pathname.includes("source-")
     ) {
       pathIssues.inconsistentNaming.push(blob.pathname);
     }
 
     // Check for wrong file extensions
-    if (!blob.pathname.endsWith('.txt') && !blob.pathname.endsWith('.md')) {
+    if (!blob.pathname.endsWith(".txt") && !blob.pathname.endsWith(".md")) {
       pathIssues.wrongFileExtension.push(blob.pathname);
     }
   }
@@ -231,7 +231,7 @@ function processTextBlob(
     bookSlug,
     isStandardized: isStandardizedPath(blob.pathname),
     standardizedPath,
-    assetType: 'text',
+    assetType: "text",
     textType: getTextType(blob.pathname),
     needsReorganization: blob.pathname !== standardizedPath,
   };
@@ -270,7 +270,7 @@ function initializeBookData(bookSlugs: Set<string>): Record<
   });
 
   // Add a special category for assets without a book slug
-  byBook['unknown'] = {
+  byBook["unknown"] = {
     total: 0,
     standardized: 0,
     nonStandardized: 0,
@@ -296,7 +296,7 @@ function categorizeAssetsByBook(
   >,
 ): void {
   textAssets.forEach((asset) => {
-    const bookKey = asset.bookSlug || 'unknown';
+    const bookKey = asset.bookSlug || "unknown";
     byBook[bookKey].total++;
     byBook[bookKey].assets.push(asset);
 
@@ -312,10 +312,10 @@ function categorizeAssetsByBook(
  * Audit text assets in Vercel Blob storage
  */
 async function auditTextAssets(options: AuditOptions): Promise<AuditResults> {
-  auditLogger.info({ msg: 'Starting text asset audit...' });
+  auditLogger.info({ msg: "Starting text asset audit..." });
 
   // List all blobs
-  auditLogger.info({ msg: 'Listing all assets in Vercel Blob...' });
+  auditLogger.info({ msg: "Listing all assets in Vercel Blob..." });
   const allBlobs = await listAllBlobs();
   auditLogger.info({ msg: `Found ${allBlobs.length} total assets` });
 
@@ -340,8 +340,10 @@ async function auditTextAssets(options: AuditOptions): Promise<AuditResults> {
 
     if (options.verbose) {
       auditLogger.info({
-        msg: `${assetInfo.isStandardized ? '✓' : '✗'} ${assetInfo.path} ${
-          assetInfo.needsReorganization ? `-> ${assetInfo.standardizedPath}` : ''
+        msg: `${assetInfo.isStandardized ? "✓" : "✗"} ${assetInfo.path} ${
+          assetInfo.needsReorganization
+            ? `-> ${assetInfo.standardizedPath}`
+            : ""
         }`,
       });
     }
@@ -378,7 +380,9 @@ function createHtmlReport(results: AuditResults): string {
   const bookRows = Object.entries(results.byBook)
     .map(([bookSlug, bookInfo]) => {
       const standardizationRate =
-        bookInfo.total > 0 ? Math.round((bookInfo.standardized / bookInfo.total) * 100) : 0;
+        bookInfo.total > 0
+          ? Math.round((bookInfo.standardized / bookInfo.total) * 100)
+          : 0;
 
       return `
         <tr>
@@ -390,7 +394,7 @@ function createHtmlReport(results: AuditResults): string {
         </tr>
       `;
     })
-    .join('');
+    .join("");
 
   // Create a table of assets that need reorganization
   const reorgAssets = Object.values(results.byBook)
@@ -403,18 +407,18 @@ function createHtmlReport(results: AuditResults): string {
       <tr>
         <td>${asset.path}</td>
         <td>${asset.standardizedPath}</td>
-        <td>${asset.bookSlug || 'unknown'}</td>
+        <td>${asset.bookSlug || "unknown"}</td>
         <td>${asset.textType}</td>
         <td>${formatBytes(asset.size)}</td>
       </tr>
     `,
     )
-    .join('');
+    .join("");
 
   // Create sections for different types of issues
   const issuesSections = Object.entries(results.pathIssues)
     .map(([issueType, paths]) => {
-      if (paths.length === 0) return '';
+      if (paths.length === 0) return "";
 
       const rows = paths
         .map(
@@ -425,7 +429,7 @@ function createHtmlReport(results: AuditResults): string {
         </tr>
       `,
         )
-        .join('');
+        .join("");
 
       return `
         <h3>${formatIssueType(issueType)} (${paths.length})</h3>
@@ -442,7 +446,7 @@ function createHtmlReport(results: AuditResults): string {
         </table>
       `;
     })
-    .join('');
+    .join("");
 
   return `
     <!DOCTYPE html>
@@ -472,7 +476,7 @@ function createHtmlReport(results: AuditResults): string {
         <p>Text assets: <strong>${results.textAssets}</strong></p>
         <p>Standardized assets: <strong class="success">${results.standardizedAssets}</strong></p>
         <p>Non-standardized assets: <strong class="${
-          results.nonStandardizedAssets > 0 ? 'error' : 'success'
+          results.nonStandardizedAssets > 0 ? "error" : "success"
         }">${results.nonStandardizedAssets}</strong></p>
         <p>Standardization rate: <strong>${standardizationRate}%</strong></p>
         <p>Books with text assets: <strong>${results.bookCount}</strong></p>
@@ -533,10 +537,10 @@ function createHtmlReport(results: AuditResults): string {
  */
 function formatIssueType(issueType: string): string {
   return issueType
-    .replace(/([A-Z])/g, ' $1')
+    .replace(/([A-Z])/g, " $1")
     .replace(/^./, (str) => str.toUpperCase())
     .replace(/([A-Z])/g, (match) => match.toUpperCase())
-    .replace(/([a-z])([A-Z])/g, '$1 $2')
+    .replace(/([a-z])([A-Z])/g, "$1 $2")
     .replace(/^([a-zA-Z])/, (match) => match.toUpperCase());
 }
 
@@ -544,15 +548,15 @@ function formatIssueType(issueType: string): string {
  * Format bytes to a human-readable form
  */
 function formatBytes(bytes: number, decimals = 2): string {
-  if (bytes === 0) return '0 Bytes';
+  if (bytes === 0) return "0 Bytes";
 
   const k = 1024;
   const dm = decimals < 0 ? 0 : decimals;
-  const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+  const sizes = ["Bytes", "KB", "MB", "GB", "TB"];
 
   const i = Math.floor(Math.log(bytes) / Math.log(k));
 
-  return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+  return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + " " + sizes[i];
 }
 
 /**
@@ -565,28 +569,28 @@ async function main(): Promise<void> {
 
     // Verbose mode is already in options.verbose
 
-    auditLogger.info({ msg: 'Text Asset Audit Tool' });
+    auditLogger.info({ msg: "Text Asset Audit Tool" });
 
     // Create output directory
     createOutputDirectory(options.outputDir);
 
     // Run the audit
-    auditLogger.info({ msg: 'Analyzing text assets...' });
+    auditLogger.info({ msg: "Analyzing text assets..." });
     const results = await auditTextAssets(options);
 
     // Save results to file
-    const jsonPath = path.join(options.outputDir, 'text-assets-audit.json');
+    const jsonPath = path.join(options.outputDir, "text-assets-audit.json");
     saveReport(jsonPath, results);
 
     // Create HTML report
     const htmlReport = createHtmlReport(results);
-    const htmlPath = path.join(options.outputDir, 'text-assets-audit.html');
+    const htmlPath = path.join(options.outputDir, "text-assets-audit.html");
     fs.writeFileSync(htmlPath, htmlReport);
     auditLogger.info({ msg: `Saved HTML report to ${htmlPath}` });
 
     // Print summary
     auditLogger.info({
-      msg: 'Audit summary',
+      msg: "Audit summary",
       summary: {
         totalAssets: results.totalAssets,
         textAssets: results.textAssets,
@@ -594,14 +598,16 @@ async function main(): Promise<void> {
         nonStandardizedAssets: results.nonStandardizedAssets,
         standardizationRate:
           results.textAssets > 0
-            ? Math.round((results.standardizedAssets / results.textAssets) * 100)
+            ? Math.round(
+                (results.standardizedAssets / results.textAssets) * 100,
+              )
             : 0,
         reportsDir: options.outputDir,
       },
     });
   } catch (error) {
     auditLogger.error({
-      msg: 'Error in text asset audit',
+      msg: "Error in text asset audit",
       error: error instanceof Error ? error.message : String(error),
       stack: error instanceof Error ? error.stack : undefined,
     });

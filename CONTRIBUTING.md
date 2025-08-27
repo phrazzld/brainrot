@@ -141,24 +141,28 @@ pnpm add @brainrot/types --filter=@brainrot/web --workspace
 ### Types of Contributions
 
 #### 1. Bug Fixes
+
 - Fix typos in translations
 - Resolve technical issues
 - Improve performance
 - Fix broken links or features
 
 #### 2. New Features
+
 - Add new books for translation
 - Improve the reading experience
 - Add new publishing platforms
 - Enhance the translation pipeline
 
 #### 3. Translations
+
 - Create new "brainrot" translations
 - Improve existing translations
 - Add chapter summaries
 - Create marketing copy
 
 #### 4. Documentation
+
 - Improve README files
 - Add code comments
 - Create tutorials
@@ -167,6 +171,7 @@ pnpm add @brainrot/types --filter=@brainrot/web --workspace
 ### Branch Naming
 
 Use descriptive branch names:
+
 - `feature/add-pride-prejudice-translation`
 - `fix/great-gatsby-chapter-3-typo`
 - `docs/improve-setup-guide`
@@ -202,21 +207,23 @@ When creating translations:
 ```markdown
 # Chapter Title
 
-*[Optional author note or context]*
+_[Optional author note or context]_
 
 Main text with Gen Z translation...
 
 ---
 
-*[Optional end note or meme reference]*
+_[Optional end note or meme reference]_
 ```
 
 ### Example Translation
 
 Original:
+
 > "In my younger and more vulnerable years my father gave me some advice that I've been turning over in my mind ever since."
 
 Brainrot:
+
 > "back when i was a lil sus beta and way more vulnerable to getting absolutely ratio'd by life, my dad dropped some wisdom that's been living rent-free in my head ever since no cap"
 
 ## Testing
@@ -245,12 +252,13 @@ pnpm test:coverage
 - Test edge cases and error conditions
 
 Example:
+
 ```typescript
-describe('stripMarkdown', () => {
-  it('should remove markdown formatting while preserving text', () => {
-    const input = '**bold** and *italic*';
+describe("stripMarkdown", () => {
+  it("should remove markdown formatting while preserving text", () => {
+    const input = "**bold** and *italic*";
     const output = stripMarkdown(input);
-    expect(output).toBe('bold and italic');
+    expect(output).toBe("bold and italic");
   });
 });
 ```
@@ -260,6 +268,7 @@ describe('stripMarkdown', () => {
 ### Before Submitting
 
 1. **Test your changes**
+
    ```bash
    pnpm test
    pnpm lint
@@ -267,6 +276,7 @@ describe('stripMarkdown', () => {
    ```
 
 2. **Check for secrets**
+
    ```bash
    # Our pre-commit hooks should catch these
    gitleaks detect --source . -v
@@ -280,23 +290,28 @@ describe('stripMarkdown', () => {
 
 ```markdown
 ## Description
+
 Brief description of changes
 
 ## Type of Change
+
 - [ ] Bug fix
 - [ ] New feature
 - [ ] Translation
 - [ ] Documentation
 
 ## Testing
+
 - [ ] Tests pass locally
 - [ ] Added new tests (if applicable)
 - [ ] Manually tested changes
 
 ## Screenshots (if applicable)
+
 Add screenshots for UI changes
 
 ## Related Issues
+
 Closes #123
 ```
 
@@ -329,10 +344,10 @@ Closes #123
 
 ```typescript
 // 1. Imports (sorted automatically)
-import React from 'react';
-import { useEffect } from 'react';
-import axios from 'axios';
-import { BookType } from '@/types';
+import React from "react";
+import { useEffect } from "react";
+import axios from "axios";
+import { BookType } from "@/types";
 
 // 2. Types/Interfaces
 interface Props {
@@ -393,6 +408,7 @@ pnpm monitor:dashboard
 ### Environment Variables
 
 See `.env.example` for all available variables. Key ones:
+
 - `BLOB_READ_WRITE_TOKEN` - Required for content storage
 - `NEXT_PUBLIC_BLOB_BASE_URL` - Content delivery URL
 - `LULU_API_KEY` - For publishing automation

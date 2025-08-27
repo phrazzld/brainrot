@@ -1,12 +1,10 @@
-
-
 /**
  * @jest-environment jsdom
  */
-import { vi, describe, it, test, expect, beforeAll, beforeEach, afterAll, afterEach } from 'vitest';
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
 
 import '@testing-library/jest-dom';
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, test, vi } from 'vitest';
 
 // Import the component after setting up mocks
 import ReadingRoom from '../../app/reading-room/[slug]/page';
@@ -121,7 +119,9 @@ describe('Reading Room with Blob Storage', () => {
 
   it('should handle fetch failures gracefully', async () => {
     // Mock a fetch failure
-    (fetchTextWithFallback as ReturnType<typeof vi.fn>).mockRejectedValue(new Error('Failed to fetch'));
+    (fetchTextWithFallback as ReturnType<typeof vi.fn>).mockRejectedValue(
+      new Error('Failed to fetch'),
+    );
 
     await act(async () => {
       render(<ReadingRoom />);

@@ -98,18 +98,21 @@ Configuration is loaded from (in order of precedence):
 ## Platform Support
 
 ### Amazon KDP (Kindle Direct Publishing)
+
 - Automated login with 2FA support
 - Manuscript and cover upload
 - Pricing and territory configuration
 - Draft and publish capabilities
 
 ### Lulu
+
 - API-based integration
 - Print-on-demand for paperback and hardcover
 - Global distribution network
 - Sandbox mode for testing
 
 ### IngramSpark
+
 - Coming soon
 - Professional print distribution
 - Bookstore and library access
@@ -140,7 +143,7 @@ After each publishing session, a detailed report is saved to `publishing-reports
       "url": "https://kdp.amazon.com/..."
     },
     "lulu": {
-      "status": "published", 
+      "status": "published",
       "id": "LULU789012",
       "url": "https://www.lulu.com/..."
     }
@@ -167,16 +170,19 @@ pnpm lint --filter=@brainrot/publisher
 ## Troubleshooting
 
 ### KDP Login Issues
+
 - Ensure 2FA is properly configured
 - Check that cookies are enabled
 - Try headed mode for debugging: `--debug-browser`
 
 ### Lulu API Errors
+
 - Verify API credentials are correct
 - Check sandbox vs production mode
 - Review API rate limits
 
 ### Missing Files
+
 - Run `pnpm generate:formats` first
 - Ensure book has valid metadata.yaml
 - Check file permissions

@@ -1,26 +1,26 @@
 /**
  * Script to verify audio file migration
  */
-import { config } from 'dotenv';
-import { existsSync } from 'node:fs';
-import { writeFile } from 'node:fs/promises';
-import path from 'node:path';
+import { config } from "dotenv";
+import { existsSync } from "node:fs";
+import { writeFile } from "node:fs/promises";
+import path from "node:path";
 
-import translations from '../translations/index.js';
-import { generateAssetUrl } from '../utils/ScriptPathUtils.js';
-import { createScriptLogger } from '../utils/createScriptLogger.js';
-import { adaptTranslation } from '../utils/migration/TranslationAdapter.js';
-import { getDirname, isMainModule, resolveFromModule } from '../utils/paths.js';
+import translations from "../translations/index.js";
+import { generateAssetUrl } from "../utils/ScriptPathUtils.js";
+import { createScriptLogger } from "../utils/createScriptLogger.js";
+import { adaptTranslation } from "../utils/migration/TranslationAdapter.js";
+import { getDirname, isMainModule, resolveFromModule } from "../utils/paths.js";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { blobService } from '../utils/services/index.js';
+import { blobService } from "../utils/services/index.js";
 
 // Initialize environment
-config({ path: path.resolve(process.cwd(), '.env.local') });
+config({ path: path.resolve(process.cwd(), ".env.local") });
 
 // Create a script-specific logger instance
 const logger = createScriptLogger({
-  taskId: 'T047',
-  context: 'verification',
+  taskId: "T047",
+  context: "verification",
 });
 
 // Get current directory
@@ -39,10 +39,14 @@ interface VerificationResult {
  */
 async function checkAudioFileExists(blobUrl: string): Promise<boolean> {
   try {
-    const response = await fetch(blobUrl, { method: 'HEAD' });
+    const response = await fetch(blobUrl, { method: "HEAD" });
     return response.ok;
   } catch (error) {
-    logger.error({ msg: 'Error checking audio file existence', url: blobUrl, error });
+    logger.error({
+      msg: "Error checking audio file existence",
+      url: blobUrl,
+      error,
+    });
     return false;
   }
 }
@@ -74,10 +78,10 @@ function updateCounters(
 ): void {
   if (exists) {
     counters.successful++;
-    logger.info({ msg: 'Audio file exists', url: blobUrl });
+    logger.info({ msg: "Audio file exists", url: blobUrl });
   } else {
     counters.failed++;
-    logger.error({ msg: 'Audio file not found', url: blobUrl });
+    logger.error({ msg: "Audio file not found", url: blobUrl });
   }
 }
 
@@ -108,12 +112,16 @@ async function verifyAudioFile(
   } catch (error: unknown) {
     counters.failed++;
     const errorMessage = error instanceof Error ? error.message : String(error);
-    logger.error({ msg: 'Error verifying audio file', path: audioPath, error: errorMessage });
+    logger.error({
+      msg: "Error verifying audio file",
+      path: audioPath,
+      error: errorMessage,
+    });
 
     return {
       bookSlug,
       audioPath,
-      blobUrl: '',
+      blobUrl: "",
       exists: false,
       error: errorMessage,
     };
@@ -124,7 +132,11 @@ async function verifyAudioFile(
  * Process all audio files for a book
  */
 async function verifyBookAudio(
-  book: { slug: string; title: string; chapters?: Array<{ audioSrc?: string }> },
+  book: {
+    slug: string;
+    title: string;
+    chapters?: Array<{ audioSrc?: string }>;
+  },
   blobBaseUrl: string,
   counters: { total: number; successful: number; failed: number },
 ): Promise<VerificationResult[]> {
@@ -143,8 +155,13 @@ async function verifyBookAudio(
 
   // Process each chapter
   for (const chapter of book.chapters) {
-    if (chapter.audioSrc && typeof chapter.audioSrc === 'string') {
-      const result = await verifyAudioFile(chapter.audioSrc, book.slug, blobBaseUrl, counters);
+    if (chapter.audioSrc && typeof chapter.audioSrc === "string") {
+      const result = await verifyAudioFile(
+        chapter.audioSrc,
+        book.slug,
+        blobBaseUrl,
+        counters,
+      );
       bookResults.push(result);
     }
   }
@@ -161,7 +178,9 @@ async function saveVerificationReport(
 ): Promise<string> {
   // Calculate success rate
   const successRate =
-    summary.total > 0 ? Math.round((summary.successful / summary.total) * 100) : 0;
+    summary.total > 0
+      ? Math.round((summary.successful / summary.total) * 100)
+      : 0;
 
   // Create report object
   const report = {
@@ -184,12 +203,14 @@ async function saveVerificationReport(
   // Ensure reports directory exists
   const reportsDir = path.dirname(reportPath);
   if (!existsSync(reportsDir)) {
-    await import('node:fs/promises').then((fs) => fs.mkdir(reportsDir, { recursive: true }));
+    await import("node:fs/promises").then((fs) =>
+      fs.mkdir(reportsDir, { recursive: true }),
+    );
   }
 
   // Write report
   await writeFile(reportPath, JSON.stringify(report, null, 2));
-  logger.info({ msg: 'Verification report saved', path: reportPath });
+  logger.info({ msg: "Verification report saved", path: reportPath });
 
   return reportPath;
 }
@@ -205,26 +226,32 @@ async function verifyAudioMigration() {
   const blobBaseUrl =
     process.env.NEXT_PUBLIC_BLOB_BASE_URL ||
     process.env.NEXT_PUBLIC_BLOB_DEV_URL ||
-    'https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com';
+    "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com";
 
   logger.info({
-    msg: 'Starting audio migration verification',
+    msg: "Starting audio migration verification",
     blobBaseUrl,
   });
 
   // Process each book with adapted translations
   for (const translation of translations) {
     const adaptedBook = adaptTranslation(translation);
-    const bookResults = await verifyBookAudio(adaptedBook, blobBaseUrl, counters);
+    const bookResults = await verifyBookAudio(
+      adaptedBook,
+      blobBaseUrl,
+      counters,
+    );
     results.push(...bookResults);
   }
 
   // Summarize results
   const successRate =
-    counters.total > 0 ? Math.round((counters.successful / counters.total) * 100) : 0;
+    counters.total > 0
+      ? Math.round((counters.successful / counters.total) * 100)
+      : 0;
 
   logger.info({
-    msg: 'Audio Migration Verification Summary',
+    msg: "Audio Migration Verification Summary",
     summary: {
       total: counters.total,
       successful: counters.successful,
@@ -252,9 +279,9 @@ async function verifyAudioMigration() {
 // Run verification if executed directly
 if (isMainModule(import.meta.url)) {
   verifyAudioMigration()
-    .then(() => logger.info({ msg: 'Audio migration verification complete!' }))
+    .then(() => logger.info({ msg: "Audio migration verification complete!" }))
     .catch((error) => {
-      logger.error({ msg: 'Audio migration verification failed', error });
+      logger.error({ msg: "Audio migration verification failed", error });
       process.exit(1);
     });
 }

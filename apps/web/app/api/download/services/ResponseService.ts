@@ -1,10 +1,11 @@
 import { NextResponse } from 'next/server';
+
 import { Logger } from '@/utils/logger';
 
 /**
  * Standard API response structure
  */
-export interface ApiResponse<T = any> {
+export interface ApiResponse<T = unknown> {
   success: boolean;
   data?: T;
   error?: ErrorDetails;
@@ -17,7 +18,7 @@ export interface ApiResponse<T = any> {
 export interface ErrorDetails {
   message: string;
   code?: string;
-  details?: any;
+  details?: unknown;
   correlationId?: string;
 }
 
@@ -61,7 +62,7 @@ export const HttpStatus = {
   INTERNAL_SERVER_ERROR: 500,
   BAD_GATEWAY: 502,
   SERVICE_UNAVAILABLE: 503,
-  GATEWAY_TIMEOUT: 504
+  GATEWAY_TIMEOUT: 504,
 } as const;
 
 /**
@@ -70,32 +71,32 @@ export const HttpStatus = {
 export function createSuccessResponse<T>(
   data: T,
   metadata?: Partial<ResponseMetadata>,
-  config: ResponseServiceConfig = {}
+  config: ResponseServiceConfig = {},
 ): NextResponse {
   const { logger = console, defaultHeaders = {} } = config;
-  
+
   const response: ApiResponse<T> = {
     success: true,
     data,
     metadata: {
       timestamp: new Date().toISOString(),
       correlationId: metadata?.correlationId || 'unknown',
-      ...metadata
-    }
+      ...metadata,
+    },
   };
 
   logger.debug?.({
     msg: 'Creating success response',
     correlationId: response.metadata?.correlationId,
-    dataType: typeof data
+    dataType: typeof data,
   });
 
   return NextResponse.json(response, {
     status: HttpStatus.OK,
     headers: {
       ...defaultHeaders,
-      ...getCorsHeaders(config.corsOrigin)
-    }
+      ...getCorsHeaders(config.corsOrigin),
+    },
   });
 }
 
@@ -106,18 +107,18 @@ export function createErrorResponse(
   error: string | Error | ErrorDetails,
   status: number = HttpStatus.INTERNAL_SERVER_ERROR,
   correlationId?: string,
-  config: ResponseServiceConfig = {}
+  config: ResponseServiceConfig = {},
 ): NextResponse {
   const { logger = console, includeStackTrace = false, defaultHeaders = {} } = config;
-  
+
   let errorDetails: ErrorDetails;
-  
+
   if (typeof error === 'string') {
     errorDetails = { message: error };
   } else if (error instanceof Error) {
     errorDetails = {
       message: error.message,
-      ...(includeStackTrace && { details: error.stack })
+      ...(includeStackTrace && { details: error.stack }),
     };
   } else {
     errorDetails = error;
@@ -132,23 +133,23 @@ export function createErrorResponse(
     error: errorDetails,
     metadata: {
       timestamp: new Date().toISOString(),
-      correlationId: correlationId || 'unknown'
-    }
+      correlationId: correlationId || 'unknown',
+    },
   };
 
   logger.error?.({
     msg: 'Creating error response',
     status,
     error: errorDetails.message,
-    correlationId
+    correlationId,
   });
 
   return NextResponse.json(response, {
     status,
     headers: {
       ...defaultHeaders,
-      ...getCorsHeaders(config.corsOrigin)
-    }
+      ...getCorsHeaders(config.corsOrigin),
+    },
   });
 }
 
@@ -158,22 +159,22 @@ export function createErrorResponse(
 export function createRedirectResponse(
   url: string,
   permanent: boolean = false,
-  config: ResponseServiceConfig = {}
+  config: ResponseServiceConfig = {},
 ): NextResponse {
   const { logger = console, defaultHeaders = {} } = config;
-  
+
   logger.info?.({
     msg: 'Creating redirect response',
     url,
-    permanent
+    permanent,
   });
 
   return NextResponse.redirect(url, {
     status: permanent ? HttpStatus.MOVED_PERMANENTLY : HttpStatus.FOUND,
     headers: {
       ...defaultHeaders,
-      ...getCorsHeaders(config.corsOrigin)
-    }
+      ...getCorsHeaders(config.corsOrigin),
+    },
   });
 }
 
@@ -184,26 +185,26 @@ export function createStreamResponse(
   stream: ReadableStream,
   contentType: string = 'application/octet-stream',
   metadata?: Record<string, string>,
-  config: ResponseServiceConfig = {}
+  config: ResponseServiceConfig = {},
 ): NextResponse {
   const { logger = console, defaultHeaders = {} } = config;
-  
+
   logger.debug?.({
     msg: 'Creating stream response',
     contentType,
-    hasMetadata: !!metadata
+    hasMetadata: !!metadata,
   });
 
   const headers = {
     ...defaultHeaders,
     'Content-Type': contentType,
     ...getCorsHeaders(config.corsOrigin),
-    ...metadata
+    ...metadata,
   };
 
   return new NextResponse(stream, {
     status: HttpStatus.OK,
-    headers
+    headers,
   });
 }
 
@@ -212,12 +213,12 @@ export function createStreamResponse(
  */
 function getCorsHeaders(origin?: string): Record<string, string> {
   if (!origin) return {};
-  
+
   return {
     'Access-Control-Allow-Origin': origin,
     'Access-Control-Allow-Methods': 'GET, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-    'Access-Control-Max-Age': '86400'
+    'Access-Control-Max-Age': '86400',
   };
 }
 
@@ -228,14 +229,14 @@ export function formatProxyError(
   error: unknown,
   correlationId: string,
   operationId?: string,
-  config: ResponseServiceConfig = {}
+  config: ResponseServiceConfig = {},
 ): Record<string, unknown> {
   const { includeStackTrace = process.env.NODE_ENV !== 'production' } = config;
-  
+
   const errorResponse: Record<string, unknown> = {
     error: 'Proxy error',
     message: 'Failed to proxy download through API',
-    correlationId
+    correlationId,
   };
 
   if (operationId) {
@@ -248,7 +249,7 @@ export function formatProxyError(
       details: error instanceof Error ? error.message : String(error),
       errorType: error instanceof Error ? error.constructor.name : typeof error,
       stack: error instanceof Error ? error.stack : undefined,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     });
   }
 
@@ -261,20 +262,20 @@ export function formatProxyError(
 export function getCacheHeaders(
   maxAge: number = 3600,
   sMaxAge?: number,
-  mustRevalidate: boolean = false
+  mustRevalidate: boolean = false,
 ): Record<string, string> {
   const directives = [`max-age=${maxAge}`];
-  
+
   if (sMaxAge !== undefined) {
     directives.push(`s-maxage=${sMaxAge}`);
   }
-  
+
   if (mustRevalidate) {
     directives.push('must-revalidate');
   }
-  
+
   return {
-    'Cache-Control': directives.join(', ')
+    'Cache-Control': directives.join(', '),
   };
 }
 
@@ -283,17 +284,16 @@ export function getCacheHeaders(
  */
 export function createResponseService(config: ResponseServiceConfig = {}) {
   return {
-    success: <T>(data: T, metadata?: Partial<ResponseMetadata>) => 
+    success: <T>(data: T, metadata?: Partial<ResponseMetadata>) =>
       createSuccessResponse(data, metadata, config),
-    error: (error: string | Error | ErrorDetails, status?: number, correlationId?: string) => 
+    error: (error: string | Error | ErrorDetails, status?: number, correlationId?: string) =>
       createErrorResponse(error, status, correlationId, config),
-    redirect: (url: string, permanent?: boolean) => 
-      createRedirectResponse(url, permanent, config),
-    stream: (stream: ReadableStream, contentType?: string, metadata?: Record<string, string>) => 
+    redirect: (url: string, permanent?: boolean) => createRedirectResponse(url, permanent, config),
+    stream: (stream: ReadableStream, contentType?: string, metadata?: Record<string, string>) =>
       createStreamResponse(stream, contentType, metadata, config),
     formatProxyError: (error: unknown, correlationId: string, operationId?: string) =>
       formatProxyError(error, correlationId, operationId, config),
     getCacheHeaders,
-    HttpStatus
+    HttpStatus,
   };
 }

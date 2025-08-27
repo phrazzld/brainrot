@@ -3,39 +3,39 @@ name: Monitor API Usage
 on:
   schedule:
     # Run every 6 hours
-    - cron: '0 */6 * * *'
+    - cron: "0 */6 * * *"
   workflow_dispatch:
     inputs:
       verbose:
-        description: 'Verbose output'
+        description: "Verbose output"
         required: false
-        default: 'false'
+        default: "false"
 
 jobs:
   monitor:
     name: Check API Usage
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          
+
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
         with:
           version: 8.15.1
-          
+
       - name: Get pnpm store
         id: pnpm-cache
         shell: bash
         run: |
           echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
-          
+
       - name: Setup pnpm cache
         uses: actions/cache@v3
         with:
@@ -43,10 +43,10 @@ jobs:
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
-            
+
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-        
+
       - name: Run usage monitoring
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
@@ -58,7 +58,7 @@ jobs:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         run: |
           pnpm tsx scripts/monitor-api-usage.ts
-          
+
       - name: Upload monitoring reports
         if: always()
         uses: actions/upload-artifact@v3
@@ -68,7 +68,7 @@ jobs:
             monitoring/api-usage.json
             monitoring/alerts.json
           retention-days: 30
-          
+
       - name: Check for alerts
         id: check-alerts
         run: |
@@ -79,7 +79,7 @@ jobs:
               echo "⚠️ Found $ALERT_COUNT alerts"
             fi
           fi
-          
+
       - name: Create issue for alerts
         if: steps.check-alerts.outputs.has_alerts == 'true'
         uses: actions/github-script@v6
@@ -88,23 +88,23 @@ jobs:
             const fs = require('fs');
             const alerts = JSON.parse(fs.readFileSync('monitoring/alerts.json', 'utf8'));
             const latestAlert = alerts[alerts.length - 1];
-            
+
             const issueBody = `
             ## 🚨 API Usage Alerts
-            
+
             **Time:** ${latestAlert.timestamp}
-            
+
             ### Alerts:
             ${latestAlert.alerts.map(a => `- ${a}`).join('\n')}
-            
+
             ### Action Required:
             - Review the usage patterns
             - Check for potential security issues
             - Rotate secrets if necessary
-            
+
             [View full report](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})
             `;
-            
+
             await github.rest.issues.create({
               owner: context.repo.owner,
               repo: context.repo.repo,
