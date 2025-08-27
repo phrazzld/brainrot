@@ -22,9 +22,9 @@ export default defineConfig({
       "content/**/*.test.ts",
     ],
     exclude: [
-      "**/node_modules/**", 
-      "**/dist/**", 
-      "**/.next/**", 
+      "**/node_modules/**",
+      "**/dist/**",
+      "**/.next/**",
       "**/build/**",
       // Temporarily exclude tests that require external binaries
       "**/e2e-pipeline.test.ts",
@@ -34,7 +34,7 @@ export default defineConfig({
       "apps/web/__tests__/**/*.test.tsx",
       // Temporarily exclude failing converter/metadata tests
       "**/batchConverter.test.ts",
-      "**/isbn.test.ts"
+      "**/isbn.test.ts",
     ],
     setupFiles: ["./test/setup.node.ts", "./test/setup.jsdom.ts"],
     coverage: {

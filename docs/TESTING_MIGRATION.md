@@ -3,9 +3,10 @@
 ## Overview
 
 We migrated from Jest to Vitest to achieve:
+
 - **10x faster test execution** (50s → 5s)
 - **Native ESM support** without configuration
-- **Better TypeScript integration** 
+- **Better TypeScript integration**
 - **HMR for tests** (instant re-runs)
 - **Simpler configuration**
 
@@ -30,15 +31,16 @@ We migrated from Jest to Vitest to achieve:
 ### 2. Configuration Changes
 
 **Old** (`jest.config.js`):
+
 ```javascript
 module.exports = {
-  preset: 'ts-jest',
-  testEnvironment: 'node',
+  preset: "ts-jest",
+  testEnvironment: "node",
   transform: {
-    '^.+\\.tsx?$': 'ts-jest',
+    "^.+\\.tsx?$": "ts-jest",
   },
   moduleNameMapper: {
-    '^@/(.*)$': '<rootDir>/src/$1',
+    "^@/(.*)$": "<rootDir>/src/$1",
   },
   coverageThreshold: {
     global: {
@@ -52,16 +54,17 @@ module.exports = {
 ```
 
 **New** (`vitest.config.ts`):
+
 ```typescript
-import { defineConfig } from 'vitest/config';
-import path from 'path';
+import { defineConfig } from "vitest/config";
+import path from "path";
 
 export default defineConfig({
   test: {
     globals: true,
-    environment: 'node',
+    environment: "node",
     coverage: {
-      provider: 'v8',
+      provider: "v8",
       thresholds: {
         branches: 85,
         functions: 85,
@@ -72,7 +75,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src'),
+      "@": path.resolve(__dirname, "./src"),
     },
   },
 });
@@ -84,10 +87,10 @@ export default defineConfig({
 
 ```typescript
 // Old (Jest)
-import { jest } from '@jest/globals';
+import { jest } from "@jest/globals";
 
 // New (Vitest)
-import { vi, describe, it, expect, beforeEach, afterEach } from 'vitest';
+import { vi, describe, it, expect, beforeEach, afterEach } from "vitest";
 ```
 
 #### Mock Functions
@@ -95,29 +98,29 @@ import { vi, describe, it, expect, beforeEach, afterEach } from 'vitest';
 ```typescript
 // Old (Jest)
 const mockFn = jest.fn();
-const mockFn = jest.fn(() => 'mocked value');
-jest.spyOn(console, 'log');
+const mockFn = jest.fn(() => "mocked value");
+jest.spyOn(console, "log");
 
 // New (Vitest)
 const mockFn = vi.fn();
-const mockFn = vi.fn(() => 'mocked value');
-vi.spyOn(console, 'log');
+const mockFn = vi.fn(() => "mocked value");
+vi.spyOn(console, "log");
 ```
 
 #### Module Mocking
 
 ```typescript
 // Old (Jest)
-jest.mock('./module');
-jest.mock('./config', () => ({
-  apiUrl: 'http://test.com',
+jest.mock("./module");
+jest.mock("./config", () => ({
+  apiUrl: "http://test.com",
 }));
 
 // New (Vitest)
-vi.mock('./module');
-vi.mock('./config', () => ({
+vi.mock("./module");
+vi.mock("./config", () => ({
   default: {
-    apiUrl: 'http://test.com',
+    apiUrl: "http://test.com",
   },
 }));
 ```
@@ -143,12 +146,18 @@ vi.useRealTimers();
 ```typescript
 // Old (Jest)
 const mockFn = myFunction as jest.Mock;
-const mockModule = require('./module') as jest.Mocked<typeof import('./module')>;
+const mockModule = require("./module") as jest.Mocked<
+  typeof import("./module")
+>;
 
 // New (Vitest)
-import { MockedFunction } from 'vitest';
+import { MockedFunction } from "vitest";
 const mockFn = myFunction as MockedFunction<typeof myFunction>;
-const mockModule = await import('./module') as { [K in keyof typeof import('./module')]: MockedFunction<typeof import('./module')[K]> };
+const mockModule = (await import("./module")) as {
+  [K in keyof typeof import("./module")]: MockedFunction<
+    (typeof import("./module"))[K]
+  >;
+};
 ```
 
 ### 4. Test Environment Setup
@@ -159,7 +168,7 @@ const mockModule = await import('./module') as { [K in keyof typeof import('./mo
 // vitest.config.ts
 export default defineConfig({
   test: {
-    environment: 'node',
+    environment: "node",
   },
 });
 ```
@@ -170,17 +179,17 @@ export default defineConfig({
 // vitest.config.ts
 export default defineConfig({
   test: {
-    environment: 'jsdom',
-    setupFiles: ['./test/setup.jsdom.ts'],
+    environment: "jsdom",
+    setupFiles: ["./test/setup.jsdom.ts"],
   },
 });
 ```
 
 ```typescript
 // test/setup.jsdom.ts
-import '@testing-library/jest-dom/vitest';
-import { cleanup } from '@testing-library/react';
-import { afterEach } from 'vitest';
+import "@testing-library/jest-dom/vitest";
+import { cleanup } from "@testing-library/react";
+import { afterEach } from "vitest";
 
 afterEach(() => {
   cleanup();
@@ -190,6 +199,7 @@ afterEach(() => {
 ### 5. Script Updates
 
 **Old** (`package.json`):
+
 ```json
 {
   "scripts": {
@@ -201,6 +211,7 @@ afterEach(() => {
 ```
 
 **New** (`package.json`):
+
 ```json
 {
   "scripts": {
@@ -220,9 +231,10 @@ afterEach(() => {
 **Problem**: `describe`, `it`, `expect` not defined
 
 **Solution**: Either import explicitly or enable globals:
+
 ```typescript
 // Option 1: Import explicitly
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect } from "vitest";
 
 // Option 2: Enable globals in vitest.config.ts
 export default defineConfig({
@@ -237,16 +249,17 @@ export default defineConfig({
 **Problem**: Mocks not working when not at top of file
 
 **Solution**: Move `vi.mock()` calls to the top:
+
 ```typescript
 // ✅ Correct - mocks are hoisted
-import { vi } from 'vitest';
-vi.mock('./module');
+import { vi } from "vitest";
+vi.mock("./module");
 
-import { myFunction } from './module';
+import { myFunction } from "./module";
 
 // ❌ Wrong - mock after import
-import { myFunction } from './module';
-vi.mock('./module'); // Won't work!
+import { myFunction } from "./module";
+vi.mock("./module"); // Won't work!
 ```
 
 ### Issue 3: Async Mock Implementations
@@ -254,14 +267,15 @@ vi.mock('./module'); // Won't work!
 **Problem**: Async mocks behave differently
 
 **Solution**: Use `vi.mocked()` for better type inference:
-```typescript
-import { vi } from 'vitest';
-import { fetchData } from './api';
 
-vi.mock('./api');
+```typescript
+import { vi } from "vitest";
+import { fetchData } from "./api";
+
+vi.mock("./api");
 
 const mockedFetchData = vi.mocked(fetchData);
-mockedFetchData.mockResolvedValue({ data: 'test' });
+mockedFetchData.mockResolvedValue({ data: "test" });
 ```
 
 ### Issue 4: Coverage Configuration
@@ -269,17 +283,14 @@ mockedFetchData.mockResolvedValue({ data: 'test' });
 **Problem**: Coverage not working or different format
 
 **Solution**: Use v8 coverage provider:
+
 ```typescript
 export default defineConfig({
   test: {
     coverage: {
-      provider: 'v8', // or 'istanbul'
-      reporter: ['text', 'json', 'html'],
-      exclude: [
-        'node_modules/',
-        'test/',
-        '*.config.ts',
-      ],
+      provider: "v8", // or 'istanbul'
+      reporter: ["text", "json", "html"],
+      exclude: ["node_modules/", "test/", "*.config.ts"],
     },
   },
 });
@@ -288,6 +299,7 @@ export default defineConfig({
 ## Performance Comparison
 
 ### Before (Jest)
+
 ```
 Test Suites: 12 passed, 12 total
 Tests:       73 passed, 73 total
@@ -295,13 +307,15 @@ Time:        48.291s
 ```
 
 ### After (Vitest)
+
 ```
 Test Files  12 passed (12)
 Tests       73 passed (73)
 Time:       4.72s
 ```
 
-**Results**: 
+**Results**:
+
 - **10.2x faster** execution
 - **Instant HMR** (changes detected in <100ms)
 - **Lower memory usage** (~30% reduction)
@@ -333,6 +347,6 @@ If you need to rollback to Jest:
 
 ---
 
-*Migration completed: 2025-08-24*  
-*Time invested: 6 hours*  
-*Test speedup: 10.2x*
+_Migration completed: 2025-08-24_  
+_Time invested: 6 hours_  
+_Test speedup: 10.2x_

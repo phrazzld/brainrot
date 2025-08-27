@@ -255,17 +255,18 @@ We recently migrated from Jest to Vitest. Key changes:
 
 ```typescript
 // Old (Jest)
-import { jest } from '@jest/globals';
+import { jest } from "@jest/globals";
 const mockFn = jest.fn();
-jest.mock('./module');
+jest.mock("./module");
 
 // New (Vitest)
-import { vi } from 'vitest';
+import { vi } from "vitest";
 const mockFn = vi.fn();
-vi.mock('./module');
+vi.mock("./module");
 ```
 
 **Migration benefits:**
+
 - Test execution: ~50s → ~5s (10x speedup)
 - No more `ts-jest` configuration
 - Better TypeScript support out of the box
@@ -317,12 +318,14 @@ pnpm monitor                 # API usage dashboard
 ### What We Removed (and Why)
 
 We archived **67 legacy scripts** that were:
+
 - **Migration scripts** (45): One-time data migrations now complete
 - **Audit/verify scripts** (15): Replaced with automated tests
 - **Standardization scripts** (10): Data is now standardized
 - **Utility scripts** (7): Either automated or rarely needed
 
 **Why remove them?**
+
 - **Clarity**: New developers see only what matters
 - **Maintenance**: Less scripts = less confusion
 - **Speed**: Faster package.json parsing
@@ -341,6 +344,7 @@ cat tools/legacy-scripts/README.md
 ```
 
 **Important**: These scripts are archived, not deleted. They serve as:
+
 - Historical record of migrations performed
 - Reference for future similar tasks
 - Documentation of data transformation logic
@@ -349,6 +353,7 @@ cat tools/legacy-scripts/README.md
 ### Adding New Scripts
 
 Before adding a new script, ask:
+
 1. **Is it used daily?** → Add to package.json
 2. **Is it a one-time task?** → Run with `tsx` directly
 3. **Is it rarely used?** → Document in README, don't add script

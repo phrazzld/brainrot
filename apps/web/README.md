@@ -77,12 +77,14 @@ pnpm test:ui
 ### migration from jest
 
 we migrated from jest to vitest for:
+
 - **10x faster test execution** (50s → 5s)
 - **native esm support** (no more transform headaches)
 - **better typescript support** out of the box
 - **hmr for tests** (instant re-runs on save)
 
 key syntax changes if you're familiar with jest:
+
 ```javascript
 // old (jest)
 jest.fn() → vi.fn()
@@ -109,6 +111,7 @@ pnpm prettier:fix # direct prettier (alias for format)
 ### why so few?
 
 we removed **67 legacy scripts** that were:
+
 - migration scripts (data already migrated)
 - audit/verify scripts (now automated tests)
 - standardization scripts (data already clean)

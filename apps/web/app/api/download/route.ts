@@ -10,11 +10,11 @@ import { safeLog } from './logging/safeLogger';
 import { createDownloadService } from './serviceFactory';
 import { createAssetService } from './services/AssetService';
 import { proxyAssetDownload } from './services/ProxyService';
-import { 
-  RequestMetadata, 
-  ClientInfo,
+import {
   ClientClassification,
-  createRequestService 
+  ClientInfo,
+  RequestMetadata,
+  createRequestService,
 } from './services/RequestService';
 import { createResponseService } from './services/ResponseService';
 import { createValidationService } from './services/ValidationService';

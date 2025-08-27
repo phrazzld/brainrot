@@ -85,7 +85,10 @@ function initializeResponse(
       return new Blob([body]);
     } else if (ArrayBuffer.isView(body)) {
       // Convert ArrayBufferView to ArrayBuffer for Blob constructor
-      const buffer = body.buffer.slice(body.byteOffset, body.byteOffset + body.byteLength) as ArrayBuffer;
+      const buffer = body.buffer.slice(
+        body.byteOffset,
+        body.byteOffset + body.byteLength,
+      ) as ArrayBuffer;
       return new Blob([buffer]);
     }
     return new Blob([]);

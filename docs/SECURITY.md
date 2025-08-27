@@ -16,11 +16,11 @@ The original implementation used dangerous patterns that could allow arbitrary c
 
 ```typescript
 // ❌ UNSAFE: Never use exec() with string concatenation
-import { exec } from 'child_process';
+import { exec } from "child_process";
 
 const metadata = {
-  title: userInput.title,  // Could contain: "; rm -rf /"
-  author: userInput.author // Could contain: "| cat /etc/passwd"
+  title: userInput.title, // Could contain: "; rm -rf /"
+  author: userInput.author, // Could contain: "| cat /etc/passwd"
 };
 
 exec(`pandoc --metadata title="${metadata.title}" input.md -o output.pdf`);
@@ -34,48 +34,55 @@ We implemented multiple layers of defense to prevent command injection:
 
 ```typescript
 // ✅ SAFE: Use spawn() with argument arrays
-import { spawn } from 'child_process';
+import { spawn } from "child_process";
 
 const args = [
-  '--sandbox',                    // Security flag
-  '--metadata', `title=${title}`, // Arguments as array elements
-  '--metadata', `author=${author}`,
-  '-o', outputPath,
-  inputPath
+  "--sandbox", // Security flag
+  "--metadata",
+  `title=${title}`, // Arguments as array elements
+  "--metadata",
+  `author=${author}`,
+  "-o",
+  outputPath,
+  inputPath,
 ];
 
-const pandoc = spawn('pandoc', args, { shell: false }); // Never use shell
+const pandoc = spawn("pandoc", args, { shell: false }); // Never use shell
 ```
 
 #### 2. Metadata Sanitization
 
 ```typescript
 // ✅ SAFE: Strict allowlist and validation
-const METADATA_ALLOWLIST = ['title', 'author', 'date', 'language', 'publisher'];
+const METADATA_ALLOWLIST = ["title", "author", "date", "language", "publisher"];
 const SAFE_CHAR_REGEX = /^[a-zA-Z0-9\s\-_.,'"()!?:;/@#&]+$/;
 
 function sanitizeMetadata(metadata: Record<string, unknown>) {
   const sanitized: Record<string, string> = {};
-  
+
   for (const [key, value] of Object.entries(metadata)) {
     // Only allow whitelisted fields
     if (!METADATA_ALLOWLIST.includes(key)) {
-      console.error(`[SECURITY] Rejected metadata field not in allowlist: ${key}`);
+      console.error(
+        `[SECURITY] Rejected metadata field not in allowlist: ${key}`,
+      );
       continue;
     }
-    
+
     // Convert to string and validate
-    const strValue = String(value || '').trim();
-    
+    const strValue = String(value || "").trim();
+
     // Reject values with dangerous characters
     if (!SAFE_CHAR_REGEX.test(strValue)) {
-      console.error(`[SECURITY] Rejected metadata value with unsafe characters: ${key}="${strValue}"`);
+      console.error(
+        `[SECURITY] Rejected metadata value with unsafe characters: ${key}="${strValue}"`,
+      );
       continue;
     }
-    
+
     sanitized[key] = strValue;
   }
-  
+
   return sanitized;
 }
 ```
@@ -86,12 +93,13 @@ All pandoc executions now run with the `--sandbox` flag as the first argument:
 
 ```typescript
 const args = [
-  '--sandbox',  // CRITICAL: Always first argument
+  "--sandbox", // CRITICAL: Always first argument
   // ... other arguments
 ];
 ```
 
 This prevents pandoc from:
+
 - Reading files outside the working directory
 - Making network requests
 - Executing external programs
@@ -108,7 +116,7 @@ This prevents pandoc from:
 exec(`command ${userInput}`);
 
 // 2. Using shell: true
-spawn('command', args, { shell: true });
+spawn("command", args, { shell: true });
 
 // 3. Building command strings
 const cmd = `pandoc ${options} ${input}`;
@@ -122,18 +130,18 @@ exec(`convert "${fileName}" output.pdf`);
 // ✅ SAFE PATTERNS - ALWAYS USE THESE:
 
 // 1. spawn() with argument arrays
-spawn('command', ['--option', value], { shell: false });
+spawn("command", ["--option", value], { shell: false });
 
 // 2. execFile() for known executables
-execFile('/usr/bin/pandoc', args);
+execFile("/usr/bin/pandoc", args);
 
 // 3. Validate all inputs
 if (VALID_OPTIONS.includes(option)) {
-  args.push('--' + option);
+  args.push("--" + option);
 }
 
 // 4. Use absolute paths when possible
-const pandocPath = '/usr/local/bin/pandoc';
+const pandocPath = "/usr/local/bin/pandoc";
 spawn(pandocPath, args);
 ```
 
@@ -142,25 +150,25 @@ spawn(pandocPath, args);
 ```typescript
 // ❌ UNSAFE: Accepting any input
 function processFile(filename: string) {
-  return spawn('cat', [filename]); // Could read /etc/passwd
+  return spawn("cat", [filename]); // Could read /etc/passwd
 }
 
 // ✅ SAFE: Validate and restrict paths
 function processFile(filename: string) {
   // Validate filename format
   if (!/^[a-zA-Z0-9-_]+\.(md|txt)$/.test(filename)) {
-    throw new Error('Invalid filename');
+    throw new Error("Invalid filename");
   }
-  
+
   // Ensure file is in allowed directory
   const safePath = path.join(ALLOWED_DIR, path.basename(filename));
-  
+
   // Verify resolved path is still in allowed directory
   if (!safePath.startsWith(ALLOWED_DIR)) {
-    throw new Error('Path traversal detected');
+    throw new Error("Path traversal detected");
   }
-  
-  return spawn('cat', [safePath]);
+
+  return spawn("cat", [safePath]);
 }
 ```
 
@@ -170,32 +178,33 @@ Always reject or escape these characters in user input that will be used in comm
 
 ```typescript
 const DANGEROUS_CHARS = [
-  ';',   // Command separator
-  '|',   // Pipe
-  '&',   // Background/chain commands  
-  '$',   // Variable expansion
-  '`',   // Command substitution (backticks)
-  '\\',  // Escape character
-  '\n',  // Newline (can break out of quotes)
-  '\r',  // Carriage return
-  '>',   // Redirect output
-  '<',   // Redirect input
-  '(',   // Subshell
-  ')',   // Subshell
-  '{',   // Brace expansion
-  '}',   // Brace expansion
-  '[',   // Glob pattern
-  ']',   // Glob pattern
-  '*',   // Wildcard
-  '?',   // Wildcard
-  '~',   // Home directory expansion
-  '!',   // History expansion (in some shells)
+  ";", // Command separator
+  "|", // Pipe
+  "&", // Background/chain commands
+  "$", // Variable expansion
+  "`", // Command substitution (backticks)
+  "\\", // Escape character
+  "\n", // Newline (can break out of quotes)
+  "\r", // Carriage return
+  ">", // Redirect output
+  "<", // Redirect input
+  "(", // Subshell
+  ")", // Subshell
+  "{", // Brace expansion
+  "}", // Brace expansion
+  "[", // Glob pattern
+  "]", // Glob pattern
+  "*", // Wildcard
+  "?", // Wildcard
+  "~", // Home directory expansion
+  "!", // History expansion (in some shells)
 ];
 ```
 
 ## Security Checklist
 
 Use this checklist when reviewing code changes that involve:
+
 - External process execution
 - File system operations
 - User input processing
@@ -228,23 +237,23 @@ Use this checklist when reviewing code changes that involve:
 
 ```typescript
 // Example security test cases
-describe('Security Tests', () => {
+describe("Security Tests", () => {
   const dangerousInputs = [
-    '; rm -rf /',
-    '| cat /etc/passwd',
-    '$(whoami)',
-    '`ls -la`',
-    '../../../etc/passwd',
-    'test && echo hacked',
-    'test || echo failed',
-    'test; echo done',
+    "; rm -rf /",
+    "| cat /etc/passwd",
+    "$(whoami)",
+    "`ls -la`",
+    "../../../etc/passwd",
+    "test && echo hacked",
+    "test || echo failed",
+    "test; echo done",
   ];
-  
+
   test.each(dangerousInputs)(
-    'should reject dangerous input: %s',
+    "should reject dangerous input: %s",
     async (input) => {
       await expect(processUserInput(input)).rejects.toThrow(/unsafe|invalid/i);
-    }
+    },
   );
 });
 ```
@@ -254,12 +263,14 @@ describe('Security Tests', () => {
 ### Automated Security Scanning
 
 1. **npm audit** - Run regularly to check for vulnerable dependencies
+
    ```bash
    npm audit
    npm audit fix  # Auto-fix when safe
    ```
 
 2. **Semgrep** - Static analysis for security patterns
+
    ```bash
    semgrep --config=auto .
    ```
@@ -277,24 +288,25 @@ For web applications, implement security headers:
 // Next.js security headers example
 const securityHeaders = [
   {
-    key: 'X-Content-Type-Options',
-    value: 'nosniff',
+    key: "X-Content-Type-Options",
+    value: "nosniff",
   },
   {
-    key: 'X-Frame-Options',
-    value: 'DENY',
+    key: "X-Frame-Options",
+    value: "DENY",
   },
   {
-    key: 'X-XSS-Protection',
-    value: '1; mode=block',
+    key: "X-XSS-Protection",
+    value: "1; mode=block",
   },
   {
-    key: 'Referrer-Policy',
-    value: 'strict-origin-when-cross-origin',
+    key: "Referrer-Policy",
+    value: "strict-origin-when-cross-origin",
   },
   {
-    key: 'Content-Security-Policy',
-    value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline';",
+    key: "Content-Security-Policy",
+    value:
+      "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline';",
   },
 ];
 ```
@@ -338,5 +350,5 @@ If a security vulnerability is discovered:
 
 ---
 
-*Last Updated: 2025-08-27*  
-*Version: 1.0*
+_Last Updated: 2025-08-27_  
+_Version: 1.0_
