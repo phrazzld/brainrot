@@ -34,7 +34,7 @@ export default defineConfig({
       "apps/web/__tests__/**/*.test.tsx",
       // Temporarily exclude failing converter/metadata tests
       "**/batchConverter.test.ts",
-      "**/isbn.test.ts",
+      "**/isbn.test.ts", // Has Vitest/mocking issues
     ],
     setupFiles: ["./test/setup.node.ts", "./test/setup.jsdom.ts"],
     coverage: {

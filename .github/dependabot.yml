@@ -1,6 +1,155 @@
 # Dependabot configuration for Brainrot Publishing House monorepo
 version: 2
 updates:
+  # SECURITY UPDATES - Daily automatic security-only updates for all packages
+  # These are processed separately with auto-merge enabled for critical fixes
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "daily"
+      time: "02:00"
+    target-branch: "master"
+    open-pull-requests-limit: 20
+    ignore:
+      # Only process security updates, ignore feature/dependency updates
+      - dependency-name: "*"
+        update-types: ["version-update:semver-minor", "version-update:semver-patch"]
+    commit-message:
+      prefix: "security"
+      include: "scope"
+    labels:
+      - "security"
+      - "dependencies" 
+      - "auto-merge"
+    reviewers:
+      - "phrazzld"
+  
+  - package-ecosystem: "npm"
+    directory: "/apps/web"
+    schedule:
+      interval: "daily"
+      time: "02:15"
+    target-branch: "master"
+    open-pull-requests-limit: 10
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-minor", "version-update:semver-patch"]
+    commit-message:
+      prefix: "security(web)"
+      include: "scope"
+    labels:
+      - "security"
+      - "dependencies"
+      - "auto-merge"
+      - "web-app"
+    reviewers:
+      - "phrazzld"
+
+  - package-ecosystem: "npm"
+    directory: "/apps/publisher"
+    schedule:
+      interval: "daily"
+      time: "02:30"
+    target-branch: "master"
+    open-pull-requests-limit: 5
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-minor", "version-update:semver-patch"]
+    commit-message:
+      prefix: "security(publisher)"
+      include: "scope"
+    labels:
+      - "security"
+      - "dependencies"
+      - "auto-merge"
+      - "publisher"
+    reviewers:
+      - "phrazzld"
+
+  - package-ecosystem: "npm"
+    directory: "/packages/@brainrot/converter"
+    schedule:
+      interval: "daily"
+      time: "02:45"
+    target-branch: "master"
+    open-pull-requests-limit: 5
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-minor", "version-update:semver-patch"]
+    commit-message:
+      prefix: "security(converter)"
+      include: "scope"
+    labels:
+      - "security"
+      - "dependencies"
+      - "auto-merge"
+      - "packages"
+    reviewers:
+      - "phrazzld"
+
+  - package-ecosystem: "npm"
+    directory: "/packages/@brainrot/blob-client"
+    schedule:
+      interval: "daily"
+      time: "03:00"
+    target-branch: "master"
+    open-pull-requests-limit: 5
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-minor", "version-update:semver-patch"]
+    commit-message:
+      prefix: "security(blob-client)"
+      include: "scope"
+    labels:
+      - "security"
+      - "dependencies"
+      - "auto-merge"
+      - "packages"
+    reviewers:
+      - "phrazzld"
+
+  - package-ecosystem: "npm"
+    directory: "/packages/@brainrot/metadata"
+    schedule:
+      interval: "daily"
+      time: "03:15"
+    target-branch: "master"
+    open-pull-requests-limit: 5
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-minor", "version-update:semver-patch"]
+    commit-message:
+      prefix: "security(metadata)"
+      include: "scope"
+    labels:
+      - "security"
+      - "dependencies"
+      - "auto-merge"
+      - "packages"
+    reviewers:
+      - "phrazzld"
+
+  # GitHub Actions security updates
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+      time: "01:30"
+    target-branch: "master"
+    open-pull-requests-limit: 10
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-minor", "version-update:semver-patch"]
+    commit-message:
+      prefix: "security(actions)"
+      include: "scope"
+    labels:
+      - "security"
+      - "dependencies"
+      - "auto-merge"
+      - "github-actions"
+    reviewers:
+      - "phrazzld"
   # Root monorepo dependencies (Turborepo, pnpm, etc.)
   - package-ecosystem: "npm"
     directory: "/"
