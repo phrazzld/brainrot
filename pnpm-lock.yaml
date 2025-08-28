@@ -47,8 +47,8 @@ importers:
         specifier: ^11.0.0
         version: 11.1.0
       dotenv:
-        specifier: ^16.5.0
-        version: 16.6.1
+        specifier: ^17.2.1
+        version: 17.2.1
       glob:
         specifier: ^11.0.3
         version: 11.0.3
@@ -101,8 +101,8 @@ importers:
         specifier: ^11.0.0
         version: 11.1.0
       dotenv:
-        specifier: ^16.5.0
-        version: 16.6.1
+        specifier: ^17.2.1
+        version: 17.2.1
       form-data:
         specifier: ^4.0.4
         version: 4.0.4
@@ -171,8 +171,8 @@ importers:
         specifier: ^1.0.0
         version: 1.1.2
       dotenv:
-        specifier: ^16.5.0
-        version: 16.6.1
+        specifier: ^17.2.1
+        version: 17.2.1
       gsap:
         specifier: ^3.12.5
         version: 3.13.0
@@ -5618,8 +5618,8 @@ packages:
       domhandler: 5.0.3
     dev: false
 
-  /dotenv@16.6.1:
-    resolution: {integrity: sha512-uBq4egWHTcTt33a72vpSG0z3HnPuIl6NqYcTrKEg2azoEyl2hpW0zqlxysq2pK9HlDIHyHyakeYaYnSAwd8bow==}
+  /dotenv@17.2.1:
+    resolution: {integrity: sha512-kQhDYKZecqnM0fCnzI5eIv5L4cAe/iRI+HqMbO/hbRdTAeXDG+M9FjipUxNfbARuEg4iHIbhnhs78BCHNbSxEQ==}
     engines: {node: '>=12'}
 
   /dunder-proto@1.0.1:
