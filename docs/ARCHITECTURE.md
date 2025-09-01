@@ -80,9 +80,8 @@ flowchart LR
 
     subgraph "Output Formats"
         TXT[Plain Text<br/>.txt files]
-        EPUB[EPUB<br/>E-readers]
+        EPUB[EPUB3<br/>E-readers & Kindle]
         PDF[PDF<br/>Print-ready]
-        MOBI[Kindle<br/>Amazon]
     end
 
     subgraph "Storage & Distribution"
@@ -90,6 +89,7 @@ flowchart LR
         KDP[Amazon KDP<br/>Kindle Store]
         Lulu[Lulu API<br/>Print on Demand]
         Ingram[IngramSpark<br/>Bookstores]
+        Apple[Apple Books<br/>E-reader Store]
     end
 
     MD --> Parse
@@ -98,23 +98,22 @@ flowchart LR
     Convert --> TXT
     Convert --> EPUB
     Convert --> PDF
-    Convert --> MOBI
 
     TXT --> Blob
-    MOBI --> KDP
+    EPUB --> KDP
+    EPUB --> Apple
     PDF --> Lulu
     PDF --> Ingram
-    EPUB --> KDP
 
     style MD fill:#fbbf24
     style TXT fill:#4ade80
     style EPUB fill:#4ade80
     style PDF fill:#4ade80
-    style MOBI fill:#4ade80
     style Blob fill:#60a5fa
     style KDP fill:#a78bfa
     style Lulu fill:#a78bfa
     style Ingram fill:#a78bfa
+    style Apple fill:#a78bfa
 ```
 
 ## Publishing Pipeline
@@ -329,7 +328,7 @@ graph LR
     subgraph "Content Metrics"
         Books[10 Books<br/>Translated]
         Files[124 Text Files<br/>Generated]
-        Formats[4 Output Formats<br/>TXT/EPUB/PDF/MOBI]
+        Formats[3 Output Formats<br/>TXT/EPUB3/PDF]
     end
 
     subgraph "Scale Targets"

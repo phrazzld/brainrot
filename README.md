@@ -140,6 +140,14 @@ pnpm sync:blob [book]          # Upload to Vercel Blob storage
 pnpm sync:blob --all           # Sync all books
 
 # Publishing
+pnpm publish:kdp [book]         # Publish to Amazon KDP
+pnpm kdp:login                  # Login to KDP account  
+pnpm kdp:check [book]           # Pre-flight validation checks
+pnpm kdp:validate-cover [book]  # Validate cover against KDP requirements
+pnpm kdp:process-cover [book] <cover-path>  # Auto-process cover (resize, optimize)
+pnpm kdp:status                 # Show rate limit status and quotas
+
+# Legacy Publisher Commands
 pnpm publisher list             # List available books
 pnpm publisher validate [book]  # Pre-flight checks
 pnpm publisher publish [book] --platform=lulu  # Publish to Lulu
@@ -150,6 +158,38 @@ pnpm publisher publish-all [book]              # All platforms
 pnpm vault:pull                # Get latest secrets
 pnpm monitor:api               # Check API usage
 ```
+
+### KDP Publishing Workflow
+
+Here's the typical workflow for publishing a book to Amazon KDP:
+
+```bash
+# 1. Generate all required formats
+pnpm generate:formats great-gatsby
+
+# 2. Validate your cover meets KDP requirements  
+pnpm kdp:validate-cover great-gatsby
+
+# 3. Auto-process cover if needed (resize, optimize, set DPI)
+pnpm kdp:process-cover great-gatsby /path/to/cover.jpg
+
+# 4. Check rate limits and validation status
+pnpm kdp:status
+
+# 5. Run pre-flight checks
+pnpm kdp:check great-gatsby
+
+# 6. Publish to KDP (requires login)
+pnpm publish:kdp great-gatsby
+```
+
+**New KDP Features:**
+
+- **Auto-processing**: Covers are automatically resized to KDP requirements (2560×2808 minimum)
+- **DPI Optimization**: Sets 300 DPI for print-quality output  
+- **Rate Limiting**: Built-in quota management (3 publications per day)
+- **Mock Mode**: Test workflows with `--mock` flag for safe testing
+- **Comprehensive Validation**: Checks dimensions, format, file size, and metadata
 
 ### Environment Variables
 
@@ -375,16 +415,15 @@ node --loader tsx scripts/analyze-something.ts
 graph LR
     A[Markdown Translation] --> B[Converter Package]
     B --> C[Plain Text<br/>for Web]
-    B --> D[EPUB<br/>for E-readers]
+    B --> D[EPUB3<br/>for E-readers & Kindle]
     B --> E[PDF<br/>for Print]
-    B --> F[MOBI<br/>for Kindle]
 
-    C --> G[Blob Storage]
-    G --> H[Web App]
+    C --> F[Blob Storage]
+    F --> G[Web App]
 
-    D --> I[Apple Books]
+    D --> H[Apple Books]
+    D --> I[Amazon KDP]
     E --> J[Lulu Print]
-    F --> K[Amazon KDP]
 ```
 
 ## 🎯 Publishing Targets

@@ -2,7 +2,7 @@
  * @brainrot/converter - Markdown to various format converters
  *
  * This package provides utilities for converting markdown content
- * to various formats including plain text, EPUB, PDF, and Kindle.
+ * to various formats including plain text, EPUB, and PDF.
  */
 
 // Export markdown stripping utilities
@@ -20,7 +20,6 @@ export {
 export {
   markdownToEpub,
   markdownToPdf,
-  markdownToKindle,
   type ConversionOptions,
 } from "./pandocConverters";
 
@@ -31,3 +30,33 @@ export {
   type BookConversionOptions,
   type ConversionResult,
 } from "./batchConverter";
+
+// Export image processing utilities
+export {
+  createImageProcessor,
+  getImageMetadata,
+  type ImageProcessor,
+  type ImageMetadata,
+} from "./imageProcessor";
+
+// Export cover validation utilities
+export {
+  validateDimensions,
+  validateFormat,
+  validateFileSize,
+  validateCover,
+  isCoverValid,
+  getCoverSuggestions,
+  type ValidationResult,
+  type CoverValidationOptions,
+  type CoverValidationSummary,
+} from "./coverValidation";
+
+// Export cover processing utilities
+export {
+  processCover,
+  processCoverForBook,
+  type CoverProcessingOptions,
+  type ProcessingResult,
+  type CoverProcessingReport,
+} from "./coverProcessor";

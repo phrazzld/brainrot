@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Publishing templates for EPUB, PDF, and Kindle formats",
   "main": "index.js",
+  "types": "index.d.ts",
   "type": "module",
   "scripts": {
     "test": "echo \"Templates package - no tests required\""
@@ -23,7 +24,9 @@
     "kindle/",
     "fonts/",
     "covers/",
+    "legal/",
     "index.js",
+    "index.d.ts",
     "README.md"
   ]
 }

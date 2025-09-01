@@ -30,7 +30,6 @@ import { spawn } from "child_process";
 import {
   markdownToEpub,
   markdownToPdf,
-  markdownToKindle,
   ConversionOptions,
 } from "./pandocConverters";
 
@@ -38,7 +37,6 @@ const mockSpawn = vi.mocked(spawn);
 
 describe("pandocConverters", () => {
   let mockPandocProcess: any;
-  let mockEbookConvertProcess: any;
 
   beforeEach(() => {
     vi.clearAllMocks();
@@ -57,22 +55,9 @@ describe("pandocConverters", () => {
       }),
     };
 
-    // Mock successful ebook-convert process
-    mockEbookConvertProcess = {
-      stderr: { on: vi.fn() },
-      on: vi.fn((event, callback) => {
-        if (event === "close") {
-          setTimeout(() => callback(0), 0); // Success
-        }
-      }),
-    };
-
     mockSpawn.mockImplementation((command: string) => {
       if (command === "pandoc") {
         return mockPandocProcess as any;
-      }
-      if (command === "ebook-convert") {
-        return mockEbookConvertProcess as any;
       }
       throw new Error(`Unexpected command: ${command}`);
     });
@@ -259,106 +244,4 @@ describe("pandocConverters", () => {
     });
   });
 
-  describe("markdownToKindle", () => {
-    it("should convert markdown to Kindle format via EPUB", async () => {
-      const markdown = "# Test Book";
-
-      const result = await markdownToKindle(markdown);
-
-      expect(result).toMatch(/\.mobi$/);
-      expect(mockSpawn).toHaveBeenCalledTimes(2); // Once for pandoc, once for ebook-convert
-      expect(mockSpawn).toHaveBeenNthCalledWith(
-        1,
-        "pandoc",
-        expect.any(Array),
-        expect.any(Object),
-      );
-      expect(mockSpawn).toHaveBeenNthCalledWith(
-        2,
-        "ebook-convert",
-        expect.any(Array),
-        expect.any(Object),
-      );
-    });
-
-    it("should pass options to EPUB conversion", async () => {
-      const markdown = "# Book";
-      const options: ConversionOptions = {
-        title: "Kindle Book",
-        author: "Kindle Author",
-      };
-
-      await markdownToKindle(markdown, options);
-
-      expect(mockSpawn).toHaveBeenNthCalledWith(
-        1,
-        "pandoc",
-        expect.arrayContaining([
-          "--metadata",
-          "title=Kindle Book",
-          "--metadata",
-          "author=Kindle Author",
-        ]),
-        expect.any(Object),
-      );
-    });
-
-    it("should use custom output path for MOBI file", async () => {
-      const markdown = "# Test";
-      const outputPath = "/custom/path/book.mobi";
-
-      const result = await markdownToKindle(markdown, { outputPath });
-
-      expect(result).toBe(outputPath);
-      expect(mockSpawn).toHaveBeenNthCalledWith(
-        2,
-        "ebook-convert",
-        expect.arrayContaining([expect.any(String), outputPath]),
-        expect.any(Object),
-      );
-    });
-
-    it("should clean up temporary EPUB file", async () => {
-      const markdown = "# Test";
-
-      await markdownToKindle(markdown);
-
-      // Should clean up the intermediate EPUB file
-      expect(mockUnlink).toHaveBeenCalledTimes(2); // Once for input MD, once for intermediate EPUB
-    });
-
-    it("should handle Calibre not installed error", async () => {
-      const markdown = "# Test";
-
-      mockEbookConvertProcess.on.mockImplementation(
-        (event: string, callback: Function) => {
-          if (event === "error") {
-            setTimeout(
-              () => callback(new Error("spawn ebook-convert ENOENT")),
-              0,
-            );
-          }
-        },
-      );
-
-      await expect(markdownToKindle(markdown)).rejects.toThrow(
-        "Kindle conversion failed",
-      );
-    });
-
-    it("should clean up files even when conversion fails", async () => {
-      const markdown = "# Test";
-
-      mockEbookConvertProcess.on.mockImplementation(
-        (event: string, callback: Function) => {
-          if (event === "close") {
-            setTimeout(() => callback(1), 0); // Non-zero exit code
-          }
-        },
-      );
-
-      await expect(markdownToKindle(markdown)).rejects.toThrow();
-      expect(mockUnlink).toHaveBeenCalled();
-    });
-  });
 });

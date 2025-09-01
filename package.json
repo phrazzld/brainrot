@@ -24,7 +24,19 @@
     "generate:formats": "tsx scripts/generate-formats.ts",
     "sync:blob": "tsx scripts/sync-translations.ts",
     "monitor": "tsx scripts/monitor-api-usage.ts",
-    "monitor:dashboard": "open apps/web/public/monitoring/dashboard.html"
+    "monitor:dashboard": "open apps/web/public/monitoring/dashboard.html",
+    "publish:kdp": "cd apps/publisher && pnpm build && node dist/index.js kdp publish",
+    "kdp:login": "cd apps/publisher && pnpm build && node dist/index.js kdp login",
+    "kdp:check": "cd apps/publisher && pnpm build && node dist/index.js kdp check",
+    "kdp:validate-cover": "cd apps/publisher && pnpm build && node dist/index.js kdp validate-cover",
+    "kdp:process-cover": "cd apps/publisher && pnpm build && node dist/index.js kdp process-cover",
+    "kdp:status": "cd apps/publisher && pnpm build && node dist/index.js kdp status",
+    "templates:list": "cd apps/publisher && pnpm build && node dist/index.js templates list",
+    "templates:status": "cd apps/publisher && pnpm build && node dist/index.js templates status",
+    "templates:set": "cd apps/publisher && pnpm build && node dist/index.js templates set",
+    "templates:tag": "cd apps/publisher && pnpm build && node dist/index.js templates tag",
+    "templates:rollback": "cd apps/publisher && pnpm build && node dist/index.js templates rollback",
+    "templates:test": "cd apps/publisher && pnpm build && node dist/index.js templates test"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.8.0",

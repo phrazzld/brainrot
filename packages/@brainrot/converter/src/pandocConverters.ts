@@ -27,6 +27,7 @@ export interface ConversionOptions {
   metadata?: Record<string, string>;
   outputPath?: string;
   tempDir?: string;
+  includeBeforeBody?: string;
 }
 
 /**
@@ -124,6 +125,8 @@ export async function markdownToEpub(
       inputFile,
       "-o",
       outputFile,
+      "--to",
+      "epub3",
       "--toc",
       "--toc-depth=2",
     ];
@@ -180,6 +183,11 @@ export async function markdownToEpub(
           console.warn(`[SECURITY] Skipping unsafe metadata field: ${key}`);
         }
       }
+    }
+
+    // Add include-before-body option if provided
+    if (options.includeBeforeBody) {
+      args.push("--include-before-body", options.includeBeforeBody);
     }
 
     // Execute pandoc securely
@@ -277,69 +285,3 @@ export async function markdownToPdf(
   }
 }
 
-/**
- * Convert EPUB to Kindle format (KPF/MOBI)
- * Note: This requires KindleGen or Calibre's ebook-convert to be installed
- * @param markdown - The markdown content to convert
- * @param options - Conversion options including metadata
- * @returns Path to the generated Kindle file
- */
-export async function markdownToKindle(
-  markdown: string,
-  options: ConversionOptions = {},
-): Promise<string> {
-  // First convert to EPUB
-  const epubPath = await markdownToEpub(markdown, {
-    ...options,
-    outputPath: undefined, // Let it use temp path
-  });
-
-  const outputFile = options.outputPath || epubPath.replace(".epub", ".mobi");
-
-  try {
-    // Use spawn for ebook-convert as well
-    const args = [epubPath, outputFile];
-
-    await new Promise<void>((resolve, reject) => {
-      const convert = spawn("ebook-convert", args, {
-        stdio: ["pipe", "pipe", "pipe"],
-        shell: false, // Security: Never use shell
-      });
-
-      let stderr = "";
-
-      convert.stderr.on("data", (data) => {
-        stderr += data.toString();
-      });
-
-      convert.on("error", (error) => {
-        reject(new Error(`ebook-convert execution failed: ${error.message}`));
-      });
-
-      convert.on("close", (code) => {
-        if (code === 0) {
-          resolve();
-        } else {
-          reject(
-            new Error(`ebook-convert failed with code ${code}: ${stderr}`),
-          );
-        }
-      });
-    });
-
-    // Clean up EPUB file if it was temporary
-    if (!options.outputPath) {
-      await unlink(epubPath);
-    }
-
-    return outputFile;
-  } catch (error) {
-    // Clean up on error
-    try {
-      await unlink(epubPath);
-    } catch {}
-    throw new Error(
-      `Kindle conversion failed. Make sure Calibre is installed: ${error}`,
-    );
-  }
-}

@@ -22,7 +22,9 @@
     "test": "vitest"
   },
   "dependencies": {
+    "@brainrot/converter": "workspace:*",
     "@brainrot/metadata": "workspace:*",
+    "@brainrot/templates": "workspace:*",
     "@brainrot/types": "workspace:*",
     "@playwright/test": "^1.55.0",
     "axios": "^1.11.0",
@@ -31,10 +33,12 @@
     "dotenv": "^16.5.0",
     "form-data": "^4.0.4",
     "inquirer": "^12.9.4",
+    "jimp": "^1.6.0",
     "js-yaml": "^4.1.0",
     "ora": "^8.2.0",
     "p-retry": "^5.1.0",
-    "playwright": "^1.55.0"
+    "playwright": "^1.55.0",
+    "sharp": "^0.34.3"
   },
   "devDependencies": {
     "@types/form-data": "^2.5.2",

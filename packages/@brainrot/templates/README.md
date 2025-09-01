@@ -16,6 +16,7 @@ import {
   readTemplate,
   processTemplate,
   generateCover,
+  generateLegalPages,
 } from "@brainrot/templates";
 
 // Get path to a template
@@ -42,6 +43,23 @@ const coverSVG = generateCover({
   subtitle: "Simping in the Jazz Age",
   author: "F. Scott Fitzgerald",
   translator: "Gen Z Translator",
+});
+
+// Generate combined legal pages for publication
+const legalPages = generateLegalPages({
+  title: "The Great Gatsby",
+  subtitle: "Simping in the Jazz Age", 
+  originalTitle: "The Great Gatsby",
+  originalAuthor: "F. Scott Fitzgerald",
+  originalYear: "1925",
+  translator: "Gen Z Squad",
+  isbn: "979-8-1234-5678-9",
+  publishDate: "2025-08-31",
+  format: "EPUB Digital Edition",
+  chapters: [
+    { title: "Nick Arrives", page: "1" },
+    { title: "The Green Light", page: "15" }
+  ]
 });
 ```
 
@@ -89,6 +107,51 @@ const coverSVG = generateCover({
   - Kindle X-Ray and Page Flip support
   - Start reading location markers
   - Review prompt at end
+
+### Legal Page Templates
+
+The legal templates provide KDP-compliant legal pages for book publication:
+
+#### Title Page (`legal-title-page`)
+- **File**: `legal/title-page.md`
+- **Purpose**: Professional title page with book metadata and attribution
+- **Includes**: Title, subtitle, author info, publication details, ISBN
+
+#### Copyright Notice (`legal-copyright`)
+- **File**: `legal/copyright.md`
+- **Purpose**: Comprehensive copyright and permissions information
+- **Includes**: Rights statement, usage permissions, disclaimers, contact info
+
+#### AI Disclosure (`legal-ai-disclosure`)
+- **File**: `legal/ai-disclosure.md`
+- **Purpose**: 2025 KDP-required AI content transparency disclosure
+- **Includes**: AI usage details, human oversight statement, compliance info
+
+#### Table of Contents (`legal-toc`)
+- **File**: `legal/toc.md`
+- **Purpose**: Structured table of contents with front/back matter
+- **Includes**: Chapter listings, page numbers, publication sections
+
+#### Combined Legal Pages Generator
+
+Use `generateLegalPages()` to combine all legal templates:
+
+```javascript
+import { generateLegalPages } from "@brainrot/templates";
+
+const legalPages = generateLegalPages({
+  title: "Book Title",
+  originalAuthor: "Original Author",
+  translator: "Translator Name", 
+  isbn: "979-8-1234-5678-9",
+  chapters: [
+    { title: "Chapter 1", page: "1" },
+    { title: "Chapter 2", page: "15" }
+  ]
+});
+
+// Returns combined markdown with proper page breaks
+```
 
 ## Template Variables
 

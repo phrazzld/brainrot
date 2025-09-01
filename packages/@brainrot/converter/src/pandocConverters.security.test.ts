@@ -12,7 +12,6 @@ import {
 import {
   markdownToEpub,
   markdownToPdf,
-  markdownToKindle,
 } from "./pandocConverters";
 import { spawn } from "child_process";
 import * as fs from "fs";
@@ -33,7 +32,6 @@ vi.mock("fs", async () => ({
 
 describe("pandocConverters Security Tests", () => {
   let mockPandocProcess: any;
-  let mockEbookConvertProcess: any;
 
   beforeEach(() => {
     // Reset mocks
@@ -49,22 +47,9 @@ describe("pandocConverters Security Tests", () => {
       }),
     };
 
-    // Mock successful ebook-convert process
-    mockEbookConvertProcess = {
-      stderr: { on: vi.fn() },
-      on: vi.fn((event, callback) => {
-        if (event === "close") {
-          callback(0); // Success
-        }
-      }),
-    };
-
     mockSpawn.mockImplementation((command: string) => {
       if (command === "pandoc") {
         return mockPandocProcess as any;
-      }
-      if (command === "ebook-convert") {
-        return mockEbookConvertProcess as any;
       }
       throw new Error(`Unexpected command: ${command}`);
     });

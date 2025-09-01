@@ -9,6 +9,7 @@ import { fileURLToPath } from "url";
 import { createLuluCommand } from "./commands/lulu.js";
 import { createKdpCommand } from "./commands/kdp.js";
 import { createPublishAllCommand } from "./commands/publish-all.js";
+import { createTemplatesCommand } from "./commands/templates.js";
 
 // Load environment variables
 dotenv.config({ path: ".env.local" });
@@ -166,6 +167,9 @@ program.addCommand(createKdpCommand());
 
 // Add unified publish-all command
 program.addCommand(createPublishAllCommand());
+
+// Add templates command
+program.addCommand(createTemplatesCommand());
 
 // Configure command
 program

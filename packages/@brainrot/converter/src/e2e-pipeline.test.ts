@@ -132,9 +132,6 @@ She was experiencing the brainrot firsthand, and there was no going back.`,
       if (command === "pandoc") {
         return createMockProcess() as any;
       }
-      if (command === "ebook-convert") {
-        return createMockProcess() as any;
-      }
       throw new Error(`Unexpected command: ${command}`);
     });
 

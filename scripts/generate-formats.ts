@@ -2,6 +2,7 @@
 import { Command } from "commander";
 import * as fs from "fs/promises";
 import * as path from "path";
+import * as crypto from "crypto";
 import ora from "ora";
 import chalk from "chalk";
 import pLimit from "p-limit";
@@ -9,7 +10,9 @@ import * as yaml from "js-yaml";
 import {
   stripMarkdown,
   markdownToText,
+  markdownToEpub,
 } from "../packages/@brainrot/converter/dist/index.js";
+import { generateLegalPages } from "../packages/@brainrot/templates/index.js";
 
 interface BookMetadata {
   title: string;
@@ -29,6 +32,116 @@ interface GenerateOptions {
   dryRun?: boolean;
   verbose?: boolean;
   force?: boolean;
+}
+
+interface CacheEntry {
+  hash: string;
+  timestamp: string;
+  files: Record<string, string>; // filename -> hash
+}
+
+interface CacheDatabase {
+  entries: Record<string, CacheEntry>; // format -> CacheEntry
+  lastUpdated: string;
+}
+
+// Caching utilities
+function calculateContentHash(content: string): string {
+  return crypto.createHash('sha256').update(content, 'utf-8').digest('hex');
+}
+
+function calculateMultiFileHash(contents: string[]): string {
+  const combined = contents.join('\n---FILE-SEPARATOR---\n');
+  return calculateContentHash(combined);
+}
+
+async function loadCache(cacheDir: string): Promise<CacheDatabase> {
+  const cachePath = path.join(cacheDir, '.cache.json');
+  
+  try {
+    const data = await fs.readFile(cachePath, 'utf-8');
+    return JSON.parse(data) as CacheDatabase;
+  } catch (error: any) {
+    if (error.code === 'ENOENT') {
+      // Cache file doesn't exist, create new database
+      return {
+        entries: {},
+        lastUpdated: new Date().toISOString()
+      };
+    }
+    throw new Error(`Failed to load cache: ${error.message}`);
+  }
+}
+
+async function saveCache(cacheDir: string, cache: CacheDatabase): Promise<void> {
+  const cachePath = path.join(cacheDir, '.cache.json');
+  
+  try {
+    await fs.mkdir(cacheDir, { recursive: true });
+    cache.lastUpdated = new Date().toISOString();
+    const data = JSON.stringify(cache, null, 2);
+    await fs.writeFile(cachePath, data, 'utf-8');
+  } catch (error) {
+    throw new Error(`Failed to save cache: ${(error as Error).message}`);
+  }
+}
+
+async function isContentChanged(
+  format: string,
+  currentHash: string,
+  outputFiles: string[],
+  cacheDir: string
+): Promise<boolean> {
+  const cache = await loadCache(cacheDir);
+  const cacheEntry = cache.entries[format];
+  
+  if (!cacheEntry) {
+    return true; // No cache entry, content is considered changed
+  }
+  
+  // Check if hash has changed
+  if (cacheEntry.hash !== currentHash) {
+    return true;
+  }
+  
+  // Check if all output files still exist
+  for (const filePath of outputFiles) {
+    const exists = await fs.access(filePath).then(() => true).catch(() => false);
+    if (!exists) {
+      return true; // Output file missing, need to regenerate
+    }
+  }
+  
+  return false; // Content hasn't changed and files exist
+}
+
+async function updateCache(
+  format: string,
+  contentHash: string,
+  outputFiles: string[],
+  cacheDir: string
+): Promise<void> {
+  const cache = await loadCache(cacheDir);
+  
+  // Calculate hashes for output files
+  const fileHashes: Record<string, string> = {};
+  for (const filePath of outputFiles) {
+    try {
+      const fileContent = await fs.readFile(filePath, 'utf-8');
+      const fileName = path.basename(filePath);
+      fileHashes[fileName] = calculateContentHash(fileContent);
+    } catch (error) {
+      // File might not exist or be readable, skip it
+    }
+  }
+  
+  cache.entries[format] = {
+    hash: contentHash,
+    timestamp: new Date().toISOString(),
+    files: fileHashes
+  };
+  
+  await saveCache(cacheDir, cache);
 }
 
 const program = new Command();
@@ -230,29 +343,41 @@ async function generateTextFormat(
     console.log(`  Found ${filesToConvert.length} files to convert`);
   }
 
+  // Calculate content hash for all input files
+  const inputContents: string[] = [];
+  for (const { inputPath } of filesToConvert) {
+    const content = await fs.readFile(inputPath, "utf-8");
+    inputContents.push(content);
+  }
+  const contentHash = calculateMultiFileHash(inputContents);
+  
+  // Prepare output file paths
+  const outputPaths = filesToConvert.map(({ outputName }) => 
+    path.join(outputDir, outputName)
+  );
+
+  // Check if content has changed (unless force is enabled)
+  if (!options.force) {
+    const hasChanged = await isContentChanged('text', contentHash, outputPaths, outputDir);
+    if (!hasChanged) {
+      if (options.verbose) {
+        console.log(`    Skipping text generation (content unchanged)`);
+      }
+      return;
+    }
+  }
+
   // Convert each file to text
   for (const { inputPath, outputName } of filesToConvert) {
-    const outputPath = path.join(outputDir, "text", outputName);
+    const outputPath = path.join(outputDir, outputName);
 
     if (!options.dryRun) {
-      // Create text subdirectory
-      await fs.mkdir(path.join(outputDir, "text"), { recursive: true });
+      // Ensure output directory exists
+      await fs.mkdir(outputDir, { recursive: true });
 
       // Read and convert content
       const content = await fs.readFile(inputPath, "utf-8");
       const textContent = stripMarkdown(content);
-
-      // Check if file exists and handle accordingly
-      const fileExists = await fs
-        .access(outputPath)
-        .then(() => true)
-        .catch(() => false);
-      if (fileExists && !options.force) {
-        if (options.verbose) {
-          console.log(`    Skipping ${outputName} (already exists)`);
-        }
-        continue;
-      }
 
       // Write text file
       await fs.writeFile(outputPath, textContent, "utf-8");
@@ -266,6 +391,11 @@ async function generateTextFormat(
       }
     }
   }
+
+  // Update cache after successful generation
+  if (!options.dryRun) {
+    await updateCache('text', contentHash, outputPaths, outputDir);
+  }
 }
 
 async function generateEpubFormat(
@@ -275,16 +405,147 @@ async function generateEpubFormat(
   metadata: BookMetadata | null,
   options: GenerateOptions,
 ) {
-  // EPUB generation would require pandoc
-  // For now, we'll create a placeholder
-  if (options.verbose) {
-    console.log(`  EPUB generation requires pandoc (not yet implemented)`);
+  // Check for different directory structures (matching text format logic)
+  const brainrotPath = path.join(bookPath, "brainrot");
+  const brainrotExists = await fs
+    .access(brainrotPath)
+    .then(() => true)
+    .catch(() => false);
+
+  // Check for translation.txt directly in book directory
+  const translationPath = path.join(bookPath, "translation.txt");
+  const translationExists = await fs
+    .access(translationPath)
+    .then(() => true)
+    .catch(() => false);
+
+  if (!brainrotExists && !translationExists) {
+    if (options.verbose) {
+      console.log(
+        `  Skipping ${slug} - no brainrot directory or translation.txt found`,
+      );
+    }
+    return;
+  }
+
+  let markdownContent = "";
+
+  if (brainrotExists) {
+    // Handle brainrot directory structure
+    let files = await fs.readdir(brainrotPath);
+    let markdownFiles = files.filter(
+      (f) => f.endsWith(".md") || f.endsWith(".txt"),
+    );
+
+    // Check if there's a text subdirectory (for books like The Iliad)
+    const textSubdir = path.join(brainrotPath, "text");
+    const textSubdirExists = await fs
+      .access(textSubdir)
+      .then(() => true)
+      .catch(() => false);
+
+    if (textSubdirExists && markdownFiles.length === 0) {
+      // Use files from text subdirectory instead
+      files = await fs.readdir(textSubdir);
+      markdownFiles = files.filter(
+        (f) => f.endsWith(".md") || f.endsWith(".txt"),
+      );
+
+      // Read and concatenate all files from text subdirectory
+      for (const file of markdownFiles.sort()) {
+        const filePath = path.join(textSubdir, file);
+        const content = await fs.readFile(filePath, "utf-8");
+        markdownContent += content + "\n\n";
+      }
+    } else {
+      // Read and concatenate all files from brainrot directory
+      for (const file of markdownFiles.sort()) {
+        const filePath = path.join(brainrotPath, file);
+        const content = await fs.readFile(filePath, "utf-8");
+        markdownContent += content + "\n\n";
+      }
+    }
+  } else if (translationExists) {
+    // Handle single translation.txt file
+    markdownContent = await fs.readFile(translationPath, "utf-8");
+  }
+
+  if (!markdownContent.trim()) {
+    if (options.verbose) {
+      console.log(`  Skipping ${slug} - no content found`);
+    }
+    return;
+  }
+
+  // Calculate content hash for EPUB generation
+  const metadataString = metadata ? JSON.stringify(metadata) : '{}';
+  const legalContent = generateLegalPages(metadata || {});
+  const combinedContent = [
+    markdownContent,
+    metadataString,
+    legalContent,
+    slug, // Include slug as it affects title generation
+    new Date().getFullYear().toString() // Include year as it affects dates
+  ];
+  const contentHash = calculateMultiFileHash(combinedContent);
+  
+  // Prepare output file paths
+  const epubPath = path.join(outputDir, "book.epub");
+  const legalPath = path.join(outputDir, "legal.md");
+  const outputPaths = [epubPath, legalPath];
+
+  // Check if content has changed (unless force is enabled)
+  if (!options.force) {
+    const hasChanged = await isContentChanged('epub', contentHash, outputPaths, outputDir);
+    if (!hasChanged) {
+      if (options.verbose) {
+        console.log(`    Skipping EPUB generation (content unchanged)`);
+      }
+      return;
+    }
   }
 
   if (!options.dryRun) {
-    const epubPath = path.join(outputDir, `${slug}.epub`);
-    // Placeholder: would call pandoc here
-    // await execAsync(`pandoc -o ${epubPath} ...`);
+    try {
+      // Create output directory
+      await fs.mkdir(outputDir, { recursive: true });
+
+      // Generate legal pages
+      const legalContent = generateLegalPages(metadata || {});
+      const legalPath = path.join(outputDir, "legal.md");
+      await fs.writeFile(legalPath, legalContent, "utf-8");
+
+      if (options.verbose) {
+        console.log(`    Created legal.md`);
+      }
+
+      // Prepare metadata for pandoc
+      const conversionOptions = {
+        title: metadata?.title || slug.replace(/-/g, " ").toUpperCase(),
+        author: metadata?.author || "Anonymous",
+        date: new Date().getFullYear().toString(),
+        language: "en",
+        publisher: "Brainrot Publishing House",
+        outputPath: epubPath,
+        includeBeforeBody: legalPath,
+      };
+
+      // Generate EPUB using pandoc
+      await markdownToEpub(markdownContent, conversionOptions);
+
+      if (options.verbose) {
+        console.log(`    Created book.epub`);
+      }
+
+      // Update cache after successful generation
+      await updateCache('epub', contentHash, outputPaths, outputDir);
+    } catch (error) {
+      throw new Error(`EPUB generation failed for ${slug}: ${error}`);
+    }
+  } else {
+    if (options.verbose) {
+      console.log(`    Would create book.epub`);
+    }
   }
 }
 
@@ -304,8 +565,8 @@ async function generatePdfFormat(
   }
 
   if (!options.dryRun) {
-    const paperbackPath = path.join(outputDir, `${slug}-paperback.pdf`);
-    const hardcoverPath = path.join(outputDir, `${slug}-hardcover.pdf`);
+    const paperbackPath = path.join(outputDir, "paperback.pdf");
+    const hardcoverPath = path.join(outputDir, "hardcover.pdf");
     // Placeholder: would call pandoc here
     // await execAsync(`pandoc -o ${paperbackPath} --template=paperback.latex ...`);
     // await execAsync(`pandoc -o ${hardcoverPath} --template=hardcover.latex ...`);

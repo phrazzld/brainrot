@@ -6,7 +6,6 @@ import { chapterToText, ChapterContent } from "./markdownToText";
 import {
   markdownToEpub,
   markdownToPdf,
-  markdownToKindle,
   ConversionOptions,
 } from "./pandocConverters";
 
@@ -18,7 +17,7 @@ const mkdir = promisify(fs.mkdir);
 export interface BookConversionOptions extends ConversionOptions {
   inputDir: string;
   outputDir: string;
-  formats?: ("text" | "epub" | "pdf" | "kindle")[];
+  formats?: ("text" | "epub" | "pdf")[];
   chapterPattern?: RegExp;
 }
 
@@ -97,12 +96,6 @@ export async function convertBook(
             });
             break;
 
-          case "kindle":
-            outputPath = await markdownToKindle(combinedMarkdown, {
-              ...options,
-              outputPath: path.join(options.outputDir, "book.mobi"),
-            });
-            break;
 
           default:
             throw new Error(`Unsupported format: ${format}`);

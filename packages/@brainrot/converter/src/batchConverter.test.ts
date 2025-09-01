@@ -20,7 +20,6 @@ import { exec } from "child_process";
 import {
   markdownToEpub,
   markdownToPdf,
-  markdownToKindle,
 } from "./pandocConverters";
 
 // Mock modules
@@ -36,7 +35,6 @@ vi.mock("child_process");
 vi.mock("./pandocConverters", () => ({
   markdownToEpub: vi.fn().mockResolvedValue("/output/book.epub"),
   markdownToPdf: vi.fn().mockResolvedValue("/output/book.pdf"),
-  markdownToKindle: vi.fn().mockResolvedValue("/output/book.mobi"),
 }));
 
 describe("batchConverter", () => {
@@ -48,7 +46,6 @@ describe("batchConverter", () => {
   const mockExec = vi.mocked(exec);
   const mockMarkdownToEpub = vi.mocked(markdownToEpub);
   const mockMarkdownToPdf = vi.mocked(markdownToPdf);
-  const mockMarkdownToKindle = vi.mocked(markdownToKindle);
 
   beforeEach(() => {
     vi.clearAllMocks();
@@ -66,7 +63,6 @@ describe("batchConverter", () => {
     // Reset pandoc converter mocks
     mockMarkdownToEpub.mockResolvedValue("/output/book.epub");
     mockMarkdownToPdf.mockResolvedValue("/output/book.pdf");
-    mockMarkdownToKindle.mockResolvedValue("/output/book.mobi");
 
     mockReadFile.mockImplementation((path, encoding, callback) => {
       const content = `# Chapter Title\n\nThis is chapter content with **bold** text.`;
@@ -162,18 +158,6 @@ describe("batchConverter", () => {
       expect(results[2].path).toContain("book.pdf");
     });
 
-    it("should handle Kindle format conversion", async () => {
-      const options: BookConversionOptions = {
-        ...defaultOptions,
-        formats: ["kindle"],
-      };
-
-      const results = await convertBook(options);
-
-      expect(results).toHaveLength(1);
-      expect(results[0].format).toBe("kindle");
-      expect(results[0].path).toContain("book.mobi");
-    });
 
     it("should extract chapter titles from content", async () => {
       mockReadFile.mockImplementation((path, encoding, callback) => {

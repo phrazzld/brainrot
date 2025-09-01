@@ -5,14 +5,15 @@
 
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
-import { readFileSync } from "fs";
+import { readFileSync, existsSync } from "fs";
+import { execSync } from "child_process";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 /**
  * Get the absolute path to a template file
- * @param {string} type - Template type: 'epub', 'pdf-paperback', 'pdf-hardcover', 'kindle'
+ * @param {string} type - Template type: 'epub', 'pdf-paperback', 'pdf-hardcover', 'kindle', 'legal-copyright', 'legal-title-page', 'legal-ai-disclosure', 'legal-toc'
  * @returns {string} Absolute path to the template file
  */
 export function getTemplatePath(type) {
@@ -23,6 +24,10 @@ export function getTemplatePath(type) {
     "pdf-hardcover": join(__dirname, "pdf", "hardcover.latex"),
     kindle: join(__dirname, "kindle", "kindle.template"),
     "cover-svg": join(__dirname, "covers", "cover-template.svg"),
+    "legal-copyright": join(__dirname, "legal", "copyright.md"),
+    "legal-title-page": join(__dirname, "legal", "title-page.md"),
+    "legal-ai-disclosure": join(__dirname, "legal", "ai-disclosure.md"),
+    "legal-toc": join(__dirname, "legal", "toc.md"),
   };
 
   if (!templates[type]) {
@@ -37,11 +42,141 @@ export function getTemplatePath(type) {
 /**
  * Read a template file and return its contents
  * @param {string} type - Template type
+ * @param {string} [version] - Optional version (git tag) to read from
  * @returns {string} Template contents
  */
-export function readTemplate(type) {
+export function readTemplate(type, version = null) {
+  if (version) {
+    return readTemplateVersion(type, version);
+  }
   const path = getTemplatePath(type);
   return readFileSync(path, "utf8");
+}
+
+// === TEMPLATE VERSION CONTROL SYSTEM ===
+
+/**
+ * Get available legal template versions from git tags
+ * @returns {string[]} Array of available versions
+ */
+export function getLegalTemplateVersions() {
+  try {
+    const tags = execSync('git tag --list "legal-templates-v*"', { 
+      encoding: 'utf8', 
+      cwd: __dirname 
+    }).trim();
+    
+    if (!tags) return [];
+    
+    return tags.split('\n')
+      .filter(tag => tag.startsWith('legal-templates-v'))
+      .sort((a, b) => {
+        // Sort by version number (descending - newest first)
+        const aVersion = a.replace('legal-templates-v', '');
+        const bVersion = b.replace('legal-templates-v', '');
+        return bVersion.localeCompare(aVersion, undefined, { numeric: true });
+      });
+  } catch (error) {
+    console.warn('Warning: Could not retrieve template versions:', error.message);
+    return [];
+  }
+}
+
+/**
+ * Get the current legal template version
+ * @returns {string} Current version or 'latest'
+ */
+export function getCurrentLegalTemplateVersion() {
+  try {
+    // Check if there's a version override file
+    const versionOverridePath = join(__dirname, '.template-version');
+    if (existsSync(versionOverridePath)) {
+      return readFileSync(versionOverridePath, 'utf8').trim();
+    }
+    
+    // Default to latest
+    return 'latest';
+  } catch (error) {
+    return 'latest';
+  }
+}
+
+/**
+ * Read a template from a specific version (git tag)
+ * @param {string} type - Template type
+ * @param {string} version - Version tag (e.g., 'legal-templates-v1.0.0')
+ * @returns {string} Template contents
+ */
+export function readTemplateVersion(type, version) {
+  if (!type.startsWith('legal-')) {
+    throw new Error(`Version selection only supported for legal templates, got: ${type}`);
+  }
+  
+  try {
+    // Get the template file path relative to repo root
+    const templateFile = getTemplatePath(type).replace(__dirname + '/', '');
+    const repoRelativePath = `packages/@brainrot/templates/${templateFile}`;
+    
+    const content = execSync(`git show ${version}:${repoRelativePath}`, { 
+      encoding: 'utf8', 
+      cwd: join(__dirname, '../../../') // Go to repo root
+    });
+    
+    return content;
+  } catch (error) {
+    throw new Error(`Failed to read template ${type} from version ${version}: ${error.message}`);
+  }
+}
+
+/**
+ * Set the legal template version to use (creates override file)
+ * @param {string} version - Version tag or 'latest'
+ */
+export function setLegalTemplateVersion(version) {
+  const versionOverridePath = join(__dirname, '.template-version');
+  
+  if (version === 'latest') {
+    // Remove override file to use latest
+    if (existsSync(versionOverridePath)) {
+      execSync(`rm "${versionOverridePath}"`);
+    }
+  } else {
+    // Verify version exists
+    const availableVersions = getLegalTemplateVersions();
+    if (!availableVersions.includes(version)) {
+      throw new Error(`Version ${version} not found. Available versions: ${availableVersions.join(', ')}`);
+    }
+    
+    // Write override file
+    execSync(`echo "${version}" > "${versionOverridePath}"`, { cwd: __dirname });
+  }
+}
+
+/**
+ * Create a new legal template version tag
+ * @param {string} version - Version string (e.g., '1.1.0')
+ * @param {string} [message] - Optional tag message
+ */
+export function tagLegalTemplateVersion(version, message = null) {
+  const tagName = `legal-templates-v${version}`;
+  const tagMessage = message || `Legal templates version ${version}`;
+  
+  try {
+    execSync(`git tag -a "${tagName}" -m "${tagMessage}"`, { cwd: __dirname });
+    return tagName;
+  } catch (error) {
+    throw new Error(`Failed to create version tag ${tagName}: ${error.message}`);
+  }
+}
+
+/**
+ * Rollback to a previous legal template version
+ * @param {string} version - Version to rollback to
+ * @returns {string} Version that was set
+ */
+export function rollbackLegalTemplates(version) {
+  setLegalTemplateVersion(version);
+  return version;
 }
 
 /**
@@ -142,6 +277,85 @@ export function generateCover(metadata) {
   return processTemplate(template, values);
 }
 
+/**
+ * Generate combined legal pages for book publication
+ * @param {Object} metadata - Book metadata with legal information
+ * @returns {string} Combined legal pages markdown content
+ */
+export function generateLegalPages(metadata, version = null) {
+  // Get the version to use (parameter, override file, or latest)
+  const useVersion = version || getCurrentLegalTemplateVersion();
+  const versionTag = useVersion === 'latest' ? null : useVersion;
+  
+  // Prepare comprehensive metadata values for legal templates
+  const currentYear = new Date().getFullYear();
+  const legalValues = {
+    TITLE: metadata.title || "",
+    SUBTITLE: metadata.subtitle || "",
+    AUTHOR: metadata.author || "",
+    TRANSLATOR: metadata.translator || "Brainrot Publishing House",
+    ORIGINAL_TITLE: metadata.originalTitle || metadata.title || "",
+    ORIGINAL_AUTHOR: metadata.originalAuthor || metadata.author || "",
+    ORIGINAL_YEAR: metadata.originalYear || "Unknown",
+    YEAR: metadata.year || currentYear.toString(),
+    PUBLISH_DATE: metadata.publishDate || new Date().toISOString().split('T')[0],
+    ISBN: metadata.isbn || "TBD",
+    FORMAT: metadata.format || "Digital Edition",
+    // Add version info for tracking
+    TEMPLATE_VERSION: versionTag || 'latest',
+    // Chapter list for table of contents (if provided)
+    CHAPTER_LIST: metadata.chapters ? 
+      metadata.chapters.map((chapter, index) => 
+        `**Chapter ${index + 1}: ${chapter.title || chapter.name || `Chapter ${index + 1}`}** ............... ${chapter.page || 'TBD'}`
+      ).join('\n') : 
+      "{{CHAPTERS_TO_BE_GENERATED}}",
+    // Page numbers for back matter
+    AUTHOR_PAGE: metadata.authorPage || "TBD",
+    TRANSLATOR_PAGE: metadata.translatorPage || "TBD", 
+    PUBLISHER_PAGE: metadata.publisherPage || "TBD",
+    CATALOG_PAGE: metadata.catalogPage || "TBD",
+  };
+
+  // Legal templates in publication order
+  const legalTemplateOrder = [
+    "legal-title-page",
+    "legal-copyright", 
+    "legal-ai-disclosure",
+    "legal-toc"
+  ];
+
+  let combinedContent = "";
+
+  // Add version comment at the start
+  if (versionTag) {
+    combinedContent += `<!-- Generated using legal templates ${versionTag} -->\n\n`;
+  }
+
+  // Process each legal template and combine
+  for (let i = 0; i < legalTemplateOrder.length; i++) {
+    const templateType = legalTemplateOrder[i];
+    
+    try {
+      const template = readTemplate(templateType, versionTag);
+      const processedTemplate = processTemplate(template, legalValues);
+      
+      // Add the processed template
+      combinedContent += processedTemplate;
+      
+      // Add page break between sections (except for the last one)
+      if (i < legalTemplateOrder.length - 1) {
+        combinedContent += "\n\n\\newpage\n\n";
+      }
+    } catch (error) {
+      // If a template is missing or errors, add a placeholder
+      console.warn(`Warning: Could not process legal template '${templateType}' (version: ${versionTag || 'latest'}): ${error.message}`);
+      combinedContent += `\n<!-- Legal template '${templateType}' could not be processed -->\n\n`;
+    }
+  }
+
+  return combinedContent;
+}
+
 // Export all functions
 export default {
   getTemplatePath,
@@ -150,4 +364,12 @@ export default {
   getCoverEmoji,
   processTemplate,
   generateCover,
+  generateLegalPages,
+  // Version control functions
+  getLegalTemplateVersions,
+  getCurrentLegalTemplateVersion,
+  readTemplateVersion,
+  setLegalTemplateVersion,
+  tagLegalTemplateVersion,
+  rollbackLegalTemplates,
 };

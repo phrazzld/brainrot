@@ -8,16 +8,15 @@ The Brainrot Publishing House uses a sophisticated multi-platform publishing pip
 graph TB
     A[Markdown Translation] -->|generate:formats| B[Format Generation]
     B --> C[Plain Text]
-    B --> D[EPUB]
+    B --> D[EPUB3]
     B --> E[PDF]
-    B --> F[MOBI/KPF]
 
-    C -->|sync:blob| G[Vercel Blob Storage]
-    G --> H[Web App]
+    C -->|sync:blob| F[Vercel Blob Storage]
+    F --> G[Web App]
 
-    D --> I[Apple Books]
+    D --> H[Apple Books]
+    D --> I[Amazon Kindle]
     E --> J[Print Platforms]
-    F --> K[Amazon Kindle]
 
     J --> L[Lulu POD]
     J --> M[IngramSpark]
@@ -49,9 +48,8 @@ Each book contains:
 Converts markdown to multiple formats:
 
 - **Text** (`.txt`) - For web reading
-- **EPUB** (`.epub`) - For e-readers
+- **EPUB3** (`.epub`) - For e-readers and Kindle
 - **PDF** (`.pdf`) - For print (paperback/hardcover variants)
-- **MOBI/KPF** (`.mobi`) - For Kindle
 
 Output location: `content/translations/books/[book-slug]/generated/`
 
