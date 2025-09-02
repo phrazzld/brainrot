@@ -369,8 +369,8 @@ importers:
         specifier: ^1.0.2
         version: 1.0.2
       marked:
-        specifier: ^12.0.0
-        version: 12.0.2
+        specifier: ^16.2.1
+        version: 16.2.1
       p-limit:
         specifier: ^7.1.1
         version: 7.1.1
@@ -7287,9 +7287,9 @@ packages:
     resolution: {integrity: sha512-s8UhlNe7vPKomQhC1qFelMokr/Sc3AgNbso3n74mVPA5LTZwkB9NlXf4XPamLxJE8h0gh73rM94xvwRT2CVInw==}
     dev: true
 
-  /marked@12.0.2:
-    resolution: {integrity: sha512-qXUm7e/YKFoqFPYPa3Ukg9xlI5cyAtGmyEIzMfW//m6kXwCy2Ps9DYf5ioijFKQ8qyuscrHoY04iJGctu2Kg0Q==}
-    engines: {node: '>= 18'}
+  /marked@16.2.1:
+    resolution: {integrity: sha512-r3UrXED9lMlHF97jJByry90cwrZBBvZmjG1L68oYfuPMW+uDTnuMbyJDymCWwbTE+f+3LhpNDKfpR3a3saFyjA==}
+    engines: {node: '>= 20'}
     hasBin: true
     dev: false
 
