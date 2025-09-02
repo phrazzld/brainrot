@@ -116,8 +116,8 @@ importers:
         specifier: ^8.2.0
         version: 8.2.0
       p-retry:
-        specifier: ^5.1.0
-        version: 5.1.2
+        specifier: ^7.0.0
+        version: 7.0.0
       playwright:
         specifier: ^1.55.0
         version: 1.55.0
@@ -347,8 +347,8 @@ importers:
         specifier: ^7.1.1
         version: 7.1.1
       p-retry:
-        specifier: ^5.1.0
-        version: 5.1.2
+        specifier: ^7.0.0
+        version: 7.0.0
     devDependencies:
       '@types/js-yaml':
         specifier: ^4.0.5
@@ -375,8 +375,8 @@ importers:
         specifier: ^7.1.1
         version: 7.1.1
       p-retry:
-        specifier: ^5.1.0
-        version: 5.1.2
+        specifier: ^7.0.0
+        version: 7.0.0
       remove-markdown:
         specifier: ^0.6.2
         version: 0.6.2
@@ -4098,10 +4098,6 @@ packages:
     resolution: {integrity: sha512-i753EH/p02bw7bLlpfS/4CV1rdikbGiLabWyVsAvsFid3cA5RNU1frG7JycgY+NSnFwtoGlElvZVceCytecTDA==}
     dev: true
 
-  /@types/retry@0.12.1:
-    resolution: {integrity: sha512-xoDlM2S4ortawSWORYqsdU+2rxdh4LRW9ytc3zmT37RIKQh6IHyKwwtKhKis9ah8ol07DCkZxPt8BBvPjC6v4g==}
-    dev: false
-
   /@types/through@0.0.33:
     resolution: {integrity: sha512-HsJ+z3QuETzP3cswwtzt2vEIiHBk/dCcHGhbmG5X3ecnwFD/lPrMpliGXxSCg03L9AhrdwA4Oz/qfspkDW+xGQ==}
     dependencies:
@@ -6834,6 +6830,11 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
+  /is-network-error@1.1.0:
+    resolution: {integrity: sha512-tUdRRAnhT+OtCZR/LxZelH/C7QtjtFrTu5tXCA8pl55eTUElUHT+GPYV8MBMBvea/j+NxQqVt3LbWMRir7Gx9g==}
+    engines: {node: '>=16'}
+    dev: false
+
   /is-node-process@1.2.0:
     resolution: {integrity: sha512-Vg4o6/fqPxIjtxgUH5QLJhwZ7gW5diGCVlXpuUfELC62CuxM1iHcRe51f2W1FDy04Ai4KJkagKjx3XaqyfRKXw==}
 
@@ -7661,12 +7662,11 @@ packages:
       p-limit: 3.1.0
     dev: true
 
-  /p-retry@5.1.2:
-    resolution: {integrity: sha512-couX95waDu98NfNZV+i/iLt+fdVxmI7CbrrdC2uDWfPdUAApyxT4wmDlyOtR5KtTDmkDO0zDScDjDou9YHhd9g==}
-    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+  /p-retry@7.0.0:
+    resolution: {integrity: sha512-3BgO9rjULJYyr0Y0pcsG7FZ+7JB/hfOODO8kx9ppumiO5jprUF92WK/Y7Q0xppZtq4VhTcPiVq7qWLQfIV5aKQ==}
+    engines: {node: '>=20'}
     dependencies:
-      '@types/retry': 0.12.1
-      retry: 0.13.1
+      is-network-error: 1.1.0
     dev: false
 
   /pac-proxy-agent@7.2.0:
