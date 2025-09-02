@@ -201,10 +201,10 @@ function constructBlobUrl(request: AssetRequest, baseUrl: string): string {
 
   if (request.type === 'chapter' && request.chapter) {
     const paddedChapter = String(request.chapter).padStart(2, '0');
-    return `${base}/assets/audio/${request.slug}/chapter-${paddedChapter}.mp3`;
+    return `${base}/books/${request.slug}/audio/chapter-${paddedChapter}.mp3`;
   }
 
-  return `${base}/assets/audio/${request.slug}/full-audiobook.mp3`;
+  return `${base}/books/${request.slug}/audio/full-audiobook.mp3`;
 }
 
 /**

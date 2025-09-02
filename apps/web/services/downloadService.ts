@@ -138,6 +138,33 @@ export class DownloadService {
   }
 
   /**
+   * Logs successful URL generation with appropriate context.
+   *
+   * @param log - Optional logger
+   * @param params - The download request parameters
+   * @param assetName - The generated asset name
+   * @param url - The generated URL
+   */
+  private logRequestSuccess(
+    log: Logger | undefined,
+    params: DownloadRequestParams,
+    assetName: string,
+    url: string,
+  ): void {
+    const { slug, type, chapter } = params;
+
+    log?.info({
+      msg: 'Successfully generated download URL',
+      slug,
+      type,
+      chapter,
+      assetName,
+      url,
+      action: 'downloadService.getDownloadUrl.success',
+    });
+  }
+
+  /**
    * Gets a download URL for the requested asset
    *
    * @param params - The download request parameters
@@ -166,20 +193,10 @@ export class DownloadService {
       // Get URL from asset service
       const url = await this.assetService.getAssetUrl('audio', slug, assetName);
 
-      // Log success
-      log?.info({
-        msg: 'Successfully generated download URL',
-        slug,
-        type,
-        chapter,
-        assetName,
-        url,
-        action: 'downloadService.getDownloadUrl.success',
-      });
-
+      // Log success and return URL
+      this.logRequestSuccess(log, params, assetName, url);
       return url;
     } catch (error) {
-      // Log error
       log?.error({
         msg: 'Failed to get asset URL',
         slug,

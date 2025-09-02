@@ -43,6 +43,11 @@
       "inputs": ["content/**/*.md", "content/**/*.yaml"],
       "outputs": ["generated/**"]
     },
+    "generate:manifest": {
+      "dependsOn": ["^build"],
+      "inputs": ["content/**/*.yaml", "generated/**/*.txt"],
+      "outputs": ["apps/web/.generated/**"]
+    },
     "sync:blob": {
       "cache": false,
       "env": ["BLOB_READ_WRITE_TOKEN", "NEXT_PUBLIC_BLOB_BASE_URL"]

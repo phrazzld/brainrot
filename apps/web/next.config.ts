@@ -48,6 +48,20 @@ const nextConfig: NextConfig = {
       '@brainrot/templates': '../../packages/@brainrot/templates',
     };
 
+    // Exclude legacy/deprecated modules from bundling
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '../../tools/legacy-scripts': false,
+      '../../../tools/legacy-scripts': false,
+      '../../../../tools/legacy-scripts': false,
+    };
+
+    // Add ignore patterns for deprecated modules
+    config.module.rules.push({
+      test: /tools\/legacy-scripts\/.*\.(ts|js)$/,
+      loader: 'ignore-loader',
+    });
+
     // Watch workspace packages for changes in development
     if (!isServer) {
       config.watchOptions = {

@@ -171,27 +171,3 @@ export function validateChapter(
 
   return { isValid: true };
 }
-
-/**
- * Validates S3 endpoint configuration
- * @param s3Endpoint - The S3 endpoint configuration value
- * @param log - Logger instance for recording validation issues
- * @returns Validation result with error details if invalid
- */
-export function validateS3Config(s3Endpoint: string | undefined, log: Logger): ValidationResult {
-  if (!s3Endpoint) {
-    safeLog(log, 'error', {
-      msg: 'Missing required S3 configuration',
-      param: 'SPACES_ENDPOINT',
-    });
-    return {
-      isValid: false,
-      error: {
-        message: 'Server is not configured correctly. Please contact support.',
-        status: 500,
-      },
-    };
-  }
-
-  return { isValid: true };
-}

@@ -19,15 +19,16 @@
   "// LEGACY_SCRIPTS": "Migration and utility scripts have been archived to /tools/legacy-scripts/ - see README.md there for documentation",
   "scripts": {
     "dev": "next dev --turbopack",
+    "prebuild": "tsx scripts/generateTranslationsManifest.ts",
     "build": "next build",
     "test": "vitest",
     "lint": "next lint",
     "format": "npm run prettier:fix",
     "typecheck": "tsc --noEmit",
-    "prettier:fix": "prettier --write ."
+    "prettier:fix": "prettier --write .",
+    "generate:manifest": "tsx scripts/generateTranslationsManifest.ts"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.876.0",
     "@brainrot/blob-client": "workspace:*",
     "@brainrot/converter": "workspace:*",
     "@brainrot/metadata": "workspace:*",
@@ -37,6 +38,7 @@
     "cheerio": "^1.0.0",
     "dotenv": "^16.5.0",
     "gsap": "^3.12.5",
+    "js-yaml": "^4.1.0",
     "next": "^15.5.2",
     "openai": "^4.80.1",
     "pino": "^9.6.0",
@@ -52,6 +54,7 @@
     "@eslint/js": "^9.34.0",
     "@testing-library/react": "^15.0.7",
     "@trivago/prettier-plugin-sort-imports": "^5.2.2",
+    "@types/js-yaml": "^4.0.5",
     "@types/minimist": "^1.2.5",
     "@types/node": "^20",
     "@types/react": "^19",

@@ -63,10 +63,27 @@ function triggerFileDownload(blob: Blob, fileName: string): void {
 }
 
 /**
+ * Downloads a file directly using a direct URL
+ */
+async function downloadDirectly(url: string, fileName: string): Promise<void> {
+  // Using direct download approach
+  // Direct URL: ${url}
+
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = fileName;
+
+  // Auto-click the link to trigger download
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
+/**
  * Fetches audio file through proxy and initiates the download
  */
 async function downloadViaProxy(slug: string, type: 'chapter', chapter: number): Promise<void> {
-  console.warn('[Download] Using proxy approach for audio downloads');
+  console.warn('[Download] Falling back to proxy approach for audio downloads');
 
   // Create proxy URL
   const proxyParams = createUrlParams(slug, type, chapter, true);
@@ -111,7 +128,7 @@ export default function DownloadButton({ slug, type, chapter, classNames }: Down
     setError('');
 
     try {
-      // Initial API call to get download URL
+      // API call to get download URL (direct by default)
       const params = createUrlParams(slug, type, chapter);
       const apiUrl = `/api/download?${params.toString()}`;
       const response = await fetch(apiUrl);
@@ -122,8 +139,18 @@ export default function DownloadButton({ slug, type, chapter, classNames }: Down
         throw new Error(errorMessage);
       }
 
-      // Always download using proxy now
-      await downloadViaProxy(slug, type, chapter);
+      // Parse the response to get direct URL
+      const data = await response.json();
+      const fileName = `${slug}-chapter-${chapter}.mp3`;
+
+      // Try direct download first, fallback to proxy if needed
+      if (data.url && !data.shouldProxy) {
+        // Using direct download method
+        await downloadDirectly(data.url, fileName);
+      } else {
+        // Direct URL not available or proxy requested, using proxy method
+        await downloadViaProxy(slug, type, chapter);
+      }
     } catch (err) {
       handleDownloadError(err, setError);
     } finally {

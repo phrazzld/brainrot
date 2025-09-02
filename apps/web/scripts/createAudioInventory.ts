@@ -162,7 +162,7 @@ async function getFileInfo(blobInfo: {
 async function verifyAudioContent(url: string): Promise<boolean> {
   try {
     // For Vercel Blob we would need to fetch the first bytes of the file
-    // This would require a different approach than with S3
+    // This requires a different approach with Vercel Blob
     // We'll skip the verification for now
 
     // In a real implementation, you would:

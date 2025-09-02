@@ -19,17 +19,9 @@ export interface AssetUrlResolver {
   getAssetUrl(assetType: string, bookSlug: string, assetName: string): Promise<string>;
 }
 
-// Note: S3SignedUrlGenerator interface has been removed
-// as we are now using direct CDN URLs instead of signed URLs
-
 /**
- * Custom error thrown when an asset cannot be found in any storage location.
+ * Custom error thrown when an asset cannot be found in storage.
  * Used to clearly distinguish asset not found scenarios from other error types.
- *
- * This error is typically thrown when:
- * - An asset doesn't exist in Blob storage
- * - An asset doesn't exist in S3/Spaces storage
- * - An asset doesn't exist in the local filesystem
  *
  * Applications can catch this specific error type to handle asset not found scenarios
  * appropriately, such as showing user-friendly messages or fallback content.
@@ -40,13 +32,10 @@ export class AssetNotFoundError extends Error {
    *
    * @param message - The error message describing which asset was not found
    * @example
-   * throw new AssetNotFoundError('Asset not found: /book-slug/audio/chapter-1.mp3');
+   * throw new AssetNotFoundError('Asset not found: audio/hamlet/chapter-01.mp3');
    */
   constructor(message: string) {
     super(message);
     this.name = 'AssetNotFoundError';
   }
 }
-
-// Note: SigningError class has been removed
-// as we are now using direct CDN URLs instead of signed URLs

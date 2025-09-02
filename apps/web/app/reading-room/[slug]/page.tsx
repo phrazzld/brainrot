@@ -12,9 +12,8 @@ import TextContent from '@/components/reading-room/TextContent';
 import { useAudioPlayer } from '@/hooks/useAudioPlayer';
 import { useChapterNavigation } from '@/hooks/useChapterNavigation';
 import { useShareModal } from '@/hooks/useShareModal';
-import { useTextLoader } from '@/hooks/useTextLoader';
 // Custom hooks
-import translations from '@/translations.js';
+import { translations } from '@/translations.js';
 
 export default function ReadingRoom() {
   // Waveform container ref
@@ -29,8 +28,9 @@ export default function ReadingRoom() {
     { handleChapterClick, goPrevChapter, goNextChapter, updateTimestamp },
   ] = useChapterNavigation(translations);
 
-  // Load chapter text
-  const { rawText, isTextLoading } = useTextLoader(slug, chapterData?.text);
+  // Get chapter text directly from manifest (no longer needs loading)
+  const rawText = chapterData?.text || '';
+  const isTextLoading = false; // Text is inline in manifest, no loading needed
 
   // Set up audio player
   const [{ isPlaying, isAudioLoading, currentTime, totalTime }, { togglePlayPause, formatTime }] =

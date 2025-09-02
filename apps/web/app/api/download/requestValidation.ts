@@ -119,7 +119,7 @@ export function validateRequestParameters(
     return paramValidation;
   }
 
-  // No need to validate S3 configuration since we're using public URLs
+  // No additional configuration validation needed - using Vercel Blob URLs
 
   // All validations passed
   return paramValidation;

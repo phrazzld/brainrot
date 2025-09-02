@@ -154,7 +154,7 @@ interface ProcessBookContext {
   report: InventoryReport;
 }
 
-// No S3 client needed as we're only using Vercel Blob
+// Using Vercel Blob for all assets
 
 /**
  * Parse command line arguments
@@ -235,7 +235,7 @@ function formatSize(bytes: number): string {
 }
 
 /**
- * No S3 client initialization needed
+ * Asset inventory using Vercel Blob storage
  */
 
 /**

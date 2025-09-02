@@ -27,6 +27,9 @@ generated/
 *~
 .DS_Store
 
+# Claude Development Artifacts
+.claude/
+
 # Logs
 logs/
 *.log
@@ -68,6 +71,9 @@ backup-*/
 # Migration artifacts  
 migration-log.json
 archive-migration/
+
+# Runtime logs and data
+sync-log.json
 
 # Keep .gitkeep files
 !.gitkeep
