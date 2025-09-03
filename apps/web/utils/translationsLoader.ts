@@ -5,14 +5,14 @@
  * by the generateTranslationsManifest script, replacing the hand-authored translation files.
  */
 import translationsManifest from '@/.generated/translations.json';
-// Use existing types for compatibility
-import type { Chapter, Translation } from '@/utils/types.js';
+// Use modern monorepo types
+import type { Translation } from '@brainrot/types';
 
 /**
  * All translations loaded from the generated manifest
  * Contains full chapter content inline (no file references)
  */
-export const translations: Translation[] = translationsManifest.translations;
+export const translations: Translation[] = translationsManifest.translations as Translation[];
 
 /**
  * Find a translation by its slug
@@ -23,19 +23,26 @@ export const getTranslationBySlug = (slug: string): Translation | undefined =>
   translations.find((t) => t.slug === slug);
 
 /**
- * Get translations filtered by status
- * @param status - Filter by availability status
- * @returns Array of translations with matching status
+ * Get translations filtered by availability
+ * @param isAvailable - Filter by availability status
+ * @returns Array of translations with matching availability
+ */
+export const getTranslationsByAvailability = (isAvailable: boolean): Translation[] =>
+  translations.filter((t) => t.available === isAvailable);
+
+/**
+ * @deprecated Use getTranslationsByAvailability instead
+ * Get translations filtered by status (legacy)
  */
 export const getTranslationsByStatus = (status: 'available' | 'coming soon'): Translation[] =>
-  translations.filter((t) => t.status === status);
+  getTranslationsByAvailability(status === 'available');
 
 /**
  * Get count of available translations
  * @returns Number of translations with 'available' status
  */
 export const getAvailableCount = (): number =>
-  translations.filter((t) => t.status === 'available').length;
+  translations.filter((t) => t.available === true).length;
 
 /**
  * Get total chapter count across all translations

@@ -4,7 +4,7 @@ import { act, renderHook } from '@testing-library/react';
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, test, vi } from 'vitest';
 
 import { useChapterNavigation } from '@/hooks/useChapterNavigation';
-import { Translation } from '@/utils/types';
+import { Translation } from '@brainrot/types';
 
 // Type for mocked module
 type MockedNavigation = typeof nextNavigation & {

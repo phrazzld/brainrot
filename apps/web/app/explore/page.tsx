@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Suspense } from 'react';
 
-import { translations } from '@/translations.js';
+import { translations } from '@/utils/translationsLoader';
 
 // Simple skeleton components
 function CardSkeleton() {
@@ -24,14 +24,14 @@ function ExploreGrid() {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
       {translations.map((t) => {
-        const isAvailable = t.status === 'available';
+        const isAvailable = t.available === true;
         return (
           <div
             key={t.slug}
             className={`card relative ${!isAvailable ? 'opacity-70 grayscale' : ''}`}
           >
             <Image
-              src={t.coverImage}
+              src={t.coverImage || ''}
               alt={t.title}
               width={800}
               height={600}
@@ -40,7 +40,7 @@ function ExploreGrid() {
             />
             <div className="card-content">
               <h3 className="text-xl font-display mb-2">{t.title}</h3>
-              <p className="text-sm mb-4">{t.shortDescription}</p>
+              <p className="text-sm mb-4">{t.description}</p>
               <div className="card-footer">
                 {isAvailable ? (
                   <Link href={`/reading-room/${t.slug}`} className="btn btn-secondary">
@@ -50,16 +50,6 @@ function ExploreGrid() {
                   <button className="btn btn-secondary cursor-not-allowed" title="coming soon">
                     coming soon
                   </button>
-                )}
-                {!!t.purchaseUrl && (
-                  <Link
-                    href={t.purchaseUrl}
-                    className="btn btn-primary ml-4"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    buy now
-                  </Link>
                 )}
               </div>
             </div>

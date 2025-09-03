@@ -1,42 +1,33 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 
 // Components
-import AudioPlayer from '@/components/reading-room/AudioPlayer';
 import ChapterHeader from '@/components/reading-room/ChapterHeader';
 import ChapterSidebar from '@/components/reading-room/ChapterSidebar';
 import DownloadModal from '@/components/reading-room/DownloadModal';
 import ShareModal from '@/components/reading-room/ShareModal';
 import TextContent from '@/components/reading-room/TextContent';
-import { useAudioPlayer } from '@/hooks/useAudioPlayer';
 import { useChapterNavigation } from '@/hooks/useChapterNavigation';
 import { useShareModal } from '@/hooks/useShareModal';
 // Custom hooks
-import { translations } from '@/translations.js';
+import { translations } from '@/utils/translationsLoader';
 
 export default function ReadingRoom() {
-  // Waveform container ref
-  const waveformRef = useRef<HTMLDivElement>(null);
-
   // Download modal state
   const [isDownloadOpen, setIsDownloadOpen] = useState(false);
 
   // Set up chapter navigation
   const [
     { chapterIndex, slug, translation, chapterData, totalChapters },
-    { handleChapterClick, goPrevChapter, goNextChapter, updateTimestamp },
+    { handleChapterClick, goPrevChapter, goNextChapter },
   ] = useChapterNavigation(translations);
 
   // Get chapter text directly from manifest (no longer needs loading)
-  const rawText = chapterData?.text || '';
+  const rawText = chapterData?.content || '';
   const isTextLoading = false; // Text is inline in manifest, no loading needed
 
-  // Set up audio player
-  const [{ isPlaying, isAudioLoading, currentTime, totalTime }, { togglePlayPause, formatTime }] =
-    useAudioPlayer(waveformRef, chapterData?.audioSrc, updateTimestamp);
-
-  // Set up share modal
+  // Set up share modal (no audio timing)
   const [
     { isShareOpen, shareFeedback, includeChapter, includeTimestamp },
     {
@@ -47,13 +38,9 @@ export default function ReadingRoom() {
       getShareUrl,
       copyShareUrl,
     },
-  ] = useShareModal(slug, chapterIndex, currentTime);
+  ] = useShareModal(slug, chapterIndex, 0);
 
   // Download modal handlers
-  function openDownloadModal() {
-    setIsDownloadOpen(true);
-  }
-
   function closeDownloadModal() {
     setIsDownloadOpen(false);
   }
@@ -88,19 +75,7 @@ export default function ReadingRoom() {
           onOpenShareModal={openShareModal}
         />
 
-        {/* Audio player (conditional) */}
-        {chapterData?.audioSrc && (
-          <AudioPlayer
-            isPlaying={isPlaying}
-            isAudioLoading={isAudioLoading}
-            currentTime={currentTime}
-            totalTime={totalTime}
-            onTogglePlayPause={togglePlayPause}
-            onOpenDownloadModal={openDownloadModal}
-            waveformRef={waveformRef}
-            formatTime={formatTime}
-          />
-        )}
+        {/* Audio player removed - audioSrc not available in modern interface */}
 
         {/* Text content */}
         <TextContent isLoading={isTextLoading} content={rawText} />

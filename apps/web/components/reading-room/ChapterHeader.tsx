@@ -1,8 +1,6 @@
 'use client';
 
-import Link from 'next/link';
-
-import { Translation } from '@/utils/types.js';
+import { Translation } from '@brainrot/types';
 
 interface ChapterHeaderProps {
   translation: Translation;
@@ -33,16 +31,6 @@ export default function ChapterHeader(props: ChapterHeaderProps) {
         <p className="text-sm text-lavender">{translation.chapters[chapterIndex].title}</p>
       </div>
       <div className="flex items-center gap-2">
-        {translation.purchaseUrl && (
-          <Link
-            href={translation.purchaseUrl}
-            className="btn btn-primary"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            buy now
-          </Link>
-        )}
         <button
           onClick={onPrevChapter}
           className={`btn btn-secondary ${

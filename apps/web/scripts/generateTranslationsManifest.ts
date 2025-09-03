@@ -1,22 +1,26 @@
 #!/usr/bin/env tsx
+import { randomUUID } from 'crypto';
 import fs from 'fs/promises';
 import yaml from 'js-yaml';
 import path from 'path';
 
-interface Chapter {
+import type { Translation, TranslationChapter, TranslationFile } from '@brainrot/types';
+
+// Legacy interfaces for data input
+interface LegacyChapter {
   title: string;
   text: string;
   audioSrc?: string;
 }
 
-interface Translation {
+interface LegacyTranslation {
   slug: string;
   title: string;
   shortDescription: string;
   coverImage: string;
   status: 'available' | 'coming soon';
   purchaseUrl?: string;
-  chapters: Chapter[];
+  chapters: LegacyChapter[];
 }
 
 interface BookMetadata {
@@ -34,6 +38,83 @@ interface TranslationsManifest {
   timestamp: string;
   version: string;
   translations: Translation[];
+}
+
+/**
+ * Generate unique translation ID based on slug
+ * Following pattern from RequestService.ts
+ */
+function generateTranslationId(slug: string): string {
+  return `translation-${slug}-${Date.now().toString(36)}`;
+}
+
+/**
+ * Generate chapter ID with zero-padded numbering
+ * Following pattern from verifyAudioFilesAccess.ts
+ */
+function generateChapterId(bookSlug: string, chapterIndex: number): string {
+  const paddedNumber = String(chapterIndex).padStart(2, '0');
+  return `${bookSlug}-chapter-${paddedNumber}`;
+}
+
+/**
+ * Transform legacy chapter to modern TranslationChapter structure
+ * Following pattern from TranslationAdapter.ts
+ */
+function transformChapter(
+  chapter: LegacyChapter,
+  bookSlug: string,
+  index: number,
+): TranslationChapter {
+  const translationFile: TranslationFile | undefined = chapter.text
+    ? {
+        path: `generated/${bookSlug}/chapter-${String(index + 1).padStart(2, '0')}.txt`,
+        content: chapter.text,
+        type: 'text' as const,
+      }
+    : undefined;
+
+  return {
+    id: generateChapterId(bookSlug, index + 1),
+    number: index + 1,
+    title: chapter.title,
+    content: chapter.text,
+    ...(translationFile && { file: translationFile }),
+  };
+}
+
+/**
+ * Transform legacy translation to modern Translation structure
+ * Following pattern from metadata.ts with defaults
+ */
+function transformTranslation(
+  legacyTranslation: LegacyTranslation,
+  metadata: BookMetadata,
+): Translation {
+  const currentTimestamp = new Date().toISOString();
+
+  return {
+    id: generateTranslationId(legacyTranslation.slug),
+    slug: legacyTranslation.slug,
+    title: legacyTranslation.title,
+    author: metadata.author || 'Unknown Author',
+    description:
+      legacyTranslation.shortDescription ||
+      metadata.description ||
+      `A Gen Z retelling of ${legacyTranslation.title}`,
+    chapters: legacyTranslation.chapters.map((chapter, index) =>
+      transformChapter(chapter, legacyTranslation.slug, index),
+    ),
+    coverImage: legacyTranslation.coverImage,
+    available: legacyTranslation.status === 'available',
+    featured: legacyTranslation.status === 'available' && legacyTranslation.chapters.length > 0,
+    lastUpdated: currentTimestamp,
+    sourceLanguage: 'en',
+    targetLanguage: 'en-gen-z',
+    tags: ['gen-z', 'brainrot', 'classic-literature'],
+    // Add publishedDate if book has purchase URL (indicates publication)
+    ...(legacyTranslation.purchaseUrl && { publishedDate: currentTimestamp }),
+  };
 }
 
 /**
@@ -133,8 +214,8 @@ function extractChapterTitle(filename: string, content: string): string {
  * Discover and parse text chapters for a book
  * Following pattern from batchConverter.ts:46-69
  */
-async function discoverChapters(slug: string): Promise<Chapter[]> {
-  const chapters: Chapter[] = [];
+async function discoverChapters(slug: string): Promise<LegacyChapter[]> {
+  const chapters: LegacyChapter[] = [];
 
   // Primary path: generated/text/*.txt (preferred)
   const generatedTextPath = path.join(process.cwd(), '../../generated', slug);
@@ -204,7 +285,7 @@ function generateCoverImageUrl(slug: string): string {
 /**
  * Determine book status based on available content
  */
-function determineBookStatus(chapters: Chapter[]): 'available' | 'coming soon' {
+function determineBookStatus(chapters: LegacyChapter[]): 'available' | 'coming soon' {
   return chapters.length > 0 ? 'available' : 'coming soon';
 }
 
@@ -239,7 +320,8 @@ async function generateTranslationsManifest(): Promise<void> {
     const chapters = await discoverChapters(book.slug);
     const status = determineBookStatus(chapters);
 
-    translations.push({
+    // Create legacy translation structure for transformation
+    const legacyTranslation: LegacyTranslation = {
       slug: book.slug,
       title: book.title,
       shortDescription: book.description || `A Gen Z retelling of ${book.title}`,
@@ -247,7 +329,11 @@ async function generateTranslationsManifest(): Promise<void> {
       status,
       purchaseUrl: book.purchaseUrl,
       chapters,
-    });
+    };
+
+    // Transform to modern Translation structure
+    const modernTranslation = transformTranslation(legacyTranslation, book);
+    translations.push(modernTranslation);
 
     console.log(`  ✓ ${chapters.length} chapters, status: ${status}`);
   }
@@ -271,8 +357,10 @@ async function generateTranslationsManifest(): Promise<void> {
     `📊 ${translations.length} translations, ${translations.reduce((acc, t) => acc + t.chapters.length, 0)} total chapters`,
   );
 
-  // Validate that all required fields are present
-  const invalid = translations.filter((t) => !t.slug || !t.title || !t.coverImage);
+  // Validate that all required fields are present (modern interface)
+  const invalid = translations.filter(
+    (t) => !t.id || !t.slug || !t.title || !t.author || !t.description,
+  );
   if (invalid.length > 0) {
     console.error(
       '❌ Build failed: Invalid metadata for books:',

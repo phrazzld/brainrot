@@ -1,6 +1,6 @@
 'use client';
 
-import { Translation } from '@/utils/types.js';
+import { Translation } from '@brainrot/types';
 
 interface ChapterSidebarProps {
   translation: Translation;
