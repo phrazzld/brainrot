@@ -285,6 +285,51 @@ Goal: Faster, smarter syncs.
 
 ---
 
+EPIC J: KDP Publishing Pipeline Enhancements (P2)
+Goal: Extend KDP publishing pipeline with advanced features for print, analytics, and multi-platform support.
+
+- [ ] J1 Print cover validation
+  - Spec: Spine width calculation, bleed requirements, CMYK color space support
+  - Acceptance: Print covers validate against CreateSpace/KDP Print specifications, spine calculated from page count
+  - Effort: L
+
+- [ ] J2 Batch processing with queue management
+  - Spec: Publish multiple books sequentially with progress tracking and error recovery
+  - Acceptance: Can queue 10+ books, resume after failures, show progress per book
+  - Effort: M
+
+- [ ] J3 Cover template auto-generation
+  - Spec: SVG template fallback when manual cover missing, using book metadata
+  - Acceptance: Books without covers get generated template, maintains brand consistency
+  - Effort: M
+
+- [ ] J4 Advanced quality scoring
+  - Spec: ML-based cover quality analysis (advisory warnings only, non-blocking)
+  - Acceptance: Quality scores provided for covers, recommendations given, never blocks publishing
+  - Effort: L
+
+- [ ] J5 Web preview endpoint
+  - Spec: `/api/validate-cover` endpoint for browser-based cover preview and validation
+  - Acceptance: Web UI can upload/validate covers without CLI, same validation rules as CLI
+  - Effort: M
+
+- [ ] J6 Multi-platform publishing
+  - Spec: Extend to Lulu, IngramSpark with platform-specific adaptations
+  - Acceptance: Single command publishes to multiple platforms with appropriate formatting
+  - Effort: L
+
+- [ ] J7 Publishing analytics dashboard
+  - Spec: Track success rates, rejection reasons, performance metrics over time
+  - Acceptance: Dashboard shows trends, identifies common failure patterns, suggests improvements
+  - Effort: L
+
+- [ ] J8 A/B testing for covers
+  - Spec: Support multiple cover variations with performance tracking
+  - Acceptance: Can upload multiple covers per book, track conversion metrics, automated winner selection
+  - Effort: L
+
+---
+
 Parking Lot (consider later)
 - Progressive Image placeholders and blurDataURL (P2, M)
 - Error tracking with Sentry (P2, M)
