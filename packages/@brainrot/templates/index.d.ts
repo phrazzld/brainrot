@@ -27,7 +27,7 @@ export function readTemplate(type: string, version?: string | null): string;
 export function getColorScheme(bookSlug: string): any;
 export function getCoverEmoji(bookSlug: string): string;
 export function processTemplate(template: string, values: Record<string, any>): string;
-export function generateCover(bookSlug: string): string;
+export function generateCover(metadata: { title?: string; subtitle?: string; author?: string; translator?: string; genre?: string; slug?: string; shortDescription?: string; }): string;
 export function generateLegalPages(metadata: TemplateMetadata, version?: string | null): string;
 
 // Version control functions

@@ -4,9 +4,18 @@
  * This module loads the generated translations.json manifest created at build-time
  * by the generateTranslationsManifest script, replacing the hand-authored translation files.
  */
-import translationsManifest from '@/.generated/translations.json';
 // Use modern monorepo types
 import type { Translation } from '@brainrot/types';
+
+// Graceful fallback for missing manifest during development
+let translationsManifest: { translations: Translation[] };
+try {
+  translationsManifest = await import('@/.generated/translations.json');
+} catch (error) {
+  console.warn('⚠️  Generated translations manifest not found. Run `pnpm generate:manifest` to create it.');
+  console.warn('Using empty translations list as fallback.');
+  translationsManifest = { translations: [] };
+}
 
 /**
  * All translations loaded from the generated manifest

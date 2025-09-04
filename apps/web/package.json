@@ -18,7 +18,7 @@
   "// NOTE": "This project requires --legacy-peer-deps to install due to React 19 compatibility issues with @testing-library/react",
   "// LEGACY_SCRIPTS": "Migration and utility scripts have been archived to /tools/legacy-scripts/ - see README.md there for documentation",
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "pnpm run generate:manifest && next dev --turbopack",
     "prebuild": "tsx scripts/generateTranslationsManifest.ts",
     "build": "next build",
     "test": "vitest",

@@ -49,6 +49,10 @@ coverage/
 # Vercel
 .vercel/
 
+# Runtime data (should not be committed)
+rate-limits.json
+**/rate-limits.json
+
 # Publishing
 publishing-reports/
 *.epub

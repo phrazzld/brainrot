@@ -1,3 +1,57 @@
+# 🚨 Merge Blockers (must-fix before merging feat/kdp-publishing-pipeline)
+
+The following atomic tasks capture all blockers identified during review. Each item includes acceptance criteria and test steps to keep the work deterministic and verifiable.
+
+1) Fix templates type mismatch (generateCover signature)
+   - Problem: packages/@brainrot/templates/index.d.ts declares `generateCover(bookSlug: string): string`, but implementation in index.js expects a `metadata` object (title, subtitle, author, translator, genre, slug, etc.). This breaks type safety and can mislead call sites.
+   - Changes:
+     - Update index.d.ts to match implementation: `export function generateCover(metadata: { title?: string; subtitle?: string; author?: string; translator?: string; genre?: string; slug?: string; shortDescription?: string; }): string;`
+     - Ensure default export typing also reflects the corrected signature.
+   - Acceptance:
+     - `pnpm -w build` succeeds for templates consumers (apps/publisher, apps/web, converter) without TypeScript errors.
+     - Grep for `generateCover(` across repo shows no call sites expecting a slug-only signature.
+   - Test steps:
+     - rg "generateCover\(" -n
+     - pnpm -w build && pnpm -w typecheck
+
+2) Remove ignore-loader usage or add dependency (Next.js build)
+   - Problem: apps/web/next.config.ts adds a webpack rule using `ignore-loader`, but the package is not listed in dependencies; builds will fail to resolve the loader.
+   - Option A (preferred): Remove the rule and rely on `resolve.alias = false` for legacy paths (already present), or use a null-loader provided by Next/webpack without extra deps.
+   - Option B: Add `ignore-loader` to apps/web devDependencies and keep the rule.
+   - Acceptance:
+     - `pnpm --filter @brainrot/web build` completes successfully from a clean clone.
+     - Visiting pages that previously imported no legacy modules works normally.
+   - Test steps:
+     - rm -rf node_modules .next && pnpm i && pnpm --filter @brainrot/web build
+
+3) Do not commit runtime rate-limit data; set stable data dir
+   - Problem: apps/publisher/rate-limits.json is committed; this is runtime state and will create noisy diffs and nondeterministic behavior.
+   - Changes:
+     - Delete apps/publisher/rate-limits.json from git and add it to .gitignore (or a glob for the chosen data dir).
+     - Update RateLimiterService default DB path to a user data location (e.g., `$BRAINROT_DATA_DIR/publisher/rate-limits.json` with fallback to `~/.brainrot/publisher/rate-limits.json`). Keep an env/config override.
+     - Document the path in PUBLISHING_GUIDE.md and kdp --status output (optional: show path in verbose mode already implemented).
+   - Acceptance:
+     - Fresh clone, run `pnpm --filter @brainrot/publisher kdp status`; service auto-creates the DB under the new directory.
+     - `git status` shows no untracked changes after running publisher commands.
+   - Test steps:
+     - rg "getDatabasePath\(" to verify path; run status; verify file location; check git status.
+
+4) Generated translations manifest: dev/build ergonomics and VCS hygiene
+   - Problems:
+     - apps/web imports `@/.generated/translations.json` at runtime; dev (`next dev`) may fail if the manifest hasn’t been generated.
+     - The manifest file is committed; generated artifacts should be ignored.
+   - Changes:
+     - Add `.generated/` to apps/web/.gitignore; remove the committed file from the repo.
+     - Update apps/web package.json scripts so that dev runs the generator before Next: e.g., `"dev": "pnpm run generate:manifest && next dev --turbopack"` (generator is already wired for prebuild).
+     - Optional hardening: in translationsLoader.ts, fail gracefully (empty list + console.warn) if the manifest is missing to keep DX smooth.
+   - Acceptance:
+     - Fresh clone can run `pnpm --filter @brainrot/web dev` without manual steps; `.generated/translations.json` is created automatically.
+     - `git status` remains clean after dev/build.
+   - Test steps:
+     - rm -rf apps/web/.generated && pnpm --filter @brainrot/web dev; confirm manifest is created and Explore/Reading Room load.
+
+—
+
 # KDP Publishing Pipeline Implementation - COMPLETED ✅
 
 **Status**: Implementation Complete  

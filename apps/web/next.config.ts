@@ -56,11 +56,6 @@ const nextConfig: NextConfig = {
       '../../../../tools/legacy-scripts': false,
     };
 
-    // Add ignore patterns for deprecated modules
-    config.module.rules.push({
-      test: /tools\/legacy-scripts\/.*\.(ts|js)$/,
-      loader: 'ignore-loader',
-    });
 
     // Watch workspace packages for changes in development
     if (!isServer) {

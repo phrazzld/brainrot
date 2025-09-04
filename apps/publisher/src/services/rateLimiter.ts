@@ -6,6 +6,7 @@
 
 import * as fs from 'fs/promises';
 import * as path from 'path';
+import * as os from 'os';
 import { Logger } from '../utils/logger.js';
 
 export interface RateLimitConfig {
@@ -54,8 +55,16 @@ export class RateLimiterService {
   private config: Map<string, RateLimitConfig> = new Map();
 
   constructor(dbPath?: string) {
-    // Default to publisher directory + rate-limits.json
-    this.dbPath = dbPath || path.join(process.cwd(), 'rate-limits.json');
+    // Use provided path, environment variable, or default user data directory
+    if (dbPath) {
+      this.dbPath = dbPath;
+    } else if (process.env.BRAINROT_RATE_LIMIT_DB) {
+      this.dbPath = process.env.BRAINROT_RATE_LIMIT_DB;
+    } else {
+      // Use user data directory with fallback
+      const dataDir = process.env.BRAINROT_DATA_DIR || path.join(os.homedir(), '.brainrot');
+      this.dbPath = path.join(dataDir, 'publisher', 'rate-limits.json');
+    }
     
     // Set default configs
     this.config.set('kdp', { dailyLimit: 3, resetHour: 0 }); // KDP's 3 books/day limit
