@@ -10,7 +10,8 @@ import type { Translation } from '@brainrot/types';
 // Graceful fallback for missing manifest during development
 let translationsManifest: { translations: Translation[] };
 try {
-  translationsManifest = await import('@/.generated/translations.json');
+  // Use dynamic import in a way that doesn't require top-level await
+  translationsManifest = require('@/.generated/translations.json');
 } catch (error) {
   console.warn('⚠️  Generated translations manifest not found. Run `pnpm generate:manifest` to create it.');
   console.warn('Using empty translations list as fallback.');
