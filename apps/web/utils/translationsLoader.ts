@@ -7,20 +7,15 @@
 // Use modern monorepo types
 import type { Translation } from '@brainrot/types';
 
-// Graceful fallback for missing manifest during development
-let translationsManifest: { translations: Translation[] };
-try {
-  // Use dynamic import in a way that doesn't require top-level await
-  translationsManifest = require('@/.generated/translations.json');
-} catch (error) {
-  console.warn('⚠️  Generated translations manifest not found. Run `pnpm generate:manifest` to create it.');
-  console.warn('Using empty translations list as fallback.');
-  translationsManifest = { translations: [] };
-}
+// Import the generated manifest (created by prebuild script)
+import translationsManifest from '@/.generated/translations.json';
 
 /**
  * All translations loaded from the generated manifest
  * Contains full chapter content inline (no file references)
+ * 
+ * Note: If this file is missing, the build will fail with a clear error message.
+ * Run `pnpm generate:manifest` to create it.
  */
 export const translations: Translation[] = translationsManifest.translations as Translation[];
 
