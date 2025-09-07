@@ -8,8 +8,8 @@ import * as dotenv from 'dotenv';
 import fs from 'fs';
 import path from 'path';
 
-import translations from '../translations/index.js';
-import { blobService } from '../utils/services/BlobService.js';
+import translations from '../translations/index';
+import { blobService } from '../utils/services/BlobService';
 
 dotenv.config({ path: '.env.local' });
 

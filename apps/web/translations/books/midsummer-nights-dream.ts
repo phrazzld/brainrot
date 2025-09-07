@@ -1,7 +1,7 @@
 /**
  * Translation data for A Midsummer Night's Dream
  */
-import { Translation } from '../types.js';
+import { Translation } from '../types';
 
 const midsummerNightsDream: Translation = {
   slug: 'midsummer-nights-dream',

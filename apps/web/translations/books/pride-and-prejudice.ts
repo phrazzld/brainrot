@@ -1,7 +1,7 @@
 /**
  * Translation data for Pride and Prejudice
  */
-import { Translation } from '../types.js';
+import { Translation } from '../types';
 
 const prideAndPrejudice: Translation = {
   slug: 'pride-and-prejudice',

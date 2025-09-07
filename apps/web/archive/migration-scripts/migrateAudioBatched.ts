@@ -13,7 +13,7 @@
 import * as dotenv from 'dotenv';
 import path from 'path';
 
-import { blobService } from '../utils/services/BlobService.js';
+import { blobService } from '../utils/services/BlobService';
 
 dotenv.config({ path: '.env.local' });
 

@@ -57,7 +57,7 @@ describe('Enhanced Audio Migration Script Mocks', () => {
   });
 
   it('should mock the BlobService correctly', () => {
-    const { blobService } = require('../../utils/services/BlobService.js');
+    const { blobService } = require('../../utils/services/BlobService');
     blobService.getUrlForPath('test/path');
     expect(blobService.getUrlForPath).toHaveBeenCalledWith('test/path');
   });

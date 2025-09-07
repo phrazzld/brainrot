@@ -5,7 +5,7 @@ import { put } from '@vercel/blob';
 import dotenv from 'dotenv';
 import path from 'path';
 
-import { logger } from '../../utils/logger.js';
+import { logger } from '../../utils/logger';
 
 // Load environment variables
 dotenv.config({ path: path.resolve(process.cwd(), '.env.local') });
@@ -34,7 +34,7 @@ async function uploadPlaceholder() {
     logger.info({ msg: 'Successfully uploaded placeholder', url });
 
     // Test with getAssetUrl
-    const { getAssetUrl } = await import('../../utils.js');
+    const { getAssetUrl } = await import('../../utils');
     const testUrl = getAssetUrl('/assets/covers/placeholder.jpg', true);
     logger.info({ msg: 'Testing placeholder URL', expectedUrl: testUrl });
 

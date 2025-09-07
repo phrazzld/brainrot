@@ -1,7 +1,7 @@
 /**
  * Utility functions for working with translations
  */
-import { Translation } from './types.js';
+import { Translation } from './types';
 
 /**
  * Find a translation by its slug

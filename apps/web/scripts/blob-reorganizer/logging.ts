@@ -1,7 +1,7 @@
 /**
  * Logging utilities for the blob reorganization tool
  */
-import { createRequestLogger } from '../../utils/logger.js';
+import { createRequestLogger } from '../../utils/logger';
 
 /**
  * Logger instance for the blob reorganization tool

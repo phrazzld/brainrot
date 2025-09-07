@@ -1,7 +1,7 @@
 /**
  * Translation data for The Aeneid
  */
-import { Translation } from '../types.js';
+import { Translation } from '../types';
 
 const theAeneid: Translation = {
   slug: 'the-aeneid',

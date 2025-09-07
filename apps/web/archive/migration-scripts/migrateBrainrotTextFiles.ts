@@ -22,8 +22,8 @@ import * as path from 'path';
 import { existsSync } from 'fs';
 import { fileURLToPath } from 'url';
 
-import { blobPathService } from '../utils/services/BlobPathService.js';
-import { blobService } from '../utils/services/BlobService.js';
+import { blobPathService } from '../utils/services/BlobPathService';
+import { blobService } from '../utils/services/BlobService';
 
 // Load environment variables from .env.local
 dotenv.config({ path: '.env.local' });

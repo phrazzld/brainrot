@@ -3,12 +3,12 @@ import * as _fs from 'fs';
 import * as _path from 'path';
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, test, vi } from 'vitest';
 
-import * as _utils from '../../utils.js';
+import * as _utils from '../../utils';
 
 // Then use CommonJS require but assign to different variable names
 const fs = require('fs');
 const path = require('path');
-const utils = require('../../utils.js');
+const utils = require('../../utils');
 
 // Use vi.importActual to import our mock instead of the actual module
 // This avoids ESM-related issues with import.meta

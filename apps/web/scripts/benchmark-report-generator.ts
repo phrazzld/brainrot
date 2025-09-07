@@ -1,4 +1,4 @@
-import { BenchmarkSuite, CONCURRENCY_LEVELS, StatisticalMetrics } from './benchmark-downloads.js';
+import { BenchmarkSuite, CONCURRENCY_LEVELS, StatisticalMetrics } from './benchmark-downloads';
 
 /**
  * Generate the HTML header and style section for the report

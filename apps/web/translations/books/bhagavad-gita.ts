@@ -1,7 +1,7 @@
 /**
  * Translation data for The Bhagavad Gita
  */
-import { Translation } from '../types.js';
+import { Translation } from '../types';
 
 const bhagavadGita: Translation = {
   slug: 'bhagavad-gita',

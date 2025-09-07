@@ -1,7 +1,7 @@
 /**
  * Translation data for The Republic
  */
-import { Translation } from '../types.js';
+import { Translation } from '../types';
 
 const theRepublic: Translation = {
   slug: 'the-republic',

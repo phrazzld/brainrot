@@ -1,7 +1,7 @@
 /**
  * Translation data for Divine Comedy: Purgatorio
  */
-import { Translation } from '../types.js';
+import { Translation } from '../types';
 
 const divineComedyPurgatorio: Translation = {
   slug: 'divine-comedy-purgatorio',

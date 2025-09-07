@@ -24,9 +24,9 @@ import { tmpdir } from 'os';
 import path from 'path';
 import { promisify } from 'util';
 
-import { AssetService, AssetType } from '../types/assets.js';
-import { createRequestLogger } from '../utils/logger.js';
-import { createAssetService } from '../utils/services/AssetServiceFactory.js';
+import { AssetService, AssetType } from '../types/assets';
+import { createRequestLogger } from '../utils/logger';
+import { createAssetService } from '../utils/services/AssetServiceFactory';
 
 // Load environment variables
 dotenv.config({ path: '.env.local' });

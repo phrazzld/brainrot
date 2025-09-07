@@ -28,8 +28,8 @@ jest.mock('../../utils/logger.js', () => ({
 
 // Now require the module under test and the mocked dependencies
 const { fetchTextWithFallback } = jest.requireActual('../../utils/getBlobUrl');
-const { blobPathService } = require('../../utils/services/BlobPathService.js');
-const { blobService } = require('../../utils/services/BlobService.js');
+const { blobPathService } = require('../../utils/services/BlobPathService');
+const { blobService } = require('../../utils/services/BlobService');
 
 // Setup global fetch mock
 global.fetch = jest.fn();

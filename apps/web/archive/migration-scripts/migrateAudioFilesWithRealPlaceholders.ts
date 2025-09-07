@@ -12,9 +12,9 @@ import fs from 'fs';
 import minimist from 'minimist';
 import path from 'path';
 
-import translations from '../translations/index.js';
-import { logger as _logger } from '../utils/logger.js';
-import { blobService } from '../utils/services/BlobService.js';
+import translations from '../translations/index';
+import { logger as _logger } from '../utils/logger';
+import { blobService } from '../utils/services/BlobService';
 
 // Define options interface
 interface MigrationOptions {

@@ -1,7 +1,7 @@
-import { AssetType } from '@/types/assets.js';
-import { Logger } from '@/utils/logger.js';
+import { AssetType } from '@/types/assets';
+import { Logger } from '@/utils/logger';
 
-import { safeLog, sanitizeUrlForLogging } from '../logging/safeLogger.js';
+import { safeLog, sanitizeUrlForLogging } from '../logging/safeLogger';
 
 /**
  * Parameters for getting an asset URL with logging

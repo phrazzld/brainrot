@@ -1,7 +1,7 @@
 /**
  * Type definitions for the blob reorganization tool
  */
-import { AssetType } from '../../types/assets.js';
+import { AssetType } from '../../types/assets';
 
 /**
  * Extended Blob result with additional fields

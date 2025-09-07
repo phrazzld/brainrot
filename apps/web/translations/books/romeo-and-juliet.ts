@@ -1,7 +1,7 @@
 /**
  * Translation data for Romeo and Juliet
  */
-import { Translation } from '../types.js';
+import { Translation } from '../types';
 
 const romeoAndJuliet: Translation = {
   slug: 'romeo-and-juliet',

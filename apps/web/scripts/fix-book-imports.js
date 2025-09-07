@@ -19,16 +19,16 @@ async function fixBookImports() {
     // Fix the import paths
     const updatedContent = content
       .replace(
-        "import { getAssetUrl } from '../../utils.js';",
-        "import { getAssetUrl } from '../utils.js';",
+        "import { getAssetUrl } from '../../utils';",
+        "import { getAssetUrl } from '../utils';",
       )
       .replace(
-        "import { USE_BLOB_STORAGE } from '../../utils.js';",
-        "import { USE_BLOB_STORAGE } from '../utils.js';",
+        "import { USE_BLOB_STORAGE } from '../../utils';",
+        "import { USE_BLOB_STORAGE } from '../utils';",
       )
       .replace(
-        "import { getAssetUrl, USE_BLOB_STORAGE } from '../../utils.js';",
-        "import { getAssetUrl, USE_BLOB_STORAGE } from '../utils.js';",
+        "import { getAssetUrl, USE_BLOB_STORAGE } from '../../utils';",
+        "import { getAssetUrl, USE_BLOB_STORAGE } from '../utils';",
       );
 
     if (content !== updatedContent) {

@@ -1,4 +1,4 @@
-import { TimeoutError } from '../errors/errorTypes.js';
+import { TimeoutError } from '../errors/errorTypes';
 
 /**
  * Default timeout for fetch requests in milliseconds

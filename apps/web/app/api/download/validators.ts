@@ -1,6 +1,6 @@
-import { Logger } from '@/utils/logger.js';
+import { Logger } from '@/utils/logger';
 
-import { safeLog } from './errorHandlers.js';
+import { safeLog } from './errorHandlers';
 
 /**
  * Result of parameter validation

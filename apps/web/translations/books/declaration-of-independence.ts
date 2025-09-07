@@ -1,7 +1,7 @@
 /**
  * Translation data for The Declaration of Independence
  */
-import { Translation } from '../types.js';
+import { Translation } from '../types';
 
 const declarationOfIndependence: Translation = {
   slug: 'declaration-of-independence',

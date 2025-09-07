@@ -1,7 +1,7 @@
 /**
  * Translation data for The Great Gatsby
  */
-import { Translation } from '../types.js';
+import { Translation } from '../types';
 
 const greatGatsby: Translation = {
   slug: 'great-gatsby',

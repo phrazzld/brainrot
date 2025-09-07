@@ -1,7 +1,7 @@
 /**
  * Translation data for Hamlet
  */
-import { Translation } from '../types.js';
+import { Translation } from '../types';
 
 const hamlet: Translation = {
   slug: 'hamlet',

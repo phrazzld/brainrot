@@ -1,7 +1,7 @@
 /**
  * Translation data for The Epic of Gilgamesh
  */
-import { Translation } from '../types.js';
+import { Translation } from '../types';
 
 const gilgamesh: Translation = {
   slug: 'gilgamesh',

@@ -108,3 +108,7 @@ coverage/
 # security audit results
 *-audit-results.json
 performance-baseline-*.json
+
+# Claude AI artifacts
+.claude/
+.generated/

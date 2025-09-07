@@ -4,7 +4,7 @@ const path = require('path');
 
 // Use require for the mock instead of importing the actual module with ESM
 // This avoids ESM-related issues with import.meta
-const cleanupLocalAssets = require('../../__mocks__/cleanupLocalAssets.js');
+const cleanupLocalAssets = require('../../__mocks__/cleanupLocalAssets');
 
 // Mock modules
 jest.mock('fs');
@@ -32,7 +32,7 @@ describe('cleanupLocalAssets', () => {
     jest.clearAllMocks();
 
     // Mock utils.assetExistsInBlobStorage
-    const utils = require('../../utils.js');
+    const utils = require('../../utils');
     utils.assetExistsInBlobStorage.mockImplementation(async (path) => {
       // Return true for cover and text, false for audio to test both scenarios
       if (path.includes('audio')) {

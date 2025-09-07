@@ -11,7 +11,7 @@ const fs = require('fs/promises') as typeof import('fs/promises');
 const path = require('path') as typeof import('path');
 
 // Import local modules
-const translations = require('../../translations.js').default;
+const translations = require('../../translations').default;
 
 // Create a mock class that implements our interface requirements
 class MockBlobService {

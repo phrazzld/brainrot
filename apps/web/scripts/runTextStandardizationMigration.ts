@@ -7,9 +7,9 @@ import * as dotenv from 'dotenv';
 import { existsSync, readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
 
-import { logger as _logger } from '../utils/logger.js';
-import { blobPathService } from '../utils/services/BlobPathService.js';
-import { blobService } from '../utils/services/BlobService.js';
+import { logger as _logger } from '../utils/logger';
+import { blobPathService } from '../utils/services/BlobPathService';
+import { blobService } from '../utils/services/BlobService';
 
 // Load environment variables
 dotenv.config({ path: '.env.local' });

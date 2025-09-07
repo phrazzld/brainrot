@@ -1,7 +1,7 @@
 /**
  * Translation data for The Quran
  */
-import { Translation } from '../types.js';
+import { Translation } from '../types';
 
 const quran: Translation = {
   slug: 'quran',

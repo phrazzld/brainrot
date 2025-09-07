@@ -1,7 +1,7 @@
 /**
  * Translation data for Meditations
  */
-import { Translation } from '../types.js';
+import { Translation } from '../types';
 
 const meditations: Translation = {
   slug: 'meditations',

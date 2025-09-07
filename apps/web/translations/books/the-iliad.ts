@@ -1,7 +1,7 @@
 /**
  * Translation data for The Iliad
  */
-import { Translation } from '../types.js';
+import { Translation } from '../types';
 
 const theIliad: Translation = {
   slug: 'the-iliad',

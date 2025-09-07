@@ -4,7 +4,7 @@
  * Validates and standardizes asset names according to the project's naming conventions.
  * This ensures consistency across all asset types and prevents naming-related issues.
  */
-import { AssetType } from '../../types/assets.js';
+import { AssetType } from '../../types/assets';
 
 /**
  * Validates and enforces standard asset naming conventions

@@ -1,6 +1,6 @@
-import { Logger } from '@/utils/logger.js';
+import { Logger } from '@/utils/logger';
 
-import { MAX_RESPONSE_BODY_LOG_LENGTH, safeLog } from '../logging/safeLogger.js';
+import { MAX_RESPONSE_BODY_LOG_LENGTH, safeLog } from '../logging/safeLogger';
 
 /**
  * Configuration for extracting error details

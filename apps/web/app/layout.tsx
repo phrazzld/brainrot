@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import { ReactNode } from 'react';
 
-import Footer from '@/components/footer.js';
-import Header from '@/components/header.js';
+import Footer from '@/components/footer';
+import Header from '@/components/header';
 
 import { primary, secondary } from './fonts';
 import './globals.css';

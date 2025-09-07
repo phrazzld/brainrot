@@ -10,8 +10,8 @@ import fs from 'fs/promises';
 import { tmpdir } from 'os';
 import path from 'path';
 
-import { createScriptLogger } from '../utils/createScriptLogger.js';
-import { createServices } from '../utils/createServices.js';
+import { createScriptLogger } from '../utils/createScriptLogger';
+import { createServices } from '../utils/createServices';
 
 // Load environment variables
 dotenv.config({ path: '.env.local' });

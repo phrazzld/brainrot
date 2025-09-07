@@ -4,10 +4,10 @@
 import { del, list, put } from '@vercel/blob';
 import { createHash } from 'crypto';
 
-import { AssetType } from '../../types/assets.js';
-import { AssetPathService } from '../../utils/services/AssetPathService.js';
-import { logger } from './logging.js';
-import { CliOptions, ExtendedBlobResult, PathMapping } from './types.js';
+import { AssetType } from '../../types/assets';
+import { AssetPathService } from '../../utils/services/AssetPathService';
+import { logger } from './logging';
+import { CliOptions, ExtendedBlobResult, PathMapping } from './types';
 
 // Initialize AssetPathService
 const assetPathService = new AssetPathService();

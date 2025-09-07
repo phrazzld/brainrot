@@ -1,4 +1,4 @@
-import { ErrorTypeInfo } from './errorTypes.js';
+import { ErrorTypeInfo } from './errorTypes';
 
 /**
  * Maps HTTP status code to error type

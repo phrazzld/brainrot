@@ -2,8 +2,8 @@
 
 import { KeyboardEvent } from 'react';
 
-import DownloadButton from '@/components/DownloadButton.js';
-import { handleKeyboardInteraction } from '@/utils.js';
+import DownloadButton from '@/components/DownloadButton';
+import { handleKeyboardInteraction } from '@/utils';
 
 interface DownloadModalProps {
   isOpen: boolean;

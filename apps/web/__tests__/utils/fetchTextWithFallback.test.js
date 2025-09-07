@@ -1,10 +1,10 @@
 /**
  * Simple test for fetchTextWithFallback using ES modules with explicit .js extensions
  */
-import { fetchTextWithFallback } from '../../utils/getBlobUrl.js';
-import { blobPathService } from '../../utils/services/BlobPathService.js';
-import { blobService } from '../../utils/services/BlobService.js';
-import { createTextResponse as _createTextResponse } from '../__testutils__/fixtures/index.js';
+import { fetchTextWithFallback } from '../../utils/getBlobUrl';
+import { blobPathService } from '../../utils/services/BlobPathService';
+import { blobService } from '../../utils/services/BlobService';
+import { createTextResponse as _createTextResponse } from '../__testutils__/fixtures/index';
 
 // Mock the BlobService
 jest.mock('../../utils/services/BlobService.js', () => ({

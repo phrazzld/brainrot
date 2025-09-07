@@ -1,7 +1,7 @@
 /**
  * Translation data for The Odyssey
  */
-import { Translation } from '../types.js';
+import { Translation } from '../types';
 
 const theOdyssey: Translation = {
   slug: 'the-odyssey',

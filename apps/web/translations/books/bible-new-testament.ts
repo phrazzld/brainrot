@@ -1,7 +1,7 @@
 /**
  * Translation data for Bible: New Testament
  */
-import { Translation } from '../types.js';
+import { Translation } from '../types';
 
 const bibleNewTestament: Translation = {
   slug: 'bible-new-testament',

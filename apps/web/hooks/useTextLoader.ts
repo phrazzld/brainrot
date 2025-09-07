@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-import { fetchBookText } from '@/utils/simple-blob.js';
+import { fetchBookText } from '@/utils/simple-blob';
 
 interface TextLoaderState {
   rawText: string;

@@ -1,7 +1,7 @@
 /**
  * Translation data for The Adventures of Huckleberry Finn
  */
-import { Translation } from '../types.js';
+import { Translation } from '../types';
 
 const huckleberryFinn: Translation = {
   slug: 'huckleberry-finn',

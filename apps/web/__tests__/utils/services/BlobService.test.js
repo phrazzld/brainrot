@@ -50,7 +50,7 @@ global.Blob = class Blob {
 };
 
 // Import the BlobService and the mocked modules
-const { BlobService } = require('../../../utils/services/BlobService.js');
+const { BlobService } = require('../../../utils/services/BlobService');
 const { put, list, head, del } = require('@vercel/blob');
 
 describe('BlobService', () => {

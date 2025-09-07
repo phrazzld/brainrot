@@ -1,27 +1,27 @@
 // Import all book translations
-import bhagavadGita from './books/bhagavad-gita.js';
-import bibleNewTestament from './books/bible-new-testament.js';
-import bibleOldTestament from './books/bible-old-testament.js';
+import bhagavadGita from './books/bhagavad-gita';
+import bibleNewTestament from './books/bible-new-testament';
+import bibleOldTestament from './books/bible-old-testament';
 // Available books
-import declarationOfIndependence from './books/declaration-of-independence.js';
-import divineComedyInferno from './books/divine-comedy-inferno.js';
-import divineComedyParadiso from './books/divine-comedy-paradiso.js';
-import divineComedyPurgatorio from './books/divine-comedy-purgatorio.js';
-import gilgamesh from './books/gilgamesh.js';
-import greatGatsby from './books/great-gatsby.js';
-import hamlet from './books/hamlet.js';
-import huckleberryFinn from './books/huckleberry-finn.js';
-import meditations from './books/meditations.js';
-import midsummerNightsDream from './books/midsummer-nights-dream.js';
-import paradiseLost from './books/paradise-lost.js';
-import prideAndPrejudice from './books/pride-and-prejudice.js';
-import quran from './books/quran.js';
-import romeoAndJuliet from './books/romeo-and-juliet.js';
-import theAeneid from './books/the-aeneid.js';
-import theIliad from './books/the-iliad.js';
-import theOdyssey from './books/the-odyssey.js';
+import declarationOfIndependence from './books/declaration-of-independence';
+import divineComedyInferno from './books/divine-comedy-inferno';
+import divineComedyParadiso from './books/divine-comedy-paradiso';
+import divineComedyPurgatorio from './books/divine-comedy-purgatorio';
+import gilgamesh from './books/gilgamesh';
+import greatGatsby from './books/great-gatsby';
+import hamlet from './books/hamlet';
+import huckleberryFinn from './books/huckleberry-finn';
+import meditations from './books/meditations';
+import midsummerNightsDream from './books/midsummer-nights-dream';
+import paradiseLost from './books/paradise-lost';
+import prideAndPrejudice from './books/pride-and-prejudice';
+import quran from './books/quran';
+import romeoAndJuliet from './books/romeo-and-juliet';
+import theAeneid from './books/the-aeneid';
+import theIliad from './books/the-iliad';
+import theOdyssey from './books/the-odyssey';
 // Coming soon books
-import theRepublic from './books/the-republic.js';
+import theRepublic from './books/the-republic';
 
 /**
  * Translations index
@@ -30,7 +30,7 @@ import theRepublic from './books/the-republic.js';
  */
 
 // Export types
-export * from './types.js';
+export * from './types';
 
 // Create and export the translations array
 const translations = [
@@ -65,6 +65,6 @@ export default translations;
 /**
  * Find a translation by its slug
  */
-export function getTranslationBySlug(slug: string): import('./types.js').Translation | undefined {
+export function getTranslationBySlug(slug: string): import('./types').Translation | undefined {
   return translations.find((t) => t.slug === slug);
 }

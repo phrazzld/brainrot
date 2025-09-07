@@ -23,8 +23,8 @@ import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-import translations from '../translations/index.js';
-import { blobService } from '../utils/services/BlobService.js';
+import translations from '../translations/index';
+import { blobService } from '../utils/services/BlobService';
 
 dotenv.config({ path: '.env.local' });
 

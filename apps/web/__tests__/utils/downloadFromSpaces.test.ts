@@ -1,6 +1,6 @@
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, test, vi } from 'vitest';
 
-import { downloadFromSpaces, getAudioPathFromUrl } from '../../utils/downloadFromSpaces.js';
+import { downloadFromSpaces, getAudioPathFromUrl } from '../../utils/downloadFromSpaces';
 import { assetPathService } from '../../utils/services/AssetPathService';
 
 // Mock fetch API

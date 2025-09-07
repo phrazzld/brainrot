@@ -3,7 +3,7 @@
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 
-import { Translation } from '@/utils/types.js';
+import { Translation } from '@/utils/types';
 
 interface ChapterNavigationState {
   chapterIndex: number;

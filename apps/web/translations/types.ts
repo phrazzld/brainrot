@@ -27,6 +27,6 @@ export interface Translation {
 
 /**
  * Book type alias for backward compatibility with tests
- * This allows tests to import { Book } from '../../../translations/types.js'
+ * This allows tests to import { Book } from '../../../translations/types'
  */
 export type Book = Translation;

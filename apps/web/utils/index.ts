@@ -1,3 +1,3 @@
-export * from './accessibility/index.js';
-export * from './logger.js';
-export * from './simple-blob.js';
+export * from './accessibility/index';
+export * from './logger';
+export * from './simple-blob';

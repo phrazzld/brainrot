@@ -1,8 +1,8 @@
 /**
  * Command-line interface utilities for the blob reorganization tool
  */
-import { logger } from './logging.js';
-import { CliOptions, FlagDefinition } from './types.js';
+import { logger } from './logging';
+import { CliOptions, FlagDefinition } from './types';
 
 /**
  * Get default CLI options

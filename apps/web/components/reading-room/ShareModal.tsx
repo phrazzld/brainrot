@@ -2,7 +2,7 @@
 
 import { KeyboardEvent } from 'react';
 
-import { handleKeyboardInteraction } from '@/utils.js';
+import { handleKeyboardInteraction } from '@/utils';
 
 interface ShareModalProps {
   isOpen: boolean;

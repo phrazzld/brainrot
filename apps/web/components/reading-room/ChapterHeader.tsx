@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 
-import { Translation } from '@/utils/types.js';
+import { Translation } from '@/utils/types';
 
 interface ChapterHeaderProps {
   translation: Translation;

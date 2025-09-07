@@ -1,7 +1,7 @@
 /**
  * Translation data for Divine Comedy: Inferno
  */
-import { Translation } from '../types.js';
+import { Translation } from '../types';
 
 const divineComedyInferno: Translation = {
   slug: 'divine-comedy-inferno',

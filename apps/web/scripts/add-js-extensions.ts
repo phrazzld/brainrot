@@ -7,7 +7,7 @@
 import fs from 'fs';
 import path from 'path';
 
-import { createScriptLogger } from '../utils/createScriptLogger.js';
+import { createScriptLogger } from '../utils/createScriptLogger';
 
 // Configure logger
 const logger = createScriptLogger({ scriptName: 'add-js-extensions' });
