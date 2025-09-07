@@ -77,8 +77,8 @@
       {
         "ts": "never",
         "tsx": "never",
-        "js": "always",
-        "jsx": "always"
+        "js": "never",
+        "jsx": "never"
       }
     ],
     "max-lines": ["warn", { "max": 500, "skipBlankLines": true, "skipComments": true }],
