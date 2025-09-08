@@ -1,4 +1,4 @@
-chapter ii.
+# Chapter 2
 
 we crept along a shadowy path through the trees, tiptoeing back toward the edge of the widow’s garden, ducking so no branch could hit our heads. as we passed by the kitchen, i tripped over a gnarly root and let out a huge oof that totally busted our stealth. instantly, we dropped low and froze like statues. miss watson’s big nay nay, named jim, was posted at the kitchen door—we could see him crystal clear ‘cause there was a bright light behind him. he stretched his neck out for like a minute, listening hard. then he go, “who dah?”
 

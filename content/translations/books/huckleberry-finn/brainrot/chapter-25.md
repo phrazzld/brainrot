@@ -1,4 +1,4 @@
-chapter xxv.
+# Chapter 25
 
 ngl, the news was blowin’ up town in like two minutes, and you could literally see peeps dashing mad from every angle, throwin’ on their coats on the fly. before long, we found ourselves smack in the middle of a massive mob, and the stompin’ sound was like some serious soldier march. every window and yard was packed, and every minute someone would holler over a fence:
 

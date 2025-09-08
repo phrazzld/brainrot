@@ -1,4 +1,4 @@
-chapter xiii.
+# Chapter 13
 
 so, i took a sec to catch my breath and nearly fainted. trapped on a wreck with a squad like that? legit, no chill! but there was zero time for sappy feels. we had to track down that boat, like, asap—had to bag it for ourselves. so we shook and shimmied our way down the starboard side, which was mad slow—it felt like it took a whole week to crawl to the stern. no sign of a boat anywhere. jim was already like, "i can’t go any further," so shook he barely had any juice left. but i was like, "yo, if we get stuck on this wreck, it’s game over for sure." so we kept prowling.
 

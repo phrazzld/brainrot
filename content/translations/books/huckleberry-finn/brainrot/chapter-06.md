@@ -1,4 +1,4 @@
-chapter vi.
+# Chapter 6
 
 ngl, it didn’t take long for pap to be up and hustling again, and then he went for judge thatcher in court to snatch that cash, and he even came after me for not showing up at school. he caught me a couple times and thrashed me, but i still hit school like a rebel, dodging or outrunning him most of the time. i wasn’t really about school before, but now i did it just to spite pap. that whole trial was mad slow—like they were never gonna start it—so every now and then, i’d borrow two or three bucks from the judge on pap’s behalf, just so i wouldn’t get a savage cowhide session. every time pap got money, he got smashed; every time he got smashed, he raised absolute hell in town; and every time he raised hell, he ended up getting locked up. this was totally his jam.
 

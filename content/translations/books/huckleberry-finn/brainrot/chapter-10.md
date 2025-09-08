@@ -1,4 +1,4 @@
-chapter x.
+# Chapter 10
 
 after breakfast, i was all like, "yo, let’s chat about that dead dude and figure out who offed him," but jim wasn’t having any of it. he claimed it’d bring bad juju; plus, he warned that unburied dudes were way more likely to come back and haunt us than be chillin’ in the grave. that sounded kinda legit, so i kept quiet—though i couldn’t help obsessing over who shot the guy and why.
 

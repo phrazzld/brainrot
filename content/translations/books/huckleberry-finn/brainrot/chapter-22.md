@@ -1,4 +1,4 @@
-chapter xxii.
+# Chapter 22
 
 they swarmed up to sherburn’s crib, going off like a pack of savage tribes, yellin’ and rampagin’, makin’ way or gettin’ flattened to mush—it was a brutal sight. even the kids were leadin’ the charge, screamin’ and dodgin’ outta harm’s way; every window along the road was jammed with women peepin’ out, and there were nay nay boys chillin’ in every tree, with dudes and ladies leanin’ over every fence; and just when the mob got close, those on watch would scatter right back before gettin’ caught.
 

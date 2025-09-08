@@ -1,4 +1,4 @@
-chapter xxxiv.
+# Chapter 34
 
 we clammed up and started thinking. after a minute, tom hits, “yo, huck, how dumb are we for not peepin’ it earlier! bet i got the deets on where jim’s hidin’.”
 

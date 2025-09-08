@@ -1,4 +1,4 @@
-chapter xlii.
+# Chapter 42
 
 the old man popped back uptown before brekkie but couldn’t track tom down; so both of ‘em sat at the table in silence, lookin’ hella gloomy, their coffee gettin’ cold while they skipped the chow. after a minute, the old man goes, “did i hand you the letter?”
 

@@ -1,4 +1,4 @@
-chapter xiv.
+# Chapter 14
 
 by and by, when we bounced up, we flipped over the loot that gang jacked off the wreck—boots, blankets, clothes, and a crazy mix of other gear, plus a mountain of books, a spyglass, and three boxes of seegars. we had never been this loaded in our entire lives. the seegars were prime, no cap. we chilled all afternoon in the woods, chatting and me reading the books, just vibing good times. i spilled every wild detail about what went down inside the wreck and at the ferry-boat, saying these things were true adventures; but jim was like, "nah, i don’t need any more wild adventures." he said that when i went into the texas and he crawled back to the raft only to find it gone, he nearly peaced out—‘cause he figured it was all over for him; like if he didn’t get saved, he’d be drowned; and if he did, whoever rescued him would ship him back home for the reward, and then miss watson would straight-up send him south. and he was so right; like, he was always right. he had a mad level head, for a nay nay.
 
@@ -67,8 +67,6 @@ i never saw such a nay nay. if he got a thought in his head once, there was no e
 "i don’t know; but facts are facts. i copped some of their jabber from a book. suppose some dude came up to you and started saying 'polly-voo-franzy'—what would you think?"
 
 "i wouldn’t think much; i’d just give him a solid bust over the head—that is, if he weren’t white. i wouldn’t let any nay nay call me that."
-
-
 
 “yo, real talk it ain't dissin' you at all; it's just straight up asking, 'you got that french drip, or what?'
 so like, why can't he just drop it in our lingo, bro?

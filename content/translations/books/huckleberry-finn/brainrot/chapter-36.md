@@ -1,4 +1,4 @@
-chapter xxxvi.
+# Chapter 36
 
 as soon as we peeped that everybody was knocked out that night, we slid down the lightning rod, locked ourselves in the lean-to, whipped out our stash of fox-fire, and got to hustlin’. we cleared out a path, like four or five feet wide along the center of the bottom log. tom said he was posted right behind jim’s bed, and we’d dig underneath it so sneaky that nobody in the cabin would ever peep a hole there—cuz jim’s counter-pin was hangin’ nearly to the ground, and you’d have to jack it up just to see any gap. so we hacked away with our case-knives until nearly midnight; and then we were straight-up dog-tired, our hands all blistered, yet it looked like we hadn’t done squat. finally, i go, "yo, this ain’t a thirty-seven year hustle; this is a thirty-eight year grind, tom sawyer."
 

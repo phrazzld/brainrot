@@ -1,4 +1,4 @@
-chapter xxxvii.
+# Chapter 37
 
 that was locked in. so then we dipped and hit up the rubbage-pile in the backyard, where they stash old kicks, ragged threads, bottle shards, busted tin junk, and all that random trash, and i scrounged around and found an ancient tin washpan. we patched up its holes as best we could to bake our pie in, hauled it down to the cellar, jacked it full of flour, and started on breakfast. i even found a couple shingle-nails that tom claimed would be dope for a prisoner to scratch his name and sorrows on dungeon walls, and i dropped one in aunt sally’s apron pocket that was chillin’ on a chair, and jammed the other right into the band of uncle silas’s hat on the bureau—‘cause we heard the kiddos saying their pa and ma were cruising to the runaway nay nay’s crib that morning. then we bounced to breakfast, and tom dropped the pewter spoon in uncle silas’s coat pocket. aunt sally wasn’t even there yet, so we had to kick it and wait a minute.
 

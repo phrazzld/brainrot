@@ -1,4 +1,4 @@
-ACT IV
+# Act 4
 
 SCENE I. A ROOM IN THE CASTLE.
 
@@ -8,7 +8,7 @@ KING. there’s real tea in these heavy sighs—you gotta decode ‘em, ’cause
 
 QUEEN. give us this spot for a sec, alright?
 
-[TO ROSENCRANTZ AND GUILDENSTERN, WHO GO OUT.]
+TO ROSENCRANTZ AND GUILDENSTERN, WHO GO OUT.]
 
 QUEEN. oh my lord, what a wild scene i just witnessed tonight!
 
@@ -414,9 +414,7 @@ MESSENGER: sailors, my lord, i didn’t see ‘em. they were handed to me by cla
 
 KING: laertes, you’re gonna hear ‘em. y’all, exit.
 
-[EXIT MESSENGER.]
-
-[reads] "high and mighty, u shall know i am set naked on your kingdom. tomorrow shall i beg leave to peep your kingly eyes. when i do, after asking your pardon, i’ll spill the tea on the occasions of my sudden and extra-strange return. hamlet."
+[EXIT MESSENGER. "high and mighty, u shall know i am set naked on your kingdom. tomorrow shall i beg leave to peep your kingly eyes. when i do, after asking your pardon, i’ll spill the tea on the occasions of my sudden and extra-strange return. hamlet."
 
 KING: what does this even mean? did they all come back, or is it just some abuse with nothing real?
 
@@ -437,8 +435,6 @@ LAERTES: my lord, i’m cool with u rule, as long as u set it up so i can be the
 KING: that’s perfect. you’ve been talked about a lot since u traveled, and even in hamlet’s ear – for that quality they say makes you shine – your whole package didn’t pull as strong envy from him as did that one, and that, in my view, of the unworthiest attack.
 
 LAERTES: what part is that, my lord?
-
-
 
 KING. yo, check it – youth is that epic flex on your cap, a dope ribbon that’s essential, ‘cause the chill drip of youth beats the crusty, all-dark vibes of old age any day. two months back, this norman dude rolled in – i even clocked him when i was fightin’ the french – and while the french were basically elite in the horseback game, this gallant was straight-up witchcraft level. he leveled up his ride so perfectly it was like he and his horse were one, legit in-sync as if they were on the same livestream. my brain was shook ‘cause no matter how many tricks i tried to fake, i couldn’t even come close to his next-level move.
 

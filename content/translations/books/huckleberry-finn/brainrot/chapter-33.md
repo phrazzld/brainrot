@@ -1,8 +1,8 @@
-chapter xxxiii.
+# Chapter 33
 
 so i started for town in the wagon, and halfway through, i peeped another wagon rolling up—and sure enough, it was tom sawyer—so i pulled over and waited for him to bounce up beside me. i shouted, “hold up!” and he stopped right alongside, his mouth gaping wide like a trunk, frozen in that epic moment; he gulped two or three times like someone with a parched throat, and then he goes:
 
-  “i ain’t ever done you any harm. you know that. so, whatchu wanna come back and snub me for?”
+“i ain’t ever done you any harm. you know that. so, whatchu wanna come back and snub me for?”
 
 i replied, “i ain’t bounced—I haven’t been gone.”
 

@@ -1,4 +1,4 @@
-chapter xv.
+# Chapter 15
 
 so, we figured three more nights would have us chillin' in cairo—down at the illinois end where the ohio river slides in—and that was the move. our masterplan was to ditch the raft, jump on a steamboat, paddle up the ohio into the free states, and then be totally out of the drama.
 

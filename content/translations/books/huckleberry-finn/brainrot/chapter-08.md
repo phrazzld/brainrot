@@ -1,4 +1,4 @@
-chapter viii.
+# Chapter 8
 
 when i woke, the sun was high – i figured it was past eight. i was loungin’ in the grass and cool shade, deep in thought, feelin’ mega comfortable and satisfied. i could peep the sun through a couple of holes, but mostly it was just thick trees everywhere – dark and moody vibes. spots of sunlight danced on the ground through the leaves, swayin’ here and there like a chill breeze was in play. a couple of squirrels kicked back on a limb, jabberin’ at me like they were my homies.
 

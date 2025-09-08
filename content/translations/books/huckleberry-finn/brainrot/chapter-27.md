@@ -1,4 +1,4 @@
-chapter xxvii.
+# Chapter 27
 
 i crept up to their doors, all stealth mode, ears on deck—they were snorin’ hardcore. so i tiptoed like a boss, sliding downstairs smooth. not a peep was comin’ from anywhere. i peeped through a slim crack in the dinin’-room door and spotted the dudes watchin’ the corpse, asleep in their chairs. the door into the parlor—where the corpse was chillin’—was open and lit by a candle in both rooms. i strolled through, noticed that in the parlor it was just peter’s leftover crew, so i slid on by; but the front door was locked, and the key was nowhere to be found. just then, i heard footsteps comin’ down behind me. i bolted back into the parlor, did a quick scan, and the only legit spot to hide the bag was in the coffin. the lid was propped up about a foot, exposin’ the dead man’s face with a wet cloth draped over it and his shroud on. i carefully tucked the money-bag under the lid, just below where his hands were crossed—so cold it gave me the creeps—and then i dashed back across the room, slid behind the door for cover.
 

@@ -1,4 +1,4 @@
-chapter iii.
+# Chapter 3
 
 so, i got straight roasted in the morning by old miss watson ‘cause my gear was a total mess; but the widow wasn’t savage—she just wiped off the grease and clay and looked all pity-mode, making me think, “aight, maybe i should try to behave for a bit.” then miss watson hauled me into the closet for a prayer sesh, but spoiler alert: it was a total flop. she kept preaching that if i prayed every day, i’d get whatever i wished for. but nah, it didn’t work. i tried—once i even scored a fish-line, but no hooks. like, a fish-line without hooks is whack. i gave hooking a go three or four times, and still, nada. eventually, i begged miss watson to pray for me, but she clapped back, calling me a fool. she never dropped the deets on why, and i was left straight-up confused.
 

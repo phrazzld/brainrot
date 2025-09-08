@@ -1,4 +1,4 @@
-chapter xxviii.
+# Chapter 28
 
 before long, it was wake-up time. i slid down the ladder and started cruisin’ downstairs; but as i hit the girls’ room, the door was wide open, and i peeped mary jane chillin’ by her old hair trunk – which was left open with her packin’ up her stuff, gettin’ ready to jet off to england. but then she stopped, a folded gown in her lap, with her face buried in her hands, cryin’ like she’d just been canceled hard.
 
@@ -153,8 +153,6 @@ i couldn’t come up with a solid reason off the bat, so i goes, “mumps.”
 “oh, heck yes,” i replied, “i definitely would. i wouldn’t waste no time.”
 
 “but why wouldn’t u?”
-
-
 
 yo, peep this for a sec, and maybe it'll hit ya. ain't your uncles on a turbo ride back to england, like, asap? and fr, do you seriously think they'd dip out and leave you to ghost on that crazy road trip alone? obvi they got you on lock, no cap. they got mad chill vibes, so it's all gucci. your uncle harvey's a preacher, right? facts. aight, so here's the tea: is a preacher gonna scam a steamboat clerk? or hustle a ship clerk? all for the sake of letting miss mary jane hop on board? obviously he ain't about that scam life. so what's his move? he'll be like, "big oof, it's super tragic, but my church biz has gotta roll out extra fast; cuz my niece just caught that nasty pluribus-unum mumps vibe, and i gotta chill here for three whole months to peep if she caught it." but yo, if you think spilling the tea to uncle harvey is the move—
 

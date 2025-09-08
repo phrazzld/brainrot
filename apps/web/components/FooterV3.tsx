@@ -8,7 +8,7 @@ import translations from '@/translations';
 const taglines = [
   'no cap just classics',
   'touch grass later',
-  'literally us fr', 
+  'literally us fr',
   'peak fiction only',
   'chronically online literature',
   'all rizz reserved',
@@ -18,8 +18,8 @@ const taglines = [
 
 const achievements = [
   { icon: '🏆', title: 'Achievement Unlocked!', desc: 'Found the Footer (0.1% of users)' },
-  { icon: '💀', title: 'You\'re Cooked!', desc: 'Scrolled this far unironically' },
-  { icon: '📚', title: 'Literally Me!', desc: 'You\'re just like Gatsby fr fr' },
+  { icon: '💀', title: "You're Cooked!", desc: 'Scrolled this far unironically' },
+  { icon: '📚', title: 'Literally Me!', desc: "You're just like Gatsby fr fr" },
   { icon: '🔥', title: 'Straight Fire!', desc: 'Your taste in books is bussin' },
 ];
 
@@ -28,9 +28,9 @@ export default function FooterV3() {
   const [taglineIndex, setTaglineIndex] = useState(0);
   const [showAchievement, setShowAchievement] = useState(false);
   const [achievement, setAchievement] = useState(achievements[0]);
-  
+
   // Count available books
-  const availableBooks = translations.filter(t => t.status === 'available');
+  const availableBooks = translations.filter((t) => t.status === 'available');
   const availableCount = availableBooks.length;
   const totalCount = translations.length;
 
@@ -82,13 +82,9 @@ export default function FooterV3() {
         <div className="max-w-screen-lg mx-auto px-4 py-3">
           {/* Line 1: Brand + Stats */}
           <div className="flex items-center justify-between mb-2">
-            <h3 className="text-sm font-bold tracking-wider">
-              BRAINROT PUBLISHING
-            </h3>
+            <h3 className="text-sm font-bold tracking-wider">BRAINROT PUBLISHING</h3>
             <div className="flex items-center gap-4 text-xs">
-              <span className="text-green-400">
-                📚 {availableCount} ready
-              </span>
+              <span className="text-green-400">📚 {availableCount} ready</span>
               <span className="text-yellow-400 hidden sm:inline">
                 ⏳ {totalCount - availableCount} cooking
               </span>

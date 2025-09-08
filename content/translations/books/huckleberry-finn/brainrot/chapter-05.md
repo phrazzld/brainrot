@@ -1,4 +1,4 @@
-chapter v.
+# Chapter 5
 
 i had slammed the door shut, fr. then i spun around and there he was, just vibing in my rearview like a ghost from old memes. i used to be low-key shook every time—dude used to tan me so hard it was like a sunburned screenshot. i figured i was hella scared again at first, but ngl, in like a minute my heart hit a vibe check and i realized i was straight-up mistaken—i mean, after that first jolt when my breath legit skipped a beat because he popped out so unexpected; but then, real quick, i was like, nah, not scared enough to even bother.
 

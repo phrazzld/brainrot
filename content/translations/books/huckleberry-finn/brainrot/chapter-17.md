@@ -1,4 +1,4 @@
-chapter xvii.
+# Chapter 17
 
 in about a minute, somebody speaks outta a window—without even stickin’ his head out—and goes, “be done, boys! who’s there?”
 

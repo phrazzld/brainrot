@@ -1,4 +1,4 @@
-chapter i.
+# Chapter 1
 
 yo, so peep this: if you ain’t already lowkey read that adventures of tom sawyer joint, then you prolly know the vibe—but don’t even trip, ‘cause that book was dropped by mr. mark twain, and honestly, he kept it mostly 100. sure, he flexed a few extras here and there, but overall, the truth was on point. like, everyone’s been sus and told a fib every now and then—except for aunt polly, the widow, or maybe mary. aunt polly—yeah, tom’s aunt polly—and mary, plus the widow douglas, all star in that tale, which was almost all fact with just a bit of extra sauce.
 

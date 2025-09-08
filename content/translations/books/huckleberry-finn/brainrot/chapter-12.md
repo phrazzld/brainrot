@@ -1,4 +1,4 @@
-chapter xii.
+# Chapter 12
 
 it was almost one o'clock when we finally cruised below the island, and the raft was moving mad slo-mo. if any boat popped up, we were ready to jump in the canoe and jet for the illinois shore; but for real, no boat came, 'cause we never even stocked the canoe with a gun, or a fishing line, or any grub. we were sweating so hard we barely had time to think. it just wasn't smart to put everything on the raft.
 

@@ -1,4 +1,4 @@
-chapter xxxviii.
+# Chapter 38
 
 making them pens was a hella rough grind, and the saw was no picnic either; and jim was all, the inscription was gonna be the hardest part of all. that’s the one a prisoner has gotta tag on the wall. but he had to flex it—tom was like, “bro, you gotta do it,” ‘cause there’s never been a state prisoner who didn’t leave behind his own epic inscription and coat of arms.
 
@@ -32,10 +32,10 @@ that was just tom being tom. if he wasn’t feelin’ it to break it all down fo
 
 tom had his coat o’ arms game locked down, so he hopped to finish the rest of the job: planning a sad af inscription—’cause jim had gotta have one just like everyone else. he whipped up a bunch, jotted ‘em on a scrap of paper, and rapped 'em out, like so:
 
-1. here, a captive heart got totally wrecked.
-2. here, a broke prisoner, ghosted by the world and his crew, steamed his sorrowed life.
-3. here, a lonely heart got shattered, and a worn vibe dipped for good after thirty-seven years of solo captivity.
-4. here, stranded and without squad, after thirty-seven years of bitter lockdown, perished a noble stranger—the natural offspring of louis xiv.
+here, a captive heart got totally wrecked.
+here, a broke prisoner, ghosted by the world and his crew, steamed his sorrowed life.
+here, a lonely heart got shattered, and a worn vibe dipped for good after thirty-seven years of solo captivity.
+here, stranded and without squad, after thirty-seven years of bitter lockdown, perished a noble stranger—the natural offspring of louis xiv.
 
 tom’s voice shook all over while spitting those lines, and he straight up lost it. when he finished, he couldn’t even pick which one jim should tag on the wall—they were all pure fire; but eventually, he was like, “yo, go ahead and tag ‘em all.” jim was like, “bro, it’d take me a year to nail all that crazy stuff into these logs with a nail, and i legit don’t even know how to craft letters,” but tom was like, “i gotchu—I’ll block it out for you so you just gotta trace the lines, easy peasy.”
 

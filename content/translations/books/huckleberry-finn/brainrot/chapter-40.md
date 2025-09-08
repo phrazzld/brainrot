@@ -1,4 +1,4 @@
-chapter xl.
+# Chapter 40
 
 yo, after a bomb breakfast, we were feeling hella chill, so i grabbed my canoe and dipped over the river to fish with a lunch packed along, having a mad good time. we even scoped out the raft and it was all Gucci, then we rolled back home late for supper—only to find the joint was in a total sweat fest, with everyone so panicky they didn’t even know which way was up. they bounced us straight to bed the minute we finished grubbin’, not spillin’ a single deet ‘bout the crisis or that fresh letter, but it was all obvious to us. once we were halfway up the stairs and had the back turned, we slid over to the cellar cupboard, hoisted a killer lunch, hauled it to our room, crashed hard, and then rolled out around half-past eleven. then tom busted out aunt sally’s dress he jacked and was ‘bout to kick off the lunch vibe when he goes:
 

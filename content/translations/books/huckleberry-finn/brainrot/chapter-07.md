@@ -1,4 +1,4 @@
-chapter vii.
+# Chapter 7
 
 “git up! what you ’bout?”
 

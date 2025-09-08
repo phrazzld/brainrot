@@ -1,4 +1,4 @@
-chapter xvi.
+# Chapter 16
 
 we crashed for most of the day and dipped out at night, tailin' behind this monstrous, mega long raft that was rollin' by like a full-on parade. it rocked four long sweeps on each end, so we figured it was packin' like thirty dudes, for real. it had five big wigwams spaced out, an open campfire in the middle, and a tall flagpole at each end. that craft had some serious drip—it was basically the ultimate flex for any raft boss.
 

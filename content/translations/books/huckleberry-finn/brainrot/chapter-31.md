@@ -1,4 +1,4 @@
-chapter xxxi.
+# Chapter 31
 
 we didn't stop at any town for days and days; we just cruised straight down the river. we were down south in that warm weather, hella far from home. i started spotting trees draped with spanish moss, hangin’ off like long, gray beards. it was the first time i ever peeped that vibe, and it made the woods look super solemn and dismal. so the frauds figured they were outta the danger zone, and they started doin’ their village hustle again.
 
@@ -62,15 +62,13 @@ huck finn.”
 
 i felt amazing, totally washed clean of sin for the first time in my life, and i knew i could pray now. but i didn’t jump right in; i put the paper down and sat there, deep in thought—thinkin’ about how dope it was that everything went down like this, and how close i came to bein’ lost and doomed. i kept reminiscin’ about our river trip; i kept picturin’ jim all the time – in the day, at night, sometimes under moonlight, sometimes amid crazy storms, and we were just floatin’, chattin’, singin’, and laughin’. somehow, i couldn’t find any reason to harden my heart against him—instead, i only felt the warmest vibes. i remembered him standin’ on his own watch instead of callin’ me over so i could catch more z’s; i remembered how stoked he was when i emerged from the fog; and when i met him again in the swamp near that old beef zone; and every single time he’d call me honey, pat me, and do everything to show he cared—always bein’ so solid. then i remembered the time i saved him by fibbin’ that we had smallpox onboard, and he was so grateful he said i was the best friend old jim ever had, the only one he got now; then, outta nowhere, i glanced at that paper.
 
-
-
 it was mad savage thoughts and even mad savage words, but they got dropped anyway. and i let 'em ride, no edits—i was like, "cool, let that sit," and never even peeped reforming again. i totally yeeted that whole idea from my brain and was like, "time to flex my wicked side once more," cuz that’s how i was bred, and the other path just wasn’t my vibe. and real talk, for a starter i was all about jacking jim out of slavery again; and if i could cook up something even more extra, i’d go for it too—since i was in it for life, i might as well go all in, no cap.
 
 then i got my mind in gear, brainstorming like a total meme lord on how to pull it off, flipping through ideas like a netflix binge; and finally, i landed on a plan that totally suited my drip. so i scoped out a woody island vibe down the river, and as soon as it got hella dark, i snuck out on my raft, slid for it, stashed it there, and then bounced. i crashed hard all night, woke up pre-dawn, grabbed some brekkie, threw on my store threads, bundled up some extra gear, hopped in my canoe, and paddled towards shore. i landed right under what i pegged as phelps’s spot, hid my bundle in the woods, then rigged the canoe by flooding it and loading it up with rocks so it’d be sunk in a secret spot—about a quarter-mile below a chill little steam sawmill on the bank.
 
 so, i hit the road, and as i cruised past the mill, i peeped a sign that read “phelps’s sawmill,” and when i rolled up to the farm-houses a couple hundred yards further, i had my eyes on full alert but didn’t spot anyone—even though the daylight was on point. but i was cool with it, cuz i wasn’t tryna see anyone just yet—I only had to get the lay of the land. according to my master plan, i was gonna slide up from the village, not from below. so i scoped it out quick and dipped straight for town. and yo, the very first dude i bumped into was the duke. he was flexing a billy for the “royal nonesuch”—a three-night performance—like that other time. the nerve of these clout chasers was wild! i was all up in his grill before he could even dip. he looked hella shook, and goes:
 
-  “hel-lo! where’d you pop off from?”
+“hel-lo! where’d you pop off from?”
 
 then, all hyped and eager, he adds, “where’s the raft?—it chillin’ in a solid spot?”
 

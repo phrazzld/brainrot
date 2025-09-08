@@ -1,4 +1,4 @@
-chapter xli.
+# Chapter 41
 
 the doc was one of those old school dudes; a genuinely nice, kind-lookin’ old man when i hauled him up. i told him that me and my bro had been chillin’ on spanish island huntin’ yesterday afternoon, camped on a random piece of raft we scored, and that ‘round midnight his gun totally went off in his dream—like, it legit shot him in the leg—and we needed him to roll over there, fix that mess, and keep it on the down low, no cap, ‘cause we wanted to roll back home this evenin’ and totally surprise the folks.
 

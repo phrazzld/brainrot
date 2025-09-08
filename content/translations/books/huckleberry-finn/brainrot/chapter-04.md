@@ -1,4 +1,4 @@
-chapter iv.
+# Chapter 4
 
 so, three or four months rolled by and winter was legit in full effect. i'd been hittin’ school most days—i could spell, read, and write a bit, and even drop the multiplication table up to “six times seven is thirty-five” (ngl, i ain’t tryna flex math beyond that even if i lived forever). math just wasn’t my vibe.
 

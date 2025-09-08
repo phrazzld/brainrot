@@ -1,8 +1,8 @@
-ACT III
+# Act 3
 
 SCENE I. A ROOM IN THE CASTLE.
 
-[ENTER KING, QUEEN, POLONIUS, OPHELIA, ROSENCRANTZ AND GUILDENSTERN.]
+ENTER KING, QUEEN, POLONIUS, OPHELIA, ROSENCRANTZ AND GUILDENSTERN.]
 
 KING. and can y'all, by any random twist of fate, get him to spill why he's rockin' this chaotic vibe, turnin' all his chill days into a storm of crazy, dangerous lunacy?
 
@@ -44,9 +44,7 @@ KING. [ASIDE.] damn, it's too real! how hard that speech slaps my conscience! a 
 
 POLONIUS. yo, i hear him comin'. let's dip, my lord.
 
-[EXEUNT KING AND POLONIUS.]
-
-[ENTER HAMLET.]
+[EXEUNT KING AND POLONIUS.
 
 HAMLET. to be, or not to be, that’s the ultimate question: is it more savage in the mind to take the slings and arrows of outrageous fortune, or to step up and throw down against a sea of troubles and, by clappin' back, end 'em? to die—to sleep, no cap; and in that sleep, we end the heartache and a thousand natural shocks that our flesh inherits. it's the ultimate finish everyone wishes for. to die, to sleep. to sleep, maybe dream—yo, that's the rub, 'cause in that death-sleep what dreams might drop, when we finally ghost this mortal coil, forces us to pause. that's the real respect that turns a long life into non-stop calamity. who would wanna bear the whips and scorns of time, the oppressor’s BS, the proud man’s savage burns, the agony of rejected love, the law's lag, the insolence of office, and the spurns that the unworthy heave on the patient, when he himself could just end it all with a bare bodkin? who would bear these extra weights, grunting and sweatin' through a worn-out life, except for the dread of something after death—the undiscovered country from which no traveler returns—that baffles the will and makes us choose to suffer what we’ve got rather than fly to unknown ills? thus, our conscience turns us all into softies, and the pure vibe of resolution gets washed out by overthinking, so that even our boldest moves lose their real action. yo, hold up – the fair ophelia! nymph, in your prayers, remember all my sins, aight?
 

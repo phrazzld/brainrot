@@ -1,8 +1,8 @@
-ACT II
+# Act 2
 
 SCENE I. A ROOM IN POLONIUS’S HOUSE.
 
-[ENTER POLONIUS AND REYNALDO.]
+ENTER POLONIUS AND REYNALDO.]
 
 POLONIUS. slide him this cash and these notes, reynaldo.
 
@@ -486,9 +486,7 @@ FIRST PLAYER. ay, my lord.
 
 HAMLET. bet. follow that vibe, and yo, don't roast him.
 
-[EXIT FIRST PLAYER.]
-
-[TO ROSENCRANTZ AND GUILDENSTERN] my good friends, i'm bouncin' 'til night – y'all are always welcome in elsinore.
+[EXIT FIRST PLAYER. my good friends, i'm bouncin' 'til night – y'all are always welcome in elsinore.
 
 ROSENCRANTZ. good, my lord.
 

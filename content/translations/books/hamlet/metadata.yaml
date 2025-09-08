@@ -1,0 +1,79 @@
+# Hamlet - Brainrot Edition Metadata
+title: "Hamlet (Brainrot Edition)"
+author: "William Shakespeare"
+translator: "Brainrot Publishing House"
+original_year: 1603
+translation_year: 2025
+description: |
+  Shakespeare's most iconic tragedy hits different in Gen Z speak. Watch 
+  Prince Hamlet spiral into an existential crisis after his dad's ghost 
+  slides into his DMs with murder accusations. Uncle Claudius is sus af, 
+  mom's giving main character energy with the wrong villain, and Ophelia's 
+  about to catch feelings in the worst timeline. To be or not to be? That's 
+  the vibe check, bestie.
+
+# Publishing formats and ISBNs
+formats:
+  ebook:
+    isbn: "979-8-88888-003-5"
+    price: 4.99
+    currency: "USD"
+  paperback:
+    isbn: "979-8-88888-003-2"
+    price: 12.99
+    currency: "USD"
+    pages: 180
+    dimensions: "6x9 inches"
+  hardcover:
+    isbn: "979-8-88888-003-9"
+    price: 22.99
+    currency: "USD"
+    pages: 180
+    dimensions: "6x9 inches"
+
+# Publishing platforms
+publishing:
+  kdp: true
+  lulu: true
+  ingram: false
+  draft2digital: false
+
+# Categorization for retailers
+categories:
+  - "Drama / Shakespeare"
+  - "Fiction / Classics"
+  - "Humor / Parody"
+
+# SEO and discovery keywords
+keywords:
+  - "hamlet"
+  - "shakespeare"
+  - "gen z translation"
+  - "brainrot"
+  - "danish prince"
+  - "to be or not to be"
+  - "tragedy"
+  - "ghost story"
+  - "revenge"
+  - "modernized classics"
+
+# Book series information
+series: "Brainrot Shakespeare Collection"
+series_number: 1
+
+# Language and market
+language: "en-US"
+markets:
+  - "United States"
+  - "United Kingdom"
+  - "Canada"
+  - "Australia"
+
+# Additional metadata
+bisac_codes:
+  - "DRA010000" # Drama / Shakespeare
+  - "FIC004000" # Fiction / Classics
+  - "HUM008000" # Humor / Form / Parodies
+
+copyright: "Translation © 2025 Brainrot Publishing House"
+rights: "All rights reserved. Original work in public domain."

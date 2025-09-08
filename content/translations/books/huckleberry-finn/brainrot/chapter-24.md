@@ -1,4 +1,4 @@
-chapter xxiv.
+# Chapter 24
 
 next day, near night, our crew parked under a little willow hangout smack in the middle, with a village on each side of the river, and the duke and the king started schemin’ on how to work those towns. jim rolled up to the duke and was like, "i hope this only takes a few hours, cuz bein’ cooped up in that wigwam all day, all tied up like a noob, is mad exhausting." you see, when we left him solo, we had to rope him up—’cause if anyone caught him on his own without the ties, it wouldn’t exactly scream runaway nay nay, ya know? so the duke was like, "yo, it’s rough bein’ tied all day; i gotta hack out a fix."
 

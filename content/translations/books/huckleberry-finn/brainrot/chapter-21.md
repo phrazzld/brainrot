@@ -1,4 +1,4 @@
-chapter xxi.
+# Chapter 21
 
 it was past sun-up now, but we kept it movin’ and didn’t even dock. the king and the duke soon came off lookin’ hella rusty; but once they jumped overboard and took a chill swim, it totally refreshed their vibe.
 

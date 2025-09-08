@@ -1,4 +1,4 @@
-ACT V
+# Act 5
 
 SCENE I. A CHURCHYARD.
 
@@ -56,9 +56,7 @@ ENTER HAMLET AND HORATIO, AT A DISTANCE.
 
 FIRST CLOWN. yo, stop overthinking it – your dim brain ain’t gonna pick up speed even with beatings; and next time someone asks, just say “grave-maker.” the digs he makes will last ‘til the end of days. now bounce to yaughan and snag me a stiff.
 
-[EXIT SECOND CLOWN.]
-
-[THROWS AND SINGS.]
+EXIT SECOND CLOWN.
 
 in my youth when i was mad into love, i legit thought it was hella sweet; back then, everything was on point – time was tight and my needs were high. i truly believed nothing could top that vibe.
 
@@ -68,7 +66,7 @@ HORATIO. yo, he’s been marinated in that easy lifestyle.
 
 HAMLET. facts – sometimes a life with no major hustle hones the weirdest sense.
 
-FIRST CLOWN. [SINGS.] but age, creepin’ in all sneaky, has clutched me in its grip and shipped me straight into the dirt, as if i’d never even existed.
+FIRST CLOWN. SINGS.] but age, creepin’ in all sneaky, has clutched me in its grip and shipped me straight into the dirt, as if i’d never even existed.
 
 [THROWS UP A SKULL.]
 
@@ -248,11 +246,9 @@ HAMLET. hear me, sir; why you usin’ me like this? i’ve always had love for y
 
 KING. i pray thee, good horatio, watch over him.
 
-[EXIT HORATIO.]
+[EXIT HORATIO. chill your patience on our last night’s chat; we’re about to make our move. – good gertrude, keep an eye on your son. this grave is gonna be a livin’ monument. in an hour, we’ll see some quiet – till then, we play it patient.
 
-[TO LAERTES] chill your patience on our last night’s chat; we’re about to make our move. – good gertrude, keep an eye on your son. this grave is gonna be a livin’ monument. in an hour, we’ll see some quiet – till then, we play it patient.
-
-[EXEUNT.]
+EXEUNT.]
 
 SCENE ii. a hall in the castle.
 
@@ -597,6 +593,4 @@ HORATIO. i’ll have my say on that too, and let him whose voice matters speak e
 
 FORTINBRAS. let four captains hoist hamlet like a soldier to the stage, for he likely would’ve proven himself most royally if he’d been showcased; and for his passage, the soldiers’ music and war rites shout his honor. haul up the bodies—a sight like this belongs in the field, but here it looks way off. go, command the soldiers to fire.
 
-[A DEAD MARCH PLAYS.]
-
-[EXEUNT, CARRYING OFF THE BODIES, FOLLOWED BY A BLAST OF ORDNANCE.]
+[A DEAD MARCH PLAYS.

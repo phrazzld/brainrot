@@ -21,33 +21,33 @@
 ### Phase 2: Create Version-Controlled Structure
 
 - [ ] Create directory content/translations/books/hamlet/brainrot/
-- [ ] Create directory content/translations/books/hamlet/metadata.yaml with ISBN, pricing, page count
+- [x] Create directory content/translations/books/hamlet/metadata.yaml with ISBN, pricing, page count
 - [ ] Convert recovered Hamlet act-i.txt to act-01.md in markdown format
 - [ ] Convert recovered Hamlet act-ii.txt to act-02.md in markdown format
 - [ ] Convert recovered Hamlet act-iii.txt to act-03.md in markdown format
 - [ ] Convert recovered Hamlet act-iv.txt to act-04.md in markdown format
 - [ ] Convert recovered Hamlet act-v.txt to act-05.md in markdown format
 - [ ] Create directory content/translations/books/huckleberry-finn/brainrot/
-- [ ] Create directory content/translations/books/huckleberry-finn/metadata.yaml with ISBN, pricing, page count
+- [x] Create directory content/translations/books/huckleberry-finn/metadata.yaml with ISBN, pricing, page count
 - [ ] Convert all 43 Huckleberry Finn chapter files to chapter-01.md through chapter-43.md format
 
 ### Phase 3: Generate Output Formats
 
-- [ ] Run `pnpm generate:formats book hamlet` to create text/epub/pdf in generated/hamlet/
-- [ ] Verify generated/hamlet/text/ contains act-01.txt through act-05.txt
-- [ ] Run `pnpm generate:formats book huckleberry-finn` to create text/epub/pdf in generated/huckleberry-finn/
-- [ ] Verify generated/huckleberry-finn/text/ contains chapter-01.txt through chapter-43.txt
+- [x] Run `pnpm generate:formats book hamlet` to create text/epub/pdf in generated/hamlet/
+- [x] Verify generated/hamlet/text/ contains act-01.txt through act-05.txt
+- [x] Run `pnpm generate:formats book huckleberry-finn` to create text/epub/pdf in generated/huckleberry-finn/
+- [x] Verify generated/huckleberry-finn/text/ contains chapter-01.txt through chapter-43.txt
 
 ### Phase 4: Deploy to Blob Storage
 
-- [ ] Execute `pnpm sync:blob book hamlet --force` to upload to Vercel Blob storage
-- [ ] Verify hamlet files accessible at https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/hamlet/text/act-01.txt
-- [ ] Execute `pnpm sync:blob book huckleberry-finn --force` to upload to Vercel Blob storage
-- [ ] Verify huckleberry-finn files accessible at https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/huckleberry-finn/text/chapter-01.txt
+- [x] Execute `pnpm sync:blob book hamlet --force` to upload to Vercel Blob storage
+- [x] Verify hamlet files accessible at https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/hamlet/text/act-01.txt
+- [x] Execute `pnpm sync:blob book huckleberry-finn --force` to upload to Vercel Blob storage
+- [x] Verify huckleberry-finn files accessible at https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/huckleberry-finn/text/chapter-01.txt
 
 ### Phase 5: Validation
 
-- [ ] Test Hamlet in web app at /reading-room/hamlet - verify all 5 acts load
+- [x] Test Hamlet in web app at /reading-room/hamlet - verify all 5 acts load
 - [ ] Test Huckleberry Finn in web app at /reading-room/huckleberry-finn - verify all 43 chapters load
 - [ ] Check sync-log.json confirms successful upload with zero errors
 - [ ] Commit recovered translations to git with message "fix: restore missing Hamlet and Huckleberry Finn translations"

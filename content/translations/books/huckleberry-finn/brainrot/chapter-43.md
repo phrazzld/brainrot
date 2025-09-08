@@ -1,4 +1,4 @@
-chapter the last
+# Chapter 43
 
 yo, the first time i pulled tom aside on the low, i asked him: what's the plan, bruh? like, what's the move if our escape hustle actually goes off and we pull off freein' a nay nay who was technically free all along? and he was like, from day one, my head was set on this move: if we can get jim out all safe, we take him on a wild cruise down the river on our raft, go on epic adventures all the way to the river's mouth, then drop the bomb on him that he's free; scoop him back home on a steamboat, drippin' in style, pay him for his lost time, send word ahead, clear out all the nay nays around, and then have them parading him into town with a torchlight procession and a brass-band hype parade, makin' him a straight-up hero—and so would we. but honestly, i figured it was chill just the way it went down.
 

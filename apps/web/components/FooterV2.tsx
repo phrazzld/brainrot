@@ -3,13 +3,13 @@
 import { useEffect, useState } from 'react';
 
 const copyrightPhrases = [
-  '© brainrot publishing • we\'re so back',
+  "© brainrot publishing • we're so back",
   '© 2024 no cap productions (real)',
   '© brainrot inc • caught in 4k 📸',
   '© certified hood classic™',
   '© brainrot publishing • all rizz reserved',
   '© delulu is the solulu • patent pending',
-  '© brainrot media • mom said it\'s our turn',
+  "© brainrot media • mom said it's our turn",
   '© peak fiction enterprises',
   '© touch grass? never heard of her',
   '© brainrot publishing • its giving literature',
@@ -17,9 +17,9 @@ const copyrightPhrases = [
 
 const achievements = [
   { icon: '🏆', title: 'Achievement Unlocked!', desc: 'Found the Footer (Rare: 0.1% of users)' },
-  { icon: '💀', title: 'You\'re Cooked!', desc: 'Scrolled this far unironically' },
+  { icon: '💀', title: "You're Cooked!", desc: 'Scrolled this far unironically' },
   { icon: '🧠', title: 'Brain Cell Lost!', desc: 'One less to worry about fr' },
-  { icon: '📚', title: 'Literally Me!', desc: 'You\'re just like Gatsby fr fr' },
+  { icon: '📚', title: 'Literally Me!', desc: "You're just like Gatsby fr fr" },
   { icon: '🗿', title: 'Stone Face Achieved!', desc: 'Based and literature-pilled' },
   { icon: '🔥', title: 'Straight Fire!', desc: 'Your taste in books is bussin' },
 ];
@@ -69,8 +69,8 @@ export default function FooterV2() {
       <div className="mx-auto max-w-screen-lg px-4 py-6">
         {/* Main brainrot text with glitch effect */}
         <div className="text-center mb-4">
-          <h3 
-            className="text-lg font-bold glitch-text inline-block" 
+          <h3
+            className="text-lg font-bold glitch-text inline-block"
             data-text="BRAINROT PUBLISHING"
           >
             BRAINROT PUBLISHING

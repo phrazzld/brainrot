@@ -1,4 +1,4 @@
-chapter xxvi.
+# Chapter 26
 
 once everyone bounced, the king asked mary jane how their spare room sitch was lookin’, and she was like, “i got one extra room that’ll work for uncle william, and i can even give my own room to uncle harvey—which is a bit bigger—and i’ll crash with my sisters on a cot; plus, up in the garret there’s a tiny cubby with a pallet in it.” the king then dropped, “that cubby works for my valley,” meanin’ me.
 

@@ -1,4 +1,4 @@
-chapter xxx.
+# Chapter 30
 
 when they got aboard, the king came straight at me, shook my collar, and was like, “you trying to dip on us, huh, you little pup? tired of our squad, yo?”
 

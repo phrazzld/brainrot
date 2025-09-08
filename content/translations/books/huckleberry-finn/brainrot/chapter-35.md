@@ -1,4 +1,4 @@
-chapter xxxv.
+# Chapter 35
 
 we still had like an hour till breakfast, so we bounced into the woods; cuz tom was like, "we gotta have just enough light to scope out our dig, and a full-blown lantern is way too extra and might get us into hot water." what we needed was a load of those dodgy little chunks called fox-fire that give off a soft glow in the dark. so we scooped up an armful, stashed it in the weeds, and chilled for a sec, and then tom goes, kinda annoyed:
 
