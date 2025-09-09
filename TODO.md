@@ -122,6 +122,15 @@
 
 ### Cleanup Legacy Migration Artifacts
 
-- [ ] Remove apps/web/archive/migration-data/ after verifying no other missing books
+- [x] Remove apps/web/archive/migration-data/ after verifying no other missing books
+  ```
+  Work Log:
+  - Verified migration-data directory contains metadata for ~20 books
+  - Only 2 books had recoverable text: Hamlet and Huckleberry Finn (already restored)  
+  - Pride & Prejudice and The Republic only have blob URL references, no actual text
+  - Other books (Romeo & Juliet, etc.) are "coming soon" with only cover images
+  - Safe to remove as no additional content can be recovered
+  - Successfully removed apps/web/archive/migration-data/ directory
+  ```
 - [ ] Update .gitignore to exclude any future public/assets/*/text/ directories
 - [ ] Archive old brainrot-translations and brainrot-publishing-house repos on Sep 20, 2025 as scheduled
