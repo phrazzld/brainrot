@@ -99,7 +99,15 @@
   - Executes 'pnpm validate:all' which will fail CI if translations missing
   - 10-minute timeout configured for the validation job
   ```
-- [ ] Document in CONTRIBUTING.md that translations must be in content/translations/books/ not public/assets/
+- [x] Document in CONTRIBUTING.md that translations must be in content/translations/books/ not public/assets/
+  ```
+  Work Log:
+  - Added "Translation File Location" section to CONTRIBUTING.md
+  - Documented correct path: content/translations/books/{book-slug}/brainrot/*.md
+  - Listed incorrect paths to avoid (public/assets/, apps/web/public/, generated/)
+  - Included structure example and benefits of proper location
+  - Added pnpm validate:all command to development workflow section
+  ```
 - [ ] Add automated test that verifies blob URLs return 200 for all available books
 
 ### Cleanup Legacy Migration Artifacts
