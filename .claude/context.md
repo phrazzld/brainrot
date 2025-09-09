@@ -111,6 +111,26 @@
 - **Performance Consideration**: Use controlled concurrency (pLimit) for live network tests
 - **npm Script Integration**: Add both `test:blob-ci` and `test:blob-live` scripts for different scenarios
 
+### Migration Data Verification Pattern
+- **Ripgrep Analysis**: Use `rg -l "slug"` to quickly find all JSON files containing book references
+- **jq Structure Analysis**: `jq 'keys'` and `jq '.[] | keys'` to understand JSON structure before processing
+- **Cross-Reference Validation**: Compare migration data slugs against current translation directory structure
+- **Content vs Metadata Split**: Migration data often contains book metadata but not recoverable text content
+- **Blob URL Decay**: Historical blob URLs may be invalid - verify current content exists before cleanup
+
+### Archive Management Strategy  
+- **Selective Cleanup**: Remove processed migration data but preserve other archive components (scripts, reports, utils)
+- **Work Log Creation**: Document findings and cleanup rationale before deletion for audit trail
+- **Directory Structure Preservation**: Keep parent archive directory structure intact for other historical data
+- **Recovery Verification**: Confirm recovered content matches current translations before removing source data
+
+### GitIgnore Maintenance Patterns
+- **Glob Wildcard Usage**: Use `*/` patterns to match any subdirectory level (e.g., `public/assets/*/text/`)
+- **Legacy Path Prevention**: Add deprecated paths to gitignore with explanatory comments to prevent future misuse
+- **Multiple Environment Coverage**: Include both root-level and app-specific paths (`public/` vs `apps/web/public/`)
+- **Explanatory Comments**: Always include comment explaining why path is blocked and where content should go instead
+- **Quick Testing**: Create temporary test directory to verify ignore pattern works before committing
+
 ## Bugs & Fixes
 
 ### Translation Restoration Artifacts
@@ -147,6 +167,18 @@
 - **Solution**: Use `vi.stubGlobal('fetch', mockFetch)` for proper mock registration
 - **Symptom**: Network requests proceed to actual URLs instead of being mocked
 
+### Migration Data Content Overestimation
+- **Problem**: Migration JSON files suggest more recoverable content than actually exists
+- **Root Cause**: Files contain book metadata and blob URLs but actual text content was already migrated
+- **Detection**: Check for presence of actual markdown files vs just metadata references
+- **Solution**: Focus recovery efforts on books with missing translation files, not migration metadata
+
+### Legacy Path Contamination Risk
+- **Problem**: Contributors or automated tools might accidentally place files in deprecated `public/assets/*/text/` paths
+- **Impact**: Files not properly version controlled, lost during deployments, inconsistent with current architecture
+- **Prevention**: Add deprecated paths to .gitignore with explanatory comments
+- **Detection**: Files silently ignored by git, preventing accidental commits to wrong locations
+
 ## Decisions
 
 ### CI Job Placement Strategy
@@ -174,6 +206,21 @@
 - **Rationale**: Allows testing actual blob availability while maintaining fast CI pipeline
 - **Alternative Rejected**: Separate test files would duplicate book/chapter iteration logic
 
+### Migration Archive Cleanup Strategy
+- **Decision**: Remove processed migration data (migration-data/) but preserve other archive components
+- **Rationale**: Reduces repository size while maintaining historical context for scripts and reports
+- **Alternative Rejected**: Complete archive deletion would lose valuable historical context and tooling
+
+### Data Verification Before Deletion
+- **Decision**: Always create work log documenting verification process before removing migration data
+- **Rationale**: Provides audit trail and prevents accidental loss of recoverable content
+- **Alternative Rejected**: Immediate deletion without verification risks losing unique content
+
+### Legacy Path Blocking Strategy
+- **Decision**: Add deprecated paths to .gitignore rather than creating validation scripts
+- **Rationale**: Prevention at source control level is more reliable than post-commit detection
+- **Alternative Rejected**: Git hooks would add complexity and might be bypassed with --no-verify
+
 ## File Locations
 
 - `/Users/phaedrus/Development/brainrot/apps/web/.husky/pre-commit` - Husky web app hook
@@ -186,3 +233,4 @@
 - `/Users/phaedrus/Development/brainrot/CONTRIBUTING.md` - Comprehensive contributor guidelines with file path documentation
 - `/Users/phaedrus/Development/brainrot/apps/web/vitest.config.ts` - Test configuration with include/exclude patterns
 - `/Users/phaedrus/Development/brainrot/apps/web/blob-availability.test.ts` - HTTP status testing for blob URLs
+- `/Users/phaedrus/Development/brainrot/.gitignore` - Contains legacy path blocking patterns for contributor protection

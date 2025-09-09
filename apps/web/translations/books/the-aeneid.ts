@@ -11,7 +11,7 @@ const theAeneid: Translation = {
     'trojan refugee aeneas speed-runs founding rome. gods playing 5D chess, absolute chaos mode activated.',
   coverImage:
     'https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-aeneid/images/the-aeneid-01.png',
-  status: 'available',
+  status: 'coming-soon',
   chapters: [
     {
       title: 'book 1',

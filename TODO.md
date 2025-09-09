@@ -1,5 +1,22 @@
 # TODO
 
+## CI Fixes for PR #126
+
+### [CODE FIX] Remove Duplicate Huckleberry Finn Chapters
+- [ ] Delete content/translations/books/huckleberry-finn/brainrot/chapter-110.md (duplicate of chapter-10)
+- [ ] Delete content/translations/books/huckleberry-finn/brainrot/chapter-2110.md (duplicate of chapter-21)
+- [ ] Delete content/translations/books/huckleberry-finn/brainrot/chapter-3110.md (duplicate of chapter-31)
+
+### [CI FIX] Fix Blob URL Verification Tests
+- [ ] Update apps/web/blobUrlVerification.test.ts to detect CI environment and skip network calls
+- [ ] Set tests to use mock mode when process.env.CI is true
+- [ ] Verify tests pass locally with `pnpm test`
+
+### [CODE FIX] Handle Missing Translation Files
+- [ ] Option A: Generate missing translations for the-iliad, the-odyssey, the-aeneid, declaration-of-independence
+- [ ] Option B: Update apps/web/utils/books.ts to mark these books as "coming-soon" instead of "available"
+- [ ] Run `pnpm validate:all` to confirm all validation passes
+
 ## Critical: Restore Missing Translations
 
 ### Phase 1: Recovery from Git History

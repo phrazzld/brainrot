@@ -11,7 +11,7 @@ const theOdyssey: Translation = {
     'greek man refuses to ask for directions, takes 10 years to get home. wife dealing with simps.',
   coverImage:
     'https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-odyssey/images/the-odyssey-01.png',
-  status: 'available',
+  status: 'coming-soon',
   purchaseUrl: 'https://a.co/d/gGH9IrT',
   chapters: [
     {

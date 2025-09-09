@@ -7,9 +7,15 @@ on:
     branches: [main, master, develop]
     types: [opened, synchronize, reopened]
 
+# Cancel in-progress runs when new commits are pushed
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 env:
   TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
   TURBO_TEAM: ${{ vars.TURBO_TEAM }}
+  CI: true
 
 jobs:
   lint:
@@ -20,22 +26,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 2
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8.15.1
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: "pnpm"
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+      - name: Setup environment
+        uses: ./.github/actions/setup
 
       - name: Run linting
         run: pnpm lint
@@ -48,54 +41,25 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 2
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8.15.1
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: "pnpm"
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+      - name: Setup environment
+        uses: ./.github/actions/setup
 
       - name: Run type checking
         run: pnpm typecheck
 
   test:
-    name: Test - Node ${{ matrix.node-version }}
+    name: Test
     runs-on: ubuntu-latest
     timeout-minutes: 15
-
-    strategy:
-      matrix:
-        node-version: [20, 22]
+    needs: [lint, typecheck]
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 2
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8.15.1
-
-      - name: Setup Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: "pnpm"
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+      - name: Setup environment
+        uses: ./.github/actions/setup
 
       - name: Run tests
         run: pnpm test:run
@@ -115,26 +79,14 @@ jobs:
     name: Validate Translations
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    needs: [lint, typecheck]
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 2
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8.15.1
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: "pnpm"
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+      - name: Setup environment
+        uses: ./.github/actions/setup
 
       - name: Run translation validation
         run: pnpm validate:all
@@ -143,26 +95,14 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    needs: [test, validate]
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 2
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8.15.1
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: "pnpm"
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+      - name: Setup environment
+        uses: ./.github/actions/setup
 
       - name: Build all packages
         run: pnpm build
