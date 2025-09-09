@@ -24,7 +24,9 @@
     "generate:formats": "tsx scripts/generate-formats.ts",
     "sync:blob": "tsx scripts/sync-translations.ts",
     "monitor": "tsx scripts/monitor-api-usage.ts",
-    "monitor:dashboard": "open apps/web/public/monitoring/dashboard.html"
+    "monitor:dashboard": "open apps/web/public/monitoring/dashboard.html",
+    "validate": "tsx scripts/validate-translations.ts",
+    "validate:all": "tsx scripts/validate-translations.ts all --verbose"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.8.0",

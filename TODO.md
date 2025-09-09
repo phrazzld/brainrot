@@ -71,8 +71,25 @@
 
 ### Prevent Future Data Loss
 
-- [~] Add pre-commit hook to block deletion of content/translations/books/* files without explicit override
-- [ ] Create script to validate all books marked 'available' have corresponding markdown source files
+- [x] Add pre-commit hook to block deletion of content/translations/books/* files without explicit override
+  ```
+  Work Log:
+  - Modified .githooks/pre-commit to detect deleted files with --diff-filter=D
+  - Added protection for content/translations/books/* pattern
+  - Provides two override options: --no-verify or ALLOW_TRANSLATION_DELETE=1
+  - Configured git to use .githooks directory with: git config core.hooksPath .githooks
+  - Hook is active and will prevent accidental translation deletions
+  ```
+- [x] Create script to validate all books marked 'available' have corresponding markdown source files
+  ```
+  Work Log:
+  - Created scripts/validate-translations.ts with TypeScript/commander.js
+  - Script checks all books with status: 'available' for markdown files
+  - Added npm scripts: 'pnpm validate' and 'pnpm validate:all'
+  - Found issues: 5 books missing markdown files, Huckleberry Finn has 3 extra files
+  - Extra files to clean: chapter-110.md, chapter-2110.md, chapter-3110.md
+  - Script exits with code 1 when validation fails (useful for CI)
+  ```
 - [ ] Add GitHub Action to run validation script on every PR to main branch
 - [ ] Document in CONTRIBUTING.md that translations must be in content/translations/books/ not public/assets/
 - [ ] Add automated test that verifies blob URLs return 200 for all available books
