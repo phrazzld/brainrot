@@ -108,7 +108,17 @@
   - Included structure example and benefits of proper location
   - Added pnpm validate:all command to development workflow section
   ```
-- [ ] Add automated test that verifies blob URLs return 200 for all available books
+- [x] Add automated test that verifies blob URLs return 200 for all available books
+  ```
+  Work Log:
+  - Created apps/web/blobUrlVerification.test.ts with comprehensive URL verification
+  - Test checks all chapters for each available book
+  - Mocks fetch for CI mode to avoid network calls
+  - Identifies known problematic books (missing markdown files)
+  - Provides detailed summary report with pass/fail counts
+  - Test currently failing for 5 books missing content (as expected)
+  - Can run live with VERIFY_LIVE_URLS=true for actual network checks
+  ```
 
 ### Cleanup Legacy Migration Artifacts
 
