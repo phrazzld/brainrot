@@ -35,7 +35,7 @@
     "@vercel/blob": "^1.0.0",
     "@wavesurfer/react": "^1.0.11",
     "cheerio": "^1.0.0",
-    "dotenv": "^16.5.0",
+    "dotenv": "^17.2.2",
     "gsap": "^3.12.5",
     "next": "^15.5.2",
     "openai": "^5.16.0",
