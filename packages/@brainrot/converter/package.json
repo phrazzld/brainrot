@@ -11,7 +11,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@vercel/blob": "^0.23.0",
+    "@vercel/blob": "^1.1.1",
     "child_process": "^1.0.2",
     "marked": "^16.2.1",
     "p-limit": "^7.1.1",
