@@ -90,7 +90,15 @@
   - Extra files to clean: chapter-110.md, chapter-2110.md, chapter-3110.md
   - Script exits with code 1 when validation fails (useful for CI)
   ```
-- [ ] Add GitHub Action to run validation script on every PR to main branch
+- [x] Add GitHub Action to run validation script on every PR to main branch
+  ```
+  Work Log:
+  - Added 'validate' job to existing .github/workflows/ci.yml
+  - Job runs on all PRs to main/master/develop branches
+  - Uses same pnpm/Node.js setup pattern as other CI jobs
+  - Executes 'pnpm validate:all' which will fail CI if translations missing
+  - 10-minute timeout configured for the validation job
+  ```
 - [ ] Document in CONTRIBUTING.md that translations must be in content/translations/books/ not public/assets/
 - [ ] Add automated test that verifies blob URLs return 200 for all available books
 
