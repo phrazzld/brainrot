@@ -132,5 +132,13 @@
   - Safe to remove as no additional content can be recovered
   - Successfully removed apps/web/archive/migration-data/ directory
   ```
-- [ ] Update .gitignore to exclude any future public/assets/*/text/ directories
+- [x] Update .gitignore to exclude any future public/assets/*/text/ directories
+  ```
+  Work Log:
+  - Added two patterns to .gitignore to prevent legacy path usage
+  - Pattern 1: public/assets/*/text/ for root-level public directories
+  - Pattern 2: apps/web/public/assets/*/text/ for app-specific paths
+  - Added comment explaining all translations should be in content/translations/books/*/
+  - Tested with mkdir - confirmed files in these paths are properly ignored
+  ```
 - [ ] Archive old brainrot-translations and brainrot-publishing-house repos on Sep 20, 2025 as scheduled
