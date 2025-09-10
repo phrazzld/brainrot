@@ -3,12 +3,18 @@
 ## CI Type Check Fix for PR #126
 
 ### [CODE FIX] Fix TypeScript Type Errors
-- [ ] Change status from "coming-soon" to "coming soon" in apps/web/translations/books/declaration-of-independence.ts
-- [ ] Change status from "coming-soon" to "coming soon" in apps/web/translations/books/the-aeneid.ts
-- [ ] Change status from "coming-soon" to "coming soon" in apps/web/translations/books/the-iliad.ts
-- [ ] Change status from "coming-soon" to "coming soon" in apps/web/translations/books/the-odyssey.ts
-- [ ] Run `pnpm typecheck` to verify all type errors are resolved
-- [ ] Commit and push the fix to trigger CI re-run
+- [x] Change status from "coming-soon" to "coming soon" in apps/web/translations/books/declaration-of-independence.ts
+- [x] Change status from "coming-soon" to "coming soon" in apps/web/translations/books/the-aeneid.ts
+- [x] Change status from "coming-soon" to "coming soon" in apps/web/translations/books/the-iliad.ts
+- [x] Change status from "coming-soon" to "coming soon" in apps/web/translations/books/the-odyssey.ts
+- [x] Run `pnpm typecheck` to verify all type errors are resolved
+- [x] Commit and push the fix to trigger CI re-run
+  ```
+  Work Log:
+  - Fixed TypeScript type mismatch: 'coming-soon' → 'coming soon'
+  - All typecheck errors resolved
+  - Committed in 998981c and pushed to PR #126
+  ```
 
 ## CI Fixes for PR #126
 

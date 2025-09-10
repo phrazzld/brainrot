@@ -91,16 +91,16 @@
     ]
   },
   "declaration-of-independence": {
-    "lastSync": "2025-08-18T21:36:26.012Z",
+    "lastSync": "2025-09-10T18:21:14.210Z",
     "filesUploaded": 1,
-    "errors": 0,
+    "errors": 1,
     "files": [
       {
-        "file": "books/declaration-of-independence/text/declaration-of-independence-complete.txt",
-        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/declaration-of-independence/text/declaration-of-independence-complete.txt",
-        "size": 37320,
-        "checksum": "1aa9b38fb4c61e186d524139ebc83727",
-        "timestamp": "2025-08-18T21:36:26.011Z"
+        "file": "books/declaration-of-independence/text/declaration.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/declaration-of-independence/text/declaration.txt",
+        "size": 37112,
+        "checksum": "c71c5dd8f818386d8a7ad45d2663e56f",
+        "timestamp": "2025-09-10T18:21:14.209Z"
       }
     ]
   },

@@ -81,9 +81,15 @@ describe("Blob URL Verification", () => {
             return ["act-01", "act-02", "act-03", "act-04", "act-05"];
           } else if (book.slug === "declaration-of-independence") {
             // Single file book
-            return ["declaration-of-independence-complete"];
+            return ["declaration"];
+          } else if (book.slug === "the-iliad" || book.slug === "the-odyssey" || book.slug === "the-aeneid") {
+            // Epic poems use book-01, book-02, etc.
+            return Array.from(
+              { length: book.chapters.length },
+              (_, i) => `book-${String(i + 1).padStart(2, "0")}`
+            );
           } else if (book.chapters && book.chapters.length > 0) {
-            // Generate chapter-01, chapter-02, etc.
+            // Other books use chapter-01, chapter-02, etc.
             return Array.from(
               { length: book.chapters.length },
               (_, i) => `chapter-${String(i + 1).padStart(2, "0")}`
