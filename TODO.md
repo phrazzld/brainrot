@@ -199,3 +199,183 @@
   - Cannot execute until scheduled date
   - GitHub repository archival should be done on schedule to maintain access for reference
   ```
+
+## Plato's Republic Translation Project [220,000 words / 25,000 lines]
+
+### Phase 1: Infrastructure & Validation [Target: <5min setup]
+
+- [x] Create metadata.yaml with ISBN allocation (979-8-88888-004-X series), pricing ($6.99/$19.99/$29.99), BISAC codes (PHI000000, HUM008000, EDU034000)
+- [x] Generate 40 chapter scaffold files (10 books × 4 chapters) with proper naming convention (book-XX-chapter-Y.md)
+- [x] Document translation style guide with philosophical term mappings (250+ terms) and character voice profiles
+- [x] Create Book 1 detailed outlines with scene transitions, character entrances, philosophical argument markers
+- [x] Implement sample translation of Book 1, Chapter 1 (Piraeus festival → Cephalus conversation, ~2,500 words)
+- [x] Parse source fulltext.txt (1.2MB) into 34 logical chapter divisions based on natural dialogue breaks
+  ```
+  Work Log:
+  - Created scripts/parse-republic-chapters.ts to automatically parse the text
+  - Successfully divided into 35 chapters (10 books, 3-4 chapters each)
+  - Total word count: 118,430 words (54% of initial estimate)
+  - Average chapter length: 3,384 words
+  - Generated chapter files in content/translations/books/platos-republic/chapters/
+  - Created chapter-mapping.json with complete line number references
+  ```
+  - [x] Book 1: Split at Cephalus exit (line ~9100), Polemarchus takeover (line ~9500), Thrasymachus entrance (line ~10200)
+  - [x] Books 2-3: Split at Glaucon's challenge, guardian education, noble lie sections
+  - [x] Book 4: Split at tripartite soul introduction, individual justice definition
+  - [x] Book 5: Split at women guardians, philosopher kings revelation
+  - [x] Books 6-7: Split at divided line, sun analogy, cave allegory (line ~17000)
+  - [x] Books 8-9: Split at regime degradations (timocracy→oligarchy→democracy→tyranny)
+  - [x] Book 10: Split at poetry critique, myth of Er beginning
+- [ ] Validate source text line numbers against standard Stephanus pagination for academic reference
+- [x] Create automated chunking script to extract precise text ranges for each chapter (avg 6,470 words/chapter)
+  ```
+  Work Log:
+  - Implemented in scripts/parse-republic-chapters.ts
+  - Extracts 35 chapters with precise line number ranges
+  - Actual average: 3,384 words/chapter (smaller than estimate due to condensed Gutenberg text)
+  - Outputs both individual chapter files and JSON mapping
+  ```
+- [ ] Generate chapter-specific translation memory files to maintain consistency across 220k words
+
+### Phase 2: Translation Pipeline Development [Target: 500 words/hour throughput]
+
+- [ ] Build translation preprocessing pipeline with source text → annotated markdown converter
+  - [ ] Implement speaker identification parser (Socrates, Glaucon, Thrasymachus, Adeimantus, Polemarchus, Cephalus)
+  - [ ] Add philosophical concept tagger for consistent term translation (500+ unique terms)
+  - [ ] Create dialogue structure analyzer to preserve Socratic method patterns
+- [ ] Develop Gen Z language injection system with contextual awareness
+  - [ ] Build slang frequency governor (max 15% saturation per 100 words)
+  - [ ] Implement tone modulation based on philosophical complexity (1-5 scale)
+  - [ ] Create character-specific vocabulary banks (200+ terms per major character)
+- [ ] Design quality validation suite for philosophical accuracy
+  - [ ] Argument structure validator (premise→conclusion chains preserved)
+  - [ ] Logical fallacy detector to ensure intentional vs. translation errors
+  - [ ] Reference integrity checker for internal consistency across books
+- [ ] Establish translation benchmarking system
+  - [ ] Words per hour tracking with complexity weighting
+  - [ ] Philosophical concept coverage metrics (% of key ideas preserved)
+  - [ ] Reader engagement scoring via humor/modern reference density
+
+### Phase 3: Core Translation Execution [Target: 34 chapters, 6-8 weeks]
+
+#### Book 1: The Justice Debate [3 chapters, ~20k words]
+- [ ] Chapter 1: Translate Piraeus festival → meeting Cephalus → aging & wealth discussion (lines 8636-9100)
+- [ ] Chapter 2: Translate Polemarchus's "help friends/harm enemies" → Socratic refutation (lines 9100-9800)
+- [ ] Chapter 3: Translate Thrasymachus's "might makes right" → craft analogy debate (lines 9800-10800)
+
+#### Books 2-3: Building the Ideal State [4 chapters, ~26k words]
+- [ ] Chapter 1: Translate Glaucon's challenge → Ring of Gyges story (lines 10800-11500)
+- [ ] Chapter 2: Translate city formation → guardian class introduction (lines 11500-12200)
+- [ ] Chapter 3: Translate education curriculum → music/poetry censorship (lines 12200-13000)
+- [ ] Chapter 4: Translate noble lie → myth of metals (lines 13000-13800)
+
+#### Book 4: The Just Soul [3 chapters, ~19k words]
+- [ ] Chapter 1: Translate guardian lifestyle → common property discussion (lines 13800-14400)
+- [ ] Chapter 2: Translate city virtues → wisdom, courage, moderation (lines 14400-15000)
+- [ ] Chapter 3: Translate tripartite soul → reason/spirit/appetite harmony (lines 15000-15700)
+
+#### Book 5: Revolutionary Proposals [3 chapters, ~21k words]
+- [ ] Chapter 1: Translate women guardians → gender equality arguments (lines 15700-16400)
+- [ ] Chapter 2: Translate communal marriage → eugenics discussion (lines 16400-17100)
+- [ ] Chapter 3: Translate philosopher kings revelation → knowledge vs. opinion (lines 17100-17900)
+
+#### Books 6-7: The Philosopher's Journey [4 chapters, ~28k words]
+- [ ] Chapter 1: Translate philosopher nature → corruption of philosophy (lines 17900-18700)
+- [ ] Chapter 2: Translate sun analogy → the Form of the Good (lines 18700-19500)
+- [ ] Chapter 3: Translate cave allegory complete sequence (lines 19500-20400)
+- [ ] Chapter 4: Translate mathematical education → dialectic training (lines 20400-21300)
+
+#### Books 8-9: Political Decay & Tyranny [4 chapters, ~27k words]
+- [ ] Chapter 1: Translate regime degradation intro → timocracy (honor-based) (lines 21300-22000)
+- [ ] Chapter 2: Translate oligarchy (wealth-based) → democracy (freedom excess) (lines 22000-22800)
+- [ ] Chapter 3: Translate tyranny emergence → tyrant psychology (lines 22800-23600)
+- [ ] Chapter 4: Translate happiness comparison → justice vindication (lines 23600-24400)
+
+#### Book 10: Poetry, Immortality & Cosmic Justice [3 chapters, ~19k words]
+- [ ] Chapter 1: Translate poetry banishment → imitation critique (lines 24400-24900)
+- [ ] Chapter 2: Translate soul immortality arguments (lines 24900-25400)
+- [ ] Chapter 3: Translate Myth of Er → cosmic justice → reincarnation (lines 25400-25920)
+
+### Phase 4: Production Pipeline [Target: 48hr turnaround]
+
+- [ ] Configure pandoc pipeline for multi-format generation
+  - [ ] Markdown → EPUB with custom CSS matching brainrot brand
+  - [ ] Markdown → PDF with LaTeX template (6×9 inch, 450 pages)
+  - [ ] Markdown → MOBI for Kindle Direct Publishing
+  - [ ] Markdown → plaintext with preserved formatting for web display
+- [ ] Implement batch processing script for all 34 chapters (parallel execution, 8 cores)
+- [ ] Generate format-specific optimizations
+  - [ ] EPUB: Interactive navigation, philosophical term glossary
+  - [ ] PDF: Page breaks at dialogue transitions, margin notes for concepts
+  - [ ] Web: Chapter chunking for optimal load time (<100KB per chapter)
+- [ ] Create manifest.json with chapter metadata, reading time estimates, complexity ratings
+
+### Phase 5: Quality Assurance [Target: <0.1% error rate]
+
+- [ ] Automated validation suite execution
+  - [ ] Spellcheck with custom dictionary (500+ Gen Z terms, 300+ Greek names)
+  - [ ] Grammar check with intentional slang exemptions
+  - [ ] Character voice consistency analysis across all 34 chapters
+  - [ ] Philosophical argument integrity verification
+- [ ] Beta reader testing protocol
+  - [ ] Recruit 10 philosophy students for accuracy validation
+  - [ ] Recruit 10 Gen Z non-philosophy readers for engagement testing
+  - [ ] A/B test slang density variations (10% vs 15% vs 20%)
+  - [ ] Track reading completion rates and comprehension scores
+- [ ] Academic review checkpoint
+  - [ ] Verify Stephanus references maintained for scholarly citation
+  - [ ] Confirm no critical philosophical concepts lost in translation
+  - [ ] Validate dialogue structure preserves Socratic method
+
+### Phase 6: Publishing Integration [Target: Same-day deployment]
+
+- [ ] Blob storage upload optimization
+  - [ ] Compress text files with gzip (expect 70% reduction)
+  - [ ] Generate CDN-friendly URLs with cache headers
+  - [ ] Implement progressive chapter loading for web app
+  - [ ] Create search index for full-text search capability
+- [ ] Publisher platform preparation
+  - [ ] Generate KDP-compliant EPUB with required metadata
+  - [ ] Create Lulu print-ready PDF with bleed margins
+  - [ ] Prepare IngramSpark distribution package
+  - [ ] Configure wholesale pricing and distribution rights
+- [ ] Marketing asset generation
+  - [ ] Extract 50 "memeable" quotes for social media
+  - [ ] Create reading guide PDF for educators
+  - [ ] Generate sample chapters for preview distribution
+  - [ ] Design email campaign for launch announcement
+
+### Phase 7: Performance Optimization [Target: <2s page load]
+
+- [ ] Web app rendering optimization
+  - [ ] Implement virtual scrolling for 34-chapter navigation
+  - [ ] Add service worker for offline reading capability
+  - [ ] Optimize font loading with subset for Greek terms
+  - [ ] Enable HTTP/2 push for predictive chapter loading
+- [ ] Search performance tuning
+  - [ ] Build inverted index for instant phrase search
+  - [ ] Implement fuzzy matching for Gen Z term variations
+  - [ ] Add philosophical concept clustering for smart search
+- [ ] Analytics integration
+  - [ ] Track chapter completion rates with heatmaps
+  - [ ] Monitor average reading speed per chapter
+  - [ ] Identify high-dropout sections for revision
+  - [ ] A/B test different translation styles dynamically
+
+### Phase 8: Long-term Maintenance [Ongoing]
+
+- [ ] Establish translation revision pipeline based on reader feedback
+- [ ] Create glossary expansion system for new Gen Z terms (quarterly updates)
+- [ ] Build cross-reference system linking Republic concepts to other translations
+- [ ] Develop study guide generator for educational market
+- [ ] Implement community annotation system for collaborative commentary
+- [ ] Design translation memory export for future classical works
+
+### Success Metrics
+
+- [ ] Translation velocity: Achieve 500+ words/hour sustained rate
+- [ ] Quality score: Maintain 95%+ philosophical accuracy rating
+- [ ] Engagement rate: Reach 70%+ chapter completion for new readers
+- [ ] Performance: All chapters load in <2 seconds on 3G connection
+- [ ] Publishing: Available on 3+ platforms within 48hrs of completion
+- [ ] Revenue: Generate first sale within 7 days of launch

@@ -1,0 +1,86 @@
+# Plato's Republic - Brainrot Edition Metadata
+title: "The Republic (Brainrot Edition)"
+author: "Plato"
+translator: "Brainrot Publishing House"
+original_year: 380 BCE
+translation_year: 2024
+description: |
+  Experience Plato's masterpiece like never before. This Gen Z translation 
+  transforms the foundational philosophical dialogue into a modern conversation 
+  about justice, truth, and building the ultimate society. From the legendary 
+  Cave Allegory to hot takes on philosopher kings, this hits different than 
+  any philosophy class. No cap, this will make you think.
+
+# Publishing formats and ISBNs
+formats:
+  ebook:
+    isbn: "979-8-88888-004-2"
+    price: 6.99
+    currency: "USD"
+  paperback:
+    isbn: "979-8-88888-004-9"
+    price: 19.99
+    currency: "USD"
+    pages: 450
+    dimensions: "6x9 inches"
+  hardcover:
+    isbn: "979-8-88888-004-6"
+    price: 29.99
+    currency: "USD"
+    pages: 450
+    dimensions: "6x9 inches"
+
+# Publishing platforms
+publishing:
+  kdp: true
+  lulu: true
+  ingram: false
+  draft2digital: false
+
+# Categorization for retailers
+categories:
+  - "Philosophy / General"
+  - "Humor / Parody"
+  - "Education / Philosophy"
+
+# SEO and discovery keywords
+keywords:
+  - "plato republic"
+  - "philosophy gen z"
+  - "brainrot classics"
+  - "socrates dialogue"
+  - "cave allegory"
+  - "political philosophy"
+  - "justice theory"
+  - "ancient philosophy"
+  - "modernized classics"
+  - "philosophy for beginners"
+
+# Book series information
+series: "Brainrot Classics Collection"
+series_number: 4
+
+# Language and market
+language: "en-US"
+markets:
+  - "United States"
+  - "United Kingdom"
+  - "Canada"
+  - "Australia"
+
+# Additional metadata
+bisac_codes:
+  - "PHI000000" # Philosophy / General
+  - "HUM008000" # Humor / Form / Parodies
+  - "EDU034000" # Education / Philosophy
+
+copyright: "Translation © 2024 Brainrot Publishing House"
+rights: "All rights reserved. Original work in public domain."
+
+# Content structure
+structure:
+  total_books: 10
+  total_chapters: 34
+  estimated_words: 220000
+  reading_level: "Young Adult / General Adult"
+  content_warnings: "Complex philosophical discussions, political theory"
