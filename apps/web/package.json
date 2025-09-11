@@ -24,7 +24,9 @@
     "lint": "next lint",
     "format": "npm run prettier:fix",
     "typecheck": "tsc --noEmit",
-    "prettier:fix": "prettier --write ."
+    "prettier:fix": "prettier --write .",
+    "test:blob-urls": "vitest run blobUrlVerification.test.ts",
+    "test:blob-urls:live": "VERIFY_LIVE_URLS=true vitest run blobUrlVerification.test.ts"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.884.0",

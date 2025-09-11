@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { ReactNode } from 'react';
 
-import Footer from '@/components/footer';
+import FooterV3 from '@/components/FooterV3';
 import Header from '@/components/header';
 
 import { primary, secondary } from './fonts';
@@ -23,7 +23,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         {/* header */}
         <Header />
         {children}
-        <Footer />
+        <FooterV3 />
       </body>
     </html>
   );

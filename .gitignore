@@ -69,6 +69,11 @@ backup-*/
 migration-log.json
 archive-migration/
 
+# Legacy paths (prevent future use)
+# All translations should be in content/translations/books/*/
+public/assets/*/text/
+apps/web/public/assets/*/text/
+
 # Keep .gitkeep files
 !.gitkeep
 .vercel

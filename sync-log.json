@@ -91,16 +91,16 @@
     ]
   },
   "declaration-of-independence": {
-    "lastSync": "2025-08-18T21:36:26.012Z",
+    "lastSync": "2025-09-10T18:21:14.210Z",
     "filesUploaded": 1,
-    "errors": 0,
+    "errors": 1,
     "files": [
       {
-        "file": "books/declaration-of-independence/text/declaration-of-independence-complete.txt",
-        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/declaration-of-independence/text/declaration-of-independence-complete.txt",
-        "size": 37320,
-        "checksum": "1aa9b38fb4c61e186d524139ebc83727",
-        "timestamp": "2025-08-18T21:36:26.011Z"
+        "file": "books/declaration-of-independence/text/declaration.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/declaration-of-independence/text/declaration.txt",
+        "size": 37112,
+        "checksum": "c71c5dd8f818386d8a7ad45d2663e56f",
+        "timestamp": "2025-09-10T18:21:14.209Z"
       }
     ]
   },
@@ -990,6 +990,76 @@
         "size": 10913,
         "checksum": "9288901aa6ee6fdd0a1fd667a42ca2d4",
         "timestamp": "2025-08-18T21:47:22.964Z"
+      }
+    ]
+  },
+  "hamlet": {
+    "lastSync": "2025-09-07T20:42:39.853Z",
+    "filesUploaded": 5,
+    "errors": 0,
+    "files": [
+      {
+        "file": "books/hamlet/text/act-04.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/hamlet/text/act-04.txt",
+        "size": 30609,
+        "checksum": "dc74779fa06d74b5b37491fadd2368f5",
+        "timestamp": "2025-09-07T20:42:39.634Z"
+      },
+      {
+        "file": "books/hamlet/text/act-05.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/hamlet/text/act-05.txt",
+        "size": 33696,
+        "checksum": "4b86b3b584e9ce28e74a2923a97c2658",
+        "timestamp": "2025-09-07T20:42:39.636Z"
+      },
+      {
+        "file": "books/hamlet/text/act-01.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/hamlet/text/act-01.txt",
+        "size": 35511,
+        "checksum": "d428d6a449da8b6b7f0a5923c367c054",
+        "timestamp": "2025-09-07T20:42:39.754Z"
+      },
+      {
+        "file": "books/hamlet/text/act-02.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/hamlet/text/act-02.txt",
+        "size": 33607,
+        "checksum": "4845f37e16264f9266f221354a5351af",
+        "timestamp": "2025-09-07T20:42:39.758Z"
+      },
+      {
+        "file": "books/hamlet/text/act-03.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/hamlet/text/act-03.txt",
+        "size": 42902,
+        "checksum": "c9dbbcedd26b825f7d555d23aa6fde04",
+        "timestamp": "2025-09-07T20:42:39.852Z"
+      }
+    ]
+  },
+  "huckleberry-finn": {
+    "lastSync": "2025-09-08T16:02:28.515Z",
+    "filesUploaded": 3,
+    "errors": 43,
+    "files": [
+      {
+        "file": "books/huckleberry-finn/text/chapter-09.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/huckleberry-finn/text/chapter-09.txt",
+        "size": 7907,
+        "checksum": "08666e5c61185221ef9bf4bfa69a81b2",
+        "timestamp": "2025-09-08T16:02:27.324Z"
+      },
+      {
+        "file": "books/huckleberry-finn/text/chapter-29.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/huckleberry-finn/text/chapter-29.txt",
+        "size": 16745,
+        "checksum": "29567e6d1a370140553f0970842a6ae2",
+        "timestamp": "2025-09-08T16:02:28.078Z"
+      },
+      {
+        "file": "books/huckleberry-finn/text/chapter-39.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/huckleberry-finn/text/chapter-39.txt",
+        "size": 11320,
+        "checksum": "ead977797f3a9eb0ba3176d6b0650365",
+        "timestamp": "2025-09-08T16:02:28.378Z"
       }
     ]
   }

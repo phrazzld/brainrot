@@ -108,6 +108,9 @@ pnpm lint
 
 # Format code
 pnpm format
+
+# Validate translations (checks all available books have source files)
+pnpm validate:all
 ```
 
 ### Working on Specific Packages
@@ -191,6 +194,43 @@ chore: update dependencies
 ```
 
 ## Translation Guidelines
+
+### Important: Translation File Location
+
+⚠️ **All translations MUST be stored in the version-controlled structure:**
+
+```
+content/translations/books/{book-slug}/brainrot/*.md
+```
+
+**DO NOT** place translations in:
+- ❌ `public/assets/*/text/` - This is legacy and not version-controlled
+- ❌ `apps/web/public/` - This is for static assets only
+- ❌ `generated/` - This is for compiled output, not source files
+
+**Correct Structure Example:**
+```
+content/translations/books/
+├── great-gatsby/
+│   ├── brainrot/
+│   │   ├── introduction.md
+│   │   ├── chapter-01.md
+│   │   ├── chapter-02.md
+│   │   └── ...
+│   └── metadata.yaml
+└── hamlet/
+    ├── brainrot/
+    │   ├── act-01.md
+    │   ├── act-02.md
+    │   └── ...
+    └── metadata.yaml
+```
+
+This structure ensures:
+- ✅ Version control tracks all changes
+- ✅ Pre-commit hooks protect against accidental deletion
+- ✅ CI/CD validation catches missing files
+- ✅ Consistent format conversion pipeline
 
 ### The Brainrot Style
 
