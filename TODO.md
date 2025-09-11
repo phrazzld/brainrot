@@ -226,7 +226,15 @@
   - [x] Books 6-7: Split at divided line, sun analogy, cave allegory (line ~17000)
   - [x] Books 8-9: Split at regime degradations (timocracy→oligarchy→democracy→tyranny)
   - [x] Book 10: Split at poetry critique, myth of Er beginning
-- [ ] Validate source text line numbers against standard Stephanus pagination for academic reference
+- [x] Validate source text line numbers against standard Stephanus pagination for academic reference
+  ```
+  Work Log:
+  - Created scripts/stephanus-mapping.ts to map line numbers to Stephanus pages
+  - Generated complete mapping for all 35 chapters (327a-621d range)
+  - Created STEPHANUS_REFERENCE.md with citation guide and famous passages
+  - Mapped each chapter to approximate Stephanus references
+  - Added academic citation support with cross-reference system
+  ```
 - [x] Create automated chunking script to extract precise text ranges for each chapter (avg 6,470 words/chapter)
   ```
   Work Log:
@@ -235,7 +243,16 @@
   - Actual average: 3,384 words/chapter (smaller than estimate due to condensed Gutenberg text)
   - Outputs both individual chapter files and JSON mapping
   ```
-- [ ] Generate chapter-specific translation memory files to maintain consistency across 220k words
+- [x] Generate chapter-specific translation memory files to maintain consistency across 220k words
+  ```
+  Work Log:
+  - Created scripts/generate-translation-memory.ts
+  - Generated 35 individual chapter memory JSON files
+  - Created master glossary with 38 core terms, 6 character voices, 95 slang terms
+  - Built quick-reference CSV with all philosophical concepts
+  - Each chapter has context-specific terms and active character profiles
+  - Total: 42 philosophical concepts tracked across all books
+  ```
 
 ### Phase 2: Translation Pipeline Development [Target: 500 words/hour throughput]
 
