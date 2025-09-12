@@ -131,6 +131,65 @@
 - **Explanatory Comments**: Always include comment explaining why path is blocked and where content should go instead
 - **Quick Testing**: Create temporary test directory to verify ignore pattern works before committing
 
+### Text Processing & Conversion Pipelines
+- **@brainrot/converter Package**: Central package for markdown processing, text conversion, and format generation
+- **Pandoc Integration**: Secure pandoc wrapper with sanitization for EPUB/PDF/Kindle generation at `packages/@brainrot/converter/src/pandocConverters.ts`
+- **Batch Processing**: `batchConverter.ts` handles directory-level processing with file discovery and format conversion
+- **Security-First**: All external process calls use `spawn()` with `shell: false` and sanitized inputs
+- **Metadata Sanitization**: Strict allowlist for metadata fields with regex validation to prevent command injection
+- **Format-Specific Handling**: Separate conversion paths for text, EPUB, PDF, and Kindle formats
+
+### Markdown Processing Architecture
+- **stripMarkdown**: Clean markdown to plain text with formatting preservation
+- **markdownToText**: Enhanced text conversion with chapter structure and titles
+- **chapterToText**: Individual chapter processing with proper formatting
+- **chaptersToText**: Multi-chapter document assembly with separators
+- **Error Handling**: Comprehensive error handling with cleanup of temporary files
+- **File System Patterns**: Use promisified fs methods with proper async/await error handling
+
+### Content Generation Scripts
+- **generate-formats.ts**: CLI tool for batch format generation with commander.js pattern
+- **Directory Detection**: Smart detection of different book directory structures (brainrot/, text/, translation.txt)
+- **Concurrency Control**: Use `pLimit(3)` for controlled parallel processing of books
+- **Force Overwrite**: `--force` flag pattern for overwriting existing files
+- **Dry Run Support**: `--dry-run` flag for preview without file creation
+- **Progress Reporting**: ora spinners + chalk colors for user feedback
+- **Format Flexibility**: Support multiple output formats with selective generation
+
+### Translation Memory & Consistency Systems
+- **generate-translation-memory.ts**: Comprehensive translation memory system for consistency
+- **Character Voice Profiles**: Detailed character personality and speech pattern definitions
+- **Philosophical Term Mapping**: Core term dictionary with modern Gen Z translations
+- **Context-Aware Memory**: Chapter-specific translation memories with relevant concepts
+- **Slang Bank**: Curated Gen Z terminology for consistent voice
+- **Academic Integration**: Stephanus pagination mapping for scholarly citations
+- **JSON + CSV Output**: Both machine-readable and human-readable reference formats
+
+### Text Parsing & Chapter Division
+- **parse-republic-chapters.ts**: Sophisticated text parsing with logical chapter divisions
+- **Line-Number Mapping**: Precise line number tracking for source text navigation
+- **Word Count Analytics**: Detailed statistics with validation against targets
+- **Header Generation**: Consistent chapter formatting with metadata
+- **Book Boundary Detection**: Automatic detection of book divisions in source text
+- **Validation Patterns**: Built-in checks for expected chapter counts and word targets
+
+### Academic Reference Integration
+- **stephanus-mapping.ts**: Academic citation support with standard reference system
+- **Cross-Reference Systems**: Multiple reference systems (line numbers, Stephanus, chapters)
+- **Citation Guide Generation**: Automatic generation of academic citation documentation
+- **Famous Passage Mapping**: Pre-identified key philosophical passages with references
+- **Interpolation Algorithms**: Mathematical interpolation for approximate Stephanus references
+- **Edition Variance Handling**: Acknowledgment and handling of textual variations between editions
+
+### Translation Preprocessing Pipeline Patterns
+- **Source Text Segmentation**: Line-based parsing with precise boundary detection
+- **Metadata Enrichment**: Addition of titles, descriptions, and contextual information  
+- **Reference System Integration**: Multiple cross-referencing systems (academic, internal, digital)
+- **Character Voice Assignment**: Systematic assignment of dialogue to character profiles
+- **Concept Mapping**: Philosophical concept identification and modern translation preparation
+- **Consistency Memory Generation**: Creation of translation memory files for maintaining voice and terminology
+- **Quality Validation**: Word count validation, structure verification, and completeness checks
+
 ## Bugs & Fixes
 
 ### Translation Restoration Artifacts
@@ -234,3 +293,8 @@
 - `/Users/phaedrus/Development/brainrot/apps/web/vitest.config.ts` - Test configuration with include/exclude patterns
 - `/Users/phaedrus/Development/brainrot/apps/web/blob-availability.test.ts` - HTTP status testing for blob URLs
 - `/Users/phaedrus/Development/brainrot/.gitignore` - Contains legacy path blocking patterns for contributor protection
+- `/Users/phaedrus/Development/brainrot/packages/@brainrot/converter/` - Core text processing and conversion package
+- `/Users/phaedrus/Development/brainrot/scripts/generate-formats.ts` - CLI tool for batch format generation
+- `/Users/phaedrus/Development/brainrot/scripts/generate-translation-memory.ts` - Translation consistency system
+- `/Users/phaedrus/Development/brainrot/scripts/parse-republic-chapters.ts` - Text parsing and chapter division
+- `/Users/phaedrus/Development/brainrot/scripts/stephanus-mapping.ts` - Academic reference integration
