@@ -1062,5 +1062,257 @@
         "timestamp": "2025-09-08T16:02:28.378Z"
       }
     ]
+  },
+  "platos-republic": {
+    "lastSync": "2025-09-15T16:19:43.515Z",
+    "filesUploaded": 35,
+    "errors": 0,
+    "files": [
+      {
+        "file": "books/platos-republic/text/book-01-chapter-3.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/platos-republic/text/book-01-chapter-3.txt",
+        "size": 15624,
+        "checksum": "c801d247f221dc100cc3cbd9c7931030",
+        "timestamp": "2025-09-15T16:19:42.806Z"
+      },
+      {
+        "file": "books/platos-republic/text/book-02-chapter-1.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/platos-republic/text/book-02-chapter-1.txt",
+        "size": 24535,
+        "checksum": "de4ef719a7522967cb7cbefeb0ff1251",
+        "timestamp": "2025-09-15T16:19:42.853Z"
+      },
+      {
+        "file": "books/platos-republic/text/book-02-chapter-2.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/platos-republic/text/book-02-chapter-2.txt",
+        "size": 11754,
+        "checksum": "b2ddb2c92306c7422527b73e43395e42",
+        "timestamp": "2025-09-15T16:19:42.857Z"
+      },
+      {
+        "file": "books/platos-republic/text/book-01-chapter-1.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/platos-republic/text/book-01-chapter-1.txt",
+        "size": 15109,
+        "checksum": "7cc9be47a9c6bd55a1a99fe1de43bdc8",
+        "timestamp": "2025-09-15T16:19:42.865Z"
+      },
+      {
+        "file": "books/platos-republic/text/book-01-chapter-2.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/platos-republic/text/book-01-chapter-2.txt",
+        "size": 24579,
+        "checksum": "025f2a597290fcdcda94591b4c0cd0f9",
+        "timestamp": "2025-09-15T16:19:42.867Z"
+      },
+      {
+        "file": "books/platos-republic/text/book-02-chapter-3.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/platos-republic/text/book-02-chapter-3.txt",
+        "size": 17053,
+        "checksum": "e0cd1ec1341b158bf2166e97ee56ce9f",
+        "timestamp": "2025-09-15T16:19:42.908Z"
+      },
+      {
+        "file": "books/platos-republic/text/book-03-chapter-4.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/platos-republic/text/book-03-chapter-4.txt",
+        "size": 11971,
+        "checksum": "f9dd7a8ae2ab750bf8414a794fc298cd",
+        "timestamp": "2025-09-15T16:19:42.947Z"
+      },
+      {
+        "file": "books/platos-republic/text/book-03-chapter-3.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/platos-republic/text/book-03-chapter-3.txt",
+        "size": 14341,
+        "checksum": "f72a89a1b03e1e62ee939b6e01bb8139",
+        "timestamp": "2025-09-15T16:19:42.950Z"
+      },
+      {
+        "file": "books/platos-republic/text/book-03-chapter-1.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/platos-republic/text/book-03-chapter-1.txt",
+        "size": 22238,
+        "checksum": "855c0b2f20e2fa31d6d6dd54ed8fb70b",
+        "timestamp": "2025-09-15T16:19:42.950Z"
+      },
+      {
+        "file": "books/platos-republic/text/book-03-chapter-2.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/platos-republic/text/book-03-chapter-2.txt",
+        "size": 28750,
+        "checksum": "5b9c1a6f93923d9a111e10a6ecc6c170",
+        "timestamp": "2025-09-15T16:19:42.963Z"
+      },
+      {
+        "file": "books/platos-republic/text/book-04-chapter-1.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/platos-republic/text/book-04-chapter-1.txt",
+        "size": 17783,
+        "checksum": "b46be8a06d4b5f27f660f0df851a379c",
+        "timestamp": "2025-09-15T16:19:43.027Z"
+      },
+      {
+        "file": "books/platos-republic/text/book-05-chapter-1.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/platos-republic/text/book-05-chapter-1.txt",
+        "size": 21299,
+        "checksum": "91bd56400440cff703a70dbd278d31e8",
+        "timestamp": "2025-09-15T16:19:43.030Z"
+      },
+      {
+        "file": "books/platos-republic/text/book-04-chapter-2.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/platos-republic/text/book-04-chapter-2.txt",
+        "size": 16756,
+        "checksum": "5dd4b2e23d8e86e77ae81ccadca8f644",
+        "timestamp": "2025-09-15T16:19:43.038Z"
+      },
+      {
+        "file": "books/platos-republic/text/book-05-chapter-2.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/platos-republic/text/book-05-chapter-2.txt",
+        "size": 22603,
+        "checksum": "5442c9fda76e44454f1420b49c99d657",
+        "timestamp": "2025-09-15T16:19:43.091Z"
+      },
+      {
+        "file": "books/platos-republic/text/book-04-chapter-3.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/platos-republic/text/book-04-chapter-3.txt",
+        "size": 17812,
+        "checksum": "9e09ea0776719c1313eea57903c826ab",
+        "timestamp": "2025-09-15T16:19:43.091Z"
+      },
+      {
+        "file": "books/platos-republic/text/book-05-chapter-4.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/platos-republic/text/book-05-chapter-4.txt",
+        "size": 9909,
+        "checksum": "3f2ec6af6b922d0324941b85e1d3371b",
+        "timestamp": "2025-09-15T16:19:43.118Z"
+      },
+      {
+        "file": "books/platos-republic/text/book-06-chapter-1.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/platos-republic/text/book-06-chapter-1.txt",
+        "size": 20508,
+        "checksum": "38501731685a24756917594030f76386",
+        "timestamp": "2025-09-15T16:19:43.127Z"
+      },
+      {
+        "file": "books/platos-republic/text/book-05-chapter-3.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/platos-republic/text/book-05-chapter-3.txt",
+        "size": 11676,
+        "checksum": "3567ed54283cddc2e0b9cd0da93d1044",
+        "timestamp": "2025-09-15T16:19:43.143Z"
+      },
+      {
+        "file": "books/platos-republic/text/book-06-chapter-3.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/platos-republic/text/book-06-chapter-3.txt",
+        "size": 11361,
+        "checksum": "45a1a2c34c7c8525e3288ce037f56042",
+        "timestamp": "2025-09-15T16:19:43.179Z"
+      },
+      {
+        "file": "books/platos-republic/text/book-07-chapter-2.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/platos-republic/text/book-07-chapter-2.txt",
+        "size": 16447,
+        "checksum": "508a507128cc2246ca845c7d04f9eeb6",
+        "timestamp": "2025-09-15T16:19:43.223Z"
+      },
+      {
+        "file": "books/platos-republic/text/book-06-chapter-2.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/platos-republic/text/book-06-chapter-2.txt",
+        "size": 18586,
+        "checksum": "6df029fc04d1eb1b545d9f2654b2b191",
+        "timestamp": "2025-09-15T16:19:43.268Z"
+      },
+      {
+        "file": "books/platos-republic/text/book-07-chapter-3.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/platos-republic/text/book-07-chapter-3.txt",
+        "size": 13645,
+        "checksum": "474c333f0afc8c56e7cd7962309221c4",
+        "timestamp": "2025-09-15T16:19:43.268Z"
+      },
+      {
+        "file": "books/platos-republic/text/book-06-chapter-4.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/platos-republic/text/book-06-chapter-4.txt",
+        "size": 14070,
+        "checksum": "b74a64442d2ccca2ff386b533abff2a9",
+        "timestamp": "2025-09-15T16:19:43.278Z"
+      },
+      {
+        "file": "books/platos-republic/text/book-07-chapter-1.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/platos-republic/text/book-07-chapter-1.txt",
+        "size": 22945,
+        "checksum": "cc593c9dda17fe9854fa41fa97416793",
+        "timestamp": "2025-09-15T16:19:43.288Z"
+      },
+      {
+        "file": "books/platos-republic/text/book-07-chapter-4.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/platos-republic/text/book-07-chapter-4.txt",
+        "size": 10514,
+        "checksum": "14e961244f602f18bc2c864c1948aaee",
+        "timestamp": "2025-09-15T16:19:43.313Z"
+      },
+      {
+        "file": "books/platos-republic/text/book-08-chapter-2.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/platos-republic/text/book-08-chapter-2.txt",
+        "size": 15560,
+        "checksum": "e87d030e14a565b51f39581e850ed31f",
+        "timestamp": "2025-09-15T16:19:43.389Z"
+      },
+      {
+        "file": "books/platos-republic/text/book-08-chapter-1.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/platos-republic/text/book-08-chapter-1.txt",
+        "size": 17861,
+        "checksum": "98f22823c4cd68cd355026e6a2021235",
+        "timestamp": "2025-09-15T16:19:43.391Z"
+      },
+      {
+        "file": "books/platos-republic/text/book-09-chapter-1.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/platos-republic/text/book-09-chapter-1.txt",
+        "size": 16345,
+        "checksum": "5e57b183fbc0581994a8edb87fff3063",
+        "timestamp": "2025-09-15T16:19:43.391Z"
+      },
+      {
+        "file": "books/platos-republic/text/book-08-chapter-3.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/platos-republic/text/book-08-chapter-3.txt",
+        "size": 16169,
+        "checksum": "37a6dccfc69c520a01f94b0b1210dc5c",
+        "timestamp": "2025-09-15T16:19:43.398Z"
+      },
+      {
+        "file": "books/platos-republic/text/book-08-chapter-4.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/platos-republic/text/book-08-chapter-4.txt",
+        "size": 16532,
+        "checksum": "251618bf5baa053731f1ecd2581f17db",
+        "timestamp": "2025-09-15T16:19:43.398Z"
+      },
+      {
+        "file": "books/platos-republic/text/book-09-chapter-3.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/platos-republic/text/book-09-chapter-3.txt",
+        "size": 24086,
+        "checksum": "de2a1a85466756d542513e9a151a7a6e",
+        "timestamp": "2025-09-15T16:19:43.484Z"
+      },
+      {
+        "file": "books/platos-republic/text/book-10-chapter-2.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/platos-republic/text/book-10-chapter-2.txt",
+        "size": 18114,
+        "checksum": "ffd18e8ead155f4550d886409abc93b8",
+        "timestamp": "2025-09-15T16:19:43.503Z"
+      },
+      {
+        "file": "books/platos-republic/text/book-10-chapter-1.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/platos-republic/text/book-10-chapter-1.txt",
+        "size": 15210,
+        "checksum": "a6ec1818fc021e2a07f3f9ee654eb925",
+        "timestamp": "2025-09-15T16:19:43.507Z"
+      },
+      {
+        "file": "books/platos-republic/text/book-09-chapter-2.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/platos-republic/text/book-09-chapter-2.txt",
+        "size": 14795,
+        "checksum": "0ca2cbc9db0ead4afce22c966082ec95",
+        "timestamp": "2025-09-15T16:19:43.510Z"
+      },
+      {
+        "file": "books/platos-republic/text/book-10-chapter-3.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/platos-republic/text/book-10-chapter-3.txt",
+        "size": 36012,
+        "checksum": "f8b695ed9708ab7b814547aa67a86a91",
+        "timestamp": "2025-09-15T16:19:43.514Z"
+      }
+    ]
   }
 }
