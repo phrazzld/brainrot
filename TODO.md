@@ -1,5 +1,24 @@
 # TODO
 
+## 🚨 URGENT: CI PIPELINE FIX REQUIRED 🚨
+
+### CI Infrastructure Failure - Broken Lockfile
+PR #136 CI is blocked due to duplicate key in pnpm-lock.yaml
+
+#### Immediate Tasks
+- [ ] [CI FIX] Backup current pnpm-lock.yaml to pnpm-lock.yaml.backup
+- [ ] [CI FIX] Remove broken pnpm-lock.yaml file
+- [ ] [CI FIX] Regenerate fresh lockfile with `pnpm install`
+- [ ] [CI FIX] Verify no duplicate keys with `grep -c "/debug@4.4.3:" pnpm-lock.yaml`
+- [ ] [CI FIX] Test lockfile locally with `pnpm install --frozen-lockfile`
+- [ ] [CI FIX] Run local quality checks: `npm run lint` and `npm run build`
+- [ ] [CI FIX] Commit fixed lockfile with message "fix: regenerate pnpm-lock.yaml to resolve duplicate key"
+- [ ] [CI FIX] Push to trigger CI and verify all jobs pass
+
+#### Prevention Tasks
+- [ ] [CI FIX] Document this issue in troubleshooting guide
+- [ ] [CI FIX] Consider adding lockfile validation to pre-commit hooks
+
 ## ⚠️ CRITICAL: READ BEFORE TRANSLATING ⚠️
 
 **ALL TRANSLATIONS MUST FOLLOW: `TRANSLATION_GUIDELINES.md`**
