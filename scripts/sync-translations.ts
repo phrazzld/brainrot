@@ -189,6 +189,16 @@ async function syncBook(slug: string, options: SyncOptions) {
             });
 
             const content = await fs.readFile(file.localPath);
+
+            // Try to delete existing blob first if it exists
+            try {
+              await del(file.blobPath, {
+                token: process.env.BLOB_READ_WRITE_TOKEN,
+              });
+            } catch (e) {
+              // Ignore delete errors - blob might not exist
+            }
+
             const blob = await put(file.blobPath, content, {
               access: "public",
               token: process.env.BLOB_READ_WRITE_TOKEN,

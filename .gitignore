@@ -65,8 +65,9 @@ Thumbs.db
 *.bak
 backup-*/
 
-# Migration artifacts  
+# Migration artifacts
 migration-log.json
+sync-log.json
 archive-migration/
 
 # Legacy paths (prevent future use)

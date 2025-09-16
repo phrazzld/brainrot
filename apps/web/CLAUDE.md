@@ -2,6 +2,14 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## ⚠️ CRITICAL: Translation Work ⚠️
+
+**For any translation work, you MUST follow:**
+- **`/TRANSLATION_GUIDELINES.md`** - 1000+ line comprehensive methodology (in monorepo root)
+- **`/TRANSLATION_QUICKSTART.md`** - Quick reference guide
+- Requirements: all lowercase, 3-5+ brainrot terms per sentence MINIMUM
+- See methodology at `/docs/translation-system/methodology/guidelines.md` for original location
+
 ## Commands
 
 - **Development**: `npm run dev` (uses turbopack)

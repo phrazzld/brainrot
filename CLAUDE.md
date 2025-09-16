@@ -143,6 +143,23 @@ KDP_PASSWORD=xxx
 3. **React Peer Deps**: Version mismatch warnings (React 19 vs 18)
 4. **Deprecated Packages**: Some subdependencies need updates
 
+## 🚨 CRITICAL: Translation Methodology 🚨
+
+**BEFORE TRANSLATING ANY CONTENT, YOU MUST READ AND FOLLOW:**
+- **📖 TRANSLATION_GUIDELINES.md** - 1000+ line comprehensive methodology document (in root directory)
+- **Requirements**: all lowercase, 3-5+ brainrot terms per sentence MINIMUM
+- **"Maximalist gremlin mode"** - chaotic, meme-dense word salad that preserves plot
+- **400+ term brainrot vocabulary** - includes skibidi, gyatt, rizz, fr fr ong, etc.
+- **Character voice mapping** - each character gets 3-5 signature terms
+- **Systematic slur replacement matrix** - NEVER use actual slurs
+
+### Translation Quick Reference
+- **Density Target**: 1,600+ core term occurrences per book
+- **Format**: all lowercase, no capitals except emphasis
+- **Voice**: chronically online narrator, internet-poisoned but self-aware
+- **References**: ultra-specific current memes (not future-proofed)
+- **Example**: "so yesterday i was heading down to the piraeus with my boy glaucon"
+
 ## What Makes This Special
 
 - **Cultural Reinterpretations**: Not just translations, complete Gen Z adaptations

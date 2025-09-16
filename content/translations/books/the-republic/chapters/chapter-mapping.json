@@ -1,0 +1,308 @@
+{
+  "totalBooks": 10,
+  "totalChapters": 35,
+  "totalWords": 118430,
+  "averageWordsPerChapter": 3384,
+  "books": [
+    {
+      "book": 1,
+      "chapters": 3,
+      "totalWords": 12340,
+      "startLine": 8636,
+      "endLine": 10339,
+      "chapterDetails": [
+        {
+          "chapter": 1,
+          "title": "The Piraeus Festival & Cephalus on Old Age",
+          "lines": "8636-9100",
+          "words": 3438
+        },
+        {
+          "chapter": 2,
+          "title": "Polemarchus on Justice as Helping Friends",
+          "lines": "9100-9800",
+          "words": 5530
+        },
+        {
+          "chapter": 3,
+          "title": "Thrasymachus: Might Makes Right",
+          "lines": "9800-10337",
+          "words": 3372
+        }
+      ]
+    },
+    {
+      "book": 2,
+      "chapters": 3,
+      "totalWords": 11540,
+      "startLine": 10340,
+      "endLine": 11779,
+      "chapterDetails": [
+        {
+          "chapter": 1,
+          "title": "Glaucon's Challenge & Ring of Gyges",
+          "lines": "10340-10900",
+          "words": 5737
+        },
+        {
+          "chapter": 2,
+          "title": "Building the Just City",
+          "lines": "10900-11300",
+          "words": 2610
+        },
+        {
+          "chapter": 3,
+          "title": "Guardian Class & Early Education",
+          "lines": "11300-11777",
+          "words": 3193
+        }
+      ]
+    },
+    {
+      "book": 3,
+      "chapters": 4,
+      "totalWords": 13901,
+      "startLine": 11780,
+      "endLine": 13634,
+      "chapterDetails": [
+        {
+          "chapter": 1,
+          "title": "Censorship of Poetry & Stories",
+          "lines": "11780-12400",
+          "words": 4371
+        },
+        {
+          "chapter": 2,
+          "title": "Musical & Physical Education",
+          "lines": "12400-13000",
+          "words": 4536
+        },
+        {
+          "chapter": 3,
+          "title": "Selection of Guardians",
+          "lines": "13000-13300",
+          "words": 2393
+        },
+        {
+          "chapter": 4,
+          "title": "The Noble Lie",
+          "lines": "13300-13632",
+          "words": 2601
+        }
+      ]
+    },
+    {
+      "book": 4,
+      "chapters": 3,
+      "totalWords": 11420,
+      "startLine": 13635,
+      "endLine": 15234,
+      "chapterDetails": [
+        {
+          "chapter": 1,
+          "title": "Guardian Lifestyle & Common Property",
+          "lines": "13635-14200",
+          "words": 4202
+        },
+        {
+          "chapter": 2,
+          "title": "City's Virtues: Wisdom, Courage, Moderation",
+          "lines": "14200-14800",
+          "words": 4309
+        },
+        {
+          "chapter": 3,
+          "title": "The Tripartite Soul",
+          "lines": "14800-15232",
+          "words": 2909
+        }
+      ]
+    },
+    {
+      "book": 5,
+      "chapters": 4,
+      "totalWords": 13921,
+      "startLine": 15235,
+      "endLine": 17196,
+      "chapterDetails": [
+        {
+          "chapter": 1,
+          "title": "Women Guardians & Gender Equality",
+          "lines": "15235-15900",
+          "words": 4887
+        },
+        {
+          "chapter": 2,
+          "title": "Communal Marriage & Children",
+          "lines": "15900-16600",
+          "words": 4894
+        },
+        {
+          "chapter": 3,
+          "title": "War & Unity Among Greeks",
+          "lines": "16600-16900",
+          "words": 2423
+        },
+        {
+          "chapter": 4,
+          "title": "Philosopher Kings Revealed",
+          "lines": "16900-17194",
+          "words": 1717
+        }
+      ]
+    },
+    {
+      "book": 6,
+      "chapters": 4,
+      "totalWords": 11856,
+      "startLine": 17197,
+      "endLine": 18768,
+      "chapterDetails": [
+        {
+          "chapter": 1,
+          "title": "The Philosopher's Nature",
+          "lines": "17197-17700",
+          "words": 3672
+        },
+        {
+          "chapter": 2,
+          "title": "Corruption of Philosophy",
+          "lines": "17700-18100",
+          "words": 3410
+        },
+        {
+          "chapter": 3,
+          "title": "The Form of the Good & Sun Analogy",
+          "lines": "18100-18400",
+          "words": 2138
+        },
+        {
+          "chapter": 4,
+          "title": "The Divided Line",
+          "lines": "18400-18766",
+          "words": 2636
+        }
+      ]
+    },
+    {
+      "book": 7,
+      "chapters": 4,
+      "totalWords": 11527,
+      "startLine": 18769,
+      "endLine": 20248,
+      "chapterDetails": [
+        {
+          "chapter": 1,
+          "title": "The Cave Allegory",
+          "lines": "18769-19300",
+          "words": 4255
+        },
+        {
+          "chapter": 2,
+          "title": "Return to the Cave",
+          "lines": "19300-19700",
+          "words": 2984
+        },
+        {
+          "chapter": 3,
+          "title": "Mathematical Education",
+          "lines": "19700-20000",
+          "words": 2428
+        },
+        {
+          "chapter": 4,
+          "title": "Dialectic & Philosopher Training",
+          "lines": "20000-20246",
+          "words": 1860
+        }
+      ]
+    },
+    {
+      "book": 8,
+      "chapters": 4,
+      "totalWords": 11313,
+      "startLine": 20249,
+      "endLine": 21833,
+      "chapterDetails": [
+        {
+          "chapter": 1,
+          "title": "Review & The Decline of States",
+          "lines": "20249-20600",
+          "words": 3130
+        },
+        {
+          "chapter": 2,
+          "title": "Timocracy: Rule by Honor",
+          "lines": "20600-21000",
+          "words": 2525
+        },
+        {
+          "chapter": 3,
+          "title": "Oligarchy: Rule by Wealth",
+          "lines": "21000-21400",
+          "words": 2822
+        },
+        {
+          "chapter": 4,
+          "title": "Democracy & Tyranny",
+          "lines": "21400-21831",
+          "words": 2836
+        }
+      ]
+    },
+    {
+      "book": 9,
+      "chapters": 3,
+      "totalWords": 8956,
+      "startLine": 21834,
+      "endLine": 23161,
+      "chapterDetails": [
+        {
+          "chapter": 1,
+          "title": "The Tyrannical Man",
+          "lines": "21834-22200",
+          "words": 2760
+        },
+        {
+          "chapter": 2,
+          "title": "Comparing Lives: Just vs Unjust",
+          "lines": "22200-22600",
+          "words": 2485
+        },
+        {
+          "chapter": 3,
+          "title": "Three Proofs of Justice's Superiority",
+          "lines": "22600-23159",
+          "words": 3711
+        }
+      ]
+    },
+    {
+      "book": 10,
+      "chapters": 3,
+      "totalWords": 11656,
+      "startLine": 23162,
+      "endLine": 24569,
+      "chapterDetails": [
+        {
+          "chapter": 1,
+          "title": "Poetry & Imitation Critique",
+          "lines": "23162-23500",
+          "words": 2426
+        },
+        {
+          "chapter": 2,
+          "title": "Immortality of the Soul",
+          "lines": "23500-23900",
+          "words": 2680
+        },
+        {
+          "chapter": 3,
+          "title": "The Myth of Er",
+          "lines": "23900-24569",
+          "words": 6550
+        }
+      ]
+    }
+  ]
+}

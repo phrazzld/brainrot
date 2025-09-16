@@ -13,6 +13,30 @@ This monorepo contains:
 - **Publisher**: Automated publishing to Amazon KDP, Lulu, and more
 - **Converter**: Tools to transform content for different platforms
 
+## ⚠️ CRITICAL: Translation Methodology ⚠️
+
+**BEFORE TRANSLATING ANY CONTENT, READ THIS:**
+
+Our translations follow **"maximalist gremlin mode"** - a specific, documented methodology that ALL contributors must follow:
+
+📖 **MANDATORY READING: `TRANSLATION_GUIDELINES.md`** (1000+ lines of detailed methodology)
+
+### Key Requirements:
+- **all lowercase formatting** (no capitals except emphasis)
+- **3-5+ brainrot terms per sentence MINIMUM**
+- **400+ term vocabulary** including: skibidi, gyatt, rizz, fr fr ong, no cap, lowkey, etc.
+- **Character voice mapping** - each character gets 3-5 signature terms
+- **Systematic slur replacement** - NEVER reproduce historical slurs
+- **1,600+ core term occurrences per book target**
+
+### Example Translation:
+```
+Original: "I went down yesterday to the Piraeus with Glaucon..."
+Brainrot: "so yesterday i was heading down to the piraeus with my boy glaucon (ariston's son) to check out this new festival for the goddess bendis - basically the thracian version of artemis. had to pay my respects and all that, plus i was lowkey curious about how they'd throw down for this thing since it was literally the first time."
+```
+
+⚠️ **DO NOT START TRANSLATING WITHOUT READING THE GUIDELINES** ⚠️
+
 ## 🏗️ Monorepo Architecture
 
 ```
