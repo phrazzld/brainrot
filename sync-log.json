@@ -1316,254 +1316,254 @@
     ]
   },
   "the-republic": {
-    "lastSync": "2025-09-16T16:42:54.971Z",
+    "lastSync": "2025-09-16T21:47:29.223Z",
     "filesUploaded": 35,
     "errors": 0,
     "files": [
       {
         "file": "books/the-republic/text/book-02-chapter-1.txt",
         "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-republic/text/book-02-chapter-1.txt",
-        "size": 24535,
-        "checksum": "de4ef719a7522967cb7cbefeb0ff1251",
-        "timestamp": "2025-09-16T16:42:54.124Z"
+        "size": 23752,
+        "checksum": "577a24d81d399d9e7ebdcc8f4c436413",
+        "timestamp": "2025-09-16T21:47:27.319Z"
       },
       {
         "file": "books/the-republic/text/book-01-chapter-3.txt",
         "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-republic/text/book-01-chapter-3.txt",
-        "size": 15624,
-        "checksum": "c801d247f221dc100cc3cbd9c7931030",
-        "timestamp": "2025-09-16T16:42:54.125Z"
+        "size": 15250,
+        "checksum": "7c318f6cf3e65dee72172733b766d019",
+        "timestamp": "2025-09-16T21:47:27.354Z"
       },
       {
         "file": "books/the-republic/text/book-02-chapter-2.txt",
         "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-republic/text/book-02-chapter-2.txt",
-        "size": 11754,
-        "checksum": "b2ddb2c92306c7422527b73e43395e42",
-        "timestamp": "2025-09-16T16:42:54.126Z"
-      },
-      {
-        "file": "books/the-republic/text/book-01-chapter-1.txt",
-        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-republic/text/book-01-chapter-1.txt",
-        "size": 15109,
-        "checksum": "7cc9be47a9c6bd55a1a99fe1de43bdc8",
-        "timestamp": "2025-09-16T16:42:54.134Z"
+        "size": 11370,
+        "checksum": "6a6c74674c3a1cb360c5499fff7cbcdb",
+        "timestamp": "2025-09-16T21:47:27.368Z"
       },
       {
         "file": "books/the-republic/text/book-01-chapter-2.txt",
         "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-republic/text/book-01-chapter-2.txt",
-        "size": 24579,
-        "checksum": "025f2a597290fcdcda94591b4c0cd0f9",
-        "timestamp": "2025-09-16T16:42:54.216Z"
+        "size": 23960,
+        "checksum": "7eff38b4a1b355626915ee2340ac1c6b",
+        "timestamp": "2025-09-16T21:47:27.432Z"
+      },
+      {
+        "file": "books/the-republic/text/book-01-chapter-1.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-republic/text/book-01-chapter-1.txt",
+        "size": 14657,
+        "checksum": "48eeb9e128cac530190c4987be191907",
+        "timestamp": "2025-09-16T21:47:27.462Z"
       },
       {
         "file": "books/the-republic/text/book-02-chapter-3.txt",
         "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-republic/text/book-02-chapter-3.txt",
-        "size": 17053,
-        "checksum": "e0cd1ec1341b158bf2166e97ee56ce9f",
-        "timestamp": "2025-09-16T16:42:54.247Z"
+        "size": 16985,
+        "checksum": "9870c32eedce687060c354a13f758f7d",
+        "timestamp": "2025-09-16T21:47:27.556Z"
       },
       {
         "file": "books/the-republic/text/book-03-chapter-2.txt",
         "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-republic/text/book-03-chapter-2.txt",
-        "size": 28750,
-        "checksum": "5b9c1a6f93923d9a111e10a6ecc6c170",
-        "timestamp": "2025-09-16T16:42:54.263Z"
-      },
-      {
-        "file": "books/the-republic/text/book-03-chapter-3.txt",
-        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-republic/text/book-03-chapter-3.txt",
-        "size": 14341,
-        "checksum": "f72a89a1b03e1e62ee939b6e01bb8139",
-        "timestamp": "2025-09-16T16:42:54.275Z"
+        "size": 28210,
+        "checksum": "b5614d9f067793492c3bbcd0d0000e37",
+        "timestamp": "2025-09-16T21:47:27.626Z"
       },
       {
         "file": "books/the-republic/text/book-03-chapter-1.txt",
         "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-republic/text/book-03-chapter-1.txt",
-        "size": 22238,
-        "checksum": "855c0b2f20e2fa31d6d6dd54ed8fb70b",
-        "timestamp": "2025-09-16T16:42:54.275Z"
+        "size": 21693,
+        "checksum": "b621956e1d3bf030d38fe828b8de096d",
+        "timestamp": "2025-09-16T21:47:27.656Z"
       },
       {
         "file": "books/the-republic/text/book-03-chapter-4.txt",
         "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-republic/text/book-03-chapter-4.txt",
-        "size": 11971,
-        "checksum": "f9dd7a8ae2ab750bf8414a794fc298cd",
-        "timestamp": "2025-09-16T16:42:54.352Z"
+        "size": 11631,
+        "checksum": "64f8025a71e4c4ea8449948ffb65abc2",
+        "timestamp": "2025-09-16T21:47:27.708Z"
       },
       {
-        "file": "books/the-republic/text/book-04-chapter-3.txt",
-        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-republic/text/book-04-chapter-3.txt",
-        "size": 17812,
-        "checksum": "9e09ea0776719c1313eea57903c826ab",
-        "timestamp": "2025-09-16T16:42:54.358Z"
-      },
-      {
-        "file": "books/the-republic/text/book-04-chapter-2.txt",
-        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-republic/text/book-04-chapter-2.txt",
-        "size": 16756,
-        "checksum": "5dd4b2e23d8e86e77ae81ccadca8f644",
-        "timestamp": "2025-09-16T16:42:54.385Z"
-      },
-      {
-        "file": "books/the-republic/text/book-05-chapter-1.txt",
-        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-republic/text/book-05-chapter-1.txt",
-        "size": 21299,
-        "checksum": "91bd56400440cff703a70dbd278d31e8",
-        "timestamp": "2025-09-16T16:42:54.404Z"
+        "file": "books/the-republic/text/book-03-chapter-3.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-republic/text/book-03-chapter-3.txt",
+        "size": 13913,
+        "checksum": "3a744c4938fea74198210e7b1883ed83",
+        "timestamp": "2025-09-16T21:47:27.718Z"
       },
       {
         "file": "books/the-republic/text/book-04-chapter-1.txt",
         "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-republic/text/book-04-chapter-1.txt",
-        "size": 17783,
-        "checksum": "b46be8a06d4b5f27f660f0df851a379c",
-        "timestamp": "2025-09-16T16:42:54.413Z"
+        "size": 17218,
+        "checksum": "5c8a69cfd21af18ce3e3b6a66d3290fb",
+        "timestamp": "2025-09-16T21:47:27.830Z"
+      },
+      {
+        "file": "books/the-republic/text/book-04-chapter-3.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-republic/text/book-04-chapter-3.txt",
+        "size": 17244,
+        "checksum": "17edb51e87e0eec83779e223d972ae9d",
+        "timestamp": "2025-09-16T21:47:27.894Z"
+      },
+      {
+        "file": "books/the-republic/text/book-04-chapter-2.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-republic/text/book-04-chapter-2.txt",
+        "size": 16314,
+        "checksum": "b519c14b7f67cf31c8049fa5040db8cf",
+        "timestamp": "2025-09-16T21:47:27.909Z"
+      },
+      {
+        "file": "books/the-republic/text/book-05-chapter-1.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-republic/text/book-05-chapter-1.txt",
+        "size": 20733,
+        "checksum": "3c3e5e0167556116def3fbbee8760dd9",
+        "timestamp": "2025-09-16T21:47:27.977Z"
       },
       {
         "file": "books/the-republic/text/book-05-chapter-3.txt",
         "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-republic/text/book-05-chapter-3.txt",
-        "size": 11676,
-        "checksum": "3567ed54283cddc2e0b9cd0da93d1044",
-        "timestamp": "2025-09-16T16:42:54.475Z"
-      },
-      {
-        "file": "books/the-republic/text/book-05-chapter-2.txt",
-        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-republic/text/book-05-chapter-2.txt",
-        "size": 22603,
-        "checksum": "5442c9fda76e44454f1420b49c99d657",
-        "timestamp": "2025-09-16T16:42:54.476Z"
-      },
-      {
-        "file": "books/the-republic/text/book-06-chapter-2.txt",
-        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-republic/text/book-06-chapter-2.txt",
-        "size": 18586,
-        "checksum": "6df029fc04d1eb1b545d9f2654b2b191",
-        "timestamp": "2025-09-16T16:42:54.516Z"
-      },
-      {
-        "file": "books/the-republic/text/book-06-chapter-1.txt",
-        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-republic/text/book-06-chapter-1.txt",
-        "size": 20508,
-        "checksum": "38501731685a24756917594030f76386",
-        "timestamp": "2025-09-16T16:42:54.546Z"
+        "size": 11278,
+        "checksum": "99c626a290a42fa4893e7803942b6c01",
+        "timestamp": "2025-09-16T21:47:28.080Z"
       },
       {
         "file": "books/the-republic/text/book-05-chapter-4.txt",
         "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-republic/text/book-05-chapter-4.txt",
-        "size": 9909,
-        "checksum": "3f2ec6af6b922d0324941b85e1d3371b",
-        "timestamp": "2025-09-16T16:42:54.582Z"
+        "size": 9559,
+        "checksum": "e33257485a1e6b1e5559e591d819df42",
+        "timestamp": "2025-09-16T21:47:28.151Z"
       },
       {
-        "file": "books/the-republic/text/book-06-chapter-4.txt",
-        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-republic/text/book-06-chapter-4.txt",
-        "size": 14070,
-        "checksum": "b74a64442d2ccca2ff386b533abff2a9",
-        "timestamp": "2025-09-16T16:42:54.595Z"
+        "file": "books/the-republic/text/book-06-chapter-2.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-republic/text/book-06-chapter-2.txt",
+        "size": 17962,
+        "checksum": "30b42a6bf433507ef9f8b175eede5d44",
+        "timestamp": "2025-09-16T21:47:28.190Z"
       },
       {
-        "file": "books/the-republic/text/book-07-chapter-1.txt",
-        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-republic/text/book-07-chapter-1.txt",
-        "size": 22945,
-        "checksum": "cc593c9dda17fe9854fa41fa97416793",
-        "timestamp": "2025-09-16T16:42:54.614Z"
+        "file": "books/the-republic/text/book-06-chapter-1.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-republic/text/book-06-chapter-1.txt",
+        "size": 19807,
+        "checksum": "b085c588c9881f0686c4ead22f52bd84",
+        "timestamp": "2025-09-16T21:47:28.192Z"
+      },
+      {
+        "file": "books/the-republic/text/book-05-chapter-2.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-republic/text/book-05-chapter-2.txt",
+        "size": 22055,
+        "checksum": "8c255a29b31b44b82296048b53fa40a5",
+        "timestamp": "2025-09-16T21:47:28.259Z"
       },
       {
         "file": "books/the-republic/text/book-06-chapter-3.txt",
         "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-republic/text/book-06-chapter-3.txt",
-        "size": 11361,
-        "checksum": "45a1a2c34c7c8525e3288ce037f56042",
-        "timestamp": "2025-09-16T16:42:54.635Z"
+        "size": 10960,
+        "checksum": "0d0a9477e1a18f2382d83d061a4de9e0",
+        "timestamp": "2025-09-16T21:47:28.339Z"
       },
       {
-        "file": "books/the-republic/text/book-07-chapter-3.txt",
-        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-republic/text/book-07-chapter-3.txt",
-        "size": 13645,
-        "checksum": "474c333f0afc8c56e7cd7962309221c4",
-        "timestamp": "2025-09-16T16:42:54.666Z"
+        "file": "books/the-republic/text/book-06-chapter-4.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-republic/text/book-06-chapter-4.txt",
+        "size": 13679,
+        "checksum": "a1099e56cbc0d79ab827c6cfdae404cd",
+        "timestamp": "2025-09-16T21:47:28.424Z"
+      },
+      {
+        "file": "books/the-republic/text/book-07-chapter-1.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-republic/text/book-07-chapter-1.txt",
+        "size": 22311,
+        "checksum": "1ae6e3d4eb5f7f08f77ad59ea4806cfe",
+        "timestamp": "2025-09-16T21:47:28.450Z"
       },
       {
         "file": "books/the-republic/text/book-07-chapter-2.txt",
         "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-republic/text/book-07-chapter-2.txt",
-        "size": 16447,
-        "checksum": "508a507128cc2246ca845c7d04f9eeb6",
-        "timestamp": "2025-09-16T16:42:54.668Z"
+        "size": 16057,
+        "checksum": "438916fb01c90feacae3831811623704",
+        "timestamp": "2025-09-16T21:47:28.516Z"
+      },
+      {
+        "file": "books/the-republic/text/book-07-chapter-3.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-republic/text/book-07-chapter-3.txt",
+        "size": 13185,
+        "checksum": "5ba17647e3a02db42cae844f2c1e7123",
+        "timestamp": "2025-09-16T21:47:28.544Z"
       },
       {
         "file": "books/the-republic/text/book-07-chapter-4.txt",
         "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-republic/text/book-07-chapter-4.txt",
-        "size": 10514,
-        "checksum": "14e961244f602f18bc2c864c1948aaee",
-        "timestamp": "2025-09-16T16:42:54.678Z"
+        "size": 10057,
+        "checksum": "56d986ebb956928fbfbdfd73046f3809",
+        "timestamp": "2025-09-16T21:47:28.649Z"
       },
       {
         "file": "books/the-republic/text/book-08-chapter-1.txt",
         "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-republic/text/book-08-chapter-1.txt",
-        "size": 17861,
-        "checksum": "98f22823c4cd68cd355026e6a2021235",
-        "timestamp": "2025-09-16T16:42:54.721Z"
-      },
-      {
-        "file": "books/the-republic/text/book-09-chapter-1.txt",
-        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-republic/text/book-09-chapter-1.txt",
-        "size": 16345,
-        "checksum": "5e57b183fbc0581994a8edb87fff3063",
-        "timestamp": "2025-09-16T16:42:54.754Z"
+        "size": 17380,
+        "checksum": "9d221e6fc7ed8307ad6f5656ce95775e",
+        "timestamp": "2025-09-16T21:47:28.672Z"
       },
       {
         "file": "books/the-republic/text/book-08-chapter-3.txt",
         "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-republic/text/book-08-chapter-3.txt",
-        "size": 16169,
-        "checksum": "37a6dccfc69c520a01f94b0b1210dc5c",
-        "timestamp": "2025-09-16T16:42:54.758Z"
-      },
-      {
-        "file": "books/the-republic/text/book-08-chapter-2.txt",
-        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-republic/text/book-08-chapter-2.txt",
-        "size": 15560,
-        "checksum": "e87d030e14a565b51f39581e850ed31f",
-        "timestamp": "2025-09-16T16:42:54.759Z"
+        "size": 15323,
+        "checksum": "b2e50112bb23f03633ae12e97b009f87",
+        "timestamp": "2025-09-16T21:47:28.773Z"
       },
       {
         "file": "books/the-republic/text/book-08-chapter-4.txt",
         "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-republic/text/book-08-chapter-4.txt",
-        "size": 16532,
-        "checksum": "251618bf5baa053731f1ecd2581f17db",
-        "timestamp": "2025-09-16T16:42:54.807Z"
+        "size": 15694,
+        "checksum": "c2d98742fecac009b4f06a946bb04056",
+        "timestamp": "2025-09-16T21:47:28.798Z"
+      },
+      {
+        "file": "books/the-republic/text/book-08-chapter-2.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-republic/text/book-08-chapter-2.txt",
+        "size": 14751,
+        "checksum": "f7350b22f6c709d1609c5a1260f6dcd3",
+        "timestamp": "2025-09-16T21:47:28.863Z"
+      },
+      {
+        "file": "books/the-republic/text/book-09-chapter-1.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-republic/text/book-09-chapter-1.txt",
+        "size": 15536,
+        "checksum": "c0039bc839ad963a81f6f3e31b7233c3",
+        "timestamp": "2025-09-16T21:47:28.910Z"
       },
       {
         "file": "books/the-republic/text/book-09-chapter-2.txt",
         "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-republic/text/book-09-chapter-2.txt",
-        "size": 14795,
-        "checksum": "0ca2cbc9db0ead4afce22c966082ec95",
-        "timestamp": "2025-09-16T16:42:54.832Z"
-      },
-      {
-        "file": "books/the-republic/text/book-10-chapter-2.txt",
-        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-republic/text/book-10-chapter-2.txt",
-        "size": 18114,
-        "checksum": "ffd18e8ead155f4550d886409abc93b8",
-        "timestamp": "2025-09-16T16:42:54.882Z"
-      },
-      {
-        "file": "books/the-republic/text/book-10-chapter-1.txt",
-        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-republic/text/book-10-chapter-1.txt",
-        "size": 15210,
-        "checksum": "a6ec1818fc021e2a07f3f9ee654eb925",
-        "timestamp": "2025-09-16T16:42:54.913Z"
-      },
-      {
-        "file": "books/the-republic/text/book-10-chapter-3.txt",
-        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-republic/text/book-10-chapter-3.txt",
-        "size": 36012,
-        "checksum": "f8b695ed9708ab7b814547aa67a86a91",
-        "timestamp": "2025-09-16T16:42:54.913Z"
+        "size": 14018,
+        "checksum": "7cbcbe081b03436799b5e0075b39877b",
+        "timestamp": "2025-09-16T21:47:28.947Z"
       },
       {
         "file": "books/the-republic/text/book-09-chapter-3.txt",
         "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-republic/text/book-09-chapter-3.txt",
-        "size": 24086,
-        "checksum": "de2a1a85466756d542513e9a151a7a6e",
-        "timestamp": "2025-09-16T16:42:54.970Z"
+        "size": 22844,
+        "checksum": "07b5c021b7cd661c3580dba562ed1fa4",
+        "timestamp": "2025-09-16T21:47:29.012Z"
+      },
+      {
+        "file": "books/the-republic/text/book-10-chapter-2.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-republic/text/book-10-chapter-2.txt",
+        "size": 17219,
+        "checksum": "bf003f53f4b7cc897bfa9f8f15bd6482",
+        "timestamp": "2025-09-16T21:47:29.078Z"
+      },
+      {
+        "file": "books/the-republic/text/book-10-chapter-1.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-republic/text/book-10-chapter-1.txt",
+        "size": 14343,
+        "checksum": "6e97b35a5189677d6379169ebd5f6508",
+        "timestamp": "2025-09-16T21:47:29.126Z"
+      },
+      {
+        "file": "books/the-republic/text/book-10-chapter-3.txt",
+        "url": "https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-republic/text/book-10-chapter-3.txt",
+        "size": 34929,
+        "checksum": "ff4c5b88dd2d9c8f83a2621b534e16b0",
+        "timestamp": "2025-09-16T21:47:29.222Z"
       }
     ]
   }
