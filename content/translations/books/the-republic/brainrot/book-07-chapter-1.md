@@ -1,7 +1,3 @@
-# Book 7, Chapter 1: The Cave Allegory (The Ultimate Reality Check)
-
-## The Cave Setup
-
 "and now," i said, "let me show you in a metaphor how enlightened or unenlightened our nature is—imagine this: humans living in some underground cave situation, which has an opening towards the light that runs along the whole cave; they've been there since they were kids, and have their legs and necks literally chained so they can't move, and can only look straight ahead, being prevented by the chains from turning their heads around. above and behind them there's a fire burning at a distance, and between the fire and the prisoners there's a raised path; and you'll see, if you look, a low wall built along the path, like the screen that puppet show performers have in front of them, over which they show the puppets."
 
 "i see."
@@ -9,8 +5,6 @@
 "and do you see," i said, "people walking along the wall carrying all sorts of objects, and statues and figures of animals made of wood and stone and various materials, which appear over the wall? some of them are talking, others are silent."
 
 "you've shown me an absolutely unhinged image, and they're wild prisoners."
-
-## We're All Cave Dwellers
 
 "they're literally us," i replied; "and they see only their own shadows, or the shadows of each other, which the fire throws on the opposite wall of the cave?"
 
@@ -32,8 +26,6 @@
 
 "that's certain."
 
-## The Escape Arc
-
 "and now look again, and see what would naturally happen if the prisoners got freed and realized their error. at first, when any of them is freed and forced suddenly to stand up and turn their neck around and walk and look towards the light, they'll be in serious pain; the glare will absolutely wreck them, and they'll be unable to see the realities of which in their former state they'd seen the shadows; and then imagine someone telling them that what they saw before was cap, but now, when they're approaching closer to being and their eye is turned towards more real existence, they have clearer vision—what will be their response? and imagine further that their instructor is pointing to the objects as they pass and making them name them—won't they be confused af? won't they think the shadows they used to see are more true than the objects being shown to them now?"
 
 "way more true."
@@ -41,8 +33,6 @@
 "and if they're forced to look straight at the light, won't they have pain in their eyes that'll make them turn away to take refuge in the objects of vision they can see, and which they'll think are actually clearer than the things being shown to them?"
 
 "true," he said.
-
-## The Ascent Goes Crazy
 
 "and suppose once more that they're reluctantly dragged up a steep and rough climb, and held fast until they're forced into the presence of the sun itself, aren't they likely to be in pain and pressed? when they approach the light their eyes will be absolutely cooked, and they won't be able to see anything at all of what are now called realities."
 
@@ -60,8 +50,6 @@
 
 "clearly," he said, "they'd see the sun first and then reason about it."
 
-## The Return Home Hits Different
-
 "and when they remember their old home, and the 'wisdom' of the cave and their fellow prisoners, don't you think they'd be happy about the change and feel bad for them?"
 
 "absolutely they would."
@@ -74,8 +62,6 @@ and endure literally anything rather than think like they do and live that way?"
 
 "yes," he said, "i think they'd rather suffer anything than accept those false beliefs and live that miserable life."
 
-## The Cave Return Goes Badly
-
 "imagine once more," i said, "such a person suddenly coming out of the sun to be replaced in their old situation; wouldn't they definitely have their eyes full of darkness?"
 
 "for sure," he said.
@@ -84,13 +70,9 @@ and endure literally anything rather than think like they do and live that way?"
 
 "no question," he said.
 
-## The Allegory Explained
-
 "this entire allegory," i said, "you can now connect, dear glaucon, to the previous argument; the prison house is the world of sight, the light of the fire is the sun, and you won't misunderstand me if you interpret the journey upwards as the soul's ascent into the intellectual world according to my humble belief, which, since you wanted to hear it, i've shared—whether it's right or wrong only god knows. but whether true or false, my opinion is that in the world of knowledge the idea of good appears last of all, and is seen only with effort; and when seen, is also understood to be the universal author of all things beautiful and right, parent of light and of the lord of light in this visible world, and the immediate source of reason and truth in the intellectual world; and that this is the power that anyone who wants to act rationally either in public or private life must have their eye fixed on."
 
 "i agree," he said, "as far as i can understand you."
-
-## Why Philosophers Seem Weird
 
 "moreover," i said, "you shouldn't be surprised that those who reach this blessed vision don't want to deal with human affairs; cause their souls are always trying to speedrun back to the upper world where they want to stay; which desire of theirs is totally natural, if our allegory is accurate."
 
@@ -100,13 +82,9 @@ and endure literally anything rather than think like they do and live that way?"
 
 "nothing surprising at all," he replied.
 
-## Two Types of Confusion
-
 "anyone with common sense will remember that the confusion of the eyes comes in two types and from two causes, either from coming out of the light or going into the light, which is true of the mind's eye just as much as the physical eye; and whoever remembers this when they see someone whose vision is confused and weak won't be too quick to laugh; they'll first ask whether that soul has come out of the brighter life and can't see because they're not used to the dark, or turned from darkness to day and is overwhelmed by excess of light. and they'll consider one happy in their condition and state of being, and pity the other; or if they want to laugh at the soul that comes from below into the light, there's more reason in that than laughing at someone who returns from above out of the light into the cave."
 
 "that," he said, "is an absolutely based distinction."
-
-## Education Isn't What They Think
 
 "but then, if i'm right, certain professors of education are capping when they say they can put knowledge into the soul that wasn't there before, like putting sight into blind eyes."
 
@@ -116,8 +94,6 @@ and endure literally anything rather than think like they do and live that way?"
 
 "very true."
 
-## The Art of Conversion
-
 "and mustn't there be some art that'll achieve conversion in the easiest and quickest way; not implanting the faculty of sight, cause that already exists, but it's been turned in the wrong direction and is looking away from the truth?"
 
 "yes," he said, "such an art probably exists."
@@ -125,8 +101,6 @@ and endure literally anything rather than think like they do and live that way?"
 "and whereas the other so-called virtues of the soul seem to be similar to bodily qualities, cause even when they're not originally there they can be implanted later by habit and practice, the virtue of wisdom more than anything else contains a divine element that always remains, and by this conversion is made useful and beneficial; or on the other hand, harmful and useless. did you never notice the sharp intelligence flashing from the keen eye of a clever villain—how eager they are, how clearly their trash soul sees the way to their goal; they're the opposite of blind, but their keen eyesight is forced into the service of evil, and they're destructive in proportion to their cleverness?"
 
 "very true," he said.
-
-## Cutting Away The Weights
 
 "but what if such natures had been freed in their youth; and they'd been severed from those sensual pleasures, like eating and drinking, which like lead weights were attached to them at birth, and which drag them down and turn their soul's vision towards the things below—if, i say, they'd been released from these impediments and turned in the opposite direction, the very same faculty in them would've seen the truth as sharply as they see what their eyes are turned to now."
 
@@ -136,8 +110,6 @@ and endure literally anything rather than think like they do and live that way?"
 
 "very true," he replied.
 
-## The Founders' Job
-
 "then," i said, "the job of us who are the founders of the state will be to force the best minds to reach that knowledge we've already shown to be the greatest of all—they must continue to ascend until they arrive at the good; but when they've ascended and seen enough we can't allow them to do what they do now."
 
 "what do you mean?"
@@ -145,8 +117,6 @@ and endure literally anything rather than think like they do and live that way?"
 "i mean that they stay in the upper world: but this can't be allowed; they must be made to descend again among the prisoners in the cave, and share their labors and honors, whether they're worth having or not."
 
 "but isn't this unfair?" he said; "should we give them a worse life when they could have a better one?"
-
-## The Greater Good
 
 "you've forgotten again, bestie," i said, "the intention of the legislator, who didn't aim at making any one class in the state happy above the rest; the happiness was to be in the whole state, and they held the citizens together by persuasion and necessity, making them benefactors of the state, and therefore benefactors of each other; to this end they created them, not to please themselves, but to be their instruments in binding up the state."
 
@@ -156,8 +126,6 @@ and endure literally anything rather than think like they do and live that way?"
 
 "absolutely true," he replied.
 
-## The Just Will Serve
-
 "and will our students, when they hear this, refuse to take their turn at the grind of state, when they're allowed to spend most of their time with each other in the heavenly light?"
 
 "impossible," he answered; "cause they're just people, and the commands we impose on them are just; there's no doubt that every one of them will take office as a harsh necessity, and not like our current rulers of state."
@@ -165,8 +133,6 @@ and endure literally anything rather than think like they do and live that way?"
 "yes, bestie," i said; "and there's the point. you must create for your future rulers another and better life than that of a ruler, and then you might have a well-ordered state; cause only in the state that offers this will they rule who are truly rich, not in silver and gold, but in virtue and wisdom, which are the true blessings of life. whereas if they go to public administration poor and hungry for their own private advantage, thinking that's where they'll secure the chief good, order can never exist; cause they'll be fighting about office, and the civil and domestic beefs that arise will ruin the rulers themselves and the whole state."
 
 "most true," he replied.
-
-## Philosophy vs Politics
 
 "and the only life that looks down on the life of political ambition is that of true philosophy. do you know any other?"
 
@@ -180,8 +146,6 @@ and endure literally anything rather than think like they do and live that way?"
 
 "they're the ones, and i'll choose them," he replied.
 
-## The Education Question
-
 "and now should we consider how such guardians will be produced, and how they're to be brought from darkness to light—like some are said to have ascended from the underworld to the gods?"
 
 "absolutely," he replied.
@@ -193,8 +157,6 @@ and endure literally anything rather than think like they do and live that way?"
 "and shouldn't we investigate what sort of knowledge has the power to cause such a change?"
 
 "definitely."
-
-## The Warrior Scholar Problem
 
 "what sort of knowledge is there that would draw the soul from becoming to being? and another consideration just hit me: you'll remember that our young people are supposed to be warrior athletes?"
 
@@ -212,8 +174,6 @@ and endure literally anything rather than think like they do and live that way?"
 
 "exactly."
 
-## Music and Gym Aren't It
-
 "there was gymnastics which dealt with the growth and decay of the body, and therefore can be considered as dealing with generation and corruption?"
 
 "true."
@@ -229,8 +189,6 @@ and endure literally anything rather than think like they do and live that way?"
 "you're absolutely accurate," i said, "in your memory; in music there definitely was nothing like that. but what branch of knowledge is there, dear glaucon, that's of the desired nature; since all the useful arts were considered mid by us?"
 
 "undoubtedly; and yet if music and gymnastics are excluded, and the arts are also excluded, what remains?"
-
-## The Universal Subject
 
 "well," i said, "there might be nothing left of our special subjects; and then we'll have to take something that's not special, but universally applicable."
 
@@ -248,8 +206,6 @@ and endure literally anything rather than think like they do and live that way?"
 
 "for sure."
 
-## Agamemnon Can't Count
-
 "then palamedes, whenever he appears in tragedy, proves agamemnon is ridiculously unfit to be a general. did you never notice how he claims he invented number, and numbered the ships and set up the army ranks at troy; which implies they'd never been numbered before, and agamemnon must be supposed literally unable to count his own feet—how could he if he didn't know numbers? and if that's true, what sort of general must he have been?"
 
 "i'd say an absolutely weird one, if that's accurate."
@@ -257,8 +213,6 @@ and endure literally anything rather than think like they do and live that way?"
 "can we deny that a warrior should know arithmetic?"
 
 "definitely they should, if they're to have the smallest understanding of military tactics, or indeed, i'd rather say, if they're to be human at all."
-
-## The Number Theory
 
 "i'd like to know whether you have the same idea i have about this study?"
 
@@ -271,8 +225,6 @@ and endure literally anything rather than think like they do and live that way?"
 "i'll try," i said; "and i wish you'd join the investigation with me, and say 'yes' or 'no' when i attempt to distinguish in my own mind what branches of knowledge have this attracting power, so we can have clearer proof that arithmetic is, as i suspect, one of them."
 
 "explain," he said.
-
-## Perception Categories
 
 "i mean to say that objects of sense are of two kinds; some of them don't invite thought because the sense is an adequate judge of them; while in the case of other objects sense is so sus that further investigation is absolutely required."
 
@@ -289,8 +241,6 @@ and endure literally anything rather than think like they do and live that way?"
 "you can imagine they're seen up close: and here's the point."
 
 "what is it?"
-
-## The Finger Example
 
 "each of them equally appears as a finger, whether seen in the middle or at the edge, whether white or black, or thick or thin—it makes no difference; a finger is a finger all the same. in these cases someone isn't forced to ask thought the question 'what is a finger?' cause sight never suggests to the mind that a finger is anything other than a finger."
 

@@ -1,7 +1,3 @@
-# Book 3, Chapter 4: The Noble Lie (Server Lore & Origin Story Patch)
-
-## The Final Boss Selection Process
-
 "fr fr."
 
 "but what happens when someone does literally nothing else, never touches grass with the muses? doesn't even that intelligence debuff they might have, with zero taste for learning or research or thinking or culture, become weak and blind and cooked? their mind never getting that activation energy or nutrition, their senses still foggy af?"
@@ -23,8 +19,6 @@
 "and we'll always need someone like this moderating our server if the government build is gonna last."
 
 "yeah they're absolutely mandatory."
-
-## Speedrunning Past the Tutorial Details
 
 "so those are our education and training principles. why would we waste time going into specifics about our citizens' dance emotes, hunting mechanics, gym competitions, or racing minigames? they all follow the general meta, and once you've got that, finding the details is ez."
 
@@ -58,11 +52,9 @@
 
 "for sure."
 
-"and they simp hardest for whatever they think shares their interests - when it wins they win, when it takes an L they take an L?"
+"and they simp hardest for whatever they think shares their interests - when it wins they win, when it takes an l they take an l?"
 
 "very true."
-
-## The Guardian Tryouts Begin
 
 "so we need to filter them. let's track which guardians show the most dedication their whole lives to doing what helps the server, and the biggest hatred for anything that griefs it."
 
@@ -96,8 +88,6 @@
 
 "yeah, everything that tricks you could be called enchantment."
 
-## The Three-Stage Guardian Test
-
 "so like i was saying, we need to find who are the best guardians of their own belief that whatever helps the server should guide their whole lives. we need to watch them from spawn, making them do tasks where they're most likely to forget or get tricked. whoever remembers and doesn't get mind-gamed gets selected, whoever fails gets filtered. that's the strat?"
 
 "yes."
@@ -109,8 +99,6 @@
 "and then," socrates continues, "we need to test them with illusions - that's the third test type - see how they handle it. like testing young horses with noise and chaos to check if they're scared, we bring youth through horror maps then immediately to pleasure zones, testing them harder than fire tests gold. we need to see if they're immune to all mind control, always keeping composure, being good guardians of themselves and the culture they downloaded, maintaining proper rhythm and harmony in all situations - those would be most valuable to themselves and the server. whoever passes the test at every rank - kid, teen, adult - becomes ruler and guardian of the server, getting honors while alive and the most elite funeral and memorial monuments when dead. whoever fails gets rejected. that's my general take on selecting rulers and guardians, not being super precise about it."
 
 "speaking generally, i agree with that approach."
-
-## The Guardian Class System Reveal
 
 "and maybe the term 'guardian' in the fullest sense should only apply to this highest tier who protect us from foreign griefers and keep peace between citizens, so one group doesn't have the will and the other doesn't have the power to harm us. the young players we called guardians before should actually be called auxiliaries and support class for the ruler's principles."
 
@@ -128,8 +116,6 @@
 
 "speak bestie, don't be scared."
 
-## The Server Origin Story Gets Dropped
-
 "okay i'll say it, though idk how to look you in the face or what words to use for this absolutely unhinged fanfic i'm about to gradually reveal - first to rulers, then soldiers, then everyone. they need to be told their youth was just a dream, their education and training from us was just an illusion. in reality, during all that time they were being crafted and fed in earth's womb, where they and their gear were manufactured. when completed, earth (their mother) spawned them up. so their country being their mother and nurse, they must protect and advise her, defending against attacks, and see other citizens as earth siblings."
 
 "you had good reason to be embarrassed about that lie you were gonna tell," glaucon roasts him.
@@ -137,8 +123,6 @@
 "true," socrates admits, "but there's more - i've only told half. 'citizens,' we'll tell them in our lore, 'you're all brothers, but god crafted you differently. some have command powers with gold mixed in their code, so they get maximum respect. others are made with silver to be auxiliaries. others meant to be farmers and crafters have bronze and iron. the class generally passes to offspring, but since you're all from the same source code, sometimes gold parents spawn silver kids or silver parents spawn gold kids. god's first commandment to rulers, the most important thing to guard, is the purity of the metal classes. they must check what elements their kids have - if a gold or silver parent spawns a bronze/iron kid, nature demands a rank adjustment. the ruler can't be soft just because it's their kid who has to descend to farmer or crafter class. same way, artisan kids with gold or silver get promoted to guardian or auxiliary. there's a prophecy that when someone with bronze or iron guards the server, it gets destroyed.' that's the story - any chance our citizens will believe it?"
 
 "not this generation," glaucon replies. "no way to pull that off. but their kids might believe it, and their kids' kids, and everyone after."
-
-## The Guardian Housing Situation
 
 "i see the difficulty," socrates says, "but fostering this belief will make them care more about the city and each other. enough about the fanfic though - let it spread through the rumor mill while we gear up our earth-born heroes and deploy them under their commanders. let them scout and pick a spot where they can best suppress any internal rebellion from toxic players and defend against external griefers who might raid like wolves. there they set up base, sacrifice to the proper gods, and prepare their housing."
 
@@ -167,8 +151,6 @@
 "i can't be that confident bestie. i'm way more certain they should be educated, and that real education (whatever that is) will most likely civilize them in their relationships with each other and those they protect."
 
 "very true."
-
-## The Communist Guardian Lifestyle
 
 "and not just their education - their housing and everything should be designed to not corrupt their guardian virtue or tempt them to prey on other citizens. any rational person would agree."
 

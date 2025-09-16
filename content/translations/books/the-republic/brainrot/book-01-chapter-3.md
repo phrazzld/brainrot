@@ -1,10 +1,6 @@
-# Book 1, Chapter 3: Thrasymachus Gets Absolutely Cooked (Philosophically)
+"and that's literally why eagerly volunteering for leadership positions instead of waiting to be forced into them is considered cringe behavior. the absolute worst punishment is getting ruled by someone who's literally worse than you at everything. i think fear of that l is what makes decent people finally accept power positions - not because they want to or think it'll be fun, but because they literally have no choice and can't find anyone better or even equal to pass it to."
 
-## Why Good People Hate Being in Charge
-
-"and that's literally why eagerly volunteering for leadership positions instead of waiting to be forced into them is considered cringe behavior. the absolute worst punishment is getting ruled by someone who's literally worse than you at everything. i think fear of that L is what makes decent people finally accept power positions - not because they want to or think it'll be fun, but because they literally have no choice and can't find anyone better or even equal to pass it to."
-
-"fr if we had a city full of only good people, they'd literally compete to NOT be in charge just like people now compete TO be in charge. that would prove that real rulers aren't supposed to care about their own benefit but their subjects'. everyone would rather receive benefits than deal with the hassle of managing them for others. so i absolutely cannot vibe with thrasymachus saying justice benefits the stronger."
+"fr if we had a city full of only good people, they'd literally compete to not be in charge just like people now compete to be in charge. that would prove that real rulers aren't supposed to care about their own benefit but their subjects'. everyone would rather receive benefits than deal with the hassle of managing them for others. so i absolutely cannot vibe with thrasymachus saying justice benefits the stronger."
 
 "but we can debate that later. what's way more concerning is thrasymachus claiming that unjust people's lives are more profitable than just people's lives. that take hits different and seems way more serious. which lifestyle do you prefer glaucon? whose take is actually based?"
 
@@ -17,8 +13,6 @@
 "should we try to find a way to show him he's capping?"
 
 "absolutely we should."
-
-## The Debate Format Discussion
 
 "if he drops a whole essay and we drop a counter-essay listing all the benefits of being just, and he responds and we clap back, we'll need judges to count up all the supposed benefits on each side and decide who wins. but if we keep doing what we've been doing - making admissions to each other - we can be both judge and lawyer at the same time."
 
@@ -55,8 +49,6 @@
 "and you think unjust people are actually wise and good?"
 
 "yeah," he said, "at least the ones who can go full villain mode and subjugate entire states and nations. but you probably think i'm talking about pickpockets. even that's profitable if you don't get caught, but it's nothing compared to what i'm talking about."
-
-## The Virtue Debate Gets Spicy
 
 "i understand what you mean thrasymachus," i replied, "but i'm absolutely shook that you're putting injustice in the same category as wisdom and virtue, and justice with the opposite."
 
@@ -109,8 +101,6 @@
 "so each person is whatever their similar people are?"
 
 "definitely," he replied.
-
-## The Skill Check Analogy
 
 "perfect thrasymachus," i said. "now let's talk about skills: you'd agree one person is a musician and another isn't?"
 
@@ -186,8 +176,6 @@
 
 "so just people turned out to be wise and good while unjust people are evil and ignorant."
 
-## Thrasymachus Starts Malding
-
 thrasymachus made all these admissions but not smoothly like i'm telling it - he was fighting it the whole time with extreme resistance. it was a hot summer day and this dude was literally sweating buckets. and then i saw something i'd never seen before - thrasymachus actually blushing fr fr. 
 
 now that we agreed justice was virtue and wisdom while injustice was vice and ignorance, i moved to another point:
@@ -203,8 +191,6 @@ now that we agreed justice was virtue and wisdom while injustice was vice and ig
 "nothing else," i said. "if that's what you're doing, do it. i'll keep asking questions."
 
 "go ahead."
-
-## The Teamwork Makes the Dream Work Argument
 
 "i'll repeat my earlier question so we can properly examine justice vs injustice. we said injustice is stronger and more powerful than justice. but now that justice equals wisdom and virtue, it's obviously stronger than injustice since injustice is ignorance - nobody can deny that anymore. but i want to look at it differently thrasymachus. you wouldn't deny that a state can be unjust and try to enslave other states or already have them enslaved?"
 
@@ -258,9 +244,7 @@ now that we agreed justice was virtue and wisdom while injustice was vice and ig
 
 "go off, enjoy your argument feast. i won't oppose you and upset everyone here."
 
-"then keep answering and let me finish my meal. we've already shown that just people are clearly wiser, better, and more capable than unjust people, and that unjust people literally can't cooperate. honestly when we talk about evil people working together effectively, that's cap - if they were completely evil they would've destroyed each other. obviously they had some justice in them that let them cooperate. if they had zero justice they would've griefed their victims AND each other. they were only half-villains in their crimes - if they were complete villains with zero justice, they'd be completely unable to do anything. that's the actual truth, not what you said initially."
-
-## The Excellence and Function Argument
+"then keep answering and let me finish my meal. we've already shown that just people are clearly wiser, better, and more capable than unjust people, and that unjust people literally can't cooperate. honestly when we talk about evil people working together effectively, that's cap - if they were completely evil they would've destroyed each other. obviously they had some justice in them that let them cooperate. if they had zero justice they would've griefed their victims and each other. they were only half-villains in their crimes - if they were complete villains with zero justice, they'd be completely unable to do anything. that's the actual truth, not what you said initially."
 
 "but whether just people have better and happier lives than unjust people is another question we need to examine. i think they do based on what we've said, but let's investigate more since this isn't some minor thing - we're talking about how to live life."
 
@@ -334,8 +318,6 @@ now that we agreed justice was virtue and wisdom while injustice was vice and ig
 
 "i agree."
 
-## The Soul's Function and Justice
-
 "alright, doesn't the soul have functions that nothing else can do? like managing, ruling, planning, and stuff like that. aren't these exclusive to the soul?"
 
 "nothing else can do them."
@@ -378,10 +360,8 @@ now that we agreed justice was virtue and wisdom while injustice was vice and ig
 
 "then my blessed thrasymachus, injustice can never be more profitable than justice."
 
-## Socrates Admits He's Still Lost
-
 "let this be your festival feast socrates," thrasymachus said.
 
 "thanks to you," i said, "now that you've stopped being toxic and gotten chill. but honestly i haven't had a good feast - and that's my fault not yours. like someone with no self-control who keeps grabbing tastes of every dish before properly enjoying the previous one, i've jumped from topic to topic without figuring out what we originally wanted - what justice actually is."
 
-"i abandoned that search and got distracted by whether justice is virtue and wisdom or evil and stupidity. then when another question came up about whether injustice or justice is more profitable, i couldn't resist jumping to that. so the result of this whole conversation is that i literally know nothing. because i don't know what justice IS, so i definitely can't know if it's a virtue or not, or whether just people are happy or unhappy. i'm literally stuck at the loading screen of philosophy rn fr fr no cap."
+"i abandoned that search and got distracted by whether justice is virtue and wisdom or evil and stupidity. then when another question came up about whether injustice or justice is more profitable, i couldn't resist jumping to that. so the result of this whole conversation is that i literally know nothing. because i don't know what justice is, so i definitely can't know if it's a virtue or not, or whether just people are happy or unhappy. i'm literally stuck at the loading screen of philosophy rn fr fr no cap."

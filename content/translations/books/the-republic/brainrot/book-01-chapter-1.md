@@ -1,301 +1,279 @@
-# Book 1, Chapter 1: The Piraeus Festival & Cephalus on Getting Old
+so yesterday i was heading down to the piraeus with my boy glaucon (ariston's son) to check out this new festival for the goddess bendis - basically the thracian version of artemis. had to pay my respects and all that, plus i was lowkey curious about how they'd throw down for this thing since it was literally the first time.
 
-## The Squad Links Up at the Festival
+not gonna lie, the local crew's parade was fire, but the thracians? they went absolutely off. their whole procession was next level, maybe even better than ours.
 
-So yesterday I was heading down to the Piraeus with my boy Glaucon (Ariston's son) to check out this new festival for the goddess Bendis - basically the Thracian version of Artemis. Had to pay my respects and all that, plus I was lowkey curious about how they'd throw down for this thing since it was literally the first time.
+after we finished praying and vibing with the whole spectacle, we started heading back to the city. that's when polemarchus (cephalus's son) spotted us from across the way as we were about to dip. he sent his servant running after us, and this dude literally grabbed my cloak from behind like "yo, polemarchus wants y'all to wait up."
 
-Not gonna lie, the local crew's parade was fire, but the Thracians? They went absolutely OFF. Their whole procession was next level, maybe even better than ours.
+i turned around like "where's your boss at?"
 
-After we finished praying and vibing with the whole spectacle, we started heading back to the city. That's when Polemarchus (Cephalus's son) spotted us from across the way as we were about to dip. He sent his servant running after us, and this dude literally grabbed my cloak from behind like "yo, Polemarchus wants y'all to wait up."
+kid goes: "he's right there, coming up behind you. just hold up a sec."
 
-I turned around like "where's your boss at?"
+"bet," said glaucon, and sure enough, polemarchus pulled up a minute later with the whole crew - adeimantus (glaucon's brother), niceratus (son of nicias), and a bunch of other people who'd been at the festival.
 
-Kid goes: "He's right there, coming up behind you. Just hold up a sec."
+polemarchus hits me with: "socrates, looks like you and your homie are already trying to bounce back to the city."
 
-"Bet," said Glaucon, and sure enough, Polemarchus pulled up a minute later with the whole crew - Adeimantus (Glaucon's brother), Niceratus (son of Nicias), and a bunch of other people who'd been at the festival.
+"you're not wrong," i said.
 
-## The Boys Try to Kidnap Socrates (Respectfully)
+"but check it - you see how deep we're rolling?"
 
-Polemarchus hits me with: "Socrates, looks like you and your homie are already trying to bounce back to the city."
+"obviously."
 
-"You're not wrong," I said.
+"so are you stronger than all of us combined? because if not, you're gonna have to stay here."
 
-"But check it - you see how deep we're rolling?"
+"what if there's another option though? what if we can convince you to let us go?"
 
-"Obviously."
+"bro, can you convince us if we literally refuse to listen?"
 
-"So are you stronger than all of us combined? Because if not, you're gonna have to stay here."
+glaucon was like: "that's... actually impossible."
 
-"What if there's another option though? What if we can convince you to let us go?"
+"then we're definitely not listening. count on it."
 
-"Bro, can you convince us if we literally refuse to listen?"
+adeimantus jumped in: "wait, did nobody tell you about the torch race on horseback tonight? for the goddess?"
 
-Glaucon was like: "That's... actually impossible."
+"on horses?" i said. "that's actually wild. so they're gonna be passing torches while riding?"
 
-"Then we're definitely not listening. Count on it."
+"yeah," said polemarchus, "and there's gonna be an all-night festival too. absolute vibes. we should grab dinner then go check it out - there's gonna be mad young people there and we can chop it up. come on, stay. don't be difficult."
 
-Adeimantus jumped in: "Wait, did nobody tell you about the torch race on horseback tonight? For the goddess?"
+glaucon looked at me: "i mean... seems like we have to."
 
-"ON HORSES?" I said. "That's actually wild. So they're gonna be passing torches while riding?"
+"aight, fine," i said.
 
-"Yeah," said Polemarchus, "and there's gonna be an all-night festival too. Absolute vibes. We should grab dinner then go check it out - there's gonna be mad young people there and we can chop it up. Come on, stay. Don't be difficult."
+so we went to polemarchus's place, and the whole gang was there - his brothers lysias and euthydemus, plus thrasymachus from chalcedon, charmantides from paeania, and cleitophon (aristonymus's son). 
 
-Glaucon looked at me: "I mean... seems like we have to."
+cephalus, polemarchus's dad, was there too. hadn't seen him in a minute and damn, he looked old. he was sitting on this cushioned chair with a whole garland on his head because he'd just finished sacrificing in the courtyard. there were chairs set up in a semicircle and we all sat down around him.
 
-"Aight, fine," I said.
+he got hyped when he saw me and was like: "socrates! you never come visit anymore! if i could still make it to the city, i wouldn't be pressed about it, but i'm too old for that journey now. you should pull up to the piraeus more often. real talk - the older i get, the less i care about physical pleasures and the more i'm here for good conversation. it just hits different now. so don't leave me hanging - come through and hang with these young bloods. we go way back, you'll feel right at home."
 
-## Cephalus's House Party (But Make It Philosophy)
+i replied: "honestly cephalus, nothing makes me happier than talking with older people. y'all are like travelers who've been down a road i might have to take someday. i need to know - is it rough out there or is it chill? you're at what the poets call the 'threshold of old age' - so what's the tea? does life get harder at the end or what's your take?"
 
-So we went to Polemarchus's place, and the whole gang was there - his brothers Lysias and Euthydemus, plus Thrasymachus from Chalcedon, Charmantides from Paeania, and Cleitophon (Aristonymus's son). 
+"i'll keep it 100 with you, socrates," he said. "me and my age group, we flock together - birds of a feather and all that. and at our meetups, most of these dudes are always complaining: 'i can't eat, i can't drink, i can't get it up anymore. life used to slap but now it's over, existence is literally pain.' some of them go on about how their families disrespect them now, crying about how being old is the root of all their problems.
 
-Cephalus, Polemarchus's dad, was there too. Hadn't seen him in a minute and damn, he looked OLD. He was sitting on this cushioned chair with a whole garland on his head because he'd just finished sacrificing in the courtyard. There were chairs set up in a semicircle and we all sat down around him.
+"but here's the thing, socrates - they're blaming the wrong thing. if being old was actually the problem, then i'd feel the same way, and so would every other old person. but that's not my experience, and i know others who vibe the same way. 
 
-He got hyped when he saw me and was like: "Socrates! You never come visit anymore! If I could still make it to the city, I wouldn't be pressed about it, but I'm too old for that journey now. You should pull up to the Piraeus more often. Real talk - the older I get, the less I care about physical pleasures and the more I'm here for good conversation. It just hits different now. So don't leave me hanging - come through and hang with these young bloods. We go way back, you'll feel right at home."
+"i remember this one time with sophocles (the poet, absolute legend). someone asked him, 'yo sophocles, can you still get it on at your age? you still got it?' and he said, 'bro, thank god that's over. i feel like i escaped from some unhinged, rabid master.'
 
-## The "Getting Old" Discourse
+"that always stuck with me, and it still hits the same. when you're old, all those wild desires finally chill out. like sophocles said, you're not dealing with one crazy master anymore - you're free from all of them. the real tea is that people's complaints about getting old and family drama all come from the same place: it's not about age, it's about your personality. if you're naturally chill and content, getting old is whatever. but if you're always pressed and miserable, then being young or old is gonna suck for you."
 
-I replied: "Honestly Cephalus, nothing makes me happier than talking with older people. Y'all are like travelers who've been down a road I might have to take someday. I need to know - is it rough out there or is it chill? You're at what the poets call the 'threshold of old age' - so what's the tea? Does life get harder at the end or what's your take?"
+i was impressed and wanted him to keep going, so i said: "that's deep, cephalus, but i feel like most people aren't buying what you're selling. they probably think you're cool with being old because you're loaded, and everyone knows money makes everything easier."
 
-"I'll keep it 100 with you, Socrates," he said. "Me and my age group, we flock together - birds of a feather and all that. And at our meetups, most of these dudes are always complaining: 'I can't eat, I can't drink, I can't get it up anymore. Life used to slap but now it's over, existence is literally pain.' Some of them go on about how their families disrespect them now, crying about how being old is the root of all their problems.
+"you're right," he said, "they do think that, and they're not completely wrong - but not as right as they think either. it's like that story about themistocles. some dude from seriphus (tiny irrelevant island) was hating on him, saying he was only famous because he was from athens, not because he actually did anything. themistocles clapped back: 'if you were from athens or i was from your trash island, neither of us would be famous.'
 
-"But here's the thing, Socrates - they're blaming the wrong thing. If being old was actually the problem, then I'd feel the same way, and so would every other old person. But that's not my experience, and I know others who vibe the same way. 
+"same energy applies to being old and poor. a good person who's broke is still gonna struggle with old age, but a trash person with money is never gonna be at peace with themselves anyway."
 
-"I remember this one time with Sophocles (the poet, absolute legend). Someone asked him, 'Yo Sophocles, can you still get it on at your age? You still got it?' And he said, 'Bro, thank GOD that's over. I feel like I escaped from some unhinged, rabid master.'
+i asked: "so did you inherit your bag or did you make it yourself?"
 
-"That always stuck with me, and it still hits the same. When you're old, all those wild desires finally chill out. Like Sophocles said, you're not dealing with one crazy master anymore - you're free from ALL of them. The real tea is that people's complaints about getting old and family drama all come from the same place: it's not about age, it's about your personality. If you're naturally chill and content, getting old is whatever. But if you're always pressed and miserable, then being young OR old is gonna suck for you."
+"made it? socrates, you trying to know my grindset? when it comes to making money, i'm mid - right between my grandpa and my dad. my grandpa (also named cephalus) went absolutely crazy and tripled his inheritance. but my dad lysanias? he fumbled the bag and lost most of it. i'll be happy if i can leave my sons just a bit more than what i got."
 
-## Money Talks
+"i asked because you seem pretty chill about money, which is usually more of an inherited wealth vibe than new money energy. people who make their own fortune have this extra attachment to it - like how creators stan their own content or parents with their kids. they love money both for what it can do and because they made it. that's why they're exhausting to be around - all they talk about is their gains."
 
-I was impressed and wanted him to keep going, so I said: "That's deep, Cephalus, but I feel like most people aren't buying what you're selling. They probably think you're cool with being old because you're LOADED, and everyone knows money makes everything easier."
+"facts," he said.
 
-"You're right," he said, "they do think that, and they're not completely wrong - but not as right as they think either. It's like that story about Themistocles. Some dude from Seriphus (tiny irrelevant island) was hating on him, saying he was only famous because he was from Athens, not because he actually did anything. Themistocles clapped back: 'If you were from Athens or I was from your trash island, neither of us would be famous.'
+"for sure, but i got another question - what's the biggest w you've gotten from being wealthy?"
 
-"Same energy applies to being old and poor. A good person who's broke is still gonna struggle with old age, but a trash person with money is never gonna be at peace with themselves anyway."
+"something most people wouldn't believe. listen, socrates - when someone feels death pulling up, they start stressing about things they never cared about before. all those stories about the underworld and getting punished for your sins? used to be jokes, but now they're living rent-free in your head. maybe it's because you're weak from age, maybe it's because you're getting closer to finding out - either way, you see things clearer. paranoia and anxiety start hitting different, and you're up at night thinking about everyone you ever did dirty.
 
-I asked: "So did you inherit your bag or did you make it yourself?"
+"if you've been moving foul your whole life, you're gonna be waking up scared like a little kid, full of dread. but if you know you've been good? then you got what pindar called 'sweet hope' as your nurse:
 
-"Made it? Socrates, you trying to know my grindset? When it comes to making money, I'm mid - right between my grandpa and my dad. My grandpa (also named Cephalus) went absolutely crazy and tripled his inheritance. But my dad Lysanias? He fumbled the bag and lost most of it. I'll be happy if I can leave my sons just a bit more than what I got."
+*'hope vibes with the soul of the just and holy,  
+nursing their old age, walking with them on their journey -  
+hope, the most powerful force swaying the restless human soul.'*
 
-"I asked because you seem pretty chill about money, which is usually more of an inherited wealth vibe than new money energy. People who make their own fortune have this extra attachment to it - like how creators stan their own content or parents with their kids. They love money both for what it can do AND because they made it. That's why they're exhausting to be around - all they talk about is their gains."
+"bars, right? and this is where being rich really helps - not for everyone, but for good people. you never have to cap or scam anyone, whether on purpose or by accident. when you're ready to check out, you're not stressed about owing the gods their sacrifices or owing people money. peace of mind about that stuff? that's where wealth really comes in clutch. there's other benefits for sure, but for someone with sense, this is the biggest w."
 
-"Facts," he said.
+"that's deep, cephalus," i said. "but let's talk about justice - is it really just telling the truth and paying what you owe? nothing more? aren't there exceptions? 
 
-## The Real Value of Being Rich (It's Not What You Think)
+"like, imagine your homie gave you his guns to hold when he was thinking straight, but then he comes back for them when he's having a whole mental health crisis. should you give them back? nobody would say you should, or that you'd be 'just' for doing it. same with being honest - you shouldn't always tell the truth to someone in that state."
 
-"For sure, but I got another question - what's the biggest W you've gotten from being wealthy?"
+"you're absolutely right," he said.
 
-"Something most people wouldn't believe. Listen, Socrates - when someone feels death pulling up, they start stressing about things they never cared about before. All those stories about the underworld and getting punished for your sins? Used to be jokes, but now they're living rent-free in your head. Maybe it's because you're weak from age, maybe it's because you're getting closer to finding out - either way, you see things clearer. Paranoia and anxiety start hitting different, and you're up at night thinking about everyone you ever did dirty.
+"so then telling the truth and paying debts isn't really the definition of justice."
 
-"If you've been moving foul your whole life, you're gonna be waking up scared like a little kid, full of dread. But if you know you've been good? Then you got what Pindar called 'sweet hope' as your nurse:
+that's when polemarchus jumped in: "actually it is, if we're believing simonides."
 
-*'Hope vibes with the soul of the just and holy,  
-Nursing their old age, walking with them on their journey -  
-Hope, the most powerful force swaying the restless human soul.'*
+"well," said cephalus, "i gotta head out to handle the sacrifices. i'm passing the argument baton to polemarchus and the squad."
 
-"Bars, right? And this is where being rich really helps - not for everyone, but for good people. You never have to cap or scam anyone, whether on purpose or by accident. When you're ready to check out, you're not stressed about owing the gods their sacrifices or owing people money. Peace of mind about that stuff? That's where wealth really comes in clutch. There's other benefits for sure, but for someone with sense, this is the biggest W."
+"polemarchus is your heir, right?" i asked.
 
-## Socrates Starts His Trolling Arc
+"for sure," he laughed, and dipped to go do his religious duties.
 
-"That's deep, Cephalus," I said. "But let's talk about justice - is it really just telling the truth and paying what you owe? Nothing more? Aren't there exceptions? 
+"so, heir to the argument," i said to polemarchus, "what did simonides say about justice that you think slaps?"
 
-"Like, imagine your homie gave you his guns to hold when he was thinking straight, but then he comes back for them when he's having a whole mental health crisis. Should you give them back? Nobody would say you should, or that you'd be 'just' for doing it. Same with being honest - you shouldn't always tell the truth to someone in that state."
+"he said paying back what you owe is justice, and i think he's spitting facts."
 
-"You're absolutely right," he said.
+"i mean, i don't want to doubt someone that wise, but while you might get what he means, i'm lost. he definitely doesn't mean what we were just talking about - giving weapons back to someone who's lost it. but you can't deny that a deposit is something you owe, right?"
 
-"So then telling the truth and paying debts isn't really the definition of justice."
+"true."
 
-That's when Polemarchus jumped in: "Actually it is, if we're believing Simonides."
+"but when the person asking for it back isn't mentally stable, you definitely shouldn't return it?"
 
-"Well," said Cephalus, "I gotta head out to handle the sacrifices. I'm passing the argument baton to Polemarchus and the squad."
+"definitely not."
 
-"Polemarchus is your heir, right?" I asked.
+"so simonides wasn't including that scenario when he said paying debts is justice?"
 
-"For sure," he laughed, and dipped to go do his religious duties.
+"nah, because he thinks friends should always do good for their friends, never harm."
 
-## Polemarchus Takes Over (This Should Be Good)
+"oh, so returning gold to your friend when it would hurt them isn't really 'paying a debt' in his view?"
 
-"So, heir to the argument," I said to Polemarchus, "what did Simonides say about justice that you think slaps?"
+"exactly."
 
-"He said paying back what you owe is justice, and I think he's spitting facts."
+"but what about enemies? should we give them what we owe them too?"
 
-"I mean, I don't want to doubt someone that wise, but while you might get what he means, I'm lost. He definitely doesn't mean what we were just talking about - giving weapons back to someone who's lost it. But you can't deny that a deposit is something you owe, right?"
+"for sure," he said. "we owe them what's appropriate for an enemy - which is to say, we owe them ls."
 
-"True."
+"sounds like simonides was being cryptic like poets do. he really meant justice is giving everyone what's appropriate for them, but he called it a 'debt.'"
 
-"But when the person asking for it back isn't mentally stable, you definitely shouldn't return it?"
+"that's gotta be it."
 
-"Definitely not."
+"aight, so if we asked him what medicine gives as its 'appropriate thing' and to whom, what would he say?"
 
-"So Simonides wasn't including that scenario when he said paying debts is justice?"
+"obviously medicine gives drugs, food, and drinks to bodies."
 
-"Nah, because he thinks friends should always do good for their friends, never harm."
+"and cooking?"
 
-"Oh, so returning gold to your friend when it would hurt them isn't really 'paying a debt' in his view?"
+"seasoning to food."
 
-"Exactly."
+"so what does justice give, and to whom?"
 
-"But what about enemies? Should we give them what we owe them too?"
+"following the pattern, justice gives good things to friends and bad things to enemies."
 
-"For sure," he said. "We owe them what's appropriate for an enemy - which is to say, we owe them Ls."
+"so that's what he meant?"
 
-"Sounds like Simonides was being cryptic like poets do. He really meant justice is giving everyone what's appropriate for them, but he called it a 'debt.'"
+"i think so."
 
-"That's gotta be it."
+"and who's best at helping friends and hurting enemies when they're sick?"
 
-"Aight, so if we asked him what medicine gives as its 'appropriate thing' and to whom, what would he say?"
+"doctors."
 
-"Obviously medicine gives drugs, food, and drinks to bodies."
+"what about at sea?"
 
-"And cooking?"
+"ship pilots."
 
-"Seasoning to food."
+"so when is the just person most useful for helping friends and harming enemies?"
 
-"So what does justice give, and to whom?"
+"in war - fighting enemies and making alliances with friends."
 
-"Following the pattern, justice gives good things to friends and bad things to enemies."
+"but when someone's healthy, they don't need a doctor?"
 
-"So that's what he meant?"
+"nope."
 
-"I think so."
+"and when you're not sailing, you don't need a pilot?"
 
-## The Most Useless Virtue (Socrates Going Crazy)
+"nope."
 
-"And who's best at helping friends and hurting enemies when they're sick?"
+"so in peacetime, justice is useless?"
 
-"Doctors."
+"that's cap, i don't think that at all."
 
-"What about at sea?"
+"you think justice has value in peacetime too?"
 
-"Ship pilots."
+"yeah."
 
-"So when is the just person most useful for helping friends and harming enemies?"
+"like farming for getting grain?"
 
-"In war - fighting enemies and making alliances with friends."
+"yeah."
 
-"But when someone's healthy, they don't need a doctor?"
+"or shoemaking for getting shoes?"
 
-"Nope."
+"exactly."
 
-"And when you're not sailing, you don't need a pilot?"
+"so what's justice good for getting in peacetime?"
 
-"Nope."
+"it's useful for contracts and partnerships, socrates."
 
-"So in peacetime, justice is useless?"
+"partnerships? like what?"
 
-"That's cap, I don't think that at all."
+"like business deals."
 
-"You think justice has value in peacetime too?"
+"but is a just person or a skilled player a better partner for board games?"
 
-"Yeah."
+"the skilled player."
 
-"Like farming for getting grain?"
+"what about for building walls?"
 
-"Yeah."
+"obviously the builder."
 
-"Or shoemaking for getting shoes?"
+"so what partnership is the just person better at than experts? like how a musician is better than a just person at making music together?"
 
-"Exactly."
+"money partnerships."
 
-"So what's justice good for getting in peacetime?"
+"but not when you're actually using the money, right? like if you're buying a horse, you want a horse expert, not just a 'just' person?"
 
-"It's useful for contracts and partnerships, Socrates."
+"true."
 
-"Partnerships? Like what?"
+"same with buying a ship - you'd want a shipbuilder or sailor?"
 
-"Like business deals."
+"facts."
 
-"But is a just person or a skilled player a better partner for board games?"
+"so when is the just person the best choice for dealing with money?"
 
-"The skilled player."
+"when you need it kept safe."
 
-"What about for building walls?"
+"you mean when the money is just sitting there, not being used?"
 
-"Obviously the builder."
+"exactly."
 
-"So what partnership is the just person better at than experts? Like how a musician is better than a just person at making music together?"
+"so justice is only useful when money is useless?"
 
-"Money partnerships."
+"apparently..."
 
-"But not when you're actually USING the money, right? Like if you're buying a horse, you want a horse expert, not just a 'just' person?"
+"and same with everything else - justice is useful for keeping things safe when you're not using them, but useless when you actually need to use them?"
 
-"True."
+"seems like it..."
 
-"Same with buying a ship - you'd want a shipbuilder or sailor?"
+"then justice is pretty mid, honestly. but let's think about this: isn't the person who's best at landing hits also best at blocking them?"
 
-"Facts."
+"for sure."
 
-"So when is the just person the best choice for dealing with money?"
+"and whoever's best at preventing disease could also cause it?"
 
-"When you need it kept safe."
+"true."
 
-"You mean when the money is just sitting there, not being used?"
+"and the best guard is also the best thief?"
 
-"Exactly."
+"i guess..."
 
-"So justice is only useful when money is useless?"
+"so if the just person is good at keeping money safe, they're also good at stealing it?"
 
-"Apparently..."
+"that's what the argument says..."
 
-"And same with everything else - justice is useful for keeping things safe when you're NOT using them, but useless when you actually need to use them?"
+"so the just person is actually a thief? you must've learned this from homer - he loves autolycus (odysseus's grandpa) and literally says he was 'the goat at theft and lying.' so you, homer, and simonides all agree: justice is just theft with style - stealing for your friends and from your enemies?"
 
-"Seems like it..."
+"no! that's not what i meant at all! though honestly i'm confused about what i did mean. but i still think justice is helping friends and harming enemies."
 
-"Then justice is pretty mid, honestly. But let's think about this: isn't the person who's best at landing hits also best at blocking them?"
+"quick question though: when you say 'friends and enemies,' do you mean people who actually are good or bad, or just people who seem that way?"
 
-"For sure."
+"people love who they think is good and hate who they think is bad, obviously."
 
-"And whoever's best at preventing disease could also cause it?"
+"but don't people get this wrong all the time? think good people are bad and vice versa?"
 
-"True."
+"yeah, that happens."
 
-"And the best guard is also the best thief?"
+"so for those people, good people are their enemies and bad people are their friends?"
 
-"I guess..."
+"i guess..."
 
-"So if the just person is good at keeping money safe, they're also good at stealing it?"
+"and then it would be 'just' for them to help bad people and hurt good people?"
 
-"That's what the argument says..."
+"apparently."
 
-"So the just person is actually a thief? You must've learned this from Homer - he loves Autolycus (Odysseus's grandpa) and literally says he was 'the GOAT at theft and lying.' So you, Homer, and Simonides all agree: justice is just theft with style - stealing for your friends and from your enemies?"
+"but good people are just and don't do wrong?"
 
-"NO! That's not what I meant at all! Though honestly I'm confused about what I did mean. But I still think justice is helping friends and harming enemies."
+"facts."
 
-## The Friend/Enemy Problem
+"so according to your argument, it's just to hurt innocent people?"
 
-"Quick question though: when you say 'friends and enemies,' do you mean people who actually ARE good or bad, or just people who SEEM that way?"
+"nah socrates, that's toxic."
 
-"People love who they think is good and hate who they think is bad, obviously."
+"so we should help just people and harm unjust ones?"
 
-"But don't people get this wrong all the time? Think good people are bad and vice versa?"
+"that sounds better."
 
-"Yeah, that happens."
+"but wait - if someone's bad at reading people and has trash friends and good enemies, then they should harm their friends and help their enemies? that's literally the opposite of what simonides said."
 
-"So for those people, good people are their enemies and bad people are their friends?"
+"damn, you're right. i think we messed up defining 'friend' and 'enemy.'"
 
-"I guess..."
+"how'd we mess up, polemarchus?"
 
-"And then it would be 'just' for them to help bad people and hurt good people?"
+"we said a friend is someone who seems good."
 
-"Apparently."
-
-"But good people are just and don't do wrong?"
-
-"Facts."
-
-"So according to your argument, it's just to hurt innocent people?"
-
-"Nah Socrates, that's toxic."
-
-"So we should help just people and harm unjust ones?"
-
-"That sounds better."
-
-"But wait - if someone's bad at reading people and has trash friends and good enemies, then they should harm their friends and help their enemies? That's literally the opposite of what Simonides said."
-
-"Damn, you're right. I think we messed up defining 'friend' and 'enemy.'"
-
-"How'd we mess up, Polemarchus?"
-
-"We said a friend is someone who seems good."
-
-"So how do we fix it?"
+"so how do we fix it?"

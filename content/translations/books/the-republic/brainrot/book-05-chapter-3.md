@@ -1,7 +1,3 @@
-# Book 5, Chapter 3: War & Unity Among Greeks (Philosopher Kings Drop The Biggest Plot Twist)
-
-## Greeks Don't Grief Other Greeks (Final Rules)
-
 "so they'll have their little beefs like people who know they're gonna make up eventually?"
 
 "definitely."
@@ -18,15 +14,11 @@
 
 "agreed; and we can also agree that these rules, like all our previous patches, absolutely slap."
 
-## Glaucon Calls Out The Elephant in the Room
-
 "but fr socrates," he said, "if you're allowed to keep going like this you'll completely forget the other question you yeeted aside at the start of this whole discourse: is this entire server build even possible, and if so, how? cause i'm totally ready to admit that your proposed system, if actually feasible, would be absolutely goated for the state. i'll even add what you skipped over—that your citizens would be the most cracked warriors ever, never abandoning their positions, cause they all know each other and call each other father, brother, son; and if you add women to the armies, whether in same rank or behind as backup, either to terrify enemies or as support when needed, i know they'd be literally unstoppable; and there's mad domestic benefits you haven't even mentioned which i also fully acknowledge. but since i admit all these w's and however many more you want if only this state of yours could actually exist, we don't need more hype about benefits; assuming the state exists, let's turn to the possibility question and the actual methods—the rest is whatever."
 
 "bruh you instantly raid me when i try to take a breather," i said, "and show no mercy; i barely survived the first and second waves, and you don't even realize you're now bringing the third wave, which is the biggest and heaviest one. when you see and hear the third wave, i think you'll be more understanding and admit that some fear and hesitation was natural about proposing something this absolutely unhinged that i'm about to explain and investigate."
 
 "the more you make these appeals," he said, "the more determined we are that you explain how this state is possible: speak up right now no cap."
-
-## The Ideals vs Reality Cope Session
 
 "let me start by reminding you we got here searching for justice and injustice."
 
@@ -64,8 +56,6 @@
 
 "yeah, i will."
 
-## The One Change to Rule Them All
-
 "let me next try showing what bug in states causes their current trash administration, and what's the minimum change to let a state transform into the true form; and let the change, if possible, be just one thing, or if not, two; but definitely make changes as few and small as possible."
 
 "definitely," he replied.
@@ -78,8 +68,6 @@
 
 "proceed."
 
-## The Philosopher King Bomb Drop
-
 "i said: 'until philosophers become kings, or the current kings and princes of this world get the spirit and power of philosophy, and political greatness and wisdom meet in one person, and those mid natures who pursue either one exclusively get forced to step aside, cities will never escape their griefs—nor will humanity, i believe—and only then will this state we described have a chance to exist and see daylight.' that was the thought, dear glaucon, that i wanted to say but held back cause it seemed too wild; cause being convinced that no other state can achieve happiness public or private is definitely a hard pill to swallow."
 
 "socrates, what the actual fuck?" he said. "you better realize the take you just dropped will have countless people, including very respectable ones, metaphorically ripping off their shirts immediately, grabbing whatever weapon's nearby, and rushing you at full speed before you know what's happening, planning to do god knows what; and if you don't prepare a defense and dodge, you'll get absolutely cooked by their roasts, no cap."
@@ -87,8 +75,6 @@
 "you got me into this mess," i said.
 
 "and i was absolutely right to; but i'll do everything to help you escape. i can only offer goodwill and good advice, and maybe i can give better answers to your questions than others—that's all. so with me as your support player, do your best to convince the doubters you're right."
-
-## Who Are The Real Philosophers Though
 
 "i gotta try," i said, "since you're offering such goated assistance. and i think if we're gonna escape, we need to explain who we mean when we say philosophers should rule the state; then we can defend ourselves: we'll show some natures should study philosophy and lead the state, while others aren't built for philosophy and should be followers not leaders."
 
@@ -113,8 +99,6 @@
 "and same with clout chasers; if they can't command an army, they'll command a file; if they can't get honored by actually important people, they're happy being honored by lesser mid people—but they need some kind of honor."
 
 "exactly."
-
-## The True Philosophy Enjoyer
 
 "let me ask again: does someone who wants any type of good things want the whole type or just part?"
 
@@ -155,8 +139,6 @@ glaucon said: "if curiosity makes philosophers, you'll find lots of weird people
 "and same for just and unjust, good and evil, and every other class: taken alone, each is one; but from various combos with actions and things and each other, they appear in different lights and seem like many?"
 
 "very true."
-
-## The Sight-Lovers vs Truth-Lovers Distinction
 
 "and this is how i separate the sight-loving, art-loving, practical people from those i'm talking about, who alone deserve the philosopher name."
 

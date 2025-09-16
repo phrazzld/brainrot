@@ -1,7 +1,3 @@
-# Book 7, Chapter 2: Return to the Cave (The Math Grindset)
-
-## The Unity Paradox
-
 "certainly."
 
 "and if each is one, and both are two, she'll conceive the two as being in a state of division, cause if they were undivided they could only be conceived as one?"
@@ -24,8 +20,6 @@
 
 "most true."
 
-## The Mind Activation Protocol
-
 "this was what i meant when i talked about impressions that invite the intellect, or the reverse—those that are simultaneous with opposite impressions invite thought; those that aren't simultaneous don't."
 
 "i understand," he said, "and i agree with you."
@@ -41,8 +35,6 @@
 "yes," i said; "and this being true of one must be equally true of all number?"
 
 "definitely."
-
-## Numbers Hit Different
 
 "and all arithmetic and calculation deal with number?"
 
@@ -64,8 +56,6 @@
 
 "that's excellent," he said.
 
-## The Number Game Is Deep
-
 "yes," i said, "and now having talked about it, i gotta add how absolutely goated the science is! and in how many ways it helps our desired goal, if pursued in the spirit of a philosopher, and not of a shopkeeper!"
 
 "how do you mean?"
@@ -77,8 +67,6 @@
 "now, suppose someone said to them: yo besties, what are these cracked numbers you're reasoning about, where, as you say, there's a unity like you demand, and each unit is equal, invariable, indivisible—what would they answer?"
 
 "they'd answer, as i imagine, that they're talking about those numbers that can only be realized in thought."
-
-## Pure Mind Energy
 
 "then you see that this knowledge can truly be called necessary, absolutely requiring the use of pure intelligence to reach pure truth?"
 
@@ -96,8 +84,6 @@
 
 "i agree."
 
-## The Geometry Arc
-
 "let this then be one of our education subjects. and next, should we investigate whether the related science also concerns us?"
 
 "you mean geometry?"
@@ -109,8 +95,6 @@
 "yes," i said, "but for that purpose a tiny bit of either geometry or calculation would be enough; the question relates more to the greater and more advanced part of geometry—whether that tends at all to make easier the vision of the idea of good; and there, as i was saying, all things tend which force the soul to turn her gaze towards that place where the full perfection of being is, which she should, by all means, see."
 
 "true," he said.
-
-## Geometry's Real Purpose
 
 "then if geometry forces us to view being, it concerns us; if becoming only, it doesn't concern us?"
 
@@ -136,8 +120,6 @@
 
 "nothing will be more likely to have that effect."
 
-## Geometry Is Mandatory
-
 "then nothing should be more strictly required than that the inhabitants of your based city should absolutely learn geometry. plus the science has indirect effects, which aren't small."
 
 "what kind?" he said.
@@ -150,8 +132,6 @@
 
 "let's do it," he replied.
 
-## The Astronomy Debate
-
 "and suppose we make astronomy the third—what do you say?"
 
 "i'm absolutely down for it," he said; "the observation of seasons and months and years is as essential to the general as it is to the farmer or sailor."
@@ -159,8 +139,6 @@
 "i'm lowkey amused," i said, "at your fear of the world, which makes you guard against seeming to insist on useless studies; and i totally admit the difficulty of believing that in every person there's an eye of the soul which, when lost and dimmed by other pursuits, is by these purified and re-lit; and it's way more precious than ten thousand bodily eyes, cause by it alone is truth seen. now there are two classes of people: one class who'll agree with you and take your words as gospel; another class to whom they'll be completely meaningless, and who'll naturally think they're pointless stories, cause they see no profit to be gained from them. and therefore you better decide right now which of the two you're proposing to argue with. you'll probably say with neither, and that your main goal in carrying on the argument is your own improvement; at the same time you don't mind if others get any benefit they can receive."
 
 "i think i'd prefer to carry on the argument mainly for myself."
-
-## The Order Correction
 
 "then take a step back, cause we've gone wrong in the order of the sciences."
 
@@ -182,8 +160,6 @@
 
 "true," he said.
 
-## The Real Astronomy
-
 "then assuming the science now skipped would come into existence if encouraged by the state, let's go on to astronomy, which will be fourth."
 
 "the right order," he replied. "and now, socrates, since you roasted the basic way i praised astronomy before, my praise will be given in your own spirit. cause everyone, as i think, must see that astronomy forces the soul to look upwards and leads us from this world to another."
@@ -198,8 +174,6 @@
 
 "you," i replied, "have in your mind an absolutely goated conception of our knowledge of things above. and i bet if someone threw their head back and studied the fancy ceiling, you'd still think their mind was perceiving, not their eyes. and you're probably right, and i might be a simpleton: but, in my opinion, only knowledge of being and the unseen can make the soul look upwards, and whether someone gapes at the heavens or blinks on the ground, trying to learn some particular of sense, i'd deny they can learn, cause nothing like that is matter of science; their soul is looking downwards, not upwards, whether their way to knowledge is by water or land, whether they float, or just lie on their back."
 
-## The Astronomy Roast
-
 "i acknowledge," he said, "the justice of your callout. still, i'd like to know how astronomy can be learned in any way more helpful to that knowledge we're talking about?"
 
 "i'll tell you," i said: "the starry heaven we see is made on a visible ground, and therefore, although the most beautiful and perfect of visible things, must necessarily be considered way inferior to the true motions of absolute swiftness and absolute slowness, which are relative to each other, and carry with them what's contained in them, in the true number and in every true figure. now, these are to be understood by reason and intelligence, but not by sight."
@@ -209,8 +183,6 @@
 "the sparkly heavens should be used as a pattern and with a view to that higher knowledge; their beauty is like the beauty of figures or pictures excellently made by the hand of daedalus, or some other cracked artist, which we might happen to see; any geometrician who saw them would appreciate the fire workmanship, but they'd never dream of thinking that in them they could find the true equal or the true double, or the truth of any other proportion."
 
 "no," he replied, "such an idea would be ridiculous."
-
-## The Real Real Astronomy
 
 "and won't a true astronomer have the same feeling when they look at the movements of the stars? won't they think that heaven and the things in heaven are framed by the creator of them in the most perfect way? but they'll never imagine that the proportions of night and day, or of both to the month, or of the month to the year, or of the stars to these and to each other, and any other things that are material and visible can also be eternal and subject to no deviation—that would be absurd; and it's equally absurd to grind so hard investigating their exact truth."
 
@@ -224,8 +196,6 @@
 
 "no," he said, "not without thinking."
 
-## The Harmony Arc
-
 "motion," i said, "has many forms, not just one; two of them are obvious enough even to mid intellects like ours; and there are others, as i imagine, which can be left to smarter people."
 
 "but where are the two?"
@@ -237,8 +207,6 @@
 "the second," i said, "would seem relatively to the ears to be what the first is to the eyes; cause i think that as the eyes are designed to look up at the stars, so are the ears to hear harmonious motions; and these are sister sciences—as the pythagoreans say, and we, glaucon, agree with them?"
 
 "yes," he replied.
-
-## The Music Theory Beef
 
 "but this," i said, "is a massive grind, and therefore we better go and learn from them; and they'll tell us whether there are any other applications of these sciences. at the same time, we must not lose sight of our own higher goal."
 

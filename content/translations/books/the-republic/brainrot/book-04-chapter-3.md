@@ -1,7 +1,3 @@
-# Book 4, Chapter 3: The Tripartite Soul (Your Brain's Three-Way Civil War)
-
-## The Thirst Trap Paradox 
-
 "so like the soul of some thirsty ahh ohio sigma who's absolutely parched fr fr, when they're experiencing that dehydration arc, they're only chasing that hydration station rizz? that's literally their whole gyatt damn grindset?"
 
 "lowkey that's obvious no cap."
@@ -26,8 +22,6 @@
 
 "clearly no cap."
 
-## The Soul's Internal Beef Explained
-
 "so we can lowkey assume they're two different npcs in this rpg, and they're beefing with each other on main; the one where your character does the thinking minigame, we're calling that the rational principle dlc of the soul, and the other one where you're simping and starving and thirsting and catching all the feels about random desires, that's the irrational appetitive expansion pack, the bestie of various pleasures and getting your dopamine hits?"
 
 "yeah," he said, "we can absolutely assume they're built different fr."
@@ -36,17 +30,13 @@
 
 "i'd probably say it's giving appetite vibes."
 
-## The Leontius Incident (Peak Rubbernecking Energy)
-
-"okay so," i said, "there's this absolutely unhinged story i heard that goes hard. so leontius, aglaion's son, was coming up from the piraeus one day, walking under the north wall on the outside like some side quest npc, when he peeped some bodies just laying there at the execution spot giving corpse energy. man felt that morbid curiosity hitting but also that 'this is cursed content' dread. for a minute he's fighting his inner demons and covering his eyes like 'i'm not looking at this traumatic ahh content,' but eventually the curiosity got him in a chokehold; he forced his eyes open and literally ran up to the bodies like 'LOOK YOU DEGENERATE LITTLE ORBS, FEAST YOUR EYES ON THIS BEAUTIFUL CURSED IMAGERY.'"
+"okay so," i said, "there's this absolutely unhinged story i heard that goes hard. so leontius, aglaion's son, was coming up from the piraeus one day, walking under the north wall on the outside like some side quest npc, when he peeped some bodies just laying there at the execution spot giving corpse energy. man felt that morbid curiosity hitting but also that 'this is cursed content' dread. for a minute he's fighting his inner demons and covering his eyes like 'i'm not looking at this traumatic ahh content,' but eventually the curiosity got him in a chokehold; he forced his eyes open and literally ran up to the bodies like 'look you degenerate little orbs, feast your eyes on this beautiful cursed imagery.'"
 
 "bruh i heard that story too," he said.
 
 "the moral is that anger sometimes throws hands with desire like they're two completely different final bosses."
 
 "yeah that's literally the whole point," he said.
-
-## Spirit Teams Up With Reason (Plot Twist)
 
 "and aren't there mad other cases where we see that when someone's desires are going absolutely feral and overriding their logic chip, they're roasting themselves and getting heated at the violence happening in their own brain, and in this whole civil war situation - which is giving january 6th energy but in your soul - their spirit energy is riding with team reason? but for the passionate spirited element to link up with desires when reason says 'absolutely not bestie,' that's the kind of plot twist i don't think you've ever caught yourself doing, and i'd bet my whole streaming setup you've never seen anyone else on that timing either?"
 
@@ -56,11 +46,9 @@
 
 "that's true no cap," he said.
 
-"but when they think THEY'RE the one getting griefed? then they're malding and seething, taking the side of what they think is justice energy; and because they're dealing with hunger or cold or other debuffs they're even more locked in to keep grinding until they either get the dub or get eliminated; or until they hear the voice of the shepherd (which is reason) telling their attack dog to stop barking and touch grass."
+"but when they think they're the one getting griefed? then they're malding and seething, taking the side of what they think is justice energy; and because they're dealing with hunger or cold or other debuffs they're even more locked in to keep grinding until they either get the dub or get eliminated; or until they hear the voice of the shepherd (which is reason) telling their attack dog to stop barking and touch grass."
 
 "the metaphor is absolutely goated," he replied, "and in our server, like we were saying, the auxiliaries were supposed to be the guard dogs listening to the voice of the rulers who are basically their handlers."
-
-## The Three-Way Split Confirmed
 
 "i can tell you're picking up what i'm putting down," i said, "but there's another angle i need you to peep."
 
@@ -78,8 +66,6 @@
 
 "but that's easy to prove bestie - you can literally observe that baby humans are absolutely loaded with spirit energy from the second they spawn, but some of them never unlock the reason skill tree, and most of them get it way later in the game."
 
-## Homer Knew What Was Up
-
 "that's absolutely fire," i said, "and you can see the same passion energy in animals which is extra proof you're spitting. and we can also reference those homer bars we quoted before:
 
 'he beat his chest and told his soul to stop being cringe'
@@ -91,8 +77,6 @@ cause in this verse homer clearly understood that the power doing big brain calc
 "so after absolutely grinding through this discourse, we finally touched grass and can agree that the same principles that exist in the state also exist in the individual's soul, and there's three of them giving trinity energy."
 
 "exactly."
-
-## The Individual-State Parallel Goes Hard
 
 "so doesn't that mean the individual becomes galaxy brain the same way and through the same quality that makes the state have that 500 iq energy?"
 
@@ -114,8 +98,6 @@ cause in this verse homer clearly understood that the power doing big brain calc
 
 "yeah," he said, "we absolutely need to keep that downloaded in our memory banks."
 
-## The Soul's Proper Org Chart
-
 "and shouldn't the rational principle, which has that galaxy brain energy and watches over the whole soul like some admin, be the one running the server, with the passionate spirited principle being the mod and ally?"
 
 "definitely bestie."
@@ -127,8 +109,6 @@ cause in this verse homer clearly understood that the power doing big brain calc
 "and these two, after getting properly raised and educated, knowing their actual job descriptions, will rule over the appetitive part - which in every one of us is the biggest partition of the soul and naturally the greediest mf for getting that bag. they'll be watching it like hawks, making sure that while it's getting thick and strong from all those 'bodily pleasures' as the boomers call them, the appetitive soul doesn't try to overthrow the government and enslave the parts that aren't supposed to be its subjects, completely griefing everyone's whole existence?"
 
 "very true fr," he said.
-
-## Defense Squad Formation
 
 "won't these two together be the ultimate defense team for the whole soul and body against external threats? one's doing the strategic planning while the other's out there throwing hands under their leader's command, courageously executing all the strats and plays?"
 
@@ -145,8 +125,6 @@ cause in this verse homer clearly understood that the power doing big brain calc
 "and wouldn't you say they're temperate when these same elements are in a wholesome harmony, where the one ruling principle of reason and the two subject principles of spirit and desire all agree that reason should be the main character and don't try to start a revolution?"
 
 "definitely," he said, "that's literally what temperance is whether we're talking about the state or the individual."
-
-## Justice Finally Revealed (It Was Inside Us All Along)
 
 "and obviously," i said, "we've explained multiple times how and through what quality someone becomes just."
 
@@ -184,8 +162,6 @@ cause in this verse homer clearly understood that the power doing big brain calc
 
 "nah i'm good," he said.
 
-## Dream Achievement Unlocked
-
 "so our dream just became reality; that sus feeling we had at the beginning when we started building our city, that some divine rng must have guided us to a primary form of justice, just got confirmed?"
 
 "yes definitely."
@@ -197,8 +173,6 @@ cause in this verse homer clearly understood that the power doing big brain calc
 "but irl justice was exactly what we been describing, except it's not about the external you but the internal you, which is your true self and what actually matters. the just person doesn't let the different elements inside them grief each other or steal each other's jobs - they organize their inner life, become their own boss and their own constitution, achieving inner peace. when they've connected the three principles inside them - which are basically like the high, low, and middle notes on the musical scale plus all the intervals between - when they've linked all these together and gone from being multiple personalities to one unified perfectly balanced character build, then they can start taking action, whether it's about securing the bag, taking care of their body, or dealing with political or private business. they always think that whatever preserves and helps this harmonious condition is just and based action, with the knowledge supervising it being wisdom, while whatever ruins this condition is unjust action, with the opinion behind it being ignorance."
 
 "you're speaking absolute truth, socrates."
-
-## Victory Royale
 
 "very good; so if we claimed we discovered the just person and just state, plus the nature of justice in both of them, we wouldn't be capping?"
 
@@ -215,8 +189,6 @@ cause in this verse homer clearly understood that the power doing big brain calc
 "wouldn't injustice have to be some kind of civil war between the three principles - being a karen, interfering, and having one part of the soul trying to coup the whole thing, claiming authority it has no business having, like some rebellious peasant against the true king who they're naturally supposed to serve? all this chaos and delusion is injustice, intemperance, cowardice, ignorance, and literally every form of being cringe?"
 
 "exactly bestie."
-
-## Health Check for the Soul
 
 "and if we understand justice and injustice's nature, then the meaning of acting unjustly, being unjust, or acting justly becomes crystal clear?"
 
@@ -250,8 +222,6 @@ cause in this verse homer clearly understood that the power doing big brain calc
 
 "absolutely."
 
-## The Final Boss Question (Already Defeated)
-
 "we still got our og question about whether justice or injustice gives better drops: what's more profitable - being just, acting justly, and grinding virtue whether people see it or not, or being unjust and acting unjustly if you don't get caught and reformed?"
 
 "ngl socrates," he said, "the question just became a joke. we know that when your body's constitution is cooked, life becomes literally unplayable even with all the gourmet food, drinks, wealth, and power; so are we really gonna pretend that when the actual core life principle gets corrupted and griefed, life's still worth living if you can do whatever you want except acquire justice and virtue or escape injustice and vice? especially after we just explained what they actually are?"
@@ -259,8 +229,6 @@ cause in this verse homer clearly understood that the power doing big brain calc
 "yeah," i said, "the question's definitely become cringe. but since we're close to the spot where we can see the truth with maximum graphics settings using our own eyes, let's not rage quit now."
 
 "definitely not," he replied.
-
-## The Vice Showcase
 
 "pull up here," i said, "and observe the various forms of being trash - well, the ones worth looking at anyway."
 

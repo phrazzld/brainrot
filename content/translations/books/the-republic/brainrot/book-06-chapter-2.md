@@ -1,20 +1,12 @@
-# Book 6, Chapter 2: Corruption of Philosophy (How Society Ruins The Based Ones)
-
-## The Agreement Continues
-
 "i absolutely agree," he replied.
 
 "then let me get your sign-off on another observation."
 
 "what you bout to say?"
 
-## Sophists Are Just Crowd Pleasers
-
 "why is it that all those mercenary individuals, whom the masses call sophists and think are their enemies, actually don't teach anything except the opinions of the masses themselves, literally just the opinions from their assemblies; and this is what they call wisdom? i might compare them to someone who studies the moods and desires of some absolutely massive beast they're feeding—they'd learn how to approach and handle it, also when and why it's dangerous or chill, and what its different noises mean, and what sounds from others either calm it down or make it go absolutely feral; and imagine further that when, by constantly being around it, they've perfected all this, they call their knowledge wisdom, and make it into a system or art which they start teaching, although they have literally no idea what they mean by the principles or passions they're talking about, but calls this honorable and that dishonorable, or good or evil, or just or unjust, all based on the tastes and vibes of the giant beast. good they pronounce to be whatever the beast enjoys and evil to be whatever it hates; and they can give no other explanation except that the just and noble are the necessary, having never actually seen, and having no ability to explain to others the nature of either, or the difference between them, which is absolutely massive. by heaven, wouldn't such a person be a rare educator fr?"
 
 "indeed they would."
-
-## The Crowd Can't Handle Philosophy
 
 "and how is someone who thinks wisdom is just reading the room and vibes of the random multitude, whether in painting or music, or finally in politics, different from who i've been describing? cause when someone hangs with the masses and shows them their poem or other art or whatever service they've done for the state, making them their judges when they don't have to, the so-called necessity of diomedes will force them to produce whatever they hype. and yet the reasons they give to justify their own notions about what's honorable and good are absolutely ridiculous. did you ever hear any that weren't?"
 
@@ -36,8 +28,6 @@
 
 "that's obvious."
 
-## The Philosopher's Impossible Situation
-
 "then, do you see any way the philosopher can be preserved in their calling to the end? and remember what we were saying about them, that they need to have quickness and memory and courage and magnificence—these were admitted by us to be the true philosopher's gifts."
 
 "yes."
@@ -53,8 +43,6 @@
 "falling at their feet, they'll make requests and honor them and gas them up, because they want to get in their good graces now for the power they'll one day have."
 
 "that often happens," he said.
-
-## The Young Prodigy Gets Corrupted
 
 "and what will someone like this likely do under such circumstances, especially if they're a citizen of a major city, rich and noble, and absolutely built? won't they be full of boundless aspirations, and think they can manage the affairs of both greeks and barbarians, and having gotten such notions in their head won't they inflate and elevate themselves with empty clout and senseless pride?"
 
@@ -72,8 +60,6 @@
 
 "impossible."
 
-## The Best Natures Get The Worst Corruption
-
 "then weren't we right saying that even the very qualities that make someone a philosopher can, if they're poorly educated, divert them from philosophy, no less than wealth and its accessories and the other so-called goods of life?"
 
 "we were absolutely right."
@@ -82,8 +68,6 @@
 
 "that's absolutely true," he said.
 
-## Philosophy Gets Left On Read
-
 "and so philosophy is left desolate, with her marriage rite incomplete: cause her own have fallen away and ghosted her, and while they're living a fake and cringe life, other unworthy people, seeing that she has no relatives to protect her, slide in and dishonor her; and attach to her the roasts which, as you say, her haters utter, who claim of her stans that some are useless, and most deserve the worst punishment."
 
 "that's definitely what people say."
@@ -91,8 +75,6 @@
 "yeah; and what else would you expect," i said, "when you think of the tiny creatures who, seeing this land open to them—a land stocked with fancy names and showy titles—like prisoners escaping prison into a sanctuary, jump out of their trades into philosophy; those who do so being probably the most clever at their own trash crafts? cause, although philosophy is in this bad state, there still remains a dignity about her not found in the arts. and many are thus attracted by her whose natures are imperfect and whose souls are damaged and disfigured by their pettiness, as their bodies are by their trades and crafts. isn't this unavoidable?"
 
 "yes."
-
-## The Cringe Philosophy Larpers
 
 "aren't they exactly like some bald little mechanic who just got out of jail and came into money; he takes a bath and puts on a new fit, and is dressed up like a groom going to marry his boss's daughter, who's left poor and abandoned?"
 
@@ -106,15 +88,11 @@
 
 "no doubt," he said.
 
-## The Small Remnant
-
 "then, adeimantus," i said, "the worthy disciples of philosophy will be just a small remnant: maybe some noble and well-educated person, stuck in exile in her service, who without corrupting influences remains devoted to her; or some based soul born in a mid city, whose politics they despise and ignore; and there might be a gifted few who leave the arts, which they justly despise, and come to her;—or perhaps there are some restrained by our friend theages' bridle; cause everything in theages' life conspired to divert him from philosophy; but bad health kept him away from politics. my own case of the internal sign is barely worth mentioning, cause rarely, if ever, has such a monitor been given to anyone else. those who belong to this small class have tasted how sweet and blessed philosophy is, and have also seen enough of the madness of the masses; and they know that no politician is honest, nor is there any champion of justice whose side they can fight on and be saved. such a person can be compared to someone who's fallen among wild beasts—they won't join in the wickedness of their fellows, but neither can they alone resist all their fierce natures, and therefore seeing they'd be useless to the state or their friends, and realizing they'd throw away their life without doing any good to themselves or others, they stay quiet and mind their own business. they're like someone who, in a storm of dust and sleet that the driving wind blows around, takes shelter under a wall; and seeing the rest of humanity full of wickedness, they're content if only they can live their own life pure from evil or unrighteousness, and depart in peace and good will, with bright hopes."
 
 "yes," he said, "and they'll have done great work before they leave."
 
 "great work—yes; but not the greatest, unless they find a state suitable to them; cause in a state that suits them, they'll have larger growth and be the savior of their country as well as themselves."
-
-## No Current Government Works
 
 "the causes why philosophy has such a bad rep have now been sufficiently explained: the injustice of the charges against her has been shown—is there anything more you want to say?"
 
@@ -132,8 +110,6 @@
 
 "what's left?"
 
-## The Philosophy Education Problem
-
 "the question of how the study of philosophy can be ordered so it doesn't ruin the state: all great attempts come with risk; 'hard is the good,' as they say."
 
 "still," he said, "let's clear up this point, and the inquiry will be complete."
@@ -142,15 +118,11 @@
 
 "in what way?"
 
-## The Current System Is Backwards
-
 "at present," i said, "philosophy students are super young; starting when they're barely past childhood, they only devote time saved from making money and housekeeping to such pursuits; and even those who are supposed to have the most philosophical spirit, when they come within sight of the great difficulty of the subject, i mean dialectic, they dip out. in later life when invited by someone else, they might, perhaps, go hear a lecture, and they make a big deal about this, cause philosophy isn't considered their proper business: finally, when they're old, in most cases they're extinguished more truly than heraclitus' sun, since they never light up again." (heraclitus said the sun was extinguished every evening and relit every morning.)
 
 "but what should be their course?"
 
 "literally the opposite. in childhood and youth their study, and what philosophy they learn, should be suited to their young age: during this period while they're growing towards adulthood, the main care should be given to their bodies so they can use them in philosophy's service; as life advances and the intellect begins to mature, let them increase the gymnastics of the soul; but when their strength fails and is past civil and military duties, then let them range freely and engage in no serious labor, as we intend them to live happily here, and crown this life with similar happiness in another."
-
-## The Resistance Will Be Real
 
 "how genuinely serious you are, socrates!" he said; "i'm sure of that; and yet most of your listeners, if i'm not mistaken, are likely to be even more serious in their opposition to you, and will never be convinced; thrasymachus least of all."
 
@@ -162,8 +134,6 @@
 
 "no way."
 
-## The Masses Don't Know Real Philosophy
-
 "no bestie, and they've rarely, if ever, heard free and noble sentiments; such as people utter when they're genuinely and by every means in their power seeking truth for knowledge's sake, while they look coldly on the subtleties of controversy, whose end is opinion and beef, whether they encounter them in courts or society."
 
 "they're strangers," he said, "to the words you speak."
@@ -171,8 +141,6 @@
 "and this is what we foresaw, and this is why truth forced us to admit, not without fear and hesitation, that neither cities nor states nor individuals will ever reach perfection until the small class of philosophers we called useless but not corrupt are providentially forced, whether they want to or not, to take care of the state, and until similar necessity is laid on the state to obey them; or until kings, or if not kings, the sons of kings or princes, are divinely inspired with true love of true philosophy. that either or both of these alternatives are impossible, i see no reason to claim: if they were, we might indeed be justly roasted as dreamers and delusional. am i not right?"
 
 "absolutely right."
-
-## The Philosophy Muse
 
 "if then, in the countless ages of the past, or right now in some foreign place that's far away and beyond our knowledge, the perfected philosopher is or has been or will be compelled by superior power to take charge of the state, we're ready to argue to the death that this our constitution has been, and is—yeah, and will be whenever the muse of philosophy is queen. there's no impossibility in all this; that there's difficulty, we acknowledge ourselves."
 
@@ -182,13 +150,9 @@
 
 "i'd imagine not," he replied.
 
-## Don't Attack The Masses
-
 "oh bestie," i said, "don't attack the masses: they'll change their minds if, not aggressively but gently and trying to soothe them and remove their hatred of over-education, you show them your philosophers as they really are and describe like you just were their character and profession, and then humanity will see that who you're talking about isn't who they thought—if they see them in this new light, they'll surely change their notion and answer differently. who can beef with someone who loves them, who that's themselves gentle and free from envy will be jealous of someone with no jealousy? nah, let me answer for you, that in a few this harsh temper might be found but not in the majority of humanity."
 
 "i absolutely agree," he said.
-
-## The Real Problem Is The Fake Philosophers
 
 "and don't you also think, like i do, that the harsh feeling the many have towards philosophy originates in the pretenders, who rush in uninvited, and are always trashing them, and finding fault with them, who make persons instead of things the theme of their conversation? and nothing can be more cringe in philosophers than this."
 
@@ -204,4 +168,4 @@
 
 "and if necessity is laid on them to shape not only themselves but human nature generally, whether in states or individuals, into what they see elsewhere, will they, you think, be an unskilled creator of justice, temperance, and every civil virtue?"
 
-[Note: The source text appears to be cut off at line 404 with an incomplete sentence]
+[note: the source text appears to be cut off at line 404 with an incomplete sentence]

@@ -1,7 +1,3 @@
-# Book 2, Chapter 2: Building Minecraft Peaceful Mode (Then Adding PvP)
-
-## The Division of Labor Meta Gets Discovered
-
 "facts," i said.
 
 "and doesn't someone do better work when they're locked in on one job versus being a jack of all trades?"
@@ -19,8 +15,6 @@
 "so we can conclude that everything gets produced better, easier, and in higher quality when each person does the one thing they're naturally cracked at, does it at the right time, and doesn't get distracted by other stuff."
 
 "absolutely fr."
-
-## The City Needs More NPCs
 
 "so we're gonna need way more than four citizens. the farmer won't craft their own plough or hoe or other farming tools if we want them to actually be good. same with the builder and their tools - they need tons of stuff. and the weaver and shoemaker too."
 
@@ -66,8 +60,6 @@
 
 "yeah, lots of them."
 
-## The Marketplace Economy Spawns
-
 "but even within the city, how do people trade their stuff? remember that's literally why we created this society in the first place."
 
 "obviously they'll buy and sell."
@@ -102,8 +94,6 @@
 
 "you're probably right," i said. "we should think this through properly and not dodge the investigation."
 
-## The Simple Life (Too Simple for Glaucon)
-
 "let's consider how these people we've set up will live. won't they make bread, wine, clothes, shoes, and build houses? when they're housed, they'll work - in summer mostly naked and barefoot, in winter with proper clothes and shoes. they'll eat barley and wheat, baking and kneading it into fire bread and cakes. they'll serve it on reed mats or clean leaves, chilling on beds made of yew and myrtle branches."
 
 "they'll feast with their kids, drinking their homemade wine, wearing flower crowns, singing hymns to the gods, vibing together happily. and they'll make sure not to have more kids than they can afford, keeping an eye on poverty and war."
@@ -117,8 +107,6 @@ but glaucon interrupted: "bro you're not giving them any seasoning for their mea
 "what do you want then, glaucon?" i asked.
 
 "the normal stuff people expect," he said. "people who want to be comfortable need couches to lie on, tables to eat at, and they want sauces and desserts like we have now."
-
-## The Luxury DLC Gets Added
 
 "oh i get it now," i said. "we're not just looking at how a basic state forms, but how a luxury state develops. honestly that might be useful because we'll probably see justice and injustice origins better in that version. personally i think the healthy state is what i just described. but if you want to see a state with a fever, sure why not."
 
@@ -136,8 +124,6 @@ but glaucon interrupted: "bro you're not giving them any seasoning for their mea
 
 "way more."
 
-## The War Arc Begins
-
 "and the land that was enough for the original citizens won't be enough anymore?"
 
 "true."
@@ -153,8 +139,6 @@ but glaucon interrupted: "bro you're not giving them any seasoning for their mea
 "without deciding yet if war is good or bad, we can at least say we've discovered where war comes from - the same source that creates most problems in states, both public and private."
 
 "undoubtedly."
-
-## The Military Class Gets Theory-Crafted
 
 "and our state needs another massive expansion - we need a whole army to defend everything we have and all the stuff we just described."
 
@@ -178,8 +162,6 @@ but glaucon interrupted: "bro you're not giving them any seasoning for their mea
 
 "if tools could teach themselves that would be absolutely broken," he said.
 
-## Guardian Class Requirements
-
 "and the more important the guardian's job, the more time, skill, art, and dedication they need?"
 
 "no doubt," he replied.
@@ -195,8 +177,6 @@ but glaucon interrupted: "bro you're not giving them any seasoning for their mea
 "this selection won't be easy," i said, "but we gotta lock in and do our best."
 
 "we must."
-
-## The Guard Dog Analogy
 
 "isn't a noble young person kinda like a well-bred dog when it comes to guarding and watching?"
 
@@ -237,8 +217,6 @@ but glaucon interrupted: "bro you're not giving them any seasoning for their mea
 "without both qualities they can't be a good guardian. but combining them seems impossible, which means being a good guardian is impossible."
 
 "i'm afraid you're right," he replied.
-
-## The Philosophy Dog Discovery
 
 i was stuck and started reviewing what we'd said. "bestie," i said, "no wonder we're confused - we lost track of our analogy."
 

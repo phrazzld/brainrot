@@ -1,7 +1,3 @@
-# Book 6, Chapter 4: The Divided Line (The Knowledge Tier List)
-
-## The Good Is What Everyone's After
-
 "of this thing then, which every soul pursues and makes the ultimate goal of all their actions, having a gut feeling that there's such a thing, and yet hesitating because they neither know what it is nor have the same confidence about it as other things, and therefore fumbling the bag on whatever good there is in other things—should the best people in our state, to whom literally everything is entrusted, be left in the dark about something this massive and important?"
 
 "absolutely not," he said.
@@ -13,8 +9,6 @@
 "and if we only have a guardian who has this knowledge our state will be perfectly organized?"
 
 "of course," he replied; "but i wish you'd tell me whether you think this supreme principle of the good is knowledge or pleasure, or something different from either?"
-
-## Socrates Gets Called Out
 
 "bruh," i said, "i knew all along that a picky person like you wouldn't be satisfied with other people's takes on these matters."
 
@@ -30,8 +24,6 @@
 
 "and do you want to see what's blind and crooked and trash, when others will tell you about brightness and beauty?"
 
-## Glaucon Begs For The Tea
-
 "still, i have to beg you, socrates," said glaucon, "not to dip out just as you're reaching the finish line; if you'll only give an explanation of the good like you already gave of justice and temperance and the other virtues, we'll be satisfied."
 
 "yeah bestie, and i'd be at least equally satisfied, but i'm lowkey scared i'll fail, and that my cringe enthusiasm will get me roasted. no, my sweet dudes, let's not ask what the actual nature of the good is right now, cause to reach what's currently in my thoughts would be too much of a grind for me. but about the child of the good who's most like it, i'd gladly speak, if you want to hear—otherwise, not."
@@ -41,8 +33,6 @@
 "i really wish," i replied, "that i could pay, and you could receive, the account of the parent, and not just the offspring like now; take this latter as interest though, and at the same time be careful that i don't give you a fake account, although i have no intention of scamming you."
 
 "yes, we'll be super careful: proceed."
-
-## The Setup
 
 "yes," i said, "but i first need to get on the same page with you, and remind you of what i mentioned during this discussion, and many other times."
 
@@ -59,8 +49,6 @@
 "the many, as we say, are seen but not known, and the ideas are known but not seen."
 
 "exactly."
-
-## The Vision System
 
 "and what's the organ we use to see visible things?"
 
@@ -85,8 +73,6 @@
 "but you see that without adding some other nature there's no seeing or being seen?"
 
 "how do you mean?"
-
-## The Light Requirement
 
 "sight being, as i understand it, in the eyes, and someone who has eyes wanting to see; color being also present in things, still unless there's a third nature specifically designed for this purpose, the owner of the eyes will see nothing and the colors will be invisible."
 
@@ -124,8 +110,6 @@
 
 "true," he said.
 
-## The Sun Is The Good's Child
-
 "and this is who i call the child of the good, whom the good created in its own likeness, to be in the visible world, in relation to sight and visible things, what the good is in the intellectual world in relation to mind and intelligible things:"
 
 "can you be more specific?" he said.
@@ -138,8 +122,6 @@
 
 "definitely."
 
-## The Soul-Eye Parallel
-
 "and the soul is like the eye: when resting on what truth and being shine on, the soul perceives and understands, and is absolutely glowing with intelligence; but when turned towards the twilight of becoming and perishing, then it only has opinion, and goes blinking about, and is first of one opinion then another, and seems to have no brain cells?"
 
 "exactly."
@@ -151,8 +133,6 @@
 "god forbid," i replied; "but can i ask you to consider the image from another angle?"
 
 "what angle?"
-
-## The Good Goes Beyond Being
 
 "you'd say, wouldn't you, that the sun is not only the author of visibility in all visible things, but of generation and nourishment and growth, though it itself isn't generation?"
 
@@ -174,8 +154,6 @@ glaucon said, with hilarious seriousness: "by the light of heaven, that's absolu
 
 "i hope not," he said.
 
-## The Divided Line Setup
-
 "you have to imagine, then, that there are two ruling powers, and that one of them is set over the intellectual world, the other over the visible. i don't say heaven, so you don't think i'm making puns. can i assume you have this distinction of the visible and intelligible locked in your mind?"
 
 "i have."
@@ -187,8 +165,6 @@ glaucon said, with hilarious seriousness: "by the light of heaven, that's absolu
 "imagine, now, the other section, of which this is only the resemblance, to include the animals we see, and everything that grows or is made."
 
 "very good."
-
-## The Truth Hierarchy
 
 "wouldn't you admit that both sections of this division have different degrees of truth, and that the copy is to the original as the sphere of opinion is to the sphere of knowledge?"
 
@@ -202,8 +178,6 @@ glaucon said, with hilarious seriousness: "by the light of heaven, that's absolu
 
 "i don't fully understand what you mean," he said.
 
-## The Math Example
-
 "then i'll try again; you'll understand me better after some preliminary remarks. you know that students of geometry, arithmetic, and similar sciences assume the odd and even and the figures and three kinds of angles and stuff like that in their various branches of science; these are their hypotheses, which they and everyone are supposed to know, and therefore they don't bother giving any account of them either to themselves or others; but they begin with them, and go on until they arrive at last, and in a consistent way, at their conclusion?"
 
 "yes," he said, "i know."
@@ -212,15 +186,11 @@ glaucon said, with hilarious seriousness: "by the light of heaven, that's absolu
 
 "that's true."
 
-## The Two Types of Knowledge
-
 "and this kind i spoke of as intelligible, although in searching for it the soul is forced to use hypotheses; not ascending to a first principle, because it can't rise above the region of hypothesis, but employing the objects of which the shadows below are resemblances in their turn as images, they having in relation to the shadows and reflections of them greater distinctness, and therefore higher value."
 
 "i understand," he said, "that you're talking about geometry and its sister fields."
 
 "and when i speak of the other division of the intelligible, you'll understand i mean that other type of knowledge which reason itself achieves by the power of dialectic, using hypotheses not as first principles, but only as hypotheses—that is, as steps and launching pads into a world above hypotheses, so it can soar beyond them to the first principle of the whole; and clinging to this and then to what depends on this, by successive steps it descends again without using any sensible object, from ideas, through ideas, and in ideas it ends."
-
-## The Four Levels
 
 "i understand you," he replied; "not perfectly, cause you seem to be describing an absolutely massive task; but at least i understand you're saying that knowledge and being, which the science of dialectic contemplates, are clearer than the notions of the arts, as they're called, which proceed from hypotheses only: these are also contemplated by the understanding, not by the senses: yet, because they start from hypotheses and don't ascend to a principle, those who contemplate them seem to you not to exercise the higher reason on them, although when a first principle is added to them they're knowable by the higher reason. and the habit concerned with geometry and related sciences i suppose you'd call understanding and not reason, as being intermediate between opinion and reason."
 
@@ -228,6 +198,4 @@ glaucon said, with hilarious seriousness: "by the light of heaven, that's absolu
 
 "i understand," he replied, "and i agree, and accept your arrangement."
 
-
-
-BOOK VII.
+book vii.

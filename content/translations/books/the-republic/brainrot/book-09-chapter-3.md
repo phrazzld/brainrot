@@ -1,7 +1,3 @@
-# Book 9, Chapter 3: Three Proofs That Justice Absolutely Slaps - (The Ultimate W Analysis)
-
-## The Pain vs Pleasure Hot Take (First Proof Going Off)
-
 "yeah fr fr i know," he said.
 
 "and when people are literally suffering from some absolutely unhinged pain, you must've heard them say there's nothing more goated than just getting rid of that mid situation, right?"
@@ -16,7 +12,7 @@
 
 "no doubt," he said.
 
-"so this intermediate state of rest is gonna be pleasure AND pain at the same time, bestie?"
+"so this intermediate state of rest is gonna be pleasure and pain at the same time, bestie?"
 
 "so it would seem, no cap."
 
@@ -36,8 +32,6 @@
 
 "impossible, bestie."
 
-## The Fake Pleasure Expose (Absolutely Based Analysis)
-
 "so this is just an appearance and not actual reality - that is to say, the rest hits as pleasure only in comparison to what's painful, and painful compared to what's pleasant. but all these representations, when you test them against true pleasure, aren't real but some type of scam? giving major sussy imposter vibes?"
 
 "that's the inference, periodt."
@@ -54,8 +48,6 @@
 
 "nah fr."
 
-## The Body vs Soul Pleasure Tier List
-
 "still though, the more numerous and absolutely unhinged pleasures that reach the soul through the body are generally this type - they're just pain relief hitting different."
 
 "that's true, bestie."
@@ -67,8 +59,6 @@
 "should i give you an illustration that's gonna absolutely slay?"
 
 "let me hear this fire take."
-
-## The Cave Allegory But Make It Pleasure (Galaxy Brain Moment)
 
 "you'd agree that there's literally an upper and lower and middle region in nature, right sigma?"
 
@@ -90,8 +80,6 @@
 
 "nah fr, i'd be way more surprised by the opposite take."
 
-## The Hunger and Ignorance Analysis (Actually Fire Philosophy)
-
 "look at it this way - hunger, thirst, and similar things are literally just emptiness of the bodily state, no cap?"
 
 "yeah, periodt."
@@ -107,8 +95,6 @@
 "and is satisfaction from something with less existence or something with more existence the more true experience? asking the real questions here."
 
 "clearly from what has more, sigma."
-
-## The Reality Tier List (Peak Philosophy Content)
 
 "what classes of things have a greater share of pure existence in your opinion - those where food and drink and condiments and all types of sustenance are examples, or the class with true opinion and knowledge and mind and all the different types of virtue? put the question this way - which has more pure being: what's concerned with the invariable, immortal, and true, and has that nature and exists in such natures; or what's concerned with and found in the variable and mortal, and is itself variable and mortal? we're really asking who's more goated here."
 
@@ -134,8 +120,6 @@
 
 "facts."
 
-## The Ultimate Satisfaction Test
-
 "what's filled with more real existence and actually has more real existence is more really filled than what's filled with less real existence and is less real? this is getting galaxy brain."
 
 "of course, chief."
@@ -144,13 +128,9 @@
 
 "unquestionably, periodt."
 
-## The Cattle Comparison (Absolutely Unhinged)
-
 "so those who don't know wisdom and virtue and are always busy with gluttony and sensuality go down and up again as far as the mean. in this region they move at random throughout life, but they never pass into the true upper world. they neither look there nor find their way, neither are truly filled with true being nor taste pure and lasting pleasure. like cattle with their eyes always looking down and heads stooping to earth - that is, to the dining table - they fatten and feed and breed. in their excessive love of these mid pleasures, they kick and headbutt each other with horns and hoofs made of iron, and they literally delete each other because of their insatiable thirst. they're filling themselves with what's not substantial, and the part they're filling is also unsubstantial and absolutely sus."
 
 "verily socrates," said glaucon, "you describe the life of the many like an oracle. that's absolutely fire prophecy energy."
-
-## The Shadow vs Reality Analysis (Peak Philosophy)
 
 "their pleasures are mixed with pains - how could they be otherwise, bestie? they're just shadows and pictures of the true, colored by contrast which exaggerates both light and shade. so they implant in fools' minds absolutely unhinged desires for themselves. they're fought about like stesichorus says the greeks fought about helen's shadow at troy, ignorant of truth. giving major illusion vibes."
 
@@ -159,8 +139,6 @@
 "and the same thing with the spirited or passionate element of the soul? won't the passionate person who carries their passion into action be in the same situation - whether envious and ambitious, or violent and contentious, or angry and discontented - if they're seeking honor and victory and anger satisfaction without reason or sense? just vibes, no thoughts?"
 
 "yeah," he said, "the same will happen with the spirited element too, periodt."
-
-## The Truth About Following Wisdom (Actually Goated)
 
 "so we can confidently assert that money and honor lovers, when they seek pleasures under reason and knowledge's guidance and pursue and win pleasures that wisdom shows them, will also have the truest pleasures in the highest degree attainable to them - since they follow truth. and they'll have pleasures natural to them, if what's best for each is also most natural to them, fr?"
 
@@ -173,8 +151,6 @@
 "but when either of the other two principles takes over, it fails at getting its own pleasure and forces the rest to pursue a pleasure that's just a shadow and not their own? giving absolutely sus leadership vibes?"
 
 "true, periodt."
-
-## The Distance From Philosophy Analysis
 
 "and the greater the interval separating them from philosophy and reason, the more strange and absolutely unhinged the pleasure will be?"
 
@@ -200,8 +176,6 @@
 
 "inevitably, chief."
 
-## The Mathematical Proof (Absolutely Galaxy Brain)
-
 "want to know the measure of interval separating them? this is about to get absolutely unhinged with numbers."
 
 "will you tell me?"
@@ -222,7 +196,7 @@
 
 "yeah they're third, chief."
 
-"so the tyrant is removed from true pleasure by the space of a number that's three times three? we're about to calculate the ultimate L."
+"so the tyrant is removed from true pleasure by the space of a number that's three times three? we're about to calculate the ultimate l."
 
 "manifestly, bestie."
 
@@ -233,8 +207,6 @@
 "and if you raise the power and make the plane a solid, there's zero difficulty seeing how absolutely vast the interval is by which the tyrant is separated from the king. the math is about to get unhinged."
 
 "yeah, the mathematician will easily do the sum, periodt."
-
-## The 729 Times Calculation (Peak Mathematical W)
 
 "or if someone starts at the other end and measures the interval by which the king is separated from the tyrant in truth of pleasure, they'll find them - when multiplication is completed - living 729 times more pleasantly, and the tyrant more painfully by this same interval. giving major mathematical superiority vibes."
 
@@ -248,8 +220,6 @@
 
 "immeasurably greater, periodt."
 
-## Setting Up the Soul Allegory
-
 "well, and now having arrived at this stage of argument, we can revert to the words that brought us here - wasn't someone saying that injustice was a gain to the perfectly unjust who was reputed to be just? time for the callback episode."
 
 "yeah that was said, chief."
@@ -261,8 +231,6 @@
 "let's make an image of the soul so they can have their own words presented before their eyes. visual aid time, bestie."
 
 "what sort?"
-
-## The Soul Monster Allegory (Absolutely Unhinged Visualization)
 
 "an ideal image of the soul, like ancient mythology's composite creations - such as the chimera or scylla or cerberus. there's mad others where two or more different natures are said to grow into one. giving major mythological mashup energy."
 
@@ -284,8 +252,6 @@
 
 "i've done so," he said, "bestie."
 
-## The Justice vs Injustice Argument (Peak Philosophy Energy)
-
 "and now, to whoever maintains that it's profitable for the human creature to be unjust and unprofitable to be just, let's reply that if they're right, it's profitable for this creature to feast the multitudinous monster and strengthen the lion and lion-like qualities, but to starve and weaken the human - who's consequently liable to be dragged about at the mercy of either of the other two. and they shouldn't attempt to familiarize or harmonize them with one another - they ought rather to suffer them to fight and bite and devour one another. giving major internal chaos energy."
 
 "certainly," he said, "that's what the injustice approver says, periodt."
@@ -293,8 +259,6 @@
 "to them the justice supporter makes answer that they should ever speak and act to give the human within them in some way or other the most complete mastery over the entire human creature. they should watch over the many-headed monster like a good husbandman, fostering and cultivating the gentle qualities and preventing the wild ones from growing. they should make the lion-heart their ally, and in common care of them all should unite the several parts with one another and with themselves. peak internal harmony vibes."
 
 "yeah," he said, "that's quite what the justice maintainer says, chief."
-
-## The Final Judgment (Absolutely Based Conclusion)
 
 "and so from every point of view - whether pleasure, honor, or advantage - the justice approver is right and speaks truth, and the disapprover is wrong and false and ignorant? we've established the complete superiority."
 
@@ -304,13 +268,9 @@
 
 "not if they have any regard for my opinion, periodt."
 
-## The Slavery Analogy (Getting Deep)
-
 "but if they agree so far, we can ask them to answer another question: 'then how would someone profit if they received gold and silver on condition that they enslave the noblest part of them to the worst? who can imagine that someone who sold their son or daughter into slavery for money - especially if they sold them into fierce and evil hands - would be the gainer, however large the sum received? and will anyone say they're not a miserable wretch who remorselessly sells their own divine being to what's most godless and detestable? eriphyle took the necklace as price of her husband's life, but they're taking a bribe to compass worse ruin.' giving major soul-selling energy."
 
 "yeah," said glaucon, "far worse - i'll answer for them, bestie."
-
-## The Character Analysis (Peak Psychology)
 
 "hasn't the intemperate been censured of old because in them the huge multiform monster is allowed to be too much at large? we've been calling out the chaos energy forever."
 
@@ -332,8 +292,6 @@
 
 "such appears to be the reason, chief."
 
-## The Divine Rule Analysis (Galaxy Brain Governance)
-
 "and therefore, being desirous of placing them under rule like that of the best, we say they ought to be servant of the best - in whom the divine rules. not, as thrasymachus supposed, to the servant's injury, but because everyone had better be ruled by divine wisdom dwelling within them; or if this is impossible, then by external authority, so we may all be, as far as possible, under the same government, friends and equals. peak unity energy."
 
 "true," he said, "periodt."
@@ -342,8 +300,6 @@
 
 "facts," he said, "the law's purpose is manifest, bestie."
 
-## The Final Question (Absolute Clarity)
-
 "from what point of view then, and on what ground can we say someone is profited by injustice or intemperance or other baseness which will make them worse, even though they acquire money or power by their wickedness? the math ain't mathing."
 
 "from no point of view at all, chief."
@@ -351,8 +307,6 @@
 "what shall they profit if their injustice is undetected and unpunished? whoever is undetected only gets worse, whereas whoever is detected and punished has the brutal part of their nature silenced and humanized. the gentler element in them is liberated, and their whole soul is perfected and ennobled by acquiring justice and temperance and wisdom - more than the body ever is by receiving gifts of beauty, strength and health, in proportion as the soul is more honorable than the body. the ultimate glow-up energy."
 
 "certainly," he said, "periodt."
-
-## The Life Goals Analysis (Peak Wisdom)
 
 "to this nobler purpose the understanding person will devote their life's energies. and in the first place, they'll honor studies which impress these qualities on their soul and disregard others? academic priorities absolutely based."
 
@@ -366,8 +320,6 @@
 
 "certainly not," he said, "bestie."
 
-## The Inner City Management (Galaxy Brain Metaphor)
-
 "they'll look at the city which is within them and take heed that no disorder occur in it - such as might arise either from superfluity or want. upon this principle they'll regulate their property and gain or spend according to their means. peak internal governance energy."
 
 "very true, chief."
@@ -379,8 +331,6 @@
 "by the dog of egypt, they will! in the city which is their own they certainly will, though in their birth land perhaps not, unless they have a divine call. spiritual politics hits different."
 
 "i understand, bestie. you mean they'll be a ruler in the city which we're the founders of, and which exists in idea only - for i don't believe there's such a one anywhere on earth? we're talking theoretical perfect state."
-
-## The Ultimate Vision (Peak Philosophical Conclusion)
 
 "in heaven," i replied, "there's laid up a pattern of it, methinks, which whoever desires may behold, and beholding, may set their own house in order. but whether such a one exists or ever will exist in fact is no matter - for they'll live after the manner of that city, having nothing to do with any other. the eternal blueprint exists, and that's what matters, chief."
 

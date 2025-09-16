@@ -1,7 +1,3 @@
-# Book 5, Chapter 2: Communal Marriage & Children (The Ultimate Breeding Meta)
-
-## Elite Players Get Premium Access
-
 "and i'm thinking our most cracked and goated young guardians, besides all their other w's and rewards, should get way more breeding privileges fr fr; their sigma energy is the whole reason, and these absolute units need to be spawning as many mini-chads as possible."
 
 "facts."
@@ -30,8 +26,6 @@
 
 "definitely," he said, "those are peak physical and mental stat years for both builds."
 
-## The Forbidden Breeding Zones
-
 "anyone above or below the prescribed level range who tries to participate in the official breeding events is committing an absolutely unholy and cringe violation; any spawn that results, if it somehow glitches into existence, will have been conceived under the most cursed rng possible, completely opposite to all the sacrifices and prayers that the priestesses and priests and whole city perform at each breeding event, praying the new generation will be more based and useful than their already goated parents, while this scuffed spawn will be the offspring of darkness and weird parasocial energy."
 
 "very true," he replied.
@@ -44,8 +38,6 @@
 
 "that's also reasonable," he said. "but how will they know who's related to who?"
 
-## The Family Tree Confusion Meta
-
 "they'll literally never know. here's how it works: starting from the wedding day, the groom who got married will call all the male children born in the seventh and tenth month afterwards his sons, and the female children his daughters, and they'll call him father, and he'll call their children his grandchildren, and they'll call the older generation grandparents. everyone spawned when their parents were breeding will be called siblings, and these, as i'm saying, are banned from inter-breeding. but this isn't an absolute prohibition on sibling marriage; if the rng favors them and they get the pythian oracle's blessing, the law allows it."
 
 "makes sense," he replied.
@@ -53,8 +45,6 @@
 "so that's the system, glaucon, for how our state's guardians share wives and families communally. and now you want the argument to prove this setup is consistent with our whole server architecture, and also that nothing could be more based—right?"
 
 "yes definitely."
-
-## Unity Through Shared Feels
 
 "should we try finding common ground by asking ourselves what should be the legislator's main goal when making laws and organizing a state—what's the most goated outcome, and what's the most cringe disaster, then check if our previous description has the based stamp or the cringe stamp?"
 
@@ -79,8 +69,6 @@
 "and isn't the most based state the one where the most people apply 'mine' and 'not mine' the same way to the same things?"
 
 "absolutely true."
-
-## The Body Analogy Goes Hard
 
 "or the state that's most like an individual person—like when someone's finger gets hurt, the whole body network, connected to the soul as the central server forming one kingdom under the ruling admin, feels the damage and suffers together with the affected part, and we say the person has finger pain; same expression for any body part experiencing pain when suffering or pleasure when healing."
 
@@ -126,8 +114,6 @@
 
 "fellow-guardians."
 
-## No Strangers in the Guardian Squad
-
 "you ever seen an example in another state of a ruler who'd call one colleague a friend and another not a friend?"
 
 "yeah, very often."
@@ -168,8 +154,6 @@
 
 "definitely."
 
-## Property-less Sigma Grindset
-
 "and this matches our other principle—that guardians shouldn't have houses or land or any property; their payment is food from other citizens, and they have no private expenses; we wanted them to maintain their true guardian nature."
 
 "right," he replied.
@@ -189,8 +173,6 @@
 "yeah; and there's another w in the law: if someone has beef with another they'll settle it right there instead of escalating to more dangerous levels."
 
 "definitely."
-
-## Age-Based Hierarchy System
 
 "elders get assigned the duty of ruling and disciplining younger guardians."
 
@@ -212,8 +194,6 @@
 
 "yeah," he said, "you don't need eyes to see that."
 
-## Olympic Victor Life But Better
-
 "freed from all these evils, their life will be blessed like olympic victors but even more blessed."
 
 "how?"
@@ -233,8 +213,6 @@
 "i should repeat what i said before: if any guardian tries being happy in a way that stops them being a guardian, not content with this safe harmonious life that imo is the most based of all, but infected by some zoomer delusion of happiness tries to yoink the whole state for themselves, they'll learn how based hesiod was saying 'half is more than the whole.'"
 
 "if they asked me, i'd say: stay where you are when you have such a life offered."
-
-## The War Strategy Discussion
 
 "you agree then," i said, "that men and women should share this common lifestyle we described—common education, common children; they watch over citizens together whether in the city or going to war; they guard together and hunt together like dogs; and always in everything, as much as possible, women share with men? doing this they'll achieve peak performance, not violating but preserving the natural relation between sexes."
 
@@ -272,8 +250,6 @@
 
 "yeah, very important."
 
-## Kids at War (With Safety Features)
-
 "first step—make our children war spectators; but also ensure they're secured against danger; then everything's good."
 
 "true."
@@ -301,8 +277,6 @@
 "i mean mount them on horses from youngest age, and when they've learned riding, take them horseback to watch war: not on spirited warhorses, but the most chill yet fastest available. this way they get excellent view of their future job; and if danger comes they just follow elder leaders and escape."
 
 "i think you're right," he said.
-
-## Military Discipline & Rewards
 
 "next, about war: what should be relations between your soldiers and with enemies? i'd propose that any soldier who abandons position or throws away weapons or does other coward shit gets demoted to farmer or artisan rank. what you think?"
 
@@ -340,8 +314,6 @@
 
 "that's excellent," he replied.
 
-## Hero Treatment After Death
-
 "yeah," i said; "and when someone dies gloriously in war won't we say first they're of the golden race?"
 
 "for sure."
@@ -357,8 +329,6 @@
 "and forever after we'll worship them and kneel before their tombs as heroes' graves. and not just them but anyone deemed incredibly based, whether dying from age or however, gets the same honors."
 
 "that's very right," he said.
-
-## Treatment of Greek vs Barbarian Enemies
 
 "next, how should our soldiers treat enemies? what about this?"
 
@@ -387,8 +357,6 @@
 "we also won't offer weapons at gods' temples, especially greek weapons, if we care about good relations with other greeks; actually we should fear that offering spoils from relatives might be pollution unless the god specifically commands it?"
 
 "very true."
-
-## Greeks Don't Grief Greeks
 
 "again, about devastating greek territory or burning houses, what's the policy?"
 

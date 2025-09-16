@@ -1,7 +1,3 @@
-# Book 3, Chapter 1: Content Moderation & Community Guidelines for the Perfect Skibidi Society
-
-## The Great Content Purge Begins
-
 so basically socrates is like "aight bestie, those are our content guidelines fr fr - some stories are poggers and should be shared with the youth from day one if we want them to actually respect the admins and their parents and not be toxic to each other"
 
 "yeah no cap those guidelines are absolutely bussin," glaucon says, totally vibing with the whole content moderation arc.
@@ -10,17 +6,15 @@ so basically socrates is like "aight bestie, those are our content guidelines fr
 
 "absolutely not fam, that's straight cap."
 
-"and can someone be fearless about getting ratio'd in battle or choosing death over taking the L and becoming someone's npc if they think the afterlife is some cursed ohio realm of eternal cringe?"
+"and can someone be fearless about getting ratio'd in battle or choosing death over taking the l and becoming someone's npc if they think the afterlife is some cursed ohio realm of eternal cringe?"
 
 "literally impossible fr."
 
-"then we gotta moderate these storytellers harder than twitch mods during a heated gaming moment, and literally beg them to stop posting their L takes about the afterlife and instead make it sound kinda based, because their current content is fake news and gonna make our future warriors absolute betas."
+"then we gotta moderate these storytellers harder than twitch mods during a heated gaming moment, and literally beg them to stop posting their l takes about the afterlife and instead make it sound kinda based, because their current content is fake news and gonna make our future warriors absolute betas."
 
 "that's our job for real," glaucon agrees like the yes-man he lowkey is.
 
-## The Banned Content List (Shadow Realm Edition)
-
-"so basically," socrates continues on his content moderation villain arc, "we're gonna have to shadowban mad problematic verses, starting with this absolute L take:
+"so basically," socrates continues on his content moderation villain arc, "we're gonna have to shadowban mad problematic verses, starting with this absolute l take:
 
 'i'd rather be farming simulator andy for some broke npc than be the main character of all the ghosts in the shadow realm'
 
@@ -52,8 +46,6 @@ look we gotta dm homer and the other content creators and be like 'bestie we're 
 
 "facts no printer."
 
-## The Vibe Check on Scary Words
-
 "also we're gonna have to ban all the edgy emo names for the underworld - cocytus, styx, all that 'ghosts under the earth' and 'soulless npcs' type beat that makes people literally shaking and crying just hearing them. i'm not saying these spooky stories are completely useless but there's a real chance our guardian gamers are gonna become soft little uwu beans if they keep consuming this content."
 
 "that's a certified bruh moment waiting to happen," glaucon agrees.
@@ -65,8 +57,6 @@ look we gotta dm homer and the other content creators and be like 'bestie we're 
 "we need a whole different aesthetic, something that actually slaps."
 
 "obviously."
-
-## No More Crying in the Club
 
 "should we also cancel all the clips of famous dudes having mental breakdowns?"
 
@@ -88,15 +78,13 @@ look we gotta dm homer and the other content creators and be like 'bestie we're 
 
 "no cap."
 
-"so he's the least likely to be posting crying emojis and will handle any L with maximum aura points."
+"so he's the least likely to be posting crying emojis and will handle any l with maximum aura points."
 
-"yeah he'll take that L way better than the average npc."
+"yeah he'll take that l way better than the average npc."
 
 "then we're totally valid in deleting all the sobbing compilations of famous dudes and giving that content to the pick-me girls (and not even the ones with main character energy) or to beta males, so the ones we're training to be defenders of the server will think that behavior is absolute cringe."
 
 "that's absolutely the move."
-
-## Homer Gets Community Guidelines Strike
 
 "so we're gonna slide into homer's dms again and tell him to stop showing achilles (literal demigod btw) doing the most - first laying on his side, then his back, then face down like he's doing some cursed yoga flow, then jumping up and having a whole mental breakdown sailing around the beach, putting ash in his hair like it's dry shampoo, crying and malding in every possible way homer documented. and definitely don't show priam (god's cousin fr) literally:
 
@@ -104,7 +92,7 @@ look we gotta dm homer and the other content creators and be like 'bestie we're 
 
 but most importantly we're begging him to never show the gods themselves having panic attacks like:
 
-'rip me fr! absolutely cooked that i birthed the most goated warrior just for this L!'
+'rip me fr! absolutely cooked that i birthed the most goated warrior just for this l!'
 
 and if he absolutely has to include the gods, at least don't make the biggest chad of all gods say stuff like:
 
@@ -117,8 +105,6 @@ or:
 because look adeimantus bestie, if our zoomer warriors actually take this cringe content seriously instead of laughing at it like the shitpost it should be, they're gonna think it's fine to act like npcs too. they won't even feel weird about it and instead of having any self-control they'll be trauma dumping over the smallest inconvenience."
 
 "that's straight facts no cap."
-
-## The No Laughing Challenge
 
 "yeah facts," socrates continues his moderation spree, "but that's definitely not the vibe, as we literally just proved with pure logic, and we're gonna stick with that until someone drops an even more galaxy brain take."
 
@@ -140,8 +126,6 @@ according to your content guidelines, that's getting deleted."
 
 "call them your guidelines if you want bestie, but yeah that's banned content for sure."
 
-## The Lying Meta Gets Nerfed
-
 "also truth should be absolutely goated in our society. if lying is useless to the gods and only works like copium for humans, then only certified professionals should be prescribing that copium - regular npcs have no business with it."
 
 "obviously not," glaucon's on his agreeable arc.
@@ -157,8 +141,6 @@ according to your content guidelines, that's getting deleted."
 they're getting perma-banned for trying to introduce meta-breaking exploits that could crash the whole server."
 
 "for sure, especially if we actually implement this society build."
-
-## The Self-Control DLC
 
 "next thing - our zoomers need to have self-control?"
 
@@ -192,15 +174,13 @@ and everything after that? would you say these kinds of toxic callouts that rand
 
 "yeah."
 
-## The Forbidden Food Content
-
 "and then making the supposedly wisest dude say that his peak happiness is:
 
 'when the table's absolutely stacked with tendies and drinks and the server's bringing that premium juice box content'
 
 is that appropriate for teaching self-control to our young kings? or that line about:
 
-'the most L fate is dying from hunger'
+'the most l fate is dying from hunger'
 
 and what about that whole zeus incident where all the other gods and mortals were sleeping and he was the only one online making plans, but then got so down bad horny at the sight of hera that he couldn't even make it to the bedroom and had to smash right there on the ground, saying he'd never been this down bad before, not even when they first started dating:
 
@@ -215,8 +195,6 @@ or that whole drama where hephaestus literally caught ares and aphrodite lacking
 'he slapped his chest and told his heart: cope harder, you've survived worse than this toxic lobby'
 
 "absolutely fire content."
-
-## The Anti-Sellout Clause
 
 "next up, we can't let them be loot goblins or money simps."
 
@@ -238,13 +216,11 @@ or him trying to 1v1 a river god, or donating his hair to a dead homie when he'd
 
 "you're absolutely spitting facts."
 
-## The Hero Misconduct Report
-
 "and we're also not gonna believe or let people keep repeating the story about theseus (poseidon's son) or peirithous (zeus's son) going on their absolutely cursed non-consensual dating apps adventures, or any other hero or demigod doing the problematic stuff they get accused of these days. we're gonna make the content creators either say these weren't their actions or they weren't actually children of gods - they can't have it both ways. we're not letting them convince our youth that gods create problematic content and heroes are just as toxic as regular dudes - which as we established is neither based nor factual since we already proved evil can't come from the gods."
 
 "for real for real."
 
-"plus this content's gonna have terrible influence on the audience. everyone's gonna start making excuses for their own L behavior when they think similar cringe is always being done by:
+"plus this content's gonna have terrible influence on the audience. everyone's gonna start making excuses for their own l behavior when they think similar cringe is always being done by:
 
 'god's squad, zeus's relatives whose altar is literally up in the clouds on mount ida'
 
@@ -255,8 +231,6 @@ and who have:
 so we gotta shut down these stories before they turn our youth into degenerate behavior defenders."
 
 "absolutely," adeimantus agrees with his usual npc energy.
-
-## The Content Creator Guidelines
 
 "but now that we're deciding what content is allowed or banned, let's check if we missed anything. we already covered how to portray gods, demigods, heroes, and the underworld."
 
@@ -270,19 +244,17 @@ so we gotta shut down these stories before they turn our youth into degenerate b
 
 "why not?"
 
-"because if i'm not tripping, we're gonna have to say that content creators are straight capping when they show toxic people winning and good people taking Ls, and that being sus pays off when you don't get caught, but being based is losing value while helping others profit - we're gonna ban that content and make them post the opposite."
+"because if i'm not tripping, we're gonna have to say that content creators are straight capping when they show toxic people winning and good people taking ls, and that being sus pays off when you don't get caught, but being based is losing value while helping others profit - we're gonna ban that content and make them post the opposite."
 
 "we definitely will," he replied like the agreeable king he is.
 
 "but if you're agreeing with me, then you're basically admitting the whole point we've been arguing."
 
-"i'll give you that W."
+"i'll give you that w."
 
 "whether this content should be allowed about humans is something we can't determine until we figure out what justice actually is and whether it's naturally beneficial to have it, regardless of whether you look based or not."
 
 "that's mad true."
-
-## The Style Guide Drops
 
 "enough about what content to post, let's talk about how to post it. once we cover this, we'll have covered both the message and the medium."
 
@@ -336,8 +308,6 @@ the poet is posting in his own voice, never pretending to be anyone else. but af
 
 "yeah bro, now i see what you meant."
 
-## The Roleplay Debate
-
 "remember i said earlier we were done with the content and could talk about style?"
 
 "yeah i remember."
@@ -373,8 +343,6 @@ the poet is posting in his own voice, never pretending to be anyone else. but af
 "and human nature, adeimantus my guy, seems to be split into even smaller skill trees, making people unable to roleplay many things well or do the actual things they're imitating."
 
 "absolutely facts."
-
-## The Guardian Content Creation Policy
 
 "so if we stick to our original build and remember our guardians are supposed to quit all side quests to focus entirely on keeping the server free, making that their only grind and not doing anything that doesn't help that goal, they shouldn't roleplay or imitate anything else. if they do roleplay at all, they should only roleplay from their noob days the types of characters that match their class - the brave, self-controlled, based, free types. they shouldn't roleplay or get good at imitating anything cringe or toxic, because if they keep pretending to be something they might actually become it. have you noticed how if someone starts ironically using certain slang or mannerisms as a joke, and keeps doing it, it eventually becomes unironic and changes their whole personality, voice, and mindset?"
 

@@ -1,7 +1,3 @@
-# Book 3, Chapter 3: Guardian Selection Speedrun (Who Gets Admin Rights?)
-
-## The Medical Min-Maxing Meta
-
 "that's not even weird if you think about it," socrates continues. "back in the day before herodicus showed up, they say asclepius's whole squad didn't practice this current healthcare meta that basically teaches diseases how to level up. but herodicus was a gym trainer with a skill issue in his own health stats, so he mixed training and doctoring to invent a new torture method - mostly griefing himself, but also everyone else."
 
 "how'd he manage that?" glaucon asks.
@@ -13,8 +9,6 @@
 "fr fr," socrates agrees. "exactly the reward you'd expect from someone who didn't get that asclepius deliberately didn't teach his descendants the professional patient playstyle. not because he didn't know the meta or lacked experience, but because he understood that in any functioning society everyone has their main quest to grind and can't spend all day being sick. we get this with working class players, but somehow when it comes to rich kids we act different."
 
 "wdym?" glaucon's confused.
-
-## The Working Class Healthcare Speedrun
 
 "i mean like this: when a carpenter gets sick, they ask the doctor for a quick fix - some medicine to purge the debuff, maybe surgery, whatever works fast. and if someone prescribes them some complex wellness routine where they need to wrap their head in towels and do all this extra stuff, they're immediately like 'bestie i literally don't have time to be sick, and what's the point of living if i'm spending all my time nursing this illness instead of doing my job?' so they ghost that type of doctor, go back to their normal routine, and either recover and keep grinding, or if their constitution fails the vibe check, they die and don't have to worry about it anymore."
 
@@ -32,8 +26,6 @@
 
 "nah," glaucon says, "i think they should start way before securing the bag."
 
-## The Rich Kid Health Optimization Trap
-
 "let's not beef with phocylides about timing," socrates pivots. "let's ask ourselves: is practicing virtue mandatory for rich people, or can they live without it? and if it's mandatory, does this whole optimization of health issues, which prevents carpenters from focusing on their craft, also prevent rich people from following phocylides's advice?"
 
 "absolutely no doubt," glaucon confirms. "excessive body optimization beyond basic gym requirements is the biggest debuff to practicing virtue."
@@ -41,8 +33,6 @@
 "facts, and it's equally incompatible with running a household, commanding an army, or holding office. but most importantly, it's completely incompatible with studying, thinking, or self-reflection. there's constant paranoia that any headache or dizziness is caused by philosophy, so all high-level virtue grinding gets completely shut down. someone's always convinced they're getting sick and constantly anxious about their body's status."
 
 "sounds about right."
-
-## Asclepius the Based Political Strategist
 
 "so our boy asclepius with the 200 iq plays only treated people who were basically healthy but had specific ailments. he'd cure them with medicine or surgery and tell them to keep living normally, considering what's best for society. but bodies that were completely cooked by disease? he wouldn't even try the gradual treatment meta. didn't want to extend worthless lives or have weak players spawning even weaker offspring. if someone couldn't live a normal life, he saw no point in healing them - wouldn't benefit them or society."
 
@@ -58,8 +48,6 @@ but never prescribed specific diets for menelaus or eurypylus. they knew medicin
 
 "fr fr," socrates continues. "but the content creators and pindar don't follow our guidelines. they claim asclepius was apollo's son but also say he took bribes to heal a dying rich guy and got smited by zeus for it. but following our established lore, we can't believe both - either he was a god's son and wasn't grinding for money, or he was money hungry and wasn't divine. can't have it both ways."
 
-## The Judge Selection Meta
-
 "that's all based socrates," glaucon says, "but i have a question: shouldn't a society have good doctors? and aren't the best ones those who've treated the most different types of patients, good and bad? same with judges - aren't the best ones those who know all types of moral alignments?"
 
 "yeah i want good judges and doctors too. but do you know who i consider good?"
@@ -73,8 +61,6 @@ but never prescribed specific diets for menelaus or eurypylus. they knew medicin
 "you're treating doctors and judges the same. the most skilled doctors are those who from youth combine medical knowledge with maximum experience of disease. ideally they shouldn't even be healthy themselves and should have experienced every debuff personally. see, the body isn't what heals the body - if it was, we couldn't let doctors ever be sick. they heal the body with the mind, and a sick mind can't heal anything."
 
 "completely true."
-
-## The Judge Character Build Requirements
 
 "but judges are different - they govern mind with mind. so they shouldn't have been raised around toxic players, associating with them from youth and speedrunning through every crime just to understand criminal psychology through personal experience. a based mind that's supposed to judge fairly shouldn't have any contamination from evil when young. that's why good people seem naive as kids and get easily scammed by toxic players - they don't have evil reference points in their own souls."
 
@@ -92,8 +78,6 @@ but never prescribed specific diets for menelaus or eurypylus. they knew medicin
 
 "i agree completely."
 
-## The Healthcare and Justice System Proposal
-
 "so this is the type of medicine and law you'll implement in your society. they'll serve those with good natural constitutions of body and soul. those with cooked bodies? let them die. those with incurably corrupted souls? straight up execute them."
 
 "that's clearly optimal for both the patients and society."
@@ -109,8 +93,6 @@ but never prescribed specific diets for menelaus or eurypylus. they knew medicin
 "the exercises and grinding they do are meant to activate their spirited nature, not just get swole. unlike regular gym bros, they don't train just to build muscle."
 
 "absolutely right."
-
-## The Real Purpose of Education
 
 "actually, music and gym aren't really designed for training soul and body separately like people think."
 
@@ -152,8 +134,6 @@ but never prescribed specific diets for menelaus or eurypylus. they knew medicin
 
 "very true."
 
-## The Music and Gym Balance Patch
-
 "when someone lets music flood their soul through their ears like installing software, listening to those sweet soft sad playlists we talked about, spending their whole life vibing to songs - first stage, their spirit gets tempered like working metal, becoming useful instead of brittle. but if they keep going with the softening process, next stage they start melting until their spirit completely dissolves, like cutting their soul's tendons. they become a weak warrior class."
 
 "facts."
@@ -181,8 +161,6 @@ but never prescribed specific diets for menelaus or eurypylus. they knew medicin
 "won't we always need someone like this managing our society if the meta's going to survive?"
 
 "that's our biggest requirement actually."
-
-## The Guardian Selection Process
 
 "so those are our education system requirements. (we don't need to detail their dance moves, hunting strategies, gym competitions, or racing - obviously those follow from what we've established and aren't hard to figure out.)"
 

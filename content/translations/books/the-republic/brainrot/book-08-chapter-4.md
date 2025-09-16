@@ -1,12 +1,6 @@
-# Book 8, Chapter 4: Democracy & Tyranny - The Ultimate Political Boss Fight
-
-## The Complete Hierarchy Collapse
-
 "and these aren't the only evils," i said—"there are several lesser ones: in such a state of society the master fears and flatters their scholars, and the scholars despise their masters and tutors; young and old are all alike; and the young person is on a level with the old, and is ready to compete with them in word or deed; and old people condescend to the young and are full of pleasantry and gaiety; they're loth to be thought morose and authoritative, and therefore they adopt the manners of the young."
 
 "quite true," he said.
-
-## Peak Democracy Energy (Literally Chaos)
 
 "the last extreme of popular liberty is when the slave bought with money, whether male or female, is just as free as their purchaser; nor must i forget to tell of the liberty and equality of the two sexes in relation to each other."
 
@@ -16,8 +10,6 @@
 
 "when i take a country walk," he said, "i often experience what you describe. you and i have dreamed the same thing."
 
-## The Authority Allergy Phase
-
 "and above all," i said, "and as the result of all, see how sensitive the citizens become; they chafe impatiently at the least touch of authority, and at length, as you know, they cease to care even for the laws, written or unwritten; they'll have no one over them."
 
 "yes," he said, "i know it too well."
@@ -25,8 +17,6 @@
 "such, bestie," i said, "is the fair and glorious beginning out of which springs tyranny."
 
 "glorious indeed," he said. "but what's the next step?"
-
-## The Liberty → Tyranny Pipeline (Absolutely Based Theory)
 
 "the ruin of oligarchy is the ruin of democracy; the same disease magnified and intensified by liberty overmasters democracy—the truth being that the excessive increase of anything often causes a reaction in the opposite direction; and this is the case not only in the seasons and in vegetable and animal life, but above all in forms of government."
 
@@ -40,8 +30,6 @@
 
 "as we might expect fr fr."
 
-## The Drone Problem Explained
-
 "that, however, wasn't, as i believe, your question—you rather desired to know what's that disorder which is generated alike in oligarchy and democracy, and is the ruin of both?"
 
 "just so," he replied.
@@ -54,8 +42,6 @@
 
 "yes, by all means," he said.
 
-## The Three Democratic Classes (The Ultimate Breakdown)
-
 "then, in order that we may see clearly what we're doing, let's imagine democracy to be divided, as indeed it is, into three classes; cause in the first place freedom creates rather more drones in the democratic than there were in the oligarchical state."
 
 "that's true."
@@ -67,8 +53,6 @@
 "because in the oligarchical state they're disqualified and driven from office, and therefore they can't train or gather strength; whereas in a democracy they're almost the entire ruling power, and while the keener sort speak and act, the rest keep buzzing about the bema and don't suffer a word to be said on the other side; hence in democracies almost everything is managed by the drones."
 
 "very true," he said.
-
-## The Rich Get Squeezed
 
 "then there's another class which is always being severed from the mass."
 
@@ -86,8 +70,6 @@
 
 "that's pretty much the case," he said.
 
-## The Working Class Squad
-
 "the people are a third class, consisting of those who work with their own hands; they're not politicians, and don't have much to live upon. this, when assembled, is the largest and most powerful class in a democracy."
 
 "true," he said; "but then the multitude is seldom willing to congregate unless they get a little honey."
@@ -95,8 +77,6 @@
 "and don't they share?" i said. "don't their leaders deprive the rich of their estates and distribute them among the people; at the same time taking care to reserve the larger part for themselves?"
 
 "why, yes," he said, "to that extent the people do share."
-
-## The Rich Fight Back (And Get Canceled)
 
 "and the persons whose property is taken from them are compelled to defend themselves before the people as they best can?"
 
@@ -114,8 +94,6 @@
 
 "true."
 
-## The People's Champion Arc
-
 "the people always have some champion whom they set over them and nurse into greatness."
 
 "yes, that's their way."
@@ -123,8 +101,6 @@
 "this and no other is the root from which a tyrant springs; when they first appear above ground they're a protector."
 
 "yes, that's quite clear."
-
-## The Wolf Transformation Theory (Actually Unhinged)
 
 "how then does a protector begin to change into a tyrant? clearly when they do what the person is said to do in the tale of the arcadian temple of lycaean zeus."
 
@@ -142,8 +118,6 @@
 
 "the same."
 
-## The Bodyguard Grift
-
 "after a while they're driven out, but come back, in spite of their enemies, a tyrant full grown."
 
 "that's clear."
@@ -160,8 +134,6 @@
 
 "very true."
 
-## The Oracle Moment
-
 "and when a person who's wealthy and is also accused of being an enemy of the people sees this, then, bestie, as the oracle said to croesus, 'by pebbly hermus' shore they flee and rest not, and aren't ashamed to be a coward.'"
 
 "and quite right too," said he, "cause if they were, they'd never be ashamed again."
@@ -174,19 +146,13 @@
 
 "no doubt," he said.
 
-## The Tyrant's Happiness Analysis
-
 "and now let's consider the happiness of the person, and also of the state in which a creature like them is generated."
 
 "yes," he said, "let's consider that."
 
-## The Honeymoon Phase (Peak Sus)
-
 "at first, in the early days of their power, they're full of smiles, and they salute everyone whom they meet;—they to be called a tyrant, who's making promises in public and also in private! liberating debtors, and distributing land to the people and their followers, and wanting to be so kind and good to everyone!"
 
 "of course," he said.
-
-## The Forever War Strategy
 
 "but when they've disposed of foreign enemies by conquest or treaty, and there's nothing to fear from them, then they're always stirring up some war or other, in order that the people may require a leader."
 
@@ -200,8 +166,6 @@
 
 "they must."
 
-## The Popularity Crash
-
 "now they begin to grow unpopular."
 
 "a necessary result."
@@ -214,8 +178,6 @@
 
 "they can't."
 
-## The Great Purge Protocol
-
 "and therefore they must look about them and see who's valiant, who's high-minded, who's wise, who's wealthy; happy person, they're the enemy of them all, and must seek occasion against them whether they will or no, until they've made a purgation of the state."
 
 "yes," he said, "and a rare purgation."
@@ -227,8 +189,6 @@
 "what a blessed alternative," i said:—"to be compelled to dwell only with the many bad, and to be by them hated, or not to live at all!"
 
 "yes, that's the alternative."
-
-## The Mercenary Solution
 
 "and the more detestable their actions are to the citizens the more satellites and the greater devotion in them will they require?"
 
@@ -250,8 +210,6 @@
 
 "to be sure," he said; "and they'll be able to trust them best of all."
 
-## The Friend Circle Analysis
-
 "what a blessed creature," i said, "must this tyrant be; they've put to death the others and have these for their trusted friends."
 
 "yes," he said; "they're quite of their sort."
@@ -259,8 +217,6 @@
 "yes," i said, "and these are the new citizens whom they've called into existence, who admire them and are their companions, while the good hate and avoid them."
 
 "of course."
-
-## The Tragedy Roast
 
 "verily, then, tragedy is a wise thing and euripides a great tragedian."
 
@@ -282,8 +238,6 @@
 
 "true."
 
-## The Army Funding Problem
-
 "but we're wandering from the subject: let's therefore return and inquire how the tyrant will maintain that fair and numerous and various and ever-changing army of theirs."
 
 "if," he said, "there are sacred treasures in the city, they'll confiscate and spend them; and in so far as the fortunes of attainted persons may suffice, they'll be able to diminish the taxes which they would otherwise have to impose upon the people."
@@ -291,8 +245,6 @@
 "and when these fail?"
 
 "why, clearly," he said, "then they and their boon companions, whether male or female, will be maintained out of their father's estate."
-
-## The Ultimate Family Drama
 
 "you mean to say that the people, from whom they've derived their being, will maintain them and their companions?"
 
@@ -302,8 +254,6 @@
 
 "by heaven," he said, "then the parent will discover what a monster they've been fostering in their bosom; and, when they want to drive them out, they'll find that they're weak and their child strong."
 
-## The Parricide Moment
-
 "why, you don't mean to say that the tyrant will use violence? what! beat their parent if they oppose them?"
 
 "yes, they will, having first disarmed them."
@@ -311,8 +261,6 @@
 "then they're a parricide, and a cruel guardian of an aged parent; and this is real tyranny, about which there can be no longer a mistake: as the saying is, the people who would escape the smoke which is the slavery of freemen, has fallen into the fire which is the tyranny of slaves. thus liberty, getting out of all order and reason, passes into the harshest and bitterest form of slavery."
 
 "true," he said.
-
-## The Analysis Complete
 
 "very well; and may we not rightly say that we've sufficiently discussed the nature of tyranny, and the manner of the transition from democracy to tyranny?"
 

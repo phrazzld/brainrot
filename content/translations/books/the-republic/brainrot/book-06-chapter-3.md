@@ -1,7 +1,3 @@
-# Book 6, Chapter 3: The Form of the Good & Sun Analogy (The Ultimate W)
-
-## The Philosopher Artists
-
 "anything but unskilled fr fr."
 
 "and if the world realizes that what we're saying about them is facts, will they still be pressed at philosophy? will they refuse to believe us when we tell them that no state can be happy unless it's designed by artists who copy the heavenly pattern?"
@@ -16,8 +12,6 @@
 
 "no doubt."
 
-## The Divine Blueprint Method
-
 "and when they're filling in the work, as i see it, they'll constantly look up and down: i mean they'll first look at absolute justice and beauty and temperance, and then at the human copy; and they'll mix and blend the various elements of life into the image of a person; and they'll conceive this according to that other image, which when it exists among humans, homer calls the form and likeness of god."
 
 "very true," he said.
@@ -25,8 +19,6 @@
 "and one feature they'll erase, and another they'll add, until they've made human behaviors, as much as possible, agreeable to god's ways?"
 
 "indeed," he said, "there's literally no way they could make a more beautiful picture."
-
-## Converting The Haters
 
 "and now," i said, "are we starting to convince those people you described as rushing at us with full force, that the painter of constitutions is the type we're hyping up; the one they were so pressed about because we were giving them the state; and are they chilling out a bit after hearing this?"
 
@@ -44,8 +36,6 @@
 
 "absolutely not."
 
-## The Peace Treaty
-
 "then will they still be mad at us saying that until philosophers rule, states and individuals will have no rest from evil, and this imaginary state of ours will never be realized?"
 
 "i think they'll be less mad."
@@ -61,8 +51,6 @@
 "and when they come into being will anyone say they must necessarily be destroyed? that they can barely be saved isn't denied even by us; but that in the whole course of ages not a single one can escape—who's gonna claim that?"
 
 "who indeed!"
-
-## One Is Enough
 
 "but," i said, "one is enough; let there be one person who has a city obedient to their will, and they could bring into existence the ideal state that the world thinks is impossible."
 
@@ -84,8 +72,6 @@
 
 "very good."
 
-## The Next Challenge
-
 "and so with pain and grinding we've reached the end of one subject, but more remains to be discussed—how and by what studies and pursuits will the saviors of the constitution be created, and at what ages should they apply themselves to their various studies?"
 
 "certainly."
@@ -94,8 +80,6 @@
 
 "i remember perfectly," he said.
 
-## The Bold Declaration
-
 "yes bestie," i said, "and i hesitated to drop the bold take back then; but now let me be brave and say it—that the perfect guardian must be a philosopher."
 
 "yes," he said, "let that be confirmed."
@@ -103,8 +87,6 @@
 "and don't think there'll be many of them; cause the gifts we said were essential rarely grow together; they're mostly found in pieces and patches."
 
 "what do you mean?" he said.
-
-## The Rare Combo
 
 "you know," i replied, "that quick intelligence, memory, cleverness, wit, and similar qualities don't often grow together, and that people who have them and are also high-spirited and noble aren't naturally built to live orderly and in a peaceful settled way; they're driven wherever by their impulses, and all solid principles go out the window."
 
@@ -122,13 +104,9 @@
 
 "yes, indeed."
 
-## The Ultimate Test
-
 "then the candidate must not only be tested in those labors and dangers and pleasures we mentioned before, but there's another type of test we didn't mention—they must be exercised in many kinds of knowledge, to see whether the soul can handle the highest of all, or will fold under them, like in any other studies and exercises."
 
 "yes," he said, "you're absolutely right to test them. but what do you mean by the highest of all knowledge?"
-
-## The Callback
 
 "you might remember," i said, "that we divided the soul into three parts; and distinguished the different natures of justice, temperance, courage, and wisdom?"
 
@@ -142,8 +120,6 @@
 
 "yes," he said, "i thought and the others thought you gave us a fair amount of truth."
 
-## No Half Measures
-
 "but bestie," i said, "a measure of such things that falls short of the whole truth in any degree isn't a fair measure; cause nothing imperfect is the measure of anything, although people are too ready to be satisfied and think they don't need to search further."
 
 "not uncommon when people are lazy."
@@ -151,8 +127,6 @@
 "yes," i said; "and there can't be any worse fault in a guardian of the state and the laws."
 
 "true."
-
-## The Longer Circuit
 
 "the guardian then," i said, "must be required to take the longer route, and grind at learning just as much as at gymnastics, or they'll never reach the highest knowledge of all which, as we just said, is their proper calling."
 
@@ -162,13 +136,9 @@
 
 "absolutely based thought; but do you think we'll refrain from asking you what this highest knowledge is?"
 
-## The Form of the Good
-
 "nah," i said, "ask if you want; but i'm certain you've heard the answer many times, and now you either don't understand me or, as i think, you're trying to be difficult; cause you've often been told that the idea of good is the highest knowledge, and that all other things become useful and beneficial only by their use of this. you can barely be unaware that i was about to speak of this, concerning which, as you've often heard me say, we know so little; and without which, any other knowledge or possession of any kind will be useless to us. do you think possessing all other things is valuable if we don't possess the good? or knowing all other things if we have no knowledge of beauty and goodness?"
 
 "absolutely not."
-
-## The Philosophy Debate
 
 "you're also aware that most people say pleasure is the good, but the more sophisticated ones say it's knowledge?"
 
@@ -182,8 +152,6 @@
 
 "most true," he said.
 
-## The Pleasure Paradox
-
 "and those who make pleasure their good are equally confused; cause they're forced to admit there are bad pleasures as well as good."
 
 "certainly."
@@ -196,10 +164,8 @@
 
 "there can be none."
 
-## Reality vs Appearance
-
 "further, don't we see that many are willing to do or have or seem to be what's just and honorable without the reality; but no one's satisfied with the appearance of good—the reality is what they seek; in the case of the good, appearance is despised by everyone."
 
 "very true," he said.
 
-[Note: The Sun analogy continues in Chapter 4]
+[note: the sun analogy continues in chapter 4]

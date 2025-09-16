@@ -1,7 +1,3 @@
-# Book 4, Chapter 1: Guardian Lifestyle & Common Property (The Communist Guardian Build)
-
-## The Guardian Happiness Debate
-
 here adeimantus interrupts with a skill issue: "yo socrates, what's your response if someone says you're making these guardians absolutely miserable, and they're literally griefing themselves? the whole server technically belongs to them but they get zero benefits. meanwhile other players are buying land, building massive gamer mansions, decorating with drip, hosting their own religious events, flexing hospitality. plus like you just said, they have gold and silver and all the meta items that lucky players get. but our poor guardians are basically just mercenaries camping in the city permanently on guard duty?"
 
 "facts," i said, "and you can add they're only getting food, no salary on top like other players. so they can't even take vacation trips if they wanted. no money for e-girls or any other premium content that normies consider happiness. tons of other complaints you could add to that list."
@@ -12,23 +8,17 @@ here adeimantus interrupts with a skill issue: "yo socrates, what's your respons
 
 "yes."
 
-## The Statistical Approach to Happiness
-
 "if we follow our usual strat," i said, "i think we'll find the answer. we'll say even as they are, our guardians are probably the happiest players on the server. but our goal in founding this society wasn't to max out one class's happiness stats, but to optimize happiness for the whole server. we figured in a society balanced for overall good we'd most likely find justice, and in a toxic society we'd find injustice. after finding both, we could determine which is actually happier. right now we're crafting the happy state as a complete build, not just buffing a few citizens' happiness individually. later we'll examine the opposite type of society."
 
 "imagine we're painting a statue and someone rolls up saying 'why aren't you using the most beautiful colors on the most beautiful parts? eyes should be purple but you made them black!' we'd reasonably reply 'bestie, you don't want us to make the eyes so beautiful they stop being eyes. consider whether by giving each feature proper proportions, we make the whole thing beautiful.' same energy here - don't force us to give guardians the type of happiness that makes them stop being guardians."
 
 "we could also dress our farmers in royal drip with gold crowns and tell them to farm only when they feel like it. our potters could chill on couches, partying by the fire, passing drinks around with their pottery wheel nearby, only working when vibing. we could make every class 'happy' this way - then you'd think the whole society would be happy. but don't put that idea in our heads. if we listen to you, farmers won't be farmers, potters won't be potters, nobody will maintain their class role in society."
 
-## The Guardian Integrity Crisis
-
 "now with most jobs this doesn't matter much - society corruption and people larping as what they're not, when limited to shoe makers, isn't that deep. but when the guardians of laws and government are only pretending to be guardians? watch how they completely grief the whole server. conversely, they alone have the power to bring order and happiness to the state. we want our guardians to be actual saviors not server destroyers, while our opponent is thinking of peasants at a festival living their best life, not citizens doing their civic duty. if that's the case, we're talking about different things and he's not even describing a real society."
 
 "so we need to consider whether in appointing guardians we're looking for their maximum individual happiness, or if happiness belongs to the society as a whole. if it's the latter, then guardians, auxiliaries, and everyone else must be forced or convinced to perform their roles optimally. this way the whole society levels up properly and each class gets the happiness proportion that game mechanics assign them."
 
 "i think you're completely right," adeimantus agrees.
-
-## The Wealth and Poverty Debuff Analysis  
 
 "wonder if you'll agree with my next take."
 
@@ -68,8 +58,6 @@ here adeimantus interrupts with a skill issue: "yo socrates, what's your respons
 
 "wealth and poverty - one spawns luxury and laziness, the other spawns poverty mindset and toxicity, and both create discontent."
 
-## The Military Strategy Without Money
-
 "that's very true," adeimantus replies, "but still socrates, how will our server pvp, especially against rich powerful enemies, if we have no war funds?"
 
 "definitely would be hard fighting one such enemy," i replied, "but no difficulty with two of them."
@@ -96,8 +84,6 @@ here adeimantus interrupts with a skill issue: "yo socrates, what's your respons
 
 "i agree, you're right."
 
-## The Diplomatic Meta
-
 "and suppose before engaging, our citizens message one enemy city with the truth: 'we literally don't have gold or silver and aren't allowed to. but you can - come help us fight and take all the other city's loot.' who hearing this would choose to fight lean hungry wolves rather than joining the wolves to fight fat sheep?"
 
 "unlikely, though there might be danger to our poor server if many cities' wealth concentrated in one place."
@@ -109,8 +95,6 @@ here adeimantus interrupts with a skill issue: "yo socrates, what's your respons
 "you should call other societies plural - they're not one city but many cities, like in that board game. any city, however small, is actually split into two - poor people's city and rich people's city, constantly at war. within each are many smaller factions. you'd completely miss if you treated them as unified. but if you play them against each other, giving one faction's wealth or power to another, you'll always have many allies and few enemies. your society, while following our current meta, will be the greatest server - not in appearance or clout, but in actual power and truth, even with just thousand defenders. you won't find a single society that matches it among greeks or barbarians, though many appear equal or greater."
 
 "absolutely facts," he said.
-
-## The Server Size Limit Debate
 
 "so what's the optimal size limit for our rulers when considering territory to include?"
 
@@ -128,8 +112,6 @@ here adeimantus interrupts with a skill issue: "yo socrates, what's your respons
 
 "yeah that's not difficult."
 
-## Education as the Master Key
-
 "these regulations we're prescribing adeimantus aren't some massive complicated system, they're all trivial if we protect the one big thing - though i'd call it sufficient not big."
 
 "what's that?" he asked.
@@ -145,8 +127,6 @@ here adeimantus interrupts with a skill issue: "yo socrates, what's your respons
 "to summarize: above all, our admins must focus on preserving music and gym training in original form without innovation. they must desperately maintain them. when someone says people prefer 'the newest song from creators,' they should worry he means not new songs but a new music genre entirely - that shouldn't be praised or interpreted as the poet's meaning. any music innovation threatens the whole server and should be banned. damon tells me and i believe him - when music modes change, fundamental server rules always change with them."
 
 "add my vote to damon's and yours," adeimantus agrees.
-
-## The Music Defense System
 
 "so our guardians must build their fortress foundation in music?"
 
@@ -167,8 +147,6 @@ here adeimantus interrupts with a skill issue: "yo socrates, what's your respons
 "when they start with good foundations in play, gaining order habits through music - totally opposite of the lawless kids - this order follows them everywhere as a growth principle, fixing any previously broken parts of society."
 
 "absolutely true."
-
-## The Micromanagement Rejection
 
 "properly educated, they'll innovate all the small rules previous generations completely ignored."
 
@@ -194,8 +172,6 @@ here adeimantus interrupts with a skill issue: "yo socrates, what's your respons
 
 "makes sense," he replied.
 
-## The Free Market Approach
-
 "what about marketplace business, normal transactions, contracts with workers, assault and injury lawsuits, jury selection, market fees, harbor taxes, general market regulations, police, ports, etc? should we make laws about these?"
 
 "no need imposing laws about them on good people," he said. "they'll figure out necessary regulations themselves."
@@ -220,8 +196,6 @@ here adeimantus interrupts with a skill issue: "yo socrates, what's your respons
 
 "definitely not."
 
-## The Political Cope Cycle
-
 "then you won't approve of societies acting the same way. aren't there broken societies where citizens are threatened with death penalty for changing the constitution, yet whoever best simps for the current regime, indulging them, predicting and satisfying their desires, is considered a great statesman? don't these societies resemble those patients i described?"
 
 "yes," he said, "the societies are as bad as the people. i'm far from praising them."
@@ -240,8 +214,6 @@ here adeimantus interrupts with a skill issue: "yo socrates, what's your respons
 
 "i think a real legislator won't bother with such rules in either broken or based societies - in broken ones they're useless, in based ones unnecessary. many naturally emerge from our previous principles."
 
-## The Religious Authority Outsourcing
-
 "so what's left for us to legislate?" he asked.
 
 "nothing for us," i replied. "but for apollo at delphi, there's the most important, noble, and fundamental things."
@@ -251,8 +223,6 @@ here adeimantus interrupts with a skill issue: "yo socrates, what's your respons
 "establishing temples, sacrifices, and worship for gods, demigods, and heroes. also burial sites and rituals to keep the dead from malding. we don't know this stuff ourselves, and as city founders we'd be stupid trusting any interpreter except our ancestral deity. he's the god sitting at earth's center, at the navel, interpreting religion for all humanity."
 
 "you're right, we'll do that."
-
-## The Justice Hunt Begins
 
 "but yo, where in all this is justice? son of ariston, tell me where. now that our city is built and populated, light a torch and search. get your brother, polemarchus, and the rest to help. let's see where we can find justice and injustice in it, how they differ, and which one someone needs to be happy, whether gods and humans see it or not."
 
@@ -281,8 +251,6 @@ here adeimantus interrupts with a skill issue: "yo socrates, what's your respons
 "shouldn't we use the same method for the virtues, which are also four?"
 
 "clearly."
-
-## The Wisdom Hunt
 
 "first virtue visible in our society is wisdom, and i notice something weird about it."
 
@@ -343,8 +311,6 @@ here adeimantus interrupts with a skill issue: "yo socrates, what's your respons
 "so we've somehow discovered the nature and location of one of four virtues."
 
 "and very satisfactorily discovered imo," he replied.
-
-## Finding Courage in the Server
 
 "again," i said, "courage is easy to spot, and which part gives the society its brave label."
 

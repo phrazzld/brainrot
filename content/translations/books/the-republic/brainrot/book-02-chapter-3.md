@@ -1,5 +1,3 @@
-# Book 2, Chapter 3: Guardian Education & The Content Moderation Arc
-
 so like isn't the love of learning basically just being a wisdom simp? which is literally what philosophy means fr fr?
 
 "yeah that's the same vibe," he said.
@@ -88,7 +86,7 @@ whenever they misrepresent what gods and heroes are actually like—it's like wh
 
 "completely agree," he said, "those stories should definitely be cancelled imo."
 
-also if we want our future guardians to think that beefing with each other is the most L behavior possible, we absolutely cannot let them hear about the wars in heaven, all the drama and pvp between the gods, because that's all fake news anyway. nah, we're never mentioning the titan battles or letting anyone embroider that stuff on merch. we're going full radio silence about all the other infinite beefs between gods and heroes with their friends and family. if they'd just trust us, we'd tell them that fighting among citizens is unholy and that there's literally never been internal drama in our community before. this is what the boomers and elder millennials should be teaching the kids from day one. and when they grow up, the content creators need to get the same memo about keeping their content in the same vibe. but that whole storyline about hephaestus trapping his mom hera, or when zeus yeeted him for trying to defend her when she was getting beat? all those battle royale episodes in homer? these narratives are getting permabanned from our state, whether people claim they're "just metaphors" or not. because young minds literally can't tell the difference between allegory and literal content. whatever downloads into their brain at that age becomes permanent firmware that you can't patch later. that's why it's absolutely crucial that the first stories they hear should be training data for virtuous thinking patterns.
+also if we want our future guardians to think that beefing with each other is the most l behavior possible, we absolutely cannot let them hear about the wars in heaven, all the drama and pvp between the gods, because that's all fake news anyway. nah, we're never mentioning the titan battles or letting anyone embroider that stuff on merch. we're going full radio silence about all the other infinite beefs between gods and heroes with their friends and family. if they'd just trust us, we'd tell them that fighting among citizens is unholy and that there's literally never been internal drama in our community before. this is what the boomers and elder millennials should be teaching the kids from day one. and when they grow up, the content creators need to get the same memo about keeping their content in the same vibe. but that whole storyline about hephaestus trapping his mom hera, or when zeus yeeted him for trying to defend her when she was getting beat? all those battle royale episodes in homer? these narratives are getting permabanned from our state, whether people claim they're "just metaphors" or not. because young minds literally can't tell the difference between allegory and literal content. whatever downloads into their brain at that age becomes permanent firmware that you can't patch later. that's why it's absolutely crucial that the first stories they hear should be training data for virtuous thinking patterns.
 
 "you're spitting facts," he replied, "but if someone asks where to find these ideal story models and what narratives you're talking about—what's our answer?"
 
@@ -132,11 +130,11 @@ so it follows that good isn't the cause of everything, just the good stuff?
 
 "absolutely."
 
-then god, if he's good, isn't the author of all things like most people claim. he's only responsible for the few good things that happen to humans, not most things. humans have way fewer Ws than Ls in life, and only the Ws come from god. for all the Ls, you gotta find other sources, not him.
+then god, if he's good, isn't the author of all things like most people claim. he's only responsible for the few good things that happen to humans, not most things. humans have way fewer ws than ls in life, and only the ws come from god. for all the ls, you gotta find other sources, not him.
 
 "that seems extremely based and true," he said.
 
-so we can't let homer or any other poet spread the smooth brain take that there are two jars 'sitting at zeus's door, one full of good RNG, the other full of bad RNG,' and that whoever zeus gives a mixed drop to 'sometimes gets ratioed by life, other times gets blessed,' but whoever gets pure L juice 'gets driven by savage hunger across the beautiful earth.' and also—'zeus, who distributes Ws and Ls to us.' 
+so we can't let homer or any other poet spread the smooth brain take that there are two jars 'sitting at zeus's door, one full of good rng, the other full of bad rng,' and that whoever zeus gives a mixed drop to 'sometimes gets ratioed by life, other times gets blessed,' but whoever gets pure l juice 'gets driven by savage hunger across the beautiful earth.' and also—'zeus, who distributes ws and ls to us.' 
 
 and if anyone claims that the broken oaths and treaties (which was actually pandarus's doing) were orchestrated by athena and zeus, or that the god drama was started by themis and zeus, they're not getting our blue checkmark. we also won't let our young people hear aeschylus saying 'god plants guilt in humans when he wants to absolutely destroy their whole bloodline.'
 
@@ -196,7 +194,7 @@ then it's impossible that god would ever want to change. being supposedly the mo
 
 "that's the only logical conclusion," he said.
 
-"then," i said, "bestie, let's not have any poets telling us 'the gods go undercover as foreign NPCs, walking through cities in all kinds of skins,' and nobody better slander proteus and thetis. also ban anyone in tragedy or any other content from showing hera cosplaying as a priestess begging for donations 'for the life-giving daughters of inachus the argos river.' we need to stop these lies immediately. and we definitely can't have moms scarring their kids with scuffed versions of these myths, telling them certain gods 'go around at night looking like random strangers in different forms.' they'll just make their kids anxiety-riddled cowards while simultaneously talking trash about the gods."
+"then," i said, "bestie, let's not have any poets telling us 'the gods go undercover as foreign npcs, walking through cities in all kinds of skins,' and nobody better slander proteus and thetis. also ban anyone in tragedy or any other content from showing hera cosplaying as a priestess begging for donations 'for the life-giving daughters of inachus the argos river.' we need to stop these lies immediately. and we definitely can't have moms scarring their kids with scuffed versions of these myths, telling them certain gods 'go around at night looking like random strangers in different forms.' they'll just make their kids anxiety-riddled cowards while simultaneously talking trash about the gods."
 
 "absolutely not happening," he said.
 
@@ -264,7 +262,7 @@ so god is perfectly authentic and truthful in both words and actions. he doesn't
 
 "i co-sign that."
 
-so even though we stan homer, we don't stan the fake dream zeus sends agamemnon. we also won't approve those aeschylus bars where thetis says apollo at her wedding 'was hyping up her future kids, saying they'd live long and never get sick. and after he spoke about my blessed RNG from heaven, he hit that victory royale note and made my soul feel good. and i thought apollo's divine words full of prophecy would never miss. but now the same dude who dropped those bars, who was at the feast, who said all that—he's the one who eliminated my son.'
+so even though we stan homer, we don't stan the fake dream zeus sends agamemnon. we also won't approve those aeschylus bars where thetis says apollo at her wedding 'was hyping up her future kids, saying they'd live long and never get sick. and after he spoke about my blessed rng from heaven, he hit that victory royale note and made my soul feel good. and i thought apollo's divine words full of prophecy would never miss. but now the same dude who dropped those bars, who was at the feast, who said all that—he's the one who eliminated my son.'
 
 these kinds of takes about the gods will get us heated, and whoever posts them gets demonetized. we won't let them have a platform, and teachers can't use this content for educating the youth. since our goal is for our guardians to be, as much as humanly possible, true god respecters and trying to be like them.
 

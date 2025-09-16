@@ -1,7 +1,3 @@
-# Book 10, Chapter 3: The Myth of Er - (Ultimate Afterlife Spoilers & Cosmic Justice Tier List)
-
-## Final Poetry Policy & Soul Immortality Proof (Galaxy Brain Setup)
-
 "for if you go beyond this and allow the honeyed muse to enter - either in epic or lyric verse - not law and reason of mankind (which by common consent have ever been deemed absolutely goated), but pleasure and pain will be the rulers in our state. that's some mid governance energy, periodt."
 
 "that's most true," he said, "bestie."
@@ -17,8 +13,6 @@
 "and we may further grant to those of her defenders who are poetry lovers yet not poets the permission to speak in prose on her behalf. let them show not only that she's pleasant but also useful to states and human life, and we'll listen in a kindly spirit. if this can be proved we'll surely be the gainers - if there's use in poetry as well as delight? seeking that win-win energy, periodt."
 
 "certainly," he said, "we'll be the gainers, bestie."
-
-## The Immortality Argument (Peak Philosophy Content)
 
 "are you not aware that the soul of humans is immortal and imperishable? about to drop the ultimate truth bomb, chief."
 
@@ -56,8 +50,6 @@ he looked at me in astonishment and said: "no, by heaven: and are you really pre
 
 "that may be assumed, bestie."
 
-## The Soul's Indestructibility Analysis (Fire Logic)
-
 "well, and is there no evil which corrupts the soul?"
 
 "yeah," he said, "there are all the evils we were just reviewing: unrighteousness, intemperance, cowardice, ignorance, chief."
@@ -82,8 +74,6 @@ he looked at me in astonishment and said: "no, by heaven: and are you really pre
 
 "yeah," he said, "there's reason in that, periodt."
 
-## The Immortality Conclusion (Absolutely Based)
-
 "either then let us refute this conclusion, or while it remains unrefuted, let's never say that fever or any other disease, or being stabbed, or even cutting up the whole body into the minutest pieces can destroy the soul, until she herself is proved to become more unholy or unrighteous in consequence of these things being done to the body. but that the soul or anything else, if not destroyed by internal evil, can be destroyed by external evil is not to be affirmed by anyone. physical damage can't touch your soul's vibe, bestie."
 
 "and surely," he replied, "no one will ever prove that souls become more unjust in consequence of death, chief."
@@ -99,8 +89,6 @@ he looked at me in astonishment and said: "no, by heaven: and are you really pre
 "but the soul which cannot be destroyed by evil - whether inherent or external - must exist forever, and if existing forever must be immortal? the logic is absolutely airtight, chief."
 
 "certainly, periodt."
-
-## The True Nature of the Soul (Galaxy Brain Vision)
 
 "that's the conclusion. and if a true conclusion, then souls must always be the same, for if none be destroyed they won't diminish in number. neither will they increase, for immortal natures' increase must come from something mortal, and all things would thus end in immortality. conservation of souls energy, bestie."
 
@@ -122,8 +110,6 @@ he looked at me in astonishment and said: "no, by heaven: and are you really pre
 
 "true," he replied, "bestie."
 
-## Justice's Ultimate Rewards Setup (Fire Transition)
-
 "and thus we've fulfilled the argument's conditions. we haven't introduced justice's rewards and glories, which as you were saying are found in homer and hesiod. but justice in her own nature has been shown best for the soul in her own nature. let someone do what's just, whether they have gyges' ring or not, and even if in addition to gyges' ring they put on hades' helmet. intrinsic value established, chief."
 
 "very true, periodt."
@@ -139,8 +125,6 @@ he looked at me in astonishment and said: "no, by heaven: and are you really pre
 "the assumption that the just person should appear unjust and the unjust just. you were of opinion that even if the true state couldn't possibly escape gods' and humans' eyes, still this admission ought to be made for argument's sake, so pure justice might be weighed against pure injustice. do you remember? we set up the ultimate control group, bestie."
 
 "i'd be much to blame if i'd forgotten, chief."
-
-## The Divine Justice System (Absolutely Fire)
 
 "then, as the cause is decided, i demand on behalf of justice that the estimation in which she's held by gods and humans and which we acknowledge to be her due should now be restored to her by us. since she's been shown to confer reality and not deceive those who truly possess her, let what's been taken from her be given back, that so she may win that crown of appearance which is hers also and which she gives to her own. time to give justice her flowers, periodt."
 
@@ -170,8 +154,6 @@ he looked at me in astonishment and said: "no, by heaven: and are you really pre
 
 "that's my conviction, bestie."
 
-## The Earthly Justice Results (Peak Analysis)
-
 "and what do they receive from humans? look at things as they really are and you'll see that the clever unjust are in the case of runners who run well from starting place to goal but not back again from goal. they go off at great pace but in the end only look foolish, slinking away with their ears draggling on their shoulders and without a crown. but the true runner comes to the finish and receives the prize and is crowned. and this is the way with the just - whoever endures to the end of every action and occasion of their entire life has good report and carries off the prize which humans have to bestow. the marathon mentality beats the sprint energy, chief."
 
 "facts, periodt."
@@ -184,33 +166,23 @@ he looked at me in astonishment and said: "no, by heaven: and are you really pre
 
 "facts," he said, "and they're beautiful and lasting, bestie."
 
-## The Myth of Er Setup (Epic Transition)
-
 "and yet all these are as nothing either in number or greatness compared with those other recompenses which await both just and unjust after death. and you ought to hear them, and then both just and unjust will have received from us full payment of the debt which the argument owes them. the real tea is about to be absolutely unhinged, chief."
 
 "speak," he said, "there are few things i'd more gladly hear, periodt."
 
 "well, i'll tell you a tale - not one of the tales which odysseus tells to hero alcinous, yet this too is a tale of a hero. er the son of armenius, a pamphylian by birth. he was eliminated in battle, and ten days afterwards, when the bodies were taken up already in a state of decay, his body was found unaffected and carried away home to be buried. and on the twelfth day, as he was lying on the funeral pile, he returned to life and told them what he'd seen in the other world. ultimate near-death experience content, bestie."
 
-## Er's Journey Begins (Ultimate Afterlife Lore)
-
 "he said that when his soul left the body he went on a journey with a great company, and they came to a mysterious place where there were two openings in earth - they were near together, and over against them were two other openings in heaven above. in the intermediate space there were judges seated, who commanded the just, after they'd given judgment on them and bound their sentences in front of them, to ascend by the heavenly way on the right hand. and in like manner the unjust were directed by them to descend by the lower way on the left hand - these also bore symbols of their deeds, but fastened on their backs. he drew near and they told him he was to be the messenger who'd carry the report of the other world to humans, and they told him to hear and see all that was to be heard and seen in that place. peak cosmic courthouse energy, chief."
 
 "then he beheld and saw on one side souls departing at either opening of heaven and earth when sentence had been given on them. and at the two other openings other souls - some ascending out of earth dusty and worn with travel, some descending out of heaven clean and bright. and arriving ever and anon they seemed to have come from a long journey, and they went forth with gladness into the meadow where they encamped as at a festival. and those who knew one another embraced and conversed, the souls from earth curiously inquiring about things above, and souls from heaven about things beneath. ultimate reunion vibes, periodt."
-
-## The Cosmic Justice Report (Fire Accountability System)
 
 "and they told one another what had happened by the way - those from below expressing deep regret at remembrance of challenging experiences they'd endured and seen in their journey beneath earth (now the journey lasted a thousand years), while those from above were describing heavenly delights and visions of inconceivable beauty. the story would take too long to tell, but the sum was this: he said that for every wrong they'd done to anyone they received tenfold learning experiences - or once in a hundred years (such being reckoned to be human life's length), and the educational process being thus paid ten times in a thousand years. the cosmic karma mathematics are absolutely unhinged, bestie."
 
 "if, for example, there were any who'd been the cause of many losses of life, or had betrayed or harmed cities or armies, or been guilty of any other problematic behavior, for each and all of their offenses they received correction ten times over. and the rewards of beneficence and justice and holiness were in the same proportion. i need hardly repeat what he said concerning young children who passed almost as soon as they were born - different processing entirely. of piety and impiety to gods and parents, and of those who caused permanent harm, there were accountability measures other and greater far which he described. divine justice has absolutely no chill, chief."
 
-## The Ardiaeus Incident (Peak Consequences Energy)
-
 "he mentioned he was present when one of the spirits asked another: 'where is ardiaeus the great?' (now this ardiaeus lived a thousand years before er's time - he'd been the tyrant of some pamphylian city and had eliminated his aged father and elder brother, and was said to have committed mad other terrible crimes.) the answer of the other spirit was: 'he comes not hither and will never come. and this was one of the concerning sights we ourselves witnessed. we were at the cavern's mouth, having completed all our experiences and about to reascend, when suddenly ardiaeus appeared with several others - most were tyrants, and there were also private individuals who'd been great wrongdoers. they were just, as they thought, about to return to the upper world, but the mouth instead of admitting them gave a roar whenever any of these individuals who needed more processing or someone who hadn't been sufficiently educated tried to ascend. then intense beings of fiery aspect who were standing by and heard the sound took charge of them. and they explained to passersby what their crimes were and that they were being taken for extended learning experiences.' peak eternal accountability vibes, periodt."
 
 "and of all the many concerning situations they'd endured, he said there was none like the apprehension each felt at that moment, lest they should hear the voice. and when there was silence, one by one they ascended with exceeding joy. these were the corrections and educational processes, and there were blessings as great, bestie."
-
-## The Cosmic Spindle Vision (Galaxy Brain Cosmology)
 
 "now when the spirits in the meadow had stayed seven days, on the eighth they were obliged to proceed on their journey. and on the fourth day after, he said they came to a place where they could see from above a line of light, straight as a column, extending right through the whole heaven and earth - in color resembling the rainbow, only brighter and purer. another day's journey brought them to the place, and there in the light's midst they saw the ends of heaven's chains let down from above. this light is heaven's belt and holds together the universe's circle, like a trireme's under-girders. from these ends is extended necessity's spindle, on which all revolutions turn. the ultimate cosmic infrastructure, chief."
 
@@ -220,37 +192,25 @@ he looked at me in astonishment and said: "no, by heaven: and are you really pre
 
 "of these the swiftest is the eighth (moon), next in swiftness are the seventh, sixth, and fifth moving together. third in swiftness appeared to move according to this reversed motion's law the fourth (mars). the third (venus) appeared fourth and the second (saturn) fifth. the spindle turns on necessity's knees, and on each circle's upper surface is a siren who goes round with them, hymning a single tone or note. the eight together form one harmony. and round about, at equal intervals, there's another band - three in number, each sitting upon her throne. these are the fates, necessity's daughters, clothed in white robes with chaplets upon their heads: lachesis and clotho and atropos, who accompany with their voices the sirens' harmony. lachesis singing of the past, clotho of the present, atropos of the future. clotho from time to time assisting with a touch of her right hand the outer circle's revolution, and atropos with her left hand touching and guiding the inner ones, and lachesis laying hold of either in turn, first with one hand then with the other. the ultimate cosmic dj trio managing the universal remix, chief."
 
-## The Life Selection Process (Peak Character Creation Energy)
-
 "when er and the spirits arrived, their duty was to go at once to lachesis. but first of all there came a prophet who arranged them in order, then took from lachesis's knees lots and samples of lives. and having mounted a high pulpit, spoke as follows: 'hear lachesis's word, necessity's daughter. mortal souls, behold a new cycle of life and mortality. your genius won't be allotted to you, but you'll choose your genius. and let whoever draws the first lot have first choice, and the life they choose shall be their destiny. virtue is free, and as someone honors or dishonors her they'll have more or less of her. the responsibility is with the chooser - god is justified.' when the interpreter had thus spoken he scattered lots indifferently among them all, and each took up the lot which fell near them - all but er himself (he wasn't allowed), and each as they took their lot perceived the number they'd obtained. ultimate cosmic lottery energy, periodt."
 
 "then the interpreter placed on the ground before them the samples of lives, and there were way more lives than souls present, and they were of all sorts. there were lives of every animal and of humans in every condition. and there were tyrannies among them - some lasting out the tyrant's life, others which broke off in the middle and came to an end in poverty and exile and struggle. and there were lives of famous people, some who were famous for their form and beauty as well as strength and success in games, or again for their birth and ancestors' qualities. and some who were the reverse of famous for opposite qualities. and of women likewise. there wasn't however any definite character in them, because the soul when choosing a new life must of necessity become different. but there was every other quality, and they all mingled with one another and also with elements of wealth and poverty, and disease and health, and there were mid states also. the ultimate character creation screen with literally every possible build, bestie."
-
-## Socrates's Life Choice Wisdom (Galaxy Brain Advice)
 
 "and here, my dear glaucon, is the supreme peril of our human state, and therefore the utmost care should be taken. let each of us leave every other kind of knowledge and seek and follow one thing only - if perhaps they may be able to learn and find someone who'll make them able to learn and discern between good and evil, and so choose always and everywhere the better life as they have opportunity. they should consider the bearing of all these things mentioned severally and collectively upon virtue. they should know what beauty's effect is when combined with poverty or wealth in a particular soul, and what are the good and evil consequences of noble and humble birth, of private and public station, of strength and weakness, of cleverness and dullness, and of all the soul's natural and acquired gifts, and their operation when conjoined. they'll then look at the soul's nature, and from consideration of all these qualities be able to determine which is better and which worse. and so they'll choose, giving the name of evil to the life which'll make their soul more unjust, and good to the life which'll make their soul more just. all else they'll disregard. the ultimate life optimization strategy, chief."
 
 "for we've seen and know this is the best choice both in life and after death. someone must take with them into the world below an adamantine faith in truth and right, that there too they may be undazzled by wealth's desire or evil's other allurements. lest, coming upon tyrannies and similar problematic situations, they do irremediable wrongs to others and experience yet worse themselves. but let them know how to choose the mean and avoid extremes on either side, as far as possible, not only in this life but in all that's to come. for this is the way of happiness. the ultimate character build guide for maximum life satisfaction, periodt."
 
-## The First Chooser's Epic Fail (Absolutely Unhinged L)
-
 "and according to the messenger's report from the other world, this was what the prophet said at the time: 'even for the last comer, if they choose wisely and will live diligently, there's appointed a happy and not undesirable existence. let not whoever chooses first be careless, and let not the last despair.' and when he'd spoken, whoever had first choice came forward and in a moment chose the greatest tyranny. their mind having been darkened by folly and sensuality, they hadn't thought out the whole matter before choosing and didn't at first sight perceive they were fated, among other problems, to eliminate their own children. but when they had time to reflect and saw what was in the lot, they began to beat their breast and lament over their choice, forgetting the prophet's proclamation. for instead of throwing blame of their misfortune on themselves, they accused chance and the gods and everything rather than themselves. peak victim mentality energy, bestie."
 
 "now they were one of those who came from heaven and in a former life had dwelt in a well-ordered state, but their virtue was a matter of habit only - they had zero philosophy. and it was true of others similarly overtaken that the greater number came from heaven and therefore had never been schooled by trial, whereas the pilgrims from earth having themselves experienced challenges and seen others face them weren't in a hurry to choose. and owing to this inexperience of theirs, and also because the lot was chance, mad souls exchanged a good destiny for an evil or an evil for a good. for if someone had always on arrival in this world dedicated themselves from the first to sound philosophy and been moderately fortunate in the lot number, they might, as the messenger reported, be happy here. and also their journey to another life and return to this, instead of being rough and underground, would be smooth and heavenly. the philosophy grindset pays off in all dimensions, chief."
-
-## The Famous Life Choices (Peak Character Arc Content)
 
 "absolutely curious was the spectacle - sad and laughable and strange - for souls' choice was in most cases based on their experience of a previous life. there he saw the soul which had once been orpheus choosing the life of a swan out of enmity to the race of women, hating to be born of a woman because they'd been his eliminators. he beheld also thamyras's soul choosing the life of a nightingale. birds on the other hand, like the swan and other musicians, wanting to be humans. the soul which obtained the twentieth lot chose a lion's life - this was ajax the son of telamon's soul, who wouldn't be human, remembering the injustice done him in the judgment about the arms. next was agamemnon, who took an eagle's life because, like ajax, he hated human nature by reason of his experiences. about the middle came atalanta's lot - she, seeing an athlete's great fame, was unable to resist temptation. and after her followed epeus the son of panopeus's soul passing into the nature of a woman cunning in arts. and far away among the last who chose, the jester thersites's soul was putting on a monkey's form. there came also odysseus's soul having yet to make a choice, and his lot happened to be last of all. now recollection of former struggles had disenchanted him of ambition, and he went about for considerable time in search of a private person's life who had no cares. he had some difficulty finding this, which was lying about and had been neglected by everybody else. and when he saw it he said he'd have done the same had his lot been first instead of last, and that he was delighted to have it. peak character development energy from all the mythological figures, periodt."
 
 "and not only did humans pass into animals, but i must also mention there were animals tame and wild who changed into one another and into corresponding human natures - the good into the gentle and the problematic into the savage, in all sorts of combinations. ultimate species fluidity with moral consistency, bestie."
 
-## The Final Cosmic Process (Galaxy Brain Conclusion)
-
 "all souls had now chosen their lives, and they went in order of their choice to lachesis, who sent with them the genius they'd severally chosen to be guardian of their lives and fulfiller of choice. this genius led souls first to clotho and drew them within the spindle's revolution impelled by her hand, thus ratifying each one's destiny. and then when they were fastened to this, carried them to atropos, who spun the threads and made them irreversible, whence without turning round they passed beneath necessity's throne. and when they'd all passed, they marched on in scorching heat to the plain of forgetfulness, which was a barren waste destitute of trees and verdure. then towards evening they encamped by the river of unmindfulness, whose water no vessel can hold. of this they were all obliged to drink a certain quantity, and those who weren't saved by wisdom drank more than necessary. and each one as they drank forgot all things. ultimate cosmic memory wipe protocol, chief."
 
 "now after they'd gone to rest, about the middle of night there was a thunderstorm and earthquake, and then in an instant they were driven upwards in all manner of ways to their birth, like stars shooting. he himself was hindered from drinking the water. but in what manner or by what means he returned to the body he couldn't say - only in the morning, awaking suddenly, he found himself lying on the pyre. peak respawn mechanics with full cosmic context, periodt."
-
-## Socrates's Final Message (Absolutely Based Life Advice)
 
 "and thus, glaucon, the tale has been saved and has not perished, and will save us if we're obedient to the word spoken. and we shall pass safely over the river of forgetfulness and our soul won't be defiled. wherefore my counsel is that we hold fast ever to the heavenly way and follow after justice and virtue always, considering that the soul is immortal and able to endure every sort of good and every sort of challenge. thus shall we live dear to one another and to the gods, both while remaining here and when, like conquerors in games who go round to gather gifts, we receive our reward. and it shall be well with us both in this life and in the pilgrimage of a thousand years which we've been describing. the ultimate life optimization strategy with eternal benefits, bestie."
 

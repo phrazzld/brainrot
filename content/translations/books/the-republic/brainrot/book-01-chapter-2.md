@@ -1,10 +1,6 @@
-# Book 1, Chapter 2: Polemarchus Gets Cooked & Thrasymachus Goes Full Villain Arc
-
-## The Friend/Enemy Patch Gets a Hotfix
-
 "so how we finna fix this whole skill issue?" i asked.
 
-polemarchus said: "a real friend is someone who's actually goated AND seems goated. but if they just seem based and they're actually mid, they only SEEM like a friend but they're literally an npc pretending. same energy with enemies fr fr."
+polemarchus said: "a real friend is someone who's actually goated and seems goated. but if they just seem based and they're actually mid, they only seem like a friend but they're literally an npc pretending. same energy with enemies fr fr."
 
 "so you're saying the actually good people are our friends and the toxic ones are our opps?"
 
@@ -16,11 +12,9 @@ polemarchus said: "a real friend is someone who's actually goated AND seems goat
 
 "but should someone who's supposedly just be out here causing damage to literally anyone at all?"
 
-"nah but fr they should definitely grief the ones who are both toxic AND their enemies."
+"nah but fr they should definitely grief the ones who are both toxic and their enemies."
 
-## Socrates Starts His Philosophical Speedrun
-
-"when horses catch an L and get injured, do they get buffed or debuffed?"
+"when horses catch an l and get injured, do they get buffed or debuffed?"
 
 "debuffed obviously."
 
@@ -32,7 +26,7 @@ polemarchus said: "a real friend is someone who's actually goated AND seems goat
 
 "no cap."
 
-"so when humans catch an L, they get debuffed in their human virtue stats?"
+"so when humans catch an l, they get debuffed in their human virtue stats?"
 
 "absolutely."
 
@@ -76,8 +70,6 @@ polemarchus said: "a real friend is someone who's actually goated AND seems goat
 
 "yo socrates, you're absolutely spitting facts right now."
 
-## The Definition Gets Absolutely Ratio'd
-
 "so if someone says justice is just paying your debts and that good vibes are what just people owe their friends while bad vibes are what they owe their enemies - whoever said that was literally not having a galaxy brain moment. because we just proved that griefing anyone is never based, no matter what."
 
 "i'm literally agreeing with you so hard right now," said polemarchus.
@@ -96,15 +88,11 @@ polemarchus said: "a real friend is someone who's actually goated AND seems goat
 
 "aight but if this definition is getting cooked too, what other takes we got?"
 
-## Thrasymachus Enters the Chat Like a Final Boss
-
 during our whole convo thrasymachus kept trying to hijack the discussion and steal the mic, but everyone else was literally shutting him down because they wanted to hear how this would end. but when polemarchus and i finished our bit and there was a pause, this dude couldn't contain himself anymore. he literally gathered all his energy and came at us like a raid boss trying to wipe the whole party. we were absolutely shook at the sight of him going full aggro mode.
 
 he went absolutely unhinged at everyone: "what is this cope festival, socrates? why are y'all being such betas and simping for each other's takes? if you actually want to know what justice is, stop just asking questions - actually drop an answer yourself. and don't just farm clout by ratio'ing other people's takes, have your own fire response. because there's mad people who can ask questions but literally can't answer them. and don't give me some mid take about justice being duty or advantage or profit or gains or interest - that's all trash tier analysis. i need you to be clear and actually locked in."
 
 i was literally shaking and couldn't even look at him without my anxiety spiking. honestly if i hadn't made eye contact first, i would've been completely stunned and unable to respond. but when i saw him malding, i looked at him first and managed to reply.
-
-## Socrates Tries to De-escalate
 
 "thrasymachus," i said with my voice literally trembling, "don't be so pressed with us. if polemarchus and i made a skill issue in our argument, i promise it wasn't intentional griefing. if we were searching for some legendary loot drop, you wouldn't think we were throwing the game on purpose and ruining our chances of finding it. so when we're searching for justice - which is more valuable than any legendary item - why would you think we're soft-inting each other instead of actually trying our hardest? bestie, we're genuinely trying but we just can't figure it out. you knowledge-maxed gamers should have some sympathy instead of being toxic."
 
@@ -128,8 +116,6 @@ i was literally shaking and couldn't even look at him without my anxiety spiking
 
 "i'll pay when i get the bag," i replied.
 
-## The Squad Backs Socrates
-
 "but you already have money, socrates," said glaucon. "thrasymachus don't even worry about the money situation - we'll all chip in for socrates's sub fee."
 
 "oh great," thrasymachus replied, "so socrates can do his usual move - refuse to answer anything himself but just dismantle and ratio everyone else's takes."
@@ -140,13 +126,11 @@ glaucon and the whole squad backed me up, and you could tell thrasymachus was ac
 
 "that i learn from others is absolutely true," i replied. "but saying i'm ungrateful is cap. i don't have money so i pay in hype and praise, which is all i got. and you'll see how ready i am to gas up anyone with good takes when you answer - because i know you're about to drop heat."
 
-## Thrasymachus Drops His Villain Manifesto
-
 "listen up," he said, "justice is literally nothing but whatever benefits the stronger person. now why aren't you hyping me up? oh right, of course you won't."
 
 "let me understand first," i replied. "justice is what benefits the stronger? what does that even mean thrasymachus? you can't mean that because polydamas the wrestling champion is stronger than us and eating protein benefits him, that protein is therefore 'just' and good for us weaklings?"
 
-"that's such bad faith arguing socrates. you're intentionally taking it in the most L way possible to grief my argument."
+"that's such bad faith arguing socrates. you're intentionally taking it in the most l way possible to grief my argument."
 
 "nah bestie, i'm genuinely trying to understand. please be clearer."
 
@@ -159,8 +143,6 @@ glaucon and the whole squad backed me up, and you could tell thrasymachus was ac
 "facts."
 
 "and each type of government makes laws that benefit themselves - democracies make democratic laws, aristocracies make aristocratic laws, tyrannies make tyrannical laws. they make these laws that benefit them and then say 'this is justice for our subjects.' anyone who breaks these laws gets cancelled for being unjust. that's what i mean - in every state the same principle applies: justice is whatever benefits the government. and since the government has all the power, the only logical conclusion is that everywhere justice is whatever benefits the stronger."
-
-## Socrates Starts His Counter-Combo
 
 "now i get what you're saying," i said. "whether you're right or not, we'll see. but hold up - you just used the word 'benefit' which you literally banned me from using. though you did add 'of the stronger' to it."
 
@@ -196,8 +178,6 @@ glaucon and the whole squad backed me up, and you could tell thrasymachus was ac
 
 "just repeating your take. think about it - didn't we agree rulers sometimes mess up and make laws that grief themselves, and that obeying rulers is justice? doesn't that mean justice is sometimes doing what hurts the stronger?"
 
-## The Squad Starts a Debate Tournament
-
 "that's absolutely obvious socrates," polemarchus jumped in.
 
 "yeah if you're allowed to be his witness," cleitophon interrupted.
@@ -208,13 +188,11 @@ glaucon and the whole squad backed me up, and you could tell thrasymachus was ac
 
 "but cleitophon, he also said justice benefits the stronger. and after saying both things, he admitted the stronger sometimes makes the weaker do stuff that hurts the stronger. so justice hurts the stronger just as much as it helps them."
 
-"nah," said cleitophon, "he meant whatever the stronger THINKS benefits them - that's what the weaker have to do, that's justice."
+"nah," said cleitophon, "he meant whatever the stronger thinks benefits them - that's what the weaker have to do, that's justice."
 
 "that's literally not what he said though," polemarchus replied.
 
-"doesn't matter," i said. "if thrasymachus wants to change his take now, let's accept it. tell me thrasymachus, did you mean justice is what the stronger THINKS benefits them, whether it actually does or not?"
-
-## Thrasymachus Goes Full Tryhard Mode
+"doesn't matter," i said. "if thrasymachus wants to change his take now, let's accept it. tell me thrasymachus, did you mean justice is what the stronger thinks benefits them, whether it actually does or not?"
 
 "absolutely not," he said. "you think i call someone 'stronger' when they're literally making mistakes? that's not the meta."
 
@@ -228,7 +206,7 @@ glaucon and the whole squad backed me up, and you could tell thrasymachus was ac
 
 "you think i'm asking these questions just to grief your argument?"
 
-"i don't 'think' it - i KNOW it. but you'll get exposed, and you'll never win with just pure logic."
+"i don't 'think' it - i know it. but you'll get exposed, and you'll never win with just pure logic."
 
 "bro i wouldn't even try that. but to avoid confusion, let me ask: when you talk about the 'stronger ruler' whose benefit makes justice - are you using the casual meaning or the technical tryhard meaning?"
 
@@ -237,8 +215,6 @@ glaucon and the whole squad backed me up, and you could tell thrasymachus was ac
 "you think i'm crazy enough to try to troll thrasymachus? might as well try to shave a lion."
 
 "you literally just tried a minute ago and failed hard."
-
-## The Art Skill Debate Gets Philosophical
 
 "enough trash talk," i said. "let me ask you something: is a physician in that technical tryhard sense a healer or a money farmer? and remember we're talking about the true physician."
 
@@ -288,8 +264,6 @@ he really didn't want to agree but finally did.
 
 he tried to fight this but eventually gave in.
 
-## Thrasymachus Catches an L
-
 "then," i continued, "no physician as a physician looks out for themselves, only their patient. because the true physician rules over bodies, not farming money. right?"
 
 "yeah."
@@ -314,15 +288,11 @@ when we reached this point and everyone could see his justice definition got abs
 
 "because you think shepherds care for sheep's wellbeing instead of their own profit and their boss's profit. you think rulers care about subjects instead of treating them like sheep to exploit 24/7. you're so clueless about justice and injustice that you don't even know justice is really just benefiting someone else - specifically the ruler and stronger person - while hurting the subject and servant. injustice is the opposite - it rules over the genuinely simple just people. the stronger person's subjects do what benefits him and make him happy, not themselves."
 
-## The Villain Monologue Goes Hard
-
 "consider this, you absolutely clueless socrates: just people always lose compared to unjust people. first, in business partnerships: when just and unjust people partner up, when they split, the unjust person always gets more and the just person gets less. second, with taxes: from the same income, just people pay more taxes while unjust people pay less. when there's government benefits to claim, just people get nothing while unjust people get everything. when just people take office, even if nothing else bad happens, their personal business falls apart and they get nothing from the public because they're too just. plus their friends hate them for not doing illegal favors. but it's completely opposite for unjust people."
 
 "i'm talking about major league injustice where the benefits are most obvious. look at the ultimate form - tyranny, where someone steals everything through force and fraud, not little by little but wholesale. they take sacred and public property, private stuff, everything. if someone got caught doing any single one of these crimes, they'd be cancelled and shamed - called temple robbers, kidnappers, burglars, scammers, thieves. but when someone doesn't just steal money but literally enslaves the whole population, instead of these insults they get called blessed and happy by everyone who hears about their complete injustice speedrun."
 
 "people only trash talk injustice because they're scared of being victims, not because they don't want to do it themselves. so socrates, injustice at scale has more power, freedom, and dominance than justice. like i said from the start: justice benefits the stronger, while injustice benefits yourself."
-
-## The Squad Won't Let Him Leave
 
 after dropping this absolutely unhinged rant on us like dumping a bucket of water, thrasymachus was about to leave. but the squad wouldn't let him escape - they demanded he stay and defend his position. i added my own request that he shouldn't dip.
 
@@ -380,8 +350,6 @@ he reluctantly agreed.
 
 "so thrasymachus, it's clear that no skill or ruling position provides for its own benefit. like we said before, they provide for and command what benefits subjects - the weaker, not the stronger. that's why i said nobody wants to rule voluntarily - they need payment in money, honor, or punishment for refusing."
 
-## The Good Person's Dilemma
-
 "what do you mean by punishment as payment, socrates?" glaucon asked. "money and honor make sense, but how is punishment a payment?"
 
 "you don't understand what motivates the best people to rule? you know ambition and greed are considered cringe, right?"
@@ -390,4 +358,4 @@ he reluctantly agreed.
 
 "so good people don't want to rule for money and be called sellouts, or secretly take from public funds and be called thieves. they don't care about clout either. so they need to be forced to rule from fear of punishment. that's probably why volunteering to rule is considered sus - like you're too eager. but the biggest punishment for refusing to rule is being ruled by someone worse than you. i think that's what makes decent people rule when they do. they don't go into it thinking they'll benefit or have a good time - they do it because it's necessary and there's nobody better or equal to hand it off to."
 
-"if we had a city of only good people, they'd probably compete to NOT rule, just like people now compete TO rule. that would prove that real rulers don't consider their own benefit but their subjects'. everyone would rather receive benefits than work to benefit others. so i absolutely can't agree with thrasymachus that justice is what benefits the stronger. but we'll examine that another time..."
+"if we had a city of only good people, they'd probably compete to not rule, just like people now compete to rule. that would prove that real rulers don't consider their own benefit but their subjects'. everyone would rather receive benefits than work to benefit others. so i absolutely can't agree with thrasymachus that justice is what benefits the stronger. but we'll examine that another time..."

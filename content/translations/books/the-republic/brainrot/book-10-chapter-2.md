@@ -1,7 +1,3 @@
-# Book 10, Chapter 2: Poetry's Toxic Effects on the Soul - (The Ultimate Emotional Intelligence Expose)
-
-## The Poetry Makeup Tutorial Analogy (Absolutely Fire)
-
 "quite so, bestie."
 
 "in the same way the poet with their words and phrases can be said to layer on the colors of the various arts, themselves understanding their nature only enough to imitate them. and other people who are as ignorant as they are and judge only from their words imagine that if they speak of cobbling or military tactics or anything else in meter and harmony and rhythm, they speak very well - such is the absolutely fire influence which melody and rhythm naturally have. and i think you must've observed again and again what a mid appearance poets' tales make when stripped of the colors music puts on them and recited in simple prose. they lose all their rizz, periodt."
@@ -11,8 +7,6 @@
 "they're like faces which were never really beautiful, but only had youth glow - and now the bloom of youth has passed away from them? giving major filter vs reality energy."
 
 "exactly, bestie."
-
-## The Three Arts Hierarchy (Peak Classification)
 
 "here's another point: the imitator or maker of the image knows literally nothing of true existence - they know appearances only. am i not right, fr?"
 
@@ -42,8 +36,6 @@
 
 "yeah, fr."
 
-## The User Knowledge Supremacy (Galaxy Brain Logic)
-
 "and the excellence or beauty or truth of every structure - animate or inanimate - and of every human action is relative to the use for which nature or the artist intended them. function determines everything, periodt."
 
 "true, bestie."
@@ -59,8 +51,6 @@
 "the instrument is the same, but about its excellence or badness the maker will only attain correct belief - and this they'll gain from whoever knows, by talking to them and being compelled to hear what they have to say. whereas the user will have knowledge? we're talking about the difference between secondhand info and actual experience."
 
 "facts, chief."
-
-## The Imitator's Complete L (Absolutely Based Critique)
 
 "but will the imitator have either? will they know from use whether their drawing is correct or beautiful? or will they have right opinion from being compelled to associate with another who knows and gives them instructions about what they should draw? asking the real questions here, periodt."
 
@@ -82,8 +72,6 @@
 
 "very true, bestie."
 
-## The Triple Removal From Truth (Fire Philosophy)
-
 "and now tell me - hasn't imitation been shown by us to be concerned with what's thrice removed from truth? we've established the distance hierarchy."
 
 "certainly, chief."
@@ -99,8 +87,6 @@
 "and the same object appears straight when looked at out of water and crooked when in water. and the concave becomes convex, owing to the illusion about colors to which sight is liable. thus every sort of confusion is revealed within us - and this is that weakness of the human mind on which the art of conjuring and deceiving by light and shadow and other absolutely fire devices imposes, having an effect on us like magic. our brains are literally getting hacked, periodt."
 
 "facts, bestie."
-
-## The Measurement vs Illusion Battle (Peak Logic)
 
 "and the arts of measuring and numbering and weighing come to the rescue of human understanding - there's the beauty of them - and the apparent greater or less, or more or heavier, no longer have mastery over us but give way before calculation and measure and weight? math saves us from getting absolutely ratioed by illusions, chief."
 
@@ -130,13 +116,11 @@
 
 "no doubt, bestie."
 
-## The Imitation and Irrationality Alliance (Absolutely Sus)
-
 "this was the conclusion i was seeking when i said that painting or drawing and imitation in general, when doing their own proper work, are far removed from truth and the companions and friends and associates of a principle within us which is equally removed from reason, and that they have no true or healthy aim. they're basically besties with the mid part of our souls, chief."
 
 "exactly, periodt."
 
-"the imitative art is an inferior who marries an inferior and has inferior offspring. giving major generational L energy, bestie."
+"the imitative art is an inferior who marries an inferior and has inferior offspring. giving major generational l energy, bestie."
 
 "very true, chief."
 
@@ -147,8 +131,6 @@
 "don't rely on probability derived from painting's analogy - let's examine further and see whether the faculty with which poetical imitation is concerned is good or bad. we need the full investigation, chief."
 
 "by all means, periodt."
-
-## The Poetry Psychology Analysis (Galaxy Brain Insight)
 
 "we may state the question thus: imitation imitates humans' actions, whether voluntary or involuntary, on which they imagine a good or bad result has ensued, and they rejoice or sorrow accordingly. is there anything more? we're covering the full emotional spectrum here, bestie."
 
@@ -161,8 +143,6 @@
 "facts, thus far we were right - but there was an omission which must now be supplied, chief."
 
 "what was the omission?"
-
-## The Grief Management Analysis (Peak Emotional Intelligence)
 
 "weren't we saying that a good person who has the misfortune to lose their son or anything else most dear to them will bear the loss with more equanimity than another? emotional regulation is goated behavior, periodt."
 
@@ -188,8 +168,6 @@
 
 "certainly, bestie."
 
-## The Two Soul Principles Battle (Fire Psychology)
-
 "one of them is ready to follow law's guidance?"
 
 "what do you mean, chief?"
@@ -210,8 +188,6 @@
 
 "indeed we may, periodt."
 
-## The Imitation Preference Problem (Peak Insight)
-
 "and doesn't the latter - the rebellious principle - furnish a great variety of materials for imitation? whereas the wise and calm temperament, being always nearly equable, is not easy to imitate or appreciate when imitated, especially at a public festival when a promiscuous crowd is assembled in a theater. the feeling represented is one to which they're strangers. drama loves chaos because chaos is entertaining, bestie."
 
 "certainly, chief."
@@ -223,8 +199,6 @@
 "and now we may fairly take them and place them by the painter's side, because they're like them in two ways: first, inasmuch as their creations have an inferior degree of truth - in this they're like them. and they're also like them in being concerned with an inferior part of the soul. therefore we'll be right in refusing to admit them into a well-ordered state, because they awaken and nourish and strengthen the feelings and impair reason. as in a city when the evil are permitted to have authority and the good are put out of the way, so in the human soul we maintain the imitative poet implants an evil constitution. they indulge the irrational nature which has no discernment of greater and less but thinks the same thing at one time great and at another small - they're a manufacturer of images and very far removed from truth. peak soul corruption energy, chief."
 
 "exactly, periodt."
-
-## The Ultimate Poetry Callout (Absolutely Fire Critique)
 
 "but we haven't yet brought forward the heaviest count in our accusation - the power which poetry has of harming even the good (and there are very few who aren't harmed) is surely an absolutely unhinged thing? the real tea is about to be spilled, bestie."
 
@@ -238,8 +212,6 @@
 
 "very true," he said, "periodt."
 
-## The Emotional Hypocrisy Expose (Galaxy Brain Psychology)
-
 "now can we be right in praising and admiring another who's doing what any of us would abominate and be ashamed of in our own person? asking about the double standard, bestie."
 
 "nah," he said, "that's certainly not reasonable, chief."
@@ -252,13 +224,9 @@
 
 "how very true! periodt."
 
-## The Comedy Problem (Peak Consistency)
-
 "and doesn't the same hold also of the ridiculous? there are jokes which you'd be ashamed to make yourself, and yet on the comic stage, or indeed in private when you hear them, you're greatly amused by them and not at all disgusted at their unseemliness. the case of pity is repeated - there's a principle in human nature which is disposed to raise a laugh, and this which you once restrained by reason because you were afraid of being thought a buffoon is now let out again. and having stimulated the risible faculty at the theater, you're betrayed unconsciously to yourself into playing the comic poet at home. consumption affects production energy, bestie."
 
 "quite true," he said, "chief."
-
-## The Final Verdict on Poetry (Absolutely Based Conclusion)
 
 "and the same may be said of lust and anger and all the other affections, of desire and pain and pleasure, which are held to be inseparable from every action - in all of them poetry feeds and waters the passions instead of drying them up. she lets them rule, although they ought to be controlled, if mankind are ever to increase in happiness and virtue. poetry is basically emotional junk food that makes us worse people, periodt."
 

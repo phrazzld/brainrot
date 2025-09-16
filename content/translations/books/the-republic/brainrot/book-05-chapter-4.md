@@ -1,7 +1,3 @@
-# Book 5, Chapter 4: Philosopher Kings Revealed (The Knowledge vs Opinion Beef)
-
-## The Ultimate Wake-Up Call
-
 "yeah bestie that person is literally dreaming no cap."
 
 "but fr consider the other type, who recognizes absolute beauty exists and can actually tell the difference between the eternal form and all the things that participate in it, who doesn't mix up the objects with the form or the form with the objects—is this person dreaming or absolutely awake?"
@@ -11,8 +7,6 @@
 "and can we say the mind of someone who actually knows has real knowledge, while the mind of the other person who just has opinions has, well, opinion?"
 
 "absolutely."
-
-## Coping With The Opinion-Havers
 
 "but bestie what if that second person gets pressed and wants to beef with us about this take, can we give them some copium or advice without exposing that their whole brain is running on dial-up?"
 
@@ -29,8 +23,6 @@
 "and are we absolutely certain, after checking this from every angle like we're debugging code, that absolute being can be absolutely known, but the completely non-existent is completely unknowable?"
 
 "nothing could be more certain no cap."
-
-## The Middle Ground Situation
 
 "based. but if there's something that's giving both existing and not-existing energy at the same time, wouldn't that be stuck somewhere between pure being and absolute nothingness?"
 
@@ -52,8 +44,6 @@
 
 "yeah."
 
-## Faculty Check
-
 "and knowledge relates to being and knows being. but wait before i continue let me make a distinction."
 
 "what distinction?"
@@ -69,8 +59,6 @@
 "and bestie would you say knowledge is a faculty, or what category would you put it in?"
 
 "definitely knowledge is a faculty, and lowkey the most op faculty of all."
-
-## Opinion vs Knowledge Arc
 
 "and is opinion also a faculty?"
 
@@ -100,8 +88,6 @@
 
 "nah," he replied, "we already debunked that; if difference in faculty means difference in sphere or subject matter, and if, like we said, opinion and knowledge are different faculties, then the sphere of knowledge and opinion can't be the same."
 
-## The Opinion Paradox
-
 "then if being is the subject matter of knowledge, something else must be the subject matter of opinion?"
 
 "yeah, something else."
@@ -130,8 +116,6 @@
 
 "that seems to be true."
 
-## Finding Opinion's Home
-
 "but is opinion found outside and beyond either of them, clearer than knowledge or darker than ignorance?"
 
 "neither."
@@ -156,8 +140,6 @@
 
 "we have."
 
-## The Ultimate Call-Out
-
 "then what's left to discover is the object that participates equally in the nature of being and not-being, and can't properly be called either pure and simple; this unknown thing, when discovered, we can truly call the subject of opinion, and assign each to their proper faculty—the extremes to the faculties of the extremes and the mean to the faculty of the mean."
 
 "true."
@@ -174,8 +156,6 @@
 
 "true; both these and the opposite names will always apply to all of them."
 
-## The Riddle Energy
-
 "and can any one of those many things that get called by specific names be said to be this rather than not be this?"
 
 he replied: "they're giving those riddles people tell at parties or that children's puzzle about the eunuch aiming at the bat, with what he hit it with, as they say in the puzzle, and what the bat was sitting on. the individual objects i'm talking about are also a riddle and have double meanings: you can't lock them in your mind as either being or not-being, or both, or neither."
@@ -183,8 +163,6 @@ he replied: "they're giving those riddles people tell at parties or that childre
 "then what you gonna do with them?" i said. "can they have a better spot than between being and not-being? cause they're clearly not in greater darkness or negation than not-being, or more full of light and existence than being."
 
 "that's absolutely true," he said.
-
-## The Final Distinction
 
 "so then we seem to have discovered that the many ideas the masses have about beauty and everything else are just vibing in some region that's halfway between pure being and pure not-being?"
 
@@ -206,8 +184,6 @@ he replied: "they're giving those riddles people tell at parties or that childre
 
 "yeah i remember."
 
-## Philosophers vs Opinion-Lovers
-
 "so would we be out of pocket calling them lovers of opinion rather than lovers of wisdom, and will they get big mad at us for describing them like that?"
 
 "i'll tell them not to be pressed; nobody should be mad at the truth."
@@ -216,6 +192,4 @@ he replied: "they're giving those riddles people tell at parties or that childre
 
 "absolutely fr fr ong."
 
-
-
-BOOK VI.
+book vi.

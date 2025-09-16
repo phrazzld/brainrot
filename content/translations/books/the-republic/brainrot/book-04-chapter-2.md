@@ -1,7 +1,3 @@
-# Book 4, Chapter 2: City's Virtues (The Four Horsemen of Based Society)
-
-## Courage Location Services
-
 "everyone calling a server brave or cowardly is thinking about the part that fights and pvps for it."
 
 "literally nobody would think of any other part," glaucon replies.
@@ -22,8 +18,6 @@
 
 "please."
 
-## The Dye Tutorial Metaphor
-
 "you know how fabric dyers, when they want that perfect royal purple drip, first select white fabric? they prep and treat it with massive care so the white base takes the purple perfectly. after dyeing properly, it becomes colorfast - no washing with chemicals or without can remove the color. but when the base isn't prepped right, you've seen how scuffed purple or any color looks?"
 
 "yeah," he said, "they look washed out and absolutely cringe."
@@ -39,8 +33,6 @@
 "yeah," i said, "and if you add 'citizen' courage you'll be accurate. we can deep dive later if you want, but right now we're hunting justice not courage, and we've covered enough for that."
 
 "you're right."
-
-## The Temperance Investigation
 
 "two virtues left to discover in the server - first temperance, then justice which is our main quest."
 
@@ -69,8 +61,6 @@
 "i think it means the human soul has a better and worse principle. when the better controls the worse, we say someone's 'master of himself' - that's praise. but when through bad education or toxic influence, the better principle (which is smaller) gets overwhelmed by the mass of worse impulses, they're blamed and called 'slave of self' and unprincipled."
 
 "makes sense."
-
-## The Server's Self-Control Check
 
 "now look at our new server - you'll find one of these conditions realized. the society can legitimately be called master of itself if 'temperance' and 'self-mastery' mean the better part ruling the worse."
 
@@ -112,8 +102,6 @@
 
 "i completely agree."
 
-## The Justice Hunt Begins
-
 "so we've discovered three of four virtues in our server. the last quality making a state virtuous must be justice, if we could just find it."
 
 "obviously."
@@ -138,8 +126,6 @@
 
 "why?"
 
-## The Justice Was Here All Along
-
 "my guy, at the very beginning of our investigation ages ago, justice was literally right at our feet and we never saw her. nothing could be more cringe. like people searching for what's already in their hands - we looked far away instead of what we were examining, so we missed her."
 
 "what do you mean?"
@@ -163,8 +149,6 @@
 "because this is the only virtue remaining after extracting temperance, courage, and wisdom. it's the ultimate cause and condition for all of them existing, and while staying in them, preserves them. we said if we found three, justice would be the fourth remainder."
 
 "necessarily follows."
-
-## The Competition of Virtues
 
 "if asked which quality contributes most to server excellence - agreement between rulers and subjects, soldiers preserving lawful opinions about dangers, wisdom and watchfulness in rulers, or this thing found in kids, women, slaves, free people, artisans, rulers, subjects (everyone doing their own work and not being busybodies) - that's not easily answered."
 
@@ -194,8 +178,6 @@
 
 "very true."
 
-## The Class-Switching Disaster
-
 "think about this and tell me if you agree. suppose a carpenter does cobbler work or vice versa, or they swap tools and duties, or one person does both jobs - think that would seriously harm the server?"
 
 "not much."
@@ -216,8 +198,6 @@
 
 "i agree."
 
-## The Individual Soul Investigation
-
 "let's not be too confident yet. if this justice concept checks out in individuals like in the server, no more doubt. if not, we need fresh investigation. let's finish our original plan - remember we thought examining justice on the larger scale first would make seeing it in individuals easier? the server was that larger example, so we built the best one possible, knowing justice would exist in a good server. let's apply our discovery to individuals - if they match, we're satisfied. if individuals differ, we'll return to the server for another theory test. rubbing them together might spark light revealing justice, which we'll then fix in our souls."
 
 "that's the proper method, let's do it."
@@ -237,8 +217,6 @@
 "so individuals must have the same three principles in their souls as the server, affected the same way to deserve the same descriptions?"
 
 "definitely."
-
-## The Three-Part Soul Theory
 
 "once again bestie, we've hit an easy question - whether souls have these three principles or not?"
 
@@ -264,8 +242,6 @@
 
 "yeah that's the hard part."
 
-## The Contradiction Principle
-
 "let's try determining if they're same or different."
 
 "how?"
@@ -290,8 +266,6 @@
 
 "definitely not by my thinking."
 
-## The Desire Mechanics
-
 "still," i said, "to avoid examining every objection and proving them false at length, let's assume they're absurd and proceed. if this assumption proves false later, all consequences get withdrawn."
 
 "yes, that's best."
@@ -315,8 +289,6 @@
 "one's object is food, the other's drink?"
 
 "yes."
-
-## The Pure Thirst Theory
 
 "here's the point: isn't thirst the soul's desire for drink only, not qualified drink? not warm or cold, much or little, or any particular type. if thirst comes with heat, it desires cold drink. with cold, warm drink. excessive thirst wants excessive drink, small thirst wants small drink. but pure simple thirst desires pure simple drink, the natural satisfaction, like food for hunger?"
 
