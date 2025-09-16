@@ -5,7 +5,7 @@ import { Translation } from '../types';
 
 const theRepublic: Translation = {
   slug: 'the-republic',
-  bookSlug: 'platos-republic', // Match the actual blob storage path
+  bookSlug: 'the-republic', // Updated to match renamed directory
   title: 'the republic',
   shortDescription:
     'plato spittin facts about justice and the ideal state. socrates stays undefeated in debate club.',
