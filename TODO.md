@@ -12,8 +12,8 @@ PR #136 CI is blocked due to duplicate key in pnpm-lock.yaml
 - [x] [CI FIX] Verify no duplicate keys with `grep -c "/debug@4.4.3:" pnpm-lock.yaml`
 - [x] [CI FIX] Test lockfile locally with `pnpm install --frozen-lockfile`
 - [x] [CI FIX] Run local quality checks: `npm run lint` and `npm run build`
-- [ ] [CI FIX] Commit fixed lockfile with message "fix: regenerate pnpm-lock.yaml to resolve duplicate key"
-- [ ] [CI FIX] Push to trigger CI and verify all jobs pass
+- [x] [CI FIX] Commit fixed lockfile with message "fix: regenerate pnpm-lock.yaml to resolve duplicate key"
+- [~] [CI FIX] Push to trigger CI and verify all jobs pass
 
 #### Prevention Tasks
 - [ ] [CI FIX] Document this issue in troubleshooting guide
