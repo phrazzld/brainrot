@@ -6,7 +6,7 @@
 PR #136 CI is blocked due to duplicate key in pnpm-lock.yaml
 
 #### Immediate Tasks
-- [ ] [CI FIX] Backup current pnpm-lock.yaml to pnpm-lock.yaml.backup
+- [x] [CI FIX] Backup current pnpm-lock.yaml to pnpm-lock.yaml.backup
 - [ ] [CI FIX] Remove broken pnpm-lock.yaml file
 - [ ] [CI FIX] Regenerate fresh lockfile with `pnpm install`
 - [ ] [CI FIX] Verify no duplicate keys with `grep -c "/debug@4.4.3:" pnpm-lock.yaml`
