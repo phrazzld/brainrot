@@ -33,7 +33,7 @@
     "@types/cli-progress": "^3.11.6",
     "@types/glob": "^9.0.0",
     "@types/js-yaml": "^4.0.5",
-    "@vercel/blob": "^1.1.1",
+    "@vercel/blob": "^2.0.0",
     "@vitest/coverage-v8": "^3.2.4",
     "@vitest/ui": "^3.2.4",
     "axios": "^1.12.0",
