@@ -14,13 +14,13 @@
     "commander": "^14.0.1",
     "html-to-text": "^9.0.5",
     "node-fetch": "^3.3.1",
-    "openai": "^5.20.0",
+    "openai": "^5.22.0",
     "ora": "^8.2.0",
     "tsx": "^4.20.5"
   },
   "devDependencies": {
     "@types/html-to-text": "^9.0.4",
-    "@types/node": "^24.3.1",
+    "@types/node": "^24.5.2",
     "typescript": "^5.0.4"
   }
 }
