@@ -288,41 +288,15 @@
 
 ## Phase 3: Systematic Translation (Est. 58 weeks, ~1 book/week)
 
-**Organization**: 62 remaining books grouped by type for workflow optimization. Each book is atomic task.
+**Reprioritized**: Translate foundational books first (Genesis, Exodus, Gospels), then remaining 56 books in any order.
 
-### Tier 1: Short Epistles (6 books, Est. 6 weeks)
+### Priority 1: Foundational OT (2 books, Est. 10 weeks)
 
-- [ ] Translate James (5 chapters, ~2,300 words) - James voice: "The Practical Wisdom Teacher" using "real talk", "keeping it 100", "faith without works is giving performative energy". Cover faith/works balance, tongue control, rich/poor treatment themes. Success: 5 chapters in brainrot/, ~2,300 words total, practical wisdom tone preserved.
+- [ ] Translate Genesis (50 chapters, ~38,300 words) - Narrator: "The Origins Storyteller". God: "The OG Creator" creating ex nihilo. Abraham, Isaac, Jacob, Joseph voices distinct. Success: Creation narrative theologically precise, Fall preserved, covenant with Abraham clear, Joseph saga complete, theological foundation for entire Bible solid.
 
-- [ ] Translate 1 Peter (5 chapters, ~2,500 words) - Peter voice: "The Suffering Encourager" using "fam", "stay based through the L's", "respawn arc coming". Maintain suffering/persecution encouragement themes. Success: 5 chapters maintaining Peter's distinct voice vs Paul/John/James.
+- [ ] Translate Exodus (40 chapters, ~32,600 words) - Narrator: "The Liberation Chronicler". Moses voice: "The Reluctant Leader" with burning bush, plagues, exodus narrative. God: "The OG Creator" with covenant emphasis. Success: Exodus narrative preserved, plagues dramatic, Red Sea parting clear, Ten Commandments precise, tabernacle details maintained.
 
-- [ ] Translate 2 Peter (3 chapters, ~1,550 words) - Continue Peter's established voice from 1 Peter. Handle false teachers, end times, day of the Lord themes. Success: Voice consistent with 1 Peter, apocalyptic imagery translated effectively.
-
-- [ ] Translate 1 John (5 chapters, ~2,500 words) - Apply established John voice from pilot books. Cover love/truth/light themes, antichrist warnings. Success: Voice perfectly consistent with 2 John and 3 John pilot translations.
-
-- [ ] Translate Titus (3 chapters, ~900 words) - Apply Paul's "Squad Leader" voice from Philemon. Handle church leadership, sound doctrine, godly living instructions. Success: Paul's voice consistent, pastoral tone maintained.
-
-- [ ] Run Tier 1 cross-book voice validation - Verify John's voice identical across 1 John, 2 John, 3 John. Verify Paul's voice consistent across Philemon, Titus. Peter voice distinct from both. Success: Character consistency across 10 books (4 pilot + 6 tier 1).
-
-### Tier 2: Narrative Books (8 books, Est. 8 weeks)
-
-- [ ] Translate Ruth (4 chapters, ~2,500 words) - Narrator voice: "Wholesome Romance Chronicler" with emphasis on loyalty/redemption themes. Character voices: Ruth (devoted), Naomi (bitter→hopeful), Boaz (rizz king energy). Success: Beautiful story preserved, kinsman-redeemer theology clear, all lowercase formatting maintained.
-
-- [ ] Translate Jonah (4 chapters, ~1,300 words) - Narrator voice: "Reluctant Prophet Comedy" emphasizing Jonah's L's. Jonah voice: "The Runner" using "this is mid", "absolutely not", "god caught me in 4k". Success: Comedic tone enhanced, fish narrative preserved, Nineveh repentance clear.
-
-- [ ] Translate Esther (10 chapters, ~5,600 words) - Narrator: "Palace Drama Reporter". Esther voice: "Hidden Identity Queen" signature terms TBD. Mordecai: "The Based Advisor". Haman: "Toxic Egomaniac". Success: Persian court intrigue translated, purim origin story clear, 10 chapters maintaining momentum.
-
-- [ ] Translate Haggai (2 chapters, ~1,100 words) - Prophet voice: "Construction Project Manager Energy" emphasizing temple rebuilding. Signature terms: "priorities are cooked", "check the foundation", "glory incoming". Success: Temple rebuilding urgency preserved, messianic prophecy clear.
-
-- [ ] Translate Obadiah (1 chapter, ~670 words) - Prophet voice: "Edom Roast Session" with judgment oracle intensity. Signature terms: "pride before the fall", "absolutely cooked", "karma hitting different". Success: Shortest OT book complete, Edom judgment clear, Jacob/Esau context preserved.
-
-- [ ] Translate Nahum (3 chapters, ~1,200 words) - Prophet voice: "Nineveh Judgment Bringer" with apocalyptic warfare imagery. More intense than Obadiah. Success: Assyria fall prophecy clear, violent imagery handled per sensitivity guidelines, poetic structure maintained.
-
-- [ ] Translate Habakkuk (3 chapters, ~1,500 words) - Prophet voice: "The Questioning Philosopher" dialogue with God about justice. Habakkuk: "why the wicked prosper fr fr?". God: "trust the process bestie". Success: Theodicy dialogue preserved, faith chapter 3 psalm maintained.
-
-- [ ] Translate Zephaniah (3 chapters, ~1,600 words) - Prophet voice: "Day of the Lord Announcer" with judgment→restoration arc. Intense warnings followed by hope. Success: Apocalyptic tone preserved, zion restoration clear, judgment themes handled.
-
-### Tier 3: Gospels (4 books, Est. 16 weeks - most critical for voice consistency)
+### Priority 2: The Gospels (4 books, Est. 16 weeks - CRITICAL for Jesus voice consistency)
 
 - [ ] Translate Mark (16 chapters, ~11,300 words) - Shortest gospel, action-focused. Jesus voice: "The Based Teacher" from BIBLICAL_VOICES.md using "bestie", "real talk", "it's giving [x] energy". Narrator: "Chronically Online Reporter" emphasizing speed/urgency. Success: Jesus' voice baseline established for other gospels, miracles preserved, passion narrative theologically accurate.
 
@@ -332,7 +306,9 @@
 
 - [ ] Translate Luke (24 chapters, ~19,500 words) - Most detailed narrative. Jesus voice maintained from previous 3 gospels. Luke narrator: "The Investigative Journalist" with medical precision. Unique parables (Good Samaritan, Prodigal Son) require careful handling. Success: Jesus voice 100% consistent across all 4 gospels, unique Lukan material preserved, resurrection narrative theologically sound.
 
-- [ ] Run Gospels cross-reference validation - Compare Jesus' voice across all 4 gospels for identical signature terms and speech patterns. Verify Sermon on the Mount (Matthew) voice matches Sermon on the Plain (Luke). Success: Perfect consistency proving voice mapping methodology works at scale.
+### Priority 3: Everything Else (56 books remaining - translate in any order)
+
+**Note**: After Genesis, Exodus, and the 4 Gospels are complete, the remaining 56 books can be tackled in any order based on interest, difficulty, or strategic considerations. All character voices will be established by this point.
 
 ### Tier 4: Major Epistles (10 books, Est. 18 weeks)
 
@@ -498,23 +474,28 @@
 
 ## Progress Tracking
 
-**Phase 1: Infrastructure** (0/9 tasks complete)
-**Phase 2: Pilot Books** (0/7 tasks complete)
+**Phase 1: Infrastructure** ✅ (9/9 tasks complete)
+**Phase 2: Pilot Books** ✅ (7/7 tasks complete - 4 books + 3 validation)
+  - 3 John ✅
+  - 2 John ✅
+  - Philemon ✅
+  - Jude ✅
+
 **Phase 3: Main Translation** (0/62 books complete)
-- Tier 1: Short Epistles (0/6 complete)
-- Tier 2: Narrative Books (0/8 complete)
-- Tier 3: Gospels (0/4 complete)
-- Tier 4: Major Epistles (0/10 complete)
-- Tier 5: Acts & OT Narratives (0/7 complete)
-- Tier 6: Wisdom & Poetry (0/5 complete)
-- Tier 7: Major Prophets (0/4 complete)
-- Tier 8: Minor Prophets (0/8 complete)
-- Tier 9: Torah & Chronicles (0/10 complete)
-- Tier 10: Final Boss (0/2 complete)
+- **Priority 1: Foundational OT** (0/2 complete)
+  - Genesis (0/50 chapters)
+  - Exodus (0/40 chapters)
+- **Priority 2: Gospels** (0/4 complete)
+  - Mark (0/16 chapters)
+  - John (0/21 chapters)
+  - Matthew (0/28 chapters)
+  - Luke (0/24 chapters)
+- **Priority 3: Everything Else** (0/56 complete)
 
 **Phase 4: Integration** (0/16 tasks complete)
 
-**Total: 0/94 implementation tasks complete**
+**Total Pilot Progress: 77 verses translated across 4 books**
+**Methodology Validated: Ready for systematic translation**
 
 ---
 
