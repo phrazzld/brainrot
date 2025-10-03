@@ -1,0 +1,21 @@
+{
+  "bookSlug": "nahum",
+  "totalChapters": 3,
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "verseCount": 15,
+      "wordCount": 409
+    },
+    {
+      "chapterNumber": 2,
+      "verseCount": 13,
+      "wordCount": 384
+    },
+    {
+      "chapterNumber": 3,
+      "verseCount": 19,
+      "wordCount": 538
+    }
+  ]
+}

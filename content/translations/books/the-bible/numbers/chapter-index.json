@@ -1,0 +1,186 @@
+{
+  "bookSlug": "numbers",
+  "totalChapters": 36,
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "verseCount": 54,
+      "wordCount": 1387
+    },
+    {
+      "chapterNumber": 2,
+      "verseCount": 34,
+      "wordCount": 862
+    },
+    {
+      "chapterNumber": 3,
+      "verseCount": 51,
+      "wordCount": 1342
+    },
+    {
+      "chapterNumber": 4,
+      "verseCount": 49,
+      "wordCount": 1465
+    },
+    {
+      "chapterNumber": 5,
+      "verseCount": 31,
+      "wordCount": 929
+    },
+    {
+      "chapterNumber": 6,
+      "verseCount": 27,
+      "wordCount": 769
+    },
+    {
+      "chapterNumber": 7,
+      "verseCount": 89,
+      "wordCount": 2028
+    },
+    {
+      "chapterNumber": 8,
+      "verseCount": 26,
+      "wordCount": 713
+    },
+    {
+      "chapterNumber": 9,
+      "verseCount": 23,
+      "wordCount": 745
+    },
+    {
+      "chapterNumber": 10,
+      "verseCount": 36,
+      "wordCount": 927
+    },
+    {
+      "chapterNumber": 11,
+      "verseCount": 35,
+      "wordCount": 1091
+    },
+    {
+      "chapterNumber": 12,
+      "verseCount": 16,
+      "wordCount": 400
+    },
+    {
+      "chapterNumber": 13,
+      "verseCount": 33,
+      "wordCount": 774
+    },
+    {
+      "chapterNumber": 14,
+      "verseCount": 45,
+      "wordCount": 1225
+    },
+    {
+      "chapterNumber": 15,
+      "verseCount": 41,
+      "wordCount": 1109
+    },
+    {
+      "chapterNumber": 16,
+      "verseCount": 50,
+      "wordCount": 1391
+    },
+    {
+      "chapterNumber": 17,
+      "verseCount": 13,
+      "wordCount": 340
+    },
+    {
+      "chapterNumber": 18,
+      "verseCount": 32,
+      "wordCount": 1151
+    },
+    {
+      "chapterNumber": 19,
+      "verseCount": 22,
+      "wordCount": 705
+    },
+    {
+      "chapterNumber": 20,
+      "verseCount": 29,
+      "wordCount": 820
+    },
+    {
+      "chapterNumber": 21,
+      "verseCount": 35,
+      "wordCount": 966
+    },
+    {
+      "chapterNumber": 22,
+      "verseCount": 41,
+      "wordCount": 1242
+    },
+    {
+      "chapterNumber": 23,
+      "verseCount": 30,
+      "wordCount": 773
+    },
+    {
+      "chapterNumber": 24,
+      "verseCount": 25,
+      "wordCount": 684
+    },
+    {
+      "chapterNumber": 25,
+      "verseCount": 18,
+      "wordCount": 463
+    },
+    {
+      "chapterNumber": 26,
+      "verseCount": 65,
+      "wordCount": 1511
+    },
+    {
+      "chapterNumber": 27,
+      "verseCount": 23,
+      "wordCount": 633
+    },
+    {
+      "chapterNumber": 28,
+      "verseCount": 31,
+      "wordCount": 810
+    },
+    {
+      "chapterNumber": 29,
+      "verseCount": 40,
+      "wordCount": 994
+    },
+    {
+      "chapterNumber": 30,
+      "verseCount": 16,
+      "wordCount": 519
+    },
+    {
+      "chapterNumber": 31,
+      "verseCount": 54,
+      "wordCount": 1262
+    },
+    {
+      "chapterNumber": 32,
+      "verseCount": 42,
+      "wordCount": 1051
+    },
+    {
+      "chapterNumber": 33,
+      "verseCount": 56,
+      "wordCount": 984
+    },
+    {
+      "chapterNumber": 34,
+      "verseCount": 29,
+      "wordCount": 659
+    },
+    {
+      "chapterNumber": 35,
+      "verseCount": 34,
+      "wordCount": 999
+    },
+    {
+      "chapterNumber": 36,
+      "verseCount": 13,
+      "wordCount": 458
+    }
+  ]
+}

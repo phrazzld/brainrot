@@ -1,0 +1,26 @@
+{
+  "bookSlug": "colossians",
+  "totalChapters": 4,
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "verseCount": 29,
+      "wordCount": 685
+    },
+    {
+      "chapterNumber": 2,
+      "verseCount": 23,
+      "wordCount": 526
+    },
+    {
+      "chapterNumber": 3,
+      "verseCount": 25,
+      "wordCount": 482
+    },
+    {
+      "chapterNumber": 4,
+      "verseCount": 18,
+      "wordCount": 381
+    }
+  ]
+}

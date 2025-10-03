@@ -1,0 +1,56 @@
+{
+  "bookSlug": "ezra",
+  "totalChapters": 10,
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "verseCount": 11,
+      "wordCount": 382
+    },
+    {
+      "chapterNumber": 2,
+      "verseCount": 70,
+      "wordCount": 1068
+    },
+    {
+      "chapterNumber": 3,
+      "verseCount": 13,
+      "wordCount": 560
+    },
+    {
+      "chapterNumber": 4,
+      "verseCount": 24,
+      "wordCount": 793
+    },
+    {
+      "chapterNumber": 5,
+      "verseCount": 17,
+      "wordCount": 600
+    },
+    {
+      "chapterNumber": 6,
+      "verseCount": 22,
+      "wordCount": 800
+    },
+    {
+      "chapterNumber": 7,
+      "verseCount": 28,
+      "wordCount": 891
+    },
+    {
+      "chapterNumber": 8,
+      "verseCount": 36,
+      "wordCount": 1026
+    },
+    {
+      "chapterNumber": 9,
+      "verseCount": 15,
+      "wordCount": 632
+    },
+    {
+      "chapterNumber": 10,
+      "verseCount": 44,
+      "wordCount": 968
+    }
+  ]
+}

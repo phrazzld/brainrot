@@ -1,0 +1,31 @@
+{
+  "bookSlug": "1-john",
+  "totalChapters": 5,
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "verseCount": 10,
+      "wordCount": 257
+    },
+    {
+      "chapterNumber": 2,
+      "verseCount": 29,
+      "wordCount": 764
+    },
+    {
+      "chapterNumber": 3,
+      "verseCount": 24,
+      "wordCount": 558
+    },
+    {
+      "chapterNumber": 4,
+      "verseCount": 21,
+      "wordCount": 501
+    },
+    {
+      "chapterNumber": 5,
+      "verseCount": 21,
+      "wordCount": 541
+    }
+  ]
+}

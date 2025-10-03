@@ -1,0 +1,71 @@
+{
+  "bookSlug": "nehemiah",
+  "totalChapters": 13,
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "verseCount": 11,
+      "wordCount": 401
+    },
+    {
+      "chapterNumber": 2,
+      "verseCount": 20,
+      "wordCount": 738
+    },
+    {
+      "chapterNumber": 3,
+      "verseCount": 32,
+      "wordCount": 928
+    },
+    {
+      "chapterNumber": 4,
+      "verseCount": 23,
+      "wordCount": 739
+    },
+    {
+      "chapterNumber": 5,
+      "verseCount": 19,
+      "wordCount": 655
+    },
+    {
+      "chapterNumber": 6,
+      "verseCount": 19,
+      "wordCount": 621
+    },
+    {
+      "chapterNumber": 7,
+      "verseCount": 73,
+      "wordCount": 1249
+    },
+    {
+      "chapterNumber": 8,
+      "verseCount": 18,
+      "wordCount": 704
+    },
+    {
+      "chapterNumber": 9,
+      "verseCount": 38,
+      "wordCount": 1366
+    },
+    {
+      "chapterNumber": 10,
+      "verseCount": 39,
+      "wordCount": 691
+    },
+    {
+      "chapterNumber": 11,
+      "verseCount": 36,
+      "wordCount": 824
+    },
+    {
+      "chapterNumber": 12,
+      "verseCount": 47,
+      "wordCount": 977
+    },
+    {
+      "chapterNumber": 13,
+      "verseCount": 31,
+      "wordCount": 993
+    }
+  ]
+}

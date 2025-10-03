@@ -1,0 +1,21 @@
+{
+  "bookSlug": "2-thessalonians",
+  "totalChapters": 3,
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "verseCount": 12,
+      "wordCount": 303
+    },
+    {
+      "chapterNumber": 2,
+      "verseCount": 17,
+      "wordCount": 398
+    },
+    {
+      "chapterNumber": 3,
+      "verseCount": 18,
+      "wordCount": 368
+    }
+  ]
+}

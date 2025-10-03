@@ -1,0 +1,21 @@
+{
+  "bookSlug": "2-peter",
+  "totalChapters": 3,
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "verseCount": 21,
+      "wordCount": 509
+    },
+    {
+      "chapterNumber": 2,
+      "verseCount": 22,
+      "wordCount": 603
+    },
+    {
+      "chapterNumber": 3,
+      "verseCount": 18,
+      "wordCount": 502
+    }
+  ]
+}

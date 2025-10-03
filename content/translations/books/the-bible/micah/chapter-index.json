@@ -1,0 +1,41 @@
+{
+  "bookSlug": "micah",
+  "totalChapters": 7,
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "verseCount": 16,
+      "wordCount": 468
+    },
+    {
+      "chapterNumber": 2,
+      "verseCount": 13,
+      "wordCount": 413
+    },
+    {
+      "chapterNumber": 3,
+      "verseCount": 12,
+      "wordCount": 366
+    },
+    {
+      "chapterNumber": 4,
+      "verseCount": 13,
+      "wordCount": 489
+    },
+    {
+      "chapterNumber": 5,
+      "verseCount": 15,
+      "wordCount": 462
+    },
+    {
+      "chapterNumber": 6,
+      "verseCount": 16,
+      "wordCount": 456
+    },
+    {
+      "chapterNumber": 7,
+      "verseCount": 20,
+      "wordCount": 603
+    }
+  ]
+}

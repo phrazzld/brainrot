@@ -1,0 +1,31 @@
+{
+  "bookSlug": "1-thessalonians",
+  "totalChapters": 5,
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "verseCount": 10,
+      "wordCount": 263
+    },
+    {
+      "chapterNumber": 2,
+      "verseCount": 20,
+      "wordCount": 499
+    },
+    {
+      "chapterNumber": 3,
+      "verseCount": 13,
+      "wordCount": 308
+    },
+    {
+      "chapterNumber": 4,
+      "verseCount": 18,
+      "wordCount": 414
+    },
+    {
+      "chapterNumber": 5,
+      "verseCount": 28,
+      "wordCount": 442
+    }
+  ]
+}

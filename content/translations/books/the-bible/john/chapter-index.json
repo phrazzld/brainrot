@@ -1,0 +1,111 @@
+{
+  "bookSlug": "john",
+  "totalChapters": 21,
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "verseCount": 51,
+      "wordCount": 1055
+    },
+    {
+      "chapterNumber": 2,
+      "verseCount": 25,
+      "wordCount": 535
+    },
+    {
+      "chapterNumber": 3,
+      "verseCount": 36,
+      "wordCount": 799
+    },
+    {
+      "chapterNumber": 4,
+      "verseCount": 54,
+      "wordCount": 1148
+    },
+    {
+      "chapterNumber": 5,
+      "verseCount": 47,
+      "wordCount": 1047
+    },
+    {
+      "chapterNumber": 6,
+      "verseCount": 71,
+      "wordCount": 1578
+    },
+    {
+      "chapterNumber": 7,
+      "verseCount": 53,
+      "wordCount": 1055
+    },
+    {
+      "chapterNumber": 8,
+      "verseCount": 59,
+      "wordCount": 1366
+    },
+    {
+      "chapterNumber": 9,
+      "verseCount": 41,
+      "wordCount": 917
+    },
+    {
+      "chapterNumber": 10,
+      "verseCount": 42,
+      "wordCount": 862
+    },
+    {
+      "chapterNumber": 11,
+      "verseCount": 57,
+      "wordCount": 1215
+    },
+    {
+      "chapterNumber": 12,
+      "verseCount": 50,
+      "wordCount": 1110
+    },
+    {
+      "chapterNumber": 13,
+      "verseCount": 38,
+      "wordCount": 864
+    },
+    {
+      "chapterNumber": 14,
+      "verseCount": 31,
+      "wordCount": 762
+    },
+    {
+      "chapterNumber": 15,
+      "verseCount": 27,
+      "wordCount": 640
+    },
+    {
+      "chapterNumber": 16,
+      "verseCount": 33,
+      "wordCount": 822
+    },
+    {
+      "chapterNumber": 17,
+      "verseCount": 26,
+      "wordCount": 662
+    },
+    {
+      "chapterNumber": 18,
+      "verseCount": 40,
+      "wordCount": 987
+    },
+    {
+      "chapterNumber": 19,
+      "verseCount": 42,
+      "wordCount": 1052
+    },
+    {
+      "chapterNumber": 20,
+      "verseCount": 31,
+      "wordCount": 780
+    },
+    {
+      "chapterNumber": 21,
+      "verseCount": 25,
+      "wordCount": 718
+    }
+  ]
+}

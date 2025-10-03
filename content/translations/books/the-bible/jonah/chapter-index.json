@@ -1,0 +1,26 @@
+{
+  "bookSlug": "jonah",
+  "totalChapters": 4,
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "verseCount": 17,
+      "wordCount": 531
+    },
+    {
+      "chapterNumber": 2,
+      "verseCount": 10,
+      "wordCount": 224
+    },
+    {
+      "chapterNumber": 3,
+      "verseCount": 10,
+      "wordCount": 270
+    },
+    {
+      "chapterNumber": 4,
+      "verseCount": 11,
+      "wordCount": 343
+    }
+  ]
+}

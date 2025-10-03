@@ -1,0 +1,76 @@
+{
+  "bookSlug": "hosea",
+  "totalChapters": 14,
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "verseCount": 11,
+      "wordCount": 366
+    },
+    {
+      "chapterNumber": 2,
+      "verseCount": 23,
+      "wordCount": 701
+    },
+    {
+      "chapterNumber": 3,
+      "verseCount": 5,
+      "wordCount": 161
+    },
+    {
+      "chapterNumber": 4,
+      "verseCount": 19,
+      "wordCount": 484
+    },
+    {
+      "chapterNumber": 5,
+      "verseCount": 15,
+      "wordCount": 383
+    },
+    {
+      "chapterNumber": 6,
+      "verseCount": 11,
+      "wordCount": 265
+    },
+    {
+      "chapterNumber": 7,
+      "verseCount": 16,
+      "wordCount": 414
+    },
+    {
+      "chapterNumber": 8,
+      "verseCount": 14,
+      "wordCount": 344
+    },
+    {
+      "chapterNumber": 9,
+      "verseCount": 17,
+      "wordCount": 485
+    },
+    {
+      "chapterNumber": 10,
+      "verseCount": 15,
+      "wordCount": 440
+    },
+    {
+      "chapterNumber": 11,
+      "verseCount": 12,
+      "wordCount": 320
+    },
+    {
+      "chapterNumber": 12,
+      "verseCount": 14,
+      "wordCount": 325
+    },
+    {
+      "chapterNumber": 13,
+      "verseCount": 16,
+      "wordCount": 442
+    },
+    {
+      "chapterNumber": 14,
+      "verseCount": 9,
+      "wordCount": 241
+    }
+  ]
+}

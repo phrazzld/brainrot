@@ -1,0 +1,206 @@
+{
+  "bookSlug": "exodus",
+  "totalChapters": 40,
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "verseCount": 22,
+      "wordCount": 479
+    },
+    {
+      "chapterNumber": 2,
+      "verseCount": 25,
+      "wordCount": 682
+    },
+    {
+      "chapterNumber": 3,
+      "verseCount": 22,
+      "wordCount": 813
+    },
+    {
+      "chapterNumber": 4,
+      "verseCount": 31,
+      "wordCount": 922
+    },
+    {
+      "chapterNumber": 5,
+      "verseCount": 23,
+      "wordCount": 617
+    },
+    {
+      "chapterNumber": 6,
+      "verseCount": 30,
+      "wordCount": 775
+    },
+    {
+      "chapterNumber": 7,
+      "verseCount": 25,
+      "wordCount": 725
+    },
+    {
+      "chapterNumber": 8,
+      "verseCount": 32,
+      "wordCount": 968
+    },
+    {
+      "chapterNumber": 9,
+      "verseCount": 35,
+      "wordCount": 1017
+    },
+    {
+      "chapterNumber": 10,
+      "verseCount": 29,
+      "wordCount": 928
+    },
+    {
+      "chapterNumber": 11,
+      "verseCount": 10,
+      "wordCount": 335
+    },
+    {
+      "chapterNumber": 12,
+      "verseCount": 51,
+      "wordCount": 1544
+    },
+    {
+      "chapterNumber": 13,
+      "verseCount": 22,
+      "wordCount": 697
+    },
+    {
+      "chapterNumber": 14,
+      "verseCount": 31,
+      "wordCount": 962
+    },
+    {
+      "chapterNumber": 15,
+      "verseCount": 27,
+      "wordCount": 740
+    },
+    {
+      "chapterNumber": 16,
+      "verseCount": 36,
+      "wordCount": 1098
+    },
+    {
+      "chapterNumber": 17,
+      "verseCount": 16,
+      "wordCount": 481
+    },
+    {
+      "chapterNumber": 18,
+      "verseCount": 27,
+      "wordCount": 787
+    },
+    {
+      "chapterNumber": 19,
+      "verseCount": 25,
+      "wordCount": 727
+    },
+    {
+      "chapterNumber": 20,
+      "verseCount": 26,
+      "wordCount": 587
+    },
+    {
+      "chapterNumber": 21,
+      "verseCount": 36,
+      "wordCount": 929
+    },
+    {
+      "chapterNumber": 22,
+      "verseCount": 31,
+      "wordCount": 821
+    },
+    {
+      "chapterNumber": 23,
+      "verseCount": 33,
+      "wordCount": 860
+    },
+    {
+      "chapterNumber": 24,
+      "verseCount": 18,
+      "wordCount": 510
+    },
+    {
+      "chapterNumber": 25,
+      "verseCount": 40,
+      "wordCount": 966
+    },
+    {
+      "chapterNumber": 26,
+      "verseCount": 37,
+      "wordCount": 974
+    },
+    {
+      "chapterNumber": 27,
+      "verseCount": 21,
+      "wordCount": 579
+    },
+    {
+      "chapterNumber": 28,
+      "verseCount": 43,
+      "wordCount": 1278
+    },
+    {
+      "chapterNumber": 29,
+      "verseCount": 46,
+      "wordCount": 1387
+    },
+    {
+      "chapterNumber": 30,
+      "verseCount": 38,
+      "wordCount": 1008
+    },
+    {
+      "chapterNumber": 31,
+      "verseCount": 18,
+      "wordCount": 456
+    },
+    {
+      "chapterNumber": 32,
+      "verseCount": 35,
+      "wordCount": 1127
+    },
+    {
+      "chapterNumber": 33,
+      "verseCount": 23,
+      "wordCount": 733
+    },
+    {
+      "chapterNumber": 34,
+      "verseCount": 35,
+      "wordCount": 1038
+    },
+    {
+      "chapterNumber": 35,
+      "verseCount": 35,
+      "wordCount": 855
+    },
+    {
+      "chapterNumber": 36,
+      "verseCount": 38,
+      "wordCount": 930
+    },
+    {
+      "chapterNumber": 37,
+      "verseCount": 29,
+      "wordCount": 767
+    },
+    {
+      "chapterNumber": 38,
+      "verseCount": 31,
+      "wordCount": 863
+    },
+    {
+      "chapterNumber": 39,
+      "verseCount": 43,
+      "wordCount": 1073
+    },
+    {
+      "chapterNumber": 40,
+      "verseCount": 38,
+      "wordCount": 859
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "bookSlug": "1-kings",
+  "totalChapters": 22,
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "verseCount": 53,
+      "wordCount": 1552
+    },
+    {
+      "chapterNumber": 2,
+      "verseCount": 46,
+      "wordCount": 1556
+    },
+    {
+      "chapterNumber": 3,
+      "verseCount": 28,
+      "wordCount": 878
+    },
+    {
+      "chapterNumber": 4,
+      "verseCount": 34,
+      "wordCount": 740
+    },
+    {
+      "chapterNumber": 5,
+      "verseCount": 18,
+      "wordCount": 545
+    },
+    {
+      "chapterNumber": 6,
+      "verseCount": 38,
+      "wordCount": 1056
+    },
+    {
+      "chapterNumber": 7,
+      "verseCount": 51,
+      "wordCount": 1533
+    },
+    {
+      "chapterNumber": 8,
+      "verseCount": 66,
+      "wordCount": 2205
+    },
+    {
+      "chapterNumber": 9,
+      "verseCount": 28,
+      "wordCount": 854
+    },
+    {
+      "chapterNumber": 10,
+      "verseCount": 29,
+      "wordCount": 868
+    },
+    {
+      "chapterNumber": 11,
+      "verseCount": 43,
+      "wordCount": 1296
+    },
+    {
+      "chapterNumber": 12,
+      "verseCount": 33,
+      "wordCount": 1071
+    },
+    {
+      "chapterNumber": 13,
+      "verseCount": 34,
+      "wordCount": 1172
+    },
+    {
+      "chapterNumber": 14,
+      "verseCount": 31,
+      "wordCount": 1018
+    },
+    {
+      "chapterNumber": 15,
+      "verseCount": 34,
+      "wordCount": 985
+    },
+    {
+      "chapterNumber": 16,
+      "verseCount": 34,
+      "wordCount": 1069
+    },
+    {
+      "chapterNumber": 17,
+      "verseCount": 24,
+      "wordCount": 704
+    },
+    {
+      "chapterNumber": 18,
+      "verseCount": 46,
+      "wordCount": 1443
+    },
+    {
+      "chapterNumber": 19,
+      "verseCount": 21,
+      "wordCount": 753
+    },
+    {
+      "chapterNumber": 20,
+      "verseCount": 43,
+      "wordCount": 1523
+    },
+    {
+      "chapterNumber": 21,
+      "verseCount": 29,
+      "wordCount": 937
+    },
+    {
+      "chapterNumber": 22,
+      "verseCount": 53,
+      "wordCount": 1570
+    }
+  ]
+}

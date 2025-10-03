@@ -1,0 +1,36 @@
+{
+  "bookSlug": "1-timothy",
+  "totalChapters": 6,
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "verseCount": 20,
+      "wordCount": 452
+    },
+    {
+      "chapterNumber": 2,
+      "verseCount": 15,
+      "wordCount": 262
+    },
+    {
+      "chapterNumber": 3,
+      "verseCount": 16,
+      "wordCount": 340
+    },
+    {
+      "chapterNumber": 4,
+      "verseCount": 16,
+      "wordCount": 326
+    },
+    {
+      "chapterNumber": 5,
+      "verseCount": 25,
+      "wordCount": 495
+    },
+    {
+      "chapterNumber": 6,
+      "verseCount": 21,
+      "wordCount": 482
+    }
+  ]
+}

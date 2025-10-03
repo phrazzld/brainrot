@@ -1,0 +1,21 @@
+{
+  "bookSlug": "habakkuk",
+  "totalChapters": 3,
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "verseCount": 17,
+      "wordCount": 436
+    },
+    {
+      "chapterNumber": 2,
+      "verseCount": 20,
+      "wordCount": 587
+    },
+    {
+      "chapterNumber": 3,
+      "verseCount": 19,
+      "wordCount": 508
+    }
+  ]
+}

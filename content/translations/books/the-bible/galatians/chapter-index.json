@@ -1,0 +1,36 @@
+{
+  "bookSlug": "galatians",
+  "totalChapters": 6,
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "verseCount": 24,
+      "wordCount": 477
+    },
+    {
+      "chapterNumber": 2,
+      "verseCount": 21,
+      "wordCount": 594
+    },
+    {
+      "chapterNumber": 3,
+      "verseCount": 29,
+      "wordCount": 677
+    },
+    {
+      "chapterNumber": 4,
+      "verseCount": 31,
+      "wordCount": 641
+    },
+    {
+      "chapterNumber": 5,
+      "verseCount": 26,
+      "wordCount": 473
+    },
+    {
+      "chapterNumber": 6,
+      "verseCount": 18,
+      "wordCount": 371
+    }
+  ]
+}

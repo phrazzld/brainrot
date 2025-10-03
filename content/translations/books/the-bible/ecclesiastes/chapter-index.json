@@ -1,0 +1,66 @@
+{
+  "bookSlug": "ecclesiastes",
+  "totalChapters": 12,
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "verseCount": 18,
+      "wordCount": 398
+    },
+    {
+      "chapterNumber": 2,
+      "verseCount": 26,
+      "wordCount": 760
+    },
+    {
+      "chapterNumber": 3,
+      "verseCount": 22,
+      "wordCount": 533
+    },
+    {
+      "chapterNumber": 4,
+      "verseCount": 16,
+      "wordCount": 402
+    },
+    {
+      "chapterNumber": 5,
+      "verseCount": 20,
+      "wordCount": 553
+    },
+    {
+      "chapterNumber": 6,
+      "verseCount": 12,
+      "wordCount": 302
+    },
+    {
+      "chapterNumber": 7,
+      "verseCount": 29,
+      "wordCount": 657
+    },
+    {
+      "chapterNumber": 8,
+      "verseCount": 17,
+      "wordCount": 532
+    },
+    {
+      "chapterNumber": 9,
+      "verseCount": 18,
+      "wordCount": 573
+    },
+    {
+      "chapterNumber": 10,
+      "verseCount": 20,
+      "wordCount": 422
+    },
+    {
+      "chapterNumber": 11,
+      "verseCount": 10,
+      "wordCount": 283
+    },
+    {
+      "chapterNumber": 12,
+      "verseCount": 14,
+      "wordCount": 386
+    }
+  ]
+}

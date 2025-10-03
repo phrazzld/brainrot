@@ -1,0 +1,126 @@
+{
+  "bookSlug": "2-samuel",
+  "totalChapters": 24,
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "verseCount": 28,
+      "wordCount": 786
+    },
+    {
+      "chapterNumber": 2,
+      "verseCount": 31,
+      "wordCount": 896
+    },
+    {
+      "chapterNumber": 3,
+      "verseCount": 39,
+      "wordCount": 1182
+    },
+    {
+      "chapterNumber": 4,
+      "verseCount": 12,
+      "wordCount": 446
+    },
+    {
+      "chapterNumber": 5,
+      "verseCount": 25,
+      "wordCount": 649
+    },
+    {
+      "chapterNumber": 6,
+      "verseCount": 23,
+      "wordCount": 736
+    },
+    {
+      "chapterNumber": 7,
+      "verseCount": 29,
+      "wordCount": 887
+    },
+    {
+      "chapterNumber": 8,
+      "verseCount": 18,
+      "wordCount": 465
+    },
+    {
+      "chapterNumber": 9,
+      "verseCount": 13,
+      "wordCount": 421
+    },
+    {
+      "chapterNumber": 10,
+      "verseCount": 19,
+      "wordCount": 627
+    },
+    {
+      "chapterNumber": 11,
+      "verseCount": 27,
+      "wordCount": 841
+    },
+    {
+      "chapterNumber": 12,
+      "verseCount": 31,
+      "wordCount": 1023
+    },
+    {
+      "chapterNumber": 13,
+      "verseCount": 39,
+      "wordCount": 1187
+    },
+    {
+      "chapterNumber": 14,
+      "verseCount": 33,
+      "wordCount": 1150
+    },
+    {
+      "chapterNumber": 15,
+      "verseCount": 37,
+      "wordCount": 1155
+    },
+    {
+      "chapterNumber": 16,
+      "verseCount": 23,
+      "wordCount": 761
+    },
+    {
+      "chapterNumber": 17,
+      "verseCount": 29,
+      "wordCount": 964
+    },
+    {
+      "chapterNumber": 18,
+      "verseCount": 33,
+      "wordCount": 1127
+    },
+    {
+      "chapterNumber": 19,
+      "verseCount": 43,
+      "wordCount": 1518
+    },
+    {
+      "chapterNumber": 20,
+      "verseCount": 26,
+      "wordCount": 874
+    },
+    {
+      "chapterNumber": 21,
+      "verseCount": 22,
+      "wordCount": 800
+    },
+    {
+      "chapterNumber": 22,
+      "verseCount": 51,
+      "wordCount": 1002
+    },
+    {
+      "chapterNumber": 23,
+      "verseCount": 39,
+      "wordCount": 917
+    },
+    {
+      "chapterNumber": 24,
+      "verseCount": 25,
+      "wordCount": 880
+    }
+  ]
+}

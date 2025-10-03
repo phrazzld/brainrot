@@ -1,0 +1,86 @@
+{
+  "bookSlug": "1-corinthians",
+  "totalChapters": 16,
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "verseCount": 31,
+      "wordCount": 680
+    },
+    {
+      "chapterNumber": 2,
+      "verseCount": 16,
+      "wordCount": 389
+    },
+    {
+      "chapterNumber": 3,
+      "verseCount": 23,
+      "wordCount": 482
+    },
+    {
+      "chapterNumber": 4,
+      "verseCount": 21,
+      "wordCount": 525
+    },
+    {
+      "chapterNumber": 5,
+      "verseCount": 13,
+      "wordCount": 339
+    },
+    {
+      "chapterNumber": 6,
+      "verseCount": 20,
+      "wordCount": 485
+    },
+    {
+      "chapterNumber": 7,
+      "verseCount": 40,
+      "wordCount": 999
+    },
+    {
+      "chapterNumber": 8,
+      "verseCount": 13,
+      "wordCount": 322
+    },
+    {
+      "chapterNumber": 9,
+      "verseCount": 27,
+      "wordCount": 698
+    },
+    {
+      "chapterNumber": 10,
+      "verseCount": 33,
+      "wordCount": 700
+    },
+    {
+      "chapterNumber": 11,
+      "verseCount": 34,
+      "wordCount": 752
+    },
+    {
+      "chapterNumber": 12,
+      "verseCount": 31,
+      "wordCount": 624
+    },
+    {
+      "chapterNumber": 13,
+      "verseCount": 13,
+      "wordCount": 283
+    },
+    {
+      "chapterNumber": 14,
+      "verseCount": 40,
+      "wordCount": 927
+    },
+    {
+      "chapterNumber": 15,
+      "verseCount": 58,
+      "wordCount": 1224
+    },
+    {
+      "chapterNumber": 16,
+      "verseCount": 24,
+      "wordCount": 470
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "bookSlug": "ruth",
+  "totalChapters": 4,
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "verseCount": 22,
+      "wordCount": 671
+    },
+    {
+      "chapterNumber": 2,
+      "verseCount": 23,
+      "wordCount": 786
+    },
+    {
+      "chapterNumber": 3,
+      "verseCount": 18,
+      "wordCount": 559
+    },
+    {
+      "chapterNumber": 4,
+      "verseCount": 22,
+      "wordCount": 643
+    }
+  ]
+}

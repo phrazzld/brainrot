@@ -313,6 +313,150 @@ function extractBooks(sourcePath: string, outputDir: string): BookBoundary[] {
   return boundaries;
 }
 
+interface ChapterInfo {
+  chapterNumber: number;
+  verseCount: number;
+  wordCount: number;
+}
+
+/**
+ * Split a book into chapters based on verse markers
+ */
+function splitBookIntoChapters(bookSlug: string, outputDir: string): ChapterInfo[] {
+  const sourceFile = join(outputDir, bookSlug, 'source', 'raw.txt');
+  const chaptersDir = join(outputDir, bookSlug, 'chapters');
+
+  // Read the book text
+  const bookText = readFileSync(sourceFile, 'utf-8');
+  const lines = bookText.split('\n');
+
+  // Map to store chapter number -> array of line indices
+  const chapterMap = new Map<number, number[]>();
+
+  // Identify chapter boundaries by detecting verse 1 markers (N:1)
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i].trim();
+    const verseMatch = line.match(/^(\d+):1\s/);
+
+    if (verseMatch) {
+      const chapterNum = parseInt(verseMatch[1], 10);
+      if (!chapterMap.has(chapterNum)) {
+        chapterMap.set(chapterNum, []);
+      }
+      chapterMap.get(chapterNum)!.push(i);
+    } else {
+      // Check for verses mid-line (e.g., "text 1:1 more text")
+      const midVerseMatch = line.match(/\s(\d+):1\s/);
+      if (midVerseMatch) {
+        const chapterNum = parseInt(midVerseMatch[1], 10);
+        if (!chapterMap.has(chapterNum)) {
+          chapterMap.set(chapterNum, []);
+        }
+        chapterMap.get(chapterNum)!.push(i);
+      }
+    }
+  }
+
+  // Collect all verse lines by chapter
+  const chapters = new Map<number, string[]>();
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    const trimmed = line.trim();
+
+    // Extract chapter number from any verse marker
+    const verseMatch = trimmed.match(/(\d+):\d+/);
+
+    if (verseMatch) {
+      const chapterNum = parseInt(verseMatch[1], 10);
+      if (!chapters.has(chapterNum)) {
+        chapters.set(chapterNum, []);
+      }
+      chapters.get(chapterNum)!.push(line);
+    } else if (trimmed && chapters.size > 0) {
+      // Non-empty line without verse marker - belongs to current chapter (multi-line verse)
+      const lastChapter = Math.max(...chapters.keys());
+      chapters.get(lastChapter)!.push(line);
+    }
+  }
+
+  // Create chapters directory
+  mkdirSync(chaptersDir, { recursive: true });
+
+  // Write each chapter to file
+  const chapterInfos: ChapterInfo[] = [];
+  const sortedChapterNums = Array.from(chapters.keys()).sort((a, b) => a - b);
+  const maxChapter = Math.max(...sortedChapterNums);
+  const padding = maxChapter >= 100 ? 3 : 2;
+
+  for (const chapterNum of sortedChapterNums) {
+    const chapterLines = chapters.get(chapterNum)!;
+    const chapterText = chapterLines.join('\n').trim();
+
+    // Determine padding (3 digits for Psalms with 150 chapters, 2 for others)
+    const paddedNum = String(chapterNum).padStart(padding, '0');
+    const chapterFile = join(chaptersDir, `chapter-${paddedNum}.txt`);
+
+    writeFileSync(chapterFile, chapterText, 'utf-8');
+
+    // Count verses
+    const verseMatches = chapterText.match(/\d+:\d+/g) || [];
+    const uniqueVerses = new Set(verseMatches);
+    const verseCount = uniqueVerses.size;
+
+    // Count words
+    const wordCount = chapterText.split(/\s+/).length;
+
+    chapterInfos.push({
+      chapterNumber: chapterNum,
+      verseCount,
+      wordCount
+    });
+  }
+
+  return chapterInfos;
+}
+
+/**
+ * Split all books into chapters
+ */
+function splitAllBooksIntoChapters(boundaries: BookBoundary[], outputDir: string): void {
+  console.log('\n' + '='.repeat(80));
+  console.log('📑 Splitting books into chapters...\n');
+
+  let totalChapters = 0;
+  const bookChapterCounts: Array<{ slug: string; title: string; chapters: number }> = [];
+
+  for (const book of boundaries) {
+    const chapters = splitBookIntoChapters(book.slug, outputDir);
+    const chapterCount = chapters.length;
+    totalChapters += chapterCount;
+
+    bookChapterCounts.push({
+      slug: book.slug,
+      title: book.title,
+      chapters: chapterCount
+    });
+
+    console.log(`✅ ${book.title.padEnd(20)} | ${String(chapterCount).padStart(3)} chapters`);
+
+    // Generate chapter-index.json for this book
+    const chapterIndexPath = join(outputDir, book.slug, 'chapter-index.json');
+    const chapterIndex = {
+      bookSlug: book.slug,
+      totalChapters: chapterCount,
+      chapters: chapters
+    };
+    writeFileSync(chapterIndexPath, JSON.stringify(chapterIndex, null, 2), 'utf-8');
+  }
+
+  console.log('='.repeat(80));
+  console.log(`\n📊 Chapter Split Summary:`);
+  console.log(`   Total chapters: ${totalChapters}`);
+  console.log(`   OT chapters: ${bookChapterCounts.filter((_, i) => boundaries[i].testament === 'OT').reduce((sum, b) => sum + b.chapters, 0)}`);
+  console.log(`   NT chapters: ${bookChapterCounts.filter((_, i) => boundaries[i].testament === 'NT').reduce((sum, b) => sum + b.chapters, 0)}`);
+}
+
 /**
  * Generate books-index.json with metadata
  */
@@ -352,7 +496,10 @@ async function main() {
   const boundaries = extractBooks(sourcePath, outputDir);
   generateIndex(boundaries, outputDir);
 
-  console.log('\n✨ Done! All 66 books extracted successfully.\n');
+  // Split all books into chapters
+  splitAllBooksIntoChapters(boundaries, outputDir);
+
+  console.log('\n✨ Done! All 66 books extracted and split into chapters successfully.\n');
 }
 
 main().catch(error => {

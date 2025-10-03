@@ -1,0 +1,21 @@
+{
+  "bookSlug": "joel",
+  "totalChapters": 3,
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "verseCount": 20,
+      "wordCount": 528
+    },
+    {
+      "chapterNumber": 2,
+      "verseCount": 32,
+      "wordCount": 989
+    },
+    {
+      "chapterNumber": 3,
+      "verseCount": 21,
+      "wordCount": 589
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "bookSlug": "mark",
+  "totalChapters": 16,
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "verseCount": 45,
+      "wordCount": 975
+    },
+    {
+      "chapterNumber": 2,
+      "verseCount": 28,
+      "wordCount": 752
+    },
+    {
+      "chapterNumber": 3,
+      "verseCount": 35,
+      "wordCount": 698
+    },
+    {
+      "chapterNumber": 4,
+      "verseCount": 41,
+      "wordCount": 962
+    },
+    {
+      "chapterNumber": 5,
+      "verseCount": 43,
+      "wordCount": 997
+    },
+    {
+      "chapterNumber": 6,
+      "verseCount": 56,
+      "wordCount": 1379
+    },
+    {
+      "chapterNumber": 7,
+      "verseCount": 37,
+      "wordCount": 843
+    },
+    {
+      "chapterNumber": 8,
+      "verseCount": 38,
+      "wordCount": 880
+    },
+    {
+      "chapterNumber": 9,
+      "verseCount": 50,
+      "wordCount": 1214
+    },
+    {
+      "chapterNumber": 10,
+      "verseCount": 52,
+      "wordCount": 1270
+    },
+    {
+      "chapterNumber": 11,
+      "verseCount": 33,
+      "wordCount": 811
+    },
+    {
+      "chapterNumber": 12,
+      "verseCount": 44,
+      "wordCount": 1102
+    },
+    {
+      "chapterNumber": 13,
+      "verseCount": 37,
+      "wordCount": 865
+    },
+    {
+      "chapterNumber": 14,
+      "verseCount": 72,
+      "wordCount": 1667
+    },
+    {
+      "chapterNumber": 15,
+      "verseCount": 47,
+      "wordCount": 960
+    },
+    {
+      "chapterNumber": 16,
+      "verseCount": 20,
+      "wordCount": 469
+    }
+  ]
+}

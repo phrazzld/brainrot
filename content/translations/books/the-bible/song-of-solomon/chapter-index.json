@@ -1,0 +1,46 @@
+{
+  "bookSlug": "song-of-solomon",
+  "totalChapters": 8,
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "verseCount": 17,
+      "wordCount": 343
+    },
+    {
+      "chapterNumber": 2,
+      "verseCount": 17,
+      "wordCount": 368
+    },
+    {
+      "chapterNumber": 3,
+      "verseCount": 11,
+      "wordCount": 298
+    },
+    {
+      "chapterNumber": 4,
+      "verseCount": 16,
+      "wordCount": 379
+    },
+    {
+      "chapterNumber": 5,
+      "verseCount": 16,
+      "wordCount": 413
+    },
+    {
+      "chapterNumber": 6,
+      "verseCount": 13,
+      "wordCount": 295
+    },
+    {
+      "chapterNumber": 7,
+      "verseCount": 13,
+      "wordCount": 305
+    },
+    {
+      "chapterNumber": 8,
+      "verseCount": 14,
+      "wordCount": 374
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "bookSlug": "ephesians",
+  "totalChapters": 6,
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "verseCount": 23,
+      "wordCount": 531
+    },
+    {
+      "chapterNumber": 2,
+      "verseCount": 22,
+      "wordCount": 475
+    },
+    {
+      "chapterNumber": 3,
+      "verseCount": 21,
+      "wordCount": 431
+    },
+    {
+      "chapterNumber": 4,
+      "verseCount": 32,
+      "wordCount": 649
+    },
+    {
+      "chapterNumber": 5,
+      "verseCount": 33,
+      "wordCount": 597
+    },
+    {
+      "chapterNumber": 6,
+      "verseCount": 24,
+      "wordCount": 494
+    }
+  ]
+}

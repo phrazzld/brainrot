@@ -1,0 +1,11 @@
+{
+  "bookSlug": "2-john",
+  "totalChapters": 1,
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "verseCount": 13,
+      "wordCount": 311
+    }
+  ]
+}

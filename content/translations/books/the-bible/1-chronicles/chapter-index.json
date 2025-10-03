@@ -1,0 +1,151 @@
+{
+  "bookSlug": "1-chronicles",
+  "totalChapters": 29,
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "verseCount": 54,
+      "wordCount": 737
+    },
+    {
+      "chapterNumber": 2,
+      "verseCount": 55,
+      "wordCount": 901
+    },
+    {
+      "chapterNumber": 3,
+      "verseCount": 24,
+      "wordCount": 371
+    },
+    {
+      "chapterNumber": 4,
+      "verseCount": 43,
+      "wordCount": 895
+    },
+    {
+      "chapterNumber": 5,
+      "verseCount": 26,
+      "wordCount": 690
+    },
+    {
+      "chapterNumber": 6,
+      "verseCount": 81,
+      "wordCount": 1422
+    },
+    {
+      "chapterNumber": 7,
+      "verseCount": 40,
+      "wordCount": 871
+    },
+    {
+      "chapterNumber": 8,
+      "verseCount": 40,
+      "wordCount": 531
+    },
+    {
+      "chapterNumber": 9,
+      "verseCount": 44,
+      "wordCount": 1004
+    },
+    {
+      "chapterNumber": 10,
+      "verseCount": 14,
+      "wordCount": 378
+    },
+    {
+      "chapterNumber": 11,
+      "verseCount": 47,
+      "wordCount": 991
+    },
+    {
+      "chapterNumber": 12,
+      "verseCount": 40,
+      "wordCount": 1027
+    },
+    {
+      "chapterNumber": 13,
+      "verseCount": 14,
+      "wordCount": 400
+    },
+    {
+      "chapterNumber": 14,
+      "verseCount": 17,
+      "wordCount": 374
+    },
+    {
+      "chapterNumber": 15,
+      "verseCount": 29,
+      "wordCount": 743
+    },
+    {
+      "chapterNumber": 16,
+      "verseCount": 43,
+      "wordCount": 893
+    },
+    {
+      "chapterNumber": 17,
+      "verseCount": 27,
+      "wordCount": 806
+    },
+    {
+      "chapterNumber": 18,
+      "verseCount": 17,
+      "wordCount": 416
+    },
+    {
+      "chapterNumber": 19,
+      "verseCount": 19,
+      "wordCount": 649
+    },
+    {
+      "chapterNumber": 20,
+      "verseCount": 8,
+      "wordCount": 297
+    },
+    {
+      "chapterNumber": 21,
+      "verseCount": 30,
+      "wordCount": 944
+    },
+    {
+      "chapterNumber": 22,
+      "verseCount": 19,
+      "wordCount": 624
+    },
+    {
+      "chapterNumber": 23,
+      "verseCount": 32,
+      "wordCount": 713
+    },
+    {
+      "chapterNumber": 24,
+      "verseCount": 31,
+      "wordCount": 572
+    },
+    {
+      "chapterNumber": 25,
+      "verseCount": 31,
+      "wordCount": 574
+    },
+    {
+      "chapterNumber": 26,
+      "verseCount": 32,
+      "wordCount": 742
+    },
+    {
+      "chapterNumber": 27,
+      "verseCount": 34,
+      "wordCount": 839
+    },
+    {
+      "chapterNumber": 28,
+      "verseCount": 21,
+      "wordCount": 885
+    },
+    {
+      "chapterNumber": 29,
+      "verseCount": 30,
+      "wordCount": 1018
+    }
+  ]
+}

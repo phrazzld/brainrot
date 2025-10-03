@@ -1,0 +1,31 @@
+{
+  "bookSlug": "1-peter",
+  "totalChapters": 5,
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "verseCount": 25,
+      "wordCount": 622
+    },
+    {
+      "chapterNumber": 2,
+      "verseCount": 25,
+      "wordCount": 573
+    },
+    {
+      "chapterNumber": 3,
+      "verseCount": 22,
+      "wordCount": 573
+    },
+    {
+      "chapterNumber": 4,
+      "verseCount": 19,
+      "wordCount": 498
+    },
+    {
+      "chapterNumber": 5,
+      "verseCount": 14,
+      "wordCount": 314
+    }
+  ]
+}

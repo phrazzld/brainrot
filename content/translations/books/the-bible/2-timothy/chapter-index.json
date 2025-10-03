@@ -1,0 +1,26 @@
+{
+  "bookSlug": "2-timothy",
+  "totalChapters": 4,
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "verseCount": 18,
+      "wordCount": 456
+    },
+    {
+      "chapterNumber": 2,
+      "verseCount": 26,
+      "wordCount": 532
+    },
+    {
+      "chapterNumber": 3,
+      "verseCount": 17,
+      "wordCount": 314
+    },
+    {
+      "chapterNumber": 4,
+      "verseCount": 22,
+      "wordCount": 447
+    }
+  ]
+}

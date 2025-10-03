@@ -1,0 +1,336 @@
+{
+  "bookSlug": "isaiah",
+  "totalChapters": 66,
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "verseCount": 31,
+      "wordCount": 789
+    },
+    {
+      "chapterNumber": 2,
+      "verseCount": 22,
+      "wordCount": 583
+    },
+    {
+      "chapterNumber": 3,
+      "verseCount": 26,
+      "wordCount": 619
+    },
+    {
+      "chapterNumber": 4,
+      "verseCount": 6,
+      "wordCount": 216
+    },
+    {
+      "chapterNumber": 5,
+      "verseCount": 30,
+      "wordCount": 893
+    },
+    {
+      "chapterNumber": 6,
+      "verseCount": 13,
+      "wordCount": 379
+    },
+    {
+      "chapterNumber": 7,
+      "verseCount": 25,
+      "wordCount": 718
+    },
+    {
+      "chapterNumber": 8,
+      "verseCount": 22,
+      "wordCount": 580
+    },
+    {
+      "chapterNumber": 9,
+      "verseCount": 21,
+      "wordCount": 620
+    },
+    {
+      "chapterNumber": 10,
+      "verseCount": 34,
+      "wordCount": 962
+    },
+    {
+      "chapterNumber": 11,
+      "verseCount": 16,
+      "wordCount": 535
+    },
+    {
+      "chapterNumber": 12,
+      "verseCount": 6,
+      "wordCount": 140
+    },
+    {
+      "chapterNumber": 13,
+      "verseCount": 22,
+      "wordCount": 598
+    },
+    {
+      "chapterNumber": 14,
+      "verseCount": 32,
+      "wordCount": 888
+    },
+    {
+      "chapterNumber": 15,
+      "verseCount": 9,
+      "wordCount": 275
+    },
+    {
+      "chapterNumber": 16,
+      "verseCount": 14,
+      "wordCount": 429
+    },
+    {
+      "chapterNumber": 17,
+      "verseCount": 14,
+      "wordCount": 442
+    },
+    {
+      "chapterNumber": 18,
+      "verseCount": 7,
+      "wordCount": 262
+    },
+    {
+      "chapterNumber": 19,
+      "verseCount": 25,
+      "wordCount": 755
+    },
+    {
+      "chapterNumber": 20,
+      "verseCount": 6,
+      "wordCount": 166
+    },
+    {
+      "chapterNumber": 21,
+      "verseCount": 17,
+      "wordCount": 443
+    },
+    {
+      "chapterNumber": 22,
+      "verseCount": 25,
+      "wordCount": 700
+    },
+    {
+      "chapterNumber": 23,
+      "verseCount": 18,
+      "wordCount": 487
+    },
+    {
+      "chapterNumber": 24,
+      "verseCount": 23,
+      "wordCount": 615
+    },
+    {
+      "chapterNumber": 25,
+      "verseCount": 12,
+      "wordCount": 393
+    },
+    {
+      "chapterNumber": 26,
+      "verseCount": 21,
+      "wordCount": 571
+    },
+    {
+      "chapterNumber": 27,
+      "verseCount": 13,
+      "wordCount": 418
+    },
+    {
+      "chapterNumber": 28,
+      "verseCount": 29,
+      "wordCount": 843
+    },
+    {
+      "chapterNumber": 29,
+      "verseCount": 24,
+      "wordCount": 766
+    },
+    {
+      "chapterNumber": 30,
+      "verseCount": 33,
+      "wordCount": 1092
+    },
+    {
+      "chapterNumber": 31,
+      "verseCount": 9,
+      "wordCount": 331
+    },
+    {
+      "chapterNumber": 32,
+      "verseCount": 20,
+      "wordCount": 456
+    },
+    {
+      "chapterNumber": 33,
+      "verseCount": 24,
+      "wordCount": 609
+    },
+    {
+      "chapterNumber": 34,
+      "verseCount": 17,
+      "wordCount": 539
+    },
+    {
+      "chapterNumber": 35,
+      "verseCount": 10,
+      "wordCount": 287
+    },
+    {
+      "chapterNumber": 36,
+      "verseCount": 22,
+      "wordCount": 712
+    },
+    {
+      "chapterNumber": 37,
+      "verseCount": 38,
+      "wordCount": 1169
+    },
+    {
+      "chapterNumber": 38,
+      "verseCount": 22,
+      "wordCount": 609
+    },
+    {
+      "chapterNumber": 39,
+      "verseCount": 8,
+      "wordCount": 281
+    },
+    {
+      "chapterNumber": 40,
+      "verseCount": 31,
+      "wordCount": 827
+    },
+    {
+      "chapterNumber": 41,
+      "verseCount": 29,
+      "wordCount": 833
+    },
+    {
+      "chapterNumber": 42,
+      "verseCount": 25,
+      "wordCount": 701
+    },
+    {
+      "chapterNumber": 43,
+      "verseCount": 28,
+      "wordCount": 739
+    },
+    {
+      "chapterNumber": 44,
+      "verseCount": 28,
+      "wordCount": 914
+    },
+    {
+      "chapterNumber": 45,
+      "verseCount": 25,
+      "wordCount": 799
+    },
+    {
+      "chapterNumber": 46,
+      "verseCount": 13,
+      "wordCount": 355
+    },
+    {
+      "chapterNumber": 47,
+      "verseCount": 15,
+      "wordCount": 486
+    },
+    {
+      "chapterNumber": 48,
+      "verseCount": 22,
+      "wordCount": 649
+    },
+    {
+      "chapterNumber": 49,
+      "verseCount": 26,
+      "wordCount": 893
+    },
+    {
+      "chapterNumber": 50,
+      "verseCount": 11,
+      "wordCount": 376
+    },
+    {
+      "chapterNumber": 51,
+      "verseCount": 23,
+      "wordCount": 794
+    },
+    {
+      "chapterNumber": 52,
+      "verseCount": 15,
+      "wordCount": 420
+    },
+    {
+      "chapterNumber": 53,
+      "verseCount": 12,
+      "wordCount": 399
+    },
+    {
+      "chapterNumber": 54,
+      "verseCount": 17,
+      "wordCount": 510
+    },
+    {
+      "chapterNumber": 55,
+      "verseCount": 13,
+      "wordCount": 412
+    },
+    {
+      "chapterNumber": 56,
+      "verseCount": 12,
+      "wordCount": 373
+    },
+    {
+      "chapterNumber": 57,
+      "verseCount": 21,
+      "wordCount": 590
+    },
+    {
+      "chapterNumber": 58,
+      "verseCount": 14,
+      "wordCount": 536
+    },
+    {
+      "chapterNumber": 59,
+      "verseCount": 21,
+      "wordCount": 612
+    },
+    {
+      "chapterNumber": 60,
+      "verseCount": 22,
+      "wordCount": 687
+    },
+    {
+      "chapterNumber": 61,
+      "verseCount": 11,
+      "wordCount": 391
+    },
+    {
+      "chapterNumber": 62,
+      "verseCount": 12,
+      "wordCount": 374
+    },
+    {
+      "chapterNumber": 63,
+      "verseCount": 19,
+      "wordCount": 557
+    },
+    {
+      "chapterNumber": 64,
+      "verseCount": 12,
+      "wordCount": 312
+    },
+    {
+      "chapterNumber": 65,
+      "verseCount": 25,
+      "wordCount": 786
+    },
+    {
+      "chapterNumber": 66,
+      "verseCount": 24,
+      "wordCount": 835
+    }
+  ]
+}

@@ -1,0 +1,176 @@
+{
+  "bookSlug": "deuteronomy",
+  "totalChapters": 34,
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "verseCount": 46,
+      "wordCount": 1308
+    },
+    {
+      "chapterNumber": 2,
+      "verseCount": 37,
+      "wordCount": 1058
+    },
+    {
+      "chapterNumber": 3,
+      "verseCount": 29,
+      "wordCount": 844
+    },
+    {
+      "chapterNumber": 4,
+      "verseCount": 49,
+      "wordCount": 1552
+    },
+    {
+      "chapterNumber": 5,
+      "verseCount": 33,
+      "wordCount": 954
+    },
+    {
+      "chapterNumber": 6,
+      "verseCount": 25,
+      "wordCount": 668
+    },
+    {
+      "chapterNumber": 7,
+      "verseCount": 26,
+      "wordCount": 869
+    },
+    {
+      "chapterNumber": 8,
+      "verseCount": 20,
+      "wordCount": 586
+    },
+    {
+      "chapterNumber": 9,
+      "verseCount": 29,
+      "wordCount": 992
+    },
+    {
+      "chapterNumber": 10,
+      "verseCount": 22,
+      "wordCount": 626
+    },
+    {
+      "chapterNumber": 11,
+      "verseCount": 32,
+      "wordCount": 982
+    },
+    {
+      "chapterNumber": 12,
+      "verseCount": 32,
+      "wordCount": 1087
+    },
+    {
+      "chapterNumber": 13,
+      "verseCount": 18,
+      "wordCount": 645
+    },
+    {
+      "chapterNumber": 14,
+      "verseCount": 29,
+      "wordCount": 736
+    },
+    {
+      "chapterNumber": 15,
+      "verseCount": 23,
+      "wordCount": 730
+    },
+    {
+      "chapterNumber": 16,
+      "verseCount": 22,
+      "wordCount": 732
+    },
+    {
+      "chapterNumber": 17,
+      "verseCount": 20,
+      "wordCount": 727
+    },
+    {
+      "chapterNumber": 18,
+      "verseCount": 22,
+      "wordCount": 633
+    },
+    {
+      "chapterNumber": 19,
+      "verseCount": 21,
+      "wordCount": 629
+    },
+    {
+      "chapterNumber": 20,
+      "verseCount": 20,
+      "wordCount": 666
+    },
+    {
+      "chapterNumber": 21,
+      "verseCount": 23,
+      "wordCount": 754
+    },
+    {
+      "chapterNumber": 22,
+      "verseCount": 30,
+      "wordCount": 924
+    },
+    {
+      "chapterNumber": 23,
+      "verseCount": 25,
+      "wordCount": 710
+    },
+    {
+      "chapterNumber": 24,
+      "verseCount": 22,
+      "wordCount": 703
+    },
+    {
+      "chapterNumber": 25,
+      "verseCount": 19,
+      "wordCount": 581
+    },
+    {
+      "chapterNumber": 26,
+      "verseCount": 19,
+      "wordCount": 686
+    },
+    {
+      "chapterNumber": 27,
+      "verseCount": 26,
+      "wordCount": 625
+    },
+    {
+      "chapterNumber": 28,
+      "verseCount": 68,
+      "wordCount": 2143
+    },
+    {
+      "chapterNumber": 29,
+      "verseCount": 29,
+      "wordCount": 880
+    },
+    {
+      "chapterNumber": 30,
+      "verseCount": 20,
+      "wordCount": 685
+    },
+    {
+      "chapterNumber": 31,
+      "verseCount": 30,
+      "wordCount": 1071
+    },
+    {
+      "chapterNumber": 32,
+      "verseCount": 52,
+      "wordCount": 1358
+    },
+    {
+      "chapterNumber": 33,
+      "verseCount": 29,
+      "wordCount": 834
+    },
+    {
+      "chapterNumber": 34,
+      "verseCount": 12,
+      "wordCount": 332
+    }
+  ]
+}

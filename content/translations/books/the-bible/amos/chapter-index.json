@@ -1,0 +1,51 @@
+{
+  "bookSlug": "amos",
+  "totalChapters": 9,
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "verseCount": 15,
+      "wordCount": 470
+    },
+    {
+      "chapterNumber": 2,
+      "verseCount": 16,
+      "wordCount": 457
+    },
+    {
+      "chapterNumber": 3,
+      "verseCount": 15,
+      "wordCount": 412
+    },
+    {
+      "chapterNumber": 4,
+      "verseCount": 13,
+      "wordCount": 445
+    },
+    {
+      "chapterNumber": 5,
+      "verseCount": 27,
+      "wordCount": 685
+    },
+    {
+      "chapterNumber": 6,
+      "verseCount": 14,
+      "wordCount": 413
+    },
+    {
+      "chapterNumber": 7,
+      "verseCount": 17,
+      "wordCount": 488
+    },
+    {
+      "chapterNumber": 8,
+      "verseCount": 14,
+      "wordCount": 428
+    },
+    {
+      "chapterNumber": 9,
+      "verseCount": 15,
+      "wordCount": 564
+    }
+  ]
+}

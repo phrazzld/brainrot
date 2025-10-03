@@ -1,0 +1,26 @@
+{
+  "bookSlug": "malachi",
+  "totalChapters": 4,
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "verseCount": 14,
+      "wordCount": 501
+    },
+    {
+      "chapterNumber": 2,
+      "verseCount": 17,
+      "wordCount": 561
+    },
+    {
+      "chapterNumber": 3,
+      "verseCount": 18,
+      "wordCount": 585
+    },
+    {
+      "chapterNumber": 4,
+      "verseCount": 6,
+      "wordCount": 198
+    }
+  ]
+}

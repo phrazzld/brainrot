@@ -1,0 +1,86 @@
+{
+  "bookSlug": "romans",
+  "totalChapters": 16,
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "verseCount": 32,
+      "wordCount": 746
+    },
+    {
+      "chapterNumber": 2,
+      "verseCount": 29,
+      "wordCount": 633
+    },
+    {
+      "chapterNumber": 3,
+      "verseCount": 31,
+      "wordCount": 593
+    },
+    {
+      "chapterNumber": 4,
+      "verseCount": 25,
+      "wordCount": 571
+    },
+    {
+      "chapterNumber": 5,
+      "verseCount": 21,
+      "wordCount": 501
+    },
+    {
+      "chapterNumber": 6,
+      "verseCount": 23,
+      "wordCount": 507
+    },
+    {
+      "chapterNumber": 7,
+      "verseCount": 25,
+      "wordCount": 630
+    },
+    {
+      "chapterNumber": 8,
+      "verseCount": 39,
+      "wordCount": 942
+    },
+    {
+      "chapterNumber": 9,
+      "verseCount": 33,
+      "wordCount": 752
+    },
+    {
+      "chapterNumber": 10,
+      "verseCount": 21,
+      "wordCount": 482
+    },
+    {
+      "chapterNumber": 11,
+      "verseCount": 36,
+      "wordCount": 854
+    },
+    {
+      "chapterNumber": 12,
+      "verseCount": 21,
+      "wordCount": 418
+    },
+    {
+      "chapterNumber": 13,
+      "verseCount": 14,
+      "wordCount": 375
+    },
+    {
+      "chapterNumber": 14,
+      "verseCount": 23,
+      "wordCount": 548
+    },
+    {
+      "chapterNumber": 15,
+      "verseCount": 33,
+      "wordCount": 775
+    },
+    {
+      "chapterNumber": 16,
+      "verseCount": 27,
+      "wordCount": 528
+    }
+  ]
+}

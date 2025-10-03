@@ -1,0 +1,111 @@
+{
+  "bookSlug": "judges",
+  "totalChapters": 21,
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "verseCount": 36,
+      "wordCount": 998
+    },
+    {
+      "chapterNumber": 2,
+      "verseCount": 23,
+      "wordCount": 715
+    },
+    {
+      "chapterNumber": 3,
+      "verseCount": 31,
+      "wordCount": 873
+    },
+    {
+      "chapterNumber": 4,
+      "verseCount": 24,
+      "wordCount": 785
+    },
+    {
+      "chapterNumber": 5,
+      "verseCount": 31,
+      "wordCount": 786
+    },
+    {
+      "chapterNumber": 6,
+      "verseCount": 40,
+      "wordCount": 1335
+    },
+    {
+      "chapterNumber": 7,
+      "verseCount": 25,
+      "wordCount": 977
+    },
+    {
+      "chapterNumber": 8,
+      "verseCount": 35,
+      "wordCount": 1022
+    },
+    {
+      "chapterNumber": 9,
+      "verseCount": 57,
+      "wordCount": 1724
+    },
+    {
+      "chapterNumber": 10,
+      "verseCount": 18,
+      "wordCount": 491
+    },
+    {
+      "chapterNumber": 11,
+      "verseCount": 40,
+      "wordCount": 1275
+    },
+    {
+      "chapterNumber": 12,
+      "verseCount": 15,
+      "wordCount": 414
+    },
+    {
+      "chapterNumber": 13,
+      "verseCount": 25,
+      "wordCount": 790
+    },
+    {
+      "chapterNumber": 14,
+      "verseCount": 20,
+      "wordCount": 726
+    },
+    {
+      "chapterNumber": 15,
+      "verseCount": 20,
+      "wordCount": 668
+    },
+    {
+      "chapterNumber": 16,
+      "verseCount": 31,
+      "wordCount": 1141
+    },
+    {
+      "chapterNumber": 17,
+      "verseCount": 13,
+      "wordCount": 398
+    },
+    {
+      "chapterNumber": 18,
+      "verseCount": 31,
+      "wordCount": 1066
+    },
+    {
+      "chapterNumber": 19,
+      "verseCount": 30,
+      "wordCount": 1132
+    },
+    {
+      "chapterNumber": 20,
+      "verseCount": 48,
+      "wordCount": 1503
+    },
+    {
+      "chapterNumber": 21,
+      "verseCount": 25,
+      "wordCount": 765
+    }
+  ]
+}

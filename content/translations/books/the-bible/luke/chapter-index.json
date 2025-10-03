@@ -1,0 +1,126 @@
+{
+  "bookSlug": "luke",
+  "totalChapters": 24,
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "verseCount": 80,
+      "wordCount": 1663
+    },
+    {
+      "chapterNumber": 2,
+      "verseCount": 52,
+      "wordCount": 1146
+    },
+    {
+      "chapterNumber": 3,
+      "verseCount": 38,
+      "wordCount": 1055
+    },
+    {
+      "chapterNumber": 4,
+      "verseCount": 44,
+      "wordCount": 1065
+    },
+    {
+      "chapterNumber": 5,
+      "verseCount": 39,
+      "wordCount": 988
+    },
+    {
+      "chapterNumber": 6,
+      "verseCount": 49,
+      "wordCount": 1278
+    },
+    {
+      "chapterNumber": 7,
+      "verseCount": 50,
+      "wordCount": 1259
+    },
+    {
+      "chapterNumber": 8,
+      "verseCount": 56,
+      "wordCount": 1487
+    },
+    {
+      "chapterNumber": 9,
+      "verseCount": 62,
+      "wordCount": 1519
+    },
+    {
+      "chapterNumber": 10,
+      "verseCount": 42,
+      "wordCount": 1034
+    },
+    {
+      "chapterNumber": 11,
+      "verseCount": 54,
+      "wordCount": 1385
+    },
+    {
+      "chapterNumber": 12,
+      "verseCount": 59,
+      "wordCount": 1466
+    },
+    {
+      "chapterNumber": 13,
+      "verseCount": 35,
+      "wordCount": 899
+    },
+    {
+      "chapterNumber": 14,
+      "verseCount": 35,
+      "wordCount": 847
+    },
+    {
+      "chapterNumber": 15,
+      "verseCount": 32,
+      "wordCount": 757
+    },
+    {
+      "chapterNumber": 16,
+      "verseCount": 31,
+      "wordCount": 783
+    },
+    {
+      "chapterNumber": 17,
+      "verseCount": 37,
+      "wordCount": 846
+    },
+    {
+      "chapterNumber": 18,
+      "verseCount": 43,
+      "wordCount": 911
+    },
+    {
+      "chapterNumber": 19,
+      "verseCount": 48,
+      "wordCount": 1095
+    },
+    {
+      "chapterNumber": 20,
+      "verseCount": 47,
+      "wordCount": 1001
+    },
+    {
+      "chapterNumber": 21,
+      "verseCount": 38,
+      "wordCount": 858
+    },
+    {
+      "chapterNumber": 22,
+      "verseCount": 71,
+      "wordCount": 1467
+    },
+    {
+      "chapterNumber": 23,
+      "verseCount": 56,
+      "wordCount": 1173
+    },
+    {
+      "chapterNumber": 24,
+      "verseCount": 53,
+      "wordCount": 1108
+    }
+  ]
+}

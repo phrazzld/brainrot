@@ -1,0 +1,21 @@
+{
+  "bookSlug": "titus",
+  "totalChapters": 3,
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "verseCount": 16,
+      "wordCount": 353
+    },
+    {
+      "chapterNumber": 2,
+      "verseCount": 15,
+      "wordCount": 280
+    },
+    {
+      "chapterNumber": 3,
+      "verseCount": 15,
+      "wordCount": 309
+    }
+  ]
+}

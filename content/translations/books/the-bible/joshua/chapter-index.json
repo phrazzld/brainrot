@@ -1,0 +1,126 @@
+{
+  "bookSlug": "joshua",
+  "totalChapters": 24,
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "verseCount": 18,
+      "wordCount": 591
+    },
+    {
+      "chapterNumber": 2,
+      "verseCount": 24,
+      "wordCount": 792
+    },
+    {
+      "chapterNumber": 3,
+      "verseCount": 17,
+      "wordCount": 583
+    },
+    {
+      "chapterNumber": 4,
+      "verseCount": 24,
+      "wordCount": 730
+    },
+    {
+      "chapterNumber": 5,
+      "verseCount": 15,
+      "wordCount": 565
+    },
+    {
+      "chapterNumber": 6,
+      "verseCount": 27,
+      "wordCount": 931
+    },
+    {
+      "chapterNumber": 7,
+      "verseCount": 26,
+      "wordCount": 952
+    },
+    {
+      "chapterNumber": 8,
+      "verseCount": 35,
+      "wordCount": 1256
+    },
+    {
+      "chapterNumber": 9,
+      "verseCount": 27,
+      "wordCount": 827
+    },
+    {
+      "chapterNumber": 10,
+      "verseCount": 43,
+      "wordCount": 1436
+    },
+    {
+      "chapterNumber": 11,
+      "verseCount": 23,
+      "wordCount": 740
+    },
+    {
+      "chapterNumber": 12,
+      "verseCount": 24,
+      "wordCount": 510
+    },
+    {
+      "chapterNumber": 13,
+      "verseCount": 33,
+      "wordCount": 858
+    },
+    {
+      "chapterNumber": 14,
+      "verseCount": 15,
+      "wordCount": 500
+    },
+    {
+      "chapterNumber": 15,
+      "verseCount": 63,
+      "wordCount": 1095
+    },
+    {
+      "chapterNumber": 16,
+      "verseCount": 10,
+      "wordCount": 263
+    },
+    {
+      "chapterNumber": 17,
+      "verseCount": 18,
+      "wordCount": 678
+    },
+    {
+      "chapterNumber": 18,
+      "verseCount": 28,
+      "wordCount": 798
+    },
+    {
+      "chapterNumber": 19,
+      "verseCount": 51,
+      "wordCount": 995
+    },
+    {
+      "chapterNumber": 20,
+      "verseCount": 9,
+      "wordCount": 317
+    },
+    {
+      "chapterNumber": 21,
+      "verseCount": 45,
+      "wordCount": 1071
+    },
+    {
+      "chapterNumber": 22,
+      "verseCount": 34,
+      "wordCount": 1355
+    },
+    {
+      "chapterNumber": 23,
+      "verseCount": 16,
+      "wordCount": 590
+    },
+    {
+      "chapterNumber": 24,
+      "verseCount": 33,
+      "wordCount": 1077
+    }
+  ]
+}

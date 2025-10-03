@@ -1,0 +1,141 @@
+{
+  "bookSlug": "leviticus",
+  "totalChapters": 27,
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "verseCount": 17,
+      "wordCount": 542
+    },
+    {
+      "chapterNumber": 2,
+      "verseCount": 16,
+      "wordCount": 502
+    },
+    {
+      "chapterNumber": 3,
+      "verseCount": 17,
+      "wordCount": 528
+    },
+    {
+      "chapterNumber": 4,
+      "verseCount": 35,
+      "wordCount": 1192
+    },
+    {
+      "chapterNumber": 5,
+      "verseCount": 19,
+      "wordCount": 742
+    },
+    {
+      "chapterNumber": 6,
+      "verseCount": 30,
+      "wordCount": 922
+    },
+    {
+      "chapterNumber": 7,
+      "verseCount": 38,
+      "wordCount": 1094
+    },
+    {
+      "chapterNumber": 8,
+      "verseCount": 36,
+      "wordCount": 1024
+    },
+    {
+      "chapterNumber": 9,
+      "verseCount": 24,
+      "wordCount": 648
+    },
+    {
+      "chapterNumber": 10,
+      "verseCount": 20,
+      "wordCount": 648
+    },
+    {
+      "chapterNumber": 11,
+      "verseCount": 47,
+      "wordCount": 1162
+    },
+    {
+      "chapterNumber": 12,
+      "verseCount": 8,
+      "wordCount": 270
+    },
+    {
+      "chapterNumber": 13,
+      "verseCount": 59,
+      "wordCount": 1916
+    },
+    {
+      "chapterNumber": 14,
+      "verseCount": 57,
+      "wordCount": 1770
+    },
+    {
+      "chapterNumber": 15,
+      "verseCount": 33,
+      "wordCount": 952
+    },
+    {
+      "chapterNumber": 16,
+      "verseCount": 34,
+      "wordCount": 1191
+    },
+    {
+      "chapterNumber": 17,
+      "verseCount": 16,
+      "wordCount": 569
+    },
+    {
+      "chapterNumber": 18,
+      "verseCount": 30,
+      "wordCount": 697
+    },
+    {
+      "chapterNumber": 19,
+      "verseCount": 37,
+      "wordCount": 935
+    },
+    {
+      "chapterNumber": 20,
+      "verseCount": 27,
+      "wordCount": 863
+    },
+    {
+      "chapterNumber": 21,
+      "verseCount": 24,
+      "wordCount": 611
+    },
+    {
+      "chapterNumber": 22,
+      "verseCount": 33,
+      "wordCount": 913
+    },
+    {
+      "chapterNumber": 23,
+      "verseCount": 44,
+      "wordCount": 1266
+    },
+    {
+      "chapterNumber": 24,
+      "verseCount": 23,
+      "wordCount": 574
+    },
+    {
+      "chapterNumber": 25,
+      "verseCount": 55,
+      "wordCount": 1587
+    },
+    {
+      "chapterNumber": 26,
+      "verseCount": 46,
+      "wordCount": 1292
+    },
+    {
+      "chapterNumber": 27,
+      "verseCount": 34,
+      "wordCount": 990
+    }
+  ]
+}

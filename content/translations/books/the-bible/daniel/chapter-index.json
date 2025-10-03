@@ -1,0 +1,66 @@
+{
+  "bookSlug": "daniel",
+  "totalChapters": 12,
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "verseCount": 21,
+      "wordCount": 610
+    },
+    {
+      "chapterNumber": 2,
+      "verseCount": 49,
+      "wordCount": 1549
+    },
+    {
+      "chapterNumber": 3,
+      "verseCount": 30,
+      "wordCount": 1022
+    },
+    {
+      "chapterNumber": 4,
+      "verseCount": 37,
+      "wordCount": 1327
+    },
+    {
+      "chapterNumber": 5,
+      "verseCount": 31,
+      "wordCount": 1026
+    },
+    {
+      "chapterNumber": 6,
+      "verseCount": 28,
+      "wordCount": 933
+    },
+    {
+      "chapterNumber": 7,
+      "verseCount": 28,
+      "wordCount": 954
+    },
+    {
+      "chapterNumber": 8,
+      "verseCount": 27,
+      "wordCount": 879
+    },
+    {
+      "chapterNumber": 9,
+      "verseCount": 27,
+      "wordCount": 993
+    },
+    {
+      "chapterNumber": 10,
+      "verseCount": 21,
+      "wordCount": 668
+    },
+    {
+      "chapterNumber": 11,
+      "verseCount": 45,
+      "wordCount": 1575
+    },
+    {
+      "chapterNumber": 12,
+      "verseCount": 13,
+      "wordCount": 424
+    }
+  ]
+}

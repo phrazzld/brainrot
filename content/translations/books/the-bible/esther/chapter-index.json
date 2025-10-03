@@ -1,0 +1,56 @@
+{
+  "bookSlug": "esther",
+  "totalChapters": 10,
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "verseCount": 22,
+      "wordCount": 738
+    },
+    {
+      "chapterNumber": 2,
+      "verseCount": 23,
+      "wordCount": 829
+    },
+    {
+      "chapterNumber": 3,
+      "verseCount": 15,
+      "wordCount": 567
+    },
+    {
+      "chapterNumber": 4,
+      "verseCount": 17,
+      "wordCount": 534
+    },
+    {
+      "chapterNumber": 5,
+      "verseCount": 14,
+      "wordCount": 508
+    },
+    {
+      "chapterNumber": 6,
+      "verseCount": 14,
+      "wordCount": 490
+    },
+    {
+      "chapterNumber": 7,
+      "verseCount": 10,
+      "wordCount": 355
+    },
+    {
+      "chapterNumber": 8,
+      "verseCount": 17,
+      "wordCount": 666
+    },
+    {
+      "chapterNumber": 9,
+      "verseCount": 32,
+      "wordCount": 1016
+    },
+    {
+      "chapterNumber": 10,
+      "verseCount": 3,
+      "wordCount": 96
+    }
+  ]
+}

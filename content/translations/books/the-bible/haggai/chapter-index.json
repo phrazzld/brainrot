@@ -1,0 +1,16 @@
+{
+  "bookSlug": "haggai",
+  "totalChapters": 2,
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "verseCount": 15,
+      "wordCount": 466
+    },
+    {
+      "chapterNumber": 2,
+      "verseCount": 23,
+      "wordCount": 702
+    }
+  ]
+}

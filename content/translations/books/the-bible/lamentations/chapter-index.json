@@ -1,0 +1,31 @@
+{
+  "bookSlug": "lamentations",
+  "totalChapters": 5,
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "verseCount": 22,
+      "wordCount": 780
+    },
+    {
+      "chapterNumber": 2,
+      "verseCount": 22,
+      "wordCount": 905
+    },
+    {
+      "chapterNumber": 3,
+      "verseCount": 66,
+      "wordCount": 942
+    },
+    {
+      "chapterNumber": 4,
+      "verseCount": 22,
+      "wordCount": 620
+    },
+    {
+      "chapterNumber": 5,
+      "verseCount": 22,
+      "wordCount": 318
+    }
+  ]
+}

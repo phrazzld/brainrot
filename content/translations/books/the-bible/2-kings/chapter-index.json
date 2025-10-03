@@ -1,0 +1,131 @@
+{
+  "bookSlug": "2-kings",
+  "totalChapters": 25,
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "verseCount": 18,
+      "wordCount": 675
+    },
+    {
+      "chapterNumber": 2,
+      "verseCount": 25,
+      "wordCount": 885
+    },
+    {
+      "chapterNumber": 3,
+      "verseCount": 27,
+      "wordCount": 875
+    },
+    {
+      "chapterNumber": 4,
+      "verseCount": 44,
+      "wordCount": 1412
+    },
+    {
+      "chapterNumber": 5,
+      "verseCount": 27,
+      "wordCount": 1002
+    },
+    {
+      "chapterNumber": 6,
+      "verseCount": 33,
+      "wordCount": 1042
+    },
+    {
+      "chapterNumber": 7,
+      "verseCount": 20,
+      "wordCount": 854
+    },
+    {
+      "chapterNumber": 8,
+      "verseCount": 29,
+      "wordCount": 982
+    },
+    {
+      "chapterNumber": 9,
+      "verseCount": 37,
+      "wordCount": 1242
+    },
+    {
+      "chapterNumber": 10,
+      "verseCount": 36,
+      "wordCount": 1239
+    },
+    {
+      "chapterNumber": 11,
+      "verseCount": 21,
+      "wordCount": 759
+    },
+    {
+      "chapterNumber": 12,
+      "verseCount": 21,
+      "wordCount": 709
+    },
+    {
+      "chapterNumber": 13,
+      "verseCount": 25,
+      "wordCount": 800
+    },
+    {
+      "chapterNumber": 14,
+      "verseCount": 29,
+      "wordCount": 910
+    },
+    {
+      "chapterNumber": 15,
+      "verseCount": 38,
+      "wordCount": 1130
+    },
+    {
+      "chapterNumber": 16,
+      "verseCount": 20,
+      "wordCount": 676
+    },
+    {
+      "chapterNumber": 17,
+      "verseCount": 41,
+      "wordCount": 1286
+    },
+    {
+      "chapterNumber": 18,
+      "verseCount": 37,
+      "wordCount": 1258
+    },
+    {
+      "chapterNumber": 19,
+      "verseCount": 37,
+      "wordCount": 1185
+    },
+    {
+      "chapterNumber": 20,
+      "verseCount": 21,
+      "wordCount": 681
+    },
+    {
+      "chapterNumber": 21,
+      "verseCount": 26,
+      "wordCount": 773
+    },
+    {
+      "chapterNumber": 22,
+      "verseCount": 20,
+      "wordCount": 732
+    },
+    {
+      "chapterNumber": 23,
+      "verseCount": 37,
+      "wordCount": 1514
+    },
+    {
+      "chapterNumber": 24,
+      "verseCount": 20,
+      "wordCount": 604
+    },
+    {
+      "chapterNumber": 25,
+      "verseCount": 30,
+      "wordCount": 1012
+    }
+  ]
+}

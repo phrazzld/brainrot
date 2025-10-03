@@ -1,0 +1,21 @@
+{
+  "bookSlug": "zephaniah",
+  "totalChapters": 3,
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "verseCount": 18,
+      "wordCount": 573
+    },
+    {
+      "chapterNumber": 2,
+      "verseCount": 15,
+      "wordCount": 478
+    },
+    {
+      "chapterNumber": 3,
+      "verseCount": 20,
+      "wordCount": 618
+    }
+  ]
+}

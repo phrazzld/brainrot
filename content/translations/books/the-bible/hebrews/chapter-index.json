@@ -1,0 +1,71 @@
+{
+  "bookSlug": "hebrews",
+  "totalChapters": 13,
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "verseCount": 14,
+      "wordCount": 349
+    },
+    {
+      "chapterNumber": 2,
+      "verseCount": 18,
+      "wordCount": 493
+    },
+    {
+      "chapterNumber": 3,
+      "verseCount": 19,
+      "wordCount": 381
+    },
+    {
+      "chapterNumber": 4,
+      "verseCount": 16,
+      "wordCount": 420
+    },
+    {
+      "chapterNumber": 5,
+      "verseCount": 14,
+      "wordCount": 335
+    },
+    {
+      "chapterNumber": 6,
+      "verseCount": 20,
+      "wordCount": 445
+    },
+    {
+      "chapterNumber": 7,
+      "verseCount": 28,
+      "wordCount": 635
+    },
+    {
+      "chapterNumber": 8,
+      "verseCount": 13,
+      "wordCount": 400
+    },
+    {
+      "chapterNumber": 9,
+      "verseCount": 28,
+      "wordCount": 706
+    },
+    {
+      "chapterNumber": 10,
+      "verseCount": 39,
+      "wordCount": 823
+    },
+    {
+      "chapterNumber": 11,
+      "verseCount": 40,
+      "wordCount": 962
+    },
+    {
+      "chapterNumber": 12,
+      "verseCount": 29,
+      "wordCount": 725
+    },
+    {
+      "chapterNumber": 13,
+      "verseCount": 25,
+      "wordCount": 526
+    }
+  ]
+}
