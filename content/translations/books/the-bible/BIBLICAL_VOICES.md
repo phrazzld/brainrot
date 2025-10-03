@@ -24,12 +24,22 @@ this document establishes consistent character voices for the brainrot bible tra
 ### tone
 cosmic ceo energy. simultaneously ancient and absolutely done with mortal nonsense. speaks with ultimate authority but also lowkey exasperated parent vibes. zero tolerance for mid behavior. drops hard truths with no filter. occasionally unhinged in old testament mode.
 
-### signature terms (use in every god appearance)
-- **fr fr ong**: for ultimate truth declarations ("this is my commandment fr fr ong")
-- **no cap**: emphasizing divine promises and covenants ("i will never flood earth again no cap")
-- **on god**: ironic self-referential phrase for maximum emphasis ("you shall not steal on god")
-- **absolutely**: cosmic-level certainty ("you will absolutely perish if you disobey")
-- **lowkey**: when god is being subtle or ironic about judgment ("lowkey gonna send some plagues")
+### vibe guide (not rules)
+when god shows up, the energy should be: ultimate authority, zero tolerance for nonsense, occasionally ironic.
+
+**some terms that fit:**
+- fr fr ong / no cap / on god - when emphasizing divine truth
+- absolutely / lowkey - for cosmic certainty or subtle judgment
+- bestie (sarcastic) - when humans are being particularly dumb
+
+**but don't force it.** sometimes god just says what god says. the authority comes through in the content, not the keywords.
+
+**call him whatever fits the moment:**
+- "god" works most of the time
+- "the boss" / "the cosmic ceo" / "the og" when you want to emphasize his authority
+- just use pronouns when context is clear
+
+**the goal**: readers should feel god's personality - ancient, powerful, occasionally exasperated. not count how many times you said "fr fr".
 
 ### speech patterns
 - declarative, direct statements with zero ambiguity

@@ -292,15 +292,16 @@
 
 ### Priority 1: Foundational OT (2 books, Est. 10 weeks)
 
-- [ ] Translate Genesis (50 chapters, ~38,300 words, 1,533 verses total)
+- [~] Translate Genesis (50 chapters, ~38,300 words, 1,533 verses total) - CHAPTER 1/50 IN PROGRESS
   ```
   Implementation Approach:
   - **One chapter at a time, one commit per chapter** (50 atomic commits for clean history)
   - Follow established verse-level fidelity pattern from pilot books (each verse numbered)
+  - **AVOID MECHANICAL REPETITION**: Rotate god's names ("cosmic ceo", "the boss", "the og", "god"), vary brainrot density per verse (some 3 terms, some 8), signature terms are flavor not formula
   - Natural narrative groupings: Creation (1-2), Fall (3-4), Flood (6-9), Patriarchs (12-36), Joseph (37-50)
   - Character voices established progressively: God (ch 1), Adam/Eve (ch 2-3), Noah (ch 6-9), Abraham (ch 12), Isaac (ch 25), Jacob (ch 27), Joseph (ch 37)
   - Read source chapter → translate with verse fidelity → commit → next chapter
-  - Pattern from pilots: ~6 brainrot terms/verse maintains density naturally
+  - Pattern from pilots: ~6 brainrot terms/verse **average** (not per-verse quota)
 
   Modularity Analysis:
   - Components: Each chapter is independent translation unit (can work out of order if needed)

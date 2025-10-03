@@ -61,7 +61,35 @@
 
 ## 4. maximalist gremlin mode: in practice
 
-### 4.1. maximalist checklist
+### 4.1. trust the vibe (CRITICAL - no formulas, no quotas)
+
+**the core truth**: this should feel like a person telling a story, not a bot hitting keywords.
+
+**forget metrics. think rhythm.**
+
+some verses barely need brainrot - they're setting the scene, moving the plot. let them breathe.
+
+some verses deserve to go hard - theological bombs, wild moments, emotional peaks. lean in.
+
+some verses land better with just one perfect term than five mediocre ones.
+
+**character voice is about vibe, not vocabulary:**
+- when paul talks, it should *feel* like paul - his energy, his intensity, his way of building arguments
+- not because every paragraph has "bestie" and "no cap"
+- but because the rhythm and tone sound like him
+
+**name variety is natural:**
+- people don't say "jennifer" every time they mention their friend
+- they say "she", "my friend", "jennifer", "that girl", "her"
+- same with god: rotate between "god", "the boss", "the cosmic ceo", whatever fits the moment
+- or just use pronouns when it's clear who we're talking about
+
+**the only real test**:
+read it out loud. does it flow? does it sound like someone you'd want to listen to? or does it sound like you're checking boxes?
+
+if it sounds mechanical, it is mechanical. trust your ear.
+
+### 4.2. maximalist checklist
 
 - per paragraph: at least one fresh metaphor or simile with a modern wrapper.
 - per scene: 2–3 targeted pop culture drops tied to character or setting (not free-floating name soup).
