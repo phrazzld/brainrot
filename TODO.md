@@ -217,11 +217,11 @@
 
 ### Directory Structure Generation
 
-- [ ] Write `scripts/generate-bible-structure.ts` to scaffold all 66 book directories - For each book slug, create `source/`, `brainrot/`, `chapters/`, `translation-memory/` subdirectories. Success: 66 x 4 = 264 directories created under `content/translations/books/the-bible/`.
+- [x] Write `scripts/generate-bible-structure.ts` to scaffold all 66 book directories - For each book slug, create `source/`, `brainrot/`, `chapters/`, `translation-memory/` subdirectories. Success: 66 x 4 = 264 directories created under `content/translations/books/the-bible/`.
 
-- [ ] Implement metadata.yaml template generator - Create function accepting book name, testament (OT/NT), chapter count, estimated words. Generate YAML with title, description, format specs, ISBN placeholders. Success: Each of 66 books has valid metadata.yaml following the-republic pattern.
+- [x] Implement metadata.yaml template generator - Create function accepting book name, testament (OT/NT), chapter count, estimated words. Generate YAML with title, description, format specs, ISBN placeholders. Success: Each of 66 books has valid metadata.yaml following the-republic pattern.
 
-- [ ] Add translation-memory/character-tracking.json scaffolding - Create empty JSON structure with arrays for character mentions, signature terms usage, voice consistency notes. Success: Template ready for tracking per-book character voice usage.
+- [x] Add translation-memory/character-tracking.json scaffolding - Create empty JSON structure with arrays for character mentions, signature terms usage, voice consistency notes. Success: Template ready for tracking per-book character voice usage.
 
 ### Documentation & Voice Mapping
 
