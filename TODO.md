@@ -292,7 +292,58 @@
 
 ### Priority 1: Foundational OT (2 books, Est. 10 weeks)
 
-- [ ] Translate Genesis (50 chapters, ~38,300 words) - Narrator: "The Origins Storyteller". God: "The OG Creator" creating ex nihilo. Abraham, Isaac, Jacob, Joseph voices distinct. Success: Creation narrative theologically precise, Fall preserved, covenant with Abraham clear, Joseph saga complete, theological foundation for entire Bible solid.
+- [ ] Translate Genesis (50 chapters, ~38,300 words, 1,533 verses total)
+  ```
+  Implementation Approach:
+  - **One chapter at a time, one commit per chapter** (50 atomic commits for clean history)
+  - Follow established verse-level fidelity pattern from pilot books (each verse numbered)
+  - Natural narrative groupings: Creation (1-2), Fall (3-4), Flood (6-9), Patriarchs (12-36), Joseph (37-50)
+  - Character voices established progressively: God (ch 1), Adam/Eve (ch 2-3), Noah (ch 6-9), Abraham (ch 12), Isaac (ch 25), Jacob (ch 27), Joseph (ch 37)
+  - Read source chapter → translate with verse fidelity → commit → next chapter
+  - Pattern from pilots: ~6 brainrot terms/verse maintains density naturally
+
+  Modularity Analysis:
+  - Components: Each chapter is independent translation unit (can work out of order if needed)
+  - Interfaces: Chapter boundaries are hard stops (no cross-chapter dependencies)
+  - Character voice consistency: Use BIBLICAL_VOICES.md + update with new character terms as discovered
+  - Can batch by narrative arc: e.g., translate all Joseph chapters (37-50) consecutively for voice consistency
+
+  Test Strategy:
+  - Manual spot-checks: Every 10th chapter, verify verse count matches source
+  - Voice consistency: Compare God's voice in ch 1 vs ch 6 vs ch 12 (should use same signature terms)
+  - Theological accuracy: Key passages (1:1 creation, 3:15 protoevangelium, 12:1-3 Abrahamic covenant, 15:6 justification by faith, 22 binding of Isaac)
+  - Length parity: Each chapter should be within reasonable expansion ratio (pilot was ~2x source)
+
+  Success Criteria:
+  - [ ] All 50 chapters translated with verse-level fidelity (1,533 verses total)
+  - [ ] God's voice consistent across all appearances (use "fr fr ong", "no cap", "absolutely" per BIBLICAL_VOICES.md)
+  - [ ] Creation narrative (ch 1-2) theologically precise (ex nihilo, day structure, Sabbath)
+  - [ ] Fall narrative (ch 3) preserves protoevangelium (3:15 seed of woman crushing serpent)
+  - [ ] Flood narrative (ch 6-9) maintains covenant themes (rainbow covenant)
+  - [ ] Abraham covenant (ch 12-25) clear with all promises preserved (land, seed, blessing)
+  - [ ] Jacob/Esau narrative (ch 25-36) character voices distinct, blessing themes clear
+  - [ ] Joseph narrative (ch 37-50) preserves providence theme ("you meant evil, God meant good")
+  - [ ] All character names preserved (lowercase formatting: "abraham", "isaac", "jacob", "joseph")
+  - [ ] Theological terms use THEOLOGY_TERMS.md glossary consistently
+
+  Constraints & Risks:
+  - **MASSIVE scope**: 1,533 verses = 20x larger than largest pilot book (Jude 25 verses)
+  - **Voice drift risk**: Must maintain God's voice consistency across 50 chapters
+  - **Theological precision**: Creation/Fall/Covenant themes are foundation for entire Bible
+  - **Genealogies (ch 5, 10, 11, 36)**: Lists of names need creative brainrot treatment without losing info
+  - **Context window**: Each chapter must fit in single translation session
+  - **Fatigue factor**: 50 chapters requires sustained effort, risk of quality degradation
+
+  Dependencies:
+  - Requires: BIBLICAL_VOICES.md (God's voice defined ✓), THEOLOGY_TERMS.md (creation/covenant terms ✓)
+  - Requires: Verse-level fidelity pattern validated ✓ (from pilot phase)
+  - Blocks: Exodus translation (uses same God/Moses voices), rest of Pentateuch
+  - Updates: Will need to add Abraham, Isaac, Jacob, Joseph voices to BIBLICAL_VOICES.md as encountered
+
+  Estimated Complexity: COMPLEX (largest book yet, foundational theology, multiple character voices)
+  Estimated Time: 25-30 hours (30-40 min per chapter average, some chapters longer)
+  Breakdown: Ch 1-11 (primeval history) ~8h, Ch 12-36 (patriarchs) ~12h, Ch 37-50 (Joseph) ~8h
+  ```
 
 - [ ] Translate Exodus (40 chapters, ~32,600 words) - Narrator: "The Liberation Chronicler". Moses voice: "The Reluctant Leader" with burning bush, plagues, exodus narrative. God: "The OG Creator" with covenant emphasis. Success: Exodus narrative preserved, plagues dramatic, Red Sea parting clear, Ten Commandments precise, tabernacle details maintained.
 
