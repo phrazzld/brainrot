@@ -225,7 +225,7 @@
 
 ### Documentation & Voice Mapping
 
-- [ ] Write `content/translations/books/the-bible/BIBLICAL_VOICES.md` with character voice mappings - Define tone, signature terms (3-5 each), and speech patterns for: God/Yahweh, Jesus, Prophets (Isaiah/Jeremiah/Ezekiel), Apostles (Paul/Peter/John), Pharisees/Religious Leaders, Disciples, Satan/Adversary. Success: Minimum 10 major characters mapped with concrete brainrot term assignments.
+- [x] Write `content/translations/books/the-bible/BIBLICAL_VOICES.md` with character voice mappings - Define tone, signature terms (3-5 each), and speech patterns for: God/Yahweh, Jesus, Prophets (Isaiah/Jeremiah/Ezekiel), Apostles (Paul/Peter/John), Pharisees/Religious Leaders, Disciples, Satan/Adversary. Success: Minimum 10 major characters mapped with concrete brainrot term assignments.
 
 - [ ] Create `content/translations/books/the-bible/THEOLOGY_TERMS.md` glossary - Map 50+ theological terms to brainrot equivalents following TRANSLATION_GUIDELINES.md density requirements. Include: covenant, righteousness, sin, salvation, faith, grace, redemption, prophecy, sacrifice, resurrection, atonement, sanctification, justification, etc. Success: Comprehensive glossary covering all major theological concepts across OT/NT.
 
