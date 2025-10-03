@@ -458,29 +458,58 @@ function splitAllBooksIntoChapters(boundaries: BookBoundary[], outputDir: string
 }
 
 /**
- * Generate books-index.json with metadata
+ * Generate books-index.json with metadata including chapter counts
  */
 function generateIndex(boundaries: BookBoundary[], outputDir: string): void {
   const indexPath = join(outputDir, 'books-index.json');
+
+  const booksWithMetadata = boundaries.map(b => {
+    // Read chapter-index.json to get chapter/verse/word counts
+    const chapterIndexPath = join(outputDir, b.slug, 'chapter-index.json');
+    let chapterMetadata = null;
+
+    if (existsSync(chapterIndexPath)) {
+      const chapterIndexContent = readFileSync(chapterIndexPath, 'utf-8');
+      chapterMetadata = JSON.parse(chapterIndexContent);
+    }
+
+    const totalVerses = chapterMetadata?.chapters?.reduce((sum: number, ch: ChapterInfo) => sum + ch.verseCount, 0) || 0;
+    const totalWords = chapterMetadata?.chapters?.reduce((sum: number, ch: ChapterInfo) => sum + ch.wordCount, 0) || 0;
+
+    return {
+      bookNumber: b.bookNumber,
+      slug: b.slug,
+      title: b.title,
+      testament: b.testament,
+      chapters: chapterMetadata?.totalChapters || 0,
+      verses: totalVerses,
+      words: totalWords,
+      sourceLineRange: {
+        start: b.startLine,
+        end: b.endLine
+      }
+    };
+  });
+
+  const totalChapters = booksWithMetadata.reduce((sum, b) => sum + b.chapters, 0);
+  const totalVerses = booksWithMetadata.reduce((sum, b) => sum + b.verses, 0);
+  const totalWords = booksWithMetadata.reduce((sum, b) => sum + b.words, 0);
 
   const index = {
     totalBooks: boundaries.length,
     oldTestament: boundaries.filter(b => b.testament === 'OT').length,
     newTestament: boundaries.filter(b => b.testament === 'NT').length,
-    books: boundaries.map(b => ({
-      bookNumber: b.bookNumber,
-      slug: b.slug,
-      title: b.title,
-      testament: b.testament,
-      sourceLineRange: {
-        start: b.startLine,
-        end: b.endLine
-      }
-    }))
+    totalChapters,
+    totalVerses,
+    totalWords,
+    books: booksWithMetadata
   };
 
   writeFileSync(indexPath, JSON.stringify(index, null, 2), 'utf-8');
   console.log(`\n📋 Generated books index: ${indexPath}`);
+  console.log(`   Total chapters: ${totalChapters.toLocaleString()}`);
+  console.log(`   Total verses: ${totalVerses.toLocaleString()}`);
+  console.log(`   Total words: ${totalWords.toLocaleString()}`);
 }
 
 // Main execution
@@ -494,10 +523,12 @@ async function main() {
   }
 
   const boundaries = extractBooks(sourcePath, outputDir);
-  generateIndex(boundaries, outputDir);
 
   // Split all books into chapters
   splitAllBooksIntoChapters(boundaries, outputDir);
+
+  // Generate comprehensive index with chapter/verse/word counts
+  generateIndex(boundaries, outputDir);
 
   console.log('\n✨ Done! All 66 books extracted and split into chapters successfully.\n');
 }

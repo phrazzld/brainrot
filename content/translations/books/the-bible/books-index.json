@@ -2,12 +2,18 @@
   "totalBooks": 66,
   "oldTestament": 39,
   "newTestament": 27,
+  "totalChapters": 1189,
+  "totalVerses": 31102,
+  "totalWords": 820752,
   "books": [
     {
       "bookNumber": 1,
       "slug": "genesis",
       "title": "Genesis",
       "testament": "OT",
+      "chapters": 50,
+      "verses": 1533,
+      "words": 39797,
       "sourceLineRange": {
         "start": 99,
         "end": 4868
@@ -18,6 +24,9 @@
       "slug": "exodus",
       "title": "Exodus",
       "testament": "OT",
+      "chapters": 40,
+      "verses": 1213,
+      "words": 33897,
       "sourceLineRange": {
         "start": 4870,
         "end": 8923
@@ -28,6 +37,9 @@
       "slug": "leviticus",
       "title": "Leviticus",
       "testament": "OT",
+      "chapters": 27,
+      "verses": 859,
+      "words": 25400,
       "sourceLineRange": {
         "start": 8925,
         "end": 11805
@@ -38,6 +50,9 @@
       "slug": "numbers",
       "title": "Numbers",
       "testament": "OT",
+      "chapters": 36,
+      "verses": 1288,
+      "words": 34181,
       "sourceLineRange": {
         "start": 11807,
         "end": 15777
@@ -48,6 +63,9 @@
       "slug": "deuteronomy",
       "title": "Deuteronomy",
       "testament": "OT",
+      "chapters": 34,
+      "verses": 959,
+      "words": 29310,
       "sourceLineRange": {
         "start": 15779,
         "end": 18968
@@ -58,6 +76,9 @@
       "slug": "joshua",
       "title": "Joshua",
       "testament": "OT",
+      "chapters": 24,
+      "verses": 658,
+      "words": 19510,
       "sourceLineRange": {
         "start": 18970,
         "end": 21129
@@ -68,6 +89,9 @@
       "slug": "judges",
       "title": "Judges",
       "testament": "OT",
+      "chapters": 21,
+      "verses": 618,
+      "words": 19584,
       "sourceLineRange": {
         "start": 21131,
         "end": 23399
@@ -78,6 +102,9 @@
       "slug": "ruth",
       "title": "Ruth",
       "testament": "OT",
+      "chapters": 4,
+      "verses": 85,
+      "words": 2659,
       "sourceLineRange": {
         "start": 23401,
         "end": 23703
@@ -88,6 +115,9 @@
       "slug": "1-samuel",
       "title": "1 Samuel",
       "testament": "OT",
+      "chapters": 31,
+      "verses": 810,
+      "words": 25857,
       "sourceLineRange": {
         "start": 23705,
         "end": 26693
@@ -98,6 +128,9 @@
       "slug": "2-samuel",
       "title": "2 Samuel",
       "testament": "OT",
+      "chapters": 24,
+      "verses": 695,
+      "words": 21294,
       "sourceLineRange": {
         "start": 26695,
         "end": 29146
@@ -108,6 +141,9 @@
       "slug": "1-kings",
       "title": "1 Kings",
       "testament": "OT",
+      "chapters": 22,
+      "verses": 816,
+      "words": 25328,
       "sourceLineRange": {
         "start": 29148,
         "end": 32042
@@ -118,6 +154,9 @@
       "slug": "2-kings",
       "title": "2 Kings",
       "testament": "OT",
+      "chapters": 25,
+      "verses": 719,
+      "words": 24237,
       "sourceLineRange": {
         "start": 32044,
         "end": 34762
@@ -128,6 +167,9 @@
       "slug": "1-chronicles",
       "title": "1 Chronicles",
       "testament": "OT",
+      "chapters": 29,
+      "verses": 942,
+      "words": 21307,
       "sourceLineRange": {
         "start": 34764,
         "end": 37434
@@ -138,6 +180,9 @@
       "slug": "2-chronicles",
       "title": "2 Chronicles",
       "testament": "OT",
+      "chapters": 36,
+      "verses": 822,
+      "words": 26891,
       "sourceLineRange": {
         "start": 37436,
         "end": 40558
@@ -148,6 +193,9 @@
       "slug": "ezra",
       "title": "Ezra",
       "testament": "OT",
+      "chapters": 10,
+      "verses": 280,
+      "words": 7720,
       "sourceLineRange": {
         "start": 40560,
         "end": 41474
@@ -158,6 +206,9 @@
       "slug": "nehemiah",
       "title": "Nehemiah",
       "testament": "OT",
+      "chapters": 13,
+      "verses": 406,
+      "words": 10886,
       "sourceLineRange": {
         "start": 41476,
         "end": 42766
@@ -168,6 +219,9 @@
       "slug": "esther",
       "title": "Esther",
       "testament": "OT",
+      "chapters": 10,
+      "verses": 167,
+      "words": 5799,
       "sourceLineRange": {
         "start": 42768,
         "end": 43408
@@ -178,6 +232,9 @@
       "slug": "job",
       "title": "Job",
       "testament": "OT",
+      "chapters": 42,
+      "verses": 1070,
+      "words": 19168,
       "sourceLineRange": {
         "start": 43410,
         "end": 45993
@@ -188,6 +245,9 @@
       "slug": "psalms",
       "title": "Psalms",
       "testament": "OT",
+      "chapters": 150,
+      "verses": 2461,
+      "words": 45145,
       "sourceLineRange": {
         "start": 45995,
         "end": 53297
@@ -198,6 +258,9 @@
       "slug": "proverbs",
       "title": "Proverbs",
       "testament": "OT",
+      "chapters": 31,
+      "verses": 915,
+      "words": 15953,
       "sourceLineRange": {
         "start": 53299,
         "end": 55771
@@ -208,6 +271,9 @@
       "slug": "ecclesiastes",
       "title": "Ecclesiastes",
       "testament": "OT",
+      "chapters": 12,
+      "verses": 222,
+      "words": 5801,
       "sourceLineRange": {
         "start": 55773,
         "end": 56470
@@ -218,6 +284,9 @@
       "slug": "song-of-solomon",
       "title": "Song of Solomon",
       "testament": "OT",
+      "chapters": 8,
+      "verses": 117,
+      "words": 2775,
       "sourceLineRange": {
         "start": 56472,
         "end": 56836
@@ -228,6 +297,9 @@
       "slug": "isaiah",
       "title": "Isaiah",
       "testament": "OT",
+      "chapters": 66,
+      "verses": 1292,
+      "words": 38330,
       "sourceLineRange": {
         "start": 56838,
         "end": 61310
@@ -238,6 +310,9 @@
       "slug": "jeremiah",
       "title": "Jeremiah",
       "testament": "OT",
+      "chapters": 52,
+      "verses": 1364,
+      "words": 44018,
       "sourceLineRange": {
         "start": 61312,
         "end": 66240
@@ -248,6 +323,9 @@
       "slug": "lamentations",
       "title": "Lamentations",
       "testament": "OT",
+      "chapters": 5,
+      "verses": 154,
+      "words": 3565,
       "sourceLineRange": {
         "start": 66242,
         "end": 66721
@@ -258,6 +336,9 @@
       "slug": "ezekiel",
       "title": "Ezekiel",
       "testament": "OT",
+      "chapters": 48,
+      "verses": 1273,
+      "words": 40674,
       "sourceLineRange": {
         "start": 66723,
         "end": 71308
@@ -268,6 +349,9 @@
       "slug": "daniel",
       "title": "Daniel",
       "testament": "OT",
+      "chapters": 12,
+      "verses": 357,
+      "words": 11960,
       "sourceLineRange": {
         "start": 71310,
         "end": 72693
@@ -278,6 +362,9 @@
       "slug": "hosea",
       "title": "Hosea",
       "testament": "OT",
+      "chapters": 14,
+      "verses": 197,
+      "words": 5371,
       "sourceLineRange": {
         "start": 72695,
         "end": 73380
@@ -288,6 +375,9 @@
       "slug": "joel",
       "title": "Joel",
       "testament": "OT",
+      "chapters": 3,
+      "verses": 73,
+      "words": 2106,
       "sourceLineRange": {
         "start": 73382,
         "end": 73634
@@ -298,6 +388,9 @@
       "slug": "amos",
       "title": "Amos",
       "testament": "OT",
+      "chapters": 9,
+      "verses": 146,
+      "words": 4362,
       "sourceLineRange": {
         "start": 73636,
         "end": 74119
@@ -308,6 +401,9 @@
       "slug": "obadiah",
       "title": "Obadiah",
       "testament": "OT",
+      "chapters": 1,
+      "verses": 21,
+      "words": 690,
       "sourceLineRange": {
         "start": 74121,
         "end": 74201
@@ -318,6 +414,9 @@
       "slug": "jonah",
       "title": "Jonah",
       "testament": "OT",
+      "chapters": 4,
+      "verses": 48,
+      "words": 1368,
       "sourceLineRange": {
         "start": 74203,
         "end": 74364
@@ -328,6 +427,9 @@
       "slug": "micah",
       "title": "Micah",
       "testament": "OT",
+      "chapters": 7,
+      "verses": 105,
+      "words": 3257,
       "sourceLineRange": {
         "start": 74366,
         "end": 74745
@@ -338,6 +440,9 @@
       "slug": "nahum",
       "title": "Nahum",
       "testament": "OT",
+      "chapters": 3,
+      "verses": 47,
+      "words": 1331,
       "sourceLineRange": {
         "start": 74747,
         "end": 74920
@@ -348,6 +453,9 @@
       "slug": "habakkuk",
       "title": "Habakkuk",
       "testament": "OT",
+      "chapters": 3,
+      "verses": 56,
+      "words": 1531,
       "sourceLineRange": {
         "start": 74922,
         "end": 75108
@@ -358,6 +466,9 @@
       "slug": "zephaniah",
       "title": "Zephaniah",
       "testament": "OT",
+      "chapters": 3,
+      "verses": 53,
+      "words": 1669,
       "sourceLineRange": {
         "start": 75110,
         "end": 75310
@@ -368,6 +479,9 @@
       "slug": "haggai",
       "title": "Haggai",
       "testament": "OT",
+      "chapters": 2,
+      "verses": 38,
+      "words": 1168,
       "sourceLineRange": {
         "start": 75312,
         "end": 75436
@@ -378,6 +492,9 @@
       "slug": "zechariah",
       "title": "Zechariah",
       "testament": "OT",
+      "chapters": 14,
+      "verses": 211,
+      "words": 6654,
       "sourceLineRange": {
         "start": 75438,
         "end": 76188
@@ -388,6 +505,9 @@
       "slug": "malachi",
       "title": "Malachi",
       "testament": "OT",
+      "chapters": 4,
+      "verses": 55,
+      "words": 1845,
       "sourceLineRange": {
         "start": 76190,
         "end": 76406
@@ -398,6 +518,9 @@
       "slug": "matthew",
       "title": "Matthew",
       "testament": "NT",
+      "chapters": 28,
+      "verses": 1071,
+      "words": 24755,
       "sourceLineRange": {
         "start": 76408,
         "end": 79468
@@ -408,6 +531,9 @@
       "slug": "mark",
       "title": "Mark",
       "testament": "NT",
+      "chapters": 16,
+      "verses": 678,
+      "words": 15844,
       "sourceLineRange": {
         "start": 79470,
         "end": 81440
@@ -418,6 +544,9 @@
       "slug": "luke",
       "title": "Luke",
       "testament": "NT",
+      "chapters": 24,
+      "verses": 1151,
+      "words": 27090,
       "sourceLineRange": {
         "start": 81442,
         "end": 84766
@@ -428,6 +557,9 @@
       "slug": "john",
       "title": "John",
       "testament": "NT",
+      "chapters": 21,
+      "verses": 879,
+      "words": 19974,
       "sourceLineRange": {
         "start": 84768,
         "end": 87303
@@ -438,6 +570,9 @@
       "slug": "acts",
       "title": "Acts",
       "testament": "NT",
+      "chapters": 28,
+      "verses": 1007,
+      "words": 25253,
       "sourceLineRange": {
         "start": 87305,
         "end": 90414
@@ -448,6 +583,9 @@
       "slug": "romans",
       "title": "Romans",
       "testament": "NT",
+      "chapters": 16,
+      "verses": 433,
+      "words": 9855,
       "sourceLineRange": {
         "start": 90416,
         "end": 91611
@@ -458,6 +596,9 @@
       "slug": "1-corinthians",
       "title": "1 Corinthians",
       "testament": "NT",
+      "chapters": 16,
+      "verses": 437,
+      "words": 9899,
       "sourceLineRange": {
         "start": 91613,
         "end": 92825
@@ -468,6 +609,9 @@
       "slug": "2-corinthians",
       "title": "2 Corinthians",
       "testament": "NT",
+      "chapters": 13,
+      "verses": 257,
+      "words": 6322,
       "sourceLineRange": {
         "start": 92827,
         "end": 93590
@@ -478,6 +622,9 @@
       "slug": "galatians",
       "title": "Galatians",
       "testament": "NT",
+      "chapters": 6,
+      "verses": 149,
+      "words": 3233,
       "sourceLineRange": {
         "start": 93592,
         "end": 94017
@@ -488,6 +635,9 @@
       "slug": "ephesians",
       "title": "Ephesians",
       "testament": "NT",
+      "chapters": 6,
+      "verses": 155,
+      "words": 3177,
       "sourceLineRange": {
         "start": 94019,
         "end": 94372
@@ -498,6 +648,9 @@
       "slug": "philippians",
       "title": "Philippians",
       "testament": "NT",
+      "chapters": 4,
+      "verses": 104,
+      "words": 2287,
       "sourceLineRange": {
         "start": 94374,
         "end": 94656
@@ -508,6 +661,9 @@
       "slug": "colossians",
       "title": "Colossians",
       "testament": "NT",
+      "chapters": 4,
+      "verses": 95,
+      "words": 2074,
       "sourceLineRange": {
         "start": 94658,
         "end": 94905
@@ -518,6 +674,9 @@
       "slug": "1-thessalonians",
       "title": "1 Thessalonians",
       "testament": "NT",
+      "chapters": 5,
+      "verses": 89,
+      "words": 1926,
       "sourceLineRange": {
         "start": 94907,
         "end": 95150
@@ -528,6 +687,9 @@
       "slug": "2-thessalonians",
       "title": "2 Thessalonians",
       "testament": "NT",
+      "chapters": 3,
+      "verses": 47,
+      "words": 1069,
       "sourceLineRange": {
         "start": 95152,
         "end": 95275
@@ -538,6 +700,9 @@
       "slug": "1-timothy",
       "title": "1 Timothy",
       "testament": "NT",
+      "chapters": 6,
+      "verses": 113,
+      "words": 2357,
       "sourceLineRange": {
         "start": 95277,
         "end": 95593
@@ -548,6 +713,9 @@
       "slug": "2-timothy",
       "title": "2 Timothy",
       "testament": "NT",
+      "chapters": 4,
+      "verses": 83,
+      "words": 1749,
       "sourceLineRange": {
         "start": 95595,
         "end": 95823
@@ -558,6 +726,9 @@
       "slug": "titus",
       "title": "Titus",
       "testament": "NT",
+      "chapters": 3,
+      "verses": 46,
+      "words": 942,
       "sourceLineRange": {
         "start": 95825,
         "end": 95943
@@ -568,6 +739,9 @@
       "slug": "philemon",
       "title": "Philemon",
       "testament": "NT",
+      "chapters": 1,
+      "verses": 25,
+      "words": 455,
       "sourceLineRange": {
         "start": 95945,
         "end": 96003
@@ -578,6 +752,9 @@
       "slug": "hebrews",
       "title": "Hebrews",
       "testament": "NT",
+      "chapters": 13,
+      "verses": 303,
+      "words": 7200,
       "sourceLineRange": {
         "start": 96005,
         "end": 96873
@@ -588,6 +765,9 @@
       "slug": "james",
       "title": "James",
       "testament": "NT",
+      "chapters": 5,
+      "verses": 108,
+      "words": 2412,
       "sourceLineRange": {
         "start": 96875,
         "end": 97190
@@ -598,6 +778,9 @@
       "slug": "1-peter",
       "title": "1 Peter",
       "testament": "NT",
+      "chapters": 5,
+      "verses": 105,
+      "words": 2580,
       "sourceLineRange": {
         "start": 97192,
         "end": 97479
@@ -608,6 +791,9 @@
       "slug": "2-peter",
       "title": "2 Peter",
       "testament": "NT",
+      "chapters": 3,
+      "verses": 61,
+      "words": 1614,
       "sourceLineRange": {
         "start": 97481,
         "end": 97666
@@ -618,6 +804,9 @@
       "slug": "1-john",
       "title": "1 John",
       "testament": "NT",
+      "chapters": 5,
+      "verses": 105,
+      "words": 2621,
       "sourceLineRange": {
         "start": 97668,
         "end": 98009
@@ -628,6 +817,9 @@
       "slug": "2-john",
       "title": "2 John",
       "testament": "NT",
+      "chapters": 1,
+      "verses": 13,
+      "words": 311,
       "sourceLineRange": {
         "start": 98011,
         "end": 98055
@@ -638,6 +830,9 @@
       "slug": "3-john",
       "title": "3 John",
       "testament": "NT",
+      "chapters": 1,
+      "verses": 14,
+      "words": 308,
       "sourceLineRange": {
         "start": 98057,
         "end": 98100
@@ -648,6 +843,9 @@
       "slug": "jude",
       "title": "Jude",
       "testament": "NT",
+      "chapters": 1,
+      "verses": 25,
+      "words": 633,
       "sourceLineRange": {
         "start": 98102,
         "end": 98187
@@ -658,6 +856,9 @@
       "slug": "revelation",
       "title": "Revelation",
       "testament": "NT",
+      "chapters": 22,
+      "verses": 404,
+      "words": 12414,
       "sourceLineRange": {
         "start": 98189,
         "end": 99617
