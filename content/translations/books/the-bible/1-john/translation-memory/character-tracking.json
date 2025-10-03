@@ -1,0 +1,38 @@
+{
+  "characterVoices": {
+    "documented": [
+      {
+        "name": "Example Character",
+        "signatureTerms": [
+          "term1",
+          "term2",
+          "term3"
+        ],
+        "voiceNotes": "Voice description and consistency notes",
+        "firstAppearance": "Book:Chapter:Verse",
+        "totalMentions": 0
+      }
+    ]
+  },
+  "termUsage": {
+    "brainrotDensity": {
+      "targetPerSentence": 3.5,
+      "actualPerSentence": 0,
+      "totalTerms": 0,
+      "totalSentences": 0
+    },
+    "mostUsedTerms": []
+  },
+  "consistencyNotes": [
+    "Track voice consistency issues here",
+    "Note any deviations from BIBLICAL_VOICES.md"
+  ],
+  "translationDecisions": [
+    {
+      "concept": "theological term or phrase",
+      "translation": "brainrot equivalent chosen",
+      "rationale": "why this choice was made",
+      "chapter": 0
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+# 1 John - Brainrot Edition Metadata
+title: "1 John (Brainrot Edition)"
+author: "Various (New Testament)"
+translator: "Brainrot Publishing House"
+original_year: "~50 CE - 100 CE"
+translation_year: 2025
+description: |
+  Experience 1 John from the New Testament like never before. This Gen Z translation transforms the sacred text into modern language that hits different. 5 chapters of pure theological fire, translated with maximum brainrot density while preserving every bit of the original meaning. No cap, this will change how you read scripture.
+
+# Publishing formats and ISBNs (to be assigned)
+formats:
+  ebook:
+    isbn: "TBD"
+    price: 2.99
+    currency: "USD"
+  paperback:
+    isbn: "TBD"
+    price: 9.99
+    currency: "USD"
+    pages: 11 # Estimated at 250 words per page
+    dimensions: "6x9 inches"
+  hardcover:
+    isbn: "TBD"
+    price: 19.99
+    currency: "USD"
+    pages: 11
+    dimensions: "6x9 inches"
+
+# Publishing platforms
+publishing:
+  kdp: true
+  lulu: false
+  ingram: false
+  draft2digital: false
+
+# Categorization for retailers
+categories:
+  - "Religion / Biblical Studies / General"
+  - "Religion / Christian Life / Spiritual Growth"
+  - "Humor / Topic / Religion"
+
+# SEO and discovery keywords
+keywords:
+  - "1 john"
+  - "bible gen z"
+  - "brainrot bible"
+  - "modern bible translation"
+  - "new testament"
+  - "scripture for youth"
+  - "bible study"
+  - "contemporary bible"
+  - "modernized scripture"
+  - "bible for beginners"
+
+# Book series information
+series: "The Bible (Brainrot Edition)"
+series_number: 62
+testament: "NT"
+
+# Language and market
+language: "en-US"
+markets:
+  - "United States"
+  - "United Kingdom"
+  - "Canada"
+  - "Australia"
+
+# Additional metadata
+bisac_codes:
+  - "REL006000" # Religion / Biblical Studies / General
+  - "REL012000" # Religion / Christian Life / Spiritual Growth
+  - "HUM015000" # Humor / Topic / Religion
+
+copyright: "Translation © 2025 Brainrot Publishing House"
+rights: "All rights reserved. Original work in public domain (KJV)."
+
+# Content structure
+structure:
+  testament: "NT"
+  book_number: 62
+  total_chapters: 5
+  total_verses: 105
+  estimated_words: 2621
+  reading_level: "Young Adult / General Adult"
+  content_warnings: "Religious content, theological discussions, some violence and mature themes in context"
