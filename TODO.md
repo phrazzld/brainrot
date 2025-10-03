@@ -231,21 +231,23 @@
 
 - [x] Add genre-specific translation patterns to BIBLICAL_VOICES.md - Document approaches for: Narrative (Genesis/Exodus), Law (Leviticus/Deuteronomy), Poetry (Psalms/Proverbs), Prophecy (Isaiah/Jeremiah), Gospels (Matthew/Mark/Luke/John), Epistles (Romans/Corinthians), Apocalyptic (Daniel/Revelation). Success: Clear guidance for maintaining voice across diverse literary styles.
 
-### Translation Workflow Automation
+### Translation Approach (Keep It Simple)
 
-- [x] Write `scripts/bible-translation-helper.ts` chapter progress tracker - Accept book slug, display list of chapters, mark completed/in-progress. Show completion percentage, estimated remaining words. Persist state to `translation-memory/progress.json`. Success: Running script shows real-time progress for any book.
+**Infrastructure complete. Now just translate:**
 
-- [ ] Implement brainrot term density validator function - Parse markdown file, count occurrences of terms from TRANSLATION_GUIDELINES.md vocabulary sections 5.0-5.7. Calculate terms per sentence. Flag sections below 3-5 term density threshold. Success: Automated check ensuring TRANSLATION_GUIDELINES.md compliance.
+1. Pick a book/chapter from Phase 2 pilot translations below
+2. Read the source chapter from `content/translations/books/the-bible/{book}/chapters/chapter-XX.txt`
+3. Translate using BIBLICAL_VOICES.md, THEOLOGY_TERMS.md, and TRANSLATION_GUIDELINES.md
+4. Check against guidelines:
+   - 3-5+ brainrot terms per sentence
+   - Character voices consistent with BIBLICAL_VOICES.md
+   - Theological accuracy maintained
+   - Length parity ±15% of source
+5. Save to `content/translations/books/the-bible/{book}/brainrot/chapter-XX.md`
+6. Iterate until good
+7. Track progress with: `pnpm tsx scripts/bible-translation-helper.ts {book} --mark {chapter} completed`
 
-- [ ] Create length parity checker comparing source vs translation - Count words in source chapter vs brainrot chapter. Calculate percentage difference. Warn if outside ±15% target range specified in guidelines section 1.3. Success: Automated validation catches chapters that are too short/long.
-
-- [ ] Add character voice consistency validator - Parse completed translation for character dialogue. Cross-reference against BIBLICAL_VOICES.md signature terms. Flag characters using inconsistent terminology. Success: Script identifies voice consistency violations across chapters.
-
-### Slash Command Integration
-
-- [ ] Create `.clinerules` file with `/create-bible-book-translation` command definition - Command should accept book slug parameter, run parse-bible-kjv.ts for that book, generate directory structure, display chapter list, track progress. Success: `/create-bible-book-translation genesis` scaffolds Genesis translation workflow.
-
-- [ ] Implement command logic to display chapter-by-chapter translation UI - Show source text side-by-side with translation input area. Display BIBLICAL_VOICES.md and THEOLOGY_TERMS.md in context panel. Auto-save progress to brainrot/ directory. Success: Streamlined translation interface reduces context switching.
+**No more tooling needed** - we have everything to start translating.
 
 ---
 
