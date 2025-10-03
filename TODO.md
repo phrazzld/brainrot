@@ -233,7 +233,7 @@
 
 ### Translation Workflow Automation
 
-- [ ] Write `scripts/bible-translation-helper.ts` chapter progress tracker - Accept book slug, display list of chapters, mark completed/in-progress. Show completion percentage, estimated remaining words. Persist state to `translation-memory/progress.json`. Success: Running script shows real-time progress for any book.
+- [~] Write `scripts/bible-translation-helper.ts` chapter progress tracker - Accept book slug, display list of chapters, mark completed/in-progress. Show completion percentage, estimated remaining words. Persist state to `translation-memory/progress.json`. Success: Running script shows real-time progress for any book.
 
 - [ ] Implement brainrot term density validator function - Parse markdown file, count occurrences of terms from TRANSLATION_GUIDELINES.md vocabulary sections 5.0-5.7. Calculate terms per sentence. Flag sections below 3-5 term density threshold. Success: Automated check ensuring TRANSLATION_GUIDELINES.md compliance.
 

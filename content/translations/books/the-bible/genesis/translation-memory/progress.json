@@ -1,0 +1,261 @@
+{
+  "bookSlug": "genesis",
+  "bookTitle": "Genesis",
+  "totalChapters": 50,
+  "totalVerses": 1533,
+  "totalWords": 39797,
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "status": "in-progress",
+      "wordCount": 828,
+      "lastUpdated": "2025-10-03T19:57:09.509Z"
+    },
+    {
+      "chapterNumber": 2,
+      "status": "not-started",
+      "wordCount": 657
+    },
+    {
+      "chapterNumber": 3,
+      "status": "not-started",
+      "wordCount": 719
+    },
+    {
+      "chapterNumber": 4,
+      "status": "not-started",
+      "wordCount": 658
+    },
+    {
+      "chapterNumber": 5,
+      "status": "not-started",
+      "wordCount": 537
+    },
+    {
+      "chapterNumber": 6,
+      "status": "not-started",
+      "wordCount": 601
+    },
+    {
+      "chapterNumber": 7,
+      "status": "not-started",
+      "wordCount": 608
+    },
+    {
+      "chapterNumber": 8,
+      "status": "not-started",
+      "wordCount": 608
+    },
+    {
+      "chapterNumber": 9,
+      "status": "not-started",
+      "wordCount": 687
+    },
+    {
+      "chapterNumber": 10,
+      "status": "not-started",
+      "wordCount": 528
+    },
+    {
+      "chapterNumber": 11,
+      "status": "not-started",
+      "wordCount": 638
+    },
+    {
+      "chapterNumber": 12,
+      "status": "not-started",
+      "wordCount": 556
+    },
+    {
+      "chapterNumber": 13,
+      "status": "not-started",
+      "wordCount": 475
+    },
+    {
+      "chapterNumber": 14,
+      "status": "not-started",
+      "wordCount": 630
+    },
+    {
+      "chapterNumber": 15,
+      "status": "not-started",
+      "wordCount": 492
+    },
+    {
+      "chapterNumber": 16,
+      "status": "not-started",
+      "wordCount": 428
+    },
+    {
+      "chapterNumber": 17,
+      "status": "not-started",
+      "wordCount": 706
+    },
+    {
+      "chapterNumber": 18,
+      "status": "not-started",
+      "wordCount": 900
+    },
+    {
+      "chapterNumber": 19,
+      "status": "not-started",
+      "wordCount": 1146
+    },
+    {
+      "chapterNumber": 20,
+      "status": "not-started",
+      "wordCount": 516
+    },
+    {
+      "chapterNumber": 21,
+      "status": "not-started",
+      "wordCount": 809
+    },
+    {
+      "chapterNumber": 22,
+      "status": "not-started",
+      "wordCount": 653
+    },
+    {
+      "chapterNumber": 23,
+      "status": "not-started",
+      "wordCount": 559
+    },
+    {
+      "chapterNumber": 24,
+      "status": "not-started",
+      "wordCount": 1883
+    },
+    {
+      "chapterNumber": 25,
+      "status": "not-started",
+      "wordCount": 740
+    },
+    {
+      "chapterNumber": 26,
+      "status": "not-started",
+      "wordCount": 924
+    },
+    {
+      "chapterNumber": 27,
+      "status": "not-started",
+      "wordCount": 1300
+    },
+    {
+      "chapterNumber": 28,
+      "status": "not-started",
+      "wordCount": 651
+    },
+    {
+      "chapterNumber": 29,
+      "status": "not-started",
+      "wordCount": 864
+    },
+    {
+      "chapterNumber": 30,
+      "status": "not-started",
+      "wordCount": 1065
+    },
+    {
+      "chapterNumber": 31,
+      "status": "not-started",
+      "wordCount": 1472
+    },
+    {
+      "chapterNumber": 32,
+      "status": "not-started",
+      "wordCount": 826
+    },
+    {
+      "chapterNumber": 33,
+      "status": "not-started",
+      "wordCount": 528
+    },
+    {
+      "chapterNumber": 34,
+      "status": "not-started",
+      "wordCount": 821
+    },
+    {
+      "chapterNumber": 35,
+      "status": "not-started",
+      "wordCount": 693
+    },
+    {
+      "chapterNumber": 36,
+      "status": "not-started",
+      "wordCount": 888
+    },
+    {
+      "chapterNumber": 37,
+      "status": "not-started",
+      "wordCount": 978
+    },
+    {
+      "chapterNumber": 38,
+      "status": "not-started",
+      "wordCount": 849
+    },
+    {
+      "chapterNumber": 39,
+      "status": "not-started",
+      "wordCount": 689
+    },
+    {
+      "chapterNumber": 40,
+      "status": "not-started",
+      "wordCount": 603
+    },
+    {
+      "chapterNumber": 41,
+      "status": "not-started",
+      "wordCount": 1461
+    },
+    {
+      "chapterNumber": 42,
+      "status": "not-started",
+      "wordCount": 1015
+    },
+    {
+      "chapterNumber": 43,
+      "status": "not-started",
+      "wordCount": 972
+    },
+    {
+      "chapterNumber": 44,
+      "status": "not-started",
+      "wordCount": 908
+    },
+    {
+      "chapterNumber": 45,
+      "status": "not-started",
+      "wordCount": 759
+    },
+    {
+      "chapterNumber": 46,
+      "status": "not-started",
+      "wordCount": 800
+    },
+    {
+      "chapterNumber": 47,
+      "status": "not-started",
+      "wordCount": 996
+    },
+    {
+      "chapterNumber": 48,
+      "status": "not-started",
+      "wordCount": 661
+    },
+    {
+      "chapterNumber": 49,
+      "status": "not-started",
+      "wordCount": 799
+    },
+    {
+      "chapterNumber": 50,
+      "status": "not-started",
+      "wordCount": 713
+    }
+  ],
+  "lastUpdated": "2025-10-03T19:57:09.509Z"
+}
