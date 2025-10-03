@@ -238,14 +238,21 @@
 1. Pick a book/chapter from Phase 2 pilot translations below
 2. Read the source chapter from `content/translations/books/the-bible/{book}/chapters/chapter-XX.txt`
 3. Translate using BIBLICAL_VOICES.md, THEOLOGY_TERMS.md, and TRANSLATION_GUIDELINES.md
-4. Check against guidelines:
+4. **CRITICAL: Verse-Level Fidelity**
+   - **Atomic unit = the verse** (not chapter, not paragraph)
+   - Each translated chapter MUST have exact same number of verses as source
+   - Each verse MUST be numbered (e.g., `1:1`, `1:2`, etc.)
+   - Each verse translation corresponds 1:1 with source verse
+   - This enables cross-referencing (people cite "3 John 1:9" not "3 John chapter 1")
+5. Check against guidelines:
    - 3-5+ brainrot terms per sentence
    - Character voices consistent with BIBLICAL_VOICES.md
    - Theological accuracy maintained
-   - Length parity ±15% of source
-5. Save to `content/translations/books/the-bible/{book}/brainrot/chapter-XX.md`
-6. Iterate until good
-7. Track progress with: `pnpm tsx scripts/bible-translation-helper.ts {book} --mark {chapter} completed`
+   - Verse-level correspondence maintained
+   - Each verse preserves its source theological content
+6. Save to `content/translations/books/the-bible/{book}/brainrot/chapter-XX.md`
+7. Iterate until good
+8. Track progress with: `pnpm tsx scripts/bible-translation-helper.ts {book} --mark {chapter} completed`
 
 **No more tooling needed** - we have everything to start translating.
 
@@ -257,7 +264,7 @@
 
 ### 3 John (1 chapter, ~300 words)
 
-- [ ] Translate 3 John chapter 1 establishing John's voice as "The Elder Mentor" - Use signature terms: "fam", "keeping it 100", "real talk", "the actual tea". Maintain epistle's warm personal tone while hitting 3-5+ brainrot terms/sentence. Success: Voice feels authentic, ~300 words output, theological accuracy on truth/hospitality themes preserved.
+- [~] Translate 3 John chapter 1 establishing John's voice as "The Elder Mentor" - Use signature terms: "fam", "keeping it 100", "real talk", "the actual tea". Maintain epistle's warm personal tone while hitting 3-5+ brainrot terms/sentence. **CRITICAL**: Maintain verse-level fidelity - 14 verses in source = 14 numbered verses in translation (1:1 through 1:14). Success: Voice feels authentic, verse structure preserved, theological accuracy on truth/hospitality themes maintained.
 
 ### 2 John (1 chapter, ~250 words)
 

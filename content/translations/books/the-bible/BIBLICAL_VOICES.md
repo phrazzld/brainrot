@@ -6,6 +6,19 @@ this document establishes consistent character voices for the brainrot bible tra
 
 **critical rule**: once a character's voice is established here, it must remain consistent across all appearances in every book. update character tracking files as you go.
 
+## verse-level fidelity (non-negotiable)
+
+**the atomic unit of biblical translation is the verse.**
+
+- each translated chapter MUST have the exact same number of verses as the source
+- each verse MUST be numbered with its reference (e.g., `1:1`, `1:2`, `2:1`, etc.)
+- each verse translation corresponds 1:1 with the source verse content
+- this enables cross-referencing: readers cite "john 3:16" not "john chapter 3 somewhere"
+- theological content of each verse must be preserved within that verse (no merging/splitting)
+- brainrot density applies per verse (aim for 3-5+ terms per verse where natural)
+
+**why this matters**: the bible is referenced verse-by-verse across all theological discourse, study, and citation. losing verse boundaries makes the translation unusable for serious study while maintaining the comedic tone.
+
 ## 1. god/yahweh (the og authority figure)
 
 ### tone
