@@ -1,0 +1,667 @@
+{
+  "totalBooks": 66,
+  "oldTestament": 39,
+  "newTestament": 27,
+  "books": [
+    {
+      "bookNumber": 1,
+      "slug": "genesis",
+      "title": "Genesis",
+      "testament": "OT",
+      "sourceLineRange": {
+        "start": 99,
+        "end": 4868
+      }
+    },
+    {
+      "bookNumber": 2,
+      "slug": "exodus",
+      "title": "Exodus",
+      "testament": "OT",
+      "sourceLineRange": {
+        "start": 4870,
+        "end": 8923
+      }
+    },
+    {
+      "bookNumber": 3,
+      "slug": "leviticus",
+      "title": "Leviticus",
+      "testament": "OT",
+      "sourceLineRange": {
+        "start": 8925,
+        "end": 11805
+      }
+    },
+    {
+      "bookNumber": 4,
+      "slug": "numbers",
+      "title": "Numbers",
+      "testament": "OT",
+      "sourceLineRange": {
+        "start": 11807,
+        "end": 15777
+      }
+    },
+    {
+      "bookNumber": 5,
+      "slug": "deuteronomy",
+      "title": "Deuteronomy",
+      "testament": "OT",
+      "sourceLineRange": {
+        "start": 15779,
+        "end": 18968
+      }
+    },
+    {
+      "bookNumber": 6,
+      "slug": "joshua",
+      "title": "Joshua",
+      "testament": "OT",
+      "sourceLineRange": {
+        "start": 18970,
+        "end": 21129
+      }
+    },
+    {
+      "bookNumber": 7,
+      "slug": "judges",
+      "title": "Judges",
+      "testament": "OT",
+      "sourceLineRange": {
+        "start": 21131,
+        "end": 23399
+      }
+    },
+    {
+      "bookNumber": 8,
+      "slug": "ruth",
+      "title": "Ruth",
+      "testament": "OT",
+      "sourceLineRange": {
+        "start": 23401,
+        "end": 23703
+      }
+    },
+    {
+      "bookNumber": 9,
+      "slug": "1-samuel",
+      "title": "1 Samuel",
+      "testament": "OT",
+      "sourceLineRange": {
+        "start": 23705,
+        "end": 26693
+      }
+    },
+    {
+      "bookNumber": 10,
+      "slug": "2-samuel",
+      "title": "2 Samuel",
+      "testament": "OT",
+      "sourceLineRange": {
+        "start": 26695,
+        "end": 29146
+      }
+    },
+    {
+      "bookNumber": 11,
+      "slug": "1-kings",
+      "title": "1 Kings",
+      "testament": "OT",
+      "sourceLineRange": {
+        "start": 29148,
+        "end": 32042
+      }
+    },
+    {
+      "bookNumber": 12,
+      "slug": "2-kings",
+      "title": "2 Kings",
+      "testament": "OT",
+      "sourceLineRange": {
+        "start": 32044,
+        "end": 34762
+      }
+    },
+    {
+      "bookNumber": 13,
+      "slug": "1-chronicles",
+      "title": "1 Chronicles",
+      "testament": "OT",
+      "sourceLineRange": {
+        "start": 34764,
+        "end": 37434
+      }
+    },
+    {
+      "bookNumber": 14,
+      "slug": "2-chronicles",
+      "title": "2 Chronicles",
+      "testament": "OT",
+      "sourceLineRange": {
+        "start": 37436,
+        "end": 40558
+      }
+    },
+    {
+      "bookNumber": 15,
+      "slug": "ezra",
+      "title": "Ezra",
+      "testament": "OT",
+      "sourceLineRange": {
+        "start": 40560,
+        "end": 41474
+      }
+    },
+    {
+      "bookNumber": 16,
+      "slug": "nehemiah",
+      "title": "Nehemiah",
+      "testament": "OT",
+      "sourceLineRange": {
+        "start": 41476,
+        "end": 42766
+      }
+    },
+    {
+      "bookNumber": 17,
+      "slug": "esther",
+      "title": "Esther",
+      "testament": "OT",
+      "sourceLineRange": {
+        "start": 42768,
+        "end": 43408
+      }
+    },
+    {
+      "bookNumber": 18,
+      "slug": "job",
+      "title": "Job",
+      "testament": "OT",
+      "sourceLineRange": {
+        "start": 43410,
+        "end": 45993
+      }
+    },
+    {
+      "bookNumber": 19,
+      "slug": "psalms",
+      "title": "Psalms",
+      "testament": "OT",
+      "sourceLineRange": {
+        "start": 45995,
+        "end": 53297
+      }
+    },
+    {
+      "bookNumber": 20,
+      "slug": "proverbs",
+      "title": "Proverbs",
+      "testament": "OT",
+      "sourceLineRange": {
+        "start": 53299,
+        "end": 55771
+      }
+    },
+    {
+      "bookNumber": 21,
+      "slug": "ecclesiastes",
+      "title": "Ecclesiastes",
+      "testament": "OT",
+      "sourceLineRange": {
+        "start": 55773,
+        "end": 56470
+      }
+    },
+    {
+      "bookNumber": 22,
+      "slug": "song-of-solomon",
+      "title": "Song of Solomon",
+      "testament": "OT",
+      "sourceLineRange": {
+        "start": 56472,
+        "end": 56836
+      }
+    },
+    {
+      "bookNumber": 23,
+      "slug": "isaiah",
+      "title": "Isaiah",
+      "testament": "OT",
+      "sourceLineRange": {
+        "start": 56838,
+        "end": 61310
+      }
+    },
+    {
+      "bookNumber": 24,
+      "slug": "jeremiah",
+      "title": "Jeremiah",
+      "testament": "OT",
+      "sourceLineRange": {
+        "start": 61312,
+        "end": 66240
+      }
+    },
+    {
+      "bookNumber": 25,
+      "slug": "lamentations",
+      "title": "Lamentations",
+      "testament": "OT",
+      "sourceLineRange": {
+        "start": 66242,
+        "end": 66721
+      }
+    },
+    {
+      "bookNumber": 26,
+      "slug": "ezekiel",
+      "title": "Ezekiel",
+      "testament": "OT",
+      "sourceLineRange": {
+        "start": 66723,
+        "end": 71308
+      }
+    },
+    {
+      "bookNumber": 27,
+      "slug": "daniel",
+      "title": "Daniel",
+      "testament": "OT",
+      "sourceLineRange": {
+        "start": 71310,
+        "end": 72693
+      }
+    },
+    {
+      "bookNumber": 28,
+      "slug": "hosea",
+      "title": "Hosea",
+      "testament": "OT",
+      "sourceLineRange": {
+        "start": 72695,
+        "end": 73380
+      }
+    },
+    {
+      "bookNumber": 29,
+      "slug": "joel",
+      "title": "Joel",
+      "testament": "OT",
+      "sourceLineRange": {
+        "start": 73382,
+        "end": 73634
+      }
+    },
+    {
+      "bookNumber": 30,
+      "slug": "amos",
+      "title": "Amos",
+      "testament": "OT",
+      "sourceLineRange": {
+        "start": 73636,
+        "end": 74119
+      }
+    },
+    {
+      "bookNumber": 31,
+      "slug": "obadiah",
+      "title": "Obadiah",
+      "testament": "OT",
+      "sourceLineRange": {
+        "start": 74121,
+        "end": 74201
+      }
+    },
+    {
+      "bookNumber": 32,
+      "slug": "jonah",
+      "title": "Jonah",
+      "testament": "OT",
+      "sourceLineRange": {
+        "start": 74203,
+        "end": 74364
+      }
+    },
+    {
+      "bookNumber": 33,
+      "slug": "micah",
+      "title": "Micah",
+      "testament": "OT",
+      "sourceLineRange": {
+        "start": 74366,
+        "end": 74745
+      }
+    },
+    {
+      "bookNumber": 34,
+      "slug": "nahum",
+      "title": "Nahum",
+      "testament": "OT",
+      "sourceLineRange": {
+        "start": 74747,
+        "end": 74920
+      }
+    },
+    {
+      "bookNumber": 35,
+      "slug": "habakkuk",
+      "title": "Habakkuk",
+      "testament": "OT",
+      "sourceLineRange": {
+        "start": 74922,
+        "end": 75108
+      }
+    },
+    {
+      "bookNumber": 36,
+      "slug": "zephaniah",
+      "title": "Zephaniah",
+      "testament": "OT",
+      "sourceLineRange": {
+        "start": 75110,
+        "end": 75310
+      }
+    },
+    {
+      "bookNumber": 37,
+      "slug": "haggai",
+      "title": "Haggai",
+      "testament": "OT",
+      "sourceLineRange": {
+        "start": 75312,
+        "end": 75436
+      }
+    },
+    {
+      "bookNumber": 38,
+      "slug": "zechariah",
+      "title": "Zechariah",
+      "testament": "OT",
+      "sourceLineRange": {
+        "start": 75438,
+        "end": 76188
+      }
+    },
+    {
+      "bookNumber": 39,
+      "slug": "malachi",
+      "title": "Malachi",
+      "testament": "OT",
+      "sourceLineRange": {
+        "start": 76190,
+        "end": 76406
+      }
+    },
+    {
+      "bookNumber": 40,
+      "slug": "matthew",
+      "title": "Matthew",
+      "testament": "NT",
+      "sourceLineRange": {
+        "start": 76408,
+        "end": 79468
+      }
+    },
+    {
+      "bookNumber": 41,
+      "slug": "mark",
+      "title": "Mark",
+      "testament": "NT",
+      "sourceLineRange": {
+        "start": 79470,
+        "end": 81440
+      }
+    },
+    {
+      "bookNumber": 42,
+      "slug": "luke",
+      "title": "Luke",
+      "testament": "NT",
+      "sourceLineRange": {
+        "start": 81442,
+        "end": 84766
+      }
+    },
+    {
+      "bookNumber": 43,
+      "slug": "john",
+      "title": "John",
+      "testament": "NT",
+      "sourceLineRange": {
+        "start": 84768,
+        "end": 87303
+      }
+    },
+    {
+      "bookNumber": 44,
+      "slug": "acts",
+      "title": "Acts",
+      "testament": "NT",
+      "sourceLineRange": {
+        "start": 87305,
+        "end": 90414
+      }
+    },
+    {
+      "bookNumber": 45,
+      "slug": "romans",
+      "title": "Romans",
+      "testament": "NT",
+      "sourceLineRange": {
+        "start": 90416,
+        "end": 91611
+      }
+    },
+    {
+      "bookNumber": 46,
+      "slug": "1-corinthians",
+      "title": "1 Corinthians",
+      "testament": "NT",
+      "sourceLineRange": {
+        "start": 91613,
+        "end": 92825
+      }
+    },
+    {
+      "bookNumber": 47,
+      "slug": "2-corinthians",
+      "title": "2 Corinthians",
+      "testament": "NT",
+      "sourceLineRange": {
+        "start": 92827,
+        "end": 93590
+      }
+    },
+    {
+      "bookNumber": 48,
+      "slug": "galatians",
+      "title": "Galatians",
+      "testament": "NT",
+      "sourceLineRange": {
+        "start": 93592,
+        "end": 94017
+      }
+    },
+    {
+      "bookNumber": 49,
+      "slug": "ephesians",
+      "title": "Ephesians",
+      "testament": "NT",
+      "sourceLineRange": {
+        "start": 94019,
+        "end": 94372
+      }
+    },
+    {
+      "bookNumber": 50,
+      "slug": "philippians",
+      "title": "Philippians",
+      "testament": "NT",
+      "sourceLineRange": {
+        "start": 94374,
+        "end": 94656
+      }
+    },
+    {
+      "bookNumber": 51,
+      "slug": "colossians",
+      "title": "Colossians",
+      "testament": "NT",
+      "sourceLineRange": {
+        "start": 94658,
+        "end": 94905
+      }
+    },
+    {
+      "bookNumber": 52,
+      "slug": "1-thessalonians",
+      "title": "1 Thessalonians",
+      "testament": "NT",
+      "sourceLineRange": {
+        "start": 94907,
+        "end": 95150
+      }
+    },
+    {
+      "bookNumber": 53,
+      "slug": "2-thessalonians",
+      "title": "2 Thessalonians",
+      "testament": "NT",
+      "sourceLineRange": {
+        "start": 95152,
+        "end": 95275
+      }
+    },
+    {
+      "bookNumber": 54,
+      "slug": "1-timothy",
+      "title": "1 Timothy",
+      "testament": "NT",
+      "sourceLineRange": {
+        "start": 95277,
+        "end": 95593
+      }
+    },
+    {
+      "bookNumber": 55,
+      "slug": "2-timothy",
+      "title": "2 Timothy",
+      "testament": "NT",
+      "sourceLineRange": {
+        "start": 95595,
+        "end": 95823
+      }
+    },
+    {
+      "bookNumber": 56,
+      "slug": "titus",
+      "title": "Titus",
+      "testament": "NT",
+      "sourceLineRange": {
+        "start": 95825,
+        "end": 95943
+      }
+    },
+    {
+      "bookNumber": 57,
+      "slug": "philemon",
+      "title": "Philemon",
+      "testament": "NT",
+      "sourceLineRange": {
+        "start": 95945,
+        "end": 96003
+      }
+    },
+    {
+      "bookNumber": 58,
+      "slug": "hebrews",
+      "title": "Hebrews",
+      "testament": "NT",
+      "sourceLineRange": {
+        "start": 96005,
+        "end": 96873
+      }
+    },
+    {
+      "bookNumber": 59,
+      "slug": "james",
+      "title": "James",
+      "testament": "NT",
+      "sourceLineRange": {
+        "start": 96875,
+        "end": 97190
+      }
+    },
+    {
+      "bookNumber": 60,
+      "slug": "1-peter",
+      "title": "1 Peter",
+      "testament": "NT",
+      "sourceLineRange": {
+        "start": 97192,
+        "end": 97479
+      }
+    },
+    {
+      "bookNumber": 61,
+      "slug": "2-peter",
+      "title": "2 Peter",
+      "testament": "NT",
+      "sourceLineRange": {
+        "start": 97481,
+        "end": 97666
+      }
+    },
+    {
+      "bookNumber": 62,
+      "slug": "1-john",
+      "title": "1 John",
+      "testament": "NT",
+      "sourceLineRange": {
+        "start": 97668,
+        "end": 98009
+      }
+    },
+    {
+      "bookNumber": 63,
+      "slug": "2-john",
+      "title": "2 John",
+      "testament": "NT",
+      "sourceLineRange": {
+        "start": 98011,
+        "end": 98055
+      }
+    },
+    {
+      "bookNumber": 64,
+      "slug": "3-john",
+      "title": "3 John",
+      "testament": "NT",
+      "sourceLineRange": {
+        "start": 98057,
+        "end": 98100
+      }
+    },
+    {
+      "bookNumber": 65,
+      "slug": "jude",
+      "title": "Jude",
+      "testament": "NT",
+      "sourceLineRange": {
+        "start": 98102,
+        "end": 98187
+      }
+    },
+    {
+      "bookNumber": 66,
+      "slug": "revelation",
+      "title": "Revelation",
+      "testament": "NT",
+      "sourceLineRange": {
+        "start": 98189,
+        "end": 99617
+      }
+    }
+  ]
+}
