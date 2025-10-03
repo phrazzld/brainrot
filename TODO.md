@@ -111,7 +111,105 @@
   - 15min: Testing with full file + edge case validation
   ```
 
-- [ ] Implement chapter splitting logic in parse-bible-kjv.ts - Parse verse markers (N:1 patterns) to identify chapter boundaries. Write each chapter to separate file `chapter-NN.txt`. Success: Genesis yields 50 chapter files, Exodus yields 40, etc.
+- [x] Implement chapter splitting logic in parse-bible-kjv.ts - Parse verse markers (N:1 patterns) to identify chapter boundaries. Write each chapter to separate file `chapter-NN.txt`. Success: Genesis yields 50 chapter files, Exodus yields 40, etc.
+  ```
+  Implementation Approach:
+  - Extend existing parse-bible-kjv.ts script with chapter splitting function
+  - Use verse marker pattern /^(\d+):1\s/ to detect chapter boundaries
+  - Extract verses for each chapter by tracking current chapter number
+  - Handle multi-line verses (verse text continues on next line without marker)
+  - Write to {book-slug}/chapters/chapter-{NN}.txt (zero-padded for sorting)
+  - Generate chapter-index.json with metadata: {bookSlug, totalChapters, chapters[{chapterNumber, verseCount, wordCount}]}
+  - Pattern from parse-republic-chapters.ts: line-based extraction, metadata generation, validation
+  - Files to modify: scripts/parse-bible-kjv.ts (add splitChapters function after extractBooks)
+
+  Modularity Analysis:
+  - Component 1: Chapter boundary detector (pure function: string[] → Map<number, number[]>)
+    - Input: Array of verse lines from single book
+    - Output: Map of chapter number to verse line indices
+    - Testable with Genesis sample (50 chapters)
+  - Component 2: Verse aggregator (pure function: string[] × Map<number, number[]> → Chapter[])
+    - Input: Verse lines + chapter boundaries map
+    - Output: Array of Chapter objects with text content
+    - Handles multi-line verses (lines without verse marker belong to previous verse)
+  - Component 3: Chapter file writer (I/O: Chapter[] × bookSlug → void)
+    - Input: Chapters + book slug
+    - Output: Files written to {slug}/chapters/chapter-{NN}.txt
+    - Creates directory if needed
+  - Component 4: Chapter metadata generator (pure function: Chapter[] → ChapterIndex)
+    - Input: Processed chapters
+    - Output: JSON with validation metadata
+    - Integration test: verify total chapters = 1,189 across all 66 books
+  - Interfaces: Chapter { chapterNumber, verses: Verse[], wordCount }, Verse { verseNumber, text }
+  - Can parallelize: After book extraction, each book's chapter splitting is independent
+  - Integration: Runs after extractBooks() in main() function
+
+  Test Strategy:
+  - Unit test: Chapter boundary detection on Genesis raw.txt (should find exactly 50 chapters)
+  - Unit test: Single-chapter books (Obadiah, Philemon, 2 John, 3 John, Jude) yield 1 chapter each
+  - Unit test: Psalms yields exactly 150 chapters (longest book)
+  - Unit test: Multi-line verse handling (verse 1:2 continues on next line without "1:3" marker)
+  - Integration test: Run on all 66 books, verify total = 1,189 chapters (929 OT + 260 NT)
+  - Validation test: Compare chapter counts against canonical KJV structure (Genesis=50, Exodus=40, etc.)
+  - Edge case test: Handle books with <10 chapters (zero-padding: chapter-01.txt not chapter-1.txt)
+  - Edge case test: Handle chapter 150 in Psalms (3-digit padding: chapter-150.txt)
+  - Performance test: Process all 66 books in <30 seconds
+  - Test data: Use Genesis (50 chapters), 2 John (1 chapter), Psalms (150 chapters) as fixtures
+  - Coverage target: 95% for chapter detection logic (critical for accuracy)
+
+  Automation Opportunities:
+  - Generate ChapterIndex TypeScript interface from validation data
+  - Auto-generate expected chapter counts constant: EXPECTED_CHAPTERS = {genesis: 50, exodus: 40, ...}
+  - Create validation script that compares actual vs expected chapter counts (warns on mismatch)
+  - Build chapter content validator (checks verse numbers are sequential within chapter)
+
+  Success Criteria:
+  - Exactly 1,189 chapter files created across all 66 books
+  - Genesis yields exactly 50 files: chapter-01.txt through chapter-50.txt
+  - Exodus yields exactly 40 files: chapter-01.txt through chapter-40.txt
+  - Psalms yields exactly 150 files: chapter-001.txt through chapter-150.txt (3-digit padding)
+  - Single-chapter books (5 total: Obadiah, Philemon, 2 John, 3 John, Jude) yield chapter-01.txt only
+  - Each chapter file starts with verse marker (1:1, 2:1, etc.) and ends with last verse of chapter
+  - All verse numbers sequential within each chapter (no gaps, no duplicates)
+  - chapter-index.json generated for each book with accurate verse counts
+  - Total OT chapters = 929, total NT chapters = 260
+  - All file paths follow pattern: content/translations/books/the-bible/{slug}/chapters/chapter-{NN}.txt
+  - Zero-padding consistent: 2 digits for <100 chapters, 3 digits for Psalms (150 chapters)
+  - Line endings normalized to LF (not CRLF)
+  - UTF-8 encoding preserved
+
+  Constraints & Risks:
+  - Multi-line verses MUST be handled correctly (KJV format has text continuing on next line)
+  - Verse markers are NOT always on separate lines (e.g., "1:1 Text here 1:2 More text")
+  - Some verses span multiple lines without markers (belong to previous verse number)
+  - Psalms requires 3-digit padding (chapter-001.txt to chapter-150.txt) while other books use 2-digit
+  - Single-chapter books still need chapter-01.txt (not chapter-1.txt) for consistency
+  - Chapter numbering starts at 1 (not 0) - verify no off-by-one errors
+  - Empty chapters should not exist (all chapters have at least verse 1)
+  - Some books have chapter 0 in other translations (KJV does not - all start at chapter 1)
+  - Performance: Processing 1,189 chapters should be fast (all in-memory operations)
+  - Memory: Largest book is Psalms (7,296 lines) - acceptable to load per-book in memory
+
+  Dependencies:
+  - Requires: scripts/parse-bible-kjv.ts already extracts 66 books to {slug}/source/raw.txt ✓
+  - Requires: books-index.json exists with all 66 book slugs ✓
+  - Requires: Node.js fs, path modules (built-in) ✓
+  - Blocks: Translation tasks (need chapter files as translation units)
+  - Blocks: Metadata generation tasks (need chapter counts)
+
+  Estimated Complexity: MEDIUM
+  - Verse parsing has edge cases (multi-line verses, multiple verses per line)
+  - Need to handle variable chapter counts (1 to 150)
+  - Directory creation and file I/O straightforward
+  - Validation against 1,189 expected chapters required
+  - Similar complexity to book extraction but with more edge cases
+
+  Estimated Time: 2 hours
+  - 30min: Chapter boundary detection logic + multi-line verse handling
+  - 45min: Chapter file writing with correct padding logic (2-digit vs 3-digit)
+  - 30min: Chapter metadata generation + validation
+  - 15min: Testing with Genesis/Psalms/single-chapter books + full 66-book run
+  ```
 
 - [ ] Add book slug normalization function - Convert "The First Book of Moses: Called Genesis" → "genesis", "The Gospel According to Saint Matthew" → "matthew", etc. Handle special cases (1-2 Samuel, 1-2 Kings, etc.). Success: All 66 books have URL-safe slugs matching existing naming convention.
 
