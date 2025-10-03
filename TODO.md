@@ -211,9 +211,9 @@
   - 15min: Testing with Genesis/Psalms/single-chapter books + full 66-book run
   ```
 
-- [ ] Add book slug normalization function - Convert "The First Book of Moses: Called Genesis" → "genesis", "The Gospel According to Saint Matthew" → "matthew", etc. Handle special cases (1-2 Samuel, 1-2 Kings, etc.). Success: All 66 books have URL-safe slugs matching existing naming convention.
+- [x] Add book slug normalization function - Convert "The First Book of Moses: Called Genesis" → "genesis", "The Gospel According to Saint Matthew" → "matthew", etc. Handle special cases (1-2 Samuel, 1-2 Kings, etc.). Success: All 66 books have URL-safe slugs matching existing naming convention.
 
-- [ ] Create book metadata extraction - Parse Project Gutenberg headers, count chapters/verses per book, estimate word counts. Output as structured JSON for metadata.yaml generation. Success: Accurate chapter counts for all 66 books.
+- [x] Create book metadata extraction - Parse Project Gutenberg headers, count chapters/verses per book, estimate word counts. Output as structured JSON for metadata.yaml generation. Success: Accurate chapter counts for all 66 books.
 
 ### Directory Structure Generation
 
