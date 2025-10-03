@@ -276,7 +276,7 @@
 
 ### Jude (1 chapter, ~600 words)
 
-- [ ] Translate Jude chapter 1 using intense prophetic warning voice - Apply "Unhinged Truthteller" archetype from BIBLICAL_VOICES.md: "y'all are cooked", "the tea is", "absolutely unhinged". Preserve apocalyptic imagery and theological warnings. Success: Most challenging pilot book completed, ~600 words, false teacher warnings preserved, Michael/Satan narrative intact.
+- [~] Translate Jude chapter 1 using intense prophetic warning voice - Apply "Unhinged Truthteller" archetype from BIBLICAL_VOICES.md: "y'all are cooked", "the tea is", "absolutely unhinged". Preserve apocalyptic imagery and theological warnings. **CRITICAL**: Maintain verse-level fidelity - 25 verses in source = 25 numbered verses in translation (1:1 through 1:25). Success: Most challenging pilot book completed, verse structure preserved, false teacher warnings preserved, Michael/Satan narrative intact.
 
 ### Pilot Phase Validation
 
