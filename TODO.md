@@ -227,9 +227,9 @@
 
 - [x] Write `content/translations/books/the-bible/BIBLICAL_VOICES.md` with character voice mappings - Define tone, signature terms (3-5 each), and speech patterns for: God/Yahweh, Jesus, Prophets (Isaiah/Jeremiah/Ezekiel), Apostles (Paul/Peter/John), Pharisees/Religious Leaders, Disciples, Satan/Adversary. Success: Minimum 10 major characters mapped with concrete brainrot term assignments.
 
-- [ ] Create `content/translations/books/the-bible/THEOLOGY_TERMS.md` glossary - Map 50+ theological terms to brainrot equivalents following TRANSLATION_GUIDELINES.md density requirements. Include: covenant, righteousness, sin, salvation, faith, grace, redemption, prophecy, sacrifice, resurrection, atonement, sanctification, justification, etc. Success: Comprehensive glossary covering all major theological concepts across OT/NT.
+- [~] Create `content/translations/books/the-bible/THEOLOGY_TERMS.md` glossary - Map 50+ theological terms to brainrot equivalents following TRANSLATION_GUIDELINES.md density requirements. Include: covenant, righteousness, sin, salvation, faith, grace, redemption, prophecy, sacrifice, resurrection, atonement, sanctification, justification, etc. Success: Comprehensive glossary covering all major theological concepts across OT/NT.
 
-- [ ] Add genre-specific translation patterns to BIBLICAL_VOICES.md - Document approaches for: Narrative (Genesis/Exodus), Law (Leviticus/Deuteronomy), Poetry (Psalms/Proverbs), Prophecy (Isaiah/Jeremiah), Gospels (Matthew/Mark/Luke/John), Epistles (Romans/Corinthians), Apocalyptic (Daniel/Revelation). Success: Clear guidance for maintaining voice across diverse literary styles.
+- [x] Add genre-specific translation patterns to BIBLICAL_VOICES.md - Document approaches for: Narrative (Genesis/Exodus), Law (Leviticus/Deuteronomy), Poetry (Psalms/Proverbs), Prophecy (Isaiah/Jeremiah), Gospels (Matthew/Mark/Luke/John), Epistles (Romans/Corinthians), Apocalyptic (Daniel/Revelation). Success: Clear guidance for maintaining voice across diverse literary styles.
 
 ### Translation Workflow Automation
 
