@@ -292,7 +292,7 @@
 
 ### Priority 1: Foundational OT (2 books, Est. 10 weeks)
 
-- [~] Translate Genesis (50 chapters, ~38,300 words, 1,533 verses total) - CHAPTERS 1-20/50 COMPLETE ✓ (40% - PRIMEVAL + EARLY ABRAHAM DONE)
+- [~] Translate Genesis (50 chapters, ~38,300 words, 1,533 verses total) - CHAPTERS 1-23/50 COMPLETE ✓ (46% - THROUGH SARAH'S DEATH)
   ```
   Implementation Approach:
   - **One chapter at a time, one commit per chapter** (50 atomic commits for clean history)
