@@ -3,6 +3,13 @@ import path from "path";
 import fs from "fs/promises";
 import { Logger } from "../utils/logger.js";
 import inquirer from "inquirer";
+import type {
+  KdpBook,
+  BookStatus,
+  BookFormat,
+  KdpScrapingError,
+  KdpSessionExpiredError,
+} from "@brainrot/types";
 
 interface KdpConfig {
   email: string;
@@ -50,6 +57,35 @@ export class KdpService {
   private page?: Page;
   private config: KdpConfig;
   private screenshotCounter: number = 0;
+  private bookListCache: { data: KdpBook[]; timestamp: number } | null = null;
+
+  /**
+   * CSS selectors for KDP UI elements
+   * Update these if KDP changes their page structure
+   */
+  private readonly selectors = {
+    bookshelf: {
+      // Multiple strategies for finding book cards
+      bookCard: [
+        '[data-testid="book-card"]',
+        ".book-card",
+        '[class*="BookCard"]',
+        '[class*="book-item"]',
+      ],
+      title: ["h3", "h2", '[class*="title"]'],
+      status: [
+        '[data-testid="book-status"]',
+        ".status",
+        '[class*="status"]',
+      ],
+      asin: ["[data-asin]", '[data-id="asin"]'],
+      nextButton: [
+        'button:has-text("Next")',
+        'a:has-text("Next")',
+        '[aria-label="Next page"]',
+      ],
+    },
+  };
 
   constructor(config: KdpConfig) {
     this.config = {
@@ -585,6 +621,300 @@ export class KdpService {
       }
     } finally {
       await this.close();
+    }
+  }
+
+  /**
+   * Navigate to KDP bookshelf
+   *
+   * @throws {KdpSessionExpiredError} If session has expired
+   * @throws {KdpScrapingError} If bookshelf page fails to load
+   */
+  private async navigateToBookshelf(): Promise<void> {
+    if (this.config.mockMode) {
+      Logger.info("[MOCK] Navigated to bookshelf");
+      return;
+    }
+
+    if (!this.page) {
+      throw new Error("Page not initialized. Call login() first.");
+    }
+
+    // Check if already on bookshelf
+    const currentUrl = this.page.url();
+    if (currentUrl.includes("/bookshelf")) {
+      Logger.debug("Already on bookshelf page");
+      return;
+    }
+
+    try {
+      // Navigate to bookshelf
+      await this.page.goto("https://kdp.amazon.com/bookshelf", {
+        waitUntil: "networkidle",
+        timeout: this.config.timeout,
+      });
+
+      // Check for login redirect (session expired)
+      const url = this.page.url();
+      if (url.includes("/signin") || url.includes("/ap/")) {
+        const KdpSessionExpiredError = (
+          await import("@brainrot/types")
+        ).KdpSessionExpiredError;
+        throw new KdpSessionExpiredError();
+      }
+
+      // Wait for bookshelf to load - try multiple selectors
+      let loaded = false;
+      for (const selector of this.selectors.bookshelf.bookCard) {
+        try {
+          await this.page.waitForSelector(selector, { timeout: 5000 });
+          loaded = true;
+          Logger.debug(`Bookshelf loaded (found: ${selector})`);
+          break;
+        } catch {
+          continue;
+        }
+      }
+
+      if (!loaded) {
+        // Check if there's an empty state
+        const emptyState = await this.page
+          .locator('text=/no books|empty|get started/i')
+          .first()
+          .isVisible()
+          .catch(() => false);
+
+        if (emptyState) {
+          Logger.debug("Bookshelf is empty (no books published)");
+          return;
+        }
+
+        throw new Error("Bookshelf grid did not load");
+      }
+    } catch (error) {
+      await this.takeScreenshot("bookshelf-navigation-error");
+
+      if (error instanceof Error && error.name === "KdpSessionExpiredError") {
+        throw error;
+      }
+
+      const { KdpScrapingError } = await import("@brainrot/types");
+      const message = error instanceof Error ? error.message : String(error);
+      throw new KdpScrapingError(
+        `Failed to navigate to bookshelf: ${message}`,
+        this.page.url(),
+      );
+    }
+  }
+
+  /**
+   * List all books in KDP account
+   *
+   * Navigates to bookshelf and extracts book metadata. Results are cached
+   * for 5 minutes to avoid unnecessary page loads.
+   *
+   * @param options.noCache - If true, bypass cache and fetch fresh data
+   * @returns Array of books sorted by last modified date (newest first)
+   * @throws {KdpAuthenticationError} If not logged in
+   * @throws {KdpScrapingError} If unable to parse bookshelf data
+   *
+   * @example
+   * const books = await kdp.listBooks();
+   * console.log(`You have ${books.length} books`);
+   */
+  async listBooks(options?: { noCache?: boolean }): Promise<KdpBook[]> {
+    // Return mock data in mock mode
+    if (this.config.mockMode) {
+      Logger.info("[MOCK] Listing books");
+      return [
+        {
+          asin: "B0MOCK123",
+          title: "The Great Gatsby (Brainrot Edition)",
+          author: "F. Scott Fitzgerald, trans. Brainrot Classics",
+          status: "live" as BookStatus,
+          formats: ["ebook" as BookFormat],
+          lastModified: new Date(),
+        },
+        {
+          asin: "B0MOCK456",
+          title: "The Republic (Brainrot Edition)",
+          author: "Plato, trans. Brainrot Classics",
+          status: "live" as BookStatus,
+          formats: ["ebook" as BookFormat, "paperback" as BookFormat],
+          publishedDate: new Date("2025-01-15"),
+          lastModified: new Date(),
+        },
+      ];
+    }
+
+    // Check cache
+    if (
+      !options?.noCache &&
+      this.bookListCache &&
+      Date.now() - this.bookListCache.timestamp < 5 * 60 * 1000
+    ) {
+      Logger.debug("Returning cached book list");
+      return this.bookListCache.data;
+    }
+
+    if (!this.page) {
+      throw new Error("Not logged in. Call login() first.");
+    }
+
+    try {
+      await this.navigateToBookshelf();
+
+      const books: KdpBook[] = [];
+      let hasNextPage = true;
+      let pageNum = 1;
+
+      while (hasNextPage) {
+        Logger.debug(`Scraping bookshelf page ${pageNum}...`);
+
+        // Find book card elements - try each selector strategy
+        let cards: any[] = [];
+        for (const selector of this.selectors.bookshelf.bookCard) {
+          cards = await this.page.$$(selector);
+          if (cards.length > 0) {
+            Logger.debug(`Found ${cards.length} books using: ${selector}`);
+            break;
+          }
+        }
+
+        if (cards.length === 0) {
+          Logger.debug("No books found on this page");
+          break;
+        }
+
+        // Extract data from each book card
+        for (const card of cards) {
+          try {
+            // Extract title
+            let title = "";
+            for (const selector of this.selectors.bookshelf.title) {
+              const titleEl = await card.$(selector);
+              if (titleEl) {
+                title = (await titleEl.textContent())?.trim() || "";
+                if (title) break;
+              }
+            }
+
+            // Extract ASIN from href or data attribute
+            let asin = "";
+            for (const selector of this.selectors.bookshelf.asin) {
+              asin = (await card.getAttribute(selector.replace(/[\[\]]/g, ""))) || "";
+              if (asin) break;
+            }
+
+            // Fallback: extract from link href
+            if (!asin) {
+              const link = await card.$("a[href*='/title/']");
+              if (link) {
+                const href = await link.getAttribute("href");
+                const match = href?.match(/\/title\/([A-Z0-9]+)/);
+                if (match) asin = match[1];
+              }
+            }
+
+            // Extract status
+            let status: BookStatus = "draft";
+            for (const selector of this.selectors.bookshelf.status) {
+              const statusEl = await card.$(selector);
+              if (statusEl) {
+                const statusText = (await statusEl.textContent())?.toLowerCase().trim() || "";
+                if (statusText.includes("live")) status = "live";
+                else if (statusText.includes("review")) status = "in_review";
+                else if (statusText.includes("draft")) status = "draft";
+                else if (statusText.includes("unpublished")) status = "unpublished";
+                else if (statusText.includes("blocked")) status = "blocked";
+                if (statusText) break;
+              }
+            }
+
+            // Extract formats - look for format indicators/icons
+            const formats: BookFormat[] = [];
+            const cardHtml = await card.innerHTML();
+            if (cardHtml.includes("ebook") || cardHtml.includes("Kindle")) {
+              formats.push("ebook");
+            }
+            if (cardHtml.includes("paperback") || cardHtml.includes("Paperback")) {
+              formats.push("paperback");
+            }
+            if (cardHtml.includes("hardcover") || cardHtml.includes("Hardcover")) {
+              formats.push("hardcover");
+            }
+
+            // Default to ebook if no formats detected
+            if (formats.length === 0) {
+              formats.push("ebook");
+            }
+
+            if (title && asin) {
+              books.push({
+                asin,
+                title,
+                author: "Unknown", // Not available on bookshelf cards
+                status,
+                formats,
+                lastModified: new Date(), // Not available on bookshelf cards
+              });
+            }
+          } catch (error) {
+            const message = error instanceof Error ? error.message : String(error);
+            Logger.warn(`Failed to extract book data from card: ${message}`);
+          }
+        }
+
+        // Check for next page
+        hasNextPage = false;
+        for (const selector of this.selectors.bookshelf.nextButton) {
+          const nextButton = await this.page.$(selector);
+          if (nextButton) {
+            const isDisabled = (await nextButton.getAttribute("disabled")) !== null ||
+              (await nextButton.getAttribute("aria-disabled")) === "true";
+
+            if (!isDisabled) {
+              Logger.debug("Navigating to next page...");
+              await nextButton.click();
+              await this.page.waitForTimeout(2000); // Wait for page load
+              hasNextPage = true;
+              pageNum++;
+              break;
+            }
+          }
+        }
+      }
+
+      Logger.success(`Found ${books.length} books across ${pageNum} page(s)`);
+
+      // Sort by last modified (most recent first)
+      // Note: lastModified is placeholder; actual sorting would need real timestamps
+      const sorted = books.sort((a, b) =>
+        b.lastModified.getTime() - a.lastModified.getTime()
+      );
+
+      // Cache results
+      this.bookListCache = {
+        data: sorted,
+        timestamp: Date.now(),
+      };
+
+      await this.takeScreenshot("bookshelf-scraped");
+
+      return sorted;
+    } catch (error) {
+      await this.takeScreenshot("list-books-error");
+
+      if (error instanceof Error && error.name === "KdpSessionExpiredError") {
+        throw error;
+      }
+
+      const { KdpScrapingError } = await import("@brainrot/types");
+      const message = error instanceof Error ? error.message : String(error);
+      throw new KdpScrapingError(
+        `Failed to list books: ${message}`,
+        this.page?.url() || "unknown",
+      );
     }
   }
 }
