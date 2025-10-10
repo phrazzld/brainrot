@@ -117,3 +117,154 @@ Inline comments, README updates, architectural documentation, and knowledge mana
 - [ ] [MEDIUM] Document security best practices and threat model | Effort: M | Value: Team security awareness
 - [ ] [MEDIUM] Create runbooks for common operations | Effort: M | Value: Reduced support burden
 - [ ] [LOW] Add architecture decision records (ADRs) | Effort: M | Value: Historical context
+
+---
+
+## KDP CLI Future Enhancements
+
+### Phase 2: Analytics & Advanced Reporting (MEDIUM Priority)
+
+- [ ] [MEDIUM] Add `kdp reports monthly` command with CSV/JSON export | Effort: M | Value: Automated reporting workflow
+  - Navigate to reports section, filter by date range
+  - Download monthly royalty reports automatically
+  - Parse CSV and present in terminal tables
+  - Export to JSON for further processing
+  - Estimated time: 6-8 hours
+
+- [ ] [MEDIUM] Add `kdp analytics` command with deep dive insights | Effort: M | Value: Better sales visibility
+  - Aggregate sales across all books and marketplaces
+  - Calculate trends (week-over-week, month-over-month)
+  - Show best/worst performing books
+  - KENP vs purchase breakdown
+  - Estimated time: 8-10 hours
+
+- [ ] [MEDIUM] Add `kdp reports download` for bulk report retrieval | Effort: M | Value: Historical data analysis
+  - Download all available report types (sales, tax, royalty)
+  - Save to local directory with organized naming
+  - Support date range filtering
+  - Estimated time: 4-6 hours
+
+### Phase 3: Write Operations & Book Updates (HIGH Priority)
+
+- [ ] [HIGH] Add `kdp book update` command for metadata changes | Effort: L | Value: Critical for book management
+  - Update pricing: `kdp book update <asin> --price-us=9.99 --price-uk=7.99`
+  - Update keywords: `kdp book update <asin> --keywords="gatsby,classic,brainrot"`
+  - Update description: `kdp book update <asin> --description-file=new-desc.txt`
+  - Navigate to book edit page, fill forms, save changes
+  - Verify changes were applied successfully
+  - Estimated time: 10-12 hours
+
+- [ ] [HIGH] Add `kdp book unpublish` command | Effort: M | Value: Book lifecycle management
+  - Navigate to book page
+  - Click unpublish/take offline button
+  - Confirm action
+  - Verify status changed to 'unpublished'
+  - Estimated time: 4-6 hours
+
+- [ ] [MEDIUM] Add `kdp book clone` command | Effort: M | Value: Speed up similar book creation
+  - Clone existing book metadata to new listing
+  - Useful for creating series or similar translations
+  - Prompts for fields that must change (title, ASIN, etc.)
+  - Estimated time: 6-8 hours
+
+### Phase 4: Performance Optimization via API Interception (HIGH Priority)
+
+- [ ] [HIGH] Implement network request interception layer | Effort: L | Value: 10x faster operations
+  - Add Playwright request/response interception
+  - Log all API calls during manual navigation
+  - Extract GraphQL/REST endpoint patterns
+  - Document discovered endpoints in codebase
+  - Estimated time: 8-10 hours
+
+- [ ] [HIGH] Build direct API client for hot paths | Effort: L | Value: Sub-second response times
+  - Extract session cookies and CSRF tokens
+  - Implement `KdpApiClient` class for direct HTTP calls
+  - Migrate `listBooks()` to use GraphQL (if available)
+  - Migrate `getSalesData()` to use REST endpoint (if available)
+  - Fallback to browser automation if API calls fail
+  - Estimated time: 12-16 hours
+
+- [ ] [MEDIUM] Implement session token refresh mechanism | Effort: M | Value: Avoid re-login overhead
+  - Detect token expiration (401/403 responses)
+  - Silently refresh session via headless browser
+  - Cache tokens with 30-minute TTL
+  - Estimated time: 6-8 hours
+
+- [ ] [MEDIUM] Add request/response caching with Redis/local file | Effort: M | Value: Offline-capable reads
+  - Cache book list, details, sales data locally
+  - Configurable TTL per data type
+  - `--no-cache` flag to force refresh
+  - Estimated time: 6-8 hours
+
+### Phase 5: Bulk Operations & Advanced Workflows (MEDIUM Priority)
+
+- [ ] [MEDIUM] Add `kdp bulk update` command with CSV input | Effort: L | Value: Manage 10+ books efficiently
+  - Read CSV file with columns: asin, field, new_value
+  - Batch update multiple books
+  - Progress bar showing N/M updates complete
+  - Error handling: Continue on failure, report errors at end
+  - Estimated time: 10-12 hours
+
+- [ ] [MEDIUM] Add `kdp bulk export` command | Effort: M | Value: Backup entire catalog
+  - Export all books to JSON/CSV
+  - Include all metadata, pricing, sales data
+  - Creates snapshot of entire KDP account
+  - Useful for migrations, backups, analysis
+  - Estimated time: 6-8 hours
+
+- [ ] [LOW] Add `kdp watch` daemon mode | Effort: L | Value: Automated monitoring
+  - Run in background, periodically sync KDP data
+  - Detect changes (new sales, status changes)
+  - Send notifications (terminal, email, webhook)
+  - Configurable sync interval (hourly, daily)
+  - Estimated time: 12-16 hours
+
+- [ ] [LOW] Add interactive TUI mode with `ink` | Effort: L | Value: Better UX for frequent users
+  - Terminal UI with keyboard navigation
+  - Real-time updates, live tables
+  - Multi-pane view (books list + details)
+  - Vim-style keybindings
+  - Estimated time: 16-20 hours
+
+### Phase 6: Local Database & Offline Support (LOW Priority)
+
+- [ ] [LOW] Implement SQLite local database for KDP data | Effort: XL | Value: Blazing fast queries
+  - Schema: books, formats, pricing, sales tables
+  - Sync engine: Bidirectional sync with KDP
+  - Conflict resolution: Last-write-wins strategy
+  - All reads from local DB (instant), periodic background sync
+  - Estimated time: 20-24 hours
+
+- [ ] [LOW] Add `kdp sync` command for manual sync triggers | Effort: M | Value: User control over sync
+  - Pull latest from KDP, update local DB
+  - Push pending local changes to KDP
+  - Show sync summary (added/updated/deleted)
+  - Estimated time: 6-8 hours
+
+- [ ] [LOW] Add SQL query support for advanced filtering | Effort: M | Value: Power user workflows
+  - `kdp query "SELECT * FROM books WHERE status='live' AND royalty > 100"`
+  - Direct SQL access to local database
+  - Export results to CSV/JSON
+  - Estimated time: 4-6 hours
+
+### Technical Debt & Infrastructure
+
+- [ ] [MEDIUM] Extract KDP client into standalone NPM package | Effort: L | Value: Reusable across projects
+  - Create `@brainrot/kdp-client` or `playwright-kdp-automation`
+  - Publish to npm registry
+  - Separate from publisher CLI (single responsibility)
+  - Enables other developers to use KDP automation
+  - Potential revenue: Consulting, support contracts
+  - Estimated time: 12-16 hours
+
+- [ ] [LOW] Add Playwright test fixtures for KDP pages | Effort: M | Value: Faster test development
+  - Create reusable page object models
+  - Mock KDP responses for integration tests
+  - Snapshot testing for UI structure changes
+  - Estimated time: 8-10 hours
+
+- [ ] [LOW] Implement rate limiting to avoid KDP throttling | Effort: S | Value: Prevent account issues
+  - Max 10 requests/minute to KDP
+  - Queue-based request management
+  - Backoff strategy on 429 responses
+  - Estimated time: 4-6 hours

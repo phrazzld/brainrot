@@ -5,6 +5,7 @@ import { Logger } from "../utils/logger.js";
 import inquirer from "inquirer";
 import type {
   KdpBook,
+  KdpBookDetails,
   BookStatus,
   BookFormat,
   KdpScrapingError,
@@ -84,6 +85,45 @@ export class KdpService {
         'a:has-text("Next")',
         '[aria-label="Next page"]',
       ],
+    },
+    bookDetails: {
+      title: ['input[name="title"]', 'input#title', '[data-field="title"]'],
+      subtitle: [
+        'input[name="subtitle"]',
+        'input#subtitle',
+        '[data-field="subtitle"]',
+      ],
+      author: [
+        'input[name="author"]',
+        'input#author',
+        '[data-field="author"]',
+      ],
+      description: [
+        'textarea[name="description"]',
+        'textarea#description',
+        '[data-field="description"]',
+      ],
+      keywords: [
+        'input[name^="keyword"]',
+        'input[id^="keyword"]',
+        '[data-field^="keyword"]',
+      ],
+      categories: [
+        '[data-testid="categories"]',
+        ".categories",
+        '[class*="category"]',
+      ],
+      pricingTab: [
+        'a:has-text("Pricing")',
+        'button:has-text("Pricing")',
+        '[data-tab="pricing"]',
+      ],
+      pricingTable: [
+        'table.pricing-table',
+        '[data-testid="pricing-table"]',
+        'table[class*="pricing"]',
+      ],
+      marketplaceRow: ["tr[data-marketplace]", 'tr[class*="marketplace"]'],
     },
   };
 
@@ -913,6 +953,310 @@ export class KdpService {
       const message = error instanceof Error ? error.message : String(error);
       throw new KdpScrapingError(
         `Failed to list books: ${message}`,
+        this.page?.url() || "unknown",
+      );
+    }
+  }
+
+  /**
+   * Get detailed information for a specific book
+   *
+   * Navigates to the book's details page and extracts all metadata including
+   * title, description, keywords, categories, and pricing information.
+   *
+   * @param asin - The book's Amazon Standard Identification Number
+   * @returns Complete book details including pricing and metadata
+   * @throws {KdpAuthenticationError} If not logged in or session expired
+   * @throws {KdpScrapingError} If book details page fails to load or parse
+   *
+   * @example
+   * const details = await kdp.getBookDetails('B0MOCK123');
+   * console.log(`${details.title} - ${details.description.substring(0, 50)}...`);
+   */
+  async getBookDetails(asin: string): Promise<KdpBookDetails> {
+    // Return mock data in mock mode
+    if (this.config.mockMode) {
+      Logger.info(`[MOCK] Getting details for book: ${asin}`);
+      return {
+        asin,
+        title: "The Great Gatsby (Brainrot Edition)",
+        subtitle: "no cap fr fr edition",
+        author: "F. Scott Fitzgerald, trans. Brainrot Classics",
+        status: "live" as BookStatus,
+        formats: ["ebook" as BookFormat],
+        description:
+          "so back when i was a lil sus beta and way more vulnerable to getting absolutely ratio'd by life...",
+        keywords: [
+          "classic literature",
+          "gen z",
+          "brainrot",
+          "gatsby",
+          "american dream",
+        ],
+        categories: ["Literature & Fiction", "Classics"],
+        pricing: [
+          {
+            marketplace: "US",
+            currency: "USD",
+            listPrice: 2.99,
+            royaltyRate: 0.7,
+          },
+          {
+            marketplace: "UK",
+            currency: "GBP",
+            listPrice: 1.99,
+            royaltyRate: 0.7,
+          },
+        ],
+        lastModified: new Date(),
+      };
+    }
+
+    if (!this.page) {
+      throw new Error("Not logged in. Call login() first.");
+    }
+
+    try {
+      // Navigate to book details page
+      const detailsUrl = `https://kdp.amazon.com/en_US/title-setup/${asin}`;
+      Logger.debug(`Navigating to book details: ${detailsUrl}`);
+
+      await this.page.goto(detailsUrl, {
+        waitUntil: "networkidle",
+        timeout: this.config.timeout,
+      });
+
+      // Check for 404 or invalid ASIN
+      const pageTitle = await this.page.title();
+      if (
+        pageTitle.toLowerCase().includes("not found") ||
+        pageTitle.toLowerCase().includes("404")
+      ) {
+        const { KdpScrapingError } = await import("@brainrot/types");
+        throw new KdpScrapingError(
+          `Book not found: ${asin}`,
+          detailsUrl,
+        );
+      }
+
+      // Check for session expiration
+      if (this.page.url().includes("/signin") || this.page.url().includes("/ap/")) {
+        const { KdpSessionExpiredError } = await import("@brainrot/types");
+        throw new KdpSessionExpiredError();
+      }
+
+      // Helper to try multiple selectors and get value
+      const getFieldValue = async (
+        selectors: string[],
+        fallback: string = "",
+      ): Promise<string> => {
+        for (const selector of selectors) {
+          try {
+            const element = await this.page!.$(selector);
+            if (element) {
+              const value = await element.inputValue().catch(() => null) ||
+                (await element.textContent());
+              if (value && value.trim()) {
+                return value.trim();
+              }
+            }
+          } catch {
+            continue;
+          }
+        }
+        return fallback;
+      };
+
+      // Extract title
+      const title = await getFieldValue(
+        this.selectors.bookDetails.title,
+        "Unknown Title",
+      );
+
+      // Extract subtitle (optional)
+      const subtitle = await getFieldValue(
+        this.selectors.bookDetails.subtitle,
+      );
+
+      // Extract author
+      const author = await getFieldValue(
+        this.selectors.bookDetails.author,
+        "Unknown Author",
+      );
+
+      // Extract description
+      const description = await getFieldValue(
+        this.selectors.bookDetails.description,
+        "",
+      );
+
+      // Extract keywords
+      const keywords: string[] = [];
+      for (const selector of this.selectors.bookDetails.keywords) {
+        try {
+          const keywordElements = await this.page.$$(selector);
+          for (const el of keywordElements) {
+            const value = await el.inputValue().catch(() => "");
+            if (value && value.trim()) {
+              keywords.push(value.trim());
+            }
+          }
+          if (keywords.length > 0) break;
+        } catch {
+          continue;
+        }
+      }
+
+      // Extract categories (best effort - categories are complex)
+      const categories: string[] = [];
+      for (const selector of this.selectors.bookDetails.categories) {
+        try {
+          const categoryEl = await this.page.$(selector);
+          if (categoryEl) {
+            const text = await categoryEl.textContent();
+            if (text) {
+              // Split by common delimiters
+              const cats = text
+                .split(/[>\/,]/)
+                .map((c) => c.trim())
+                .filter((c) => c.length > 0);
+              categories.push(...cats);
+              if (categories.length > 0) break;
+            }
+          }
+        } catch {
+          continue;
+        }
+      }
+
+      // Get basic book info (status, formats) from the current page
+      const status: BookStatus = "live"; // Default, actual status detection would require more scraping
+      const formats: BookFormat[] = ["ebook"]; // Default, would need format tab detection
+
+      // Navigate to pricing tab to get pricing details
+      let pricing: KdpBookDetails["pricing"] = [];
+
+      try {
+        // Try to find and click pricing tab
+        let pricingTabClicked = false;
+        for (const selector of this.selectors.bookDetails.pricingTab) {
+          try {
+            const tab = await this.page.$(selector);
+            if (tab) {
+              await tab.click();
+              await this.page.waitForTimeout(1000); // Wait for tab to load
+              pricingTabClicked = true;
+              Logger.debug("Navigated to pricing tab");
+              break;
+            }
+          } catch {
+            continue;
+          }
+        }
+
+        if (pricingTabClicked) {
+          // Try to extract pricing from table
+          for (const tableSelector of this.selectors.bookDetails.pricingTable) {
+            try {
+              const table = await this.page.$(tableSelector);
+              if (table) {
+                const rows = await this.page.$$(
+                  this.selectors.bookDetails.marketplaceRow.join(", "),
+                );
+
+                for (const row of rows) {
+                  try {
+                    const marketplace = await row.getAttribute("data-marketplace") ||
+                      await row.textContent();
+                    const priceInput = await row.$('input[type="text"]');
+                    const royaltySelect = await row.$("select");
+
+                    if (priceInput && marketplace) {
+                      const priceStr = await priceInput.inputValue();
+                      const price = parseFloat(
+                        priceStr.replace(/[^0-9.]/g, ""),
+                      );
+
+                      let royaltyRate: 0.35 | 0.7 = 0.7;
+                      if (royaltySelect) {
+                        const royaltyValue = await royaltySelect.inputValue();
+                        if (royaltyValue.includes("35")) royaltyRate = 0.35;
+                      }
+
+                      // Infer currency from marketplace
+                      const currencyMap: Record<string, string> = {
+                        US: "USD",
+                        UK: "GBP",
+                        DE: "EUR",
+                        FR: "EUR",
+                        ES: "EUR",
+                        IT: "EUR",
+                        JP: "JPY",
+                      };
+
+                      const marketplaceCode = marketplace.trim().substring(0, 2).toUpperCase();
+                      const currency = currencyMap[marketplaceCode] || "USD";
+
+                      if (!isNaN(price) && price > 0) {
+                        pricing.push({
+                          marketplace: marketplaceCode,
+                          currency,
+                          listPrice: price,
+                          royaltyRate,
+                        });
+                      }
+                    }
+                  } catch (rowError) {
+                    Logger.debug(
+                      `Failed to parse pricing row: ${rowError}`,
+                    );
+                  }
+                }
+                break;
+              }
+            } catch {
+              continue;
+            }
+          }
+        }
+      } catch (pricingError) {
+        Logger.debug(`Failed to extract pricing: ${pricingError}`);
+        // Continue without pricing data
+      }
+
+      const bookDetails: KdpBookDetails = {
+        asin,
+        title,
+        subtitle: subtitle || undefined,
+        author,
+        status,
+        formats,
+        description,
+        keywords,
+        categories,
+        pricing,
+        lastModified: new Date(),
+      };
+
+      Logger.success(`Retrieved details for: ${title}`);
+      await this.takeScreenshot("book-details-scraped");
+
+      return bookDetails;
+    } catch (error) {
+      await this.takeScreenshot("get-book-details-error");
+
+      if (error instanceof Error && error.name === "KdpSessionExpiredError") {
+        throw error;
+      }
+
+      if (error instanceof Error && error.name === "KdpScrapingError") {
+        throw error;
+      }
+
+      const { KdpScrapingError } = await import("@brainrot/types");
+      const message = error instanceof Error ? error.message : String(error);
+      throw new KdpScrapingError(
+        `Failed to get book details for ${asin}: ${message}`,
         this.page?.url() || "unknown",
       );
     }
