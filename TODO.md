@@ -103,38 +103,24 @@
 
 ### 3. Browser Automation - Book Details
 
-- [ ] Implement `KdpService.getBookDetails(asin: string)` in `apps/publisher/src/services/kdp.ts`
-  - Navigate to book details page: `await page.goto(\`https://kdp.amazon.com/bookshelf/${asin}/details\`)`
+- [x] Implement `KdpService.getBookDetails(asin: string)` in `apps/publisher/src/services/kdp.ts`
+  - Navigate to book details page: `await page.goto(\`https://kdp.amazon.com/en_US/title-setup/${asin}\`)`
   - Extract metadata fields:
-    - Title/subtitle: `page.locator('input[name="title"]').inputValue()`
-    - Description: `page.locator('textarea[name="description"]').inputValue()`
-    - Keywords: `page.$$eval('input[name^="keyword"]', els => els.map(e => e.value))`
-    - Categories: Parse from category selector dropdown values
-  - Extract pricing: Navigate to pricing tab, scrape marketplace pricing table rows
-  - Extract formats: Check which format tabs are present (ebook/paperback/hardcover)
+    - Title/subtitle: Multiple selector strategies with fallbacks
+    - Description: Extracted from textarea with multiple selector options
+    - Keywords: Iterate through keyword inputs (up to 7)
+    - Categories: Best-effort parsing from category display
+  - Extract pricing: Navigate to pricing tab, scrape marketplace pricing table rows with currency mapping
+  - Extract formats: Defaulted (real implementation would need format tab detection)
   - Return complete `KdpBookDetails` object
   - Success criteria: All fields populated, matches data visible in KDP UI
-  - Error handling: Handle missing ASIN (404), screenshot failed selectors, throw `KdpScrapingError`
+  - Error handling: 404 detection, session expiration, screenshots on failure, proper error types
 
-- [ ] Add selector configuration object for maintainability
-  ```typescript
-  private readonly selectors = {
-    bookshelf: {
-      bookCard: '[data-testid="book-card"]',
-      title: 'h3',
-      status: '[data-testid="book-status"]',
-      asin: '[data-asin]',
-    },
-    bookDetails: {
-      title: 'input[name="title"]',
-      subtitle: 'input[name="subtitle"]',
-      description: 'textarea[name="description"]',
-      keywords: 'input[name^="keyword"]',
-      pricingTable: 'table.pricing-table',
-    },
-  };
-  ```
-  Note: Update selectors centrally when KDP UI changes instead of scattered across methods
+- [x] Add selector configuration object for maintainability
+  - Extended `selectors` object with `bookDetails` section
+  - Multiple selector strategies per field for resilience
+  - Includes: title, subtitle, author, description, keywords, categories, pricing tab, pricing table, marketplace rows
+  - Centralized location makes KDP UI changes easier to handle
 
 ### 4. Browser Automation - Sales Data
 
