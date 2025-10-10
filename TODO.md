@@ -78,7 +78,7 @@
 
 ### 2. Browser Automation - Book Listing
 
-- [ ] Implement `KdpService.listBooks()` in `apps/publisher/src/services/kdp.ts`
+- [x] Implement `KdpService.listBooks()` in `apps/publisher/src/services/kdp.ts`
   - Navigate to `https://kdp.amazon.com/bookshelf` after successful login
   - Wait for bookshelf grid to load: `await page.waitForSelector('[data-testid="book-card"]', { timeout: 30000 })`
   - Extract book cards using: `const cards = await page.$$('[data-testid="book-card"]')`
@@ -88,14 +88,14 @@
   - Success criteria: Returns correct count of books matching KDP dashboard, includes all visible metadata fields
   - Error handling: Screenshot on failure, throw `KdpScrapingError` with URL and selector details
 
-- [ ] Implement `KdpService.navigateToBookshelf()` helper method
+- [x] Implement `KdpService.navigateToBookshelf()` helper method
   - Check if already on bookshelf page: `page.url().includes('/bookshelf')`
   - If not, click bookshelf link: `await page.click('a[href*="/bookshelf"]')`
   - Wait for grid load: `await page.waitForSelector('[data-testid="book-card"]')`
   - Handle redirect if login expired: Detect login page, throw `KdpSessionExpiredError`
   - Success criteria: Page URL contains '/bookshelf' and book cards are visible
 
-- [ ] Add caching layer for `listBooks()` results
+- [x] Add caching layer for `listBooks()` results
   - Create simple in-memory cache with 5-minute TTL: `private bookListCache: { data: KdpBook[], timestamp: number } | null`
   - Check cache before scraping: `if (this.bookListCache && Date.now() - this.bookListCache.timestamp < 5 * 60 * 1000)`
   - Add `--no-cache` option to force refresh
