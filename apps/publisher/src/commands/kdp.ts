@@ -62,6 +62,48 @@ export function createKdpCommand(): Command {
       await checkSetup(parentOptions);
     });
 
+  kdpCommand
+    .command("list")
+    .description("List all books in KDP account")
+    .option("--format <format>", "Output format: table|json|csv", "table")
+    .option("--status <status>", "Filter by status: draft|live|all", "all")
+    .option("--no-cache", "Force refresh from KDP")
+    .action(async (options, command) => {
+      const parentOptions = command.parent.opts();
+      await listBooks({
+        ...options,
+        ...parentOptions,
+        headless: !parentOptions.headed,
+      });
+    });
+
+  kdpCommand
+    .command("show <asin>")
+    .description("Show detailed information for a specific book")
+    .option("--format <format>", "Output format: table|json", "table")
+    .action(async (asin: string, options, command) => {
+      const parentOptions = command.parent.opts();
+      await showBook(asin, {
+        ...options,
+        ...parentOptions,
+        headless: !parentOptions.headed,
+      });
+    });
+
+  kdpCommand
+    .command("sales <asin>")
+    .description("Show sales data for a specific book")
+    .option("--days <days>", "Number of days to show", "30")
+    .option("--format <format>", "Output format: table|json|csv", "table")
+    .action(async (asin: string, options, command) => {
+      const parentOptions = command.parent.opts();
+      await showSales(asin, {
+        ...options,
+        ...parentOptions,
+        headless: !parentOptions.headed,
+      });
+    });
+
   return kdpCommand;
 }
 
@@ -330,6 +372,257 @@ async function checkSetup(options: any) {
     spinner.succeed("KDP setup check complete");
   } catch (error: any) {
     spinner.fail(`Setup check failed: ${error.message}`);
+    Logger.error(error.message, error);
+    process.exit(1);
+  }
+}
+
+async function listBooks(options: any) {
+  const spinner = ora("Fetching book list from KDP...").start();
+
+  try {
+    await ConfigManager.load();
+    const kdpConfig = ConfigManager.get("kdp") || {
+      email: process.env.KDP_EMAIL,
+      password: process.env.KDP_PASSWORD,
+    };
+
+    if (options.mock) {
+      kdpConfig.email = "mock@example.com";
+      kdpConfig.password = "mock-password";
+    }
+
+    if (!kdpConfig.email || !kdpConfig.password) {
+      spinner.fail("Missing KDP credentials");
+      Logger.error(
+        "Please set KDP_EMAIL and KDP_PASSWORD environment variables",
+      );
+      process.exit(1);
+    }
+
+    const kdp = new KdpService({
+      email: kdpConfig.email,
+      password: kdpConfig.password,
+      headless: options.headless !== false,
+      mockMode: options.mock,
+      screenshotDir: path.join(process.cwd(), "kdp-screenshots"),
+    });
+
+    try {
+      await kdp.login();
+      const books = await kdp.listBooks({ noCache: !options.cache });
+
+      // Filter by status if specified
+      const filtered =
+        options.status !== "all"
+          ? books.filter((b) => b.status === options.status)
+          : books;
+
+      spinner.succeed(`Found ${filtered.length} books`);
+
+      // Format output
+      if (options.format === "table") {
+        console.table(
+          filtered.map((b) => ({
+            ASIN: b.asin,
+            Title: b.title.substring(0, 50),
+            Author: b.author,
+            Status: b.status,
+            Formats: b.formats.join(", "),
+            Modified: b.lastModified.toISOString().split("T")[0],
+          })),
+        );
+      } else if (options.format === "json") {
+        console.log(JSON.stringify(filtered, null, 2));
+      } else if (options.format === "csv") {
+        console.log("asin,title,author,status,formats,modified");
+        filtered.forEach((b) => {
+          console.log(
+            `${b.asin},"${b.title}","${b.author}",${b.status},"${b.formats.join(";")}",${b.lastModified.toISOString().split("T")[0]}`,
+          );
+        });
+      }
+    } finally {
+      await kdp.close();
+    }
+  } catch (error: any) {
+    spinner.fail(`Failed to list books: ${error.message}`);
+    Logger.error(error.message, error);
+    process.exit(1);
+  }
+}
+
+async function showBook(asin: string, options: any) {
+  const spinner = ora(`Fetching details for ${asin}...`).start();
+
+  try {
+    await ConfigManager.load();
+    const kdpConfig = ConfigManager.get("kdp") || {
+      email: process.env.KDP_EMAIL,
+      password: process.env.KDP_PASSWORD,
+    };
+
+    if (options.mock) {
+      kdpConfig.email = "mock@example.com";
+      kdpConfig.password = "mock-password";
+    }
+
+    if (!kdpConfig.email || !kdpConfig.password) {
+      spinner.fail("Missing KDP credentials");
+      Logger.error(
+        "Please set KDP_EMAIL and KDP_PASSWORD environment variables",
+      );
+      process.exit(1);
+    }
+
+    const kdp = new KdpService({
+      email: kdpConfig.email,
+      password: kdpConfig.password,
+      headless: options.headless !== false,
+      mockMode: options.mock,
+      screenshotDir: path.join(process.cwd(), "kdp-screenshots"),
+    });
+
+    try {
+      await kdp.login();
+      const details = await kdp.getBookDetails(asin);
+
+      spinner.succeed(`Retrieved details for: ${details.title}`);
+
+      if (options.format === "table") {
+        console.log(`\n${chalk.bold("📖 Book Details")}\n`);
+        console.log(`${chalk.cyan("ASIN:")}        ${details.asin}`);
+        console.log(`${chalk.cyan("Title:")}       ${details.title}`);
+        if (details.subtitle) {
+          console.log(`${chalk.cyan("Subtitle:")}    ${details.subtitle}`);
+        }
+        console.log(`${chalk.cyan("Author:")}      ${details.author}`);
+        console.log(`${chalk.cyan("Status:")}      ${details.status}`);
+        console.log(`${chalk.cyan("Formats:")}     ${details.formats.join(", ")}`);
+        console.log(
+          `${chalk.cyan("Modified:")}    ${details.lastModified.toISOString().split("T")[0]}`,
+        );
+        console.log(`${chalk.cyan("Keywords:")}    ${details.keywords.join(", ")}`);
+        if (details.categories.length > 0) {
+          console.log(
+            `${chalk.cyan("Categories:")}  ${details.categories.join(", ")}`,
+          );
+        }
+
+        if (details.pricing.length > 0) {
+          console.log(`\n${chalk.bold("💰 Pricing")}\n`);
+          details.pricing.forEach((p) => {
+            console.log(
+              `${p.marketplace}: ${p.currency} ${p.listPrice.toFixed(2)} (${p.royaltyRate * 100}% royalty)`,
+            );
+          });
+        }
+      } else {
+        console.log(JSON.stringify(details, null, 2));
+      }
+    } finally {
+      await kdp.close();
+    }
+  } catch (error: any) {
+    spinner.fail(`Failed to get book details: ${error.message}`);
+    Logger.error(error.message, error);
+    process.exit(1);
+  }
+}
+
+async function showSales(asin: string, options: any) {
+  const spinner = ora(`Fetching sales data for ${asin}...`).start();
+
+  try {
+    await ConfigManager.load();
+    const kdpConfig = ConfigManager.get("kdp") || {
+      email: process.env.KDP_EMAIL,
+      password: process.env.KDP_PASSWORD,
+    };
+
+    if (options.mock) {
+      kdpConfig.email = "mock@example.com";
+      kdpConfig.password = "mock-password";
+    }
+
+    if (!kdpConfig.email || !kdpConfig.password) {
+      spinner.fail("Missing KDP credentials");
+      Logger.error(
+        "Please set KDP_EMAIL and KDP_PASSWORD environment variables",
+      );
+      process.exit(1);
+    }
+
+    const kdp = new KdpService({
+      email: kdpConfig.email,
+      password: kdpConfig.password,
+      headless: options.headless !== false,
+      mockMode: options.mock,
+      screenshotDir: path.join(process.cwd(), "kdp-screenshots"),
+    });
+
+    try {
+      await kdp.login();
+
+      const endDate = new Date();
+      const startDate = new Date();
+      startDate.setDate(startDate.getDate() - parseInt(options.days));
+
+      const sales = await kdp.getSalesData(asin, { startDate, endDate });
+
+      spinner.succeed(`Retrieved ${sales.length} sales records`);
+
+      if (options.format === "table") {
+        console.log(
+          `\n${chalk.bold(`📊 Sales for ${asin} (Last ${options.days} days)`)}\n`,
+        );
+
+        if (sales.length > 0) {
+          console.table(
+            sales.map((s) => ({
+              Date: s.date.toISOString().split("T")[0],
+              Marketplace: s.marketplace,
+              Units: s.unitsOrdered,
+              Royalty: `${s.currency} ${s.royalty.toFixed(2)}`,
+              KENP: s.kenpRead || 0,
+              "KENP Royalty": s.kenpRoyalty
+                ? `${s.currency} ${s.kenpRoyalty.toFixed(2)}`
+                : "-",
+            })),
+          );
+
+          const totalRoyalty = sales.reduce((sum, s) => sum + s.royalty, 0);
+          const totalKenp = sales.reduce(
+            (sum, s) => sum + (s.kenpRoyalty || 0),
+            0,
+          );
+          const totalUnits = sales.reduce((sum, s) => sum + s.unitsOrdered, 0);
+
+          console.log(
+            chalk.bold(`\nTotal Units: ${totalUnits} | Royalty: $${totalRoyalty.toFixed(2)} | KENP Royalty: $${totalKenp.toFixed(2)} | Combined: $${(totalRoyalty + totalKenp).toFixed(2)}`),
+          );
+        } else {
+          console.log(
+            chalk.yellow("No sales data found for the selected period."),
+          );
+        }
+      } else if (options.format === "json") {
+        console.log(JSON.stringify(sales, null, 2));
+      } else if (options.format === "csv") {
+        console.log(
+          "asin,date,marketplace,units_ordered,royalty,currency,kenp_read,kenp_royalty",
+        );
+        sales.forEach((s) => {
+          console.log(
+            `${s.asin},${s.date.toISOString().split("T")[0]},${s.marketplace},${s.unitsOrdered},${s.royalty},${s.currency},${s.kenpRead || ""},${s.kenpRoyalty || ""}`,
+          );
+        });
+      }
+    } finally {
+      await kdp.close();
+    }
+  } catch (error: any) {
+    spinner.fail(`Failed to get sales data: ${error.message}`);
     Logger.error(error.message, error);
     process.exit(1);
   }

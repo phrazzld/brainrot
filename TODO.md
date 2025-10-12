@@ -146,7 +146,7 @@
 
 ### 5. CLI Commands - Book Management
 
-- [ ] Extend `apps/publisher/src/commands/kdp.ts` with `list` command
+- [x] Extend `apps/publisher/src/commands/kdp.ts` with `list` command
   ```typescript
   kdpCommand
     .command('list')
@@ -186,7 +186,7 @@
   ```
   Success criteria: Displays all books in clean table format, JSON/CSV exports work correctly
 
-- [ ] Add `show` command for book details
+- [x] Add `show` command for book details
   ```typescript
   kdpCommand
     .command('show <asin>')
@@ -218,7 +218,7 @@
   ```
   Success criteria: Shows all book metadata in readable format, works with valid ASIN
 
-- [ ] Add `sales` command for sales data
+- [x] Add `sales` command for sales data
   ```typescript
   kdpCommand
     .command('sales <asin>')
