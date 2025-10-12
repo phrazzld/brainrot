@@ -258,7 +258,7 @@
 
 ### 6. Error Handling & UX Polish
 
-- [ ] Add retry logic for transient failures in `KdpService` base methods
+- [x] Add retry logic for transient failures in `KdpService` base methods
   - Wrap navigation in `p-retry` from existing dependency: `await pRetry(() => page.goto(url), { retries: 3 })`
   - Retry on network errors, timeout errors
   - Do NOT retry on authentication errors (fail fast)

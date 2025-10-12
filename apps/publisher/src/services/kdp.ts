@@ -1,6 +1,7 @@
 import { chromium, Browser, Page, BrowserContext } from "playwright";
 import path from "path";
 import fs from "fs/promises";
+import pRetry, { AbortError } from "p-retry";
 import { Logger } from "../utils/logger.js";
 import inquirer from "inquirer";
 import type {
@@ -10,6 +11,7 @@ import type {
   BookFormat,
   KdpScrapingError,
   KdpSessionExpiredError,
+  KdpAuthenticationError,
 } from "@brainrot/types";
 
 interface KdpConfig {
@@ -232,6 +234,60 @@ export class KdpService {
   }
 
   /**
+   * Navigate to URL with retry logic for transient failures
+   * Retries on network errors, timeout errors
+   * Does NOT retry on authentication errors (fail fast)
+   */
+  private async navigateWithRetry(
+    url: string,
+    options?: { waitUntil?: "load" | "domcontentloaded" | "networkidle" },
+  ): Promise<void> {
+    if (this.config.mockMode || !this.page) return;
+
+    await pRetry(
+      async () => {
+        try {
+          await this.page!.goto(url, {
+            waitUntil: options?.waitUntil || "networkidle",
+            timeout: this.config.timeout,
+          });
+
+          // Check for authentication failure (redirect to signin)
+          if (this.page!.url().includes("signin")) {
+            const { KdpSessionExpiredError } = await import("@brainrot/types");
+            const error = new KdpSessionExpiredError();
+            // Mark as non-retryable by setting a flag
+            (error as any).skipRetry = true;
+            throw error;
+          }
+        } catch (error) {
+          // Re-throw authentication errors without retry
+          if (
+            error instanceof Error &&
+            (error.name === "KdpAuthenticationError" ||
+              error.name === "KdpSessionExpiredError" ||
+              (error as any).skipRetry)
+          ) {
+            throw new AbortError(error.message);
+          }
+          // Retry on network/timeout errors
+          throw error;
+        }
+      },
+      {
+        retries: 3,
+        minTimeout: 1000,
+        maxTimeout: 5000,
+        onFailedAttempt: (error) => {
+          Logger.debug(
+            `Navigation attempt ${error.attemptNumber} failed: ${error.message}. ${error.retriesLeft} retries left.`,
+          );
+        },
+      },
+    );
+  }
+
+  /**
    * Login to KDP with 2FA support
    */
   async login(): Promise<void> {
@@ -248,7 +304,7 @@ export class KdpService {
 
     try {
       Logger.info("Navigating to KDP login page...");
-      await this.page.goto("https://kdp.amazon.com/", {
+      await this.navigateWithRetry("https://kdp.amazon.com/", {
         waitUntil: "networkidle",
       });
 
@@ -718,9 +774,8 @@ export class KdpService {
 
     try {
       // Navigate to bookshelf
-      await this.page.goto("https://kdp.amazon.com/bookshelf", {
+      await this.navigateWithRetry("https://kdp.amazon.com/bookshelf", {
         waitUntil: "networkidle",
-        timeout: this.config.timeout,
       });
 
       // Check for login redirect (session expired)
@@ -1050,9 +1105,8 @@ export class KdpService {
       const detailsUrl = `https://kdp.amazon.com/en_US/title-setup/${asin}`;
       Logger.debug(`Navigating to book details: ${detailsUrl}`);
 
-      await this.page.goto(detailsUrl, {
+      await this.navigateWithRetry(detailsUrl, {
         waitUntil: "networkidle",
-        timeout: this.config.timeout,
       });
 
       // Check for 404 or invalid ASIN
@@ -1369,7 +1423,7 @@ export class KdpService {
 
       if (!navigated) {
         // Try direct navigation as fallback
-        await this.page.goto("https://kdp.amazon.com/en_US/reports", {
+        await this.navigateWithRetry("https://kdp.amazon.com/en_US/reports", {
           waitUntil: "networkidle",
         });
       }
@@ -1643,7 +1697,7 @@ export class KdpService {
       }
 
       if (!navigated) {
-        await this.page.goto("https://kdp.amazon.com/en_US/reports", {
+        await this.navigateWithRetry("https://kdp.amazon.com/en_US/reports", {
           waitUntil: "networkidle",
         });
       }
