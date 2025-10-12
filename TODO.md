@@ -124,7 +124,7 @@
 
 ### 4. Browser Automation - Sales Data
 
-- [ ] Implement `KdpService.getSalesData(asin: string, options?: { startDate?: Date, endDate?: Date })` in `apps/publisher/src/services/kdp.ts`
+- [x] Implement `KdpService.getSalesData(asin: string, options?: { startDate?: Date, endDate?: Date })` in `apps/publisher/src/services/kdp.ts`
   - Navigate to reports section: `await page.goto('https://kdp.amazon.com/reports')`
   - Set date filter using date picker: `await page.fill('input[name="start-date"]', startDate.toISOString().split('T')[0])`
   - Filter by ASIN: Enter ASIN in search/filter field

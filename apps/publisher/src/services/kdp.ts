@@ -125,6 +125,35 @@ export class KdpService {
       ],
       marketplaceRow: ["tr[data-marketplace]", 'tr[class*="marketplace"]'],
     },
+    reports: {
+      reportsLink: [
+        'a[href*="/reports"]',
+        'button:has-text("Reports")',
+        '[data-nav="reports"]',
+      ],
+      startDateInput: [
+        'input[name="start-date"]',
+        'input[id="start-date"]',
+        'input[placeholder*="Start"]',
+      ],
+      endDateInput: [
+        'input[name="end-date"]',
+        'input[id="end-date"]',
+        'input[placeholder*="End"]',
+      ],
+      asinFilter: [
+        'input[name="asin"]',
+        'input[placeholder*="ASIN"]',
+        'input[id="asin-filter"]',
+      ],
+      salesTable: [
+        'table.sales-table',
+        '[data-testid="sales-table"]',
+        'table[class*="sales"]',
+        'table[class*="report"]',
+      ],
+      salesRow: ['tr[data-sale]', 'tbody tr', 'tr[class*="row"]'],
+    },
   };
 
   constructor(config: KdpConfig) {
@@ -1257,6 +1286,304 @@ export class KdpService {
       const message = error instanceof Error ? error.message : String(error);
       throw new KdpScrapingError(
         `Failed to get book details for ${asin}: ${message}`,
+        this.page?.url() || "unknown",
+      );
+    }
+  }
+
+  /**
+   * Retrieve sales data for a specific book
+   *
+   * @param asin - Book ASIN to get sales for
+   * @param options - Date range and filtering options
+   * @returns Array of sales data sorted by date (newest first)
+   * @throws {KdpAuthenticationError} If not logged in or session expired
+   * @throws {KdpScrapingError} If reports page structure has changed
+   *
+   * @example
+   * const sales = await kdp.getSalesData('B0ABC123DEF', {
+   *   startDate: new Date('2024-01-01'),
+   *   endDate: new Date('2024-01-31')
+   * });
+   */
+  async getSalesData(
+    asin: string,
+    options?: { startDate?: Date; endDate?: Date },
+  ): Promise<import("@brainrot/types").SalesData[]> {
+    // Return mock data in mock mode
+    if (this.config.mockMode) {
+      Logger.info(`[MOCK] Getting sales data for: ${asin}`);
+      const mockSales: import("@brainrot/types").SalesData[] = [
+        {
+          asin,
+          date: new Date("2024-01-15"),
+          marketplace: "US",
+          unitsOrdered: 5,
+          royalty: 17.45,
+          currency: "USD",
+          kenpRead: 1250,
+          kenpRoyalty: 5.75,
+        },
+        {
+          asin,
+          date: new Date("2024-01-14"),
+          marketplace: "UK",
+          unitsOrdered: 2,
+          royalty: 8.4,
+          currency: "GBP",
+        },
+      ];
+      return mockSales;
+    }
+
+    if (!this.page) {
+      throw new Error("Browser not initialized. Call login() first.");
+    }
+
+    // Default to last 30 days if not specified
+    const endDate = options?.endDate || new Date();
+    const startDate =
+      options?.startDate ||
+      new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
+
+    try {
+      Logger.info(`Fetching sales data for ${asin}...`);
+
+      // Navigate to reports section
+      Logger.debug("Navigating to reports section");
+      let navigated = false;
+      for (const selector of this.selectors.reports.reportsLink) {
+        try {
+          const link = await this.page.$(selector);
+          if (link) {
+            await link.click();
+            await this.page.waitForLoadState("networkidle");
+            navigated = true;
+            Logger.debug("Navigated to reports page");
+            break;
+          }
+        } catch {
+          continue;
+        }
+      }
+
+      if (!navigated) {
+        // Try direct navigation as fallback
+        await this.page.goto("https://kdp.amazon.com/en_US/reports", {
+          waitUntil: "networkidle",
+        });
+      }
+
+      await this.takeScreenshot("reports-page");
+
+      // Check for session expiration
+      if (this.page.url().includes("signin")) {
+        const { KdpSessionExpiredError } = await import("@brainrot/types");
+        throw new KdpSessionExpiredError();
+      }
+
+      // Set date filters
+      Logger.debug(
+        `Setting date range: ${startDate.toISOString().split("T")[0]} to ${endDate.toISOString().split("T")[0]}`,
+      );
+
+      // Start date
+      for (const selector of this.selectors.reports.startDateInput) {
+        try {
+          const input = await this.page.$(selector);
+          if (input) {
+            await input.fill(startDate.toISOString().split("T")[0]);
+            Logger.debug("Set start date");
+            break;
+          }
+        } catch {
+          continue;
+        }
+      }
+
+      // End date
+      for (const selector of this.selectors.reports.endDateInput) {
+        try {
+          const input = await this.page.$(selector);
+          if (input) {
+            await input.fill(endDate.toISOString().split("T")[0]);
+            Logger.debug("Set end date");
+            break;
+          }
+        } catch {
+          continue;
+        }
+      }
+
+      // Filter by ASIN
+      Logger.debug(`Filtering by ASIN: ${asin}`);
+      for (const selector of this.selectors.reports.asinFilter) {
+        try {
+          const input = await this.page.$(selector);
+          if (input) {
+            await input.fill(asin);
+            await input.press("Enter");
+            Logger.debug("Applied ASIN filter");
+            break;
+          }
+        } catch {
+          continue;
+        }
+      }
+
+      // Wait for table to update (check for network response or timeout)
+      try {
+        await this.page.waitForResponse(
+          (resp) => resp.url().includes("/reports") && resp.status() === 200,
+          { timeout: 10000 },
+        );
+      } catch {
+        // Response interception may not work, continue anyway
+        await this.page.waitForTimeout(2000);
+      }
+
+      await this.takeScreenshot("reports-filtered");
+
+      // Scrape sales table
+      Logger.debug("Scraping sales table");
+      const salesData: import("@brainrot/types").SalesData[] = [];
+
+      let tableFound = false;
+      for (const tableSelector of this.selectors.reports.salesTable) {
+        try {
+          const table = await this.page.$(tableSelector);
+          if (table) {
+            tableFound = true;
+            Logger.debug(`Found sales table with selector: ${tableSelector}`);
+
+            const rows = await this.page.$$(
+              this.selectors.reports.salesRow.join(", "),
+            );
+            Logger.debug(`Found ${rows.length} rows in sales table`);
+
+            for (const row of rows) {
+              try {
+                const cells = await row.$$("td");
+                if (cells.length === 0) continue; // Skip header rows
+
+                // Try to extract data from cells
+                // Common KDP reports format: Date | Marketplace | Title | ASIN | Units | Royalty | KENP | KENP Royalty
+                const cellTexts = await Promise.all(
+                  cells.map(async (cell) => {
+                    const text = await cell.textContent();
+                    return text?.trim() || "";
+                  }),
+                );
+
+                // Skip if we don't have enough data
+                if (cellTexts.length < 4) continue;
+
+                // Parse date (first column, typically)
+                const dateStr = cellTexts[0];
+                const salesDate = new Date(dateStr);
+                if (isNaN(salesDate.getTime())) continue; // Skip invalid dates
+
+                // Parse marketplace (second column, typically)
+                const marketplace = cellTexts[1].toUpperCase();
+
+                // Parse units ordered (typically column 4 or 5)
+                let unitsOrdered = 0;
+                let royalty = 0;
+                let kenpRead: number | undefined;
+                let kenpRoyalty: number | undefined;
+
+                // Try to find numeric columns
+                for (let i = 2; i < cellTexts.length; i++) {
+                  const cleaned = cellTexts[i].replace(/[$,£€¥]/g, "");
+                  const num = parseFloat(cleaned);
+
+                  if (!isNaN(num)) {
+                    // Heuristic: smaller integers are likely units, larger or decimal values are currency
+                    if (unitsOrdered === 0 && num >= 0 && num < 1000 && !cleaned.includes(".")) {
+                      unitsOrdered = num;
+                    } else if (royalty === 0 && num > 0) {
+                      royalty = num;
+                    } else if (kenpRead === undefined && num >= 0 && !cleaned.includes(".")) {
+                      kenpRead = num;
+                    } else if (kenpRoyalty === undefined && num > 0) {
+                      kenpRoyalty = num;
+                    }
+                  }
+                }
+
+                // Infer currency from marketplace
+                const currencyMap: Record<string, string> = {
+                  US: "USD",
+                  UK: "GBP",
+                  GB: "GBP",
+                  DE: "EUR",
+                  FR: "EUR",
+                  ES: "EUR",
+                  IT: "EUR",
+                  JP: "JPY",
+                  CA: "CAD",
+                  AU: "AUD",
+                  BR: "BRL",
+                  IN: "INR",
+                };
+
+                const currency =
+                  currencyMap[marketplace.substring(0, 2)] || "USD";
+
+                // Only add if we have meaningful data
+                if (salesDate && marketplace && royalty > 0) {
+                  salesData.push({
+                    asin,
+                    date: salesDate,
+                    marketplace,
+                    unitsOrdered,
+                    royalty,
+                    currency,
+                    kenpRead,
+                    kenpRoyalty,
+                  });
+                }
+              } catch (rowError) {
+                Logger.debug(`Failed to parse sales row: ${rowError}`);
+                continue;
+              }
+            }
+
+            break; // Table found and processed
+          }
+        } catch {
+          continue;
+        }
+      }
+
+      if (!tableFound) {
+        Logger.warn("No sales table found. Book may have no sales data.");
+      }
+
+      // Sort by date descending (newest first)
+      salesData.sort((a, b) => b.date.getTime() - a.date.getTime());
+
+      Logger.success(
+        `Retrieved ${salesData.length} sales records for ${asin}`,
+      );
+      await this.takeScreenshot("sales-data-scraped");
+
+      return salesData;
+    } catch (error) {
+      await this.takeScreenshot("get-sales-data-error");
+
+      if (error instanceof Error && error.name === "KdpSessionExpiredError") {
+        throw error;
+      }
+
+      if (error instanceof Error && error.name === "KdpScrapingError") {
+        throw error;
+      }
+
+      const { KdpScrapingError } = await import("@brainrot/types");
+      const message = error instanceof Error ? error.message : String(error);
+      throw new KdpScrapingError(
+        `Failed to get sales data for ${asin}: ${message}`,
         this.page?.url() || "unknown",
       );
     }
