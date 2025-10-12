@@ -1588,6 +1588,273 @@ export class KdpService {
       );
     }
   }
+
+  /**
+   * Download sales report as CSV and parse it
+   * Fallback method if table scraping fails or for bulk data retrieval
+   *
+   * @param asin - Optional ASIN to filter by
+   * @param options - Date range options
+   * @returns Array of sales data parsed from CSV
+   * @throws {KdpScrapingError} If download or parsing fails
+   *
+   * @example
+   * const sales = await kdp.downloadSalesReport('B0ABC123DEF', {
+   *   startDate: new Date('2024-01-01'),
+   *   endDate: new Date('2024-01-31')
+   * });
+   */
+  async downloadSalesReport(
+    asin?: string,
+    options?: { startDate?: Date; endDate?: Date },
+  ): Promise<import("@brainrot/types").SalesData[]> {
+    // Return mock data in mock mode
+    if (this.config.mockMode) {
+      Logger.info(`[MOCK] Downloading sales report for: ${asin || "all books"}`);
+      return this.getSalesData(asin || "B0MOCK", options);
+    }
+
+    if (!this.page) {
+      throw new Error("Browser not initialized. Call login() first.");
+    }
+
+    const endDate = options?.endDate || new Date();
+    const startDate =
+      options?.startDate ||
+      new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
+
+    try {
+      Logger.info("Downloading sales report from KDP...");
+
+      // Navigate to reports section (reuse navigation logic)
+      let navigated = false;
+      for (const selector of this.selectors.reports.reportsLink) {
+        try {
+          const link = await this.page.$(selector);
+          if (link) {
+            await link.click();
+            await this.page.waitForLoadState("networkidle");
+            navigated = true;
+            break;
+          }
+        } catch {
+          continue;
+        }
+      }
+
+      if (!navigated) {
+        await this.page.goto("https://kdp.amazon.com/en_US/reports", {
+          waitUntil: "networkidle",
+        });
+      }
+
+      // Set date filters (same as getSalesData)
+      for (const selector of this.selectors.reports.startDateInput) {
+        try {
+          const input = await this.page.$(selector);
+          if (input) {
+            await input.fill(startDate.toISOString().split("T")[0]);
+            break;
+          }
+        } catch {
+          continue;
+        }
+      }
+
+      for (const selector of this.selectors.reports.endDateInput) {
+        try {
+          const input = await this.page.$(selector);
+          if (input) {
+            await input.fill(endDate.toISOString().split("T")[0]);
+            break;
+          }
+        } catch {
+          continue;
+        }
+      }
+
+      // Wait for filters to apply
+      await this.page.waitForTimeout(1000);
+
+      // Find and click download button
+      const downloadSelectors = [
+        'button:has-text("Download")',
+        'a:has-text("Download")',
+        'button:has-text("Export")',
+        'a:has-text("Export")',
+        '[data-action="download"]',
+      ];
+
+      let downloadStarted = false;
+      for (const selector of downloadSelectors) {
+        try {
+          const button = await this.page.$(selector);
+          if (button) {
+            // Set up download listener before clicking
+            const downloadPromise = this.page.waitForEvent("download", {
+              timeout: 30000,
+            });
+
+            await button.click();
+            const download = await downloadPromise;
+
+            Logger.debug("Download started, waiting for completion...");
+
+            // Save to temp directory
+            const tempPath = await download.path();
+            if (!tempPath) {
+              throw new Error("Download failed: no file path");
+            }
+
+            Logger.debug(`Downloaded report to: ${tempPath}`);
+
+            // Read and parse CSV
+            const csvContent = await fs.readFile(tempPath, "utf-8");
+
+            // Parse CSV
+            const { parse } = await import("csv-parse/sync");
+            const records = parse(csvContent, {
+              columns: true,
+              skip_empty_lines: true,
+              trim: true,
+            }) as Record<string, string>[];
+
+            Logger.debug(`Parsed ${records.length} records from CSV`);
+
+            // Transform CSV records to SalesData
+            const salesData: import("@brainrot/types").SalesData[] = [];
+
+            for (const record of records) {
+              try {
+                // KDP CSV columns vary, but typically include:
+                // Order Date, Marketplace, Title, ASIN, Units Ordered, Royalty, Currency, KENP Read, KENP Royalty
+                const recordAsin = String(record.ASIN || record.asin || "").trim();
+
+                // Filter by ASIN if provided
+                if (asin && recordAsin !== asin) continue;
+
+                // Parse date (try multiple column names)
+                const dateStr =
+                  record["Order Date"] ||
+                  record["Date"] ||
+                  record["order_date"] ||
+                  record["date"];
+                if (!dateStr) continue;
+
+                const salesDate = new Date(dateStr);
+                if (isNaN(salesDate.getTime())) continue;
+
+                // Parse marketplace
+                const marketplace = String(
+                  record.Marketplace ||
+                    record.marketplace ||
+                    record.Country ||
+                    record.country ||
+                    "",
+                )
+                  .trim()
+                  .toUpperCase();
+
+                if (!marketplace) continue;
+
+                // Parse numeric fields
+                const unitsStr =
+                  record["Units Ordered"] ||
+                  record["units_ordered"] ||
+                  record.Units ||
+                  record.units ||
+                  "0";
+                const unitsOrdered = parseInt(
+                  String(unitsStr).replace(/[^0-9]/g, ""),
+                  10,
+                ) || 0;
+
+                const royaltyStr =
+                  record.Royalty ||
+                  record.royalty ||
+                  record["Royalty Earned"] ||
+                  record["royalty_earned"] ||
+                  "0";
+                const royalty =
+                  parseFloat(String(royaltyStr).replace(/[^0-9.-]/g, "")) || 0;
+
+                const currency =
+                  record.Currency || record.currency || "USD";
+
+                // Parse KENP data (optional)
+                const kenpReadStr =
+                  record["KENP Read"] ||
+                  record["kenp_read"] ||
+                  record.KENP ||
+                  record.kenp;
+                const kenpRead = kenpReadStr
+                  ? parseInt(String(kenpReadStr).replace(/[^0-9]/g, ""), 10)
+                  : undefined;
+
+                const kenpRoyaltyStr =
+                  record["KENP Royalty"] ||
+                  record["kenp_royalty"] ||
+                  record["KU/KOLL Royalty"] ||
+                  record["ku_koll_royalty"];
+                const kenpRoyalty = kenpRoyaltyStr
+                  ? parseFloat(String(kenpRoyaltyStr).replace(/[^0-9.-]/g, ""))
+                  : undefined;
+
+                salesData.push({
+                  asin: recordAsin,
+                  date: salesDate,
+                  marketplace,
+                  unitsOrdered,
+                  royalty,
+                  currency,
+                  kenpRead,
+                  kenpRoyalty,
+                });
+              } catch (recordError) {
+                Logger.debug(`Failed to parse CSV record: ${recordError}`);
+                continue;
+              }
+            }
+
+            // Clean up temp file
+            try {
+              await fs.unlink(tempPath);
+            } catch {
+              // Ignore cleanup errors
+            }
+
+            // Sort by date descending
+            salesData.sort((a, b) => b.date.getTime() - a.date.getTime());
+
+            Logger.success(
+              `Parsed ${salesData.length} sales records from CSV`,
+            );
+
+            downloadStarted = true;
+            return salesData;
+          }
+        } catch (downloadError) {
+          Logger.debug(`Download attempt failed: ${downloadError}`);
+          continue;
+        }
+      }
+
+      if (!downloadStarted) {
+        throw new Error("Could not find download button on reports page");
+      }
+
+      return [];
+    } catch (error) {
+      await this.takeScreenshot("download-sales-report-error");
+
+      const { KdpScrapingError } = await import("@brainrot/types");
+      const message = error instanceof Error ? error.message : String(error);
+      throw new KdpScrapingError(
+        `Failed to download sales report: ${message}`,
+        this.page?.url() || "unknown",
+      );
+    }
+  }
 }
 
 export default KdpService;

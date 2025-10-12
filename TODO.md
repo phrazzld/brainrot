@@ -135,7 +135,7 @@
   - Success criteria: Data matches KDP reports dashboard, includes all marketplaces
   - Performance note: Limit default to last 30 days to avoid long scraping times
 
-- [ ] Add report download fallback method `KdpService.downloadSalesReport()`
+- [x] Add report download fallback method `KdpService.downloadSalesReport()`
   - Click "Download" button: `await page.click('button:has-text("Download")')`
   - Wait for download: Use Playwright's `page.waitForEvent('download')` listener
   - Save CSV to temp directory: `const path = await download.path()`
