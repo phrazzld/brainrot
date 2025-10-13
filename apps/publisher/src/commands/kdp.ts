@@ -12,6 +12,65 @@ import { Logger } from "../utils/logger.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+/**
+ * Provide actionable error guidance based on error type
+ */
+function handleKdpError(error: any, context: string): void {
+  const errorName = error?.name || "";
+  const errorMessage = error?.message || String(error);
+
+  if (errorName === "KdpAuthenticationError" || errorMessage.includes("login")) {
+    Logger.error(`Failed to ${context}: Authentication error`);
+    Logger.info("");
+    Logger.info(chalk.bold("Troubleshooting steps:"));
+    Logger.info("  1. Verify KDP_EMAIL and KDP_PASSWORD environment variables are correct");
+    Logger.info("  2. Check if 2FA is enabled (use --headed mode to see browser and complete 2FA)");
+    Logger.info("  3. Ensure your KDP account is not locked due to failed login attempts");
+    Logger.info("  4. Try logging in manually at https://kdp.amazon.com/ to verify credentials");
+  } else if (errorName === "KdpSessionExpiredError" || errorMessage.includes("session")) {
+    Logger.error(`Failed to ${context}: Session expired`);
+    Logger.info("");
+    Logger.info(chalk.bold("What to do:"));
+    Logger.info("  • Your KDP session has expired. Please run the command again to re-login.");
+  } else if (errorName === "KdpScrapingError") {
+    Logger.error(`Failed to ${context}: Page scraping error`);
+    Logger.info("");
+    Logger.info(chalk.bold("Possible causes:"));
+    Logger.info("  • KDP website structure may have changed");
+    Logger.info("  • Network connectivity issues");
+    Logger.info("  • Page took too long to load");
+    Logger.info("");
+    Logger.info(chalk.bold("What to do:"));
+    Logger.info("  1. Check your internet connection");
+    Logger.info("  2. Try running with --headed mode to see what's happening");
+    Logger.info("  3. If issue persists, report at: https://github.com/phrazzld/brainrot/issues");
+    if ((error as any).url) {
+      Logger.info(`  4. Failed URL: ${(error as any).url}`);
+    }
+  } else if (errorMessage.includes("timeout") || errorMessage.includes("Timeout")) {
+    Logger.error(`Failed to ${context}: Operation timed out`);
+    Logger.info("");
+    Logger.info(chalk.bold("What to do:"));
+    Logger.info("  1. Check your internet connection");
+    Logger.info("  2. KDP servers may be slow - try again in a few minutes");
+    Logger.info("  3. Use --headed mode to see what's taking too long");
+  } else if (errorMessage.includes("network") || errorMessage.includes("ECONNREFUSED")) {
+    Logger.error(`Failed to ${context}: Network error`);
+    Logger.info("");
+    Logger.info(chalk.bold("What to do:"));
+    Logger.info("  1. Check your internet connection");
+    Logger.info("  2. Verify you can access https://kdp.amazon.com/ in your browser");
+    Logger.info("  3. Check if you're behind a firewall or proxy");
+  } else {
+    Logger.error(`Failed to ${context}: ${errorMessage}`);
+    if (error?.stack && process.env.DEBUG) {
+      Logger.debug("");
+      Logger.debug("Stack trace:");
+      Logger.debug(error.stack);
+    }
+  }
+}
+
 interface KdpPublishOptions {
   book: string;
   dryRun?: boolean;
@@ -279,8 +338,8 @@ async function publishToKdp(bookSlug: string, options: KdpPublishOptions) {
       await kdp.close();
     }
   } catch (error: any) {
-    spinner.fail(`Publishing failed: ${error.message}`);
-    Logger.error(error.message, error);
+    spinner.fail("Publishing failed");
+    handleKdpError(error, "publish book");
     process.exit(1);
   }
 }
@@ -321,8 +380,8 @@ async function testLogin(options: any) {
 
     await kdp.close();
   } catch (error: any) {
-    spinner.fail(`Login failed: ${error.message}`);
-    Logger.error(error.message, error);
+    spinner.fail("Login failed");
+    handleKdpError(error, "login to KDP");
     process.exit(1);
   }
 }
@@ -371,8 +430,8 @@ async function checkSetup(options: any) {
 
     spinner.succeed("KDP setup check complete");
   } catch (error: any) {
-    spinner.fail(`Setup check failed: ${error.message}`);
-    Logger.error(error.message, error);
+    spinner.fail("Setup check failed");
+    handleKdpError(error, "check KDP setup");
     process.exit(1);
   }
 }
@@ -446,8 +505,8 @@ async function listBooks(options: any) {
       await kdp.close();
     }
   } catch (error: any) {
-    spinner.fail(`Failed to list books: ${error.message}`);
-    Logger.error(error.message, error);
+    spinner.fail("Failed to list books");
+    handleKdpError(error, "list books");
     process.exit(1);
   }
 }
@@ -524,8 +583,8 @@ async function showBook(asin: string, options: any) {
       await kdp.close();
     }
   } catch (error: any) {
-    spinner.fail(`Failed to get book details: ${error.message}`);
-    Logger.error(error.message, error);
+    spinner.fail("Failed to get book details");
+    handleKdpError(error, "get book details");
     process.exit(1);
   }
 }
@@ -622,8 +681,8 @@ async function showSales(asin: string, options: any) {
       await kdp.close();
     }
   } catch (error: any) {
-    spinner.fail(`Failed to get sales data: ${error.message}`);
-    Logger.error(error.message, error);
+    spinner.fail("Failed to get sales data");
+    handleKdpError(error, "get sales data");
     process.exit(1);
   }
 }

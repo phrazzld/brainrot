@@ -264,13 +264,14 @@
   - Do NOT retry on authentication errors (fail fast)
   - Success criteria: Handles intermittent network issues without user intervention
 
-- [ ] Add progress indicators for slow operations
+- [x] Add progress indicators for slow operations
   - Use `ora` spinner (already in dependencies) for login, book listing, sales scraping
   - Show current operation: `spinner.text = 'Fetching book details...'`
   - Success/failure states: `spinner.succeed('Found 14 books')` or `spinner.fail('Login failed')`
   - Success criteria: User sees progress during 5+ second operations
+  - Note: Already implemented in all CLI commands (login, list, show, sales)
 
-- [ ] Improve error messages with actionable guidance
+- [x] Improve error messages with actionable guidance
   ```typescript
   catch (error) {
     if (error instanceof KdpAuthenticationError) {
@@ -287,6 +288,7 @@
   }
   ```
   Success criteria: Error messages clearly explain problem and next steps
+  Implemented via handleKdpError() helper with 6 error types covered
 
 ### 7. Testing
 
