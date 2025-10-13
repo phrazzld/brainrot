@@ -197,7 +197,16 @@ export class KdpService {
   }
 
   /**
-   * Close browser and cleanup
+   * Close browser and cleanup resources
+   *
+   * Properly closes the Playwright browser instance and cleans up all
+   * associated resources. Safe to call multiple times.
+   *
+   * @example
+   * const kdp = new KdpService({ email, password });
+   * await kdp.login();
+   * await kdp.listBooks();
+   * await kdp.close(); // Always close when done
    */
   async close(): Promise<void> {
     if (this.config.mockMode) {
@@ -288,7 +297,24 @@ export class KdpService {
   }
 
   /**
-   * Login to KDP with 2FA support
+   * Login to Amazon KDP with 2FA support
+   *
+   * Initializes browser, navigates to KDP, and handles authentication including
+   * optional 2FA. Must be called before any other KDP operations.
+   *
+   * In mock mode, returns immediately without browser initialization.
+   * In headed mode (--headed), you can manually complete 2FA in the visible browser.
+   *
+   * @throws {KdpAuthenticationError} If credentials are invalid or login fails
+   * @throws {Error} If browser initialization fails
+   *
+   * @example
+   * const kdp = new KdpService({
+   *   email: process.env.KDP_EMAIL,
+   *   password: process.env.KDP_PASSWORD,
+   *   headless: true
+   * });
+   * await kdp.login();
    */
   async login(): Promise<void> {
     if (this.config.mockMode) {

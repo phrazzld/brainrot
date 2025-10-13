@@ -331,22 +331,14 @@
   - Note: Keep existing publishing commands documentation intact
   - Completed in previous commit (b225ac2)
 
-- [ ] Add inline JSDoc comments to public methods
-  ```typescript
-  /**
-   * Lists all books in the KDP account
-   *
-   * @param options.noCache - If true, bypasses cache and fetches fresh data from KDP
-   * @returns Array of books sorted by last modified date (newest first)
-   * @throws {KdpAuthenticationError} If not logged in or session expired
-   * @throws {KdpScrapingError} If bookshelf page structure has changed
-   *
-   * @example
-   * const books = await kdp.listBooks();
-   * console.log(`You have ${books.length} books`);
-   */
-  async listBooks(options?: { noCache?: boolean }): Promise<KdpBook[]>
-  ```
+- [x] Add inline JSDoc comments to public methods
+  - Enhanced login() with 2FA documentation and example
+  - Enhanced close() with cleanup details and example
+  - listBooks() already has comprehensive JSDoc
+  - getBookDetails() already has comprehensive JSDoc
+  - getSalesData() already has comprehensive JSDoc
+  - downloadSalesReport() already has comprehensive JSDoc
+  - All public methods now documented with @param, @returns, @throws, @example
 
 - [ ] Create `docs/KDP_CLI_GUIDE.md` with comprehensive usage guide
   - Getting started: Setting up credentials
