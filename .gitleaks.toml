@@ -9,6 +9,7 @@ description = "Allowlisted files"
 paths = [
   '''.env.example''',
   '''docs/SECRETS\.md''',
+  '''docs/KDP_CLI_GUIDE\.md''',
   '''\.gitleaks\.toml''',
   '''.github/secret_scanning\.yml''',
   '''.*\.test\.(ts|js)$''',
