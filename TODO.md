@@ -314,20 +314,12 @@
   ```
   Success criteria: Can run tests without KDP credentials or network access
 
-- [ ] Add manual E2E test documentation in `apps/publisher/README.md`
-  ```markdown
-  ## Manual Testing Checklist
-
-  Before release, verify these commands with real KDP account:
-
-  1. `pnpm publisher kdp list` - Shows all your books
-  2. `pnpm publisher kdp list --status=live` - Filters correctly
-  3. `pnpm publisher kdp show <ASIN>` - Shows book details
-  4. `pnpm publisher kdp sales <ASIN>` - Shows sales data
-  5. Verify data matches KDP dashboard exactly
-  6. Test with expired session (clear cookies, should fail gracefully)
-  7. Test with invalid ASIN (should show helpful error)
-  ```
+- [x] Add manual E2E test documentation in `apps/publisher/README.md`
+  - Added comprehensive "KDP Account Management" section
+  - Documented all commands (list, show, sales) with examples
+  - Included mock mode testing instructions
+  - Created detailed 8-point manual testing checklist
+  - Covered authentication, caching, error handling, export formats
 
 ### 8. Documentation
 

@@ -117,6 +117,118 @@ Configuration is loaded from (in order of precedence):
 - Professional print distribution
 - Bookstore and library access
 
+## KDP Account Management
+
+In addition to publishing books, the CLI provides read-only account management commands for monitoring your KDP books, sales, and metadata.
+
+### List All Books
+
+```bash
+# List all books in your KDP account
+node dist/index.js kdp list
+
+# Filter by status
+node dist/index.js kdp list --status=live
+node dist/index.js kdp list --status=draft
+
+# Export to JSON or CSV
+node dist/index.js kdp list --format=json
+node dist/index.js kdp list --format=csv
+
+# Force refresh (bypass cache)
+node dist/index.js kdp list --no-cache
+```
+
+### Show Book Details
+
+```bash
+# View detailed information for a specific book
+node dist/index.js kdp show B0ABC123DEF
+
+# Export to JSON
+node dist/index.js kdp show B0ABC123DEF --format=json
+```
+
+### View Sales Data
+
+```bash
+# Show sales for the last 30 days (default)
+node dist/index.js kdp sales B0ABC123DEF
+
+# Custom date range
+node dist/index.js kdp sales B0ABC123DEF --days=90
+
+# Export sales data
+node dist/index.js kdp sales B0ABC123DEF --format=json
+node dist/index.js kdp sales B0ABC123DEF --format=csv
+```
+
+### KDP CLI Options
+
+All KDP commands support these options:
+
+- `--headless` - Run browser in headless mode (default: true)
+- `--headed` - Run browser with visible UI for debugging
+- `--mock` - Run in mock mode without actual browser automation (for testing)
+
+### Mock Mode Testing
+
+Test KDP commands without credentials or network access:
+
+```bash
+# Test any KDP command in mock mode
+node dist/index.js kdp list --mock
+node dist/index.js kdp show B0MOCK123 --mock
+node dist/index.js kdp sales B0MOCK123 --mock
+```
+
+### Manual Testing Checklist
+
+Before release, verify these commands with a real KDP account:
+
+**Prerequisites:**
+- Set `KDP_EMAIL` and `KDP_PASSWORD` environment variables
+- Have at least one book published in KDP account
+
+**Test Cases:**
+
+1. **List books** - `node dist/index.js kdp list`
+   - ✅ Shows all your books
+   - ✅ Displays correct status, formats, and dates
+   - ✅ Data matches KDP dashboard
+
+2. **Filter by status** - `node dist/index.js kdp list --status=live`
+   - ✅ Filters correctly
+   - ✅ Shows only live books
+
+3. **Show book details** - `node dist/index.js kdp show <ASIN>`
+   - ✅ Displays complete metadata
+   - ✅ Shows pricing for all marketplaces
+   - ✅ Keywords and categories visible
+
+4. **View sales data** - `node dist/index.js kdp sales <ASIN>`
+   - ✅ Shows sales breakdown by date/marketplace
+   - ✅ Includes KENP data for KDP Select books
+   - ✅ Totals calculated correctly
+
+5. **Export formats** - Test JSON and CSV exports
+   - ✅ `--format=json` produces valid JSON
+   - ✅ `--format=csv` produces valid CSV
+
+6. **Error handling** - Verify graceful failures
+   - ✅ Invalid ASIN shows helpful error
+   - ✅ Network issues retry automatically
+   - ✅ Session expiration handled gracefully
+
+7. **Authentication** - Test login scenarios
+   - ✅ Correct credentials → successful login
+   - ✅ 2FA prompted when enabled
+   - ✅ Wrong credentials → clear error message
+
+8. **Cache behavior** - Verify caching works
+   - ✅ Second `kdp list` call is instant (cached)
+   - ✅ `--no-cache` forces fresh fetch
+
 ## Book Validation
 
 Before publishing, books must pass validation:
