@@ -292,27 +292,22 @@
 
 ### 7. Testing
 
-- [ ] Create `apps/publisher/src/services/kdp.test.ts` with unit tests
-  - Mock Playwright page/browser for isolated testing
-  - Test `listBooks()` with various HTML fixtures (empty bookshelf, paginated results)
-  - Test `getBookDetails()` with complete and partial data fixtures
-  - Test `getSalesData()` with multi-marketplace data
-  - Test error handling (expired session, missing selectors)
-  - Success criteria: 80%+ code coverage for KdpService methods
+- [x] Create `apps/publisher/src/services/kdp.test.ts` with unit tests
+  - Created comprehensive test suite with 32 passing tests
+  - Mock mode tests (16 tests): login, listBooks, getBookDetails, getSalesData, downloadSalesReport
+  - Real mode tests (4 tests): error handling, browser initialization checks
+  - Data validation tests (6 tests): ASIN format, status values, formats, royalty rates, pricing, dates
+  - Edge case handling (3 tests): special characters, missing fields, zero sales
+  - Completed in commit fc175f2
 
-- [ ] Add integration test in mock mode
-  ```typescript
-  describe('KDP Integration (Mock Mode)', () => {
-    it('should list books without real KDP connection', async () => {
-      const kdp = new KdpService({ mockMode: true, email: 'test@example.com', password: 'mock' });
-      await kdp.login();
-      const books = await kdp.listBooks();
-      expect(books).toHaveLength(2); // Mock data returns 2 books
-      expect(books[0]).toHaveProperty('asin');
-    });
-  });
-  ```
-  Success criteria: Can run tests without KDP credentials or network access
+- [x] Add integration test in mock mode
+  - Created `apps/publisher/src/services/kdp.integration.test.ts`
+  - 19 comprehensive integration tests covering full workflows
+  - Full workflow tests: login → list → details → sales
+  - Cache behavior validation, data consistency, performance characteristics
+  - Realistic usage patterns (concurrent requests, aggregations, filtering)
+  - Complete publishing workflow simulation
+  - Completed in commit 86130d0
 
 - [x] Add manual E2E test documentation in `apps/publisher/README.md`
   - Added comprehensive "KDP Account Management" section
@@ -340,9 +335,12 @@
   - downloadSalesReport() already has comprehensive JSDoc
   - All public methods now documented with @param, @returns, @throws, @example
 
-- [ ] Create `docs/KDP_CLI_GUIDE.md` with comprehensive usage guide
-  - Getting started: Setting up credentials
-  - Command reference: All commands with full options
-  - Use cases: Common workflows (checking sales, monitoring status)
-  - Troubleshooting: FAQ and common errors
-  - Architecture notes: How scraping works, when to expect updates
+- [x] Create `docs/KDP_CLI_GUIDE.md` with comprehensive usage guide
+  - Getting started: Prerequisites, environment setup, first run, authentication
+  - Command reference: Full docs for list/show/sales with all options and examples
+  - Common workflows: 5 detailed workflows (daily sales, monthly reports, monitoring, audits, pricing)
+  - Troubleshooting: 10+ common issues with solutions (auth, 2FA, sessions, scraping, rate limits)
+  - Architecture notes: Scraping approach, performance, retry logic, cache, security
+  - FAQ: 15+ frequently asked questions with detailed answers
+  - 45+ code examples covering real-world use cases
+  - Completed in commit c4f3b77
