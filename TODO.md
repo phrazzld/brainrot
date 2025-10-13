@@ -323,12 +323,13 @@
 
 ### 8. Documentation
 
-- [ ] Update `apps/publisher/README.md` with new KDP management commands
+- [x] Update `apps/publisher/README.md` with new KDP management commands
   - Add "KDP Account Management" section
   - Document all new commands with examples
   - Add troubleshooting section for common issues
   - Include screenshot showing example output
   - Note: Keep existing publishing commands documentation intact
+  - Completed in previous commit (b225ac2)
 
 - [ ] Add inline JSDoc comments to public methods
   ```typescript
