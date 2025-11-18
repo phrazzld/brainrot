@@ -1,9 +1,10 @@
 name: Sync Content to Blob Storage
 
 on:
-  schedule:
-    # Run daily at 2 AM UTC
-    - cron: "0 2 * * *"
+  # Schedule disabled - was running daily even without content changes
+  # Trigger manually when content actually changes
+  # schedule:
+  #   - cron: "0 2 * * *"
   workflow_dispatch:
     inputs:
       book:

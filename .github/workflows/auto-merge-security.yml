@@ -1,215 +1,24 @@
-# Auto-merge security dependency updates that pass all CI checks
-# This workflow automatically approves and merges Dependabot security updates
-# to ensure critical security fixes are applied quickly without manual intervention
+# Auto-merge Dependabot PRs that pass all CI checks
+# Simplified workflow - let GitHub's native required checks handle waiting
 
-name: Auto-merge Security Updates
+name: Auto-merge Dependabot
 
 on:
   pull_request:
-    types: [opened, synchronize, reopened, labeled]
-  pull_request_target:
-    types: [opened, synchronize, reopened, labeled]
+    types: [opened, synchronize, reopened]
 
 permissions:
   contents: write
   pull-requests: write
-  checks: read
-  statuses: read
 
 jobs:
-  # Check if this is a security update that should be auto-merged
-  check-security-update:
+  auto-merge:
     runs-on: ubuntu-latest
     if: github.actor == 'dependabot[bot]'
-    outputs:
-      should-merge: ${{ steps.check.outputs.should-merge }}
-      pr-number: ${{ steps.pr.outputs.number }}
     steps:
-      - name: Get PR information
-        id: pr
-        run: |
-          echo "number=${{ github.event.pull_request.number }}" >> $GITHUB_OUTPUT
-          echo "title=${{ github.event.pull_request.title }}" >> $GITHUB_OUTPUT
-
-      - name: Check if security update with auto-merge label
-        id: check
-        run: |
-          labels="${{ join(github.event.pull_request.labels.*.name, ' ') }}"
-          title="${{ github.event.pull_request.title }}"
-          
-          echo "PR Labels: $labels"
-          echo "PR Title: $title"
-          
-          # Check if PR has both security and auto-merge labels
-          if [[ "$labels" == *"security"* && "$labels" == *"auto-merge"* ]]; then
-            echo "✅ Security update with auto-merge label detected"
-            echo "should-merge=true" >> $GITHUB_OUTPUT
-          elif [[ "$title" == *"security"* ]]; then
-            echo "✅ Security update detected in title"
-            echo "should-merge=true" >> $GITHUB_OUTPUT
-          else
-            echo "❌ Not a security auto-merge update"
-            echo "should-merge=false" >> $GITHUB_OUTPUT
-          fi
-
-  # Wait for all CI checks to complete and pass
-  wait-for-checks:
-    runs-on: ubuntu-latest
-    needs: check-security-update
-    if: needs.check-security-update.outputs.should-merge == 'true'
-    steps:
-      - name: Wait for CI checks to complete
-        uses: fountainhead/action-wait-for-check@v1.2.0
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          checkName: "Build"
-          ref: ${{ github.event.pull_request.head.sha }}
-          timeoutSeconds: 600
-          intervalSeconds: 30
-
-      - name: Wait for additional checks
-        uses: fountainhead/action-wait-for-check@v1.2.0
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          checkName: "Lint"
-          ref: ${{ github.event.pull_request.head.sha }}
-          timeoutSeconds: 600
-          intervalSeconds: 30
-
-      - name: Wait for TypeScript check
-        uses: fountainhead/action-wait-for-check@v1.2.0
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          checkName: "Type Check"
-          ref: ${{ github.event.pull_request.head.sha }}
-          timeoutSeconds: 600
-          intervalSeconds: 30
-
-      - name: Wait for tests
-        uses: fountainhead/action-wait-for-check@v1.2.0
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          checkName: "Test - Node 22"
-          ref: ${{ github.event.pull_request.head.sha }}
-          timeoutSeconds: 600
-          intervalSeconds: 30
-
-  # Approve and merge the security update
-  auto-approve-and-merge:
-    runs-on: ubuntu-latest
-    needs: [check-security-update, wait-for-checks]
-    if: needs.check-security-update.outputs.should-merge == 'true'
-    steps:
-      - name: Get PR details
-        id: pr-details
-        run: |
-          echo "number=${{ needs.check-security-update.outputs.pr-number }}" >> $GITHUB_OUTPUT
-
-      - name: Check PR status
-        id: pr-status
-        run: |
-          # Get PR status via GitHub API
-          pr_status=$(gh api repos/${{ github.repository }}/pulls/${{ steps.pr-details.outputs.number }}/commits/${{ github.event.pull_request.head.sha }}/status --jq '.state')
-          echo "status=$pr_status" >> $GITHUB_OUTPUT
-          echo "PR Status: $pr_status"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Approve security PR
-        if: steps.pr-status.outputs.status == 'success'
-        run: |
-          gh api repos/${{ github.repository }}/pulls/${{ steps.pr-details.outputs.number }}/reviews \
-            --method POST \
-            --field event='APPROVE' \
-            --field body='✅ **Security Update Auto-Approved**
-
-          This security dependency update has passed all CI checks and is being automatically merged to ensure timely application of security fixes.
-          
-          **Auto-merge criteria met:**
-          - ✅ Created by Dependabot
-          - ✅ Labeled as security update  
-          - ✅ All CI checks passing
-          - ✅ Build successful
-          - ✅ Linting passed
-          - ✅ Type checking passed
-          - ✅ Tests passed
-          
-          If you have concerns about this automated merge, please review the security advisory and dependency changes.'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Enable auto-merge
-        if: steps.pr-status.outputs.status == 'success'
         run: |
-          gh api graphql -f query='
-            mutation($pullRequestId: ID!) {
-              enablePullRequestAutoMerge(input: {
-                pullRequestId: $pullRequestId,
-                mergeMethod: SQUASH
-              }) {
-                pullRequest {
-                  autoMergeRequest {
-                    enabledAt
-                  }
-                }
-              }
-            }' -f pullRequestId=${{ github.event.pull_request.node_id }}
+          gh pr merge --auto --squash "$PR_URL"
         env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Add success comment
-        if: steps.pr-status.outputs.status == 'success'
-        run: |
-          gh api repos/${{ github.repository }}/issues/${{ steps.pr-details.outputs.number }}/comments \
-            --method POST \
-            --field body='🔒 **Security Update Auto-Merge Enabled**
-            
-          This security dependency update will be automatically merged once all required checks pass.
-          
-          **Security Update Details:**
-          - Update type: Security fix
-          - CI Status: All checks passing ✅
-          - Auto-merge: Enabled 🤖
-          
-          **Monitoring:**
-          - Post-merge monitoring will verify system stability
-          - Any issues will trigger immediate alerts
-          - Rollback procedures are documented in docs/PRODUCTION_DEPLOYMENT_PLAN.md
-          
-          *This is an automated security response to ensure timely application of critical security fixes.*'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Handle failed checks
-        if: steps.pr-status.outputs.status != 'success'
-        run: |
-          echo "❌ CI checks failed or pending - not auto-merging"
-          gh api repos/${{ github.repository }}/issues/${{ steps.pr-details.outputs.number }}/comments \
-            --method POST \
-            --field body='⚠️ **Security Update - Manual Review Required**
-            
-          This security dependency update could not be automatically merged due to failing CI checks.
-          
-          **Status:** CI checks failed or are still pending
-          **Action Required:** Manual review and intervention needed
-          
-          Please review the failed checks and determine if:
-          1. The failures are related to the security update
-          2. The failures are pre-existing issues 
-          3. Manual fixes are needed
-          
-          **Security Priority:** Please prioritize reviewing this security update promptly.'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-  # Notify about security updates
-  security-notification:
-    runs-on: ubuntu-latest
-    needs: check-security-update
-    if: needs.check-security-update.outputs.should-merge == 'true'
-    steps:
-      - name: Post security notification
-        run: |
-          echo "🔒 Security dependency update detected: PR #${{ needs.check-security-update.outputs.pr-number }}"
-          echo "Title: ${{ github.event.pull_request.title }}"
-          echo "Auto-merge enabled for critical security fixes"

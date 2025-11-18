@@ -1,166 +1,20 @@
 # Dependabot configuration for Brainrot Publishing House monorepo
+# Consolidated from 18 entries to 3 - monorepo root handles all workspace dependencies
 version: 2
 updates:
-  # SECURITY UPDATES - Daily automatic security-only updates for all packages
-  # These are processed separately with auto-merge enabled for critical fixes
-  - package-ecosystem: "npm"
-    directory: "/"
-    schedule:
-      interval: "daily"
-      time: "02:00"
-    target-branch: "master"
-    open-pull-requests-limit: 20
-    ignore:
-      # Only process security updates, ignore feature/dependency updates
-      - dependency-name: "*"
-        update-types: ["version-update:semver-minor", "version-update:semver-patch"]
-    commit-message:
-      prefix: "security"
-      include: "scope"
-    labels:
-      - "security"
-      - "dependencies" 
-      - "auto-merge"
-    reviewers:
-      - "phrazzld"
-  
-  - package-ecosystem: "npm"
-    directory: "/apps/web"
-    schedule:
-      interval: "daily"
-      time: "02:15"
-    target-branch: "master"
-    open-pull-requests-limit: 10
-    ignore:
-      - dependency-name: "*"
-        update-types: ["version-update:semver-minor", "version-update:semver-patch"]
-    commit-message:
-      prefix: "security(web)"
-      include: "scope"
-    labels:
-      - "security"
-      - "dependencies"
-      - "auto-merge"
-      - "web-app"
-    reviewers:
-      - "phrazzld"
-
-  - package-ecosystem: "npm"
-    directory: "/apps/publisher"
-    schedule:
-      interval: "daily"
-      time: "02:30"
-    target-branch: "master"
-    open-pull-requests-limit: 5
-    ignore:
-      - dependency-name: "*"
-        update-types: ["version-update:semver-minor", "version-update:semver-patch"]
-    commit-message:
-      prefix: "security(publisher)"
-      include: "scope"
-    labels:
-      - "security"
-      - "dependencies"
-      - "auto-merge"
-      - "publisher"
-    reviewers:
-      - "phrazzld"
-
-  - package-ecosystem: "npm"
-    directory: "/packages/@brainrot/converter"
-    schedule:
-      interval: "daily"
-      time: "02:45"
-    target-branch: "master"
-    open-pull-requests-limit: 5
-    ignore:
-      - dependency-name: "*"
-        update-types: ["version-update:semver-minor", "version-update:semver-patch"]
-    commit-message:
-      prefix: "security(converter)"
-      include: "scope"
-    labels:
-      - "security"
-      - "dependencies"
-      - "auto-merge"
-      - "packages"
-    reviewers:
-      - "phrazzld"
-
-  - package-ecosystem: "npm"
-    directory: "/packages/@brainrot/blob-client"
-    schedule:
-      interval: "daily"
-      time: "03:00"
-    target-branch: "master"
-    open-pull-requests-limit: 5
-    ignore:
-      - dependency-name: "*"
-        update-types: ["version-update:semver-minor", "version-update:semver-patch"]
-    commit-message:
-      prefix: "security(blob-client)"
-      include: "scope"
-    labels:
-      - "security"
-      - "dependencies"
-      - "auto-merge"
-      - "packages"
-    reviewers:
-      - "phrazzld"
-
-  - package-ecosystem: "npm"
-    directory: "/packages/@brainrot/metadata"
-    schedule:
-      interval: "daily"
-      time: "03:15"
-    target-branch: "master"
-    open-pull-requests-limit: 5
-    ignore:
-      - dependency-name: "*"
-        update-types: ["version-update:semver-minor", "version-update:semver-patch"]
-    commit-message:
-      prefix: "security(metadata)"
-      include: "scope"
-    labels:
-      - "security"
-      - "dependencies"
-      - "auto-merge"
-      - "packages"
-    reviewers:
-      - "phrazzld"
-
-  # GitHub Actions security updates
-  - package-ecosystem: "github-actions"
-    directory: "/"
-    schedule:
-      interval: "daily"
-      time: "01:30"
-    target-branch: "master"
-    open-pull-requests-limit: 10
-    ignore:
-      - dependency-name: "*"
-        update-types: ["version-update:semver-minor", "version-update:semver-patch"]
-    commit-message:
-      prefix: "security(actions)"
-      include: "scope"
-    labels:
-      - "security"
-      - "dependencies"
-      - "auto-merge"
-      - "github-actions"
-    reviewers:
-      - "phrazzld"
-  # Root monorepo dependencies (Turborepo, pnpm, etc.)
+  # Root monorepo - handles ALL npm packages in workspaces
+  # pnpm workspaces mean dependencies bubble up to root lockfile
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
       interval: "weekly"
       day: "monday"
       time: "04:00"
-    open-pull-requests-limit: 10
+    target-branch: "master"
+    open-pull-requests-limit: 5
     groups:
-      # Group all minor and patch updates together
-      minor-and-patch:
+      # Group all non-major updates into single PR
+      all-dependencies:
         patterns:
           - "*"
         update-types:
@@ -171,155 +25,22 @@ updates:
       include: "scope"
     labels:
       - "dependencies"
-      - "javascript"
     reviewers:
       - "phrazzld"
 
-  # Web app dependencies
-  - package-ecosystem: "npm"
-    directory: "/apps/web"
-    schedule:
-      interval: "weekly"
-      day: "tuesday"
-      time: "04:00"
-    open-pull-requests-limit: 5
-    groups:
-      next-and-react:
-        patterns:
-          - "next"
-          - "react*"
-          - "@next/*"
-        update-types:
-          - "minor"
-          - "patch"
-    commit-message:
-      prefix: "deps(web)"
-      include: "scope"
-    labels:
-      - "dependencies"
-      - "web-app"
-    reviewers:
-      - "phrazzld"
-
-  # Publisher CLI dependencies
-  - package-ecosystem: "npm"
-    directory: "/apps/publisher"
-    schedule:
-      interval: "weekly"
-      day: "wednesday"
-      time: "04:00"
-    open-pull-requests-limit: 3
-    groups:
-      playwright:
-        patterns:
-          - "@playwright/*"
-          - "playwright"
-    commit-message:
-      prefix: "deps(publisher)"
-      include: "scope"
-    labels:
-      - "dependencies"
-      - "publisher"
-    reviewers:
-      - "phrazzld"
-
-  # @brainrot/converter package
-  - package-ecosystem: "npm"
-    directory: "/packages/@brainrot/converter"
-    schedule:
-      interval: "weekly"
-      day: "thursday"
-      time: "04:00"
-    open-pull-requests-limit: 3
-    commit-message:
-      prefix: "deps(converter)"
-      include: "scope"
-    labels:
-      - "dependencies"
-      - "packages"
-    reviewers:
-      - "phrazzld"
-
-  # @brainrot/blob-client package
-  - package-ecosystem: "npm"
-    directory: "/packages/@brainrot/blob-client"
-    schedule:
-      interval: "weekly"
-      day: "thursday"
-      time: "04:00"
-    open-pull-requests-limit: 3
-    groups:
-      vercel:
-        patterns:
-          - "@vercel/*"
-    commit-message:
-      prefix: "deps(blob-client)"
-      include: "scope"
-    labels:
-      - "dependencies"
-      - "packages"
-    reviewers:
-      - "phrazzld"
-
-  # @brainrot/metadata package
-  - package-ecosystem: "npm"
-    directory: "/packages/@brainrot/metadata"
-    schedule:
-      interval: "weekly"
-      day: "friday"
-      time: "04:00"
-    open-pull-requests-limit: 3
-    commit-message:
-      prefix: "deps(metadata)"
-      include: "scope"
-    labels:
-      - "dependencies"
-      - "packages"
-    reviewers:
-      - "phrazzld"
-
-  # @brainrot/types package (less frequent as it's mostly interfaces)
-  - package-ecosystem: "npm"
-    directory: "/packages/@brainrot/types"
-    schedule:
-      interval: "monthly"
-      day: "monday"
-      time: "04:00"
-    open-pull-requests-limit: 2
-    commit-message:
-      prefix: "deps(types)"
-      include: "scope"
-    labels:
-      - "dependencies"
-      - "packages"
-    reviewers:
-      - "phrazzld"
-
-  # @brainrot/templates package (less frequent updates)
-  - package-ecosystem: "npm"
-    directory: "/packages/@brainrot/templates"
-    schedule:
-      interval: "monthly"
-      day: "monday"
-      time: "04:00"
-    open-pull-requests-limit: 2
-    commit-message:
-      prefix: "deps(templates)"
-      include: "scope"
-    labels:
-      - "dependencies"
-      - "packages"
-    reviewers:
-      - "phrazzld"
-
-  # Enable version updates for GitHub Actions
+  # GitHub Actions updates
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "weekly"
       day: "monday"
       time: "04:00"
-    open-pull-requests-limit: 5
+    target-branch: "master"
+    open-pull-requests-limit: 3
+    groups:
+      actions:
+        patterns:
+          - "*"
     commit-message:
       prefix: "ci"
       include: "scope"
@@ -329,14 +50,12 @@ updates:
     reviewers:
       - "phrazzld"
 
-  # Enable version updates for Docker
+  # Docker updates (if used)
   - package-ecosystem: "docker"
     directory: "/"
     schedule:
-      interval: "weekly"
-      day: "monday"
-      time: "04:00"
-    open-pull-requests-limit: 5
+      interval: "monthly"
+    open-pull-requests-limit: 2
     commit-message:
       prefix: "docker"
       include: "scope"

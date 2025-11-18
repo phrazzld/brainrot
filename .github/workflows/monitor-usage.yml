@@ -1,9 +1,10 @@
 name: Monitor API Usage
 
 on:
-  schedule:
-    # Run every 6 hours
-    - cron: "0 */6 * * *"
+  # Schedule disabled - 120 runs/month with no active development
+  # Trigger manually when monitoring is needed
+  # schedule:
+  #   - cron: "0 */6 * * *"
   workflow_dispatch:
     inputs:
       verbose:
