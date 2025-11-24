@@ -59,7 +59,7 @@
   Estimate: 0.5h  
   depends: T3  
 
-- [ ] T5 Add audit command + optional CI gate (pending approval)  
+- [?] T5 Add audit command + optional CI gate (pending approval)  
   Files: `package.json` (root scripts), `.github/workflows/ci.yml`  
   Goal: Provide `pnpm audit --audit-level=high` script; optionally run in CI.  
   Approach:  
@@ -70,7 +70,7 @@
   Estimate: 0.5h  
   depends: Decision from stakeholders  
 
-- [ ] T6 Run quality gates locally  
+- [x] T6 Run quality gates locally  
   Files: n/a (commands)  
   Goal: Verify lint/type/test/validate/build on updated deps.  
   Approach: run `pnpm lint`, `pnpm typecheck`, `pnpm test:run`, `pnpm validate:all`, `pnpm build`.  
@@ -79,7 +79,7 @@
   Estimate: 1.0h  
   depends: T3  
 
-- [ ] T7 Publisher mock smoke with new Playwright  
+- [x] T7 Publisher mock smoke with new Playwright  
   Files: n/a (commands/logs)  
   Goal: Ensure KDP/Lulu flows still launch chromium and exit cleanly.  
   Approach: Run mock/dry-run publish for one sample book (document command used); capture logs.  
@@ -88,7 +88,7 @@
   Estimate: 1.0h  
   depends: T6  
 
-- [ ] T8 Document remediation note  
+- [x] T8 Document remediation note  
   Files: `TASK.md` (status note) and/or `README.md` changelog snippet  
   Goal: Record versions applied and commands run.  
   Approach: Add brief bullet noting patched versions and audit result.  
