@@ -32,6 +32,24 @@ runs:
       shell: bash
       run: pnpm install --frozen-lockfile
 
+    - name: Determine Playwright version
+      shell: bash
+      run: |
+        PLAYWRIGHT_VERSION=$(node -p "require('./apps/publisher/package.json').dependencies['playwright']")
+        echo "PLAYWRIGHT_VERSION=$PLAYWRIGHT_VERSION" >> $GITHUB_ENV
+
+    - name: Cache Playwright browsers
+      uses: actions/cache@v4
+      with:
+        path: ~/.cache/ms-playwright
+        key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
+        restore-keys: |
+          ${{ runner.os }}-playwright-
+
+    - name: Install Playwright browsers (chromium)
+      shell: bash
+      run: pnpm exec playwright install chromium
+
     - name: Setup Turbo cache
       uses: actions/cache@v4
       with:

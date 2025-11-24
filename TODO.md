@@ -48,7 +48,7 @@
   Estimate: 0.5h  
   depends: T1, T2  
 
-- [ ] T4 Add Playwright browser cache to CI  
+- [x] T4 Add Playwright browser cache to CI  
   Files: `.github/actions/setup/action.yml` (or workflow)  
   Goal: Cache `~/.cache/ms-playwright` keyed by Playwright version to avoid install regressions.  
   Approach:  
