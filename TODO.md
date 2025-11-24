@@ -39,7 +39,7 @@
   Estimate: 0.5h  
   depends: T1  
 
-- [ ] T3 Regenerate lockfile deterministically  
+- [x] T3 Regenerate lockfile deterministically  
   Files: `pnpm-lock.yaml`  
   Goal: Capture patched transitive deps (tar-fs/tar-stream/glob).  
   Approach: `pnpm install --lockfile-only` (or `pnpm update playwright @playwright/test glob` then install) using Node 22/pnpm 8.15.1.  
