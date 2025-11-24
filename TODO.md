@@ -30,7 +30,7 @@
   Tests: `pnpm install --lockfile-only` succeeds.  
   Estimate: 0.5h  
 
-- [ ] T2 Bump publisher direct deps to patched Playwright  
+- [x] T2 Bump publisher direct deps to patched Playwright  
   Files: `apps/publisher/package.json`  
   Goal: Align workspace deps with override floors.  
   Approach: Update `playwright` and `@playwright/test` versions to target.  
