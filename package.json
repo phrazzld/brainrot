@@ -71,7 +71,12 @@
     "overrides": {
       "esbuild@<=0.24.2": ">=0.25.0",
       "tmp@<=0.2.3": ">=0.2.4",
-      "lodash.template": "npm:lodash@4.17.21"
+      "lodash.template": "npm:lodash@4.17.21",
+      "playwright": "^1.56.1",
+      "@playwright/test": "^1.56.1",
+      "tar-fs": "^3.1.1",
+      "tar-stream": "^3.1.7",
+      "glob": "^11.1.0"
     }
   }
 }
