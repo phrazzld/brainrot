@@ -1,6 +1,6 @@
 'use client';
 
-import { KeyboardEvent } from 'react';
+import { KeyboardEvent, useEffect } from 'react';
 
 import DownloadButton from '@/components/DownloadButton';
 import { handleKeyboardInteraction } from '@/utils';
@@ -13,6 +13,22 @@ interface DownloadModalProps {
 }
 
 export default function DownloadModal({ isOpen, onClose, slug, chapterIndex }: DownloadModalProps) {
+  // Add Escape key handler for accessibility (WCAG 2.1 Level A)
+  useEffect(() => {
+    if (!isOpen) return;
+
+    function handleEscape(e: globalThis.KeyboardEvent) {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    }
+
+    document.addEventListener('keydown', handleEscape);
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+    };
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   return (
