@@ -142,14 +142,14 @@ h4 {
 }
 
 .btn-primary {
-  @apply bg-lavender text-black;
+  @apply bg-lavender text-black shadow-button;
 }
 .btn-primary:hover {
-  @apply shadow-lg;
+  @apply shadow-button;
 }
 .btn-secondary {
-  @apply bg-black text-white;
+  @apply bg-black text-white shadow-button;
 }
 .btn-secondary:hover {
-  @apply shadow-lg bg-lavender text-black;
+  @apply shadow-button bg-lavender text-black;
 }
