@@ -16,18 +16,9 @@ const taglines = [
   'its giving literature',
 ];
 
-const achievements = [
-  { icon: '🏆', title: 'Achievement Unlocked!', desc: 'Found the Footer (0.1% of users)' },
-  { icon: '💀', title: "You're Cooked!", desc: 'Scrolled this far unironically' },
-  { icon: '📚', title: 'Literally Me!', desc: "You're just like Gatsby fr fr" },
-  { icon: '🔥', title: 'Straight Fire!', desc: 'Your taste in books is bussin' },
-];
-
 export default function FooterV3() {
   const router = useRouter();
   const [taglineIndex, setTaglineIndex] = useState(0);
-  const [showAchievement, setShowAchievement] = useState(false);
-  const [achievement, setAchievement] = useState(achievements[0]);
 
   // Count available books
   const availableBooks = translations.filter((t) => t.status === 'available');
@@ -42,18 +33,6 @@ export default function FooterV3() {
     return () => clearInterval(interval);
   }, []);
 
-  // Random achievement on mount (10% chance - less intrusive)
-  useEffect(() => {
-    if (Math.random() < 0.1) {
-      const randomAchievement = achievements[Math.floor(Math.random() * achievements.length)];
-      setAchievement(randomAchievement);
-      setTimeout(() => {
-        setShowAchievement(true);
-        setTimeout(() => setShowAchievement(false), 3000);
-      }, 2000);
-    }
-  }, []);
-
   // Navigate to random available book
   const surpriseMe = () => {
     if (availableBooks.length > 0) {
@@ -64,19 +43,6 @@ export default function FooterV3() {
 
   return (
     <footer className="relative mt-auto">
-      {/* Achievement Notification (smaller, less intrusive) */}
-      <div
-        className={`fixed bottom-16 right-4 bg-black/90 text-white p-3 rounded-lg flex items-center gap-2 transition-all duration-500 transform ${
-          showAchievement ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
-        } z-50 border border-purple-400/30 text-sm`}
-      >
-        <span className="text-2xl">{achievement.icon}</span>
-        <div>
-          <p className="font-bold text-purple-400 text-xs">{achievement.title}</p>
-          <p className="text-xs text-gray-400">{achievement.desc}</p>
-        </div>
-      </div>
-
       {/* Main Footer - Compact 2-line design */}
       <div className="bg-gradient-to-t from-black/60 to-transparent backdrop-blur-sm border-t border-white/10">
         <div className="max-w-screen-lg mx-auto px-4 py-3">
