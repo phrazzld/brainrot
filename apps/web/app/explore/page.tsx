@@ -24,6 +24,9 @@ export default function ExplorePage() {
                 alt={t.title}
                 width={800}
                 height={600}
+                loading="lazy"
+                placeholder="blur"
+                blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iIzFjMWMyOCIvPjwvc3ZnPg=="
                 className="w-full object-cover"
               />
               <div className="card-content">
