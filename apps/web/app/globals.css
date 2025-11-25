@@ -86,7 +86,7 @@ h4 {
 
 /* card styles */
 .card {
-  @apply bg-cardbg rounded flex flex-col transition-all shadow-card;
+  @apply bg-cardbg rounded flex flex-col transition-all shadow-card border border-white/10;
   @apply hover:scale-[1.01];
 }
 .card:hover {
