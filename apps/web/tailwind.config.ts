@@ -39,6 +39,10 @@ export default {
         '12': '48px',  // 3rem
         '16': '64px',  // 4rem
       },
+      boxShadow: {
+        'card': '0 4px 12px rgba(224, 175, 255, 0.15)',
+        'button': '0 2px 8px rgba(224, 175, 255, 0.2)',
+      },
       keyframes: {
         fadeInUp: {
           '0%': { opacity: '0', transform: 'translateY(20px)' },
