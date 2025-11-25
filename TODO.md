@@ -124,13 +124,13 @@
   - Apply same focus trap pattern as ShareModal
   - Success criteria: Screen reader users can navigate modal without escaping
 
-- [ ] **Add visual indicator for active chapter beyond color**
+- [x] **Add visual indicator for active chapter beyond color**
   - File: `apps/web/components/reading-room/ChapterSidebar.tsx`
   - Context: Line 30 uses peachy color only - color-blind users can't tell active chapter
   - Add arrow icon (`▶`) or underline before active chapter text
   - Success criteria: Active chapter identifiable without color perception
 
-- [ ] **Add aria-live region for audio playback state changes**
+- [x] **Add aria-live region for audio playback state changes**
   - File: `apps/web/components/reading-room/AudioPlayer.tsx`
   - Context: Play/pause state changes not announced to screen readers
   - Add visually hidden div with `role="status"` and `aria-live="polite"`
