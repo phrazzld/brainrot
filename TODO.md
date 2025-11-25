@@ -60,7 +60,7 @@
   - Replace `throw new Error(\`failed to download (${res.status})\`)` with mapped message
   - Success criteria: Non-technical users understand what happened and have recovery path
 
-- [ ] **Add user-friendly error messages for download failures**
+- [x] **Add user-friendly error messages for download failures**
   - File: `apps/web/components/DownloadButton.tsx`
   - Update both EPUB and audio download error handlers
   - Include fallback for unmapped status codes: "download failed - please try again"
@@ -69,7 +69,7 @@
 
 ### Loading States (2h)
 
-- [ ] **Create skeleton loader for chapter transitions**
+- [x] **Create skeleton loader for chapter transitions**
   - File: `apps/web/components/reading-room/TextContent.tsx`
   - Context: Blank screen during chapter load makes users think click failed
   - Add skeleton UI with pulsing gray bars mimicking text layout
@@ -77,19 +77,20 @@
   - Include "loading chapter vibes..." text in peachy color
   - Success criteria: Users see immediate feedback when clicking chapter navigation
 
-- [ ] **Add loading state to chapter navigation**
+- [x] **Add loading state to chapter navigation**
   - File: `apps/web/app/reading-room/[slug]/page.tsx`
   - Track loading state during chapter transitions
   - Pass `isLoading` prop to TextContent component
   - Success criteria: No blank screens - skeleton shows while content fetches
+  - Note: Already implemented - useTextLoader manages isTextLoading state, passed to TextContent
 
-- [ ] **Implement lazy loading for book cover images on explore page**
+- [x] **Implement lazy loading for book cover images on explore page**
   - File: `apps/web/app/explore/page.tsx`
   - Add `loading="lazy"` to all Image components (line 22-28)
   - Add placeholder blur data URL or loading skeleton
   - Success criteria: Faster initial page load, progressive image rendering on slow connections
 
-- [ ] **Add progress indicator for audio file loading**
+- [x] **Add progress indicator for audio file loading**
   - File: `apps/web/components/reading-room/AudioPlayer.tsx`
   - Context: Large audio files (5MB+) take 10+ seconds with no feedback
   - Add indeterminate progress bar during `isAudioLoading` state
