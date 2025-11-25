@@ -26,12 +26,20 @@ export default function ChapterHeader(props: ChapterHeaderProps) {
     onNextChapter,
     onOpenShareModal,
   } = props;
+
+  // Calculate reading progress percentage
+  const progressPercent = ((chapterIndex + 1) / totalChapters) * 100;
+
   return (
-    <header className="px-4 py-3 flex items-center justify-between bg-black/40 backdrop-blur-md">
-      <div>
-        <h1 className="text-2xl font-display">{translation.title}</h1>
-        <p className="text-sm text-lavender">{translation.chapters[chapterIndex].title}</p>
-      </div>
+    <header className="bg-black/40 backdrop-blur-md">
+      <div className="px-4 py-3 flex items-center justify-between">
+        <div>
+          <h1 className="text-2xl font-display">{translation.title}</h1>
+          <p className="text-sm text-lavender">{translation.chapters[chapterIndex].title}</p>
+          <p className="text-xs text-white/60 mt-1">
+            Chapter {chapterIndex + 1} of {totalChapters}
+          </p>
+        </div>
       <div className="flex items-center gap-2">
         {translation.purchaseUrl && (
           <Link
@@ -64,6 +72,20 @@ export default function ChapterHeader(props: ChapterHeaderProps) {
         <button onClick={onOpenShareModal} className="btn btn-secondary">
           share
         </button>
+      </div>
+      </div>
+
+      {/* Reading progress bar */}
+      <div className="w-full h-1 bg-white/10">
+        <div
+          className="h-full bg-lavender transition-all duration-300"
+          style={{ width: `${progressPercent}%` }}
+          role="progressbar"
+          aria-valuenow={chapterIndex + 1}
+          aria-valuemin={1}
+          aria-valuemax={totalChapters}
+          aria-label={`Reading progress: chapter ${chapterIndex + 1} of ${totalChapters}`}
+        />
       </div>
     </header>
   );
