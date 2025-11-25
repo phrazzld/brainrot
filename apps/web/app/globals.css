@@ -14,7 +14,7 @@ h1,
 h2,
 h3,
 h4 {
-  @apply font-display tracking-wider uppercase;
+  @apply font-display font-bold tracking-tight;
 }
 
 /* .glitch-text stays as is, or you can spice it up more */
