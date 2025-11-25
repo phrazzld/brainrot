@@ -107,7 +107,7 @@ export default function ShareModal(props: ShareModalProps) {
     >
       <div
         ref={modalRef}
-        className="w-full max-w-sm bg-[#2c2c3a] p-4 rounded-md relative"
+        className="w-full max-w-sm bg-[#2c2c3a] p-4 rounded-md relative border border-white/10"
         role="dialog"
         aria-modal="true"
         aria-labelledby="share-modal-title"
@@ -155,7 +155,7 @@ export default function ShareModal(props: ShareModalProps) {
           <input
             id="share-url"
             type="text"
-            className="w-full p-2 rounded bg-[#1f1f29] text-gray-100"
+            className="w-full p-2 rounded bg-[#1f1f29] text-gray-100 border border-white/10"
             readOnly
             value={getShareUrl()}
           />
