@@ -147,7 +147,7 @@
 
 ### Reading Progress Tracking (3h)
 
-- [ ] **Create localStorage utility for reading progress**
+- [x] **Create localStorage utility for reading progress**
   - File: `apps/web/lib/readingProgress.ts` (new file)
   - Implement functions:
     - `saveProgress(slug: string, chapterIndex: number, scrollPosition: number)`
