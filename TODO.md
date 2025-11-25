@@ -50,7 +50,7 @@
   - Style: Peachy background with black text, include retry/download suggestions
   - Success criteria: Users see "audio playback failed - try refreshing or use download button" instead of silent failure
 
-- [ ] **Map HTTP status codes to user-friendly messages in DownloadButton**
+- [x] **Map HTTP status codes to user-friendly messages in DownloadButton**
   - File: `apps/web/components/DownloadButton.tsx`
   - Context: Lines 82, 122 expose raw status codes (404, 403, 500) to users
   - Create error message mapping object:

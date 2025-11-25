@@ -105,8 +105,10 @@ async function downloadViaProxy(slug: string, type: 'chapter', chapter: number):
 function handleDownloadError(err: unknown, setError: (msg: string) => void): void {
   console.error('[Download] Error details:', err);
 
-  const errorMessage = err instanceof Error ? err.message : 'unknown error';
-  setError(`Failed to download. Please try again. (${errorMessage})`);
+  // Pass through user-friendly messages from getStatusCodeMessage
+  // or provide a generic fallback for unexpected errors
+  const errorMessage = err instanceof Error ? err.message : 'download failed - please try again';
+  setError(errorMessage);
 }
 
 export default function DownloadButton({ slug, type, chapter, classNames }: DownloadButtonProps) {
