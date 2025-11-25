@@ -19,7 +19,7 @@
   - Implement toggle button with hamburger icon for mobile (<lg breakpoint)
   - Success criteria: Sidebar hidden by default on mobile, toggleable via button, always visible on desktop (lg+)
 
-- [ ] **Implement responsive sidebar transform animations**
+- [x] **Implement responsive sidebar transform animations**
   - File: `apps/web/components/reading-room/ChapterSidebar.tsx`
   - Update aside className to use `fixed lg:sticky` positioning
   - Add transform classes: `-translate-x-full lg:translate-x-0` (hidden on mobile)

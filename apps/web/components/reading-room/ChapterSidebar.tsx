@@ -51,7 +51,14 @@ export default function ChapterSidebar({
         </svg>
       </button>
 
-      <aside className="w-48 bg-black/30 p-4 sticky top-0 h-screen overflow-y-auto">
+      <aside
+        className={`
+          w-48 bg-black/30 p-4 h-screen overflow-y-auto
+          fixed lg:sticky top-0 left-0 z-30
+          transform transition-transform duration-300 ease-in-out
+          ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
+        `}
+      >
       <h2 className="text-lg font-display mb-4 text-peachy">chapters</h2>
       <nav className="flex flex-col space-y-2">
         {chaptersArray.map((cNum) => {
