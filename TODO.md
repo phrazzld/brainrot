@@ -156,7 +156,7 @@
   - Handle localStorage errors gracefully (incognito mode, quota exceeded)
   - Success criteria: Robust progress persistence with error handling
 
-- [ ] **Integrate progress saving in reading room**
+- [x] **Integrate progress saving in reading room**
   - File: `apps/web/app/reading-room/[slug]/page.tsx`
   - Call `saveProgress()` on chapter change and scroll events (debounced)
   - Load saved progress on mount and navigate to last chapter if exists
