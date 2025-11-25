@@ -1,6 +1,6 @@
 'use client';
 
-import { KeyboardEvent } from 'react';
+import { KeyboardEvent, useEffect } from 'react';
 
 import { handleKeyboardInteraction } from '@/utils';
 
@@ -33,6 +33,23 @@ export default function ShareModal(props: ShareModalProps) {
     onCopyUrl,
     shareFeedback,
   } = props;
+
+  // Add Escape key handler for accessibility (WCAG 2.1 Level A)
+  useEffect(() => {
+    if (!isOpen) return;
+
+    function handleEscape(e: globalThis.KeyboardEvent) {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    }
+
+    document.addEventListener('keydown', handleEscape);
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+    };
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   return (
