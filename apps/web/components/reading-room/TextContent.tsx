@@ -27,7 +27,7 @@ function SkeletonLoader() {
 
   return (
     <div className="space-y-3">
-      <div className="text-center text-peachy text-sm mb-8 animate-pulse">
+      <div className="text-center text-peachy text-sm font-body mb-8 animate-pulse">
         loading chapter vibes...
       </div>
       {skeletonLines.map((width, i) => (
@@ -39,7 +39,7 @@ function SkeletonLoader() {
 
 export default function TextContent({ isLoading, content }: TextContentProps) {
   const lines = content.split('\n').map((line, i) => (
-    <div key={i} className="my-1">
+    <div key={i} className="my-1 text-base font-body leading-relaxed">
       {line.trim() ? line : <>&nbsp;</>}
     </div>
   ));

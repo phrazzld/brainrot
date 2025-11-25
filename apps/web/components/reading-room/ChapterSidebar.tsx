@@ -68,7 +68,7 @@ export default function ChapterSidebar({
           ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
         `}
       >
-      <h2 className="text-lg font-display mb-4 text-peachy">chapters</h2>
+      <h2 className="text-lg font-display font-bold mb-4 text-peachy">chapters</h2>
       <nav className="flex flex-col space-y-2">
         {chaptersArray.map((cNum) => {
           const isActive = cNum === chapterIndex;

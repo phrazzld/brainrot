@@ -34,9 +34,9 @@ export default function ChapterHeader(props: ChapterHeaderProps) {
     <header className="bg-black/40 backdrop-blur-md">
       <div className="px-4 py-3 flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-display">{translation.title}</h1>
-          <p className="text-sm text-lavender">{translation.chapters[chapterIndex].title}</p>
-          <p className="text-xs text-white/60 mt-1">
+          <h1 className="text-2xl font-display font-bold">{translation.title}</h1>
+          <p className="text-sm font-body text-lavender">{translation.chapters[chapterIndex].title}</p>
+          <p className="text-xs font-body text-white/60 mt-1">
             Chapter {chapterIndex + 1} of {totalChapters}
           </p>
         </div>
