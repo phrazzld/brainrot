@@ -82,6 +82,7 @@ export default function ChapterSidebar({
                   : 'bg-black/30 text-white/80 border-white/20 hover:bg-black/50'
               }`}
             >
+              {isActive && <span className="mr-2" aria-hidden="true">▶</span>}
               {translation.chapters[cNum].title}
             </button>
           );
