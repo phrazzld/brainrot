@@ -107,7 +107,7 @@ export default function ShareModal(props: ShareModalProps) {
     >
       <div
         ref={modalRef}
-        className="w-full max-w-sm bg-[#2c2c3a] p-4 rounded-sm relative border border-white/10"
+        className="w-full max-w-sm bg-cardbg p-4 rounded-sm relative border border-white/10"
         role="dialog"
         aria-modal="true"
         aria-labelledby="share-modal-title"

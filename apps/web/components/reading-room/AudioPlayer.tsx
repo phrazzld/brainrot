@@ -30,7 +30,7 @@ export default function AudioPlayer(props: AudioPlayerProps) {
   } = props;
   if (isAudioLoading) {
     return (
-      <div className="p-4 bg-[#2c2c3a] relative">
+      <div className="p-4 bg-cardbg relative">
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-black/40 backdrop-blur-sm z-10">
           <div className="text-white text-sm font-body">loading up the vibes...</div>
           {/* Indeterminate progress bar */}
@@ -77,7 +77,7 @@ export default function AudioPlayer(props: AudioPlayerProps) {
   }
 
   return (
-    <div className="p-4 bg-[#2c2c3a] relative">
+    <div className="p-4 bg-cardbg relative">
       {/* Error banner */}
       {error && (
         <div className="mb-3 p-3 bg-peachy text-black rounded border border-peachy/50 text-sm font-body">
