@@ -98,7 +98,7 @@ export default function DownloadModal({ isOpen, onClose, slug, chapterIndex }: D
         >
           ✕
         </button>
-        <h2 id="download-modal-title" className="text-xl mb-3 font-display">
+        <h2 id="download-modal-title" className="text-xl mb-3 font-display font-bold">
           download options
         </h2>
         <div className="flex flex-col space-y-2">

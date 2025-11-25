@@ -43,7 +43,7 @@ export default function AudioPlayer(props: AudioPlayerProps) {
               }}
             />
           </div>
-          <div className="text-xs text-peachy/70">large file - might take a moment</div>
+          <div className="text-xs font-body text-peachy/70">large file - might take a moment</div>
         </div>
         <div className="flex items-center gap-4">
           <div
@@ -54,7 +54,7 @@ export default function AudioPlayer(props: AudioPlayerProps) {
           <button onClick={onTogglePlayPause} className="btn btn-primary" disabled>
             play
           </button>
-          <div className="text-xs text-peachy whitespace-nowrap">0:00 / 0:00</div>
+          <div className="text-xs font-body text-peachy whitespace-nowrap">0:00 / 0:00</div>
           <button onClick={onOpenDownloadModal} className="btn btn-secondary" disabled>
             download
           </button>
@@ -104,7 +104,7 @@ export default function AudioPlayer(props: AudioPlayerProps) {
         <button onClick={onTogglePlayPause} className="btn btn-primary">
           {isPlaying ? 'pause' : 'play'}
         </button>
-        <div className="text-xs text-peachy whitespace-nowrap">
+        <div className="text-xs font-body text-peachy whitespace-nowrap">
           {formatTime(currentTime)} / {formatTime(totalTime)}
         </div>
         <button onClick={onOpenDownloadModal} className="btn btn-secondary">
