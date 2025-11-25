@@ -99,7 +99,7 @@
 
 ### Accessibility (2.5h)
 
-- [ ] **Add Escape key handler to ShareModal**
+- [x] **Add Escape key handler to ShareModal**
   - File: `apps/web/components/reading-room/ShareModal.tsx`
   - Context: Keyboard users can't close modal (WCAG 2.1 Level A failure)
   - Add useEffect with keydown event listener
@@ -107,19 +107,19 @@
   - Clean up listener on unmount
   - Success criteria: Modal closes on Escape key, keyboard navigation works
 
-- [ ] **Add Escape key handler to DownloadModal**
+- [x] **Add Escape key handler to DownloadModal**
   - File: `apps/web/components/reading-room/DownloadModal.tsx`
   - Implement same Escape key pattern as ShareModal
   - Success criteria: Both modals support Escape key closure
 
-- [ ] **Implement focus trap in ShareModal**
+- [x] **Implement focus trap in ShareModal**
   - File: `apps/web/components/reading-room/ShareModal.tsx`
   - Context: Tab key cycles through background content instead of staying in modal
   - Use focus trap library or implement manual: track focusable elements, cycle on Tab
   - Set initial focus to first interactive element when modal opens
   - Success criteria: Tab key stays within modal, focus returns to trigger on close
 
-- [ ] **Implement focus trap in DownloadModal**
+- [x] **Implement focus trap in DownloadModal**
   - File: `apps/web/components/reading-room/DownloadModal.tsx`
   - Apply same focus trap pattern as ShareModal
   - Success criteria: Screen reader users can navigate modal without escaping
