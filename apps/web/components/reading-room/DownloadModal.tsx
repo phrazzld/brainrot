@@ -86,7 +86,7 @@ export default function DownloadModal({ isOpen, onClose, slug, chapterIndex }: D
     >
       <div
         ref={modalRef}
-        className="w-full max-w-sm bg-[#2c2c3a] p-4 rounded-md relative border border-white/10"
+        className="w-full max-w-sm bg-[#2c2c3a] p-4 rounded-sm relative border border-white/10"
         role="dialog"
         aria-modal="true"
         aria-labelledby="download-modal-title"
