@@ -9,6 +9,13 @@ body {
   scroll-behavior: smooth;
 }
 
+body {
+  background-image: url('/noise.png');
+  background-repeat: repeat;
+  background-blend-mode: overlay;
+  background-size: 100px 100px;
+}
+
 /* headings get display font */
 h1,
 h2,
