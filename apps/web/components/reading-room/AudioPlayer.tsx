@@ -31,8 +31,19 @@ export default function AudioPlayer(props: AudioPlayerProps) {
   if (isAudioLoading) {
     return (
       <div className="p-4 bg-[#2c2c3a] relative">
-        <div className="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-sm z-10">
-          <div className="text-white text-sm font-body animate-pulse">loading up the vibes...</div>
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-black/40 backdrop-blur-sm z-10">
+          <div className="text-white text-sm font-body">loading up the vibes...</div>
+          {/* Indeterminate progress bar */}
+          <div className="w-48 h-1 bg-white/10 rounded-full overflow-hidden">
+            <div
+              className="h-full bg-peachy rounded-full animate-[loading_1.5s_ease-in-out_infinite]"
+              style={{
+                width: '40%',
+                animation: 'loading 1.5s ease-in-out infinite',
+              }}
+            />
+          </div>
+          <div className="text-xs text-peachy/70">large file - might take a moment</div>
         </div>
         <div className="flex items-center gap-4">
           <div
@@ -48,6 +59,19 @@ export default function AudioPlayer(props: AudioPlayerProps) {
             download
           </button>
         </div>
+        <style jsx>{`
+          @keyframes loading {
+            0% {
+              transform: translateX(-100%);
+            }
+            50% {
+              transform: translateX(250%);
+            }
+            100% {
+              transform: translateX(-100%);
+            }
+          }
+        `}</style>
       </div>
     );
   }
