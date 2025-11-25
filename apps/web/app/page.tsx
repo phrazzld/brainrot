@@ -5,7 +5,7 @@ import Link from 'next/link';
 export default function HomePage() {
   return (
     <main className="relative min-h-screen flex flex-col">
-      <section className="flex-1 flex flex-col items-center justify-center text-center px-4 py-32 bg-gradient-to-r from-lavender to-peachy overflow-hidden">
+      <section className="flex-1 flex flex-col items-center justify-center text-center px-4 py-16 md:py-32 bg-gradient-to-r from-lavender to-peachy overflow-hidden">
         <div className="absolute inset-0 pointer-events-none mix-blend-multiply opacity-30 bg-cover" />
         <div className="relative z-10 max-w-3xl">
           <h1 className="text-3xl md:text-4xl mb-6 glitch-text" data-text="brainrot publishing">
