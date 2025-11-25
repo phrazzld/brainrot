@@ -1,5 +1,7 @@
 'use client';
 
+import { useState } from 'react';
+
 import { Translation } from '@/utils/types';
 
 interface ChapterSidebarProps {
@@ -13,11 +15,43 @@ export default function ChapterSidebar({
   chapterIndex,
   onChapterClick,
 }: ChapterSidebarProps) {
+  const [isOpen, setIsOpen] = useState(false);
   const totalChapters = translation.chapters.length;
   const chaptersArray = Array.from({ length: totalChapters }, (_, i) => i);
 
   return (
-    <aside className="w-48 bg-black/30 p-4 sticky top-0 h-screen overflow-y-auto">
+    <>
+      {/* Mobile toggle button */}
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="lg:hidden fixed top-4 left-4 z-40 p-2 bg-black/80 rounded border border-white/20 hover:bg-black/90"
+        aria-label={isOpen ? 'Close chapter menu' : 'Open chapter menu'}
+      >
+        <svg
+          className="w-6 h-6 text-white"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          {isOpen ? (
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M6 18L18 6M6 6l12 12"
+            />
+          ) : (
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          )}
+        </svg>
+      </button>
+
+      <aside className="w-48 bg-black/30 p-4 sticky top-0 h-screen overflow-y-auto">
       <h2 className="text-lg font-display mb-4 text-peachy">chapters</h2>
       <nav className="flex flex-col space-y-2">
         {chaptersArray.map((cNum) => {
@@ -38,5 +72,6 @@ export default function ChapterSidebar({
         })}
       </nav>
     </aside>
+    </>
   );
 }
