@@ -30,14 +30,14 @@ h4 {
   left: 0;
 }
 .glitch-text::before {
-  color: #ffdaab; /* peachy */
+  color: theme('colors.peachy');
   transform: translateX(2px);
   animation: glitch 2s infinite;
   overflow: hidden;
   clip: rect(0, 900px, 0, 0);
 }
 .glitch-text::after {
-  color: #e0afff; /* lavender */
+  color: theme('colors.lavender');
   transform: translateX(-2px);
   animation: glitch 2s infinite;
   overflow: hidden;
