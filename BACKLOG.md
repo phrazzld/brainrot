@@ -7,19 +7,6 @@ Analyzed by: 8 specialized perspectives (complexity-archaeologist, architecture-
 
 ## Now (Sprint-Ready, <2 weeks)
 
-### [Security] Update Vulnerable Dependencies
-**Files**: package.json (multiple workspaces)
-**Perspectives**: security-sentinel
-**Impact**: HIGH severity CVEs in playwright, tar-fs, glob (2 instances)
-**Risk**: Man-in-the-middle attacks, directory traversal, command injection
-**Fix**:
-```bash
-pnpm update playwright tar-fs glob
-# Or use overrides in root package.json
-```
-**Effort**: 2h (update + test) | **Severity**: HIGH
-**Acceptance**: `pnpm audit` shows 0 HIGH vulnerabilities
-
 ### [Product] User Authentication System
 **Scope**: New feature - auth system foundation
 **Perspectives**: product-visionary, security-sentinel, user-experience-advocate
