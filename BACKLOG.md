@@ -56,11 +56,12 @@ pre-commit:
 **Perspectives**: design-systems-architect, user-experience-advocate
 **Impact**: Anton + Inter = predictable tech startup aesthetic, doesn't match "brainrot" chaos
 **Brand Disconnect**: Chaotic Gen Z content with corporate visual identity
-**Fix**: Replace with distinctive typefaces:
-- Option 1: Space Grotesk (display) + Courier Prime (body) - tech/hacker vibe
-- Option 2: Bebas Neue (display) + Inconsolata (body) - brutalist/street-level
-**Effort**: 2h (research + migrate) | **Impact**: Memorable brand differentiation
-**Acceptance**: Fonts replaced, design team approves brand alignment
+**Strategic Decision** (from aesthetic elevation plan): Space Grotesk + Crimson Pro pairing
+- Display: Space Grotesk Bold (geometric, distinctive, not-AI)
+- Body: Crimson Pro (editorial serif, literary sophistication)
+- Rationale: Geometric sans = "internet native", serif = "we take literature seriously even when making Shakespeare say 'rizz'"
+**Effort**: 3h (install + scale definition + component audit) | **Impact**: Distinctive brand voice through typography
+**Acceptance**: Fonts replaced, typography scale with locked line-heights defined, all components audited
 
 ### [UX] Fix Silent Text Loading Errors
 **Files**: apps/web/hooks/useTextLoader.ts:33-36
@@ -180,6 +181,35 @@ export function createRequestLogger(req: Request) {
 ```
 **Effort**: 1h | **Impact**: Production-safe structured logging, request tracing
 **Acceptance**: JSON logs in production, correlation IDs tracked, pino-pretty only in dev
+
+---
+
+### [Aesthetic] Grain Texture & Visual Details
+**Files**: Create apps/web/public/noise.png, apps/web/app/globals.css
+**Perspectives**: design-systems-architect
+**Why**: Flat digital backgrounds lack tactile quality, "zine on premium paper" goal
+**Implementation**:
+- Generate 100x100px subtle grain texture (<5KB)
+- Apply to body: `background-image: url('/noise.png')` with overlay blend mode
+- Add lavender-tinted shadows: `boxShadow: { card: '0 4px 12px rgba(224,175,255,0.15)' }`
+- Crisp borders: `border border-white/10` on all cards
+**Effort**: 2h | **Impact**: Analog warmth beneath digital content, brand-aligned shadows
+**Acceptance**: Subtle grain visible across pages, shadows use lavender tint, borders add definition
+
+### [Aesthetic] Coming Soon State Redesign
+**Files**: apps/web/app/explore/page.tsx
+**Why**: Grayscale + opacity makes unavailable books look broken (user confusion)
+**Fix**: Replace with inviting overlay
+```tsx
+<div className="absolute inset-0 bg-gradient-to-t from-black/90 flex items-center justify-center">
+  <div className="text-center p-8">
+    <div className="text-peachy text-sm font-bold mb-2">COMING SOON</div>
+    <p className="text-sm">we're translating this one rn</p>
+  </div>
+</div>
+```
+**Effort**: 1h | **Impact**: Builds anticipation instead of disappointment
+**Acceptance**: Unavailable books show inviting "coming soon" state, not grayscale
 
 ---
 
