@@ -35,7 +35,9 @@ runs:
     - name: Determine Playwright version
       shell: bash
       run: |
-        PLAYWRIGHT_VERSION=$(node -p "require('./apps/publisher/package.json').dependencies['playwright']")
+        PLAYWRIGHT_VERSION_RAW=$(node -p "require('./apps/publisher/package.json').dependencies['playwright']")
+        # strip leading caret for cache key stability
+        PLAYWRIGHT_VERSION=${PLAYWRIGHT_VERSION_RAW#^}
         echo "PLAYWRIGHT_VERSION=$PLAYWRIGHT_VERSION" >> $GITHUB_ENV
 
     - name: Cache Playwright browsers
@@ -48,7 +50,7 @@ runs:
 
     - name: Install Playwright browsers (chromium)
       shell: bash
-      run: pnpm exec playwright install chromium
+      run: pnpm --filter @brainrot/publisher exec playwright install chromium
 
     - name: Setup Turbo cache
       uses: actions/cache@v4
