@@ -35,7 +35,7 @@
 
 ### Error Handling & User Feedback (2.5h)
 
-- [ ] **Add error state to useAudioPlayer hook**
+- [x] **Add error state to useAudioPlayer hook**
   - File: `apps/web/hooks/useAudioPlayer.ts`
   - Context: Silent audio failures confuse users (line 107-111 currently catches but doesn't report)
   - Add `error` state: `const [error, setError] = useState<string | null>(null)`

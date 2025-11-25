@@ -9,6 +9,7 @@ interface AudioPlayerState {
   isAudioLoading: boolean;
   currentTime: number;
   totalTime: number;
+  error: string | null;
 }
 
 interface AudioPlayerActions {
@@ -30,6 +31,7 @@ export function useAudioPlayer(
   const [isAudioLoading, setIsAudioLoading] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [totalTime, setTotalTime] = useState(0);
+  const [error, setError] = useState<string | null>(null);
 
   // Ref to track mounted state
   const isMounted = useRef(true);
@@ -104,9 +106,10 @@ export function useAudioPlayer(
     if (wavesurfer) {
       try {
         wavesurfer.playPause();
-      } catch {
-        // Silently handle playback toggle errors
-        // No user-visible action needed as UI state won't change
+        // Clear any previous errors on successful playback toggle
+        setError(null);
+      } catch (err) {
+        setError('audio playback failed - try refreshing or use download button');
       }
     }
   }, [wavesurfer]);
@@ -170,10 +173,11 @@ export function useAudioPlayer(
       }
     };
 
-    const handleError = (_error: Error) => {
-      // Handle wavesurfer errors by updating loading state
+    const handleError = (wavesurferError: Error) => {
+      // Handle wavesurfer errors by updating loading state and setting error message
       if (isMounted.current) {
         setIsAudioLoading(false);
+        setError('audio file could not be loaded - try refreshing or use download button');
       }
     };
 
@@ -231,11 +235,14 @@ export function useAudioPlayer(
         if (wavesurfer && audioSrc && isMounted.current) {
           // Audio source loading
           wavesurfer.load(audioSrc);
+          // Clear any previous errors on successful load initiation
+          setError(null);
         }
-      } catch {
+      } catch (loadError) {
         // Handle audio loading error
         if (isMounted.current) {
           setIsAudioLoading(false);
+          setError('audio file could not be loaded - try refreshing or use download button');
         }
       }
     }, 100);
@@ -247,7 +254,7 @@ export function useAudioPlayer(
 
   // Return state and actions
   return [
-    { isPlaying, isAudioLoading, currentTime, totalTime },
+    { isPlaying, isAudioLoading, currentTime, totalTime, error },
     { togglePlayPause, formatTime },
   ];
 }
