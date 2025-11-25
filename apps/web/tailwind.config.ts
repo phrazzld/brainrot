@@ -16,8 +16,18 @@ export default {
         cardbg: '#2c2c3a',
       },
       fontFamily: {
-        display: ['var(--font-anton)', 'sans-serif'],
-        body: ['var(--font-inter)', 'sans-serif'],
+        display: ['var(--font-display)', 'sans-serif'],
+        body: ['var(--font-body)', 'sans-serif'],
+      },
+      fontSize: {
+        xs: ['12px', { lineHeight: '16px' }],
+        sm: ['14px', { lineHeight: '20px' }],
+        base: ['16px', { lineHeight: '24px' }],
+        lg: ['18px', { lineHeight: '28px' }],
+        xl: ['24px', { lineHeight: '32px' }],
+        '2xl': ['32px', { lineHeight: '40px' }],
+        '3xl': ['48px', { lineHeight: '56px' }],
+        '4xl': ['64px', { lineHeight: '72px' }],
       },
       keyframes: {
         fadeInUp: {
