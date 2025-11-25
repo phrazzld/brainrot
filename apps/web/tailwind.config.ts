@@ -29,6 +29,16 @@ export default {
         '3xl': ['48px', { lineHeight: '56px' }],
         '4xl': ['64px', { lineHeight: '72px' }],
       },
+      spacing: {
+        '1': '4px',    // 0.25rem
+        '2': '8px',    // 0.5rem
+        '3': '12px',   // 0.75rem
+        '4': '16px',   // 1rem
+        '6': '24px',   // 1.5rem
+        '8': '32px',   // 2rem
+        '12': '48px',  // 3rem
+        '16': '64px',  // 4rem
+      },
       keyframes: {
         fadeInUp: {
           '0%': { opacity: '0', transform: 'translateY(20px)' },
