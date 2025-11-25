@@ -8,11 +8,11 @@ export default function HomePage() {
       <section className="flex-1 flex flex-col items-center justify-center text-center px-4 py-32 bg-gradient-to-r from-lavender to-peachy overflow-hidden">
         <div className="absolute inset-0 pointer-events-none mix-blend-multiply opacity-30 bg-cover" />
         <div className="relative z-10 max-w-3xl">
-          <h1 className="text-6xl md:text-8xl mb-6 glitch-text" data-text="brainrot publishing">
+          <h1 className="text-3xl md:text-4xl mb-6 glitch-text" data-text="brainrot publishing">
             brainrot publishing
           </h1>
           <p
-            className="text-xl md:text-2xl mb-8 font-light animate-fadeInUp"
+            className="text-lg md:text-xl mb-8 font-body animate-fadeInUp"
             style={{ animationDelay: '0.6s', animationFillMode: 'both' }}
           >
             zoomer translations of classic literature
