@@ -122,25 +122,31 @@ export default function ShareModal(props: ShareModalProps) {
         <h2 id="share-modal-title" className="text-xl mb-3 font-display">
           share the vibe
         </h2>
-        <div className="space-y-2 mb-4">
-          <label className="flex items-center gap-2" htmlFor="include-chapter">
-            <input
-              id="include-chapter"
-              type="checkbox"
-              checked={includeChapter}
-              onChange={() => onIncludeChapterChange(!includeChapter)}
-            />
-            <span>include chapter</span>
-          </label>
-          <label className="flex items-center gap-2" htmlFor="include-timestamp">
-            <input
-              id="include-timestamp"
-              type="checkbox"
-              checked={includeTimestamp}
-              onChange={() => onIncludeTimestampChange(!includeTimestamp)}
-            />
-            <span>include timestamp</span>
-          </label>
+        <div className="space-y-3 mb-4">
+          <div>
+            <label className="flex items-center gap-2" htmlFor="include-chapter">
+              <input
+                id="include-chapter"
+                type="checkbox"
+                checked={includeChapter}
+                onChange={() => onIncludeChapterChange(!includeChapter)}
+              />
+              <span>include chapter</span>
+            </label>
+            <p className="text-xs text-white/60 ml-6 mt-1">link opens to current chapter</p>
+          </div>
+          <div>
+            <label className="flex items-center gap-2" htmlFor="include-timestamp">
+              <input
+                id="include-timestamp"
+                type="checkbox"
+                checked={includeTimestamp}
+                onChange={() => onIncludeTimestampChange(!includeTimestamp)}
+              />
+              <span>include timestamp</span>
+            </label>
+            <p className="text-xs text-white/60 ml-6 mt-1">link starts audio at current position</p>
+          </div>
         </div>
         <div className="space-y-2">
           <label className="text-sm" htmlFor="share-url">
