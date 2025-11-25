@@ -5,6 +5,7 @@ interface AudioPlayerProps {
   isAudioLoading: boolean;
   currentTime: number;
   totalTime: number;
+  error: string | null;
   onTogglePlayPause: () => void;
   onOpenDownloadModal: () => void;
   waveformRef: React.RefObject<HTMLDivElement | null>;
@@ -21,6 +22,7 @@ export default function AudioPlayer(props: AudioPlayerProps) {
     isAudioLoading,
     currentTime,
     totalTime,
+    error,
     onTogglePlayPause,
     onOpenDownloadModal,
     waveformRef,
@@ -52,6 +54,13 @@ export default function AudioPlayer(props: AudioPlayerProps) {
 
   return (
     <div className="p-4 bg-[#2c2c3a] relative">
+      {/* Error banner */}
+      {error && (
+        <div className="mb-3 p-3 bg-peachy text-black rounded border border-peachy/50 text-sm font-body">
+          ⚠️ {error}
+        </div>
+      )}
+
       <div className="flex items-center gap-4">
         {/* Use a stable ref for the waveform container */}
         <div

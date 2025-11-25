@@ -43,7 +43,7 @@
   - Return error in hook API for component consumption
   - Success criteria: All audio errors surface to UI with actionable messages
 
-- [ ] **Display audio errors in AudioPlayer component**
+- [x] **Display audio errors in AudioPlayer component**
   - File: `apps/web/components/reading-room/AudioPlayer.tsx`
   - Destructure `error` from useAudioPlayer hook
   - Render error banner above waveform when error exists
