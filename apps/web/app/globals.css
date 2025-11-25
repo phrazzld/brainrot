@@ -70,38 +70,11 @@ h4 {
   }
 }
 
-@keyframes typewriter {
-  0% {
-    width: 0;
-  }
-  100% {
-    width: 100%;
-  }
-}
-
 /* marquee animation in tailwind config -> marquee-slow */
 @layer utilities {
   .animate-marquee {
     animation: marquee 15s linear infinite;
   }
-}
-
-/* .btn styles */
-.btn {
-  @apply inline-block px-5 py-2 rounded font-semibold transition-all;
-  @apply hover:scale-105 hover:shadow-md;
-}
-.btn-primary {
-  @apply bg-lavender text-black;
-}
-.btn-primary:hover {
-  @apply scale-110 shadow-lg;
-}
-.btn-secondary {
-  @apply bg-black text-white;
-}
-.btn-secondary:hover {
-  @apply scale-110 shadow-lg bg-lavender text-black;
 }
 
 /* card styles */
@@ -169,78 +142,4 @@ h4 {
 }
 .btn-secondary:hover {
   @apply shadow-lg bg-lavender text-black;
-}
-
-/* header glass effect */
-.header-glass {
-  @apply bg-black/30 backdrop-blur-sm sticky top-0 z-50 flex items-center justify-between px-6 py-4;
-}
-
-/* Footer V2 Animations */
-@keyframes glitch-mini {
-  0% {
-    text-shadow: 0.05em 0 0 #ffdaab, -0.05em -0.025em 0 #e0afff,
-      0.025em 0.05em 0 #ffb3d9;
-  }
-  14% {
-    text-shadow: 0.05em 0 0 #ffdaab, -0.05em -0.025em 0 #e0afff,
-      0.025em 0.05em 0 #ffb3d9;
-  }
-  15% {
-    text-shadow: -0.05em -0.025em 0 #ffdaab, 0.025em 0.025em 0 #e0afff,
-      -0.05em -0.05em 0 #ffb3d9;
-  }
-  49% {
-    text-shadow: -0.05em -0.025em 0 #ffdaab, 0.025em 0.025em 0 #e0afff,
-      -0.05em -0.05em 0 #ffb3d9;
-  }
-  50% {
-    text-shadow: 0.025em 0.05em 0 #ffdaab, 0.05em 0 0 #e0afff,
-      0 -0.05em 0 #ffb3d9;
-  }
-  99% {
-    text-shadow: 0.025em 0.05em 0 #ffdaab, 0.05em 0 0 #e0afff,
-      0 -0.05em 0 #ffb3d9;
-  }
-  100% {
-    text-shadow: -0.025em 0 0 #ffdaab, -0.025em -0.025em 0 #e0afff,
-      -0.025em -0.05em 0 #ffb3d9;
-  }
-}
-
-.glitch-mini {
-  animation: glitch-mini 0.5s infinite;
-}
-
-/* Terminal cursor blink */
-@keyframes blink {
-  0%, 49% { opacity: 1; }
-  50%, 100% { opacity: 0; }
-}
-
-.terminal-cursor::after {
-  content: '_';
-  animation: blink 1s infinite;
-}
-
-/* Achievement slide in */
-@keyframes slideInRight {
-  from {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-/* Status indicator pulse */
-@keyframes statusPulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
 }
