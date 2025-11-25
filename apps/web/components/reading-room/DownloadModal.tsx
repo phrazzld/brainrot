@@ -1,6 +1,6 @@
 'use client';
 
-import { KeyboardEvent, useEffect } from 'react';
+import { KeyboardEvent, useEffect, useRef } from 'react';
 
 import DownloadButton from '@/components/DownloadButton';
 import { handleKeyboardInteraction } from '@/utils';
@@ -13,6 +13,9 @@ interface DownloadModalProps {
 }
 
 export default function DownloadModal({ isOpen, onClose, slug, chapterIndex }: DownloadModalProps) {
+  // Ref for modal container to track focusable elements
+  const modalRef = useRef<HTMLDivElement>(null);
+
   // Add Escape key handler for accessibility (WCAG 2.1 Level A)
   useEffect(() => {
     if (!isOpen) return;
@@ -28,6 +31,42 @@ export default function DownloadModal({ isOpen, onClose, slug, chapterIndex }: D
       document.removeEventListener('keydown', handleEscape);
     };
   }, [isOpen, onClose]);
+
+  // Implement focus trap for accessibility (WCAG 2.1 Level A)
+  useEffect(() => {
+    if (!isOpen || !modalRef.current) return;
+
+    // Get all focusable elements within modal
+    const focusableElements = modalRef.current.querySelectorAll<HTMLElement>(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+    );
+    const firstElement = focusableElements[0];
+    const lastElement = focusableElements[focusableElements.length - 1];
+
+    // Set initial focus to first element
+    firstElement?.focus();
+
+    // Handle Tab key to trap focus
+    function handleTab(e: globalThis.KeyboardEvent) {
+      if (e.key !== 'Tab') return;
+
+      // Shift+Tab on first element → focus last element
+      if (e.shiftKey && document.activeElement === firstElement) {
+        e.preventDefault();
+        lastElement?.focus();
+      }
+      // Tab on last element → focus first element
+      else if (!e.shiftKey && document.activeElement === lastElement) {
+        e.preventDefault();
+        firstElement?.focus();
+      }
+    }
+
+    document.addEventListener('keydown', handleTab);
+    return () => {
+      document.removeEventListener('keydown', handleTab);
+    };
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
@@ -46,6 +85,7 @@ export default function DownloadModal({ isOpen, onClose, slug, chapterIndex }: D
       }}
     >
       <div
+        ref={modalRef}
         className="w-full max-w-sm bg-[#2c2c3a] p-4 rounded-md relative"
         role="dialog"
         aria-modal="true"
