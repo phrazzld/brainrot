@@ -4,7 +4,7 @@ import { ReactNode } from 'react';
 import FooterV3 from '@/components/FooterV3';
 import Header from '@/components/header';
 
-import { primary, secondary } from './fonts';
+import { display, body } from './fonts';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -16,7 +16,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
       lang="en"
-      className={`${primary.variable} ${secondary.variable}`}
+      className={`${display.variable} ${body.variable}`}
       suppressHydrationWarning
     >
       <body>
