@@ -25,20 +25,37 @@ export default function HomePage() {
 
       {/* marquee pinned to the bottom */}
       <div className="whitespace-nowrap overflow-x-hidden bg-black text-peachy font-bold">
-        <div className="animate-marquee-slow">
-          <span className="mx-8">the bible</span>
-          <span className="mx-8">the aeneid</span>
-          <span className="mx-8">the republic</span>
-          <span className="mx-8">the prince</span>
-          <span className="mx-8">war and peace</span>
-          <span className="mx-8">the quran</span>
-          <span className="mx-8">don quixote</span>
-          <span className="mx-8">anna karenina</span>
-          <span className="mx-8">king lear</span>
-          <span className="mx-8">romeo and juliet</span>
-          <span className="mx-8">hamlet</span>
-          <span className="mx-8">macbeth</span>
-          <span className="mx-8">a midsummer night’s dream</span>
+        <div className="flex animate-marquee-slow">
+          <div className="flex shrink-0">
+            <span className="mx-8">the bible</span>
+            <span className="mx-8">the aeneid</span>
+            <span className="mx-8">the republic</span>
+            <span className="mx-8">the prince</span>
+            <span className="mx-8">war and peace</span>
+            <span className="mx-8">the quran</span>
+            <span className="mx-8">don quixote</span>
+            <span className="mx-8">anna karenina</span>
+            <span className="mx-8">king lear</span>
+            <span className="mx-8">romeo and juliet</span>
+            <span className="mx-8">hamlet</span>
+            <span className="mx-8">macbeth</span>
+            <span className="mx-8">a midsummer night's dream</span>
+          </div>
+          <div className="flex shrink-0" aria-hidden="true">
+            <span className="mx-8">the bible</span>
+            <span className="mx-8">the aeneid</span>
+            <span className="mx-8">the republic</span>
+            <span className="mx-8">the prince</span>
+            <span className="mx-8">war and peace</span>
+            <span className="mx-8">the quran</span>
+            <span className="mx-8">don quixote</span>
+            <span className="mx-8">anna karenina</span>
+            <span className="mx-8">king lear</span>
+            <span className="mx-8">romeo and juliet</span>
+            <span className="mx-8">hamlet</span>
+            <span className="mx-8">macbeth</span>
+            <span className="mx-8">a midsummer night's dream</span>
+          </div>
         </div>
       </div>
     </main>
