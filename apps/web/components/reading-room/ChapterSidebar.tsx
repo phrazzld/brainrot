@@ -21,6 +21,15 @@ export default function ChapterSidebar({
 
   return (
     <>
+      {/* Mobile backdrop overlay */}
+      {isOpen && (
+        <div
+          onClick={() => setIsOpen(false)}
+          className="lg:hidden fixed inset-0 bg-black/50 z-20"
+          aria-hidden="true"
+        />
+      )}
+
       {/* Mobile toggle button */}
       <button
         onClick={() => setIsOpen(!isOpen)}

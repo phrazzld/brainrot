@@ -27,7 +27,7 @@
   - Include z-index layering: `z-30` to overlay content when open
   - Success criteria: Smooth slide-in/out on mobile, no layout shift on desktop
 
-- [ ] **Add backdrop overlay for mobile sidebar**
+- [x] **Add backdrop overlay for mobile sidebar**
   - File: `apps/web/components/reading-room/ChapterSidebar.tsx`
   - Render conditional overlay when sidebar open on mobile: `{isOpen && <div onClick={() => setIsOpen(false)} />}`
   - Style: `fixed inset-0 bg-black/50 z-20` (below sidebar z-30)
