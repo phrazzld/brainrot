@@ -30,22 +30,29 @@ function createUrlParams(
 }
 
 /**
+ * Maps HTTP status codes to user-friendly error messages
+ */
+function getStatusCodeMessage(status: number): string {
+  const messages: Record<number, string> = {
+    404: 'file not found - this chapter might not have audio/epub yet',
+    403: 'access denied - try refreshing the page',
+    500: 'server hiccup - try again in a minute',
+    502: 'server hiccup - try again in a minute',
+    503: 'server hiccup - try again in a minute',
+  };
+
+  return messages[status] || `download failed - unexpected error (status ${status})`;
+}
+
+/**
  * Handles error responses from fetch operations
  */
 async function handleErrorResponse(response: Response): Promise<string> {
   const errorText = await response.text();
   console.error(`[Download] API error (${response.status}):`, errorText);
-  let errorMessage = 'Error fetching download URL';
 
-  try {
-    const errorData = JSON.parse(errorText);
-    errorMessage = errorData.message || errorData.error || errorMessage;
-  } catch {
-    // If response isn't valid JSON, use the text directly
-    errorMessage = errorText || errorMessage;
-  }
-
-  return errorMessage;
+  // Use user-friendly status code message
+  return getStatusCodeMessage(response.status);
 }
 
 /**
@@ -79,7 +86,7 @@ async function downloadViaProxy(slug: string, type: 'chapter', chapter: number):
   if (!fileRes.ok) {
     const errorText = await fileRes.text();
     console.error(`[Download] Proxy fetch error (${fileRes.status}):`, errorText);
-    throw new Error(`failed to download audio file (${fileRes.status})`);
+    throw new Error(getStatusCodeMessage(fileRes.status));
   }
 
   console.warn('[Download] Successfully fetched audio file through proxy, creating blob...');
