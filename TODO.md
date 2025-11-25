@@ -137,7 +137,7 @@
   - Update text when audio plays/pauses: "audio playing" / "audio paused"
   - Success criteria: Screen reader users hear state change announcements
 
-- [ ] **Add help text to share modal checkboxes**
+- [x] **Add help text to share modal checkboxes**
   - File: `apps/web/components/reading-room/ShareModal.tsx`
   - Context: Lines 69-86 show checkboxes with no explanation of what they do
   - Add descriptive text under each checkbox label:
