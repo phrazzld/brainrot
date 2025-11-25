@@ -85,6 +85,15 @@ export default function AudioPlayer(props: AudioPlayerProps) {
         </div>
       )}
 
+      {/* Aria-live region for audio state announcements (screen reader only) */}
+      <div
+        role="status"
+        aria-live="polite"
+        className="sr-only"
+      >
+        {isPlaying ? 'audio playing' : 'audio paused'}
+      </div>
+
       <div className="flex items-center gap-4">
         {/* Use a stable ref for the waveform container */}
         <div
