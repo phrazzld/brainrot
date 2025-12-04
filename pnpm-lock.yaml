@@ -185,8 +185,8 @@ importers:
         specifier: ^16.0.7
         version: 16.0.7(@babel/core@7.28.5)(react-dom@19.2.1)(react@19.2.1)
       openai:
-        specifier: ^5.20.0
-        version: 5.20.0(zod@4.1.13)
+        specifier: ^6.9.1
+        version: 6.9.1(zod@4.1.13)
       pino:
         specifier: ^9.9.4
         version: 9.9.4
@@ -315,8 +315,8 @@ importers:
         specifier: ^3.3.1
         version: 3.3.2
       openai:
-        specifier: ^5.20.0
-        version: 5.20.0(zod@4.1.13)
+        specifier: ^6.9.1
+        version: 6.9.1(zod@4.1.13)
       ora:
         specifier: ^8.2.0
         version: 8.2.0
@@ -7802,12 +7802,12 @@ packages:
     dependencies:
       mimic-function: 5.0.1
 
-  /openai@5.20.0(zod@4.1.13):
-    resolution: {integrity: sha512-Bmc2zLM/YWgFrDpXr9hwXqGGDdMmMpE9+qoZPsaHpn0Y/Qk1Vu26hNqXo7+nHdli+sLsXINvS1f8kR3NKhGKmA==}
+  /openai@6.9.1(zod@4.1.13):
+    resolution: {integrity: sha512-vQ5Rlt0ZgB3/BNmTa7bIijYFhz3YBceAA3Z4JuoMSBftBF9YqFHIEhZakSs+O/Ad7EaoEimZvHxD5ylRjN11Lg==}
     hasBin: true
     peerDependencies:
       ws: ^8.18.0
-      zod: ^3.23.8
+      zod: ^3.25 || ^4.0
     peerDependenciesMeta:
       ws:
         optional: true
