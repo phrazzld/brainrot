@@ -34,7 +34,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 2
 
@@ -80,15 +80,15 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v4
         with:
           version: 8.15.1
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: 22
           cache: "pnpm"
@@ -105,7 +105,7 @@ jobs:
         run: pnpm generate:formats ${{ matrix.book }}
 
       - name: Upload generated files
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: generated-${{ matrix.book }}
           path: content/translations/books/${{ matrix.book }}/generated/
@@ -124,15 +124,15 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v4
         with:
           version: 8.15.1
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: 22
           cache: "pnpm"
@@ -141,7 +141,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Download generated files
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v6
         with:
           name: generated-${{ matrix.book }}
           path: content/translations/books/${{ matrix.book }}/generated/
@@ -168,15 +168,15 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v4
         with:
           version: 8.15.1
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: 22
           cache: "pnpm"
@@ -185,7 +185,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Download generated files
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v6
         with:
           name: generated-${{ matrix.book }}
           path: content/translations/books/${{ matrix.book }}/generated/
@@ -214,7 +214,7 @@ jobs:
           KDP_PASSWORD: ${{ secrets.KDP_PASSWORD }}
 
       - name: Upload publishing reports
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         if: always()
         with:
           name: publishing-reports-${{ matrix.book }}
