@@ -18,9 +18,6 @@ const createClientLogger = () => {
 const createServerLogger = () => {
   return pino({
     level: process.env.LOG_LEVEL || 'info',
-    browser: {
-      asObject: true,
-    },
   });
 };
 
