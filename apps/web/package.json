@@ -63,7 +63,7 @@
     "autoprefixer": "^10.4.20",
     "babel-plugin-transform-import-meta": "^2.3.2",
     "eslint": "^9.35.0",
-    "eslint-config-next": "^16.0.3",
+    "eslint-config-next": "^15.5.2",
     "eslint-config-prettier": "^10.1.2",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-prettier": "^5.2.6",
