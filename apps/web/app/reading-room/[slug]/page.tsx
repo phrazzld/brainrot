@@ -37,8 +37,10 @@ export default function ReadingRoom() {
   const { rawText, isTextLoading } = useTextLoader(slug, chapterData?.text);
 
   // Set up audio player
-  const [{ isPlaying, isAudioLoading, currentTime, totalTime, error }, { togglePlayPause, formatTime }] =
-    useAudioPlayer(waveformRef, chapterData?.audioSrc, updateTimestamp);
+  const [
+    { isPlaying, isAudioLoading, currentTime, totalTime, error },
+    { togglePlayPause, formatTime },
+  ] = useAudioPlayer(waveformRef, chapterData?.audioSrc, updateTimestamp);
 
   // Set up share modal
   const [

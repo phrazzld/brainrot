@@ -16,12 +16,12 @@ function SkeletonLoader() {
     'w-full',
     'w-10/12',
     'w-8/12', // Short line (paragraph break)
-    '',       // Empty line
+    '', // Empty line
     'w-full',
     'w-full',
     'w-9/12',
     'w-7/12', // Short line (paragraph break)
-    '',       // Empty line
+    '', // Empty line
     'w-full',
   ];
 

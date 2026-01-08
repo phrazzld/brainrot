@@ -35,44 +35,46 @@ export default function ChapterHeader(props: ChapterHeaderProps) {
       <div className="px-4 py-3 flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-display font-bold">{translation.title}</h1>
-          <p className="text-sm font-body text-lavender">{translation.chapters[chapterIndex].title}</p>
+          <p className="text-sm font-body text-lavender">
+            {translation.chapters[chapterIndex].title}
+          </p>
           <p className="text-xs font-body text-white/60 mt-1">
             Chapter {chapterIndex + 1} of {totalChapters}
           </p>
         </div>
-      <div className="flex items-center gap-2">
-        {translation.purchaseUrl && (
-          <Link
-            href={translation.purchaseUrl}
-            className="btn btn-primary"
-            target="_blank"
-            rel="noopener noreferrer"
+        <div className="flex items-center gap-2">
+          {translation.purchaseUrl && (
+            <Link
+              href={translation.purchaseUrl}
+              className="btn btn-primary"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              buy now
+            </Link>
+          )}
+          <button
+            onClick={onPrevChapter}
+            className={`btn btn-secondary ${
+              chapterIndex === 0 ? 'opacity-50 cursor-not-allowed' : ''
+            }`}
+            disabled={chapterIndex === 0}
           >
-            buy now
-          </Link>
-        )}
-        <button
-          onClick={onPrevChapter}
-          className={`btn btn-secondary ${
-            chapterIndex === 0 ? 'opacity-50 cursor-not-allowed' : ''
-          }`}
-          disabled={chapterIndex === 0}
-        >
-          ← prev
-        </button>
-        <button
-          onClick={onNextChapter}
-          className={`btn btn-secondary ${
-            chapterIndex === totalChapters - 1 ? 'opacity-50 cursor-not-allowed' : ''
-          }`}
-          disabled={chapterIndex === totalChapters - 1}
-        >
-          next →
-        </button>
-        <button onClick={onOpenShareModal} className="btn btn-secondary">
-          share
-        </button>
-      </div>
+            ← prev
+          </button>
+          <button
+            onClick={onNextChapter}
+            className={`btn btn-secondary ${
+              chapterIndex === totalChapters - 1 ? 'opacity-50 cursor-not-allowed' : ''
+            }`}
+            disabled={chapterIndex === totalChapters - 1}
+          >
+            next →
+          </button>
+          <button onClick={onOpenShareModal} className="btn btn-secondary">
+            share
+          </button>
+        </div>
       </div>
 
       {/* Reading progress bar */}

@@ -133,7 +133,9 @@ export default function ShareModal(props: ShareModalProps) {
               />
               <span>include chapter</span>
             </label>
-            <p className="text-xs font-body text-white/60 ml-6 mt-1">link opens to current chapter</p>
+            <p className="text-xs font-body text-white/60 ml-6 mt-1">
+              link opens to current chapter
+            </p>
           </div>
           <div>
             <label className="flex items-center gap-2 font-body" htmlFor="include-timestamp">
@@ -145,7 +147,9 @@ export default function ShareModal(props: ShareModalProps) {
               />
               <span>include timestamp</span>
             </label>
-            <p className="text-xs font-body text-white/60 ml-6 mt-1">link starts audio at current position</p>
+            <p className="text-xs font-body text-white/60 ml-6 mt-1">
+              link starts audio at current position
+            </p>
           </div>
         </div>
         <div className="space-y-2">

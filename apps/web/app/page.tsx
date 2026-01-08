@@ -39,7 +39,7 @@ export default function HomePage() {
             <span className="mx-8">romeo and juliet</span>
             <span className="mx-8">hamlet</span>
             <span className="mx-8">macbeth</span>
-            <span className="mx-8">a midsummer night's dream</span>
+            <span className="mx-8">a midsummer night&apos;s dream</span>
           </div>
           <div className="flex shrink-0" aria-hidden="true">
             <span className="mx-8">the bible</span>
@@ -54,7 +54,7 @@ export default function HomePage() {
             <span className="mx-8">romeo and juliet</span>
             <span className="mx-8">hamlet</span>
             <span className="mx-8">macbeth</span>
-            <span className="mx-8">a midsummer night's dream</span>
+            <span className="mx-8">a midsummer night&apos;s dream</span>
           </div>
         </div>
       </div>
