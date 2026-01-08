@@ -36,12 +36,7 @@ export default function ChapterSidebar({
         className="lg:hidden fixed top-4 left-4 z-40 p-2 bg-black/80 rounded border border-white/20 hover:bg-black/90"
         aria-label={isOpen ? 'Close chapter menu' : 'Open chapter menu'}
       >
-        <svg
-          className="w-6 h-6 text-white"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
+        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           {isOpen ? (
             <path
               strokeLinecap="round"
@@ -68,27 +63,31 @@ export default function ChapterSidebar({
           ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
         `}
       >
-      <h2 className="text-lg font-display font-bold mb-4 text-peachy">chapters</h2>
-      <nav className="flex flex-col space-y-2">
-        {chaptersArray.map((cNum) => {
-          const isActive = cNum === chapterIndex;
-          return (
-            <button
-              key={cNum}
-              onClick={() => onChapterClick(cNum)}
-              className={`px-3 py-2 rounded border text-sm font-body text-left ${
-                isActive
-                  ? 'bg-peachy text-midnight border-peachy'
-                  : 'bg-black/30 text-white/80 border-white/20 hover:bg-black/50'
-              }`}
-            >
-              {isActive && <span className="mr-2" aria-hidden="true">▶</span>}
-              {translation.chapters[cNum].title}
-            </button>
-          );
-        })}
-      </nav>
-    </aside>
+        <h2 className="text-lg font-display font-bold mb-4 text-peachy">chapters</h2>
+        <nav className="flex flex-col space-y-2">
+          {chaptersArray.map((cNum) => {
+            const isActive = cNum === chapterIndex;
+            return (
+              <button
+                key={cNum}
+                onClick={() => onChapterClick(cNum)}
+                className={`px-3 py-2 rounded border text-sm font-body text-left ${
+                  isActive
+                    ? 'bg-peachy text-midnight border-peachy'
+                    : 'bg-black/30 text-white/80 border-white/20 hover:bg-black/50'
+                }`}
+              >
+                {isActive && (
+                  <span className="mr-2" aria-hidden="true">
+                    ▶
+                  </span>
+                )}
+                {translation.chapters[cNum].title}
+              </button>
+            );
+          })}
+        </nav>
+      </aside>
     </>
   );
 }

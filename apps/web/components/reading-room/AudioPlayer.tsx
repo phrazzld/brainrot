@@ -86,11 +86,7 @@ export default function AudioPlayer(props: AudioPlayerProps) {
       )}
 
       {/* Aria-live region for audio state announcements (screen reader only) */}
-      <div
-        role="status"
-        aria-live="polite"
-        className="sr-only"
-      >
+      <div role="status" aria-live="polite" className="sr-only">
         {isPlaying ? 'audio playing' : 'audio paused'}
       </div>
 

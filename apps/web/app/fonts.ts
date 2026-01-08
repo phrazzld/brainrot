@@ -1,4 +1,4 @@
-import { Space_Grotesk, Crimson_Pro } from 'next/font/google';
+import { Crimson_Pro, Space_Grotesk } from 'next/font/google';
 
 export const display = Space_Grotesk({
   subsets: ['latin'],

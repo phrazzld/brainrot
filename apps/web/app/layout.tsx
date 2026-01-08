@@ -4,7 +4,7 @@ import { ReactNode } from 'react';
 import FooterV3 from '@/components/FooterV3';
 import Header from '@/components/header';
 
-import { display, body } from './fonts';
+import { body, display } from './fonts';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -14,11 +14,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html
-      lang="en"
-      className={`${display.variable} ${body.variable}`}
-      suppressHydrationWarning
-    >
+    <html lang="en" className={`${display.variable} ${body.variable}`} suppressHydrationWarning>
       <body>
         {/* header */}
         <Header />
