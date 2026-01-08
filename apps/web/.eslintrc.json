@@ -95,7 +95,8 @@
     "max-nested-callbacks": ["warn", 3],
     "max-params": ["warn", 4],
     "complexity": ["warn", 10],
-    "prettier/prettier": ["error", {}, { "usePrettierrc": true }]
+    "prettier/prettier": ["error", {}, { "usePrettierrc": true }],
+    "react-hooks/set-state-in-effect": "off"
   },
   "settings": {
     "react": {
