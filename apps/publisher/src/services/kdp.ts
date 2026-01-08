@@ -2,7 +2,7 @@ import { chromium, Browser, Page, BrowserContext } from "playwright";
 import path from "path";
 import fs from "fs/promises";
 import { Logger } from "../utils/logger.js";
-import inquirer from "inquirer";
+import { input } from "@inquirer/prompts";
 
 interface KdpConfig {
   email: string;
@@ -168,15 +168,11 @@ export class KdpService {
 
         // Handle OTP input
         if (await this.page.isVisible("input#auth-mfa-otpcode")) {
-          const { otp } = await inquirer.prompt([
-            {
-              type: "input",
-              name: "otp",
-              message: "Enter your 2FA code:",
-              validate: (input) =>
-                /^\d{6}$/.test(input) || "Please enter a valid 6-digit code",
-            },
-          ]);
+          const otp = await input({
+            message: "Enter your 2FA code:",
+            validate: (value) =>
+              /^\d{6}$/.test(value) || "Please enter a valid 6-digit code",
+          });
 
           await this.page.fill("input#auth-mfa-otpcode", otp);
           await this.page.click("input#auth-signin-button");
@@ -186,15 +182,11 @@ export class KdpService {
         if (await this.page.isVisible('text="Get OTP on SMS"')) {
           await this.page.click('text="Get OTP on SMS"');
 
-          const { smsCode } = await inquirer.prompt([
-            {
-              type: "input",
-              name: "smsCode",
-              message: "Enter the code sent to your phone:",
-              validate: (input) =>
-                /^\d{6}$/.test(input) || "Please enter a valid 6-digit code",
-            },
-          ]);
+          const smsCode = await input({
+            message: "Enter the code sent to your phone:",
+            validate: (value) =>
+              /^\d{6}$/.test(value) || "Please enter a valid 6-digit code",
+          });
 
           await this.page.fill('input[name="otpCode"]', smsCode);
           await this.page.click('input[type="submit"]');
