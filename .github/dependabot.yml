@@ -1,66 +1,40 @@
-# Dependabot configuration for Brainrot Publishing House monorepo
-# Consolidated from 18 entries to 3 - monorepo root handles all workspace dependencies
+# Dependabot - Security updates only (inactive repo)
+# Reduced noise: monthly schedule, 1 PR limit, security advisories only
 version: 2
 updates:
-  # Root monorepo - handles ALL npm packages in workspaces
-  # pnpm workspaces mean dependencies bubble up to root lockfile
+  # NPM security updates only
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
-      interval: "weekly"
-      day: "monday"
-      time: "04:00"
+      interval: "monthly"
     target-branch: "master"
-    open-pull-requests-limit: 5
+    open-pull-requests-limit: 1
+    # Only create PRs for security vulnerabilities
     groups:
-      # Group all non-major updates into single PR
-      all-dependencies:
+      security-updates:
+        applies-to: security-updates
         patterns:
           - "*"
-        update-types:
-          - "minor"
-          - "patch"
     commit-message:
-      prefix: "deps"
-      include: "scope"
+      prefix: "security(deps)"
     labels:
+      - "security"
       - "dependencies"
-    reviewers:
-      - "phrazzld"
 
-  # GitHub Actions updates
+  # GitHub Actions - security only
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "weekly"
-      day: "monday"
-      time: "04:00"
+      interval: "monthly"
     target-branch: "master"
-    open-pull-requests-limit: 3
+    open-pull-requests-limit: 1
     groups:
-      actions:
+      actions-security:
+        applies-to: security-updates
         patterns:
           - "*"
     commit-message:
-      prefix: "ci"
-      include: "scope"
+      prefix: "security(ci)"
     labels:
-      - "dependencies"
+      - "security"
       - "github-actions"
-    reviewers:
-      - "phrazzld"
-
-  # Docker updates (if used)
-  - package-ecosystem: "docker"
-    directory: "/"
-    schedule:
-      interval: "monthly"
-    open-pull-requests-limit: 2
-    commit-message:
-      prefix: "docker"
-      include: "scope"
-    labels:
-      - "dependencies"
-      - "docker"
-    reviewers:
-      - "phrazzld"
