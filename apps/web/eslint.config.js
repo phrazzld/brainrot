@@ -1,5 +1,8 @@
 /**
  * ESLint v9 flat config for Next.js 16+
+ *
+ * This config replaces both .eslintrc.json and the previous FlatCompat-based
+ * config that caused circular reference errors with eslint-plugin-react.
  */
 import js from '@eslint/js';
 import tseslint from 'typescript-eslint';
