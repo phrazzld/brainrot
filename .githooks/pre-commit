@@ -35,7 +35,7 @@ PATTERNS=(
     "BEGIN EC PRIVATE KEY"
     "BEGIN PGP PRIVATE KEY"
     # Hardcoded secrets with values (key=value or key: value patterns)
-    "['\"]?(api_key|apikey|api_secret|access_token|private_key|secret_key)['\"]?\s*[:=]\s*['\"][a-zA-Z0-9_/-]{16,}['\"]"
+    "['\"]?(api_key|apikey|api_secret|access_token|private_key|secret_key)['\"]?\s*[:=]\s*['\"][a-zA-Z0-9_/+.=-]{16,}['\"]"
 )
 
 FOUND_SECRETS=0

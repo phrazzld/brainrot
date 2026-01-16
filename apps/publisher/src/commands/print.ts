@@ -187,7 +187,7 @@ async function quoteBook(bookSlug: string, options: PrintOptions) {
 
     // Build line item
     spinner.text = "Calculating cost...";
-    const lineItem = await buildLineItem(bookInfo, parseInt(String(options.quantity || "1")));
+    const lineItem = await buildLineItem(bookInfo, options.quantity !== undefined ? parseInt(String(options.quantity), 10) : 1);
 
     // Get shipping options with costs
     const shippingOptions = await service.getShippingOptions([lineItem], address);
@@ -241,7 +241,7 @@ async function orderBook(bookSlug: string, options: PrintOptions) {
 
     // Build line item
     spinner.text = "Preparing order...";
-    const lineItem = await buildLineItem(bookInfo, parseInt(String(options.quantity || "1")));
+    const lineItem = await buildLineItem(bookInfo, options.quantity !== undefined ? parseInt(String(options.quantity), 10) : 1);
     const shippingLevel = (options.shipping || "GROUND") as ShippingLevel;
 
     // Get cost estimate first
@@ -627,10 +627,23 @@ async function buildLineItem(
 }
 
 function createService(options: PrintOptions): LuluPrintService {
+  const clientKey = process.env.LULU_CLIENT_KEY || process.env.LULU_API_KEY;
+  const clientSecret =
+    process.env.LULU_CLIENT_SECRET || process.env.LULU_API_SECRET;
+
+  // Skip credential check in mock mode
+  if (!options.mock && !options.dryRun) {
+    if (!clientKey || !clientSecret) {
+      throw new Error(
+        "Missing Lulu API credentials. Set LULU_CLIENT_KEY and LULU_CLIENT_SECRET environment variables.\n" +
+          "See: https://developers.lulu.com/ for API access.",
+      );
+    }
+  }
+
   return new LuluPrintService({
-    clientKey: process.env.LULU_CLIENT_KEY || process.env.LULU_API_KEY || "",
-    clientSecret:
-      process.env.LULU_CLIENT_SECRET || process.env.LULU_API_SECRET || "",
+    clientKey: clientKey || "",
+    clientSecret: clientSecret || "",
     sandbox: !options.production,
     mockMode: options.mock || options.dryRun,
   });

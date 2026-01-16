@@ -3,6 +3,8 @@
  * Per council recommendation: specific errors reveal details needed to fix rejected orders
  */
 
+import axios from "axios";
+
 export class LuluPrintError extends Error {
   public readonly code: string;
   public readonly details?: Record<string, unknown>;
@@ -247,17 +249,8 @@ export function parseLuluError(error: unknown): LuluPrintError {
   return new LuluPrintError(String(error), "UNKNOWN");
 }
 
-// Helper to check if error is Axios error
-function isAxiosError(
-  error: unknown,
-): error is { response?: { status?: number; data?: any; headers?: any }; message?: string } {
-  return (
-    typeof error === "object" &&
-    error !== null &&
-    "isAxiosError" in error &&
-    (error as any).isAxiosError === true
-  );
-}
+// Use axios's built-in type guard for consistency and robustness
+const isAxiosError = axios.isAxiosError;
 
 // Parse validation errors from API response
 function parseValidationErrors(

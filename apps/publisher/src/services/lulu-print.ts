@@ -323,8 +323,14 @@ export class LuluPrintService {
         return this.mapPrintJobResponse(response.data.results[0]);
       }
       return null;
-    } catch {
-      return null;
+    } catch (error) {
+      // Only treat 404 as "not found", re-throw all other errors
+      // to preserve idempotency guarantee (avoid duplicate orders)
+      const luluError = parseLuluError(error);
+      if (luluError instanceof LuluNotFoundError) {
+        return null;
+      }
+      throw luluError;
     }
   }
 
