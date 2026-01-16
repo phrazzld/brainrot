@@ -78,3 +78,6 @@ apps/web/public/assets/*/text/
 # Keep .gitkeep files
 !.gitkeep
 .vercel
+
+thinktank.log
+thinktank_*/
