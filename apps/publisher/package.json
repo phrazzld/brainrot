@@ -34,7 +34,9 @@
     "js-yaml": "^4.1.1",
     "ora": "^8.2.0",
     "p-retry": "^5.1.0",
-    "playwright": "^1.57.0"
+    "pdf-lib": "^1.17.1",
+    "playwright": "^1.57.0",
+    "zod": "^4.3.5"
   },
   "devDependencies": {
     "@types/form-data": "^2.5.2",

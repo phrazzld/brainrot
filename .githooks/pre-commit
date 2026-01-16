@@ -17,23 +17,25 @@ if [ -z "$STAGED_FILES" ]; then
 fi
 
 # Patterns to check (excluding .env.example and docs)
+# NOTE: Only check for actual secret VALUES, not property names.
+# Generic names like "api_key" or "access_token" cause false positives
+# in TypeScript interfaces and are not useful without a value pattern.
 PATTERNS=(
+    # Actual secret token patterns (prefixed tokens)
     "vercel_blob_[a-zA-Z0-9]{32,}"
     "sk-[a-zA-Z0-9]{20,}"
     "lulu_[a-zA-Z0-9]{20,}"
     "sk-or-[a-zA-Z0-9]{48}"
     "sk-ant-[a-zA-Z0-9]{40,}"
     "re_[a-zA-Z0-9]{20,}"
-    "api_key"
-    "apikey"
-    "api_secret"
-    "access_token"
-    "private_key"
+    # Private key file contents
     "BEGIN RSA PRIVATE KEY"
     "BEGIN OPENSSH PRIVATE KEY"
     "BEGIN DSA PRIVATE KEY"
     "BEGIN EC PRIVATE KEY"
     "BEGIN PGP PRIVATE KEY"
+    # Hardcoded secrets with values (key=value or key: value patterns)
+    "['\"]?(api_key|apikey|api_secret|access_token|private_key|secret_key)['\"]?\s*[:=]\s*['\"][a-zA-Z0-9_/-]{16,}['\"]"
 )
 
 FOUND_SECRETS=0
@@ -44,6 +46,7 @@ for FILE in $STAGED_FILES; do
        [[ "$FILE" == "docs/SECRETS.md" ]] || \
        [[ "$FILE" == ".gitleaks.toml" ]] || \
        [[ "$FILE" == ".github/secret_scanning.yml" ]] || \
+       [[ "$FILE" == .githooks/* ]] || \
        [[ "$FILE" == *.test.ts ]] || \
        [[ "$FILE" == *.test.js ]]; then
         continue
