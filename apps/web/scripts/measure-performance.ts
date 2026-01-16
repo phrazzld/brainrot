@@ -63,7 +63,7 @@ async function measureRequest(
       type,
       slug,
     };
-  } catch (error) {
+  } catch (_error) {
     return {
       duration: performance.now() - startTime,
       status: 0,

@@ -21,7 +21,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "test": "vitest",
-    "lint": "next lint",
+    "lint": "eslint .",
     "format": "npm run prettier:fix",
     "typecheck": "tsc --noEmit",
     "prettier:fix": "prettier --write .",
@@ -69,6 +69,7 @@
     "eslint-plugin-prettier": "^5.2.6",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
+    "globals": "^17.0.0",
     "husky": "^9.1.7",
     "identity-obj-proxy": "^3.0.0",
     "lint-staged": "^16.2.7",
@@ -78,7 +79,8 @@
     "tailwindcss": "^4.1.17",
     "ts-node": "^10.9.2",
     "tsx": "^4.21.0",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.53.0"
   },
   "lint-staged": {
     "package.json": [

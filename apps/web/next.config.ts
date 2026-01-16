@@ -1,6 +1,8 @@
 import type { NextConfig } from 'next';
 
-const nextConfig: NextConfig = {
+// NextConfig type in Next.js 15+ doesn't include eslint property,
+// but the runtime still accepts it. Use type assertion for compatibility.
+const nextConfig: NextConfig & { eslint?: { ignoreDuringBuilds?: boolean } } = {
   /* config options here */
   output: 'standalone',
   images: {

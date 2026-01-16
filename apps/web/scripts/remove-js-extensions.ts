@@ -54,7 +54,7 @@ function shouldRemoveJsExtension(importPath: string): boolean {
 /**
  * Process file content and remove .js extensions
  */
-function processContent(content: string, filePath: string): { content: string; fixes: number } {
+function processContent(content: string, _filePath: string): { content: string; fixes: number } {
   let newContent = content;
   let fixes = 0;
   const replacements: ImportFix[] = [];
