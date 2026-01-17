@@ -1,15 +1,18 @@
 import type { NextConfig } from 'next';
 
-// NextConfig type in Next.js 15+ doesn't include eslint property,
-// but the runtime still accepts it. Use type assertion for compatibility.
-const nextConfig: NextConfig & { eslint?: { ignoreDuringBuilds?: boolean } } = {
-  /* config options here */
+const nextConfig: NextConfig = {
   output: 'standalone',
   images: {
-    domains: [
-      // Allow Vercel Blob Storage domain and its tenant-specific subdomains
-      'public.blob.vercel-storage.com',
-      '82qos1wlxbd4iq1g.public.blob.vercel-storage.com',
+    // Use remotePatterns instead of deprecated domains
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '*.public.blob.vercel-storage.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'public.blob.vercel-storage.com',
+      },
     ],
   },
   // Transpile workspace packages for proper monorepo support
@@ -24,15 +27,12 @@ const nextConfig: NextConfig & { eslint?: { ignoreDuringBuilds?: boolean } } = {
     // Temporarily disable type checking during build for Vercel
     ignoreBuildErrors: true,
   },
-  eslint: {
-    // Disable ESLint during build for Vercel
-    ignoreDuringBuilds: true,
-  },
   // Experimental features for better monorepo support
   experimental: {
     // Enable external directory watching for workspace packages
     externalDir: true,
   },
+  // Webpack config for ESM package resolution (using --webpack flag in build)
   webpack: (config, { isServer }) => {
     // Handle ESM packages that need transpilation
     config.resolve.extensionAlias = {
