@@ -85,12 +85,32 @@ export class LuluServerError extends LuluPrintError {
 }
 
 /**
- * Network/timeout errors
+ * Network errors (DNS, connection refused, etc.)
  */
 export class LuluNetworkError extends LuluPrintError {
-  constructor(message: string, cause?: Error) {
+  public readonly networkErrorType: "timeout" | "dns" | "connection" | "unknown";
+
+  constructor(
+    message: string,
+    networkErrorType: "timeout" | "dns" | "connection" | "unknown" = "unknown",
+    cause?: Error,
+  ) {
     super(message, "NETWORK_ERROR", { retryable: true, cause });
     this.name = "LuluNetworkError";
+    this.networkErrorType = networkErrorType;
+  }
+}
+
+/**
+ * Request timeout errors (separate from general network errors for clearer debugging)
+ */
+export class LuluTimeoutError extends LuluNetworkError {
+  public readonly timeoutMs?: number;
+
+  constructor(message: string, timeoutMs?: number, cause?: Error) {
+    super(message, "timeout", cause);
+    this.name = "LuluTimeoutError";
+    this.timeoutMs = timeoutMs;
   }
 }
 
@@ -221,11 +241,43 @@ export function parseLuluError(error: unknown): LuluPrintError {
       );
     }
 
-    // Network error (no response)
+    // Network error (no response) - differentiate by error code
     if (!error.response) {
+      const cause = error instanceof Error ? error : new Error(String(error));
+      const code = error.code?.toUpperCase();
+
+      // Timeout errors
+      if (code === "ECONNABORTED" || code === "ETIMEDOUT" || error.message?.includes("timeout")) {
+        return new LuluTimeoutError(
+          `Request timed out: ${error.message || "connection took too long"}`,
+          error.config?.timeout,
+          cause,
+        );
+      }
+
+      // DNS resolution failures
+      if (code === "ENOTFOUND" || code === "EAI_AGAIN") {
+        return new LuluNetworkError(
+          `DNS resolution failed: ${error.message || "could not resolve host"}`,
+          "dns",
+          cause,
+        );
+      }
+
+      // Connection refused/reset
+      if (code === "ECONNREFUSED" || code === "ECONNRESET") {
+        return new LuluNetworkError(
+          `Connection failed: ${error.message || "connection refused or reset"}`,
+          "connection",
+          cause,
+        );
+      }
+
+      // Generic network error
       return new LuluNetworkError(
         error.message || "Network error occurred",
-        error instanceof Error ? error : new Error(String(error)),
+        "unknown",
+        cause,
       );
     }
 
@@ -259,6 +311,8 @@ function parseValidationErrors(
   if (!data) return [];
 
   // Handle various API error formats
+
+  // Format: {errors: [{field, message}, ...]} (array of objects)
   if (Array.isArray(data.errors)) {
     return data.errors.map((e: any) => ({
       field: e.field || e.loc?.join(".") || "unknown",
@@ -266,6 +320,15 @@ function parseValidationErrors(
     }));
   }
 
+  // Format: {errors: {field1: "msg1", field2: "msg2"}} (object mapping)
+  if (typeof data.errors === "object" && data.errors !== null) {
+    return Object.entries(data.errors).map(([field, message]) => ({
+      field,
+      message: String(message),
+    }));
+  }
+
+  // Format: {detail: {field1: "msg1", field2: "msg2"}} (FastAPI-style object)
   if (typeof data.detail === "object" && !Array.isArray(data.detail)) {
     return Object.entries(data.detail).map(([field, message]) => ({
       field,
@@ -273,6 +336,7 @@ function parseValidationErrors(
     }));
   }
 
+  // Format: {detail: [{loc: [...], msg: "..."}, ...]} (Pydantic-style)
   if (Array.isArray(data.detail)) {
     return data.detail.map((e: any) => ({
       field: e.loc?.join(".") || "unknown",

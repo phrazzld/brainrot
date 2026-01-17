@@ -168,13 +168,6 @@ export class LuluPrintService {
 
     return pRetry(
       async () => {
-        // Check if job with this external_id already exists (idempotency)
-        const existingJob = await this.findJobByExternalId(externalId);
-        if (existingJob) {
-          Logger.warn(`Job with external_id ${externalId} already exists`);
-          throw new LuluDuplicateJobError(externalId, existingJob.id);
-        }
-
         try {
           const response = await axios.post("/print-jobs/", {
             line_items: items.map((item) => ({
@@ -193,7 +186,17 @@ export class LuluPrintService {
 
           Logger.info(`Print job created: ${response.data.id}`);
           return this.mapPrintJobResponse(response.data);
-        } catch (error) {
+        } catch (error: unknown) {
+          // On any failure, check if job was actually created (idempotency)
+          // This handles: 409 Conflict, network failures after server processed, etc.
+          const existingJob = await this.findJobByExternalId(externalId);
+          if (existingJob) {
+            Logger.warn(
+              `Job with external_id ${externalId} already exists: ${existingJob.id}`,
+            );
+            throw new LuluDuplicateJobError(externalId, existingJob.id);
+          }
+          // Job doesn't exist, propagate original error
           throw parseLuluError(error);
         }
       },
@@ -202,7 +205,11 @@ export class LuluPrintService {
         minTimeout: retryConfig.delay,
         onFailedAttempt: (error) => {
           // Don't retry on duplicate job (it succeeded)
-          if (error instanceof LuluDuplicateJobError) {
+          // p-retry wraps errors, so check both direct and cause
+          const isDuplicate =
+            error instanceof LuluDuplicateJobError ||
+            (error.cause instanceof LuluDuplicateJobError);
+          if (isDuplicate) {
             throw error; // Abort retries
           }
           Logger.warn(

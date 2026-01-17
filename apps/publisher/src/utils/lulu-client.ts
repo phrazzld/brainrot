@@ -21,8 +21,9 @@ const LULU_PRODUCTION_URL = "https://api.lulu.com";
 const LULU_SANDBOX_URL = "https://api.sandbox.lulu.com";
 const AUTH_PATH = "/auth/realms/glasstree/protocol/openid-connect/token";
 
-// Token expiry buffer (refresh 60s before actual expiry)
-const TOKEN_BUFFER_MS = 60_000;
+// Token expiry buffer (refresh 120s before actual expiry)
+// Extra margin ensures slow requests complete before token expires
+const TOKEN_BUFFER_MS = 120_000;
 
 export class LuluHttpClient {
   private client: AxiosInstance;

@@ -29,6 +29,7 @@ import {
   generatePodPackageId,
   getDefaultPrintSpecs,
   calculateSpineWidth,
+  validatePrintSpecs,
 } from "../utils/pod-package.js";
 import type {
   ShippingAddress,
@@ -205,7 +206,8 @@ async function quoteBook(bookSlug: string, options: PrintOptions) {
 
   // Build line item
   spinner.text = "Calculating cost...";
-  const lineItem = await buildLineItem(bookInfo, options.quantity !== undefined ? parseInt(String(options.quantity), 10) : 1);
+  const quantity = parseQuantity(options.quantity);
+  const lineItem = await buildLineItem(bookInfo, quantity);
 
   // Get shipping options with costs
   const shippingOptions = await service.getShippingOptions([lineItem], address);
@@ -251,7 +253,8 @@ async function orderBook(bookSlug: string, options: PrintOptions) {
 
   // Build line item
   spinner.text = "Preparing order...";
-  const lineItem = await buildLineItem(bookInfo, options.quantity !== undefined ? parseInt(String(options.quantity), 10) : 1);
+  const quantity = parseQuantity(options.quantity);
+  const lineItem = await buildLineItem(bookInfo, quantity);
   const shippingLevel = (options.shipping || "GROUND") as ShippingLevel;
 
   // Get cost estimate first
@@ -503,6 +506,9 @@ async function loadBookInfo(
     finish: (config.finish as "matte" | "glossy") || "matte",
   };
 
+  // Validate specs upfront (fail fast with clear error)
+  validatePrintSpecs(specs);
+
   // Generate SKU with actual page count
   const podPackageId = generatePodPackageId(specs, pageCount);
 
@@ -608,8 +614,11 @@ function createService(options: PrintOptions): LuluPrintService {
   if (!options.mock && !options.dryRun) {
     if (!clientKey || !clientSecret) {
       throw new Error(
-        "Missing Lulu API credentials. Set LULU_CLIENT_KEY and LULU_CLIENT_SECRET environment variables.\n" +
-          "See: https://developers.lulu.com/ for API access.",
+        "Missing Lulu API credentials.\n" +
+          "Set one of these pairs:\n" +
+          "  - LULU_CLIENT_KEY + LULU_CLIENT_SECRET (preferred)\n" +
+          "  - LULU_API_KEY + LULU_API_SECRET (legacy)\n" +
+          "Get credentials at: https://developers.lulu.com/",
       );
     }
   }
@@ -620,6 +629,37 @@ function createService(options: PrintOptions): LuluPrintService {
     sandbox: !options.production,
     mockMode: options.mock || options.dryRun,
   });
+}
+
+/**
+ * Parse and validate quantity from CLI options.
+ * Throws on invalid values to prevent accidental bulk orders.
+ */
+function parseQuantity(value: string | number | undefined): number {
+  const raw = value !== undefined ? parseInt(String(value), 10) : 1;
+
+  if (isNaN(raw)) {
+    throw new Error(
+      `Invalid quantity "${value}": must be a number`,
+    );
+  }
+
+  if (raw < 1) {
+    throw new Error(
+      `Invalid quantity ${raw}: must be at least 1`,
+    );
+  }
+
+  // Reasonable upper bound to prevent accidental bulk orders
+  const MAX_QUANTITY = 1000;
+  if (raw > MAX_QUANTITY) {
+    throw new Error(
+      `Quantity ${raw} exceeds maximum of ${MAX_QUANTITY}. ` +
+        `For bulk orders, contact Lulu directly.`,
+    );
+  }
+
+  return raw;
 }
 
 function formatStatus(status: string): string {
