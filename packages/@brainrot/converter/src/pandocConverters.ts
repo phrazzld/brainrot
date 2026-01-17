@@ -29,6 +29,17 @@ export interface ConversionOptions {
   tempDir?: string;
 }
 
+export interface PdfTemplateOptions extends ConversionOptions {
+  templatePath?: string;
+  translator?: string;
+  originalAuthor?: string;
+  year?: string;
+  isbn?: string;
+  subtitle?: string;
+  subject?: string;
+  keywords?: string;
+}
+
 /**
  * Sanitize metadata to prevent command injection
  * @param key - The metadata field name
@@ -274,6 +285,75 @@ export async function markdownToPdf(
       await unlink(inputFile);
     } catch {}
     throw new Error(`PDF conversion failed: ${error}`);
+  }
+}
+
+/**
+ * Convert markdown to PDF using pandoc with a LaTeX template
+ * @param markdown - The markdown content to convert
+ * @param options - Conversion options including template path and book metadata
+ * @returns Path to the generated PDF file
+ */
+export async function markdownToPdfWithTemplate(
+  markdown: string,
+  options: PdfTemplateOptions = {},
+): Promise<string> {
+  const tempDir = options.tempDir || "/tmp";
+  const inputFile = path.join(tempDir, `input-${Date.now()}.md`);
+  const outputFile =
+    options.outputPath || path.join(tempDir, `output-${Date.now()}.pdf`);
+
+  try {
+    // Write markdown to temporary file
+    await writeFile(inputFile, markdown, "utf8");
+
+    // Build pandoc command arguments
+    // Note: --sandbox is NOT used with templates (templates need file access)
+    const args = [
+      inputFile,
+      "-o",
+      outputFile,
+      "--pdf-engine=xelatex",
+    ];
+
+    // Add template if specified
+    if (options.templatePath) {
+      args.push("--template", options.templatePath);
+    }
+
+    // Add metadata variables for the template
+    const metadataFields: [string, string | undefined][] = [
+      ["title", options.title],
+      ["author", options.author],
+      ["translator", options.translator],
+      ["original-author", options.originalAuthor],
+      ["date", options.date],
+      ["year", options.year],
+      ["isbn", options.isbn],
+      ["subtitle", options.subtitle],
+      ["subject", options.subject],
+      ["keywords", options.keywords],
+    ];
+
+    for (const [key, value] of metadataFields) {
+      if (value) {
+        args.push("-V", `${key}=${value}`);
+      }
+    }
+
+    // Execute pandoc
+    await executePandoc(args);
+
+    // Clean up input file
+    await unlink(inputFile);
+
+    return outputFile;
+  } catch (error) {
+    // Clean up on error
+    try {
+      await unlink(inputFile);
+    } catch {}
+    throw new Error(`PDF template conversion failed: ${error}`);
   }
 }
 

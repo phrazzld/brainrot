@@ -16,6 +16,7 @@
     "marked": "^17.0.1",
     "p-limit": "^7.2.0",
     "p-retry": "^5.1.0",
+    "puppeteer": "^24.32.0",
     "remove-markdown": "^0.6.2"
   },
   "devDependencies": {

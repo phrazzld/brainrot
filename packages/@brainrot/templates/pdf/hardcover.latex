@@ -29,24 +29,23 @@
 \usepackage{enumitem}
 \usepackage{afterpage}
 
-% Font selection - Inter for modern look with fallback
+% Font selection - use TeX Gyre Heros (Helvetica-like, bundled with TeX Live)
 \usepackage{fontspec}
-\setmainfont{Inter}[
-  Path = ../fonts/,
-  Extension = .ttf,
-  UprightFont = *-Regular,
-  BoldFont = *-Bold,
-  ItalicFont = *-Italic,
-  BoldItalicFont = *-BoldItalic
+\setmainfont{texgyreheros}[
+  Extension = .otf,
+  UprightFont = *-regular,
+  BoldFont = *-bold,
+  ItalicFont = *-italic,
+  BoldItalicFont = *-bolditalic
+]
+\newfontfamily\displayfont{texgyreheros}[
+  Extension = .otf,
+  UprightFont = *-bold,
+  BoldFont = *-bold
 ]
 
-% Display font for titles
-\newfontfamily\displayfont{Inter}[
-  Path = ../fonts/,
-  Extension = .ttf,
-  UprightFont = *-Black,
-  BoldFont = *-Black,
-]
+% Define \tightlist for pandoc-generated lists
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
 % Define Brainrot colors
 \definecolor{brainrotpink}{RGB}{255,105,180}
@@ -61,7 +60,7 @@
 
 % Fancy chapter styling for hardcover
 \titleformat{\chapter}[display]
-  {\normalfont\displayfont\Huge\bfseries\lowercase}
+  {\normalfont\displayfont\Huge\bfseries}
   {\filleft\textcolor{brainrotpink}{\fontsize{60}{60}\selectfont\thechapter}}
   {10pt}
   {\titlerule[2pt]\vspace{2pt}\titlerule\vspace{10pt}\Huge\filleft}
@@ -150,7 +149,7 @@
 
 \vspace{0.5in}
 
-{\displayfont\fontsize{36}{40}\selectfont\lowercase{$title$}\par}
+{\displayfont\fontsize{36}{40}\selectfont $title$\par}
 \vspace{0.3in}
 
 $if(subtitle)$

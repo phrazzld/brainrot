@@ -28,16 +28,18 @@
 \usepackage{lettrine}
 \usepackage{enumitem}
 
-% Font selection - Inter for modern look
+% Font selection - use TeX Gyre Heros (Helvetica-like, bundled with TeX Live)
 \usepackage{fontspec}
-\setmainfont{Inter}[
-  Path = ../fonts/,
-  Extension = .ttf,
-  UprightFont = *-Regular,
-  BoldFont = *-Bold,
-  ItalicFont = *-Italic,
-  BoldItalicFont = *-BoldItalic
+\setmainfont{texgyreheros}[
+  Extension = .otf,
+  UprightFont = *-regular,
+  BoldFont = *-bold,
+  ItalicFont = *-italic,
+  BoldItalicFont = *-bolditalic
 ]
+
+% Define \tightlist for pandoc-generated lists
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
 % Define Brainrot Pink color
 \definecolor{brainrotpink}{RGB}{255,105,180}
@@ -50,8 +52,8 @@
 
 % Chapter styling
 \titleformat{\chapter}[display]
-  {\normalfont\huge\bfseries\lowercase}
-  {\textcolor{brainrotpink}{\MakeUppercase{\chaptertitlename} \thechapter}}
+  {\normalfont\huge\bfseries}
+  {\textcolor{brainrotpink}{\chaptertitlename\ \thechapter}}
   {20pt}
   {\Huge}
   

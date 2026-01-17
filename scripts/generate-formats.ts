@@ -9,6 +9,8 @@ import * as yaml from "js-yaml";
 import {
   stripMarkdown,
   markdownToText,
+  markdownToPdfWithTemplate,
+  markdownToEpub,
 } from "../packages/@brainrot/converter/dist/index.js";
 
 interface BookMetadata {
@@ -275,17 +277,96 @@ async function generateEpubFormat(
   metadata: BookMetadata | null,
   options: GenerateOptions,
 ) {
-  // EPUB generation would require pandoc
-  // For now, we'll create a placeholder
-  if (options.verbose) {
-    console.log(`  EPUB generation requires pandoc (not yet implemented)`);
+  const markdown = await readBookMarkdown(bookPath);
+
+  if (!markdown) {
+    if (options.verbose) {
+      console.log(`  Skipping ${slug} - no markdown content found`);
+    }
+    return;
   }
 
+  // Create epub subdirectory
+  const epubDir = path.join(outputDir, "epub");
   if (!options.dryRun) {
-    const epubPath = path.join(outputDir, `${slug}.epub`);
-    // Placeholder: would call pandoc here
-    // await execAsync(`pandoc -o ${epubPath} ...`);
+    await fs.mkdir(epubDir, { recursive: true });
   }
+
+  const epubPath = path.join(epubDir, `${slug}.epub`);
+
+  if (options.dryRun) {
+    if (options.verbose) {
+      console.log(`    Would create ${slug}.epub`);
+    }
+    return;
+  }
+
+  // Check if file exists
+  const fileExists = await fs
+    .access(epubPath)
+    .then(() => true)
+    .catch(() => false);
+
+  if (!fileExists || options.force) {
+    try {
+      await markdownToEpub(markdown, {
+        title: metadata?.title || slug.replace(/-/g, " "),
+        author: `${metadata?.author || "Unknown"} (translated by ${metadata?.translator || "Brainrot Publishing House"})`,
+        date: new Date().toISOString().split("T")[0],
+        publisher: "Brainrot Publishing House",
+        outputPath: epubPath,
+      });
+      if (options.verbose) {
+        console.log(`    Created ${slug}.epub`);
+      }
+    } catch (error) {
+      console.error(`    Failed to create EPUB: ${error}`);
+    }
+  } else if (options.verbose) {
+    console.log(`    Skipping ${slug}.epub (already exists)`);
+  }
+}
+
+/**
+ * Read and combine all chapter markdown files from a book directory
+ */
+async function readBookMarkdown(bookPath: string): Promise<string | null> {
+  // Check for brainrot directory structure
+  const brainrotPath = path.join(bookPath, "brainrot");
+  const brainrotExists = await fs
+    .access(brainrotPath)
+    .then(() => true)
+    .catch(() => false);
+
+  if (!brainrotExists) {
+    return null;
+  }
+
+  // Check for text subdirectory (for books like The Iliad)
+  const textSubdir = path.join(brainrotPath, "text");
+  const textSubdirExists = await fs
+    .access(textSubdir)
+    .then(() => true)
+    .catch(() => false);
+
+  const sourceDir = textSubdirExists ? textSubdir : brainrotPath;
+  const files = await fs.readdir(sourceDir);
+  const markdownFiles = files
+    .filter((f) => f.endsWith(".md") || f.endsWith(".txt"))
+    .sort(); // Sort to maintain chapter order
+
+  if (markdownFiles.length === 0) {
+    return null;
+  }
+
+  // Read and combine all files
+  const chapters: string[] = [];
+  for (const file of markdownFiles) {
+    const content = await fs.readFile(path.join(sourceDir, file), "utf-8");
+    chapters.push(content);
+  }
+
+  return chapters.join("\n\n---\n\n"); // Join with page breaks
 }
 
 async function generatePdfFormat(
@@ -295,20 +376,122 @@ async function generatePdfFormat(
   metadata: BookMetadata | null,
   options: GenerateOptions,
 ) {
-  // PDF generation would require pandoc + LaTeX
-  // For now, we'll create placeholders
-  if (options.verbose) {
-    console.log(
-      `  PDF generation requires pandoc + LaTeX (not yet implemented)`,
-    );
+  const markdown = await readBookMarkdown(bookPath);
+
+  if (!markdown) {
+    if (options.verbose) {
+      console.log(`  Skipping ${slug} - no markdown content found`);
+    }
+    return;
   }
 
+  // Get template paths
+  const templatesDir = path.join(
+    process.cwd(),
+    "packages",
+    "@brainrot",
+    "templates",
+    "pdf",
+  );
+  const paperbackTemplate = path.join(templatesDir, "paperback.latex");
+  const hardcoverTemplate = path.join(templatesDir, "hardcover.latex");
+
+  // Check if templates exist
+  const paperbackExists = await fs
+    .access(paperbackTemplate)
+    .then(() => true)
+    .catch(() => false);
+
+  if (!paperbackExists) {
+    if (options.verbose) {
+      console.log(`  Warning: LaTeX templates not found at ${templatesDir}`);
+    }
+    return;
+  }
+
+  // Create pdf subdirectory
+  const pdfDir = path.join(outputDir, "pdf");
   if (!options.dryRun) {
-    const paperbackPath = path.join(outputDir, `${slug}-paperback.pdf`);
-    const hardcoverPath = path.join(outputDir, `${slug}-hardcover.pdf`);
-    // Placeholder: would call pandoc here
-    // await execAsync(`pandoc -o ${paperbackPath} --template=paperback.latex ...`);
-    // await execAsync(`pandoc -o ${hardcoverPath} --template=hardcover.latex ...`);
+    await fs.mkdir(pdfDir, { recursive: true });
+  }
+
+  const paperbackPath = path.join(pdfDir, `${slug}-paperback.pdf`);
+  const hardcoverPath = path.join(pdfDir, `${slug}-hardcover.pdf`);
+
+  // Build conversion options from metadata
+  const conversionOptions = {
+    title: metadata?.title || slug.replace(/-/g, " "),
+    author: "Brainrot Publishing House",
+    translator: metadata?.translator || "Brainrot Publishing House",
+    originalAuthor: metadata?.author || "Unknown",
+    date: new Date().toISOString().split("T")[0],
+    year: new Date().getFullYear().toString(),
+    isbn: metadata?.formats?.paperback?.isbn || "",
+    subject: `${metadata?.title || slug} - Gen Z Translation`,
+    keywords: "brainrot, gen z, classic literature, translation",
+  };
+
+  if (options.dryRun) {
+    if (options.verbose) {
+      console.log(`    Would create ${slug}-paperback.pdf`);
+      console.log(`    Would create ${slug}-hardcover.pdf`);
+    }
+    return;
+  }
+
+  // Check if files exist and handle accordingly
+  const paperbackFileExists = await fs
+    .access(paperbackPath)
+    .then(() => true)
+    .catch(() => false);
+
+  if (!paperbackFileExists || options.force) {
+    try {
+      await markdownToPdfWithTemplate(markdown, {
+        ...conversionOptions,
+        templatePath: paperbackTemplate,
+        outputPath: paperbackPath,
+        isbn: metadata?.formats?.paperback?.isbn || "",
+      });
+      if (options.verbose) {
+        console.log(`    Created ${slug}-paperback.pdf`);
+      }
+    } catch (error) {
+      console.error(`    Failed to create paperback PDF: ${error}`);
+    }
+  } else if (options.verbose) {
+    console.log(`    Skipping ${slug}-paperback.pdf (already exists)`);
+  }
+
+  // Check for hardcover template
+  const hardcoverExists = await fs
+    .access(hardcoverTemplate)
+    .then(() => true)
+    .catch(() => false);
+
+  if (hardcoverExists) {
+    const hardcoverFileExists = await fs
+      .access(hardcoverPath)
+      .then(() => true)
+      .catch(() => false);
+
+    if (!hardcoverFileExists || options.force) {
+      try {
+        await markdownToPdfWithTemplate(markdown, {
+          ...conversionOptions,
+          templatePath: hardcoverTemplate,
+          outputPath: hardcoverPath,
+          isbn: metadata?.formats?.hardcover?.isbn || "",
+        });
+        if (options.verbose) {
+          console.log(`    Created ${slug}-hardcover.pdf`);
+        }
+      } catch (error) {
+        console.error(`    Failed to create hardcover PDF: ${error}`);
+      }
+    } else if (options.verbose) {
+      console.log(`    Skipping ${slug}-hardcover.pdf (already exists)`);
+    }
   }
 }
 

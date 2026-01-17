@@ -20,8 +20,10 @@ export {
 export {
   markdownToEpub,
   markdownToPdf,
+  markdownToPdfWithTemplate,
   markdownToKindle,
   type ConversionOptions,
+  type PdfTemplateOptions,
 } from "./pandocConverters";
 
 // Export batch conversion utilities
@@ -31,3 +33,14 @@ export {
   type BookConversionOptions,
   type ConversionResult,
 } from "./batchConverter";
+
+// Export cover generation utilities
+export {
+  generateCoverPdf,
+  generateCoverSvg,
+  generateFrontCoverPng,
+  calculateSpineWidth,
+  type CoverOptions,
+  type CoverMetadata,
+  type ColorScheme,
+} from "./coverGenerator";
