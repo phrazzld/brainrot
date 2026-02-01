@@ -383,8 +383,8 @@ importers:
         specifier: ^5.1.0
         version: 5.1.2
       remove-markdown:
-        specifier: ^0.6.2
-        version: 0.6.2
+        specifier: ^0.6.3
+        version: 0.6.3
     devDependencies:
       '@types/node':
         specifier: ^25.1.0
@@ -8647,8 +8647,8 @@ packages:
       jsesc: 3.1.0
     dev: true
 
-  /remove-markdown@0.6.2:
-    resolution: {integrity: sha512-EijDXJZbzpGbQBd852ViUzcqgpMujthM+SAEHiWCMcZonRbZ+xViWKLJA/vrwbDwYdxrs1aFDjpBhcGrZoJRGA==}
+  /remove-markdown@0.6.3:
+    resolution: {integrity: sha512-Qvp2p0Q1irE7AaJO7QemJe04HdObHylJrG+q4hszvPlYp7q4EvfINpEIaIEFdB+3XTDp1h6fiyT60ae00gmRow==}
     dev: false
 
   /require-directory@2.1.1:
