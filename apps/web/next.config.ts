@@ -22,10 +22,6 @@ const nextConfig: NextConfig = {
     // Temporarily disable type checking during build for Vercel
     ignoreBuildErrors: true,
   },
-  eslint: {
-    // Disable ESLint during build for Vercel
-    ignoreDuringBuilds: true,
-  },
   // Experimental features for better monorepo support
   experimental: {
     // Enable external directory watching for workspace packages
