@@ -7,6 +7,10 @@ export default defineConfig({
     target: "node18",
   },
   test: {
+    pool: 'forks',
+    poolOptions: {
+      forks: { maxForks: 4 },
+    },
     globals: true,
     environment: "node",
     environmentMatchGlobs: [
