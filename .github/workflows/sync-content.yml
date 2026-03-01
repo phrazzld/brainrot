@@ -94,7 +94,7 @@ jobs:
           fi
 
       - name: Upload sync report
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: sync-report-${{ github.run_number }}
           path: |
