@@ -123,3 +123,18 @@ jobs:
   # To re-enable when e2e tests are added:
   # 1. Define test:e2e script in package.json
   # 2. Uncomment this job
+
+  merge-gate:
+    name: merge-gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    needs: [build]
+    if: always()
+
+    steps:
+      - name: Require successful CI
+        run: |
+          if [ "${{ needs.build.result }}" != "success" ]; then
+            echo "build result was ${{ needs.build.result }}"
+            exit 1
+          fi
