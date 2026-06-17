@@ -19,7 +19,7 @@
   "// LEGACY_SCRIPTS": "Migration and utility scripts have been archived to /tools/legacy-scripts/ - see README.md there for documentation",
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "next build --webpack",
     "test": "vitest",
     "lint": "echo 'Linting skipped for web - ESLint config needs update'",
     "format": "npm run prettier:fix",
@@ -52,6 +52,7 @@
     "@babel/preset-react": "^7.28.5",
     "@babel/preset-typescript": "^7.28.5",
     "@eslint/js": "^9.39.1",
+    "@tailwindcss/postcss": "4.1.17",
     "@testing-library/react": "^16.3.0",
     "@trivago/prettier-plugin-sort-imports": "^6.0.0",
     "@types/minimist": "^1.2.5",

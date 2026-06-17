@@ -7,9 +7,6 @@
  * 3. Provide clear, readable code that follows best practices
  */
 
-// Explicitly require the plugin in CJS format
-const sortImports = require('@trivago/prettier-plugin-sort-imports');
-
 module.exports = {
   // Basic formatting
   printWidth: 100, // Line length where Prettier will try to wrap
@@ -64,5 +61,5 @@ module.exports = {
   ],
 
   // Explicitly define the plugins to use
-  plugins: [sortImports],
+  plugins: ['@trivago/prettier-plugin-sort-imports'],
 };
