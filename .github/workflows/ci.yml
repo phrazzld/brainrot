@@ -31,7 +31,7 @@ jobs:
         uses: ./.github/actions/setup
 
       - name: Run linting
-        run: pnpm lint
+        run: pnpm ci:required -- lint
 
   typecheck:
     name: Type Check
@@ -46,7 +46,7 @@ jobs:
         uses: ./.github/actions/setup
 
       - name: Run type checking
-        run: pnpm typecheck
+        run: pnpm ci:required -- typecheck
 
   test:
     name: Test
@@ -62,9 +62,7 @@ jobs:
         uses: ./.github/actions/setup
 
       - name: Run tests
-        run: pnpm test:run
-        env:
-          NODE_ENV: test
+        run: pnpm ci:required -- test
 
       # Coverage temporarily disabled until test suite is stabilized
       # - name: Upload coverage reports
@@ -89,7 +87,7 @@ jobs:
         uses: ./.github/actions/setup
 
       - name: Run translation validation
-        run: pnpm validate:all
+        run: pnpm ci:required -- validate
 
   build:
     name: Build
@@ -105,9 +103,7 @@ jobs:
         uses: ./.github/actions/setup
 
       - name: Build all packages
-        run: pnpm build
-        env:
-          NODE_ENV: production
+        run: pnpm ci:required -- build
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v6
