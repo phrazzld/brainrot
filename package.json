@@ -18,6 +18,7 @@
     "test:watch": "vitest watch",
     "lint": "turbo lint",
     "typecheck": "turbo typecheck",
+    "ci:required": "scripts/ci-required.sh",
     "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
     "clean": "turbo clean && rm -rf node_modules",
     "prepare": "echo 'Monorepo initialized. Run pnpm install to set up workspaces.'",

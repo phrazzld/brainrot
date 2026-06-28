@@ -6,6 +6,13 @@ This pnpm + Turborepo monorepo splits product code into `apps/web` (Next.js fron
 ## Build, Test, and Development Commands
 Install once with `pnpm install`. `pnpm dev` starts all workspaces; narrow scope with `--filter`. Ship-ready bundles come from `pnpm build`. Quality gates: `pnpm lint`, `pnpm typecheck`, and `pnpm format --check`. Vitest commands cover most workflows—`pnpm test` (watch), `pnpm test:run` (CI), and `pnpm test:coverage`. Content contributors should run `pnpm validate:all` plus `pnpm generate:formats <slug>` or `pnpm sync:blob` whenever translation files change.
 
+Required PR gate: `pnpm ci:required` runs lint, typecheck, tests, translation
+validation, and build through `scripts/ci-required.sh`. GitHub Actions may fan
+those lanes out for speed, but required CI should keep calling that script with
+the matching lane argument. Deploy, publish, sync, monitor, Dependabot
+auto-merge, and content mutation workflows are advisory/operational unless a
+PR explicitly changes their owned surface.
+
 ## Coding Style & Naming Conventions
 TypeScript is the default language. Prettier (`apps/web/.prettierrc.cjs`) enforces 2-space indentation, 100-character lines, single quotes, trailing commas, and sorted imports. ESLint configs in `apps/*/.eslintrc.json` block `any`, unused variables without `_` prefixes, and apply Next.js accessibility rules. Name React components, contexts, and providers in PascalCase; hooks are camelCase prefixed with `use`; files exporting utilities follow kebab-case.
 
