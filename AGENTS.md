@@ -1,6 +1,9 @@
 # Repository Guidelines
 
 ## Project Structure & Module Organization
+Read `VISION.md` before changing product direction, translation philosophy,
+publishing workflows, physical-book quality targets, or graphic-novel scope.
+
 This pnpm + Turborepo monorepo splits product code into `apps/web` (Next.js front end) and `apps/publisher` (publishing CLI). Shared logic lives in `packages/@brainrot/*` for converters, metadata, templates, blob access, and shared types. Translation source lives in `content/`; generated artifacts and reports land in `generated/` and `publishing-reports/`. Use utilities from `scripts/` and reference specs in `docs/` instead of duplicating logic or data.
 
 ## Build, Test, and Development Commands
