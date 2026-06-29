@@ -54,15 +54,17 @@ not feel like disposable AI slop.
 
 ## Current Bets
 
-1. Keep the brain-rot classic translation pipeline coherent and repeatable.
-2. Automate more of the expensive manual path: book validation, format
+1. Make one high-craft physical public-domain classic edition the first revenue
+   wedge, with the web edition serving proof, sampling, and audience growth.
+2. Keep the brain-rot classic translation pipeline coherent and repeatable.
+3. Automate more of the expensive manual path: book validation, format
    generation, front matter, covers, KDP/Lulu preparation, and publishing
    receipts.
-3. Push physical editions toward intentionally high-quality objects: clothbound
+4. Push physical editions toward intentionally high-quality objects: clothbound
    or premium hardcover taste where feasible, not novelty-paperback defaults.
-4. Explore graphic novels and illustrated editions once image generation and
+5. Explore graphic novels and illustrated editions once image generation and
    art-direction workflows can preserve style across pages.
-5. Treat scripts and agent workflows as product infrastructure so one good
+6. Treat scripts and agent workflows as product infrastructure so one good
    publishing process can create many good books.
 
 ## Ideal Form
