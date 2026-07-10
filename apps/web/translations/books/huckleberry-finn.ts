@@ -10,7 +10,7 @@ const huckleberryFinn: Translation = {
   shortDescription:
     'huck and jim float down mississippi, societal norms absolutely cooked, twain understood the assignment fr.',
   coverImage:
-    'https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-adventures-of-huckleberry-finn/images/huck-finn-09.png',
+    'https://brainrot-publishing.nyc3.digitaloceanspaces.com/books/the-adventures-of-huckleberry-finn/images/huck-finn-09.png',
   status: 'available',
   chapters: [
     {

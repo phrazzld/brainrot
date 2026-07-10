@@ -22,6 +22,7 @@ Our translations follow **"maximalist gremlin mode"** - a specific, documented m
 📖 **MANDATORY READING: `TRANSLATION_GUIDELINES.md`** (1000+ lines of detailed methodology)
 
 ### Key Requirements:
+
 - **all lowercase formatting** (no capitals except emphasis)
 - **3-5+ brainrot terms per sentence MINIMUM**
 - **400+ term vocabulary** including: skibidi, gyatt, rizz, fr fr ong, no cap, lowkey, etc.
@@ -30,6 +31,7 @@ Our translations follow **"maximalist gremlin mode"** - a specific, documented m
 - **1,600+ core term occurrences per book target**
 
 ### Example Translation:
+
 ```
 Original: "I went down yesterday to the Piraeus with Glaucon..."
 Brainrot: "so yesterday i was heading down to the piraeus with my boy glaucon (ariston's son) to check out this new festival for the goddess bendis - basically the thracian version of artemis. had to pay my respects and all that, plus i was lowkey curious about how they'd throw down for this thing since it was literally the first time."
@@ -192,7 +194,8 @@ pnpm vault:push        # Share your changes
 Manual setup (if not using vault):
 
 - Copy `.env.example` to `.env.local`
-- Add `BLOB_READ_WRITE_TOKEN` - Vercel blob storage
+- Set `NEXT_PUBLIC_SPACES_BASE_URL` to the authoritative DigitalOcean Spaces bucket
+- Add Spaces credentials only for asset publishing or migration operations
 - Add `LULU_API_KEY` - For print publishing
 - Add `KDP_EMAIL/PASSWORD` - For Amazon publishing
 

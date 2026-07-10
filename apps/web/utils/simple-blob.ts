@@ -5,8 +5,8 @@
  */
 
 const BASE_URL =
-  process.env.NEXT_PUBLIC_BLOB_BASE_URL ||
-  'https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com';
+  process.env.NEXT_PUBLIC_SPACES_BASE_URL?.replace(/\/$/, '') ||
+  'https://brainrot-publishing.nyc3.digitaloceanspaces.com';
 
 /**
  * Generate blob URL for a book's text file

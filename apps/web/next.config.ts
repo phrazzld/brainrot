@@ -4,11 +4,7 @@ const nextConfig: NextConfig = {
   /* config options here */
   output: 'standalone',
   images: {
-    domains: [
-      // Allow Vercel Blob Storage domain and its tenant-specific subdomains
-      'public.blob.vercel-storage.com',
-      '82qos1wlxbd4iq1g.public.blob.vercel-storage.com',
-    ],
+    domains: ['brainrot-publishing.nyc3.digitaloceanspaces.com'],
   },
   // Transpile workspace packages for proper monorepo support
   transpilePackages: [

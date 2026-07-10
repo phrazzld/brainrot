@@ -10,7 +10,7 @@ const theRepublic: Translation = {
   shortDescription:
     'plato spittin facts about justice and the ideal state. socrates stays undefeated in debate club.',
   coverImage:
-    'https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/books/the-republic/images/republic-07.png',
+    'https://brainrot-publishing.nyc3.digitaloceanspaces.com/books/the-republic/images/republic-07.png',
   status: 'available',
   chapters: [
     // Book 1: The Justice Debate (3 chapters)
@@ -31,7 +31,7 @@ const theRepublic: Translation = {
     },
     // Book 2: Building the State (3 chapters)
     {
-      title: 'book 2, chapter 1: glaucon\'s challenge & ring of gyges',
+      title: "book 2, chapter 1: glaucon's challenge & ring of gyges",
       text: 'book-02-chapter-1.txt',
       audioSrc: null,
     },
@@ -73,7 +73,7 @@ const theRepublic: Translation = {
       audioSrc: null,
     },
     {
-      title: 'book 4, chapter 2: city\'s virtues',
+      title: "book 4, chapter 2: city's virtues",
       text: 'book-04-chapter-2.txt',
       audioSrc: null,
     },
@@ -105,7 +105,7 @@ const theRepublic: Translation = {
     },
     // Book 6: The Philosopher (4 chapters)
     {
-      title: 'book 6, chapter 1: the philosopher\'s nature',
+      title: "book 6, chapter 1: the philosopher's nature",
       text: 'book-06-chapter-1.txt',
       audioSrc: null,
     },
@@ -178,7 +178,7 @@ const theRepublic: Translation = {
       audioSrc: null,
     },
     {
-      title: 'book 9, chapter 3: three proofs of justice\'s superiority',
+      title: "book 9, chapter 3: three proofs of justice's superiority",
       text: 'book-09-chapter-3.txt',
       audioSrc: null,
     },

@@ -10,7 +10,7 @@ const gilgamesh: Translation = {
   shortDescription:
     'ancient mesopotamian hero grinding for immortality, bromance with enkidu goes hard. OG epic poetry hits different.',
   coverImage:
-    'https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/assets/gilgamesh/images/gilgamesh-01.png',
+    'https://brainrot-publishing.nyc3.digitaloceanspaces.com/assets/gilgamesh/images/gilgamesh-01.png',
   status: 'coming soon',
   chapters: [],
 };
