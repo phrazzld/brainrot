@@ -78,7 +78,7 @@ const validationService = createValidationService({
 
 const assetService = createAssetService({
   logger,
-  blobBaseUrl: process.env.NEXT_PUBLIC_BLOB_BASE_URL,
+  blobBaseUrl: process.env.NEXT_PUBLIC_SPACES_BASE_URL,
 });
 
 const responseService = createResponseService({

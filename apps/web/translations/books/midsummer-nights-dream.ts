@@ -10,7 +10,7 @@ const midsummerNightsDream: Translation = {
   shortDescription:
     'fairy drama, love potion chaos, donkey transformation wild. shakespeare on that fantasy pack.',
   coverImage:
-    'https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/assets/a-midsummer-nights-dream/images/midsummer-02.png',
+    'https://brainrot-publishing.nyc3.digitaloceanspaces.com/assets/a-midsummer-nights-dream/images/midsummer-02.png',
   status: 'coming soon',
   chapters: [],
 };

@@ -10,7 +10,7 @@ const bibleNewTestament: Translation = {
   shortDescription:
     'jesus speedruns salvation meta, apostles document the whole vibe. christianity origin story hits different.',
   coverImage:
-    'https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com/assets/the-bible-new-testament/images/new-testament-01.png',
+    'https://brainrot-publishing.nyc3.digitaloceanspaces.com/assets/the-bible-new-testament/images/new-testament-01.png',
   status: 'coming soon',
   chapters: [],
 };

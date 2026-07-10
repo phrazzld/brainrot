@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Brainrot Spaces authority migration</title>
+  </head>
+  <body>
+    <main>
+      <header>
+        <p>Migration contract · brainrot-migration-reader</p>
+        <h1>One authoritative asset store, with zero destructive cutover</h1>
+        <p>
+          Copy every production Vercel Blob object into a public DigitalOcean
+          Spaces bucket, prove object parity and live reader behavior, then
+          switch production reads. Vercel remains intact as rollback throughout
+          the soak.
+        </p>
+      </header>
+      <section>
+        <h2>Current truth</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Surface</th>
+              <th>Observed state</th>
+              <th>Decision</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Vercel Blob</td>
+              <td>767 objects, 1.49 GB, production authority</td>
+              <td>Preserve; source manifest and rollback</td>
+            </tr>
+            <tr>
+              <td>DigitalOcean Spaces</td>
+              <td>Configured bucket name does not exist</td>
+              <td>
+                Create <code>brainrot-publishing</code> in NYC3 with public
+                object reads
+              </td>
+            </tr>
+            <tr>
+              <td>DO App Platform</td>
+              <td>Healthy deployment, source branch <code>master</code></td>
+              <td>Cut over only after parity and critic approval</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <section>
+        <h2>Execution lanes</h2>
+        <ol>
+          <li>
+            <strong>Inventory and preserve.</strong> Export all 767 paths,
+            sizes, source URLs, and SHA-256 digests. Keep the Vercel token and
+            objects unchanged.
+          </li>
+          <li>
+            <strong>Create and copy.</strong> Create the exact NYC3 bucket,
+            upload every object under its unchanged key with public-read ACL,
+            then compare counts, sizes, and SHA-256 readbacks.
+          </li>
+          <li>
+            <strong>Change the authority.</strong> Replace source-level Vercel
+            fallbacks and hardcoded URLs with a single configurable Spaces base
+            URL; add behavior tests first.
+          </li>
+          <li>
+            <strong>Critic gate.</strong> A fresh critic receives only the diff,
+            oracle, and copy receipt. No cutover with a blocking finding.
+          </li>
+          <li>
+            <strong>Deploy and prove.</strong> Merge, observe the DO deployment,
+            test home/explore/direct+navigated reader, inspect browser/network
+            content origins, and probe a representative corpus.
+          </li>
+          <li>
+            <strong>Start soak.</strong> Record the two-clock start only if no
+            production path reads Vercel. Do not delete Vercel assets or project
+            in this lane.
+          </li>
+        </ol>
+      </section>
+      <section>
+        <h2>Acceptance oracle</h2>
+        <ul>
+          <li>
+            Source and destination manifests contain exactly the same 767 keys
+            and sizes.
+          </li>
+          <li>
+            Every object has matching SHA-256 content on Vercel and Spaces.
+          </li>
+          <li>
+            Production source, environment, rendered HTML, and reader network
+            paths contain no Vercel Blob origin.
+          </li>
+          <li>
+            Home, Explore, and the direct and navigated Iliad reader remain
+            healthy while core Sanctum/Powder checks stay green.
+          </li>
+          <li>
+            Rollback values and the untouched Vercel store are recorded in the
+            receipt.
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h2>Stop conditions</h2>
+        <p>
+          Stop before cutover for a missing object, hash mismatch, non-public
+          destination read, production regression, core-service degradation, or
+          blocking critic finding. Roll back the application base URL
+          immediately if post-deploy origin or reader checks fail.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>

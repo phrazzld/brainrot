@@ -82,7 +82,7 @@ export async function resolveAssetUrl(
   const {
     logger = console,
     urlResolver,
-    blobBaseUrl = process.env.NEXT_PUBLIC_BLOB_BASE_URL,
+    blobBaseUrl = process.env.NEXT_PUBLIC_SPACES_BASE_URL,
     cacheTtl = 300000, // 5 minutes default
     fallbackEnabled = true,
   } = config;
