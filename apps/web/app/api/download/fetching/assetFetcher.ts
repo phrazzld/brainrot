@@ -76,6 +76,7 @@ export async function fetchAssetWithLogging(params: FetchAssetParams): Promise<F
     const fileResponse = await fetchWithTimeout(
       assetUrl,
       {
+        redirect: 'error',
         headers: {
           Accept: '*/*',
           'User-Agent': `Brainrot-Publishing-House/${process.env.NEXT_PUBLIC_APP_VERSION || 'dev'} (${process.env.NODE_ENV})`,

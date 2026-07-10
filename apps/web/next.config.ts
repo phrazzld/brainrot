@@ -4,7 +4,12 @@ const nextConfig: NextConfig = {
   /* config options here */
   output: 'standalone',
   images: {
-    domains: ['brainrot-publishing.nyc3.digitaloceanspaces.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'brainrot-publishing.nyc3.digitaloceanspaces.com',
+      },
+    ],
   },
   // Transpile workspace packages for proper monorepo support
   transpilePackages: [
