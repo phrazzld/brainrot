@@ -3,6 +3,7 @@ import { NextResponse } from 'next/server';
 import { AssetType } from '@/types/assets';
 import { Logger } from '@/utils/logger';
 
+import { assertSpacesAssetUrl } from '../asset-origin';
 import { handleAssetUrlError } from '../errors/assetUrlErrorHandler';
 import { handleUnexpectedProxyError } from '../errors/unexpectedErrorHandler';
 import {
@@ -71,15 +72,17 @@ export async function proxyAssetDownload(config: ProxyAssetConfig): Promise<Next
     // Step 2: Get the asset URL from the asset service
     let assetUrl: string;
     try {
-      assetUrl = await getAssetUrlWithLogging({
-        log,
-        opId,
-        operation,
-        assetService,
-        assetType,
-        bookSlug,
-        assetName,
-      });
+      assetUrl = assertSpacesAssetUrl(
+        await getAssetUrlWithLogging({
+          log,
+          opId,
+          operation,
+          assetService,
+          assetType,
+          bookSlug,
+          assetName,
+        }),
+      );
     } catch (assetError) {
       return handleAssetUrlError({
         assetError,

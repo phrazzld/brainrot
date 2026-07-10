@@ -308,7 +308,7 @@ export async function proxyFileDownload(config: ProxyFileConfig): Promise<NextRe
 
     // Step 2: Perform the fetch
     const startTime = Date.now();
-    const fileResponse = await fetchWithTimeout(url);
+    const fileResponse = await fetchWithTimeout(url, { redirect: 'error' });
     const fetchDuration = Date.now() - startTime;
 
     // Step 3: Log response metrics

@@ -5,11 +5,12 @@ import { randomUUID } from 'crypto';
 import { AssetType } from '@/types/assets';
 import { createRequestLogger, logger } from '@/utils/logger';
 
+import { assertSpacesAssetUrl } from './asset-origin';
 import { handleCriticalError, handleDownloadServiceError } from './errorHandlers';
 import { safeLog } from './logging/safeLogger';
 import { createDownloadService } from './serviceFactory';
 import { createAssetService } from './services/AssetService';
-import { proxyAssetDownload } from './services/ProxyService';
+import { proxyAssetDownload, proxyFileDownload } from './services/ProxyService';
 import {
   ClientClassification,
   ClientInfo,
@@ -188,9 +189,6 @@ function createDownloadFilename(
     : `${validatedSlug}-chapter-${chapter}.mp3`;
 }
 
-/**
- * Type for proxy request context combining all parameters needed
- */
 type ProxyRequestContext = {
   url: string;
   filename: string;
@@ -223,9 +221,6 @@ function extractRequestParams(searchParams?: URLSearchParams): Record<string, st
   return requestParams;
 }
 
-/**
- * Type for proxy logging context
- */
 type ProxyLogContext = {
   log: ReturnType<typeof createRequestLogger>;
   correlationId: string;
@@ -239,9 +234,6 @@ type ProxyLogContext = {
   };
 };
 
-/**
- * Log proxy request details
- */
 function logProxyRequest(context: ProxyLogContext): void {
   const { log, correlationId, operationId, validation, requestDetails } = context;
   const { params, url, clientInfo, clientClassification } = requestDetails;
@@ -263,14 +255,10 @@ function logProxyRequest(context: ProxyLogContext): void {
   });
 }
 
-// Import AssetService type if needed, or create a placeholder for it
 type AssetService = ReturnType<
   NonNullable<ReturnType<typeof createDownloadService>>['getAssetService']
 >;
 
-/**
- * Initialize a proxy download service and get asset service
- */
 function initializeProxyServices(
   log: ReturnType<typeof createRequestLogger>,
   correlationId: string,
@@ -279,14 +267,8 @@ function initializeProxyServices(
   assetService: AssetService;
 } | null {
   const downloadService = createDownloadService(log, correlationId);
-  if (!downloadService) {
-    return null;
-  }
-
-  return {
-    downloadService,
-    assetService: downloadService.getAssetService(),
-  };
+  if (!downloadService) return null;
+  return { downloadService, assetService: downloadService.getAssetService() };
 }
 
 /**
@@ -411,20 +393,6 @@ async function processDownloadRequest(
 ): Promise<NextResponse> {
   const { searchParams, correlationId, log, headers } = context;
 
-  // Create the download service with the correlation ID
-  const downloadService = createDownloadService(log, correlationId);
-  if (!downloadService) {
-    return NextResponse.json(
-      {
-        error: 'Internal server error',
-        message: 'Service initialization failed. Please try again later.',
-        type: 'SERVICE_ERROR',
-        correlationId,
-      },
-      { status: 500 },
-    );
-  }
-
   try {
     // At this point we've validated that slug and type exist
     // TypeScript doesn't know this, so we'll use non-null assertion alternatives
@@ -449,6 +417,8 @@ async function processDownloadRequest(
       );
     }
 
+    const spacesUrl = assertSpacesAssetUrl(url);
+
     // Create filename for download
     const filename = createDownloadFilename(validatedSlug, validatedType, validation.chapter);
 
@@ -468,23 +438,19 @@ async function processDownloadRequest(
         },
       );
 
-      return handleProxyRequest({
-        url,
+      return proxyFileDownload({
+        url: spacesUrl,
         filename,
-        validation: {
-          slug: validatedSlug,
-          type: validatedType,
-          chapter: validation.chapter,
-        },
         log,
-        correlationId,
-        searchParams,
-        headers: requestHeaders,
+        requestParams: {
+          ...extractRequestParams(searchParams),
+          requestHeaders: JSON.stringify(requestHeaders),
+        },
       });
     }
 
     // If no proxy requested, respond with the URL for client-side download
-    return createDirectDownloadResponse(url);
+    return createDirectDownloadResponse(spacesUrl);
   } catch (error) {
     // Map service errors to appropriate responses
     const validatedSlug = validation.slug || '';
