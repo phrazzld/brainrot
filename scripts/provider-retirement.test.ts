@@ -5,6 +5,7 @@ import { describe, expect, it } from "vitest";
 
 const root = process.cwd();
 const activeRoots = [
+  ".vercel",
   ".env.example",
   "vercel.json",
   "AGENTS.md",
@@ -64,6 +65,7 @@ describe("retired Vercel authority", () => {
       .map((path) => relative(root, path));
 
     expect(manifests).toEqual([]);
+    expect(existsSync(join(root, ".vercel"))).toBe(false);
   });
 
   it("has no active Vercel compute or Blob authority", () => {
