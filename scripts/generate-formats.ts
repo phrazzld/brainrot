@@ -9,7 +9,7 @@ import * as yaml from "js-yaml";
 import {
   stripMarkdown,
   markdownToText,
-} from "../packages/@brainrot/converter/dist/index.js";
+} from "../packages/@brainrot/converter/src/index.ts";
 
 interface BookMetadata {
   title: string;

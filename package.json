@@ -22,7 +22,6 @@
     "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
     "clean": "turbo clean && rm -rf node_modules",
     "prepare": "echo 'Monorepo initialized. Run pnpm install to set up workspaces.'",
-    "pregenerate:formats": "pnpm --filter @brainrot/converter build",
     "generate:formats": "tsx scripts/generate-formats.ts",
     "sync:spaces": "tsx scripts/sync-translations.ts",
     "validate": "tsx scripts/validate-translations.ts",
