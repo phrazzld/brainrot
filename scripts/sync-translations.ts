@@ -117,20 +117,26 @@ async function generatedFiles(
     );
   }
 
+  const textEntries = entries
+    .filter((entry) => entry.isFile() && entry.name.endsWith(".txt"))
+    .sort((left, right) => left.name.localeCompare(right.name));
+  if (textEntries.length === 0) {
+    throw new Error(
+      `No generated text files found for ${slug}; refusing an empty publish`,
+    );
+  }
+
   return Promise.all(
-    entries
-      .filter((entry) => entry.isFile() && entry.name.endsWith(".txt"))
-      .sort((left, right) => left.name.localeCompare(right.name))
-      .map(async (entry) => {
-        const localPath = path.join(textRoot, entry.name);
-        const bytes = await fs.readFile(localPath);
-        return {
-          checksum: checksum(bytes),
-          key: objectKey(slug, entry.name),
-          localPath,
-          size: bytes.byteLength,
-        };
-      }),
+    textEntries.map(async (entry) => {
+      const localPath = path.join(textRoot, entry.name);
+      const bytes = await fs.readFile(localPath);
+      return {
+        checksum: checksum(bytes),
+        key: objectKey(slug, entry.name),
+        localPath,
+        size: bytes.byteLength,
+      };
+    }),
   );
 }
 

@@ -99,4 +99,38 @@ describe("Spaces translation publishing", () => {
       await rm(workingDirectory, { recursive: true, force: true });
     }
   });
+
+  it("refuses an empty generated directory before any remote deletion", async () => {
+    const workingDirectory = await mkdtemp(
+      join(tmpdir(), "brainrot-spaces-test-"),
+    );
+    await mkdir(join(workingDirectory, "generated", "the-iliad", "text"), {
+      recursive: true,
+    });
+    const client = {
+      async send() {
+        throw new Error("remote boundary must not be reached");
+      },
+    } as unknown as S3Client;
+    const config: SpacesConfig = {
+      bucket: "brainrot-publishing",
+      credentials: { accessKeyId: "access", secretAccessKey: "secret" },
+      endpoint: "https://nyc3.digitaloceanspaces.com",
+      region: "us-east-1",
+    };
+
+    try {
+      await expect(
+        syncBook(
+          client,
+          config,
+          "the-iliad",
+          { delete: true },
+          workingDirectory,
+        ),
+      ).rejects.toThrow("refusing an empty publish");
+    } finally {
+      await rm(workingDirectory, { recursive: true, force: true });
+    }
+  });
 });
