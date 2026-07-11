@@ -78,7 +78,6 @@ brainrot/
 ├── packages/
 │   ├── @brainrot/types/       # TypeScript type definitions
 │   ├── @brainrot/converter/   # Format conversion utilities
-│   ├── @brainrot/blob-client/ # Storage utilities
 │   ├── @brainrot/metadata/    # Book metadata handling
 │   └── @brainrot/templates/   # Publishing templates
 └── scripts/                    # Automation scripts

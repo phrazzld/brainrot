@@ -72,7 +72,7 @@ describe("retired Vercel authority", () => {
     const violations = activeRoots.flatMap((path) =>
       activeFiles(join(root, path)).flatMap((file) => {
         const text = readFileSync(file, "utf8");
-        return /\bvercel\b|@vercel\/blob|BLOB_READ_WRITE_TOKEN|NEXT_PUBLIC_BLOB_BASE_URL|VERCEL_(?:ENV|ORG_ID|PROJECT_ID|TOKEN|URL)|api\.vercel\.com|\.vercel\.app\b/i.test(
+        return /\bvercel\b|@vercel\/blob|@brainrot\/blob-client|sync:blob|BLOB_READ_WRITE_TOKEN|NEXT_PUBLIC_BLOB_BASE_URL|VERCEL_(?:ENV|ORG_ID|PROJECT_ID|TOKEN|URL)|api\.vercel\.com|\.vercel\.app\b/i.test(
           text,
         )
           ? [relative(root, file)]

@@ -489,7 +489,7 @@ git log --follow content/translations/[file]
 
 - [x] Create monorepo structure with Turborepo
 - [x] Migrate repositories with git subtree
-- [x] Set up 5 shared packages
+- [x] Set up 4 shared packages
 - [x] Fix Great Gatsby (blob simplification: 1000 lines → 37 lines)
 
 ### Phase 2: Publishing Pipeline ✅ COMPLETE
