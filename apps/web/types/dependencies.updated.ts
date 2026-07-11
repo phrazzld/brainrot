@@ -1,6 +1,6 @@
 /**
  * Interface for resolving asset URLs.
- * Used to obtain asset URLs from Vercel Blob storage.
+ * Used to obtain asset URLs from DigitalOcean Spaces.
  *
  * This abstraction allows the application to be agnostic about the specific storage implementation.
  *
@@ -8,7 +8,7 @@
  */
 export interface AssetUrlResolver {
   /**
-   * Retrieves an asset URL from Vercel Blob storage.
+   * Retrieves an asset URL from DigitalOcean Spaces.
    *
    * @param assetType - The type of asset (e.g., 'audio', 'image', 'text')
    * @param bookSlug - The slug identifier for the book

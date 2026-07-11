@@ -8,12 +8,7 @@
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
       "outputs": [".next/**", "!.next/cache/**", "dist/**", "generated/**"],
-      "env": [
-        "NODE_ENV",
-        "NEXT_PUBLIC_*",
-        "BLOB_READ_WRITE_TOKEN",
-        "VERCEL_URL"
-      ]
+      "env": ["NODE_ENV", "NEXT_PUBLIC_*"]
     },
     "dev": {
       "cache": false,
@@ -43,9 +38,15 @@
       "inputs": ["content/**/*.md", "content/**/*.yaml"],
       "outputs": ["generated/**"]
     },
-    "sync:blob": {
+    "sync:spaces": {
       "cache": false,
-      "env": ["BLOB_READ_WRITE_TOKEN", "NEXT_PUBLIC_BLOB_BASE_URL"]
+      "env": [
+        "SPACES_ACCESS_KEY_ID",
+        "SPACES_SECRET_ACCESS_KEY",
+        "SPACES_ENDPOINT",
+        "SPACES_BUCKET_NAME",
+        "SPACES_REGION"
+      ]
     },
     "publish": {
       "dependsOn": ["build", "generate:formats"],

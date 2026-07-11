@@ -166,7 +166,7 @@ function createDirectDownloadResponse(url: string): NextResponse {
     {
       url,
       isCdnUrl: false, // No longer using CDN URLs
-      shouldProxy: false, // No need to proxy Vercel Blob URLs
+      shouldProxy: false, // Public Spaces URLs do not need a proxy.
     },
     { status: 200 },
   );
@@ -245,7 +245,7 @@ function logProxyRequest(context: ProxyLogContext): void {
     slug: validation.slug,
     type: validation.type,
     chapter: validation.chapter,
-    requestOrigin: process.env.VERCEL_URL || 'local',
+    requestOrigin: process.env.PUBLIC_APP_ORIGIN || 'local',
     requestParams: params,
     requestUrl: url,
     clientInfo,

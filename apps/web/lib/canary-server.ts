@@ -36,7 +36,6 @@ function withoutTrailingSlash(value: string | undefined): string {
 export function canaryEnvironment(): string {
   return (
     configuredValue(process.env.PUBLIC_CANARY_ENVIRONMENT) ||
-    configuredValue(process.env.VERCEL_ENV) ||
     configuredValue(process.env.NODE_ENV) ||
     'production'
   );

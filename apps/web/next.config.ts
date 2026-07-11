@@ -15,12 +15,11 @@ const nextConfig: NextConfig = {
   transpilePackages: [
     '@brainrot/types',
     '@brainrot/converter',
-    '@brainrot/blob-client',
     '@brainrot/metadata',
     '@brainrot/templates',
   ],
   typescript: {
-    // Temporarily disable type checking during build for Vercel
+    // Type checking is enforced separately by the required CI gate.
     ignoreBuildErrors: true,
   },
   // Experimental features for better monorepo support
@@ -40,7 +39,6 @@ const nextConfig: NextConfig = {
       ...config.resolve.alias,
       '@brainrot/types': '../../packages/@brainrot/types',
       '@brainrot/converter': '../../packages/@brainrot/converter',
-      '@brainrot/blob-client': '../../packages/@brainrot/blob-client',
       '@brainrot/metadata': '../../packages/@brainrot/metadata',
       '@brainrot/templates': '../../packages/@brainrot/templates',
     };

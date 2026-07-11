@@ -14,7 +14,6 @@
 /apps/web/ @phrazzld
 /apps/web/app/ @phrazzld
 /apps/web/next.config.* @phrazzld
-/apps/web/vercel.json @phrazzld
 /apps/web/translations/ @phrazzld
 
 # Publisher CLI - Automated publishing
@@ -39,7 +38,6 @@
 /packages/ @phrazzld
 /packages/@brainrot/types/ @phrazzld
 /packages/@brainrot/converter/ @phrazzld
-/packages/@brainrot/blob-client/ @phrazzld
 /packages/@brainrot/metadata/ @phrazzld
 /packages/@brainrot/templates/ @phrazzld
 
@@ -56,7 +54,6 @@
 /package.json @phrazzld
 /pnpm-lock.yaml @phrazzld
 /.env.example @phrazzld
-/vercel.json @phrazzld
 /tsconfig*.json @phrazzld
 
 # === SCRIPTS & AUTOMATION ===
@@ -64,7 +61,6 @@
 /scripts/ @phrazzld
 /scripts/generate-formats.ts @phrazzld
 /scripts/sync-translations.ts @phrazzld
-/scripts/monitor-api-usage.ts @phrazzld
 
 # === DOCUMENTATION ===
 

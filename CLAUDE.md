@@ -1,204 +1,65 @@
-# CLAUDE.md - Brainrot Publishing House Monorepo
+# Brainrot contributor guide
 
-## 🎯 PROJECT STATUS: 95% COMPLETE
+Brainrot is a pnpm/Turborepo publishing monorepo. Read `VISION.md` before
+changing the publishing ambition, translation philosophy, physical-book
+quality target, or format strategy. Read `TRANSLATION_GUIDELINES.md` before
+editing translation content.
 
-You are working on the **Brainrot Publishing House monorepo** - a fully integrated publishing platform that creates Gen Z "brainrot" translations of classic literature and publishes them across multiple channels (web, ebook, print).
+## Current architecture
 
-## Current State (Phase 7.4 - Post-Migration Cleanup)
+- `apps/web`: Next.js reading experience deployed by DigitalOcean App Platform.
+- `apps/publisher`: KDP and Lulu publishing automation.
+- `packages/@brainrot/*`: shared conversion, metadata, template, and type code.
+- `content/translations`: canonical book source.
+- `generated`: generated release files.
+- DigitalOcean Spaces: authoritative production asset storage and delivery.
 
-### ✅ What's Been Accomplished
+The historical storage migration plan and hash manifest live under `docs/` as
+evidence. They are not rollback instructions. Retired scripts live under
+`tools/legacy-scripts/` and are not production tools.
 
-- **Monorepo Migration**: Complete with full git history preserved
-- **Build System**: Turborepo + pnpm workspace fully operational (107ms builds!)
-- **9 Workspace Packages**: All built and functional
-- **10 Books Migrated**: 124 text files generated and processed
-- **Package Ecosystem**: 5 shared packages (@brainrot/\*) working perfectly
-- **CI/CD**: GitHub Actions workflows configured
-- **Security**: All vulnerabilities fixed (3 resolved via pnpm overrides)
-- **Documentation**: Architecture diagrams, publishing docs, contribution guide
-- **Test Infrastructure**: Fixed - all 73 converter tests passing
-
-### 🔧 Remaining Tasks
-
-1. **Vercel Dashboard**: Manual configuration needed (see docs/VERCEL_MONOREPO_UPDATE.md)
-2. **Archive Old Repos**: GitHub settings change to make read-only
-3. **Publisher Linting**: ESLint version conflict needs resolution
-4. **Production Verification**: Test deployment URL functionality
-
-## Architecture Overview
-
-### Monorepo Structure
-
-```
-brainrot/                          # Monorepo root (THIS DIRECTORY)
-├── apps/
-│   ├── web/                      # Next.js 15 web app ✅
-│   └── publisher/                # CLI publishing tool ✅
-├── content/
-│   └── translations/             # All book translations ✅
-│       └── books/                # 10 books migrated
-├── packages/@brainrot/
-│   ├── converter/                # MD→TXT/EPUB/PDF ✅
-│   ├── templates/                # Publishing templates ✅
-│   ├── types/                    # TypeScript definitions ✅
-│   ├── blob-client/              # Vercel Blob storage ✅
-│   └── metadata/                 # Book metadata & ISBN ✅
-├── generated/                    # Processed output (124 files)
-├── docs/                         # Comprehensive documentation
-│   ├── ARCHITECTURE.md           # 10 mermaid diagrams ✅
-│   ├── PUBLISHING.md             # Publishing pipeline docs ✅
-│   └── VERCEL_MONOREPO_UPDATE.md # Deployment instructions
-└── turbo.json                    # Turborepo config ✅
-```
-
-### Technology Stack
-
-- **Monorepo**: Turborepo 2.5.6 (exceptional caching)
-- **Package Manager**: pnpm 8.15.1 (workspace linking)
-- **Framework**: Next.js 15.4.6 with Turbopack
-- **Node.js**: 22.15 (matches requirements)
-- **Content Pipeline**: Markdown → Pandoc → Multiple formats
-- **Publishing**: Lulu API (automated), KDP (Playwright automation)
-- **Storage**: Vercel Blob for web content
-- **Testing**: Jest with full ES module support
-
-## Key Commands
+## Required gate
 
 ```bash
-# Development
-pnpm dev                      # Start all apps
-pnpm build                    # Build everything
-pnpm test                     # Run all tests
-
-# Content Management
-pnpm generate:formats         # Convert MD to TXT/EPUB/PDF
-pnpm sync:blob               # Upload to blob storage
-
-# Publishing
-pnpm publish:book <slug>     # Publish to all platforms
-pnpm publish:lulu <slug>     # Lulu only
-pnpm publish:kdp <slug>      # Amazon KDP only
-
-# Specific Apps
-pnpm --filter=@brainrot/web dev     # Web app only
-pnpm --filter=@brainrot/publisher build  # Publisher CLI only
+pnpm ci:required
 ```
 
-## Environment Variables
+That command owns lint, type checking, tests, translation validation, and the
+production build. Do not bypass an individual lane to get a change green.
+
+## Development
 
 ```bash
-# Blob Storage (Required for web app)
-BLOB_READ_WRITE_TOKEN=vercel_blob_xxx
-NEXT_PUBLIC_BLOB_BASE_URL=https://82qos1wlxbd4iq1g.public.blob.vercel-storage.com
-
-# Publishing Platforms (Required for publisher)
-LULU_CLIENT_ID=xxx
-LULU_CLIENT_SECRET=xxx
-KDP_EMAIL=xxx
-KDP_PASSWORD=xxx
+pnpm install
+pnpm dev
+pnpm build
+pnpm test:run
+pnpm generate:formats book <slug>
+pnpm sync:spaces book <slug>
 ```
 
-## Performance Metrics
+Generate every book with `pnpm generate:formats all`; publish every generated
+book to Spaces with `pnpm sync:spaces all`.
 
-- **Build Time**: 107ms with full cache (target was <60s)
-- **Cold Build**: ~7.5s
-- **Cache Hit Rate**: 99.9%
-- **Content**: 10 books, 124 text files
-- **Test Suite**: 73 tests passing
+## Environment contract
 
-## Current Books Available
+The web reader needs `NEXT_PUBLIC_SPACES_BASE_URL`. Asset publishing needs:
 
-1. The Great Gatsby ✅
-2. The Iliad ✅
-3. Romeo and Juliet ✅
-4. Pride and Prejudice ✅
-5. Frankenstein ✅
-6. Moby Dick ✅
-7. The Picture of Dorian Gray ✅
-8. Jane Eyre ✅
-9. Dracula ✅
-10. La Divina Comedia (partial)
-
-## Critical Information
-
-### GitHub Repository
-
-- **URL**: https://github.com/phrazzld/brainrot
-- **Branch Protection**: Enabled (1 review required)
-- **CODEOWNERS**: Configured
-- **Dependabot**: Active for all packages
-- **Old Repos**: Need archival (brainrot-publishing-house, brainrot-translations)
-
-### Deployment Status
-
-- **Vercel Project**: Created but needs manual dashboard config
-- **Production URL**: https://brainrot-pzvw1wih4-moomooskycow.vercel.app
-- **Issue**: Deployment protection enabled (requires Vercel SSO)
-- **Action Required**: Disable in Vercel dashboard → Settings → Security & Privacy
-
-### Known Issues
-
-1. **Vercel Deployment**: Requires manual dashboard configuration
-2. **Publisher Linting**: ESLint v8 deprecation warning
-3. **React Peer Deps**: Version mismatch warnings (React 19 vs 18)
-4. **Deprecated Packages**: Some subdependencies need updates
-
-## 🚨 CRITICAL: Translation Methodology 🚨
-
-**BEFORE TRANSLATING ANY CONTENT, YOU MUST READ AND FOLLOW:**
-- **📖 TRANSLATION_GUIDELINES.md** - 1000+ line comprehensive methodology document (in root directory)
-- **Requirements**: all lowercase, 3-5+ brainrot terms per sentence MINIMUM
-- **"Maximalist gremlin mode"** - chaotic, meme-dense word salad that preserves plot
-- **400+ term brainrot vocabulary** - includes skibidi, gyatt, rizz, fr fr ong, etc.
-- **Character voice mapping** - each character gets 3-5 signature terms
-- **Systematic slur replacement matrix** - NEVER use actual slurs
-
-### Translation Quick Reference
-- **Density Target**: 1,600+ core term occurrences per book
-- **Format**: all lowercase, no capitals except emphasis
-- **Voice**: chronically online narrator, internet-poisoned but self-aware
-- **References**: ultra-specific current memes (not future-proofed)
-- **Example**: "so yesterday i was heading down to the piraeus with my boy glaucon"
-
-## What Makes This Special
-
-- **Cultural Reinterpretations**: Not just translations, complete Gen Z adaptations
-- **Example**: "In my younger and more vulnerable years" → "back when i was a lil sus beta and way more vulnerable to getting absolutely ratio'd by life"
-- **Scale Goal**: Hundreds of public domain books
-- **Multi-Channel**: Web, Kindle, Print-on-Demand, Bookstores
-
-## Next Steps for Any Session
-
-1. **Check TODO.md**: Current task list with priority items
-2. **Review Critical Issues**: Section in TODO.md for blockers
-3. **Run Tests**: `pnpm test` to verify everything works
-4. **Check Build**: `pnpm build` to ensure no errors
-
-## Quick Troubleshooting
-
-### If builds fail:
-
-```bash
-pnpm install          # Reinstall dependencies
-pnpm clean           # Clear Turborepo cache
-pnpm build --force   # Force rebuild
+```text
+SPACES_ACCESS_KEY_ID
+SPACES_SECRET_ACCESS_KEY
+SPACES_ENDPOINT
+SPACES_BUCKET_NAME
+SPACES_REGION (optional; defaults to us-east-1)
 ```
 
-### If tests fail:
+Never commit credentials or print their values. KDP and Lulu credentials are
+separate publishing boundaries documented in `.env.example`.
 
-```bash
-pnpm test --filter=@brainrot/converter  # Test specific package
-pnpm test -- --clearCache               # Clear Jest cache
-```
+## Product invariants
 
-### If blob storage fails:
-
-1. Check environment variables are set
-2. Verify token hasn't expired
-3. Check network connectivity
-4. Review blob storage dashboard for quota
-
----
-
-_Last Updated: 2025-08-21_
-_Migration Status: Phase 7.4 - Post-Migration Cleanup (95% Complete)_
+- Only transform public-domain works with recorded source provenance.
+- Preserve plot, characters, and emotional movement through the joke.
+- Treat translation style as an artistic language, not random slang.
+- Physical releases must be credible books, not unreviewed generated output.
+- Automate conversion and publishing drudgery without automating away taste.
