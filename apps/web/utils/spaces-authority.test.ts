@@ -27,8 +27,6 @@ describe('DigitalOcean Spaces asset authority', () => {
 
   it('builds reader text URLs from NEXT_PUBLIC_SPACES_BASE_URL', async () => {
     vi.stubEnv('NEXT_PUBLIC_SPACES_BASE_URL', 'https://assets.example.test/root/');
-    vi.stubEnv('NEXT_PUBLIC_BLOB_BASE_URL', 'https://legacy.public.blob.vercel-storage.com');
-
     const { getBlobUrl } = await import('./simple-blob');
 
     expect(getBlobUrl('the-iliad', 'book-01.txt')).toBe(
@@ -36,7 +34,7 @@ describe('DigitalOcean Spaces asset authority', () => {
     );
   });
 
-  it('contains no Vercel Blob production read authority', () => {
+  it('contains no retired-provider production read authority', () => {
     const productionSource = productionRoots.map(readProductionSources).join('\n');
 
     expect(productionSource).not.toContain('vercel-storage.com');

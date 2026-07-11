@@ -55,12 +55,11 @@ brainrot/
 ├── packages/
 │   ├── @brainrot/types/        # Shared TypeScript interfaces
 │   ├── @brainrot/converter/    # Markdown → Text/EPUB/PDF/Kindle
-│   ├── @brainrot/blob-client/  # Vercel Blob storage with retry logic
 │   ├── @brainrot/metadata/     # YAML parsing, ISBN validation
 │   └── @brainrot/templates/    # LaTeX/EPUB/Kindle templates
 ├── scripts/
 │   ├── generate-formats.ts     # Convert books to all formats
-│   └── sync-translations.ts    # Upload to blob storage
+│   └── sync-translations.ts    # Publish generated text to Spaces
 └── turbo.json                  # Turborepo configuration
 ```
 
@@ -136,12 +135,12 @@ pnpm test
 ### Tech Stack
 
 - **Monorepo**: Turborepo + pnpm workspaces
-- **Web**: Next.js 15 + React 19 + TypeScript
+- **Web**: Next.js 16 + React 19 + TypeScript
 - **Styling**: Tailwind CSS + Radix UI
-- **Storage**: Vercel Blob Storage
+- **Storage**: DigitalOcean Spaces
 - **Publishing**: Playwright (KDP) + Axios (Lulu API)
 - **Testing**: Vitest + React Testing Library
-- **CI/CD**: GitHub Actions + Vercel
+- **CI/CD**: GitHub Actions + DigitalOcean App Platform
 
 ### Commands
 
@@ -160,10 +159,10 @@ pnpm test:coverage              # Generate coverage report
 pnpm test:watch                 # Alias for pnpm test
 
 # Content Pipeline
-pnpm generate:formats [book]    # Convert markdown to all formats
-pnpm generate:formats --all     # Process all books
-pnpm sync:blob [book]          # Upload to Vercel Blob storage
-pnpm sync:blob --all           # Sync all books
+pnpm generate:formats book [book] # Convert one book to release formats
+pnpm generate:formats all         # Process all books
+pnpm sync:spaces book [book]      # Publish one generated book to Spaces
+pnpm sync:spaces all              # Publish all generated books
 
 # Publishing
 pnpm publisher list             # List available books
@@ -174,7 +173,6 @@ pnpm publisher publish-all [book]              # All platforms
 
 # Utilities
 pnpm vault:pull                # Get latest secrets
-pnpm monitor:api               # Check API usage
 ```
 
 ### Environment Variables
@@ -337,9 +335,8 @@ pnpm test:ui     # Beautiful Vitest UI
 pnpm test:coverage # Coverage report
 
 # Content & Publishing
-pnpm generate:formats [book]  # Convert MD to all formats
-pnpm sync:blob [book]        # Upload to Vercel Blob
-pnpm monitor                 # API usage dashboard
+pnpm generate:formats book [book] # Convert one book
+pnpm sync:spaces book [book]      # Publish one generated book to Spaces
 ```
 
 ### What We Removed (and Why)
@@ -406,7 +403,7 @@ graph LR
     B --> E[PDF<br/>for Print]
     B --> F[MOBI<br/>for Kindle]
 
-    C --> G[Blob Storage]
+    C --> G[DigitalOcean Spaces]
     G --> H[Web App]
 
     D --> I[Apple Books]
@@ -416,7 +413,7 @@ graph LR
 
 ## 🎯 Publishing Targets
 
-- **Web**: Vercel + Blob Storage (automatic)
+- **Web**: DigitalOcean App Platform + Spaces (automatic)
 - **Amazon KDP**: Kindle + Paperback (semi-automated)
 - **Lulu**: Print-on-demand (API automated)
 - **IngramSpark**: Bookstores (manual)
@@ -464,13 +461,10 @@ This monorepo was successfully migrated from two repositories with full git hist
 **Great Gatsby not loading?**
 ✅ This has been fixed! All books are pre-processed and uploaded.
 
-**Vercel deployment failing?**
-Make sure to configure the monorepo settings in Vercel dashboard:
-
-- Root Directory: (leave empty)
-- Build Command: `pnpm build --filter=@brainrot/web`
-- Output Directory: `apps/web/.next`
-  See `docs/VERCEL_DEPLOYMENT.md` for complete deployment guide.
+**App Platform deployment failing?**
+Run `pnpm ci:required` locally, then inspect the current DigitalOcean deployment
+log. The production branch is the deployment authority; no repo workflow
+deploys a second copy.
 
 ### Build failing?
 
@@ -495,7 +489,7 @@ git log --follow content/translations/[file]
 
 - [x] Create monorepo structure with Turborepo
 - [x] Migrate repositories with git subtree
-- [x] Set up 5 shared packages
+- [x] Set up 4 shared packages
 - [x] Fix Great Gatsby (blob simplification: 1000 lines → 37 lines)
 
 ### Phase 2: Publishing Pipeline ✅ COMPLETE
@@ -507,7 +501,7 @@ git log --follow content/translations/[file]
 
 ### Phase 3: Production Launch (Current)
 
-- [x] Deploy to production on Vercel ✅
+- [x] Deploy to DigitalOcean App Platform ✅
 - [ ] Test publishing pipeline with real credentials
 - [ ] Launch first 10 books on all platforms
 - [ ] Set up analytics and monitoring

@@ -12,8 +12,8 @@ this nextjs app is a total vibe: a reading + audio platform that merges sweet wa
 
 - **app/reading-room/[slug]**: main reading component. fetches your text, loads audio, manages chapters/timestamps.
 - **hooks & components**: reusable building blocks to handle reading progress, theme toggles, etc.
-- **vercel blob storage**: assets are stored in Vercel Blob using a standardized path structure.
-- **env**: `.env.local` holds your secrets (stripe key, blob credentials, etc.). config them on vercel for deploy.
+- **digitalocean spaces**: assets use the standardized paths under the authoritative Spaces bucket.
+- **env**: `.env.local` holds local-only settings; production settings live in App Platform.
 
 ## documentation
 
@@ -34,7 +34,7 @@ this nextjs app is a total vibe: a reading + audio platform that merges sweet wa
 - **nextjs** (app router) for zero-config routing & serverless endpoints.
 - **react** for the core ui.
 - **wavesurfer** for audio waveforms and playback.
-- **vercel blob storage**: high-performance asset storage that replaces DigitalOcean Spaces.
+- **digitalocean spaces**: authoritative production asset storage and delivery.
 - **tailwindcss** for speed-coded styling.
 - **vitest** for ultra-fast testing (10x faster than jest).
 

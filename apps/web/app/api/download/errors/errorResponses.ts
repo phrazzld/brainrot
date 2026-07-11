@@ -66,7 +66,7 @@ function addEnvironmentDetails(
     // Add detailed error information for development/testing environments
     responseObj.details = parsedDetails;
     responseObj.env = process.env.NODE_ENV;
-    responseObj.deployment = process.env.VERCEL_URL || 'local';
+    responseObj.deployment = process.env.PUBLIC_APP_ORIGIN || 'local';
 
     // Add a developer hint for certain error types
     const hint = getDeveloperHint(status);

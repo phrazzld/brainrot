@@ -54,7 +54,7 @@ describe('Brainrot Canary server config', () => {
       {
         CANARY_API_KEY: 'server-key',
         PUBLIC_CANARY_API_KEY: 'browser-key',
-        VERCEL_ENV: 'preview',
+        PUBLIC_CANARY_ENVIRONMENT: 'preview',
       },
       () => {
         expect(canaryHealth()).toMatchObject({

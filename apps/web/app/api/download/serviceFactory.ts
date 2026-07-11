@@ -34,7 +34,6 @@ export function createDownloadService(
     // Log environment variables for debugging (without sensitive values)
     safeLog(log, 'debug', {
       msg: 'Download service environment configuration',
-      hasBlobToken: !!process.env.BLOB_READ_WRITE_TOKEN,
       hasSpacesUrl: !!process.env.NEXT_PUBLIC_SPACES_BASE_URL,
       nodeEnv: process.env.NODE_ENV,
     });

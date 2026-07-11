@@ -78,7 +78,6 @@ brainrot/
 ├── packages/
 │   ├── @brainrot/types/       # TypeScript type definitions
 │   ├── @brainrot/converter/   # Format conversion utilities
-│   ├── @brainrot/blob-client/ # Storage utilities
 │   ├── @brainrot/metadata/    # Book metadata handling
 │   └── @brainrot/templates/   # Publishing templates
 └── scripts/                    # Automation scripts
@@ -204,11 +203,13 @@ content/translations/books/{book-slug}/brainrot/*.md
 ```
 
 **DO NOT** place translations in:
+
 - ❌ `public/assets/*/text/` - This is legacy and not version-controlled
 - ❌ `apps/web/public/` - This is for static assets only
 - ❌ `generated/` - This is for compiled output, not source files
 
 **Correct Structure Example:**
+
 ```
 content/translations/books/
 ├── great-gatsby/
@@ -227,6 +228,7 @@ content/translations/books/
 ```
 
 This structure ensures:
+
 - ✅ Version control tracks all changes
 - ✅ Pre-commit hooks protect against accidental deletion
 - ✅ CI/CD validation catches missing files
@@ -433,24 +435,20 @@ export default BookReader;
 
 ```bash
 # Generate formats for a book
-pnpm generate:formats great-gatsby
+pnpm generate:formats book great-gatsby
 
-# Sync to blob storage
-pnpm sync:blob --all
+# Publish generated content to DigitalOcean Spaces
+pnpm sync:spaces all
 
-# Monitor API usage
-pnpm monitor
-
-# Open monitoring dashboard
-pnpm monitor:dashboard
 ```
 
 ### Environment Variables
 
 See `.env.example` for all available variables. Key ones:
 
-- `BLOB_READ_WRITE_TOKEN` - Required for content storage
-- `NEXT_PUBLIC_BLOB_BASE_URL` - Content delivery URL
+- `SPACES_ACCESS_KEY_ID` / `SPACES_SECRET_ACCESS_KEY` - Asset publishing credentials
+- `SPACES_ENDPOINT` / `SPACES_BUCKET_NAME` - Asset publishing target
+- `NEXT_PUBLIC_SPACES_BASE_URL` - Public content delivery origin
 - `LULU_API_KEY` - For publishing automation
 - `KDP_EMAIL/PASSWORD` - For Amazon publishing
 

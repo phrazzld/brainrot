@@ -20,6 +20,7 @@ export default defineConfig({
       "apps/**/*.test.ts",
       "apps/**/*.test.tsx",
       "content/**/*.test.ts",
+      "scripts/**/*.test.ts",
     ],
     exclude: [
       "**/node_modules/**",
@@ -74,10 +75,6 @@ export default defineConfig({
       "@brainrot/metadata": resolve(
         __dirname,
         "./packages/@brainrot/metadata/src",
-      ),
-      "@brainrot/blob-client": resolve(
-        __dirname,
-        "./packages/@brainrot/blob-client/src",
       ),
       "@brainrot/types": resolve(__dirname, "./packages/@brainrot/types/src"),
       "@brainrot/templates": resolve(

@@ -2,8 +2,8 @@ import { beforeAll, afterEach, vi } from "vitest";
 
 // Set up test environment variables
 process.env.NODE_ENV = "test";
-process.env.NEXT_PUBLIC_BLOB_BASE_URL = "https://test.blob.vercel-storage.com";
-process.env.NEXT_PUBLIC_BLOB_DEV_URL = "https://dev.blob.vercel-storage.com";
+process.env.NEXT_PUBLIC_SPACES_BASE_URL =
+  "https://brainrot-publishing.nyc3.digitaloceanspaces.com";
 
 // Polyfill TextDecoder and TextEncoder if needed
 if (typeof global.TextDecoder === "undefined") {
