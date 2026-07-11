@@ -1,6 +1,6 @@
 import { redactCanaryText } from './canary-redaction';
 
-const DEFAULT_CANARY_ENDPOINT = 'https://canary-obs.fly.dev';
+const DEFAULT_CANARY_ENDPOINT = 'https://canary.mistystep.io';
 const CANARY_SERVICE = 'brainrot-publishing-house';
 const CANARY_REPORT_TIMEOUT_MS = 5_000;
 
