@@ -22,6 +22,7 @@ const activeRoots = [
   "apps/web/lib",
   "apps/web/next.config.ts",
   "apps/web/package.json",
+  "apps/web/public/vercel.svg",
   "apps/web/public/monitoring",
   "apps/web/README.md",
   "apps/web/scripts",
