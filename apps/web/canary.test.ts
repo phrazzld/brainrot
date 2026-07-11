@@ -104,7 +104,7 @@ describe('Brainrot Canary server config', () => {
       },
       () => {
         expect(publicCanaryConfig()).toMatchObject({
-          endpoint: 'https://canary-obs.fly.dev',
+          endpoint: 'https://canary.mistystep.io',
           apiKey: 'browser-key',
         });
       },
