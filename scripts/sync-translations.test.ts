@@ -9,6 +9,7 @@ import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 
 import {
+  bookSlugs,
   objectKey,
   resolveSpacesConfig,
   syncBook,
@@ -129,6 +130,34 @@ describe("Spaces translation publishing", () => {
           workingDirectory,
         ),
       ).rejects.toThrow("refusing an empty publish");
+    } finally {
+      await rm(workingDirectory, { recursive: true, force: true });
+    }
+  });
+
+  it("selects only books with generated text for an all-books publish", async () => {
+    const workingDirectory = await mkdtemp(
+      join(tmpdir(), "brainrot-spaces-test-"),
+    );
+    await mkdir(join(workingDirectory, "generated", "the-iliad", "text"), {
+      recursive: true,
+    });
+    await writeFile(
+      join(workingDirectory, "generated", "the-iliad", "text", "book-01.txt"),
+      "sing, goddess",
+    );
+    await mkdir(join(workingDirectory, "generated", "tao-te-ching"), {
+      recursive: true,
+    });
+    await mkdir(
+      join(workingDirectory, "generated", "la-divina-comedia", "text"),
+      {
+        recursive: true,
+      },
+    );
+
+    try {
+      await expect(bookSlugs(workingDirectory)).resolves.toEqual(["the-iliad"]);
     } finally {
       await rm(workingDirectory, { recursive: true, force: true });
     }

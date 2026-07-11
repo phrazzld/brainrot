@@ -291,15 +291,30 @@ export async function syncBook(
   return report;
 }
 
-async function bookSlugs(): Promise<string[]> {
-  const root = path.join(process.cwd(), "generated");
+export async function bookSlugs(
+  workingDirectory = process.cwd(),
+): Promise<string[]> {
+  const root = path.join(workingDirectory, "generated");
   const entries = await fs
     .readdir(root, { withFileTypes: true })
     .catch(() => []);
-  return entries
+  const candidates = entries
     .filter((entry) => entry.isDirectory())
-    .map((entry) => entry.name)
-    .sort();
+    .map((entry) => entry.name);
+  const withText = await Promise.all(
+    candidates.map(async (slug) => {
+      const textEntries = await fs
+        .readdir(path.join(root, slug, "text"), { withFileTypes: true })
+        .catch(() => []);
+      return textEntries.some(
+        (entry) => entry.isFile() && entry.name.endsWith(".txt"),
+      )
+        ? slug
+        : null;
+    }),
+  );
+
+  return withText.filter((slug): slug is string => slug !== null).sort();
 }
 
 function printReport(report: SyncReport, verbose: boolean): void {
