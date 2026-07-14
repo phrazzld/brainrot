@@ -8,7 +8,8 @@ Brainrot Publishing House creates hilarious Gen Z "brainrot" translations of cla
 
 This monorepo contains:
 
-- **Web App**: Next.js reading platform at [brainrot.pub](https://brainrot.pub) (eventually)
+- **Web App**: Next.js reading platform at
+  [brainrotpublishing.com](https://brainrotpublishing.com)
 - **Translations**: The actual book translations (our crown jewels)
 - **Publisher**: Automated publishing to Amazon KDP, Lulu, and more
 - **Converter**: Tools to transform content for different platforms
@@ -73,7 +74,7 @@ node >= 22.0.0
 pnpm >= 8.15.1
 
 # Clone the monorepo
-git clone https://github.com/phrazzld/brainrot.git
+git clone https://github.com/misty-step/brainrot.git
 cd brainrot
 ```
 
@@ -441,7 +442,7 @@ The translations are original creative works. Classic source texts are public do
 ## 🔗 Links
 
 - **Web App**: [www.brainrotpublishing.com](https://www.brainrotpublishing.com)
-- **GitHub**: [github.com/phrazzld/brainrot](https://github.com/phrazzld/brainrot)
+- **GitHub**: [github.com/misty-step/brainrot](https://github.com/misty-step/brainrot)
 - **Discord**: Coming soon
 - **TikTok**: @brainrotpublishing (coming soon)
 
