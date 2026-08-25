@@ -33,3 +33,5 @@ History follows conventional commits (`feat:`, `fix:`, `docs:`, etc.). Keep subj
 ## Security & Configuration Tips
 
 Copy `.env.example` to `.env.local`; never commit credentials or service tokens. Run `./scripts/setup-git-hooks.sh` to enable secret scanning, and use `pnpm audit` before updating dependencies. Treat translation payloads as untrusted input—validate extensions and sanitize HTML in converters. Consult `docs/SECURITY.md` or ping maintainers when handling production data paths.
+
+Organization root context: @~/Development/misty-step/AGENTS.md
